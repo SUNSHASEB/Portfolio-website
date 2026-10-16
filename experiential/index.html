@@ -382,7 +382,6 @@
   .room-stage { cursor: pointer; }
   .room-bar { position: absolute; left: 0; bottom: 0; height: 4px; width: 100%; background: var(--bac); transform-origin: 0 50%; transform: scaleX(0); z-index: 1; }
   .room-stage.is-auto .room-bar { animation: ccBar 3.6s linear forwards; }
-  .room-stage.is-auto:hover .room-bar { animation-play-state: paused; opacity: .5; }
   .room-notes, .cc-notes { position: relative; min-height: 2.4em; margin-top: 12px; }
   .room-note, .cc-note { position: absolute; inset: 0 auto auto 0; margin: 0; font-size: clamp(18px, 1.5vw, 22px); opacity: 0; transform: translateY(8px); transition: opacity .35s, transform .35s var(--ease); }
   .room-note.is-on, .cc-note.is-on { opacity: 1; transform: none; }
@@ -709,19 +708,16 @@
   // Rooms of the house
   const roomStage = document.querySelector('.room-stage');
   const roomBar = roomStage.querySelector('.room-bar');
-  let roomTimer = null, roomSeen = false;
+  let roomTimer = null;
   const restartBar = () => { roomBar.style.animation = 'none'; void roomBar.offsetWidth; roomBar.style.animation = ''; };
   const pauseRooms = () => { clearInterval(roomTimer); roomTimer = null; };
   const stopRooms = () => { pauseRooms(); roomStage.classList.remove('is-auto'); };
   const rooms = switcher([...document.querySelectorAll('.room-tab')], [...document.querySelectorAll('.room-img')], [...document.querySelectorAll('.room-note')], stopRooms);
-  // Auto-advance through the rooms while on screen; pauses on hover, stops once someone picks a room
+  // Auto-advance through the rooms while on screen (hover doesn't pause it); stops once someone picks a room tab
   const startRooms = () => { if (roomTimer || !roomStage.classList.contains('is-auto')) return; restartBar(); roomTimer = setInterval(() => { rooms.next(); restartBar(); }, 3600); };
-  roomStage.addEventListener('pointerenter', pauseRooms);
-  roomStage.addEventListener('pointerleave', () => { if (roomSeen) startRooms(); });
-  roomStage.addEventListener('click', () => { stopRooms(); rooms.next(); });
+  roomStage.addEventListener('click', () => { rooms.next(); if (roomTimer) { pauseRooms(); startRooms(); } });
   if (!reduce) {
     new IntersectionObserver(([e]) => {
-      roomSeen = e.isIntersecting;
       if (e.isIntersecting) startRooms(); else pauseRooms();
     }, { threshold: .4 }).observe(roomStage);
   } else roomStage.classList.remove('is-auto');
