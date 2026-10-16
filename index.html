@@ -631,6 +631,19 @@ obsessed with the
             </div>
           </div>
         </li>
+        <li class="xp__item reveal" id="packaging-design"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><button class="xp__btn c-white" aria-expanded="false" aria-controls="cases-pkg"><span>Packaging design</span><span class="chev" aria-hidden="true">▶</span></button>
+          <div class="cases" id="cases-pkg">
+            <div>
+              <div class="cases__grid cases__grid--3">
+                <a class="case" href="packaging-design/index.html#kcg"><img src="packaging-design/assets/kcg-render-closed.jpg" alt="" loading="lazy"><div class="case__meta"><span class="case__n">Project 01</span><span class="case__t">King C. Gillette <span>→</span></span><span class="case__d">A gift box with two ways to open</span></div></a>
+                <a class="case" href="packaging-design/index.html#twistails"><img src="packaging-design/assets/tw-pods.jpg" alt="" loading="lazy"><div class="case__meta"><span class="case__n">Project 02</span><span class="case__t">Twistails <span>→</span></span><span class="case__d">Bacardi cocktail pods, tubes and displays</span></div></a>
+                <a class="case" href="packaging-design/index.html#greygoose"><img src="packaging-design/assets/gg-kv-orange.jpg" alt="" loading="lazy"><div class="case__meta"><span class="case__n">Project 03</span><span class="case__t">Grey Goose <span>→</span></span><span class="case__d">A prebatched cocktail bottle and labels</span></div></a>
+                <a class="case" href="packaging-design/index.html#baskin"><img src="packaging-design/assets/br-gift-box.jpg" alt="" loading="lazy"><div class="case__meta"><span class="case__n">Project 04</span><span class="case__t">Baskin Robbins <span>→</span></span><span class="case__d">Pre-packs, a vegan range and gifting</span></div></a>
+                <a class="case" href="packaging-design/index.html#martini"><img src="packaging-design/assets/mb-opt2.jpg" alt="" loading="lazy"><div class="case__meta"><span class="case__n">Project 05</span><span class="case__t">Martini Bitter <span>→</span></span><span class="case__d">A bottle-and-glass gift pack</span></div></a>
+              </div>
+            </div>
+          </div>
+        </li>
         <li class="xp__item reveal" id="games"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><button class="xp__btn c-blueh" aria-expanded="false" aria-controls="cases-games"><span>Games UI/brand</span><span class="chev" aria-hidden="true">▶</span></button>
           <div class="cases" id="cases-games">
             <div>
@@ -734,7 +747,7 @@ obsessed with the
     const panel = document.getElementById(toggle.getAttribute('aria-controls'));
     const setOpen = (open) => { toggle.setAttribute('aria-expanded', open); panel.classList.toggle('is-open', open); panel.inert = !open; };
     const id = panel.id;
-    setOpen((id === 'cases-brand' && (location.hash === '#work' || location.hash === '#brand-design')) || (id === 'cases-exp' && location.hash === '#experiential') || (id === 'cases-pd' && location.hash === '#product-design') || (id === 'cases-reel' && location.hash === '#showreel') || (id === 'cases-games' && location.hash === '#games'));
+    setOpen((id === 'cases-brand' && (location.hash === '#work' || location.hash === '#brand-design')) || (id === 'cases-exp' && location.hash === '#experiential') || (id === 'cases-pd' && location.hash === '#product-design') || (id === 'cases-pkg' && location.hash === '#packaging-design') || (id === 'cases-reel' && location.hash === '#showreel') || (id === 'cases-games' && location.hash === '#games'));
     toggle.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
   });
 
