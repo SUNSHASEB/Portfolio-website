@@ -1,6 +1,7 @@
 # Only the website lives in this repo. Raw design files in this folder (PSD, Keynote, packaging folders, source videos) stay local.
 /*
 !/.gitignore
+!/.nojekyll
 !/README.md
 !/index.html
 !/assets/
