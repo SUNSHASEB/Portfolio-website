@@ -1,0 +1,45 @@
+/* Readable type for every page except the landing page.
+   Plus Jakarta Sans takes over subheadings and copy. Kirgina stays for page titles,
+   section headings, tickers, stat numbers, pull quotes and the "next" link. */
+
+:root { --body: "Plus Jakarta Sans", "Helvetica Neue", Arial, sans-serif; }
+
+body { font-size: clamp(16px, 1.05vw, 18px); line-height: 1.6; }
+p, li, dd, td, figcaption, blockquote:not(.display) { letter-spacing: -.005em; }
+
+/* Hero intro */
+.hero__lede { font-size: clamp(20px, 1.75vw, 27px); line-height: 1.35; font-weight: 500; max-width: 30ch; letter-spacing: -.015em; }
+.meta dd { font-size: 16px; font-weight: 600; line-height: 1.35; }
+
+/* Small labels stay uppercase but get a touch more weight */
+.label, .hero__kicker, .next__kicker, .meta dt, .cap, .sw-tab, .sev-chip, .chips span, .mods span, .foot nav { font-weight: 600; }
+
+/* Subheadings: Kirgina caps → Plus Jakarta Sans, sentence case */
+.step b, .prob b, .path b, .feat b, .lesson b, .tag b,
+.route h3, .card h3, .kolam h4, .flipcard h3, .ba-block h3,
+.story b, .fleet b, .equation b, .positioning b, .pick__t,
+.render figcaption b, .reel__btn b, .ch__title, .bot-list b,
+.kit figcaption, .ba__note strong, .audit td:first-child,
+.lead p.big, .split p.big, .principle, .review p {
+  font-family: var(--body);
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: -.02em;
+}
+
+/* Card and list titles */
+.step b, .prob b, .path b, .feat b, .tag b, .render figcaption b, .bot-list b,
+.kit figcaption, .ba__note strong, .ch__title { font-size: clamp(19px, 1.45vw, 24px); line-height: 1.2; }
+.lesson b { font-size: clamp(20px, 1.7vw, 28px); line-height: 1.2; }
+.audit td:first-child { font-size: 17px; line-height: 1.3; }
+
+/* Section subheads and coloured callouts */
+.route h3, .card h3, .kolam h4, .ba-block h3, .story b, .pick__t, .reel__btn b { font-size: clamp(24px, 2.3vw, 36px); line-height: 1.15; }
+.fleet b, .equation b, .positioning b, .flipcard h3 { font-size: clamp(26px, 2.8vw, 44px); line-height: 1.1; }
+
+/* Big statements */
+.lead p.big, .split p.big, .principle, .review p { font-size: clamp(24px, 2.4vw, 38px); line-height: 1.2; font-weight: 800; }
+
+@media (max-width: 600px) {
+  .audit td:first-child { font-size: 15px; }
+}
