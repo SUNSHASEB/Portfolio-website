@@ -440,7 +440,8 @@
   .dm__type { left: calc(1189.18 * var(--u)); top: calc(473.12 * var(--u)); width: calc(539 * var(--u)); height: calc(670 * var(--u)); }
   .dm__sticky { left: calc(810.5 * var(--u)); top: calc(814.29 * var(--u)); width: calc(507 * var(--u)); height: calc(343 * var(--u)); }
   /* Work experience */
-  .h-work { background: #000; padding-top: 0; position: relative; }
+  .h-work { background: #000; padding-top: 0; position: relative; transition: padding-bottom .6s var(--ease); }
+  .h-work:has(#cases-reel.is-open) { padding-bottom: calc(100vw * 368 / 1728); }
   .xp { list-style: none; margin: clamp(24px, 4vw, 60px) auto 0; padding: 0; max-width: 980px; display: grid; gap: clamp(14px, 2vw, 28px); }
   .xp__item { display: grid; grid-template-columns: clamp(90px, 13vw, 200px) 1fr; align-items: center; gap: clamp(14px, 2vw, 30px); }
   .xp__item .eye { width: 100%; height: auto; }
@@ -464,6 +465,17 @@
   .case__t span { font-size: .6em; transition: transform .35s var(--ease); }
   .case:hover .case__t span { transform: translateX(6px); }
   .case__d { font-size: 14px; opacity: .85; }
+  .cases__grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .cases__grid--3 .case { aspect-ratio: 4 / 4.4; }
+  .cases__grid--3 .case__t { font-size: clamp(28px, 2.6vw, 44px); }
+  .cases__grid--1 { grid-template-columns: 1fr; }
+  .case--reel { aspect-ratio: 21 / 9; }
+  .case--reel video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .4s; }
+  .case--reel.is-live video { opacity: 1; }
+  .case__play { position: absolute; left: 50%; top: 46%; width: clamp(64px, 7vw, 104px); aspect-ratio: 1; border-radius: 50%; background: var(--h-yellow); transform: translate(-50%, -50%); transition: transform .35s var(--ease), opacity .3s; }
+  .case__play::after { content: ""; position: absolute; inset: 30% 26% 30% 38%; background: #000; clip-path: polygon(0 0, 100% 50%, 0 100%); }
+  .case--reel:hover .case__play, .case--reel:focus-visible .case__play { transform: translate(-50%, -50%) scale(1.12); }
+  .case--reel.is-live .case__play { opacity: 0; }
 
   /* Rolodex + footer: 1:1 with the Figma frame (y 7960 to 10479, 1728 x 2519). 1 Figma px = var(--u) */
   .h-rf { background: var(--h-red); padding: 0; position: relative; z-index: 1; container-type: inline-size; overflow-x: clip; }
@@ -492,7 +504,9 @@
   .rf__sub { left: calc(30 * var(--u)); top: calc(949 * var(--u)); font-family: var(--body); font-size: calc(67.85 * var(--u)); line-height: 1.2; color: #6b0000; text-transform: uppercase; white-space: nowrap; }
   @media (max-width: 900px) {
     .xp__item { grid-template-columns: 70px 1fr; }
-    .cases__grid { grid-template-columns: 1fr; }
+    .cases__grid, .cases__grid--3 { grid-template-columns: 1fr; }
+    .cases__grid--3 .case { aspect-ratio: 16 / 11; }
+    .case--reel { aspect-ratio: 16 / 10; }
   }
   @media (max-width: 600px) {
     .xp__btn small { display: none; }
@@ -609,10 +623,28 @@ obsessed with the
         </li>
         <li class="xp__item reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><span class="xp__btn is-soon c-redh">Product design <small>Soon</small></span></li>
         <li class="xp__item reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><span class="xp__btn is-soon c-blueh">Games UI/brand <small>Soon</small></span></li>
-        <li class="xp__item reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><a class="xp__btn c-white" href="experiential/index.html"><span>Experiential</span><span class="chev" aria-hidden="true">▶</span></a></li>
+        <li class="xp__item reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><button class="xp__btn c-white" aria-expanded="false" aria-controls="cases-exp"><span>Experiential</span><span class="chev" aria-hidden="true">▶</span></button>
+          <div class="cases" id="cases-exp">
+            <div>
+              <div class="cases__grid cases__grid--3">
+                <a class="case" href="experiential/index.html#bacardi"><img src="experiential/assets/bac-ev-house.jpg" alt="" loading="lazy"><div class="case__meta"><span class="case__n">Project 01 · Built</span><span class="case__t">Bacardi House Party <span>→</span></span><span class="case__d">A real, movable house with games inside, Dubai</span></div></a>
+                <a class="case" href="experiential/index.html#greygoose"><img src="experiential/assets/gg-vivid-card.jpg" alt="" loading="lazy"><div class="case__meta"><span class="case__n">Project 02 · Concepts</span><span class="case__t">Grey Goose windows <span>→</span></span><span class="case__d">Five window displays that stop the street</span></div></a>
+                <a class="case" href="experiential/index.html#bombay"><img src="experiential/assets/bs-bar.jpg" alt="" loading="lazy"><div class="case__meta"><span class="case__n">Project 03 · Concept</span><span class="case__t">Bombay Sapphire pop-up <span>→</span></span><span class="case__d">A glasshouse bar built on botanicals</span></div></a>
+              </div>
+            </div>
+          </div>
+        </li>
         <li class="xp__item reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><span class="xp__btn is-soon c-blueh">Side quests <small>Soon</small></span></li>
         <li class="xp__item reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><span class="xp__btn is-soon c-redh">Campaigns <small>Soon</small></span></li>
-        <li class="xp__item reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><a class="xp__btn c-white" href="showreel/index.html"><span>Showreel</span><span class="chev" aria-hidden="true">▶</span></a></li>
+        <li class="xp__item reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><button class="xp__btn c-white" aria-expanded="false" aria-controls="cases-reel"><span>Showreel</span><span class="chev" aria-hidden="true">▶</span></button>
+          <div class="cases" id="cases-reel">
+            <div>
+              <div class="cases__grid cases__grid--1">
+                <a class="case case--reel" href="showreel/index.html"><img src="showreel/assets/poster.jpg" alt="" loading="lazy"><video src="showreel/assets/ch3.mp4" muted loop playsinline preload="none" aria-hidden="true"></video><span class="case__play" aria-hidden="true"></span><div class="case__meta"><span class="case__n">Showreel 2026 · 1:04</span><span class="case__t">Watch the reel <span>→</span></span><span class="case__d">One minute of motion: games, brands, 3D and live action</span></div></a>
+              </div>
+            </div>
+          </div>
+        </li>
       </ul>
     </div>
   </section>
@@ -677,12 +709,24 @@ obsessed with the
     host.addEventListener('pointerleave', () => { hovering = false; set(false); });
   });
 
-  // Brand design opens the four case studies
-  const toggle = document.querySelector('[aria-controls="cases-brand"]');
-  const panel = document.getElementById('cases-brand');
-  const setOpen = (open) => { toggle.setAttribute('aria-expanded', open); panel.classList.toggle('is-open', open); panel.inert = !open; };
-  setOpen(location.hash === '#work' || location.hash === '#brand-design');
-  toggle.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
+  // Work rows open their case-study previews (Brand design opens by default from #work)
+  document.querySelectorAll('.xp__btn[aria-controls]').forEach(toggle => {
+    const panel = document.getElementById(toggle.getAttribute('aria-controls'));
+    const setOpen = (open) => { toggle.setAttribute('aria-expanded', open); panel.classList.toggle('is-open', open); panel.inert = !open; };
+    const id = panel.id;
+    setOpen((id === 'cases-brand' && (location.hash === '#work' || location.hash === '#brand-design')) || (id === 'cases-exp' && location.hash === '#experiential') || (id === 'cases-reel' && location.hash === '#showreel'));
+    toggle.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
+  });
+
+  // Showreel preview card plays a silent clip on hover
+  const reelCard = document.querySelector('.case--reel');
+  if (reelCard && !reduce) {
+    const clip = reelCard.querySelector('video');
+    const on = () => { clip.preload = 'auto'; clip.play().then(() => reelCard.classList.add('is-live')).catch(() => {}); };
+    const off = () => { clip.pause(); reelCard.classList.remove('is-live'); };
+    reelCard.addEventListener('pointerenter', on); reelCard.addEventListener('pointerleave', off);
+    reelCard.addEventListener('focus', on); reelCard.addEventListener('blur', off);
+  }
 
   // Hero reels: paused for reduced motion
   if (reduce) document.querySelectorAll('.hh__reel video').forEach(v => { v.removeAttribute('autoplay'); v.pause(); });
