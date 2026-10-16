@@ -379,6 +379,10 @@
   .room-stage { position: relative; margin-top: 16px; aspect-ratio: 784 / 444; border-radius: var(--radius); overflow: hidden; background: #111; }
   .room-img, .cc-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.04); transition: opacity .5s var(--ease), transform 1.2s var(--ease); }
   .room-img.is-on, .cc-img.is-on { opacity: 1; transform: none; }
+  .room-stage { cursor: pointer; }
+  .room-bar { position: absolute; left: 0; bottom: 0; height: 4px; width: 100%; background: var(--bac); transform-origin: 0 50%; transform: scaleX(0); z-index: 1; }
+  .room-stage.is-auto .room-bar { animation: ccBar 3.6s linear forwards; }
+  .room-stage.is-auto:hover .room-bar { animation-play-state: paused; opacity: .5; }
   .room-notes, .cc-notes { position: relative; min-height: 2.4em; margin-top: 12px; }
   .room-note, .cc-note { position: absolute; inset: 0 auto auto 0; margin: 0; font-size: clamp(18px, 1.5vw, 22px); opacity: 0; transform: translateY(8px); transition: opacity .35s, transform .35s var(--ease); }
   .room-note.is-on, .cc-note.is-on { opacity: 1; transform: none; }
@@ -552,7 +556,7 @@
 
       <div class="rooms reveal">
         <div class="room-tabs" role="tablist" aria-label="Rooms in the house"><button class="room-tab is-on" role="tab" aria-selected="true" data-i="0">DJ booth</button><button class="room-tab" role="tab" aria-selected="false" data-i="1">Main bar</button><button class="room-tab" role="tab" aria-selected="false" data-i="2">Interactive games</button><button class="room-tab" role="tab" aria-selected="false" data-i="3">Bath tub photo booth</button><button class="room-tab" role="tab" aria-selected="false" data-i="4">Wall display</button><button class="room-tab" role="tab" aria-selected="false" data-i="5">Mini bar &amp; games</button></div>
-        <div class="room-stage"><img class="room-img is-on" src="assets/bac-dj.jpg" alt="3D render: DJ booth" loading="lazy" width="784" height="444"><img class="room-img" src="assets/bac-bar.jpg" alt="3D render: Main bar" loading="lazy" width="784" height="444"><img class="room-img" src="assets/bac-games.jpg" alt="3D render: Interactive games" loading="lazy" width="784" height="444"><img class="room-img" src="assets/bac-photo.jpg" alt="3D render: Bath tub photo booth" loading="lazy" width="784" height="444"><img class="room-img" src="assets/bac-wall.jpg" alt="3D render: Wall display" loading="lazy" width="784" height="444"><img class="room-img" src="assets/bac-minibar.jpg" alt="3D render: Mini bar and games" loading="lazy" width="784" height="444"></div>
+        <div class="room-stage is-auto"><img class="room-img is-on" src="assets/bac-dj.jpg" alt="3D render: DJ booth" loading="lazy" width="784" height="444"><img class="room-img" src="assets/bac-bar.jpg" alt="3D render: Main bar" loading="lazy" width="784" height="444"><img class="room-img" src="assets/bac-games.jpg" alt="3D render: Interactive games" loading="lazy" width="784" height="444"><img class="room-img" src="assets/bac-photo.jpg" alt="3D render: Bath tub photo booth" loading="lazy" width="784" height="444"><img class="room-img" src="assets/bac-wall.jpg" alt="3D render: Wall display" loading="lazy" width="784" height="444"><img class="room-img" src="assets/bac-minibar.jpg" alt="3D render: Mini bar and games" loading="lazy" width="784" height="444"><span class="room-bar" aria-hidden="true"></span></div>
         <div class="room-notes" aria-live="polite"><p class="room-note is-on">A centre stage for the DJ.</p><p class="room-note">A bar with a vintage car for a front.</p><p class="room-note">Distorted mirrors, Connect 4 and spin the wheel.</p><p class="room-note">The most posted corner of the house.</p><p class="room-note">Hubcaps, records and a red classic car.</p><p class="room-note">Darts, a second bar and a dance floor.</p></div>
       </div>
 
@@ -703,7 +707,24 @@
   };
 
   // Rooms of the house
-  const rooms = switcher([...document.querySelectorAll('.room-tab')], [...document.querySelectorAll('.room-img')], [...document.querySelectorAll('.room-note')]);
+  const roomStage = document.querySelector('.room-stage');
+  const roomBar = roomStage.querySelector('.room-bar');
+  let roomTimer = null, roomSeen = false;
+  const restartBar = () => { roomBar.style.animation = 'none'; void roomBar.offsetWidth; roomBar.style.animation = ''; };
+  const pauseRooms = () => { clearInterval(roomTimer); roomTimer = null; };
+  const stopRooms = () => { pauseRooms(); roomStage.classList.remove('is-auto'); };
+  const rooms = switcher([...document.querySelectorAll('.room-tab')], [...document.querySelectorAll('.room-img')], [...document.querySelectorAll('.room-note')], stopRooms);
+  // Auto-advance through the rooms while on screen; pauses on hover, stops once someone picks a room
+  const startRooms = () => { if (roomTimer || !roomStage.classList.contains('is-auto')) return; restartBar(); roomTimer = setInterval(() => { rooms.next(); restartBar(); }, 3600); };
+  roomStage.addEventListener('pointerenter', pauseRooms);
+  roomStage.addEventListener('pointerleave', () => { if (roomSeen) startRooms(); });
+  roomStage.addEventListener('click', () => { stopRooms(); rooms.next(); });
+  if (!reduce) {
+    new IntersectionObserver(([e]) => {
+      roomSeen = e.isIntersecting;
+      if (e.isIntersecting) startRooms(); else pauseRooms();
+    }, { threshold: .4 }).observe(roomStage);
+  } else roomStage.classList.remove('is-auto');
   document.querySelector('.room-tabs').addEventListener('keydown', (e) => {
     if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
       const tabs = [...document.querySelectorAll('.room-tab')]; const i = tabs.indexOf(document.activeElement);
