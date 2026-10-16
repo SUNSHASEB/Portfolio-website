@@ -667,7 +667,18 @@ obsessed with the
             </div>
           </div>
         </li>
-        <li class="xp__item reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><span class="xp__btn is-soon c-blueh">Side quests <small>Soon</small></span></li>
+        <li class="xp__item reveal" id="side-quests"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><button class="xp__btn c-blueh" aria-expanded="false" aria-controls="cases-sq"><span>Side quests</span><span class="chev" aria-hidden="true">▶</span></button>
+          <div class="cases" id="cases-sq">
+            <div>
+              <div class="cases__grid">
+                <a class="case" href="side-quests/index.html#pixel-pals"><img src="side-quests/assets/card-pixel-pals.jpg" alt="" loading="lazy"><div class="case__meta"><span class="case__n">Quest 01</span><span class="case__t">Pixel Pals <span>→</span></span><span class="case__d">A pixel art editor with a museum inside</span></div></a>
+                <a class="case" href="side-quests/index.html#soundtrack"><img src="side-quests/assets/nca-loop.jpg" alt="" loading="lazy"><div class="case__meta"><span class="case__n">Quest 02</span><span class="case__t">Soundtrack &amp; film <span>→</span></span><span class="case__d">150 years of NCA, played on its own tools</span></div></a>
+                <a class="case" href="side-quests/index.html#gundam"><img src="side-quests/assets/gundam-ms06.jpg" alt="" loading="lazy"><div class="case__meta"><span class="case__n">Quest 03</span><span class="case__t">Gundam build <span>→</span></span><span class="case__d">A Zaku II kit, painted from scratch</span></div></a>
+                <a class="case" href="side-quests/index.html#photography"><img src="side-quests/assets/photo-12.jpg" alt="" loading="lazy"><div class="case__meta"><span class="case__n">Quest 04</span><span class="case__t">Photography <span>→</span></span><span class="case__d">Street, travel and quiet details</span></div></a>
+              </div>
+            </div>
+          </div>
+        </li>
         <li class="xp__item reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><span class="xp__btn is-soon c-redh">Campaigns <small>Soon</small></span></li>
         <li class="xp__item reveal" id="showreel"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><button class="xp__btn c-white" aria-expanded="false" aria-controls="cases-reel"><span>Showreel</span><span class="chev" aria-hidden="true">▶</span></button>
           <div class="cases" id="cases-reel">
@@ -747,7 +758,7 @@ obsessed with the
     const panel = document.getElementById(toggle.getAttribute('aria-controls'));
     const setOpen = (open) => { toggle.setAttribute('aria-expanded', open); panel.classList.toggle('is-open', open); panel.inert = !open; };
     const id = panel.id;
-    setOpen((id === 'cases-brand' && (location.hash === '#work' || location.hash === '#brand-design')) || (id === 'cases-exp' && location.hash === '#experiential') || (id === 'cases-pd' && location.hash === '#product-design') || (id === 'cases-pkg' && location.hash === '#packaging-design') || (id === 'cases-reel' && location.hash === '#showreel') || (id === 'cases-games' && location.hash === '#games'));
+    setOpen((id === 'cases-brand' && (location.hash === '#work' || location.hash === '#brand-design')) || (id === 'cases-exp' && location.hash === '#experiential') || (id === 'cases-pd' && location.hash === '#product-design') || (id === 'cases-pkg' && location.hash === '#packaging-design') || (id === 'cases-sq' && location.hash === '#side-quests') || (id === 'cases-reel' && location.hash === '#showreel') || (id === 'cases-games' && location.hash === '#games'));
     toggle.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
   });
 
