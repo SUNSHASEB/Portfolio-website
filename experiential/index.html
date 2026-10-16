@@ -390,10 +390,9 @@
 
   .night { display: grid; grid-template-columns: repeat(12, 1fr); gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(40px, 5vw, 72px); }
   .night .frame { margin: 0; }
-  .night .n1 { grid-column: span 8; aspect-ratio: 750 / 467; }
-  .night .n2 { grid-column: span 4; aspect-ratio: auto; }
-  .night .n3 { grid-column: span 6; aspect-ratio: 327 / 218; }
-  .night .n4 { grid-column: span 6; aspect-ratio: 433 / 222; }
+  .night .n1 { grid-column: span 6; aspect-ratio: 750 / 467; }
+  .night .n2 { grid-column: span 3; aspect-ratio: auto; }
+  .night .n3 { grid-column: span 3; aspect-ratio: auto; }
 
   /* Grey Goose concept switcher */
   .gg-board { margin: clamp(40px, 5vw, 72px) 0 0; aspect-ratio: 1235 / 692; background: #1b3a8f; }
@@ -440,8 +439,8 @@
     .pick { aspect-ratio: 16 / 9; }
     .proj__head, .split, .plan, .glow, .bots { grid-template-columns: 1fr; }
     .quote-card { grid-template-columns: 1fr; }
-    .night .n1, .night .n2, .night .n3, .night .n4 { grid-column: span 12; }
-    .night .n2 { aspect-ratio: 433 / 467; }
+    .night .n1 { grid-column: span 12; }
+    .night .n2, .night .n3 { grid-column: span 6; aspect-ratio: 3 / 4; }
     .renders { grid-template-columns: 1fr; }
   }
   @media (max-width: 600px) {
@@ -566,7 +565,6 @@
         <figure class="frame n1 reveal"><img src="assets/bac-ev-house.jpg" alt="Guests outside the Bacardi House at dusk, the HOUSE sign glowing" loading="lazy"><span class="cap">Opening night</span></figure>
         <figure class="frame n2 reveal"><img src="assets/bac-ev-guitars.jpg" alt="Wall of fame with Bacardi bat logos on guitars from different decades" loading="lazy"><span class="cap">Wall of fame</span></figure>
         <figure class="frame n3 reveal"><img src="assets/bac-ev-pool.jpg" alt="The house reflected in an infinity pool at sunset" loading="lazy"></figure>
-        <figure class="frame n4 reveal"><img src="assets/bac-ev-cups.jpg" alt="Guests with red cups and a Bacardi bottle" loading="lazy"></figure>
       </div>
     </div>
   </section>
