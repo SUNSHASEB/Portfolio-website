@@ -13,6 +13,7 @@ p, li, dd, td, figcaption, blockquote:not(.display) { letter-spacing: -.005em; }
 
 /* Small labels stay uppercase but get a touch more weight */
 .label, .hero__kicker, .next__kicker, .meta dt, .cap, .sw-tab, .sev-chip, .chips span, .mods span, .foot nav { font-weight: 600; }
+.nav__links { font-weight: 500; }
 
 /* Subheadings: Kirgina caps → Plus Jakarta Sans, sentence case */
 .step b, .prob b, .path b, .feat b, .lesson b, .tag b,
