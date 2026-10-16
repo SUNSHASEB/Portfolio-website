@@ -1,0 +1,16 @@
+# Only the website lives in this repo. Raw design files in this folder (PSD, Keynote, packaging folders, source videos) stay local.
+/*
+!/.gitignore
+!/README.md
+!/index.html
+!/assets/
+!/namma-farm/
+!/scooch/
+!/accelerated-professional-center/
+!/imagination-holdings/
+!/showreel/
+!/.claude/
+/.claude/*
+!/.claude/launch.json
+!/.claude/serve.py
+.DS_Store

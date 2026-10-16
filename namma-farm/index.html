@@ -1,0 +1,712 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Namma Farm — Sunil Sebastian</title>
+<meta name="description" content="Namma Farm rebrand: a modern, bilingual identity for a South Indian food brand going global. Case study by Sunil Sebastian.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BBH+Bogle&display=swap" rel="stylesheet">
+<style>
+  @font-face {
+    font-family: "Kirgina";
+    src: local("Kirgina Extra Bold"), local("Kirgina-ExtraBold"), url("fonts/Kirgina-ExtraBold.ttf") format("truetype");
+    font-weight: 800;
+    font-display: swap;
+  }
+
+  :root {
+    /* Landing page palette */
+    --black: #000;
+    --ink: #0b0b0b;
+    --white: #fff;
+    --paper: #efefef;
+    --yellow: #f6cb00;
+    --red: #ff1801;
+    --blue: #2151d8;
+    --sky: #2979ff;
+    --orange: #ffa800;
+    /* Namma Farm palette */
+    --nf-lime: #82ce26;
+    --nf-green: #003d17;
+    --nf-black: #171717;
+    --nf-yellow: #ff9b00;
+
+    --display: "Kirgina", "Anton", "Oswald", Impact, sans-serif;
+    --body: "BBH Bogle", "Helvetica Neue", Arial, sans-serif;
+
+    --gutter: clamp(16px, 4vw, 64px);
+    --max: 1440px;
+    --radius: 18px;
+    --ease: cubic-bezier(.2, .7, .1, 1);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--body);
+    font-size: clamp(16px, 1.15vw, 19px);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+  }
+  html { overflow-x: clip; }
+  img { display: block; max-width: 100%; height: auto; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+
+  .wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+
+  .display {
+    font-family: var(--display);
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: .86;
+    letter-spacing: -.005em;
+    margin: 0;
+  }
+  .c-yellow { color: var(--yellow); }
+  .c-red { color: var(--red); }
+  .c-blue { color: var(--sky); }
+  .c-orange { color: var(--orange); }
+  .c-lime { color: var(--nf-lime); }
+
+  /* ---------- Nav ---------- */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(0,0,0,.86);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+  .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
+  .nav__brand { font-family: var(--display); font-size: 28px; color: var(--yellow); text-decoration: none; letter-spacing: .02em; line-height: 1; text-transform: uppercase; display: inline-flex; align-items: center; gap: 10px; white-space: nowrap; }
+  .nav__logo { width: 40px; height: 40px; flex: none; }
+  .nav__links { display: flex; gap: clamp(12px, 2.5vw, 32px); align-items: center; font-size: 14px; text-transform: uppercase; letter-spacing: .08em; }
+  .nav__links a { text-decoration: none; opacity: .75; transition: opacity .2s; }
+  .nav__links a:hover { opacity: 1; }
+  .nav__progress { position: absolute; left: 0; bottom: -1px; height: 3px; width: 100%; background: var(--red); transform-origin: 0 50%; transform: scaleX(0); }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: clamp(40px, 7vw, 96px) 0 clamp(32px, 5vw, 64px); position: relative; }
+  .hero__kicker { display: flex; align-items: center; gap: 14px; text-transform: uppercase; letter-spacing: .12em; font-size: 14px; margin-bottom: clamp(16px, 2vw, 28px); }
+  .hero__title { font-size: clamp(96px, 23vw, 360px); display: flex; flex-wrap: wrap; align-items: flex-end; column-gap: .12em; }
+  .hero__title .eye { width: .7em; height: auto; margin-bottom: .1em; }
+  .hero__intro { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(24px, 5vw, 80px); margin-top: clamp(24px, 3vw, 40px); align-items: end; }
+  .hero__lede { font-size: clamp(22px, 2.3vw, 34px); line-height: 1.2; margin: 0; max-width: 22ch; }
+  .meta { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; margin: 0; border-top: 1px solid rgba(255,255,255,.2); }
+  .meta div { padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.2); }
+  .meta div:nth-child(odd) { padding-right: 16px; }
+  .meta dt { font-size: 12px; text-transform: uppercase; letter-spacing: .12em; opacity: .6; }
+  .meta dd { margin: 2px 0 0; font-size: 18px; }
+
+  .hero__media { margin-top: clamp(32px, 4vw, 56px); border-radius: var(--radius); overflow: hidden; position: relative; aspect-ratio: 16 / 9; }
+  .hero__media img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.08); transition: transform .1s linear; will-change: transform; }
+
+  /* ---------- Ticker ---------- */
+  .ticker { background: var(--red); color: var(--black); overflow: hidden; white-space: nowrap; padding: 10px 0; transform: rotate(-1.2deg); margin: clamp(24px, 4vw, 48px) -2vw; border-top: 3px solid var(--black); border-bottom: 3px solid var(--black); }
+  .ticker__track { display: inline-flex; gap: 40px; animation: marquee 26s linear infinite; padding-left: 40px; }
+  .ticker span { font-family: var(--display); font-size: clamp(40px, 6vw, 84px); line-height: 1; text-transform: uppercase; display: inline-flex; align-items: center; gap: 40px; }
+  .ticker span::after { content: "✺"; font-family: var(--body); font-size: .5em; }
+  .ticker.is-blue { background: var(--blue); color: var(--white); transform: rotate(1.2deg); }
+  @keyframes marquee { to { transform: translateX(-50%); } }
+
+  /* ---------- Sections ---------- */
+  section { padding: clamp(64px, 9vw, 140px) 0; position: relative; }
+  .label { display: flex; align-items: center; gap: 14px; font-size: 14px; text-transform: uppercase; letter-spacing: .14em; margin-bottom: clamp(16px, 2vw, 24px); }
+  .label .eye { width: 60px; height: auto; }
+  .label b { font-weight: 400; color: var(--yellow); }
+  .h2 { font-size: clamp(56px, 9.5vw, 156px); max-width: 14ch; }
+  .sub { font-size: clamp(18px, 1.5vw, 22px); max-width: 52ch; opacity: .85; margin: clamp(16px, 2vw, 24px) 0 0; }
+
+  /* Brief */
+  .brief__head { display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(24px, 5vw, 80px); align-items: end; }
+  .namma-word { background: var(--yellow); color: var(--black); border-radius: var(--radius); padding: clamp(20px, 2.5vw, 32px); transform: rotate(2deg); transition: transform .4s var(--ease); }
+  .namma-word:hover { transform: rotate(0) scale(1.02); }
+  .namma-word .tamil { font-size: clamp(48px, 6vw, 88px); line-height: 1.1; font-weight: 700; display: block; }
+  .namma-word p { margin: 8px 0 0; font-size: 18px; }
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(12px, 1.5vw, 20px); margin-top: clamp(40px, 5vw, 72px); }
+  .card { border-radius: var(--radius); padding: clamp(22px, 2.4vw, 36px); min-height: 280px; display: flex; flex-direction: column; justify-content: space-between; transition: transform .35s var(--ease); }
+  .card:hover { transform: translateY(-6px); }
+  .card h3 { font-family: var(--display); font-weight: 800; font-size: clamp(40px, 4vw, 64px); line-height: .9; text-transform: uppercase; margin: 0 0 24px; }
+  .card p { margin: 0; font-size: clamp(18px, 1.5vw, 22px); line-height: 1.3; }
+  .card--red { background: var(--red); color: var(--black); }
+  .card--blue { background: var(--blue); }
+  .card--white { background: var(--paper); color: var(--black); }
+  .card__n { font-size: 13px; letter-spacing: .14em; opacity: .7; margin-bottom: 8px; }
+
+
+  /* Media frames */
+  .frame { border-radius: var(--radius); overflow: hidden; background: var(--paper); position: relative; cursor: zoom-in; }
+  .frame img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s var(--ease); }
+  .frame video { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .7s var(--ease); }
+  .frame:hover img, .frame:hover video { transform: scale(1.04); }
+  .frame--contain img { object-fit: contain; }
+  .frame--pad { padding: clamp(16px, 3vw, 48px); }
+  .cap { position: absolute; left: 12px; bottom: 12px; background: var(--black); color: var(--white); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; padding: 6px 10px; border-radius: 999px; pointer-events: none; }
+
+  .full { margin-top: clamp(32px, 4vw, 56px); }
+
+  /* Directions */
+  .routes { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 2vw, 28px); margin-top: clamp(40px, 5vw, 72px); }
+  .route { border: 1px solid rgba(255,255,255,.18); border-radius: calc(var(--radius) + 6px); padding: clamp(18px, 2vw, 28px); display: flex; flex-direction: column; gap: 16px; position: relative; }
+  .route--win { border-color: var(--yellow); box-shadow: 0 0 0 1px var(--yellow) inset; }
+  .route__tag { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; opacity: .7; }
+  .route h3 { font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: clamp(40px, 4.4vw, 72px); line-height: .9; margin: 0; }
+  .route p { margin: 0; max-width: 40ch; opacity: .85; }
+  .route__media { display: grid; grid-template-columns: .8fr 1.2fr; gap: 12px; margin-top: auto; }
+  .route__media .frame { aspect-ratio: 3 / 4; }
+  .route__media .frame--contain { aspect-ratio: auto; background: var(--white); display: flex; align-items: center; }
+  .stamp { position: absolute; top: -18px; right: 18px; background: var(--yellow); color: var(--black); font-family: var(--display); font-size: 28px; line-height: 1; padding: 10px 14px 8px; border-radius: 999px; transform: rotate(6deg); text-transform: uppercase; }
+  .kolam { margin-top: clamp(16px, 2vw, 28px); background: var(--white); border-radius: var(--radius); padding: clamp(16px, 3vw, 40px); display: grid; grid-template-columns: auto 1fr; gap: clamp(16px, 3vw, 48px); align-items: center; color: var(--black); }
+  .kolam h4 { font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: clamp(32px, 3.4vw, 52px); line-height: .9; margin: 0; max-width: 9ch; }
+  .kolam img { cursor: zoom-in; }
+
+  /* Before / after */
+  .ba { margin-top: clamp(40px, 5vw, 72px); position: relative; aspect-ratio: 16 / 8; border-radius: var(--radius); overflow: hidden; background: #f4f4f4; user-select: none; touch-action: pan-y; }
+  .ba__pane { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+  .ba__pane { background: #fff; }
+  .ba__pane img { width: auto; height: 52%; max-width: 70%; object-fit: contain; }
+  .ba__pane--before { background: #f5f5f5; box-shadow: inset -1px 0 0 rgba(0,0,0,.06); clip-path: inset(0 calc(100% - var(--pos, 50%)) 0 0); }
+  .ba__pane--before img { height: 46%; }
+  .ba__tag { position: absolute; top: 16px; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; background: var(--black); color: var(--white); padding: 6px 12px; border-radius: 999px; }
+  .ba__tag--l { left: 16px; } .ba__tag--r { right: 16px; }
+  .ba__handle { position: absolute; top: 0; bottom: 0; left: var(--pos, 50%); width: 3px; background: var(--red); transform: translateX(-50%); pointer-events: none; }
+  .ba__knob { position: absolute; top: 50%; left: 50%; width: 64px; height: 64px; border-radius: 50%; background: var(--red); transform: translate(-50%, -50%); display: grid; place-items: center; color: var(--black); font-family: var(--display); font-size: 26px; }
+  .ba input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; margin: 0; }
+  .ba__note { display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: start; margin-top: 24px; max-width: 760px; }
+  .ba__note strong { font-family: var(--display); font-weight: 800; font-size: 32px; color: var(--yellow); text-transform: uppercase; line-height: 1; }
+  .ba__note p { margin: 0; opacity: .85; }
+
+  /* Identity bento */
+  .bento { display: grid; grid-template-columns: repeat(6, 1fr); grid-auto-rows: clamp(110px, 12.5vw, 190px); gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(40px, 5vw, 72px);
+    grid-template-areas: "a a a b b b" "a a a b b b" "a a a c c d" "a a a c c e" "f f f f f f"; }
+  .bento .b1 { grid-area: a; }
+  .bento .b2 { grid-area: b; }
+  .bento .b3 { grid-area: c; }
+  .bento .b4 { grid-area: d; background: #1f1f1f; cursor: default; }
+  .bento .b5 { grid-area: e; background: var(--nf-lime); display: grid; place-items: center; cursor: default; }
+  .bento .b6 { grid-area: f; background: var(--white); display: grid; grid-template-columns: repeat(4, 1fr); align-items: center; justify-items: center; padding: clamp(14px, 2vw, 28px) clamp(16px, 4vw, 64px); gap: clamp(8px, 2vw, 32px); cursor: default; }
+  .bento .b4 img { object-fit: contain; padding: 20%; }
+  .bento .b6 img { width: auto; height: 100%; max-height: 150px; max-width: 100%; object-fit: contain; transition: transform .35s var(--ease); }
+  .bento .b6:hover img { transform: none; }
+  .bento .b6 img:hover { transform: translateY(-6px) scale(1.05); }
+  .b5 span { font-family: var(--display); font-size: clamp(24px, 2.6vw, 40px); color: var(--nf-green); line-height: .9; text-align: center; text-transform: uppercase; }
+
+  .swatches { display: grid; grid-template-columns: repeat(5, 1fr); gap: clamp(8px, 1vw, 14px); margin-top: clamp(16px, 2vw, 24px); }
+  .swatch { border: 0; border-radius: var(--radius); aspect-ratio: 4 / 3; padding: 16px; text-align: left; font: inherit; color: inherit; cursor: pointer; display: flex; flex-direction: column; justify-content: flex-end; transition: transform .35s var(--ease); position: relative; }
+  .swatch:hover { transform: translateY(-8px) rotate(-1.5deg); }
+  .swatch strong { font-size: clamp(14px, 1.2vw, 18px); font-weight: 400; display: block; }
+  .swatch small { font-size: 13px; opacity: .75; letter-spacing: .06em; }
+  .swatch .copied { position: absolute; top: 14px; right: 14px; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; opacity: 0; transition: opacity .2s; }
+  .swatch.is-copied .copied { opacity: 1; }
+
+  .kit { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(10px, 1.2vw, 16px); }
+  .kit figure { margin: 0; background: var(--white); border-radius: var(--radius); padding: 20px; color: var(--black); display: flex; flex-direction: column; gap: 12px; cursor: zoom-in; }
+  .kit figcaption { font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: 28px; line-height: 1; }
+  .kit img { width: 100%; height: 220px; object-fit: contain; }
+
+  /* Icons & pattern */
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+  .chip { border: 1.5px solid currentColor; border-radius: 999px; padding: 8px 16px; font-size: 14px; text-transform: uppercase; letter-spacing: .08em; }
+  .icons-row { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 2vw, 28px); margin-top: clamp(40px, 5vw, 72px); align-items: stretch; }
+  .icons-row .frame { background: var(--white); }
+  .icons-row .frame img { object-fit: contain; padding: 6%; }
+  .flipcard { margin-top: clamp(16px, 2vw, 28px); background: var(--nf-green); border-radius: var(--radius); padding: clamp(20px, 3vw, 48px); display: grid; grid-template-columns: 1fr minmax(0, 560px); gap: clamp(20px, 4vw, 64px); align-items: center; }
+  .flipcard__tag { display: inline-block; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; background: var(--nf-lime); color: var(--nf-green); padding: 6px 12px; border-radius: 999px; }
+  .flipcard h3 { font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: clamp(48px, 6vw, 96px); line-height: .88; margin: 18px 0 16px; color: var(--nf-yellow); }
+  .flipcard p { margin: 0; max-width: 32ch; color: #fff; opacity: .9; }
+  .flipcard__gif { width: 100%; height: auto; border-radius: calc(var(--radius) - 4px); }
+  .pattern { margin-top: clamp(16px, 2vw, 28px); height: clamp(260px, 38vw, 560px); border-radius: var(--radius); background: url("assets/pattern.png") repeat-x center / auto 100%; animation: pan 60s linear infinite; cursor: zoom-in; }
+  @keyframes pan { to { background-position: -2544px center; } }
+
+  /* World gallery */
+  .world { display: grid; grid-template-columns: repeat(12, 1fr); gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(40px, 5vw, 72px); }
+  .world .w1 { grid-column: span 7; aspect-ratio: 16 / 9.2; }
+  .world .w2 { grid-column: span 5; aspect-ratio: auto; }
+  .world .w3 { grid-column: span 12; aspect-ratio: 2 / 1; }
+  .world .w4 { grid-column: span 12; aspect-ratio: 2000 / 1137; background: var(--white); }
+
+  .delivered { display: flex; flex-wrap: wrap; gap: 10px; margin-top: clamp(32px, 4vw, 48px); }
+  .delivered .chip { color: var(--yellow); }
+
+  /* Quote */
+  .quote { background: var(--yellow); color: var(--black); }
+  .quote blockquote { margin: 0; font-size: clamp(48px, 8vw, 132px); }
+  .quote cite { display: block; margin-top: 28px; font-style: normal; font-size: 14px; letter-spacing: .14em; text-transform: uppercase; }
+
+  /* Footer / next */
+  .next { padding-bottom: 0; overflow: hidden; }
+  .next__grid { display: grid; grid-template-columns: auto 1fr; align-items: end; gap: 24px; }
+  .next__text { justify-self: end; text-align: right; padding-bottom: clamp(24px, 4vw, 56px); }
+  .next__kicker { font-size: 14px; letter-spacing: .14em; text-transform: uppercase; opacity: .7; }
+  .next__link { font-family: var(--display); font-weight: 800; font-size: clamp(72px, 15vw, 240px); line-height: .85; text-transform: uppercase; color: var(--sky); text-decoration: none; display: inline-flex; align-items: center; gap: .1em; transition: color .25s; }
+  .next__link:hover { color: var(--red); }
+  .next__link .arrow { display: inline-block; transition: transform .35s var(--ease); font-size: .6em; }
+  .next__link:hover .arrow { transform: translateX(.2em); }
+  .next__guy { width: clamp(180px, 24vw, 360px); margin-bottom: -4px; transform: translateY(10%); transition: transform .6s var(--ease); }
+  .next:hover .next__guy { transform: translateY(0); }
+  .foot { border-top: 1px solid rgba(255,255,255,.15); }
+  .foot .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; padding-top: 20px; padding-bottom: 28px; font-size: 14px; }
+  .foot nav { display: flex; gap: 24px; text-transform: uppercase; letter-spacing: .08em; }
+  .foot a { text-decoration: none; opacity: .75; }
+  .foot a:hover { opacity: 1; color: var(--yellow); }
+
+  /* Lightbox */
+  .lb { position: fixed; inset: 0; z-index: 100; background: rgba(0,0,0,.92); display: grid; place-items: center; padding: 24px; opacity: 0; pointer-events: none; transition: opacity .25s; cursor: zoom-out; }
+  .lb.is-open { opacity: 1; pointer-events: auto; }
+  .lb img { max-width: min(1600px, 100%); max-height: 90vh; width: auto; height: auto; border-radius: 12px; background: var(--white); transform: scale(.96); transition: transform .3s var(--ease); }
+  .lb.is-open img { transform: scale(1); }
+  .lb__close { position: absolute; top: 16px; right: 16px; background: var(--white); color: var(--black); border: 0; width: 48px; height: 48px; border-radius: 50%; font-size: 22px; cursor: pointer; }
+
+  /* Reveal */
+  .reveal { opacity: 0; transform: translateY(40px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+  .reveal.is-in { opacity: 1; transform: none; }
+
+  /* Eye */
+  /* Eye: a red lid drops and the iris glances right, then snaps back */
+  .eye { overflow: visible; }
+  .eye__body, .eye__iris, .eye__lid { transform-box: view-box; transition: transform .14s cubic-bezier(.3, .7, .3, 1); }
+  .eye__body { transform-origin: 60px 32px; }
+  .eye__lid { transform: translateY(-40px); }
+  .eye.is-look .eye__body, .eye.is-look .eye__iris, .eye.is-look .eye__lid { transition-duration: .18s; }
+  .eye.is-look .eye__body { transform: scale(1.045); }
+  .eye.is-look .eye__iris { transform: translate(28px, 1.5px); }
+  .eye.is-look .eye__lid { transform: none; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 960px) {
+    .hero__intro, .brief__head { grid-template-columns: 1fr; }
+    .cards { grid-template-columns: 1fr; }
+    .card { min-height: 0; }
+    .routes { grid-template-columns: 1fr; }
+    .bento { grid-template-columns: 1fr 1fr; grid-auto-rows: auto; grid-template-areas: "a a" "b b" "c c" "d e" "f f"; }
+    .bento .b1 { aspect-ratio: 1 / 1; }
+    .bento .b2, .bento .b3 { aspect-ratio: 4 / 3; }
+    .bento .b4, .bento .b5 { aspect-ratio: 1 / 1; }
+    .bento .b6 { aspect-ratio: 3.4 / 1; }
+    .kit { grid-template-columns: 1fr; }
+    .icons-row { grid-template-columns: 1fr; }
+    .flipcard { grid-template-columns: 1fr; }
+    .icons-row .frame { aspect-ratio: 1 / 1; }
+    .world .w1, .world .w2, .world .w3, .world .w4 { grid-column: span 12; }
+    .world .w2 { aspect-ratio: 16 / 9.6; }
+    .world .w3 { aspect-ratio: 4 / 3; }
+    .kolam { grid-template-columns: 1fr; }
+    .ba { aspect-ratio: 4 / 3; }
+    .next__grid { grid-template-columns: 1fr; }
+    .next__text { order: -1; padding-bottom: 0; }
+    .next__guy { justify-self: start; }
+  }
+  @media (max-width: 600px) {
+    .nav__links a:not(.nav__back) { display: none; }
+    .swatches { grid-template-columns: repeat(2, 1fr); }
+    .swatch:first-child { grid-column: span 2; aspect-ratio: 2.2 / 1; }
+    .meta { grid-template-columns: 1fr; }
+    .meta div:nth-child(odd) { padding-right: 0; }
+    .route__media { grid-template-columns: 1fr; }
+    .route__media .frame { aspect-ratio: 4 / 3; }
+    .ba__knob { width: 48px; height: 48px; font-size: 20px; }
+    .ba__note { grid-template-columns: 1fr; gap: 8px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+    .reveal { opacity: 1; transform: none; }
+    .hero__media img { transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Reusable eye from the landing page -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <path id="eye-almond" d="M2 32 C 28 -9, 92 -9, 118 32 C 92 73, 28 73, 2 32 Z"/>
+    <clipPath id="eye-clip"><use href="#eye-almond"/></clipPath>
+  </defs>
+</svg>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="nav__brand" href="../index.html"><img class="nav__logo" src="assets/logo-spin.gif" alt="" width="120" height="120">Sunil Sebastian</a>
+    <nav class="nav__links" aria-label="Main">
+      <a class="nav__back" href="../index.html#work">← All work</a>
+      <a href="../index.html#about">About</a>
+      <a href="mailto:sunil@sebastians.tv">Contact</a>
+    </nav>
+  </div>
+  <div class="nav__progress" aria-hidden="true"></div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="title">
+    <div class="wrap">
+      <div class="hero__kicker">Brand design · Case study 01</div>
+      <h1 id="title" class="display hero__title">
+        <svg class="eye eye--hero" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg>
+        <span>Namma</span>
+        <span class="c-yellow">Farm</span>
+      </h1>
+      <div class="hero__intro">
+        <p class="hero__lede">A South Indian food brand, rebuilt to stand out on shelves around the world.</p>
+        <dl class="meta">
+          <div><dt>Role</dt><dd>Sole designer</dd></div>
+          <div><dt>Timeline</dt><dd>6 months</dd></div>
+          <div><dt>Scope</dt><dd>Logo, identity, packaging</dd></div>
+          <div><dt>Markets</dt><dd>US · UK · Middle East</dd></div>
+        </dl>
+      </div>
+      <figure class="hero__media frame" style="margin-left:0;margin-right:0;margin-bottom:0">
+        <img src="assets/hero-farmer.jpg" alt="Smiling farmer in a banana plantation with the new Namma Farm wordmark behind him" width="2000" height="1124" fetchpriority="high">
+      </figure>
+    </div>
+  </section>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__track">
+      <span>Bold</span><span>Modern</span><span>Rooted</span><span>Bold</span><span>Modern</span><span>Rooted</span>
+      <span>Bold</span><span>Modern</span><span>Rooted</span><span>Bold</span><span>Modern</span><span>Rooted</span>
+    </div>
+  </div>
+
+  <!-- 01 BRIEF -->
+  <section id="brief" aria-labelledby="brief-h">
+    <div class="wrap">
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>01</b> The brief</div>
+      <div class="brief__head">
+        <h2 id="brief-h" class="display h2 reveal">Modernise <span class="c-red">without</span> losing soul.</h2>
+        <div class="namma-word reveal" lang="ta">
+          <span class="tamil">நம்ம</span>
+          <p lang="en"><strong>Namma</strong> means “ours” in Tamil. A brand that belongs to its community.</p>
+        </div>
+      </div>
+
+      <div class="cards">
+        <article class="card card--red reveal">
+          <div><div class="card__n">01 / Problem</div><h3>Lost in the aisle</h3></div>
+          <p>The old logo was busy and text-heavy. Like its competitors, it disappeared on the shelf.</p>
+        </article>
+        <article class="card card--blue reveal">
+          <div><div class="card__n">02 / Audience</div><h3>South Indians abroad</h3></div>
+          <p>South Indians abroad come first. Curious food lovers looking for safe, honest food come second.</p>
+        </article>
+        <article class="card card--white reveal">
+          <div><div class="card__n">03 / Goal</div><h3>Simple. Modern. Tamil.</h3></div>
+          <p>A premium identity you can spot from 20 feet away, with its heritage still in it.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 INSPIRATION -->
+  <section id="inspiration" aria-labelledby="insp-h" style="padding-top:0">
+    <div class="wrap">
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>02</b> Inspiration</div>
+      <h2 id="insp-h" class="display h2 reveal">Temples, <span class="c-yellow">kolams</span> &amp; paddy fields.</h2>
+      <p class="sub reveal">Everything started from real South Indian life: rituals, food, farmers and folk art.</p>
+      <figure class="frame full reveal" style="margin-left:0;margin-right:0;aspect-ratio:1100/673">
+        <img src="assets/moodboard.jpg" alt="Moodboard: kolam patterns, temple art, paddy fields, banana-leaf meals and modern food packaging" loading="lazy" width="2000" height="1223">
+        <span class="cap">Moodboard · click to zoom</span>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 03 ROUTES -->
+  <section id="routes" aria-labelledby="routes-h" style="padding-top:0">
+    <div class="wrap">
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>03</b> Two routes</div>
+      <h2 id="routes-h" class="display h2 reveal">Pencil <span class="c-blue">first.</span></h2>
+
+      <div class="routes">
+        <article class="route reveal">
+          <div class="route__tag">Direction 01</div>
+          <h3>Initials + leaf</h3>
+          <p>An “NF” monogram with a leaf for the farm. Clean, but it could belong to any brand.</p>
+          <div class="route__media">
+            <figure class="frame" style="margin:0"><img src="assets/dir1-sketch.jpg" alt="Pencil sketches of NF monogram ideas with a leaf" loading="lazy"></figure>
+            <figure class="frame frame--contain" style="margin:0"><img src="assets/dir1-options.png" alt="Three digital NF monogram logo options" loading="lazy"></figure>
+          </div>
+        </article>
+
+        <article class="route route--win reveal">
+          <span class="stamp">Chosen</span>
+          <div class="route__tag">Direction 02</div>
+          <h3 class="c-yellow">Heritage geometry</h3>
+          <p>A mark drawn from kolam floor art. The name is written in Tamil and English.</p>
+          <div class="route__media">
+            <figure class="frame" style="margin:0"><img src="assets/dir2-sketch.jpg" alt="Pencil sketches combining the letter N with kolam geometry" loading="lazy"></figure>
+            <figure class="frame frame--contain" style="margin:0"><img src="assets/dir2-options.png" alt="Three kolam-inspired Namma Farm logo options" loading="lazy"></figure>
+          </div>
+        </article>
+      </div>
+
+      <div class="kolam reveal">
+        <h4>Kolam, made modern</h4>
+        <img src="assets/kolam.png" alt="Three traditional kolam dot-and-line patterns redrawn as clean line art" loading="lazy" width="1400" height="427">
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 BEFORE / AFTER -->
+  <section id="before-after" aria-labelledby="ba-h" style="padding-top:0">
+    <div class="wrap">
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>04</b> Before / after</div>
+      <h2 id="ba-h" class="display h2 reveal">From clutter <span class="c-red">to clarity.</span></h2>
+      <p class="sub reveal">Drag to compare.</p>
+
+      <div class="ba reveal" style="--pos:50%">
+        <div class="ba__pane ba__pane--after">
+          <img src="assets/logo-after.svg" alt="New Namma Farm logo: kolam-inspired mark above a bilingual wordmark" width="309" height="298">
+        </div>
+        <div class="ba__pane ba__pane--before">
+          <img src="assets/logo-before.png" alt="Old Namma Farm logo: green Tamil lettering with a palm tree and cattle" width="996" height="621">
+        </div>
+        <span class="ba__tag ba__tag--l">Before</span>
+        <span class="ba__tag ba__tag--r">After</span>
+        <div class="ba__handle" aria-hidden="true"><div class="ba__knob">⇆</div></div>
+        <input type="range" min="0" max="100" value="50" aria-label="Compare old and new logo">
+      </div>
+
+      <div class="ba__note reveal">
+        <strong>Why Tamil?</strong>
+        <p>For South Indians abroad, it says “this is yours.” For everyone else, it marks where the food comes from.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="ticker is-blue" aria-hidden="true">
+    <div class="ticker__track" style="animation-direction:reverse">
+      <span>Harvested with love</span><span>நம்ம farm</span><span>Harvested with love</span><span>நம்ம farm</span>
+      <span>Harvested with love</span><span>நம்ம farm</span><span>Harvested with love</span><span>நம்ம farm</span>
+    </div>
+  </div>
+
+  <!-- 05 IDENTITY -->
+  <section id="identity" aria-labelledby="id-h">
+    <div class="wrap">
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>05</b> The identity</div>
+      <h2 id="id-h" class="display h2 reveal">One mark. <span class="c-lime">Many moods.</span></h2>
+
+      <div class="bento">
+        <figure class="frame b1 reveal" style="margin:0"><img src="assets/aerial.jpg" alt="White Namma Farm logo over an aerial view of green crop fields" loading="lazy"></figure>
+        <figure class="frame b2 reveal" style="margin:0;cursor:default">
+          <video class="lazy-video" src="assets/namma-dancers.mp4" poster="assets/tiger.jpg" muted loop playsinline preload="none" aria-label="Video: Namma Farm logo over tiger-painted folk dancers at a festival"></video>
+        </figure>
+        <figure class="frame b3 reveal" style="margin:0"><img src="assets/hands.jpg" alt="Cupped hands holding rice with the Namma Farm mark" loading="lazy"></figure>
+        <figure class="frame b4 reveal" style="margin:0"><img src="assets/logo-white.png" alt="Namma Farm logo in white on dark grey" loading="lazy" width="1000" height="960"></figure>
+        <div class="frame b5 reveal" aria-hidden="true"><span>Bold<br>Modern<br>Rooted</span></div>
+        <figure class="frame b6 reveal" style="margin:0" aria-label="Logo shown in black, deep green, light green and yellow">
+          <img src="assets/logo-black-ink.svg" alt="Namma Farm logo in black" loading="lazy" width="124" height="119">
+          <img src="assets/logo-deep-green.svg" alt="Namma Farm logo in deep green" loading="lazy" width="124" height="119">
+          <img src="assets/logo-light-green.svg" alt="Namma Farm logo in light green" loading="lazy" width="124" height="119">
+          <img src="assets/logo-yellow.svg" alt="Namma Farm logo in yellow" loading="lazy" width="124" height="119">
+        </figure>
+      </div>
+
+      <div class="swatches" role="list" aria-label="Brand colours. Click to copy hex.">
+        <button class="swatch reveal" role="listitem" style="background:var(--nf-green);color:#fff" data-hex="#003D17"><span class="copied">Copied</span><strong>Deep Green</strong><small>#003D17</small></button>
+        <button class="swatch reveal" role="listitem" style="background:var(--nf-lime);color:var(--nf-green)" data-hex="#82CE26"><span class="copied">Copied</span><strong>Light Green</strong><small>#82CE26</small></button>
+        <button class="swatch reveal" role="listitem" style="background:var(--nf-yellow);color:var(--nf-green)" data-hex="#FF9B00"><span class="copied">Copied</span><strong>Radiant Yellow</strong><small>#FF9B00</small></button>
+        <button class="swatch reveal" role="listitem" style="background:var(--nf-black);color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.15)" data-hex="#171717"><span class="copied">Copied</span><strong>Cynical Black</strong><small>#171717</small></button>
+        <button class="swatch reveal" role="listitem" style="background:#fff;color:#171717" data-hex="#FFFFFF"><span class="copied">Copied</span><strong>Pure White</strong><small>#FFFFFF</small></button>
+      </div>
+
+      <div class="kit">
+        <figure class="reveal"><figcaption>Type</figcaption><img src="assets/type-main.png" alt="Kaivalya typeface specimen" loading="lazy"></figure>
+        <figure class="reveal"><figcaption>Tamil type</figcaption><img src="assets/type-tamil.png" alt="Four Tamil typeface options for the word Namma" loading="lazy"></figure>
+        <figure class="reveal"><figcaption>Trust badges</figcaption><img src="assets/legal-icons.png" alt="Non-GMO, gluten-free and organic product badges" loading="lazy"></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 ICONS & PATTERN -->
+  <section id="icons" aria-labelledby="icons-h" style="padding-top:0">
+    <div class="wrap">
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>06</b> Icons &amp; pattern</div>
+      <h2 id="icons-h" class="display h2 reveal">70+ icons. <span class="c-orange">One pattern.</span></h2>
+      <div class="chips reveal">
+        <span class="chip">Farm &amp; field</span><span class="chip">Tools &amp; work</span><span class="chip">Food</span><span class="chip">Kitchen ritual</span><span class="chip">Culture</span>
+      </div>
+
+      <div class="icons-row">
+        <figure class="frame reveal" style="margin:0"><img src="assets/icon-sketches.jpg" alt="Sketchbook pages of hand-drawn icon ideas" loading="lazy"></figure>
+        <figure class="frame reveal" style="margin:0"><img src="assets/icon-sets.png" alt="Grid of icons in green, orange and yellow, grouped by theme" loading="lazy"></figure>
+      </div>
+      <div class="flipcard reveal">
+        <div class="flipcard__text">
+          <span class="flipcard__tag">Icons in motion</span>
+          <h3>Every icon.<br>One family.</h3>
+          <p>Farm, food, tools and temple, all drawn in the same simple shapes.</p>
+        </div>
+        <img class="flipcard__gif" src="assets/icons-flip.gif" alt="Animated grid of Namma Farm icons flipping one after another in a diagonal wave" width="600" height="600" loading="lazy">
+      </div>
+      <div class="pattern reveal" role="img" aria-label="Namma Farm pattern: a colourful patchwork of the brand icons around the logo" data-full="assets/pattern.png"></div>
+    </div>
+  </section>
+
+  <!-- 07 IN THE WORLD -->
+  <section id="world" aria-labelledby="world-h" style="padding-top:0">
+    <div class="wrap">
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>07</b> In the world</div>
+      <h2 id="world-h" class="display h2 reveal">Harvested <span class="c-yellow">with love.</span></h2>
+
+      <div class="world">
+        <figure class="frame w1 reveal" style="margin:0"><img src="assets/rice-planting.jpg" alt="Campaign image: a farmer carrying rice seedlings, with the Namma Farm logo" loading="lazy"><span class="cap">Campaign</span></figure>
+        <figure class="frame w2 reveal" style="margin:0"><img src="assets/billboard.jpg" alt="Roadside billboard with an elderly farmer and the line Harvested with love" loading="lazy"><span class="cap">Out of home</span></figure>
+        <figure class="frame w3 reveal" style="margin:0"><img src="assets/touchpoints.jpg" alt="Brand touchpoints: Instagram profile, business card, garden tools, shipping container, truck and website" loading="lazy"><span class="cap">Digital + touchpoints</span></figure>
+        <figure class="frame w4 reveal" style="margin:0"><img src="assets/merch.jpg" alt="Tote bag, pin badges, delivery truck and Red Rice, White Rice and Almond packs, all wrapped in the icon pattern" loading="lazy"><span class="cap">Packaging, merch + fleet</span></figure>
+      </div>
+
+      <div class="delivered reveal" aria-label="What I delivered">
+        <span class="chip">Logo system</span><span class="chip">Colour</span><span class="chip">Typography</span><span class="chip">Icons</span><span class="chip">Pattern</span><span class="chip">Packaging</span><span class="chip">Campaign</span><span class="chip">Web &amp; social</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <section class="quote" aria-label="Closing thought">
+    <div class="wrap">
+      <blockquote class="display reveal">South Indian heritage belongs on the world’s finest shelves.</blockquote>
+      <cite class="reveal">The idea behind Namma Farm</cite>
+    </div>
+  </section>
+
+  <!-- NEXT -->
+  <section class="next" aria-label="Next case study">
+    <div class="wrap next__grid">
+      <img class="next__guy" src="assets/sunil-binoculars.png" alt="" aria-hidden="true" loading="lazy" width="860" height="1103">
+      <div class="next__text">
+        <div class="next__kicker">Next case study</div>
+        <a class="next__link" href="../scooch/index.html">Scooch <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>© 2026 Sunil Sebastian</span>
+    <nav aria-label="Social">
+      <a href="#" data-todo="linkedin">LinkedIn</a>
+      <a href="#" data-todo="behance">Behance</a>
+      <a href="#" data-todo="instagram">Instagram</a>
+    </nav>
+  </div>
+</footer>
+
+<div class="lb" role="dialog" aria-modal="true" aria-label="Image preview">
+  <button class="lb__close" aria-label="Close preview">✕</button>
+  <img alt="">
+</div>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Progress bar + hero zoom
+  const bar = document.querySelector('.nav__progress');
+  const heroImg = document.querySelector('.hero__media img');
+  let ticking = false;
+  const onScroll = () => {
+    const h = document.documentElement;
+    bar.style.transform = `scaleX(${h.scrollTop / (h.scrollHeight - h.clientHeight)})`;
+    if (!reduce && heroImg) {
+      const r = heroImg.parentElement.getBoundingClientRect();
+      const p = Math.min(Math.max(1 - r.bottom / (innerHeight + r.height), 0), 1);
+      heroImg.style.transform = `scale(${1.08 - p * 0.08}) translateY(${p * 4}%)`;
+    }
+    ticking = false;
+  };
+  addEventListener('scroll', () => { if (!ticking) { requestAnimationFrame(onScroll); ticking = true; } }, { passive: true });
+  onScroll();
+
+  // Eyes: side-glance with a dropping lid, on a loose loop and on hover
+  document.querySelectorAll('.eye').forEach((eye, i) => {
+    let hovering = false;
+    const set = on => eye.classList.toggle('is-look', on);
+    const wait = ms => new Promise(r => setTimeout(r, ms));
+    // look · rest · look again · long rest (timed from the reference recording)
+    const loop = async () => {
+      await wait(i === 0 ? 1400 : 1200 + Math.random() * 3500);
+      for (;;) {
+        if (!hovering) set(true);  await wait(850);
+        if (!hovering) set(false); await wait(450);
+        if (!hovering) set(true);  await wait(950);
+        if (!hovering) set(false); await wait(2600 + Math.random() * 2400);
+      }
+    };
+    if (!reduce) loop();
+    const host = eye.closest('.hero__title, .label') || eye;
+    host.addEventListener('pointerenter', () => { hovering = true; set(true); });
+    host.addEventListener('pointerleave', () => { hovering = false; set(false); });
+  });
+
+  // Before / after slider
+  const ba = document.querySelector('.ba');
+  const range = ba.querySelector('input');
+  const setPos = v => ba.style.setProperty('--pos', v + '%');
+  range.addEventListener('input', () => setPos(range.value));
+  // Small nudge when it scrolls into view so people know it moves
+  if (!reduce) {
+    const nudge = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting) return;
+      nudge.disconnect();
+      let t = 0;
+      const step = () => {
+        t += 1;
+        const v = 50 + Math.sin(t / 18) * 18 * Math.max(0, 1 - t / 110);
+        if (range.dataset.touched) return;
+        range.value = v; setPos(v);
+        if (t < 110) requestAnimationFrame(step);
+      };
+      setTimeout(() => requestAnimationFrame(step), 400);
+    }, { threshold: .6 });
+    nudge.observe(ba);
+    range.addEventListener('pointerdown', () => range.dataset.touched = 1);
+  }
+
+  // Play videos only while on screen
+  const vio = new IntersectionObserver((entries) => {
+    entries.forEach(({ target: v, isIntersecting }) => {
+      if (isIntersecting) { if (v.preload === 'none') v.preload = 'auto'; if (!reduce) v.play().catch(() => {}); }
+      else v.pause();
+    });
+  }, { rootMargin: '200px 0px' });
+  document.querySelectorAll('.lazy-video').forEach(v => { if (reduce) v.controls = true; vio.observe(v); });
+
+  // Copy colour hex
+  document.querySelectorAll('.swatch').forEach(s => s.addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(s.dataset.hex); } catch (_) {}
+    s.classList.add('is-copied');
+    setTimeout(() => s.classList.remove('is-copied'), 1200);
+  }));
+
+  // Lightbox
+  const lb = document.querySelector('.lb');
+  const lbImg = lb.querySelector('img');
+  const open = (src, alt) => { lbImg.src = src; lbImg.alt = alt || ''; lb.classList.add('is-open'); lb.querySelector('.lb__close').focus(); };
+  const close = () => lb.classList.remove('is-open');
+  document.querySelectorAll('.frame:not(.b4):not(.b6) img, .kit img, .kolam img').forEach(img => {
+    const host = img.closest('.frame, figure, .kolam');
+    img.addEventListener('click', () => open(img.currentSrc || img.src, img.alt));
+  });
+  const pat = document.querySelector('.pattern');
+  pat.addEventListener('click', () => open(pat.dataset.full, pat.getAttribute('aria-label')));
+  lb.addEventListener('click', close);
+  addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,726 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Imagination Holdings — Sunil Sebastian</title>
+<meta name="description" content="Imagination Holdings brand identity: one parent brand for 9D Technologies and Imagination AI, built around orbit and a deep-space world. Case study by Sunil Sebastian.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BBH+Bogle&display=swap" rel="stylesheet">
+<style>
+
+  @font-face {
+    font-family: "Kirgina";
+    src: local("Kirgina Extra Bold"), local("Kirgina-ExtraBold"), url("fonts/Kirgina-ExtraBold.ttf") format("truetype");
+    font-weight: 800;
+    font-display: swap;
+  }
+
+  :root {
+    /* Landing page palette */
+    --black: #000;
+    --ink: #0b0b0b;
+    --white: #fff;
+    --paper: #efefef;
+    --yellow: #f6cb00;
+    --red: #ff1801;
+    --blue: #2151d8;
+    --sky: #2979ff;
+    --orange: #ffa800;
+    /* Namma Farm palette */
+    --nf-lime: #82ce26;
+    --nf-green: #003d17;
+    --nf-black: #171717;
+    --nf-yellow: #ff9b00;
+
+    --display: "Kirgina", "Anton", "Oswald", Impact, sans-serif;
+    --body: "BBH Bogle", "Helvetica Neue", Arial, sans-serif;
+
+    --gutter: clamp(16px, 4vw, 64px);
+    --max: 1440px;
+    --radius: 18px;
+    --ease: cubic-bezier(.2, .7, .1, 1);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--body);
+    font-size: clamp(16px, 1.15vw, 19px);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+  }
+  html { overflow-x: clip; }
+  img { display: block; max-width: 100%; height: auto; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+
+  .wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+
+  .display {
+    font-family: var(--display);
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: .86;
+    letter-spacing: -.005em;
+    margin: 0;
+  }
+  .c-yellow { color: var(--yellow); }
+  .c-red { color: var(--red); }
+  .c-blue { color: var(--sky); }
+  .c-orange { color: var(--orange); }
+  .c-lime { color: var(--nf-lime); }
+
+  /* ---------- Nav ---------- */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(0,0,0,.86);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+  .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
+  .nav__brand { font-family: var(--display); font-size: 28px; color: var(--yellow); text-decoration: none; letter-spacing: .02em; line-height: 1; text-transform: uppercase; display: inline-flex; align-items: center; gap: 10px; white-space: nowrap; }
+  .nav__logo { width: 40px; height: 40px; flex: none; }
+  .nav__links { display: flex; gap: clamp(12px, 2.5vw, 32px); align-items: center; font-size: 14px; text-transform: uppercase; letter-spacing: .08em; }
+  .nav__links a { text-decoration: none; opacity: .75; transition: opacity .2s; }
+  .nav__links a:hover { opacity: 1; }
+  .nav__progress { position: absolute; left: 0; bottom: -1px; height: 3px; width: 100%; background: var(--red); transform-origin: 0 50%; transform: scaleX(0); }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: clamp(40px, 7vw, 96px) 0 clamp(32px, 5vw, 64px); position: relative; }
+  .hero__kicker { display: flex; align-items: center; gap: 14px; text-transform: uppercase; letter-spacing: .12em; font-size: 14px; margin-bottom: clamp(16px, 2vw, 28px); }
+  .hero__title { font-size: clamp(96px, 23vw, 360px); display: flex; flex-wrap: wrap; align-items: flex-end; column-gap: .12em; }
+  .hero__title .eye { width: .7em; height: auto; margin-bottom: .1em; }
+  .hero__intro { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(24px, 5vw, 80px); margin-top: clamp(24px, 3vw, 40px); align-items: end; }
+  .hero__lede { font-size: clamp(22px, 2.3vw, 34px); line-height: 1.2; margin: 0; max-width: 22ch; }
+  .meta { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; margin: 0; border-top: 1px solid rgba(255,255,255,.2); }
+  .meta div { padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.2); }
+  .meta div:nth-child(odd) { padding-right: 16px; }
+  .meta dt { font-size: 12px; text-transform: uppercase; letter-spacing: .12em; opacity: .6; }
+  .meta dd { margin: 2px 0 0; font-size: 18px; }
+
+  .hero__media { margin-top: clamp(32px, 4vw, 56px); border-radius: var(--radius); overflow: hidden; position: relative; aspect-ratio: 16 / 9; }
+  .hero__media img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.08); transition: transform .1s linear; will-change: transform; }
+
+  /* ---------- Ticker ---------- */
+  .ticker { background: var(--red); color: var(--black); overflow: hidden; white-space: nowrap; padding: 10px 0; transform: rotate(-1.2deg); margin: clamp(24px, 4vw, 48px) -2vw; border-top: 3px solid var(--black); border-bottom: 3px solid var(--black); }
+  .ticker__track { display: inline-flex; gap: 40px; animation: marquee 26s linear infinite; padding-left: 40px; }
+  .ticker span { font-family: var(--display); font-size: clamp(40px, 6vw, 84px); line-height: 1; text-transform: uppercase; display: inline-flex; align-items: center; gap: 40px; }
+  .ticker span::after { content: "✺"; font-family: var(--body); font-size: .5em; }
+  .ticker.is-blue { background: var(--blue); color: var(--white); transform: rotate(1.2deg); }
+  @keyframes marquee { to { transform: translateX(-50%); } }
+
+  /* ---------- Sections ---------- */
+  section { padding: clamp(64px, 9vw, 140px) 0; position: relative; }
+  .label { display: flex; align-items: center; gap: 14px; font-size: 14px; text-transform: uppercase; letter-spacing: .14em; margin-bottom: clamp(16px, 2vw, 24px); }
+  .label .eye { width: 60px; height: auto; }
+  .label b { font-weight: 400; color: var(--yellow); }
+  .h2 { font-size: clamp(56px, 9.5vw, 156px); max-width: 14ch; }
+  .sub { font-size: clamp(18px, 1.5vw, 22px); max-width: 52ch; opacity: .85; margin: clamp(16px, 2vw, 24px) 0 0; }
+
+  /* Brief */
+  .brief__head { display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(24px, 5vw, 80px); align-items: end; }
+  .namma-word { background: var(--yellow); color: var(--black); border-radius: var(--radius); padding: clamp(20px, 2.5vw, 32px); transform: rotate(2deg); transition: transform .4s var(--ease); }
+  .namma-word:hover { transform: rotate(0) scale(1.02); }
+  .namma-word .tamil { font-size: clamp(48px, 6vw, 88px); line-height: 1.1; font-weight: 700; display: block; }
+  .namma-word p { margin: 8px 0 0; font-size: 18px; }
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(12px, 1.5vw, 20px); margin-top: clamp(40px, 5vw, 72px); }
+  .card { border-radius: var(--radius); padding: clamp(22px, 2.4vw, 36px); min-height: 280px; display: flex; flex-direction: column; justify-content: space-between; transition: transform .35s var(--ease); }
+  .card:hover { transform: translateY(-6px); }
+  .card h3 { font-family: var(--display); font-weight: 800; font-size: clamp(40px, 4vw, 64px); line-height: .9; text-transform: uppercase; margin: 0 0 24px; }
+  .card p { margin: 0; font-size: clamp(18px, 1.5vw, 22px); line-height: 1.3; }
+  .card--red { background: var(--red); color: var(--black); }
+  .card--blue { background: var(--blue); }
+  .card--white { background: var(--paper); color: var(--black); }
+  .card__n { font-size: 13px; letter-spacing: .14em; opacity: .7; margin-bottom: 8px; }
+
+
+  /* Media frames */
+  .frame { border-radius: var(--radius); overflow: hidden; background: var(--paper); position: relative; cursor: zoom-in; }
+  .frame img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s var(--ease); }
+  .frame video { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .7s var(--ease); }
+  .frame:hover img, .frame:hover video { transform: scale(1.04); }
+  .frame--contain img { object-fit: contain; }
+  .frame--pad { padding: clamp(16px, 3vw, 48px); }
+  .cap { position: absolute; left: 12px; bottom: 12px; background: var(--black); color: var(--white); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; padding: 6px 10px; border-radius: 999px; pointer-events: none; }
+
+  .full { margin-top: clamp(32px, 4vw, 56px); }
+
+  /* Directions */
+  .routes { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 2vw, 28px); margin-top: clamp(40px, 5vw, 72px); }
+  .route { border: 1px solid rgba(255,255,255,.18); border-radius: calc(var(--radius) + 6px); padding: clamp(18px, 2vw, 28px); display: flex; flex-direction: column; gap: 16px; position: relative; }
+  .route--win { border-color: var(--yellow); box-shadow: 0 0 0 1px var(--yellow) inset; }
+  .route__tag { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; opacity: .7; }
+  .route h3 { font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: clamp(40px, 4.4vw, 72px); line-height: .9; margin: 0; }
+  .route p { margin: 0; max-width: 40ch; opacity: .85; }
+  .route__media { display: grid; grid-template-columns: .8fr 1.2fr; gap: 12px; margin-top: auto; }
+  .route__media .frame { aspect-ratio: 3 / 4; }
+  .route__media .frame--contain { aspect-ratio: auto; background: var(--white); display: flex; align-items: center; }
+  .stamp { position: absolute; top: -18px; right: 18px; background: var(--yellow); color: var(--black); font-family: var(--display); font-size: 28px; line-height: 1; padding: 10px 14px 8px; border-radius: 999px; transform: rotate(6deg); text-transform: uppercase; }
+  .kolam { margin-top: clamp(16px, 2vw, 28px); background: var(--white); border-radius: var(--radius); padding: clamp(16px, 3vw, 40px); display: grid; grid-template-columns: auto 1fr; gap: clamp(16px, 3vw, 48px); align-items: center; color: var(--black); }
+  .kolam h4 { font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: clamp(32px, 3.4vw, 52px); line-height: .9; margin: 0; max-width: 9ch; }
+  .kolam img { cursor: zoom-in; }
+
+  /* Before / after */
+  .ba { margin-top: clamp(40px, 5vw, 72px); position: relative; aspect-ratio: 16 / 8; border-radius: var(--radius); overflow: hidden; background: #f4f4f4; user-select: none; touch-action: pan-y; }
+  .ba__pane { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+  .ba__pane { background: #fff; }
+  .ba__pane img { width: auto; height: 52%; max-width: 70%; object-fit: contain; }
+  .ba__pane--before { background: #f5f5f5; box-shadow: inset -1px 0 0 rgba(0,0,0,.06); clip-path: inset(0 calc(100% - var(--pos, 50%)) 0 0); }
+  .ba__pane--before img { height: 46%; }
+  .ba__tag { position: absolute; top: 16px; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; background: var(--black); color: var(--white); padding: 6px 12px; border-radius: 999px; }
+  .ba__tag--l { left: 16px; } .ba__tag--r { right: 16px; }
+  .ba__handle { position: absolute; top: 0; bottom: 0; left: var(--pos, 50%); width: 3px; background: var(--red); transform: translateX(-50%); pointer-events: none; }
+  .ba__knob { position: absolute; top: 50%; left: 50%; width: 64px; height: 64px; border-radius: 50%; background: var(--red); transform: translate(-50%, -50%); display: grid; place-items: center; color: var(--black); font-family: var(--display); font-size: 26px; }
+  .ba input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; margin: 0; }
+  .ba__note { display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: start; margin-top: 24px; max-width: 760px; }
+  .ba__note strong { font-family: var(--display); font-weight: 800; font-size: 32px; color: var(--yellow); text-transform: uppercase; line-height: 1; }
+  .ba__note p { margin: 0; opacity: .85; }
+
+  /* Identity bento */
+  .bento { display: grid; grid-template-columns: repeat(6, 1fr); grid-auto-rows: clamp(110px, 12.5vw, 190px); gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(40px, 5vw, 72px);
+    grid-template-areas: "a a a b b b" "a a a b b b" "a a a c c d" "a a a c c e" "f f f f f f"; }
+  .bento .b1 { grid-area: a; }
+  .bento .b2 { grid-area: b; }
+  .bento .b3 { grid-area: c; }
+  .bento .b4 { grid-area: d; background: #1f1f1f; cursor: default; }
+  .bento .b5 { grid-area: e; background: var(--nf-lime); display: grid; place-items: center; cursor: default; }
+  .bento .b6 { grid-area: f; background: var(--white); display: grid; grid-template-columns: repeat(4, 1fr); align-items: center; justify-items: center; padding: clamp(14px, 2vw, 28px) clamp(16px, 4vw, 64px); gap: clamp(8px, 2vw, 32px); cursor: default; }
+  .bento .b4 img { object-fit: contain; padding: 20%; }
+  .bento .b6 img { width: auto; height: 100%; max-height: 150px; max-width: 100%; object-fit: contain; transition: transform .35s var(--ease); }
+  .bento .b6:hover img { transform: none; }
+  .bento .b6 img:hover { transform: translateY(-6px) scale(1.05); }
+  .b5 span { font-family: var(--display); font-size: clamp(24px, 2.6vw, 40px); color: var(--nf-green); line-height: .9; text-align: center; text-transform: uppercase; }
+
+  .swatches { display: grid; grid-template-columns: repeat(5, 1fr); gap: clamp(8px, 1vw, 14px); margin-top: clamp(16px, 2vw, 24px); }
+  .swatch { border: 0; border-radius: var(--radius); aspect-ratio: 4 / 3; padding: 16px; text-align: left; font: inherit; color: inherit; cursor: pointer; display: flex; flex-direction: column; justify-content: flex-end; transition: transform .35s var(--ease); position: relative; }
+  .swatch:hover { transform: translateY(-8px) rotate(-1.5deg); }
+  .swatch strong { font-size: clamp(14px, 1.2vw, 18px); font-weight: 400; display: block; }
+  .swatch small { font-size: 13px; opacity: .75; letter-spacing: .06em; }
+  .swatch .copied { position: absolute; top: 14px; right: 14px; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; opacity: 0; transition: opacity .2s; }
+  .swatch.is-copied .copied { opacity: 1; }
+
+  .kit { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(10px, 1.2vw, 16px); }
+  .kit figure { margin: 0; background: var(--white); border-radius: var(--radius); padding: 20px; color: var(--black); display: flex; flex-direction: column; gap: 12px; cursor: zoom-in; }
+  .kit figcaption { font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: 28px; line-height: 1; }
+  .kit img { width: 100%; height: 220px; object-fit: contain; }
+
+  /* Icons & pattern */
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+  .chip { border: 1.5px solid currentColor; border-radius: 999px; padding: 8px 16px; font-size: 14px; text-transform: uppercase; letter-spacing: .08em; }
+  .icons-row { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 2vw, 28px); margin-top: clamp(40px, 5vw, 72px); align-items: stretch; }
+  .icons-row .frame { background: var(--white); }
+  .icons-row .frame img { object-fit: contain; padding: 6%; }
+  .flipcard { margin-top: clamp(16px, 2vw, 28px); background: var(--nf-green); border-radius: var(--radius); padding: clamp(20px, 3vw, 48px); display: grid; grid-template-columns: 1fr minmax(0, 560px); gap: clamp(20px, 4vw, 64px); align-items: center; }
+  .flipcard__tag { display: inline-block; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; background: var(--nf-lime); color: var(--nf-green); padding: 6px 12px; border-radius: 999px; }
+  .flipcard h3 { font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: clamp(48px, 6vw, 96px); line-height: .88; margin: 18px 0 16px; color: var(--nf-yellow); }
+  .flipcard p { margin: 0; max-width: 32ch; color: #fff; opacity: .9; }
+  .flipcard__gif { width: 100%; height: auto; border-radius: calc(var(--radius) - 4px); }
+  .pattern { margin-top: clamp(16px, 2vw, 28px); height: clamp(260px, 38vw, 560px); border-radius: var(--radius); background: url("assets/pattern.png") repeat-x center / auto 100%; animation: pan 60s linear infinite; cursor: zoom-in; }
+  @keyframes pan { to { background-position: -2544px center; } }
+
+  /* World gallery */
+  .world { display: grid; grid-template-columns: repeat(12, 1fr); gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(40px, 5vw, 72px); }
+  .world .w1 { grid-column: span 7; aspect-ratio: 16 / 9.2; }
+  .world .w2 { grid-column: span 5; aspect-ratio: auto; }
+  .world .w3 { grid-column: span 12; aspect-ratio: 2 / 1; }
+  .world .w4 { grid-column: span 12; aspect-ratio: 2000 / 1137; background: var(--white); }
+
+  .delivered { display: flex; flex-wrap: wrap; gap: 10px; margin-top: clamp(32px, 4vw, 48px); }
+  .delivered .chip { color: var(--yellow); }
+
+  /* Quote */
+  .quote { background: var(--yellow); color: var(--black); }
+  .quote blockquote { margin: 0; font-size: clamp(48px, 8vw, 132px); }
+  .quote cite { display: block; margin-top: 28px; font-style: normal; font-size: 14px; letter-spacing: .14em; text-transform: uppercase; }
+
+  /* Footer / next */
+  .next { padding-bottom: 0; overflow: hidden; }
+  .next__grid { display: grid; grid-template-columns: auto 1fr; align-items: end; gap: 24px; }
+  .next__text { justify-self: end; text-align: right; padding-bottom: clamp(24px, 4vw, 56px); }
+  .next__kicker { font-size: 14px; letter-spacing: .14em; text-transform: uppercase; opacity: .7; }
+  .next__link { font-family: var(--display); font-weight: 800; font-size: clamp(72px, 15vw, 240px); line-height: .85; text-transform: uppercase; color: var(--sky); text-decoration: none; display: inline-flex; align-items: center; gap: .1em; transition: color .25s; }
+  .next__link:hover { color: var(--red); }
+  .next__link .arrow { display: inline-block; transition: transform .35s var(--ease); font-size: .6em; }
+  .next__link:hover .arrow { transform: translateX(.2em); }
+  .next__guy { width: clamp(180px, 24vw, 360px); margin-bottom: -4px; transform: translateY(10%); transition: transform .6s var(--ease); }
+  .next:hover .next__guy { transform: translateY(0); }
+  .foot { border-top: 1px solid rgba(255,255,255,.15); }
+  .foot .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; padding-top: 20px; padding-bottom: 28px; font-size: 14px; }
+  .foot nav { display: flex; gap: 24px; text-transform: uppercase; letter-spacing: .08em; }
+  .foot a { text-decoration: none; opacity: .75; }
+  .foot a:hover { opacity: 1; color: var(--yellow); }
+
+  /* Lightbox */
+  .lb { position: fixed; inset: 0; z-index: 100; background: rgba(0,0,0,.92); display: grid; place-items: center; padding: 24px; opacity: 0; pointer-events: none; transition: opacity .25s; cursor: zoom-out; }
+  .lb.is-open { opacity: 1; pointer-events: auto; }
+  .lb img { max-width: min(1600px, 100%); max-height: 90vh; width: auto; height: auto; border-radius: 12px; background: var(--white); transform: scale(.96); transition: transform .3s var(--ease); }
+  .lb.is-open img { transform: scale(1); }
+  .lb__close { position: absolute; top: 16px; right: 16px; background: var(--white); color: var(--black); border: 0; width: 48px; height: 48px; border-radius: 50%; font-size: 22px; cursor: pointer; }
+
+  /* Reveal */
+  .reveal { opacity: 0; transform: translateY(40px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+  .reveal.is-in { opacity: 1; transform: none; }
+
+  /* Eye */
+  /* Eye: a red lid drops and the iris glances right, then snaps back */
+  .eye { overflow: visible; }
+  .eye__body, .eye__iris, .eye__lid { transform-box: view-box; transition: transform .14s cubic-bezier(.3, .7, .3, 1); }
+  .eye__body { transform-origin: 60px 32px; }
+  .eye__lid { transform: translateY(-40px); }
+  .eye.is-look .eye__body, .eye.is-look .eye__iris, .eye.is-look .eye__lid { transition-duration: .18s; }
+  .eye.is-look .eye__body { transform: scale(1.045); }
+  .eye.is-look .eye__iris { transform: translate(28px, 1.5px); }
+  .eye.is-look .eye__lid { transform: none; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 960px) {
+    .hero__intro, .brief__head { grid-template-columns: 1fr; }
+    .cards { grid-template-columns: 1fr; }
+    .card { min-height: 0; }
+    .routes { grid-template-columns: 1fr; }
+    .bento { grid-template-columns: 1fr 1fr; grid-auto-rows: auto; grid-template-areas: "a a" "b b" "c c" "d e" "f f"; }
+    .bento .b1 { aspect-ratio: 1 / 1; }
+    .bento .b2, .bento .b3 { aspect-ratio: 4 / 3; }
+    .bento .b4, .bento .b5 { aspect-ratio: 1 / 1; }
+    .bento .b6 { aspect-ratio: 3.4 / 1; }
+    .kit { grid-template-columns: 1fr; }
+    .icons-row { grid-template-columns: 1fr; }
+    .flipcard { grid-template-columns: 1fr; }
+    .icons-row .frame { aspect-ratio: 1 / 1; }
+    .world .w1, .world .w2, .world .w3, .world .w4 { grid-column: span 12; }
+    .world .w2 { aspect-ratio: 16 / 9.6; }
+    .world .w3 { aspect-ratio: 4 / 3; }
+    .kolam { grid-template-columns: 1fr; }
+    .ba { aspect-ratio: 4 / 3; }
+    .next__grid { grid-template-columns: 1fr; }
+    .next__text { order: -1; padding-bottom: 0; }
+    .next__guy { justify-self: start; }
+  }
+  @media (max-width: 600px) {
+    .nav__links a:not(.nav__back) { display: none; }
+    .swatches { grid-template-columns: repeat(2, 1fr); }
+    .swatch:first-child { grid-column: span 2; aspect-ratio: 2.2 / 1; }
+    .meta { grid-template-columns: 1fr; }
+    .meta div:nth-child(odd) { padding-right: 0; }
+    .route__media { grid-template-columns: 1fr; }
+    .route__media .frame { aspect-ratio: 4 / 3; }
+    .ba__knob { width: 48px; height: 48px; font-size: 20px; }
+    .ba__note { grid-template-columns: 1fr; gap: 8px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+    .reveal { opacity: 1; transform: none; }
+    .hero__media img { transform: none; }
+  }
+
+
+  /* ---------- Imagination Holdings ---------- */
+  :root {
+    --ih-white: #f6f6f6;
+    --ih-space: #151515;
+    --ih-orbit: #3e5ba9;
+    --ih-lime: #96c93e;
+  }
+  .c-lime { color: var(--ih-lime); }
+  .c-orbit { color: #7d96dd; }
+
+  .ticker--orbit { background: var(--ih-orbit); color: var(--white); }
+
+  .fleet { background: var(--ih-lime); color: var(--ih-space); border-radius: var(--radius); padding: clamp(20px, 2.5vw, 32px); transform: rotate(-2deg); transition: transform .4s var(--ease); }
+  .fleet:hover { transform: rotate(0) scale(1.02); }
+  .fleet b { display: block; font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: clamp(40px, 5vw, 76px); line-height: .9; }
+  .fleet p { margin: 12px 0 0; font-size: 18px; }
+  .card--orbit { background: var(--ih-orbit); color: var(--white); }
+  .card--lime { background: var(--ih-lime); color: var(--ih-space); }
+
+  /* Process: four tall panels */
+  .ih-process { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr) minmax(0, .75fr) minmax(0, 1.2fr); gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(40px, 5vw, 72px); align-items: stretch; }
+  .ih-process figure { margin: 0; display: flex; flex-direction: column; gap: 10px; }
+  .ih-process .frame { background: #fff; flex: 1; }
+  .ih-process .frame img { object-fit: contain; }
+  .ih-process figcaption { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; opacity: .7; }
+
+  /* The idea: CIRCLE compass */
+  .compass { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(24px, 4vw, 64px); align-items: center; margin-top: clamp(40px, 5vw, 72px); }
+  .circle-word { display: flex; gap: clamp(4px, .6vw, 10px); font-family: var(--display); font-weight: 800; font-size: clamp(72px, 10vw, 160px); line-height: .85; text-transform: uppercase; }
+  .circle-word button { all: unset; cursor: pointer; color: #3a3a3a; transition: color .25s, transform .3s var(--ease); }
+  .circle-word button:hover, .circle-word button.is-on, .circle-word button:focus-visible { color: var(--ih-lime); transform: translateY(-6px); }
+  .circle-word button:nth-child(even):hover, .circle-word button:nth-child(even).is-on { color: #7d96dd; }
+  .circle-meaning { margin-top: 18px; min-height: 2.6em; font-size: clamp(22px, 2.2vw, 32px); line-height: 1.15; }
+  .circle-meaning small { display: block; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; opacity: .6; margin-bottom: 6px; }
+  .circle-list { list-style: none; margin: 22px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 18px; font-size: 15px; opacity: .8; }
+  .circle-list b { color: var(--ih-lime); font-weight: 400; }
+  .compass .vid { aspect-ratio: 4 / 3; background: #0c0c0c; cursor: default; }
+  .vid video { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .intro { margin-top: clamp(16px, 2vw, 28px); aspect-ratio: 16 / 9; background: #000; cursor: default; }
+
+  /* Identity */
+  .swatches--4 { grid-template-columns: repeat(4, 1fr); margin-top: clamp(40px, 5vw, 72px); }
+  .ih-bento { display: grid; grid-template-columns: repeat(12, 1fr); gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(10px, 1.2vw, 16px); }
+  .ih-bento .t-people { grid-column: span 3; grid-row: span 2; }
+  .ih-bento .t-vr { grid-column: span 3; aspect-ratio: 649 / 718; }
+  .ih-bento .t-compass { grid-column: span 3; aspect-ratio: 650 / 718; }
+  .ih-bento .t-explorers { grid-column: span 3; grid-row: span 2; }
+  .ih-bento .t-web { grid-column: span 6; aspect-ratio: 1356 / 733; }
+  .ih-bento .frame { background: #111; }
+  .ih-bento .t-explorers { background: #121212; }
+  .ih-bento .t-explorers img { object-fit: contain; }
+  .guidebook { margin-top: clamp(16px, 2vw, 28px); background: #dfe1e6; aspect-ratio: 1600 / 1180; perspective: 1400px; }
+  .guidebook img { transform-origin: 50% 55%; transition: transform .5s var(--ease); will-change: transform; }
+  .guidebook:hover img { transform: scale(1.03) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition-duration: .15s; }
+
+  /* World */
+  .ih-world { display: grid; grid-template-columns: repeat(12, 1fr); gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(40px, 5vw, 72px); }
+  .ih-world .w-stat { grid-column: span 8; aspect-ratio: 1704 / 1001; }
+  .ih-world .w-side { grid-column: span 4; display: grid; grid-template-rows: auto auto; gap: clamp(10px, 1.2vw, 16px); }
+  .ih-world .w-cards { aspect-ratio: 1257 / 703; }
+  .ih-world .w-bottle { aspect-ratio: 1257 / 950; }
+  .ih-world .w-posts { grid-column: span 12; aspect-ratio: 1677 / 664; background: #111; }
+  .ih-world .w-stage { grid-column: span 12; aspect-ratio: 2000 / 1165; }
+
+  .quote--orbit { background: var(--ih-orbit); color: var(--white); }
+  .next__prev { display: inline-block; margin-top: 18px; font-size: 14px; letter-spacing: .12em; text-transform: uppercase; opacity: .7; text-decoration: none; }
+  .next__prev:hover { opacity: 1; color: var(--yellow); }
+  .next__link--long { font-size: clamp(56px, 9vw, 150px); }
+
+  @media (max-width: 960px) {
+    .ih-process { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .ih-process .frame { aspect-ratio: 3 / 4; flex: none; }
+    .compass { grid-template-columns: 1fr; }
+    .ih-bento .t-people, .ih-bento .t-explorers { grid-column: span 6; grid-row: auto; aspect-ratio: 703 / 968; }
+    .ih-bento .t-vr, .ih-bento .t-compass { grid-column: span 6; }
+    .ih-bento .t-web { grid-column: span 12; }
+    .ih-world .w-stat, .ih-world .w-side { grid-column: span 12; }
+  }
+  @media (max-width: 600px) {
+    .swatches--4 { grid-template-columns: repeat(2, 1fr); }
+    .swatches--4 .swatch:first-child { grid-column: auto; aspect-ratio: 4 / 3; }
+    .circle-list { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Reusable eye from the landing page -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <path id="eye-almond" d="M2 32 C 28 -9, 92 -9, 118 32 C 92 73, 28 73, 2 32 Z"/>
+    <clipPath id="eye-clip"><use href="#eye-almond"/></clipPath>
+  </defs>
+</svg>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="nav__brand" href="../index.html"><img class="nav__logo" src="assets/logo-spin.gif" alt="" width="120" height="120">Sunil Sebastian</a>
+    <nav class="nav__links" aria-label="Main">
+      <a class="nav__back" href="../index.html#work">← All work</a>
+      <a href="../index.html#about">About</a>
+      <a href="mailto:sunil@sebastians.tv">Contact</a>
+    </nav>
+  </div>
+  <div class="nav__progress" aria-hidden="true"></div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="title">
+    <div class="wrap">
+      <div class="hero__kicker">Brand design · Case study 04</div>
+      <h1 id="title" class="display hero__title">
+        <svg class="eye eye--hero" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg>
+        <span>Imagination</span>
+        <span class="c-lime">Holdings</span>
+      </h1>
+      <div class="hero__intro">
+        <p class="hero__lede">One parent brand for two tech companies. Explorers of infinite possibilities.</p>
+        <dl class="meta">
+          <div><dt>Role</dt><dd>Brand lead, with Echo Digital</dd></div>
+          <div><dt>Timeline</dt><dd>8 months</dd></div>
+          <div><dt>Scope</dt><dd>Logo, brand system, guidelines, website</dd></div>
+          <div><dt>Companies</dt><dd>9D Technologies · Imagination AI</dd></div>
+        </dl>
+      </div>
+      <figure class="hero__media frame" style="margin-left:0;margin-right:0;margin-bottom:0">
+        <img src="assets/conference-a.jpg" alt="Conference stage with a giant screen reading Infinite Possibilities beside the Imagination Holdings logo" width="2000" height="1204" fetchpriority="high">
+      </figure>
+    </div>
+  </section>
+
+  <div class="ticker ticker--orbit" aria-hidden="true">
+    <div class="ticker__track">
+      <span>Explorers of infinite possibilities</span><span>A fleet, not a company</span>
+      <span>Explorers of infinite possibilities</span><span>A fleet, not a company</span>
+    </div>
+  </div>
+
+  <!-- 01 BRIEF -->
+  <section id="brief" aria-labelledby="brief-h">
+    <div class="wrap">
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>01</b> The brief</div>
+      <div class="brief__head">
+        <h2 id="brief-h" class="display h2 reveal">Two companies. <span class="c-lime">One orbit.</span></h2>
+        <div class="fleet reveal">
+          <b>A fleet, not a company</b>
+          <p>The command centre that keeps 9D Technologies and Imagination AI moving together.</p>
+        </div>
+      </div>
+
+      <div class="cards">
+        <article class="card card--orbit reveal">
+          <div><div class="card__n">01 / Problem</div><h3>No centre</h3></div>
+          <p>Two ventures ran side by side, with no core behind them.</p>
+        </article>
+        <article class="card card--lime reveal">
+          <div><div class="card__n">02 / Audience</div><h3>Market &amp; Imaginites</h3></div>
+          <p>Partners, clients and investors outside. Engineers and creators inside.</p>
+        </article>
+        <article class="card card--white reveal">
+          <div><div class="card__n">03 / Goal</div><h3>One voice</h3></div>
+          <p>A parent brand that holds both companies together and speaks as one.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 PROCESS -->
+  <section id="process" aria-labelledby="process-h" style="padding-top:0">
+    <div class="wrap">
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>02</b> Process</div>
+      <h2 id="process-h" class="display h2 reveal">Sketch. Build. <span class="c-orbit">Refine.</span></h2>
+      <p class="sub reveal">From the letters I and H to a planet in orbit.</p>
+
+      <div class="ih-process">
+        <figure class="reveal"><div class="frame"><img src="assets/moodboard.jpg" alt="Moodboard of loop, orbit and monogram logos" loading="lazy"></div><figcaption>Moodboard</figcaption></figure>
+        <figure class="reveal"><div class="frame"><img src="assets/sketches.jpg" alt="Pencil sketches of IH monograms and orbiting circles" loading="lazy"></div><figcaption>Sketches</figcaption></figure>
+        <figure class="reveal"><div class="frame"><img src="assets/construction.jpg" alt="Logo construction slides evolving the symbol" loading="lazy"></div><figcaption>Construction</figcaption></figure>
+        <figure class="reveal"><div class="frame"><img src="assets/refinement.jpg" alt="Six logo options and the refined planet-and-orbit mark" loading="lazy"></div><figcaption>Refinement</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 THE IDEA -->
+  <section id="idea" aria-labelledby="idea-h" style="padding-top:0">
+    <div class="wrap">
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>03</b> The idea</div>
+      <h2 id="idea-h" class="display h2 reveal">Our <span class="c-lime">compass.</span></h2>
+
+      <div class="compass">
+        <div class="reveal">
+          <div class="circle-word" role="group" aria-label="CIRCLE: hover or tap a letter to see its value">
+            <button data-w="Creativity">C</button><button data-w="Innovation">I</button><button data-w="Relationships &amp; inclusivity">R</button><button data-w="Curiosity">C</button><button data-w="Lifelong growth">L</button><button data-w="Excellence">E</button>
+          </div>
+          <p class="circle-meaning" aria-live="polite"><small>Each letter is a value</small><span>Creativity</span></p>
+          <ul class="circle-list">
+            <li><b>C</b> Creativity</li><li><b>I</b> Innovation</li><li><b>R</b> Relationships &amp; inclusivity</li><li><b>C</b> Curiosity</li><li><b>L</b> Lifelong growth</li><li><b>E</b> Excellence</li>
+          </ul>
+        </div>
+        <figure class="frame vid reveal" style="margin:0">
+          <video class="lazy-video" src="assets/circle.mp4" poster="assets/circle-poster.jpg" muted loop playsinline preload="none" aria-label="Animation: the six CIRCLE values branch out from the logo"></video>
+          <span class="cap">The compass, animated</span>
+        </figure>
+      </div>
+
+      <figure class="frame intro reveal" style="margin-left:0;margin-right:0;margin-bottom:0">
+        <video class="lazy-video" src="assets/intro.mp4" poster="assets/intro-poster.jpg" muted loop playsinline preload="none" aria-label="Logo intro: orbit lines, an atom and a planet form the Imagination Holdings logo"></video>
+        <span class="cap">Logo intro · website loader and decks</span>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 04 IDENTITY -->
+  <section id="identity" aria-labelledby="id-h" style="padding-top:0">
+    <div class="wrap">
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>04</b> The identity</div>
+      <h2 id="id-h" class="display h2 reveal">Deep space. <span class="c-orbit">Clear hierarchy.</span></h2>
+
+      <div class="swatches swatches--4" role="list" aria-label="Brand colours. Click to copy hex.">
+        <button class="swatch reveal" role="listitem" style="background:var(--ih-white);color:var(--ih-space)" data-hex="#F6F6F6"><span class="copied">Copied</span><strong>Signal White</strong><small>#F6F6F6</small></button>
+        <button class="swatch reveal" role="listitem" style="background:var(--ih-space);color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.15)" data-hex="#151515"><span class="copied">Copied</span><strong>Deep Space</strong><small>#151515</small></button>
+        <button class="swatch reveal" role="listitem" style="background:var(--ih-orbit);color:#fff" data-hex="#3E5BA9"><span class="copied">Copied</span><strong>Deep Orbit</strong><small>#3E5BA9</small></button>
+        <button class="swatch reveal" role="listitem" style="background:var(--ih-lime);color:var(--ih-space)" data-hex="#96C93E"><span class="copied">Copied</span><strong>Solar Lime</strong><small>#96C93E</small></button>
+      </div>
+
+      <div class="ih-bento">
+        <figure class="frame t-people reveal" style="margin:0"><img src="assets/people.jpg" alt="Black and white photo of a smiling team member wearing branded headphones" loading="lazy"></figure>
+        <figure class="frame t-vr reveal" style="margin:0"><img src="assets/vr.jpg" alt="Woman in a VR headset with the Imagination Holdings mark on her headphones" loading="lazy"></figure>
+        <figure class="frame t-compass reveal" style="margin:0"><img src="assets/compass.jpg" alt="Our Compass card listing the six CIRCLE values" loading="lazy"></figure>
+        <figure class="frame t-explorers reveal" style="margin:0"><img src="assets/explorers.jpg" alt="Explorers of Infinite Possibilities card with a thin orbit line and a lime dot" loading="lazy"></figure>
+        <figure class="frame t-web reveal" style="margin:0"><img src="assets/website.jpg" alt="Laptop showing the Imagination Holdings website hero: Explorers of Infinite Possibilities" loading="lazy"></figure>
+      </div>
+
+      <figure class="frame guidebook reveal" style="margin-left:0;margin-right:0;margin-bottom:0">
+        <img src="assets/brandbook-open.jpg" alt="Two Imagination Holdings softcover brand books on a light surface: one closed showing the Brand Guidelines cover, one open on the logo and colour pages" loading="lazy" width="1600" height="1180">
+        <span class="cap">2026 brand guidelines · 34 pages</span>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 05 IN THE WORLD -->
+  <section id="world" aria-labelledby="world-h" style="padding-top:0">
+    <div class="wrap">
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>05</b> In the world</div>
+      <h2 id="world-h" class="display h2 reveal">From desk <span class="c-lime">to stage.</span></h2>
+
+      <div class="ih-world">
+        <figure class="frame w-stat reveal" style="margin:0"><img src="assets/stationery.jpg" alt="Stationery set: letterhead, envelope, notebook reading We Are Imaginites, mug and business cards" loading="lazy"><span class="cap">Stationery</span></figure>
+        <div class="w-side">
+          <figure class="frame w-cards reveal" style="margin:0"><img src="assets/cards.jpg" alt="Black and white business cards with the logo" loading="lazy"></figure>
+          <figure class="frame w-bottle reveal" style="margin:0"><img src="assets/bottle.jpg" alt="White water bottle with the logo and an orbit line" loading="lazy"></figure>
+        </div>
+        <figure class="frame w-posts reveal" style="margin:0"><img src="assets/posts.jpg" alt="Three social posts: a collaboration quote, a We are looking for a navigator hiring post, and a CEO quote" loading="lazy"><span class="cap">Social</span></figure>
+        <figure class="frame w-stage reveal" style="margin:0"><img src="assets/conference-b.jpg" alt="Silhouettes in front of a huge conference screen with the Imagination Holdings logo over a planet" loading="lazy"><span class="cap">Conference screens</span></figure>
+      </div>
+
+      <div class="delivered reveal" aria-label="What I delivered">
+        <span class="chip">Logo system</span><span class="chip">Brand architecture</span><span class="chip">Values system</span><span class="chip">Logo intro animation</span><span class="chip">2026 brand guidelines</span><span class="chip">Stationery</span><span class="chip">Social</span><span class="chip">Event screens</span><span class="chip">Website (in progress)</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <section class="quote quote--orbit" aria-label="Closing thought">
+    <div class="wrap">
+      <blockquote class="display reveal">The future is not inherited. It is imagined.</blockquote>
+      <cite class="reveal">Closing line of the brand guidelines</cite>
+    </div>
+  </section>
+
+  <!-- NEXT -->
+  <section class="next" aria-label="Back to the first case study">
+    <div class="wrap next__grid">
+      <img class="next__guy" src="assets/sunil-binoculars.png" alt="" aria-hidden="true" loading="lazy" width="860" height="1103">
+      <div class="next__text">
+        <div class="next__kicker">Back to the start</div>
+        <a class="next__link next__link--long" href="../namma-farm/index.html">Namma Farm <span class="arrow">→</span></a>
+        <div><a class="next__prev" href="../accelerated-professional-center/index.html">← Previous: APC</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>© 2026 Sunil Sebastian</span>
+    <nav aria-label="Social">
+      <a href="#" data-todo="linkedin">LinkedIn</a>
+      <a href="#" data-todo="behance">Behance</a>
+      <a href="#" data-todo="instagram">Instagram</a>
+    </nav>
+  </div>
+</footer>
+
+<div class="lb" role="dialog" aria-modal="true" aria-label="Image preview">
+  <button class="lb__close" aria-label="Close preview">✕</button>
+  <img alt="">
+</div>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Progress bar + hero zoom
+  const bar = document.querySelector('.nav__progress');
+  const heroImg = document.querySelector('.hero__media img');
+  let ticking = false;
+  const onScroll = () => {
+    const h = document.documentElement;
+    bar.style.transform = `scaleX(${h.scrollTop / (h.scrollHeight - h.clientHeight)})`;
+    if (!reduce && heroImg) {
+      const r = heroImg.parentElement.getBoundingClientRect();
+      const p = Math.min(Math.max(1 - r.bottom / (innerHeight + r.height), 0), 1);
+      heroImg.style.transform = `scale(${1.08 - p * 0.08}) translateY(${p * 4}%)`;
+    }
+    ticking = false;
+  };
+  addEventListener('scroll', () => { if (!ticking) { requestAnimationFrame(onScroll); ticking = true; } }, { passive: true });
+  onScroll();
+
+  // Eyes: side-glance with a dropping lid, on a loose loop and on hover
+  document.querySelectorAll('.eye').forEach((eye, i) => {
+    let hovering = false;
+    const set = on => eye.classList.toggle('is-look', on);
+    const wait = ms => new Promise(r => setTimeout(r, ms));
+    // look · rest · look again · long rest (timed from the reference recording)
+    const loop = async () => {
+      await wait(i === 0 ? 1400 : 1200 + Math.random() * 3500);
+      for (;;) {
+        if (!hovering) set(true);  await wait(850);
+        if (!hovering) set(false); await wait(450);
+        if (!hovering) set(true);  await wait(950);
+        if (!hovering) set(false); await wait(2600 + Math.random() * 2400);
+      }
+    };
+    if (!reduce) loop();
+    const host = eye.closest('.hero__title, .label') || eye;
+    host.addEventListener('pointerenter', () => { hovering = true; set(true); });
+    host.addEventListener('pointerleave', () => { hovering = false; set(false); });
+  });
+
+  // CIRCLE: each letter reveals its value; cycles gently until someone interacts
+  const letters = [...document.querySelectorAll('.circle-word button')];
+  const meaning = document.querySelector('.circle-meaning span');
+  let auto = !reduce, idx = 0;
+  const show = (b) => { letters.forEach(l => l.classList.toggle('is-on', l === b)); meaning.textContent = b.dataset.w; };
+  letters.forEach(b => {
+    const pick = () => { auto = false; show(b); };
+    b.addEventListener('pointerenter', pick); b.addEventListener('focus', pick); b.addEventListener('click', pick);
+  });
+  show(letters[0]);
+  setInterval(() => { if (!auto) return; idx = (idx + 1) % letters.length; show(letters[idx]); }, 1800);
+
+  // Brand book: gentle 3D tilt that follows the pointer
+  const book = document.querySelector('.guidebook');
+  if (book && !reduce) {
+    book.addEventListener('pointermove', (e) => {
+      const r = book.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+      book.style.setProperty('--ry', (x * 6).toFixed(2) + 'deg');
+      book.style.setProperty('--rx', (-y * 6).toFixed(2) + 'deg');
+    });
+    book.addEventListener('pointerleave', () => { book.style.removeProperty('--rx'); book.style.removeProperty('--ry'); });
+  }
+
+  // Play videos only while on screen
+  const vio = new IntersectionObserver((entries) => {
+    entries.forEach(({ target: v, isIntersecting }) => {
+      if (isIntersecting) { if (v.preload === 'none') v.preload = 'auto'; if (!reduce) v.play().catch(() => {}); }
+      else v.pause();
+    });
+  }, { rootMargin: '200px 0px' });
+  document.querySelectorAll('.lazy-video').forEach(v => { if (reduce) v.controls = true; vio.observe(v); });
+
+  // Copy colour hex
+  document.querySelectorAll('.swatch').forEach(s => s.addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(s.dataset.hex); } catch (_) {}
+    s.classList.add('is-copied');
+    setTimeout(() => s.classList.remove('is-copied'), 1200);
+  }));
+
+  // Lightbox
+  const lb = document.querySelector('.lb');
+  const lbImg = lb.querySelector('img');
+  const open = (src, alt) => { lbImg.src = src; lbImg.alt = alt || ''; lb.classList.add('is-open'); lb.querySelector('.lb__close').focus(); };
+  const close = () => lb.classList.remove('is-open');
+  document.querySelectorAll('.frame img').forEach(img => {
+    img.addEventListener('click', () => open(img.currentSrc || img.src, img.alt));
+  });
+  lb.addEventListener('click', close);
+  addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+})();
+</script>
+</body>
+</html>
