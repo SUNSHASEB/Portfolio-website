@@ -21,6 +21,7 @@ Sunil Sebastian's portfolio: a home page built from the Figma landing page, four
 | AEW: Rise to the Top (games UI/brand) | `aew-rise-to-the-top/` |
 | Brawl3rs (games UI/brand) | `brawl3rs/` |
 | Side quests (4 projects) | `side-quests/` |
+| Campaigns (5 brands) | `campaigns/` |
 
 ## Preview locally
 

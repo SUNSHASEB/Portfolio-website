@@ -1,0 +1,941 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Campaigns — Sunil Sebastian</title>
+<meta name="description" content="Campaign art direction by Sunil Sebastian: MARTINI Begin Desire in Nigeria and Angola, Head & Shoulders in MENA, and Sprite, Fanta and Coca-Cola in Pakistan.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+
+  @font-face {
+    font-family: "Kirgina";
+    src: local("Kirgina Extra Bold"), local("Kirgina-ExtraBold"), url("fonts/Kirgina-ExtraBold.ttf") format("truetype");
+    font-weight: 800;
+    font-display: swap;
+  }
+
+  :root {
+    /* Landing page palette */
+    --black: #000;
+    --ink: #0b0b0b;
+    --white: #fff;
+    --paper: #efefef;
+    --yellow: #f6cb00;
+    --red: #ff1801;
+    --blue: #2151d8;
+    --sky: #2979ff;
+    --orange: #ffa800;
+    /* Namma Farm palette */
+    --nf-lime: #82ce26;
+    --nf-green: #003d17;
+    --nf-black: #171717;
+    --nf-yellow: #ff9b00;
+
+    --display: "Kirgina", "Anton", "Oswald", Impact, sans-serif;
+    --body: "BBH Bogle", "Helvetica Neue", Arial, sans-serif;
+
+    --gutter: clamp(16px, 4vw, 64px);
+    --max: 1440px;
+    --radius: 18px;
+    --ease: cubic-bezier(.2, .7, .1, 1);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--body);
+    font-size: clamp(16px, 1.15vw, 19px);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+  }
+  html { overflow-x: clip; }
+  img { display: block; max-width: 100%; height: auto; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+
+  .wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+
+  .display {
+    font-family: var(--display);
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: .86;
+    letter-spacing: -.005em;
+    margin: 0;
+  }
+  .c-yellow { color: var(--yellow); }
+  .c-red { color: var(--red); }
+  .c-blue { color: var(--sky); }
+  .c-orange { color: var(--orange); }
+  .c-lime { color: var(--nf-lime); }
+
+  /* ---------- Nav ---------- */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(0,0,0,.86);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+  .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
+  .nav__brand { font-family: var(--display); font-size: 28px; color: var(--yellow); text-decoration: none; letter-spacing: .02em; line-height: 1; text-transform: uppercase; display: inline-flex; align-items: center; gap: 10px; white-space: nowrap; }
+  .nav__logo { width: 40px; height: 40px; flex: none; }
+  .nav__links { display: flex; gap: clamp(12px, 2.5vw, 32px); align-items: center; font-size: 14px; text-transform: uppercase; letter-spacing: .08em; }
+  .nav__links a { text-decoration: none; opacity: .75; transition: opacity .2s; }
+  .nav__links a:hover { opacity: 1; }
+  .nav__progress { position: absolute; left: 0; bottom: -1px; height: 3px; width: 100%; background: var(--red); transform-origin: 0 50%; transform: scaleX(0); }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: clamp(40px, 7vw, 96px) 0 clamp(32px, 5vw, 64px); position: relative; }
+  .hero__kicker { display: flex; align-items: center; gap: 14px; text-transform: uppercase; letter-spacing: .12em; font-size: 14px; margin-bottom: clamp(16px, 2vw, 28px); }
+  .hero__title { font-size: clamp(96px, 23vw, 360px); display: flex; flex-wrap: wrap; align-items: flex-end; column-gap: .12em; }
+  .hero__title .eye { width: .7em; height: auto; margin-bottom: .1em; }
+  .hero__intro { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(24px, 5vw, 80px); margin-top: clamp(24px, 3vw, 40px); align-items: end; }
+  .hero__lede { font-size: clamp(22px, 2.3vw, 34px); line-height: 1.2; margin: 0; max-width: 22ch; }
+  .meta { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; margin: 0; border-top: 1px solid rgba(255,255,255,.2); }
+  .meta div { padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.2); }
+  .meta div:nth-child(odd) { padding-right: 16px; }
+  .meta dt { font-size: 12px; text-transform: uppercase; letter-spacing: .12em; opacity: .6; }
+  .meta dd { margin: 2px 0 0; font-size: 18px; }
+
+  .hero__media { margin-top: clamp(32px, 4vw, 56px); border-radius: var(--radius); overflow: hidden; position: relative; aspect-ratio: 16 / 9; }
+  .hero__media img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.08); transition: transform .1s linear; will-change: transform; }
+
+  /* ---------- Ticker ---------- */
+  .ticker { background: var(--red); color: var(--black); overflow: hidden; white-space: nowrap; padding: 10px 0; transform: rotate(-1.2deg); margin: clamp(24px, 4vw, 48px) -2vw; border-top: 3px solid var(--black); border-bottom: 3px solid var(--black); }
+  .ticker__track { display: inline-flex; gap: 40px; animation: marquee 26s linear infinite; padding-left: 40px; }
+  .ticker span { font-family: var(--display); font-size: clamp(40px, 6vw, 84px); line-height: 1; text-transform: uppercase; display: inline-flex; align-items: center; gap: 40px; }
+  .ticker span::after { content: "✺"; font-family: var(--body); font-size: .5em; }
+  .ticker.is-blue { background: var(--blue); color: var(--white); transform: rotate(1.2deg); }
+  @keyframes marquee { to { transform: translateX(-50%); } }
+
+  /* ---------- Sections ---------- */
+  section { padding: clamp(64px, 9vw, 140px) 0; position: relative; }
+  .label { display: flex; align-items: center; gap: 14px; font-size: 14px; text-transform: uppercase; letter-spacing: .14em; margin-bottom: clamp(16px, 2vw, 24px); }
+  .label .eye { width: 60px; height: auto; }
+  .label b { font-weight: 400; color: var(--yellow); }
+  .h2 { font-size: clamp(56px, 9.5vw, 156px); max-width: 14ch; }
+  .sub { font-size: clamp(18px, 1.5vw, 22px); max-width: 52ch; opacity: .85; margin: clamp(16px, 2vw, 24px) 0 0; }
+
+  /* Brief */
+  .brief__head { display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(24px, 5vw, 80px); align-items: end; }
+  .namma-word { background: var(--yellow); color: var(--black); border-radius: var(--radius); padding: clamp(20px, 2.5vw, 32px); transform: rotate(2deg); transition: transform .4s var(--ease); }
+  .namma-word:hover { transform: rotate(0) scale(1.02); }
+  .namma-word .tamil { font-size: clamp(48px, 6vw, 88px); line-height: 1.1; font-weight: 700; display: block; }
+  .namma-word p { margin: 8px 0 0; font-size: 18px; }
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(12px, 1.5vw, 20px); margin-top: clamp(40px, 5vw, 72px); }
+  .card { border-radius: var(--radius); padding: clamp(22px, 2.4vw, 36px); min-height: 280px; display: flex; flex-direction: column; justify-content: space-between; transition: transform .35s var(--ease); }
+  .card:hover { transform: translateY(-6px); }
+  .card h3 { font-family: var(--display); font-weight: 800; font-size: clamp(40px, 4vw, 64px); line-height: .9; text-transform: uppercase; margin: 0 0 24px; }
+  .card p { margin: 0; font-size: clamp(18px, 1.5vw, 22px); line-height: 1.3; }
+  .card--red { background: var(--red); color: var(--black); }
+  .card--blue { background: var(--blue); }
+  .card--white { background: var(--paper); color: var(--black); }
+  .card__n { font-size: 13px; letter-spacing: .14em; opacity: .7; margin-bottom: 8px; }
+
+
+  /* Media frames */
+  .frame { border-radius: var(--radius); overflow: hidden; background: var(--paper); position: relative; cursor: zoom-in; }
+  .frame img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s var(--ease); }
+  .frame video { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .7s var(--ease); }
+  .frame:hover img, .frame:hover video { transform: scale(1.04); }
+  .frame--contain img { object-fit: contain; }
+  .frame--pad { padding: clamp(16px, 3vw, 48px); }
+  .cap { position: absolute; left: 12px; bottom: 12px; background: var(--black); color: var(--white); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; padding: 6px 10px; border-radius: 999px; pointer-events: none; }
+
+  .full { margin-top: clamp(32px, 4vw, 56px); }
+
+  /* Directions */
+  .routes { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 2vw, 28px); margin-top: clamp(40px, 5vw, 72px); }
+  .route { border: 1px solid rgba(255,255,255,.18); border-radius: calc(var(--radius) + 6px); padding: clamp(18px, 2vw, 28px); display: flex; flex-direction: column; gap: 16px; position: relative; }
+  .route--win { border-color: var(--yellow); box-shadow: 0 0 0 1px var(--yellow) inset; }
+  .route__tag { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; opacity: .7; }
+  .route h3 { font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: clamp(40px, 4.4vw, 72px); line-height: .9; margin: 0; }
+  .route p { margin: 0; max-width: 40ch; opacity: .85; }
+  .route__media { display: grid; grid-template-columns: .8fr 1.2fr; gap: 12px; margin-top: auto; }
+  .route__media .frame { aspect-ratio: 3 / 4; }
+  .route__media .frame--contain { aspect-ratio: auto; background: var(--white); display: flex; align-items: center; }
+  .stamp { position: absolute; top: -18px; right: 18px; background: var(--yellow); color: var(--black); font-family: var(--display); font-size: 28px; line-height: 1; padding: 10px 14px 8px; border-radius: 999px; transform: rotate(6deg); text-transform: uppercase; }
+  .kolam { margin-top: clamp(16px, 2vw, 28px); background: var(--white); border-radius: var(--radius); padding: clamp(16px, 3vw, 40px); display: grid; grid-template-columns: auto 1fr; gap: clamp(16px, 3vw, 48px); align-items: center; color: var(--black); }
+  .kolam h4 { font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: clamp(32px, 3.4vw, 52px); line-height: .9; margin: 0; max-width: 9ch; }
+  .kolam img { cursor: zoom-in; }
+
+  /* Before / after */
+  .ba { margin-top: clamp(40px, 5vw, 72px); position: relative; aspect-ratio: 16 / 8; border-radius: var(--radius); overflow: hidden; background: #f4f4f4; user-select: none; touch-action: pan-y; }
+  .ba__pane { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+  .ba__pane { background: #fff; }
+  .ba__pane img { width: auto; height: 52%; max-width: 70%; object-fit: contain; }
+  .ba__pane--before { background: #f5f5f5; box-shadow: inset -1px 0 0 rgba(0,0,0,.06); clip-path: inset(0 calc(100% - var(--pos, 50%)) 0 0); }
+  .ba__pane--before img { height: 46%; }
+  .ba__tag { position: absolute; top: 16px; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; background: var(--black); color: var(--white); padding: 6px 12px; border-radius: 999px; }
+  .ba__tag--l { left: 16px; } .ba__tag--r { right: 16px; }
+  .ba__handle { position: absolute; top: 0; bottom: 0; left: var(--pos, 50%); width: 3px; background: var(--red); transform: translateX(-50%); pointer-events: none; }
+  .ba__knob { position: absolute; top: 50%; left: 50%; width: 64px; height: 64px; border-radius: 50%; background: var(--red); transform: translate(-50%, -50%); display: grid; place-items: center; color: var(--black); font-family: var(--display); font-size: 26px; }
+  .ba input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; margin: 0; }
+  .ba__note { display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: start; margin-top: 24px; max-width: 760px; }
+  .ba__note strong { font-family: var(--display); font-weight: 800; font-size: 32px; color: var(--yellow); text-transform: uppercase; line-height: 1; }
+  .ba__note p { margin: 0; opacity: .85; }
+
+  /* Identity bento */
+  .bento { display: grid; grid-template-columns: repeat(6, 1fr); grid-auto-rows: clamp(110px, 12.5vw, 190px); gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(40px, 5vw, 72px);
+    grid-template-areas: "a a a b b b" "a a a b b b" "a a a c c d" "a a a c c e" "f f f f f f"; }
+  .bento .b1 { grid-area: a; }
+  .bento .b2 { grid-area: b; }
+  .bento .b3 { grid-area: c; }
+  .bento .b4 { grid-area: d; background: #1f1f1f; cursor: default; }
+  .bento .b5 { grid-area: e; background: var(--nf-lime); display: grid; place-items: center; cursor: default; }
+  .bento .b6 { grid-area: f; background: var(--white); display: grid; grid-template-columns: repeat(4, 1fr); align-items: center; justify-items: center; padding: clamp(14px, 2vw, 28px) clamp(16px, 4vw, 64px); gap: clamp(8px, 2vw, 32px); cursor: default; }
+  .bento .b4 img { object-fit: contain; padding: 20%; }
+  .bento .b6 img { width: auto; height: 100%; max-height: 150px; max-width: 100%; object-fit: contain; transition: transform .35s var(--ease); }
+  .bento .b6:hover img { transform: none; }
+  .bento .b6 img:hover { transform: translateY(-6px) scale(1.05); }
+  .b5 span { font-family: var(--display); font-size: clamp(24px, 2.6vw, 40px); color: var(--nf-green); line-height: .9; text-align: center; text-transform: uppercase; }
+
+  .swatches { display: grid; grid-template-columns: repeat(5, 1fr); gap: clamp(8px, 1vw, 14px); margin-top: clamp(16px, 2vw, 24px); }
+  .swatch { border: 0; border-radius: var(--radius); aspect-ratio: 4 / 3; padding: 16px; text-align: left; font: inherit; color: inherit; cursor: pointer; display: flex; flex-direction: column; justify-content: flex-end; transition: transform .35s var(--ease); position: relative; }
+  .swatch:hover { transform: translateY(-8px) rotate(-1.5deg); }
+  .swatch strong { font-size: clamp(14px, 1.2vw, 18px); font-weight: 400; display: block; }
+  .swatch small { font-size: 13px; opacity: .75; letter-spacing: .06em; }
+  .swatch .copied { position: absolute; top: 14px; right: 14px; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; opacity: 0; transition: opacity .2s; }
+  .swatch.is-copied .copied { opacity: 1; }
+
+  .kit { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(10px, 1.2vw, 16px); }
+  .kit figure { margin: 0; background: var(--white); border-radius: var(--radius); padding: 20px; color: var(--black); display: flex; flex-direction: column; gap: 12px; cursor: zoom-in; }
+  .kit figcaption { font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: 28px; line-height: 1; }
+  .kit img { width: 100%; height: 220px; object-fit: contain; }
+
+  /* Icons & pattern */
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+  .chip { border: 1.5px solid currentColor; border-radius: 999px; padding: 8px 16px; font-size: 14px; text-transform: uppercase; letter-spacing: .08em; }
+  .icons-row { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 2vw, 28px); margin-top: clamp(40px, 5vw, 72px); align-items: stretch; }
+  .icons-row .frame { background: var(--white); }
+  .icons-row .frame img { object-fit: contain; padding: 6%; }
+  .flipcard { margin-top: clamp(16px, 2vw, 28px); background: var(--nf-green); border-radius: var(--radius); padding: clamp(20px, 3vw, 48px); display: grid; grid-template-columns: 1fr minmax(0, 560px); gap: clamp(20px, 4vw, 64px); align-items: center; }
+  .flipcard__tag { display: inline-block; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; background: var(--nf-lime); color: var(--nf-green); padding: 6px 12px; border-radius: 999px; }
+  .flipcard h3 { font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: clamp(48px, 6vw, 96px); line-height: .88; margin: 18px 0 16px; color: var(--nf-yellow); }
+  .flipcard p { margin: 0; max-width: 32ch; color: #fff; opacity: .9; }
+  .flipcard__gif { width: 100%; height: auto; border-radius: calc(var(--radius) - 4px); }
+  .pattern { margin-top: clamp(16px, 2vw, 28px); height: clamp(260px, 38vw, 560px); border-radius: var(--radius); background: url("assets/pattern.png") repeat-x center / auto 100%; animation: pan 60s linear infinite; cursor: zoom-in; }
+  @keyframes pan { to { background-position: -2544px center; } }
+
+  /* World gallery */
+  .world { display: grid; grid-template-columns: repeat(12, 1fr); gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(40px, 5vw, 72px); }
+  .world .w1 { grid-column: span 7; aspect-ratio: 16 / 9.2; }
+  .world .w2 { grid-column: span 5; aspect-ratio: auto; }
+  .world .w3 { grid-column: span 12; aspect-ratio: 2 / 1; }
+  .world .w4 { grid-column: span 12; aspect-ratio: 2000 / 1137; background: var(--white); }
+
+  .delivered { display: flex; flex-wrap: wrap; gap: 10px; margin-top: clamp(32px, 4vw, 48px); }
+  .delivered .chip { color: var(--yellow); }
+
+  /* Quote */
+  .quote { background: var(--yellow); color: var(--black); }
+  .quote blockquote { margin: 0; font-size: clamp(48px, 8vw, 132px); }
+  .quote cite { display: block; margin-top: 28px; font-style: normal; font-size: 14px; letter-spacing: .14em; text-transform: uppercase; }
+
+  /* Footer / next */
+  .next { padding-bottom: 0; overflow: hidden; }
+  .next__grid { display: grid; grid-template-columns: auto 1fr; align-items: end; gap: 24px; }
+  .next__text { justify-self: end; text-align: right; padding-bottom: clamp(24px, 4vw, 56px); }
+  .next__kicker { font-size: 14px; letter-spacing: .14em; text-transform: uppercase; opacity: .7; }
+  .next__link { font-family: var(--display); font-weight: 800; font-size: clamp(72px, 15vw, 240px); line-height: .85; text-transform: uppercase; color: var(--sky); text-decoration: none; display: inline-flex; align-items: center; gap: .1em; transition: color .25s; }
+  .next__link:hover { color: var(--red); }
+  .next__link .arrow { display: inline-block; transition: transform .35s var(--ease); font-size: .6em; }
+  .next__link:hover .arrow { transform: translateX(.2em); }
+  .next__guy { width: clamp(180px, 24vw, 360px); margin-bottom: -4px; transform: translateY(10%); transition: transform .6s var(--ease); }
+  .next:hover .next__guy { transform: translateY(0); }
+  .foot { border-top: 1px solid rgba(255,255,255,.15); }
+  .foot .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; padding-top: 20px; padding-bottom: 28px; font-size: 14px; }
+  .foot nav { display: flex; gap: 24px; text-transform: uppercase; letter-spacing: .08em; }
+  .foot a { text-decoration: none; opacity: .75; }
+  .foot a:hover { opacity: 1; color: var(--yellow); }
+
+  /* Lightbox */
+  .lb { position: fixed; inset: 0; z-index: 100; background: rgba(0,0,0,.92); display: grid; place-items: center; padding: 24px; opacity: 0; pointer-events: none; transition: opacity .25s; cursor: zoom-out; }
+  .lb.is-open { opacity: 1; pointer-events: auto; }
+  .lb img { max-width: min(1600px, 100%); max-height: 90vh; width: auto; height: auto; border-radius: 12px; background: var(--white); transform: scale(.96); transition: transform .3s var(--ease); }
+  .lb.is-open img { transform: scale(1); }
+  .lb__close { position: absolute; top: 16px; right: 16px; background: var(--white); color: var(--black); border: 0; width: 48px; height: 48px; border-radius: 50%; font-size: 22px; cursor: pointer; }
+
+  /* Reveal */
+  .reveal { opacity: 0; transform: translateY(40px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+  .reveal.is-in { opacity: 1; transform: none; }
+
+  /* Eye */
+  /* Eye: a red lid drops and the iris glances right, then snaps back */
+  .eye { overflow: visible; }
+  .eye__body, .eye__iris, .eye__lid { transform-box: view-box; transition: transform .14s cubic-bezier(.3, .7, .3, 1); }
+  .eye__body { transform-origin: 60px 32px; }
+  .eye__lid { transform: translateY(-40px); }
+  .eye.is-look .eye__body, .eye.is-look .eye__iris, .eye.is-look .eye__lid { transition-duration: .18s; }
+  .eye.is-look .eye__body { transform: scale(1.045); }
+  .eye.is-look .eye__iris { transform: translate(28px, 1.5px); }
+  .eye.is-look .eye__lid { transform: none; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 960px) {
+    .hero__intro, .brief__head { grid-template-columns: 1fr; }
+    .cards { grid-template-columns: 1fr; }
+    .card { min-height: 0; }
+    .routes { grid-template-columns: 1fr; }
+    .bento { grid-template-columns: 1fr 1fr; grid-auto-rows: auto; grid-template-areas: "a a" "b b" "c c" "d e" "f f"; }
+    .bento .b1 { aspect-ratio: 1 / 1; }
+    .bento .b2, .bento .b3 { aspect-ratio: 4 / 3; }
+    .bento .b4, .bento .b5 { aspect-ratio: 1 / 1; }
+    .bento .b6 { aspect-ratio: 3.4 / 1; }
+    .kit { grid-template-columns: 1fr; }
+    .icons-row { grid-template-columns: 1fr; }
+    .flipcard { grid-template-columns: 1fr; }
+    .icons-row .frame { aspect-ratio: 1 / 1; }
+    .world .w1, .world .w2, .world .w3, .world .w4 { grid-column: span 12; }
+    .world .w2 { aspect-ratio: 16 / 9.6; }
+    .world .w3 { aspect-ratio: 4 / 3; }
+    .kolam { grid-template-columns: 1fr; }
+    .ba { aspect-ratio: 4 / 3; }
+    .next__grid { grid-template-columns: 1fr; }
+    .next__text { order: -1; padding-bottom: 0; }
+    .next__guy { justify-self: start; }
+  }
+  @media (max-width: 600px) {
+    .nav__links a:not(.nav__back) { display: none; }
+    .swatches { grid-template-columns: repeat(2, 1fr); }
+    .swatch:first-child { grid-column: span 2; aspect-ratio: 2.2 / 1; }
+    .meta { grid-template-columns: 1fr; }
+    .meta div:nth-child(odd) { padding-right: 0; }
+    .route__media { grid-template-columns: 1fr; }
+    .route__media .frame { aspect-ratio: 4 / 3; }
+    .ba__knob { width: 48px; height: 48px; font-size: 20px; }
+    .ba__note { grid-template-columns: 1fr; gap: 8px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+    .reveal { opacity: 1; transform: none; }
+    .hero__media img { transform: none; }
+  }
+  :root { --accent: #ff3b30; }
+
+  /* ---------- Product design ---------- */
+  .hero__title--pd { font-size: clamp(76px, 14vw, 220px); }
+  .hero__media { background: #111; }
+  .hero__media img { object-fit: cover; object-position: top left; transform: none; }
+  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(24px, 3vw, 40px); }
+  .stat { border: 1.5px solid rgba(255,255,255,.16); border-radius: var(--radius); padding: clamp(18px, 2vw, 28px); }
+  .stat b { display: block; font-family: var(--display); font-weight: 800; font-size: clamp(56px, 6vw, 104px); line-height: .85; color: var(--accent); }
+  .stat span { display: block; margin-top: 10px; font-size: 14px; letter-spacing: .1em; text-transform: uppercase; opacity: .7; }
+
+  .lead { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(24px, 5vw, 80px); align-items: start; margin-top: clamp(28px, 3vw, 44px); }
+  .lead p { margin: 0 0 16px; font-size: clamp(18px, 1.45vw, 22px); line-height: 1.4; opacity: .9; }
+  .lead p.big { font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: clamp(32px, 3.4vw, 58px); line-height: .92; opacity: 1; }
+  .lead p.big em { font-style: normal; color: var(--accent); }
+
+  .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(28px, 3vw, 44px); counter-reset: s; }
+  .step { border-radius: var(--radius); padding: clamp(18px, 2vw, 28px); background: #141414; border: 1.5px solid rgba(255,255,255,.1); transition: transform .35s var(--ease), border-color .3s; }
+  .step:hover { transform: translateY(-4px); border-color: var(--accent); }
+  .step__n { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: var(--accent); color: #000; font-size: 14px; }
+  .step b { display: block; margin-top: 16px; font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: clamp(30px, 2.6vw, 42px); line-height: .9; }
+  .step p { margin: 8px 0 0; opacity: .8; font-size: 16px; line-height: 1.35; }
+
+  .probs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(32px, 4vw, 56px); }
+  .prob { border-radius: var(--radius); padding: clamp(18px, 2vw, 26px); background: #141414; border-left: 4px solid var(--accent); }
+  .prob small { font-size: 12px; letter-spacing: .14em; opacity: .55; }
+  .prob b { display: block; margin: 8px 0; font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: clamp(26px, 2.2vw, 36px); line-height: .92; }
+  .prob p { margin: 0; font-size: 16px; line-height: 1.4; opacity: .8; }
+
+  .path { list-style: none; margin: clamp(32px, 4vw, 56px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; position: relative; }
+  .path::before { content: ""; position: absolute; left: 0; right: 0; top: 21px; height: 2px; background: rgba(255,255,255,.18); }
+  .path li { position: relative; padding-right: 18px; }
+  .path i { position: relative; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: #000; border: 2px solid var(--accent); font-style: normal; font-size: 14px; transition: background .3s, color .3s; }
+  .path li:hover i { background: var(--accent); color: #000; }
+  .path b { display: block; margin-top: 16px; font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: clamp(28px, 2.4vw, 40px); line-height: .9; }
+  .path p { margin: 8px 0 0; font-size: 15px; line-height: 1.4; opacity: .8; }
+  .principle { margin-top: clamp(28px, 3vw, 44px); background: var(--accent); color: #000; border-radius: var(--radius); padding: clamp(20px, 2.4vw, 34px); font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: clamp(30px, 3.2vw, 54px); line-height: .92; }
+
+  .sev-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: clamp(28px, 3vw, 40px); }
+  .sev-chip { all: unset; cursor: pointer; border: 1.5px solid rgba(255,255,255,.35); border-radius: 999px; padding: 9px 16px; font-size: 14px; text-transform: uppercase; letter-spacing: .08em; transition: background .2s, color .2s, border-color .2s; }
+  .sev-chip.is-on { background: #fff; color: #000; border-color: #fff; }
+  .sev-chip:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+  .audit { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 16px; }
+  .audit th { text-align: left; font-weight: 400; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; opacity: .55; padding: 0 12px 12px 0; border-bottom: 1px solid rgba(255,255,255,.2); }
+  .audit td { padding: 16px 12px 16px 0; border-bottom: 1px solid rgba(255,255,255,.12); vertical-align: top; line-height: 1.35; transition: opacity .3s; }
+  .audit td:first-child { font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: 22px; line-height: 1; }
+  .audit tr.is-dim td { opacity: .18; }
+  .sev { display: inline-block; padding: 5px 10px; border-radius: 999px; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
+  .sev--critical { background: #ff1801; color: #fff; } .sev--high { background: var(--orange); color: #000; } .sev--moderate { background: #2979ff; color: #fff; }
+
+  .ba-block { margin-top: clamp(48px, 6vw, 88px); }
+  .ba-block h3 { font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: clamp(36px, 4vw, 66px); line-height: .9; margin: 0; }
+  .ba-block h3 small { display: block; font-family: var(--body); font-weight: 400; font-size: 13px; letter-spacing: .14em; color: var(--accent); margin-bottom: 10px; }
+  .cmp { position: relative; margin-top: 20px; border-radius: var(--radius); overflow: hidden; background: #000; --x: 50%; user-select: none; touch-action: pan-y; }
+  .cmp img { display: block; width: 100%; height: auto; pointer-events: none; }
+  .cmp__after { position: absolute; inset: 0; clip-path: inset(0 0 0 var(--x)); }
+  .cmp__after img { height: 100%; object-fit: cover; }
+  .cmp__line { position: absolute; top: 0; bottom: 0; left: var(--x); width: 3px; margin-left: -1.5px; background: var(--accent); pointer-events: none; }
+  .cmp__knob { position: absolute; top: 50%; left: var(--x); width: 56px; height: 56px; margin: -28px 0 0 -28px; border-radius: 50%; background: var(--accent); color: #000; display: grid; place-items: center; font-size: 18px; pointer-events: none; box-shadow: 0 6px 24px rgba(0,0,0,.4); }
+  .cmp__tag { position: absolute; top: 12px; padding: 6px 10px; border-radius: 999px; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; background: rgba(0,0,0,.7); color: #fff; pointer-events: none; }
+  .cmp__tag--b { left: 12px; } .cmp__tag--a { right: 12px; background: var(--accent); color: #000; }
+  .cmp input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; }
+  .cmp input:focus-visible + .cmp__line { box-shadow: 0 0 0 3px var(--yellow); }
+  .ba-notes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(12px, 1.5vw, 20px); margin-top: 14px; }
+  .ba-notes ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font-size: 16px; line-height: 1.35; }
+  .ba-notes li { display: flex; gap: 10px; }
+  .ba-notes li::before { content: "✕"; color: #ff4d4d; flex: none; }
+  .ba-notes ul.after li::before { content: "✓"; color: var(--accent); }
+  .ba-notes h4 { margin: 0 0 8px; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; opacity: .55; font-weight: 400; }
+  .duo { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(12px, 1.5vw, 20px); margin-top: 20px; }
+  .duo .frame { margin: 0; background: #111; }
+  .duo .frame img { object-fit: contain; }
+
+  .wide { margin: clamp(32px, 4vw, 56px) 0 0; background: #111; }
+  .pair { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: clamp(12px, 1.5vw, 20px); margin-top: clamp(32px, 4vw, 56px); align-items: start; }
+  .pair .frame { margin: 0; background: #111; }
+
+  .sw { margin-top: clamp(32px, 4vw, 56px); }
+  .sw-tabs { display: flex; flex-wrap: wrap; gap: 8px; }
+  .sw-tab { all: unset; cursor: pointer; border: 1.5px solid rgba(255,255,255,.35); border-radius: 999px; padding: 10px 16px; font-size: 14px; text-transform: uppercase; letter-spacing: .08em; transition: background .2s, color .2s, border-color .2s; }
+  .sw-tab:hover { border-color: #fff; }
+  .sw-tab.is-on { background: var(--accent); border-color: var(--accent); color: #000; }
+  .sw-tab:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+  .sw-stage { position: relative; margin-top: 16px; aspect-ratio: var(--ar, 16 / 9); border-radius: var(--radius); overflow: hidden; background: #1b1b1b; cursor: pointer; }
+  .sw-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.03); transition: opacity .5s var(--ease), transform 1.2s var(--ease); }
+  .sw-img.is-on { opacity: 1; transform: none; }
+  .sw-bar { position: absolute; left: 0; bottom: 0; height: 4px; width: 100%; background: var(--accent); transform-origin: 0 50%; transform: scaleX(0); }
+  .sw-stage.is-auto .sw-bar { animation: swBar 3.8s linear forwards; }
+  @keyframes swBar { to { transform: scaleX(1); } }
+  .sw-notes { position: relative; min-height: 2.4em; margin-top: 12px; }
+  .sw-note { position: absolute; inset: 0 auto auto 0; margin: 0; font-size: clamp(18px, 1.5vw, 22px); opacity: 0; transform: translateY(8px); transition: opacity .35s, transform .35s var(--ease); }
+  .sw-note.is-on { opacity: 1; transform: none; }
+
+  .mods { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+  .mods span { border: 1.5px solid rgba(255,255,255,.22); border-radius: 999px; padding: 8px 14px; font-size: 14px; transition: transform .3s var(--ease), opacity .3s; }
+  .mods span.keep { border-color: var(--accent); color: var(--accent); }
+  .mods:hover span:not(.keep) { opacity: .25; transform: scale(.94); }
+  .pull { margin: 20px 0 0; padding-left: 18px; border-left: 3px solid var(--accent); font-size: clamp(20px, 1.8vw, 26px); line-height: 1.3; }
+  .pull cite { display: block; margin-top: 8px; font-size: 13px; font-style: normal; letter-spacing: .1em; text-transform: uppercase; opacity: .6; }
+  .prio { list-style: none; margin: 20px 0 0; padding: 0; display: grid; gap: 10px; }
+  .prio li { display: flex; gap: 14px; align-items: center; background: #141414; border-radius: 14px; padding: 14px 16px; font-size: 17px; }
+  .prio b { flex: none; width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; background: var(--accent); color: #000; font-family: var(--display); font-weight: 800; font-size: 22px; }
+
+  .feats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(32px, 4vw, 56px); }
+  .feat { border-radius: var(--radius); padding: clamp(18px, 2vw, 26px); background: #141414; border: 1.5px solid rgba(255,255,255,.08); transition: transform .35s var(--ease), border-color .3s; }
+  .feat:hover { transform: translateY(-4px); border-color: var(--accent); }
+  .feat small { font-size: 12px; letter-spacing: .14em; color: var(--accent); }
+  .feat b { display: block; margin: 8px 0; font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: clamp(26px, 2.2vw, 36px); line-height: .92; }
+  .feat p { margin: 0; font-size: 16px; line-height: 1.4; opacity: .8; }
+  .lessons { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(32px, 4vw, 56px); }
+  .lesson { border-radius: var(--radius); padding: clamp(20px, 2.4vw, 32px); background: #141414; }
+  .lesson b { display: block; font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: clamp(30px, 2.8vw, 46px); line-height: .9; color: var(--accent); }
+  .lesson p { margin: 10px 0 0; font-size: 17px; line-height: 1.4; opacity: .85; }
+  .review { margin-top: clamp(14px, 1.5vw, 20px); background: var(--accent); color: #000; border-radius: var(--radius); padding: clamp(22px, 2.6vw, 40px); }
+  .review p { margin: 0; font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: clamp(30px, 3.2vw, 54px); line-height: .92; }
+  .review cite { display: block; margin-top: 14px; font-style: normal; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; }
+
+  .next__prev { display: inline-block; margin-top: 18px; font-size: 14px; letter-spacing: .12em; text-transform: uppercase; opacity: .7; text-decoration: none; }
+  .next__prev:hover { opacity: 1; color: var(--yellow); }
+  .next__link--long { font-size: clamp(56px, 9vw, 150px); }
+
+  @media (max-width: 960px) {
+    .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .lead, .pair { grid-template-columns: 1fr; }
+    .steps, .probs, .feats { grid-template-columns: 1fr 1fr; }
+    .path { grid-template-columns: 1fr; gap: 22px; }
+    .path::before { display: none; }
+    .audit th:nth-child(4), .audit td:nth-child(4) { display: none; }
+  }
+  @media (max-width: 600px) {
+    .steps, .probs, .feats, .lessons, .duo, .ba-notes { grid-template-columns: 1fr; }
+    .audit { font-size: 14px; }
+    .audit td:first-child { font-size: 18px; }
+    .cmp__knob { width: 44px; height: 44px; margin: -22px 0 0 -22px; }
+  }
+
+  /* ---------- Games ---------- */
+  .hero__media img { object-position: center; }
+  .hero__title--long { font-size: clamp(60px, 10.5vw, 170px); }
+  .frame--vid { cursor: default; background: #000; }
+  .frame--vid video { aspect-ratio: var(--ar, 16 / 9); }
+  .frame--dark { background: #0d0d0d; }
+  .steps--4, .feats--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .probs--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stats--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .stat b.txt { font-size: clamp(44px, 4.6vw, 80px); }
+  .split { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: clamp(24px, 4vw, 64px); align-items: center; margin-top: clamp(28px, 3vw, 44px); }
+  .split p { margin: 0 0 16px; font-size: clamp(18px, 1.45vw, 22px); line-height: 1.4; opacity: .9; }
+  .split p.big { font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: clamp(32px, 3.4vw, 58px); line-height: .92; opacity: 1; }
+  .split p.big em { font-style: normal; color: var(--accent); }
+  .split .frame { margin: 0; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+  .chips span { border: 1.5px solid var(--accent); color: var(--accent); border-radius: 999px; padding: 8px 14px; font-size: 14px; letter-spacing: .04em; }
+  .sub-h { margin: clamp(40px, 5vw, 72px) 0 0; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+  .marks { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(12px, 1.5vw, 20px); margin-top: 16px; align-items: stretch; }
+  .marks .frame { margin: 0; background: #0d0d0d; display: grid; place-items: center; }
+  .marks .frame img { height: auto; object-fit: contain; }
+  .trio { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.13fr); gap: clamp(12px, 1.5vw, 20px); margin-top: 16px; align-items: start; }
+  .trio .frame { margin: 0; }
+  .sketches { display: grid; grid-template-columns: minmax(0, .41fr) minmax(0, 1fr); gap: clamp(12px, 1.5vw, 20px); margin-top: clamp(32px, 4vw, 56px); }
+  .sketches .frame { margin: 0; }
+  .phone-row { display: grid; grid-template-columns: minmax(0, .46fr) minmax(0, 1fr); gap: clamp(12px, 1.5vw, 20px); margin-top: clamp(32px, 4vw, 56px); align-items: start; }
+  .phone-row .frame { margin: 0; background: #0d0d0d; }
+  .tags { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(20px, 2.4vw, 32px); }
+  .tag { border-radius: var(--radius); padding: clamp(16px, 1.8vw, 24px); background: #141414; border-top: 4px solid var(--accent); }
+  .tag b { display: block; font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: clamp(26px, 2.2vw, 36px); line-height: .92; }
+  .tag p { margin: 8px 0 0; font-size: 16px; line-height: 1.4; opacity: .8; }
+  .social { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .5fr) minmax(0, .5fr); gap: clamp(12px, 1.5vw, 20px); margin-top: clamp(32px, 4vw, 56px); align-items: start; }
+  .social .frame { margin: 0; background: #fff; }
+  .cmp__tag--a { background: var(--accent); color: #000; }
+  .uxg { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr) minmax(0, .6fr); grid-template-rows: auto auto; gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(32px, 4vw, 56px); }
+  .uxg .frame { margin: 0; background: #111; }
+  .uxg .b-venue { grid-column: 3; grid-row: 1 / span 2; }
+  .uxg .b-venue img { height: 100%; object-fit: cover; object-position: top; }
+  .yt { position: relative; }
+  .yt iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .yt__play { all: unset; cursor: pointer; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: inline-flex; align-items: center; gap: 12px; background: var(--accent); color: #000; border-radius: 999px; padding: clamp(12px, 1.4vw, 18px) clamp(20px, 2.4vw, 32px); font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: clamp(20px, 2.2vw, 34px); line-height: 1; box-shadow: 0 10px 40px rgba(0,0,0,.5); transition: transform .3s var(--ease); white-space: nowrap; }
+  .yt__play:hover { transform: translate(-50%, -50%) scale(1.06); }
+  .yt__play:focus-visible { outline: 3px solid var(--yellow); outline-offset: 4px; }
+  .yt.is-playing img, .yt.is-playing .yt__play { display: none; }
+  .cmp--tall { max-width: 720px; margin-left: auto; margin-right: auto; }
+  .feats .frame--vid { margin: 0; min-height: 170px; }
+  .feats .frame--vid video { position: absolute; inset: 0; height: 100%; aspect-ratio: auto; }
+  @media (max-width: 960px) {
+    .steps--4, .feats--4 { grid-template-columns: 1fr 1fr; }
+    .split, .marks { grid-template-columns: 1fr; }
+    .social { grid-template-columns: 1fr 1fr; }
+    .social .frame:first-child { grid-column: 1 / -1; }
+    .uxg { grid-template-columns: 1fr 1fr; }
+    .uxg .b-venue { grid-column: 2; grid-row: 2 / span 2; }
+  }
+  @media (max-width: 600px) {
+    .steps--4, .feats--4, .probs--4, .tags, .stats--3, .phone-row, .sketches, .trio { grid-template-columns: 1fr; }
+    .phone-row .frame:first-child { max-width: 300px; margin: 0 auto; }
+    .stats--3 { grid-template-columns: 1fr 1fr; }
+    .stats--3 .stat:first-child { grid-column: 1 / -1; }
+  }
+
+  /* ---------- Campaigns ---------- */
+  .jump { display: flex; flex-wrap: wrap; gap: 8px; margin-top: clamp(28px, 3vw, 40px); }
+  .jump a { display: inline-flex; gap: 10px; align-items: baseline; border: 1.5px solid rgba(255,255,255,.3); border-radius: 999px; padding: 10px 16px; font-size: 15px; font-weight: 600; text-decoration: none; transition: background .2s, color .2s, border-color .2s; }
+  .jump a small { font-size: 12px; color: var(--accent); }
+  .jump a:hover { background: var(--accent); border-color: var(--accent); color: #000; }
+  .jump a:hover small { color: #000; }
+  .proj { border-top: 1px solid rgba(255,255,255,.12); }
+  .proj-meta { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; margin-top: clamp(20px, 2.4vw, 32px); border-top: 1px solid rgba(255,255,255,.18); }
+  .proj-meta div { padding: 14px 16px 14px 0; border-bottom: 1px solid rgba(255,255,255,.18); }
+  .proj-meta dt { font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; opacity: .6; }
+  .proj-meta dd { margin: 4px 0 0; font-size: 16px; font-weight: 600; line-height: 1.35; }
+  .camp { margin-top: clamp(48px, 6vw, 88px); }
+  .camp h3 { margin: 0; font-family: var(--body); font-weight: 800; letter-spacing: -.02em; font-size: clamp(26px, 2.6vw, 40px); line-height: 1.1; }
+  .camp h3 small { display: block; margin-bottom: 10px; font-size: 13px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+  .camp > p { margin: 14px 0 0; max-width: 60ch; font-size: clamp(17px, 1.3vw, 20px); line-height: 1.55; opacity: .88; }
+  .posters { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(24px, 3vw, 40px); }
+  .posters .frame { margin: 0; aspect-ratio: 765 / 1005; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(16px, 2vw, 24px); align-items: start; }
+  .grid3 .frame, .grid4 .frame { margin: 0; }
+  .grid4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(16px, 2vw, 24px); align-items: start; }
+  .stack { display: grid; gap: clamp(8px, 1vw, 12px); margin-top: clamp(16px, 2vw, 24px); }
+  .stack .frame { margin: 0; }
+  .twin { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(12px, 1.5vw, 20px); margin-top: clamp(24px, 3vw, 40px); }
+  .twin article { border-radius: var(--radius); background: #141414; padding: clamp(18px, 2vw, 26px); }
+  .twin article b { display: block; font-size: clamp(22px, 2vw, 30px); font-weight: 800; letter-spacing: -.02em; color: var(--accent); }
+  .twin article p { margin: 8px 0 0; font-size: 16px; line-height: 1.5; opacity: .85; }
+  .twin article ul { margin: 12px 0 0; padding-left: 18px; font-size: 15px; line-height: 1.5; opacity: .85; }
+  .side { display: grid; grid-template-columns: minmax(0, .42fr) minmax(0, 1fr); gap: clamp(12px, 1.5vw, 20px); margin-top: clamp(16px, 2vw, 24px); align-items: start; }
+  .side .frame { margin: 0; }
+  .side .stack { margin-top: 0; }
+  .takeaway { margin-top: clamp(20px, 2.4vw, 32px); border-left: 4px solid var(--accent); padding: 6px 0 6px 20px; max-width: 62ch; }
+  .takeaway small { display: block; font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+  .takeaway p { margin: 8px 0 0; font-size: clamp(18px, 1.5vw, 22px); line-height: 1.45; font-weight: 600; }
+  .ext { display: flex; flex-wrap: wrap; gap: 10px; margin-top: clamp(24px, 3vw, 36px); }
+  .ext a { display: inline-flex; align-items: center; gap: 8px; border-radius: 999px; padding: 12px 20px; font-weight: 700; font-size: 15px; text-decoration: none; border: 1.5px solid var(--accent); color: var(--accent); transition: background .2s, color .2s; }
+  .ext a.solid, .ext a:hover { background: var(--accent); color: #000; }
+  .stats--3 .stat b { font-size: clamp(48px, 5vw, 88px); }
+  @media (max-width: 960px) {
+    .proj-meta { grid-template-columns: 1fr 1fr; }
+    .grid4 { grid-template-columns: 1fr 1fr; }
+    .side { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .posters, .grid3 { grid-template-columns: 1fr 1fr; }
+    .twin { grid-template-columns: 1fr; }
+  }
+
+</style>
+<link rel="stylesheet" href="../assets/readable-type.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <path id="eye-almond" d="M2 32 C 28 -9, 92 -9, 118 32 C 92 73, 28 73, 2 32 Z"/>
+    <clipPath id="eye-clip"><use href="#eye-almond"/></clipPath>
+  </defs>
+</svg>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="nav__brand" href="../index.html"><img class="nav__logo" src="assets/logo-spin.gif" alt="" width="120" height="120">Sunil Sebastian</a>
+    <nav class="nav__links" aria-label="Main">
+      <a class="nav__back" href="../index.html#campaigns">← All work</a>
+      <a href="../index.html#about">About</a>
+      <a href="mailto:sunil@sebastians.tv">Contact</a>
+    </nav>
+  </div>
+  <div class="nav__progress" aria-hidden="true"></div>
+</header>
+
+<main>
+  <section class="hero" aria-labelledby="title">
+    <div class="wrap">
+      <div class="hero__kicker">Campaigns · 5 brands</div>
+      <h1 id="title" class="display hero__title hero__title--pd">
+        <svg class="eye eye--hero" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg>
+        <span>Campaign</span> <span style="color:var(--accent)">work</span>
+      </h1>
+      <div class="hero__intro">
+        <p class="hero__lede">Art direction for brand campaigns across Africa, the Middle East and Pakistan: key visuals, OOH, TV and activations, plus the systems that keep local teams going.</p>
+        <dl class="meta"><div><dt>Brands</dt><dd>Martini · Head &amp; Shoulders · Sprite · Fanta · Coca-Cola</dd></div><div><dt>Markets</dt><dd>Nigeria, Angola, MENA, Pakistan, UAE</dd></div><div><dt>Role</dt><dd>Art director</dd></div><div><dt>Formats</dt><dd>OOH, print, TVC, activation, guidelines</dd></div></dl>
+      </div>
+      <figure class="hero__media frame" style="margin-left:0;margin-right:0;margin-bottom:0">
+        <img src="assets/hero.jpg" alt="Collage of campaign posters: Martini Desire Begins Dream, Head and Shoulders Rejuvenate, Sprite Cricket Next, Fanta Rocks and Coca-Cola T20" fetchpriority="high">
+      </figure>
+    </div>
+  </section>
+
+  <div class="ticker is-blue" aria-hidden="true">
+    <div class="ticker__track"><span>Key visuals</span><span>OOH</span><span>TVC</span><span>Activation</span><span>Key visuals</span><span>OOH</span><span>TVC</span><span>Activation</span><span>Key visuals</span><span>OOH</span><span>TVC</span><span>Activation</span><span>Key visuals</span><span>OOH</span><span>TVC</span><span>Activation</span></div>
+  </div>
+
+  <section id="index" aria-label="Campaigns" style="padding-bottom:0">
+    <div class="wrap">
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>00</b> Five brands</div>
+      <nav class="jump reveal" aria-label="Campaigns on this page"><a href="#martini"><small>01</small>Martini</a><a href="#head-shoulders"><small>02</small>Head &amp; Shoulders</a><a href="#sprite"><small>03</small>Sprite</a><a href="#fanta"><small>04</small>Fanta</a><a href="#coca-cola"><small>05</small>Coca-Cola</a></nav>
+    </div>
+  </section>
+
+  <section id="martini" class="proj" aria-labelledby="martini-h">
+    <div class="wrap">
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>01</b> Martini · Begin Desire</div>
+      <h2 id="martini-h" class="display h2 reveal">A global Italian platform, <span style="color:var(--accent)">rebuilt for two African cities.</span></h2>
+      
+      <dl class="proj-meta reveal"><div><dt>Client</dt><dd>MARTINI® · Bacardi Limited</dd></div><div><dt>My role</dt><dd>Art director: style, shoot and system</dd></div><div><dt>Deliverables</dt><dd>Key visuals, OOH, print, digital, templates, guidelines</dd></div><div><dt>Markets</dt><dd>Nigeria &amp; Angola</dd></div></dl>
+      <div class="lead reveal">
+        <p class="big">Made in Lagos and Luanda. <em>Not shipped to them.</em></p>
+        <div><p>In October 2014 MARTINI launched Begin Desire, a global platform built around a Jake Scott short film shot in Rome and the brand's "bar and ball" motif. Unmistakably Italian.</p><p>My brief was to take it into Nigeria and Angola, two markets with their own nightlife, visual languages and artists. I built the bridge: style direction, the shoot, the effect system and the guidelines local teams ran on after I stepped back.</p></div>
+      </div>
+      <div class="split">
+        <div class="reveal"><p class="big">Global consistency, <em>no cultural flattening.</em></p><p>Push too far toward the master brand and the work reads as foreign. Push too far local and you lose the equity the global campaign was built to carry.</p></div>
+        <figure class="frame frame--vid reveal " style="--ar:960 / 590"><video class="lazy-video" src="assets/mb-motion.mp4" poster="assets/mb-motion.jpg" muted loop playsinline preload="none" aria-label="The global Begin Desire motion: bar and ball graphics"></video><span class="cap">The global platform</span></figure>
+      </div>
+      <div class="probs"><article class="prob reveal"><small>01</small><b>Two markets, two cultures</b><p>Different languages, music scenes and design references. One template for both would fail both.</p></article><article class="prob reveal"><small>02</small><b>Artists, not decoration</b><p>Leading local artists co-created the work, so the art direction had to leave them real room.</p></article><article class="prob reveal"><small>03</small><b>Survive my absence</b><p>Local teams would make the long tail of retail, social and print. Everything had to be reproducible.</p></article></div>
+      <div class="camp">
+        <h3 class="reveal"><small>Two markets</small>Same system. Two different campaigns.</h3>
+        <div class="twin">
+          <article class="reveal"><b>Nigeria</b><p>Built with the Lagos team and Nigerian artists already native to the city's nightlife and music.</p><ul><li>On-location shoot with local talent</li><li>Artists' work in the illustrative layer</li><li>Key visuals across OOH, print, retail and digital</li></ul></article>
+          <article class="reveal"><b>Angola</b><p>Developed with the Luanda team and Angolan artists: the same structure, tuned to a local palette and rhythm.</p><ul><li>Market-specific casting and shoot</li><li>Independent artist take on the overlay</li><li>Full adaptation kit for local production</li></ul></article>
+        </div>
+        <div class="posters">
+          <figure class="frame reveal "><img src="assets/mb-dream.jpg" alt="Desire Begins Dream poster" loading="lazy"><span class="cap">Dream</span></figure>
+          <figure class="frame reveal "><img src="assets/mb-show.jpg" alt="Desire Begins Show poster" loading="lazy"><span class="cap">Show</span></figure>
+          <figure class="frame reveal "><img src="assets/mb-spotlight.jpg" alt="Desire Begins Spotlight poster" loading="lazy"><span class="cap">Spotlight</span></figure>
+          <figure class="frame reveal "><img src="assets/mb-action.jpg" alt="Desire Begins Action poster" loading="lazy"><span class="cap">Action</span></figure>
+          <figure class="frame reveal "><img src="assets/mb-sunset.jpg" alt="Desire Begins Sunset poster" loading="lazy"><span class="cap">Sunset</span></figure>
+          <figure class="frame reveal "><img src="assets/mb-party.jpg" alt="Desire Begins Party poster" loading="lazy"><span class="cap">Party</span></figure>
+        </div>
+      </div>
+      <div class="camp">
+        <h3 class="reveal"><small>The art direction system</small>Four rules, and a lot of room.</h3>
+        <p class="reveal">Anything I could specify tightly, I did, so everything I couldn't specify was free.</p>
+        <div class="feats feats--4"><article class="feat reveal"><small>01</small><b>Photographic treatment</b><p>A fixed stack of grain, contrast, edge decay and colour bias, supplied as layered templates.</p></article><article class="feat reveal"><small>02</small><b>Illustrative overlay</b><p>Bold, high-contrast and hand-led. Defined by behaviour, so local artists did the mark-making.</p></article><article class="feat reveal"><small>03</small><b>Typographic command</b><p>BEGIN DESIRE holds the same position in every execution. Surface treatment is free.</p></article><article class="feat reveal"><small>04</small><b>Palette discipline</b><p>MARTINI red anchors every frame. Everything else negotiates around it.</p></article></div>
+        <div class="side">
+          <figure class="frame reveal "><img src="assets/mb-victorious.jpg" alt="Desire Begins Victorious poster with a runner" loading="lazy"><span class="cap">Victorious</span></figure>
+          <div class="stack">
+            <figure class="frame reveal "><img src="assets/mb-banner-martini.jpg" alt="Wide MARTINI banner in red and cream" loading="lazy"></figure>
+            <figure class="frame reveal "><img src="assets/mb-banner-sunset.jpg" alt="Desire Begins Sunset banner with dancers" loading="lazy"></figure>
+            <figure class="frame reveal "><img src="assets/mb-banner-victorious.jpg" alt="Desire Begins Victorious stadium banner" loading="lazy"></figure>
+            <figure class="frame reveal "><img src="assets/mb-banner-cocktail.jpg" alt="Desire Begins Sunset banner with a cocktail" loading="lazy"></figure>
+          </div>
+        </div>
+        <div class="sw reveal"><div class="sw-tabs"><button class="sw-tab is-on" aria-pressed="true">Begin Desire</button><button class="sw-tab" aria-pressed="false">Desire Begins Day</button><button class="sw-tab" aria-pressed="false">Desire Begins Go!</button><button class="sw-tab" aria-pressed="false">Desire Begins Again</button></div><div class="sw-stage is-auto" style="--ar:1800 / 1012"><img class="sw-img is-on" src="assets/mb-wall-1.jpg" alt="Begin Desire poster wall with portraits" loading="lazy"><img class="sw-img" src="assets/mb-wall-2.jpg" alt="Desire Begins Day layouts" loading="lazy"><img class="sw-img" src="assets/mb-wall-3.jpg" alt="Desire Begins Go layouts with a cocktail" loading="lazy"><img class="sw-img" src="assets/mb-wall-4.jpg" alt="Desire Begins Again layouts" loading="lazy"><span class="sw-bar" aria-hidden="true"></span></div><div class="sw-notes" aria-live="polite"><p class="sw-note is-on">Portraits, type and the red ball, locked in one grid.</p><p class="sw-note">The overlay system flexes for each moment.</p><p class="sw-note">Cocktail and lifestyle formats share one structure.</p><p class="sw-note">Cream, red and black: the palette never moves.</p></div></div>
+      </div>
+      <div class="camp">
+        <h3 class="reveal"><small>The outcome</small>Two campaigns that belonged where they ran.</h3>
+        <p class="reveal">Each market launched work that read as locally made while sitting clearly inside Begin Desire. The artists' work was load-bearing, not a badge, and the templates kept local teams producing on-brand assets long after launch. The grunge-plus-illustration treatment gave MARTINI a texture that felt like the walls, posters and nightlife of the cities it ran in.</p>
+        <figure class="frame reveal wide"><img src="assets/mb-outcome.jpg" alt="Silhouettes running across a cream and red Begin Desire visual" loading="lazy"><span class="cap">Begin Desire</span></figure>
+        <div class="takeaway reveal"><small>What I took from it</small><p>Lock the few things that genuinely can't move, and you can hand over everything else. It's how I've approached multi-market art direction ever since.</p></div>
+        <div class="ext reveal"><a class="solid" href="https://www.brandessencenigeria.com/martini-ambassador-bryan-okwara-toolz-visit-casa-martini-in-italy/" target="_blank" rel="noopener">In the press ↗</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="head-shoulders" class="proj" aria-labelledby="head-shoulders-h">
+    <div class="wrap">
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>02</b> Head &amp; Shoulders</div>
+      <h2 id="head-shoulders-h" class="display h2 reveal">A women-first launch, <span style="color:var(--accent)">from a male-first brand.</span></h2>
+      
+      <dl class="proj-meta reveal"><div><dt>Client</dt><dd>P&amp;G · Head &amp; Shoulders</dd></div><div><dt>My role</dt><dd>Art director, shoot direction, motion design</dd></div><div><dt>Deliverables</dt><dd>Key visuals, video animation, storyboards</dd></div><div><dt>Market</dt><dd>MENA: KSA, UAE, GCC · 2016</dd></div></dl>
+      <p class="sub reveal">"Rejuvenate your dry scalp." A premium, women-only variant with a new formula for dry, scaling scalps, from a brand long seen as male-focused. I art-directed the key visuals, storyboards and motion for the TV commercial and social launch across the Middle East and North Africa.</p>
+      <figure class="frame reveal wide"><img src="assets/hs-kv.jpg" alt="Rejuvenate your dry scalp key visual: a drop of oil running down a woman’s hair parting" loading="lazy"><span class="cap">Rejuvenate your dry scalp</span></figure>
+      <figure class="frame reveal wide"><img src="assets/hs-trio.jpg" alt="Three key visuals of women with the new Head and Shoulders packs" loading="lazy"><span class="cap">Key visuals</span></figure>
+      <figure class="frame reveal wide"><img src="assets/hs-packs.jpg" alt="Packs infused with argan oil and with argan oil and aloe vera" loading="lazy"><span class="cap">Infused with argan oil</span></figure>
+    </div>
+  </section>
+
+  <section id="sprite" class="proj" aria-labelledby="sprite-h">
+    <div class="wrap">
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>03</b> Sprite · Pakistan</div>
+      <h2 id="sprite-h" class="display h2 reveal">Spice, street cricket <span style="color:var(--accent)">and thirst.</span></h2>
+      
+      <p class="sub reveal">Three Sprite campaigns for Pakistan: a food-led brand platform, a nationwide hunt for street cricket talent, and a thirst campaign built on ice-cold lemon-lime.</p>
+      <div class="camp"><h3 class="reveal"><small>Sprite &amp; spice</small>Mirchi Pe Lagao, Sprite Ka Tarka</h3><p class="reveal">Sprite with spicy food, launching the brand platform in Pakistan for the first time. I created the logo stamp that let the campaign own its space, and the campaign ID and visuals were later used in China and Mexico.</p>
+        <div class="side">
+          <figure class="frame reveal "><img src="assets/sp-mirchi-logo.jpg" alt="Mirchi Pe Lagao Sprite Ka Tarka logo stamp with chillies" loading="lazy"><span class="cap">Logo stamp</span></figure>
+          <div class="stack">
+            <figure class="frame reveal "><img src="assets/sp-mirchi-ooh-1.jpg" alt="Billboard: Sprite bottle splashing beside samosas and chutney" loading="lazy"><span class="cap">OOH</span></figure>
+            <figure class="frame reveal "><img src="assets/sp-mirchi-ooh-2.jpg" alt="Billboard: Sprite bottle with spicy grilled chicken" loading="lazy"><span class="cap">OOH</span></figure>
+          </div>
+        </div></div>
+      <div class="camp"><h3 class="reveal"><small>Sprite Cricket Next · 2012</small>Team Hosh vs Team Josh</h3><p class="reveal">An activation-led campaign that set cricket greats Moin Khan (Team Hosh, the cool head) and Shoaib Akhtar (Team Josh, the fire) against each other to find Pakistan's best street cricketers for a nationwide tournament. Fans entered by SMS, the tournament came to their gali, and The Coca-Cola Company later used the campaign in the UAE.</p>
+        <figure class="frame reveal wide"><img src="assets/sp-cricket-ooh-1.jpg" alt="Billboard: Moin Khan and Shoaib Akhtar face off either side of the Sprite Cricket Next logo" loading="lazy"><span class="cap">Dikha do apna aap!</span></figure>
+        <div class="twin" style="margin-top:16px">
+          <figure class="frame reveal "><img src="assets/sp-cricket-hosh.jpg" alt="Moin's Team Hosh billboard" loading="lazy"><span class="cap">Team Hosh</span></figure>
+          <figure class="frame reveal "><img src="assets/sp-cricket-josh.jpg" alt="Shoaib's Team Josh billboard" loading="lazy"><span class="cap">Team Josh</span></figure>
+        </div>
+        <div class="grid3">
+          <figure class="frame reveal "><img src="assets/sp-cricket-poster.jpg" alt="Poster: Hosh vs Josh, coming to your street" loading="lazy"><span class="cap">Poster</span></figure>
+          <figure class="frame reveal "><img src="assets/sp-cricket-backdrop.jpg" alt="Event backdrop with both captains" loading="lazy"><span class="cap">Event backdrop</span></figure>
+          <figure class="frame reveal "><img src="assets/sp-cricket-layout.jpg" alt="Street tournament ground layout" loading="lazy"><span class="cap">Ground layout</span></figure>
+        </div>
+        <div class="grid3">
+          <figure class="frame reveal "><img src="assets/sp-next-wall.jpg" alt="Giant Sprite Cricket Next mural on a brick building" loading="lazy"><span class="cap">Street teaser</span></figure>
+          <figure class="frame reveal "><img src="assets/sp-wall.jpg" alt="Sprite Cricket stencil on a weathered wall" loading="lazy"><span class="cap">Stencil</span></figure>
+          <figure class="frame reveal "><img src="assets/sp-window.jpg" alt="Broken window with a Sprite Cricket Next sticker" loading="lazy"><span class="cap">Broken window</span></figure>
+        </div></div>
+      <div class="camp"><h3 class="reveal"><small>Thirst</small>Tu Hai Pyaas Ka Dushman</h3><p class="reveal">You are thirst's enemy: crisp lemon-lime, ice and splash, across posters and wide-format banners.</p>
+        <div class="side">
+          <figure class="frame reveal "><img src="assets/sp-thirst-poster.jpg" alt="Sprite poster: Tu hai pyaas ka dushman, chilled bottle in ice" loading="lazy"><span class="cap">Poster</span></figure>
+          <div class="stack">
+            <figure class="frame reveal "><img src="assets/sp-thirst-1.jpg" alt="Sprite Pyaas ka dushman banner with lime splash" loading="lazy"><span class="cap">Banner</span></figure>
+            <figure class="frame reveal "><img src="assets/sp-thirst-2.jpg" alt="Sprite Pyaas ka dushman banner with ice" loading="lazy"><span class="cap">Banner</span></figure>
+            <figure class="frame reveal "><img src="assets/sp-lemons.jpg" alt="Illustration: three lemon halves dripping into a Sprite bottle" loading="lazy"><span class="cap">Illustration</span></figure>
+          </div>
+        </div></div>
+    </div>
+  </section>
+
+  <section id="fanta" class="proj" aria-labelledby="fanta-h">
+    <div class="wrap">
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>04</b> Fanta · Pakistan</div>
+      <h2 id="fanta-h" class="display h2 reveal">More Fanta, <span style="color:var(--accent)">less serious.</span></h2>
+      
+      <p class="sub reveal">Three Fanta campaigns for Pakistan in 2012, built on the brand's animated global crew and its "More Fanta, Less Serious" platform, and made local through games, music and school break time.</p>
+      <div class="camp"><h3 class="reveal"><small>Activation</small>Fanta Crazy Chase</h3><p class="reveal">Pakistan's biggest chase: a nationwide game to hunt down Fanta through sets of challenges, each one leading to the next clue. The global Fanta crew brought it to life on bridges, billboards, kiosks and stages.</p>
+        <figure class="frame reveal wide"><img src="assets/fa-chase-bridge.jpg" alt="Fanta Crazy Chase characters climbing over a highway bridge billboard" loading="lazy"><span class="cap">Bridge takeover</span></figure>
+        <div class="grid4">
+          <figure class="frame reveal "><img src="assets/fa-chase-logo.jpg" alt="Fanta Crazy Chase logo" loading="lazy"><span class="cap">Logo</span></figure>
+          <figure class="frame reveal "><img src="assets/fa-chase-kiosk.jpg" alt="Crazy Chase kiosk" loading="lazy"><span class="cap">Kiosk</span></figure>
+          <figure class="frame reveal "><img src="assets/fa-chase-tower.jpg" alt="Character climbing a roadside tower" loading="lazy"><span class="cap">Tower</span></figure>
+          <figure class="frame reveal "><img src="assets/fa-chase-stage.jpg" alt="Crazy Chase stage setup" loading="lazy"><span class="cap">Stage</span></figure>
+        </div>
+        <div class="twin" style="margin-top:16px">
+          <figure class="frame reveal "><img src="assets/fa-chase-city.jpg" alt="Crazy Chase billboards in the city" loading="lazy"><span class="cap">City OOH</span></figure>
+          <figure class="frame reveal "><img src="assets/fa-chase-coupon.jpg" alt="Crazy Chase winner coupon: collect all 4" loading="lazy"><span class="cap">Winner coupon</span></figure>
+        </div></div>
+      <div class="camp"><h3 class="reveal"><small>Music activation</small>Fanta Rocks, with Noori</h3><p class="reveal">A music activation for tweens with Lahore rock band Noori: "Rock your school with Noori." The band steps into the animated Fanta world, kept firmly inside the brand guidelines.</p>
+        <figure class="frame reveal wide"><img src="assets/fa-rocks-ooh-2.jpg" alt="Noori riding with the animated Fanta crew on a scooter" loading="lazy"><span class="cap">Fanta Rocks</span></figure>
+        <div class="grid4">
+          <figure class="frame reveal "><img src="assets/fa-rocks-poster.jpg" alt="Poster: Rock your school with Noori" loading="lazy"><span class="cap">Poster</span></figure>
+          <figure class="frame reveal "><img src="assets/fa-rocks-streamer-1.jpg" alt="Streamer: Fanta rocked my world" loading="lazy"><span class="cap">Streamer</span></figure>
+          <figure class="frame reveal "><img src="assets/fa-rocks-streamer-2.jpg" alt="Streamer: Fanta rocked my world, with guitar" loading="lazy"><span class="cap">Streamer</span></figure>
+          <figure class="frame reveal "><img src="assets/fa-rocks-ooh-1.jpg" alt="Billboard: Rock your school with Noori" loading="lazy"><span class="cap">OOH</span></figure>
+        </div></div>
+      <div class="camp"><h3 class="reveal"><small>Fanta Great Taste · 2012</small>De Breaks Ke Mazay</h3><p class="reveal">Visuals built on Fanta’s snacking credentials and owning break time at school, localising the global Fanta animation so it felt made for Pakistan.</p>
+        <div class="twin">
+          <figure class="frame reveal "><img src="assets/fa-taste-ooh-1.jpg" alt="Billboard: oversized sunglasses framing the Fanta crew" loading="lazy"><span class="cap">OOH</span></figure>
+          <figure class="frame reveal "><img src="assets/fa-taste-ooh-2.jpg" alt="Billboard: orange glasses and a wide smile" loading="lazy"><span class="cap">OOH</span></figure>
+        </div>
+        <div class="grid3">
+          <figure class="frame reveal "><img src="assets/fa-taste-ambient-1.jpg" alt="Ambient design: a rickshaw wrapped as a Fanta bottle" loading="lazy"><span class="cap">Ambient</span></figure>
+          <figure class="frame reveal "><img src="assets/fa-taste-ambient-2.jpg" alt="Ambient design: a street lamp and bench as a Fanta bottle" loading="lazy"><span class="cap">Ambient</span></figure>
+          <figure class="frame reveal "><img src="assets/fa-taste-poster.jpg" alt="Poster: De breaks ke mazay, the crew sharing samosas" loading="lazy"><span class="cap">Poster</span></figure>
+        </div>
+        <p class="sub-h reveal">Localised from Fanta's 2012 global outdoor guidelines</p>
+        <div class="grid3">
+          <figure class="frame reveal "><img src="assets/fa-guide-taste.jpg" alt="Guideline page: The taste you can’t resist" loading="lazy"><span class="cap">Global guideline</span></figure>
+          <figure class="frame reveal "><img src="assets/fa-guide-hello.jpg" alt="Guideline page: Hello delicious" loading="lazy"><span class="cap">Global guideline</span></figure>
+          <figure class="frame reveal "><img src="assets/fa-guide-avoid.jpg" alt="Guideline page: things to avoid" loading="lazy"><span class="cap">Global guideline</span></figure>
+        </div></div>
+    </div>
+  </section>
+
+  <section id="coca-cola" class="proj" aria-labelledby="coca-cola-h">
+    <div class="wrap">
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>05</b> Coca-Cola · Pakistan</div>
+      <h2 id="coca-cola-h" class="display h2 reveal">Cricket fever <span style="color:var(--accent)">and Coke Studio.</span></h2>
+      
+      <div class="camp"><h3 class="reveal"><small>T20 cricket</small>Hum Hain Opener Apni Zindagi Ke</h3><p class="reveal">We are the openers of our own lives. Young fans with bats, horns and green-and-white bunting, cheering the T20 season in Coca-Cola red.</p>
+        <div class="side">
+          <figure class="frame reveal "><img src="assets/cc-t20-poster.jpg" alt="Poster: fans holding a Hum hain opener apni zindagi ke sign" loading="lazy"><span class="cap">Poster</span></figure>
+          <div class="stack">
+            <figure class="frame reveal "><img src="assets/cc-t20-ooh-1.jpg" alt="Billboard: friends celebrating around a green car" loading="lazy"><span class="cap">OOH</span></figure>
+            <figure class="frame reveal "><img src="assets/cc-t20-ooh-2.jpg" alt="Billboard: four fans spelling Hum hain opener on their shirts" loading="lazy"><span class="cap">OOH</span></figure>
+          </div>
+        </div></div>
+      <div class="camp"><h3 class="reveal"><small>Coke Studio · Season 5 · 2012</small>A mandala for a music universe</h3><p class="reveal">Coke Studio is Coca-Cola Pakistan’s fusion music platform, pairing traditional sound with contemporary. Season 5 ran from 13 May to 8 July 2012, produced by Rohail and Umber Hyatt. I built the outdoor identity on the mandala, a spiritual symbol in Hinduism and Buddhism that represents the universe.</p>
+        <div class="stats stats--3"><div class="stat reveal"><b data-to="5" data-pre="" data-suf="">5</b><span>Episodes</span></div><div class="stat reveal"><b data-to="25" data-pre="" data-suf="">25</b><span>Songs</span></div><div class="stat reveal"><b class="txt">May–July</b><span>On air, 2012</span></div></div>
+        <div class="sw reveal"><div class="sw-tabs"><button class="sw-tab is-on" aria-pressed="true">Charkha Nolakha</button><button class="sw-tab" aria-pressed="false">Kandyaari Dhol Geet</button><button class="sw-tab" aria-pressed="false">Koi Labda</button></div><div class="sw-stage is-auto" style="--ar:1736 / 600"><img class="sw-img is-on" src="assets/cc-studio-ooh-3.jpg" alt="Coke Studio billboard: Charkha Nolakha" loading="lazy"><img class="sw-img" src="assets/cc-studio-ooh-1.jpg" alt="Coke Studio billboard: Kandyaari Dhol Geet" loading="lazy"><img class="sw-img" src="assets/cc-studio-ooh-2.jpg" alt="Coke Studio billboard: Koi Labda" loading="lazy"><span class="sw-bar" aria-hidden="true"></span></div><div class="sw-notes" aria-live="polite"><p class="sw-note is-on">Episode 1 · from 13 May.</p><p class="sw-note">Episode 4 · from 24 June.</p><p class="sw-note">Episode 5 · from 8 July.</p></div></div>
+        <div class="twin">
+          <figure class="frame reveal "><img src="assets/cc-studio-invite.jpg" alt="Coke Studio Season 5 invitation with a vinyl record" loading="lazy"><span class="cap">Invitation</span></figure>
+          <figure class="frame reveal "><img src="assets/cc-studio-folder.jpg" alt="Coke Studio Season 5 folder" loading="lazy"><span class="cap">Folder</span></figure>
+        </div></div>
+    </div>
+  </section>
+
+  <section class="next" aria-label="Next case study">
+    <div class="wrap next__grid">
+      <img class="next__guy" src="assets/sunil-binoculars.png" alt="" aria-hidden="true" loading="lazy" width="860" height="1103">
+      <div class="next__text">
+        <div class="next__kicker">Next up</div>
+        <a class="next__link next__link--long" href="../showreel/index.html">Showreel <span class="arrow">→</span></a>
+        <div><a class="next__prev" href="../index.html#campaigns">← All work</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>© 2026 Sunil Sebastian</span>
+    <nav aria-label="Social">
+      <a href="https://www.linkedin.com/in/sunil-shahzad-a7a59797/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.behance.net/sunshaseb" target="_blank" rel="noopener">Behance</a>
+      <a href="https://www.instagram.com/sunilsebastian/" target="_blank" rel="noopener">Instagram</a>
+    </nav>
+  </div>
+</footer>
+
+<div class="lb" role="dialog" aria-modal="true" aria-label="Image preview">
+  <button class="lb__close" aria-label="Close preview">✕</button>
+  <img alt="">
+</div>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Progress bar
+  const bar = document.querySelector('.nav__progress');
+  let ticking = false;
+  addEventListener('scroll', () => {
+    if (ticking) return; ticking = true;
+    requestAnimationFrame(() => { const h = document.documentElement; bar.style.transform = `scaleX(${h.scrollTop / (h.scrollHeight - h.clientHeight)})`; ticking = false; });
+  }, { passive: true });
+
+  // Eyes: side-glance with a dropping lid, on a loose loop and on hover
+  document.querySelectorAll('.eye').forEach((eye, i) => {
+    let hovering = false;
+    const set = on => eye.classList.toggle('is-look', on);
+    const wait = ms => new Promise(r => setTimeout(r, ms));
+    const loop = async () => {
+      await wait(i === 0 ? 1400 : 1200 + Math.random() * 3500);
+      for (;;) {
+        if (!hovering) set(true);  await wait(850);
+        if (!hovering) set(false); await wait(450);
+        if (!hovering) set(true);  await wait(950);
+        if (!hovering) set(false); await wait(2600 + Math.random() * 2400);
+      }
+    };
+    if (!reduce) loop();
+    const host = eye.closest('.hero__title, .label') || eye;
+    host.addEventListener('pointerenter', () => { hovering = true; set(true); });
+    host.addEventListener('pointerleave', () => { hovering = false; set(false); });
+  });
+
+  // Before / after sliders
+  document.querySelectorAll('.cmp').forEach(c => {
+    const r = c.querySelector('input');
+    const set = () => c.style.setProperty('--x', r.value + '%');
+    r.addEventListener('input', set); set();
+  });
+
+  // Tab switchers that auto-advance while on screen and stop once someone picks a tab
+  document.querySelectorAll('.sw').forEach(sw => {
+    const tabs = [...sw.querySelectorAll('.sw-tab')], imgs = [...sw.querySelectorAll('.sw-img')], notes = [...sw.querySelectorAll('.sw-note')];
+    const stage = sw.querySelector('.sw-stage'), sbar = sw.querySelector('.sw-bar');
+    let cur = 0, timer = null;
+    const restart = () => { sbar.style.animation = 'none'; void sbar.offsetWidth; sbar.style.animation = ''; };
+    const show = (i) => { cur = (i + tabs.length) % tabs.length; tabs.forEach((t, j) => { t.classList.toggle('is-on', j === cur); t.setAttribute('aria-pressed', j === cur); }); imgs.forEach((m, j) => m.classList.toggle('is-on', j === cur)); notes.forEach((n, j) => n.classList.toggle('is-on', j === cur)); };
+    const pause = () => { clearInterval(timer); timer = null; };
+    const stop = () => { pause(); stage.classList.remove('is-auto'); };
+    const start = () => { if (timer || !stage.classList.contains('is-auto')) return; restart(); timer = setInterval(() => { show(cur + 1); restart(); }, 3800); };
+    tabs.forEach((t, j) => t.addEventListener('click', () => { stop(); show(j); }));
+    stage.addEventListener('click', () => { show(cur + 1); if (timer) { pause(); start(); } });
+    if (!reduce) new IntersectionObserver(([e]) => e.isIntersecting ? start() : pause(), { threshold: .4 }).observe(stage);
+    else stage.classList.remove('is-auto');
+  });
+
+  // Severity filter for the audit table
+  const chips = [...document.querySelectorAll('.sev-chip')];
+  chips.forEach(ch => ch.addEventListener('click', () => {
+    chips.forEach(c => { c.classList.toggle('is-on', c === ch); c.setAttribute('aria-pressed', c === ch); });
+    const f = ch.dataset.f;
+    document.querySelectorAll('.audit tbody tr').forEach(tr => tr.classList.toggle('is-dim', f !== 'all' && tr.dataset.sev !== f));
+  }));
+
+  // Count-up stats
+  const stats = document.querySelectorAll('.stat b[data-to]');
+  if (stats.length) {
+    const sio = new IntersectionObserver((entries) => entries.forEach(e => {
+      if (!e.isIntersecting) return; sio.unobserve(e.target);
+      const el = e.target, to = parseFloat(el.dataset.to), dec = (el.dataset.to.split('.')[1] || '').length, suf = el.dataset.suf || '', pre = el.dataset.pre || '';
+      if (reduce) { el.textContent = pre + to.toFixed(dec) + suf; return; }
+      const t0 = performance.now(), dur = 1200;
+      const step = (t) => { const p = Math.min((t - t0) / dur, 1), v = to * (1 - Math.pow(1 - p, 3)); el.textContent = pre + v.toFixed(dec) + suf; if (p < 1) requestAnimationFrame(step); };
+      requestAnimationFrame(step);
+    }), { threshold: .6 });
+    stats.forEach(s => sio.observe(s));
+  }
+
+  // Play videos only while on screen
+  const vio = new IntersectionObserver((entries) => {
+    entries.forEach(({ target: v, isIntersecting }) => {
+      if (isIntersecting) { if (v.preload === 'none') v.preload = 'auto'; if (!reduce) v.play().catch(() => {}); }
+      else v.pause();
+    });
+  }, { rootMargin: '200px 0px' });
+  document.querySelectorAll('.lazy-video').forEach(v => { if (reduce) v.controls = true; vio.observe(v); });
+
+  // Click-to-play YouTube: the embed only loads once someone asks for it
+  document.querySelectorAll('.yt').forEach(y => y.querySelector('.yt__play').addEventListener('click', () => {
+    const f = document.createElement('iframe');
+    f.src = `https://www.youtube-nocookie.com/embed/${y.dataset.yt}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
+    f.title = y.dataset.title || 'Video';
+    f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+    f.allowFullscreen = true;
+    y.classList.add('is-playing'); y.appendChild(f);
+  }));
+
+  // Lightbox
+  const lb = document.querySelector('.lb');
+  const lbImg = lb.querySelector('img');
+  const open = (src, alt) => { lbImg.src = src; lbImg.alt = alt || ''; lb.classList.add('is-open'); lb.querySelector('.lb__close').focus(); };
+  const close = () => lb.classList.remove('is-open');
+  document.querySelectorAll('.frame > img').forEach(img => img.addEventListener('click', () => open(img.currentSrc || img.src, img.alt)));
+  lb.addEventListener('click', close);
+  addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+})();
+</script>
+
+</body>
+</html>
