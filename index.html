@@ -631,7 +631,17 @@ obsessed with the
             </div>
           </div>
         </li>
-        <li class="xp__item reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><span class="xp__btn is-soon c-blueh">Games UI/brand <small>Soon</small></span></li>
+        <li class="xp__item reveal" id="games"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><button class="xp__btn c-blueh" aria-expanded="false" aria-controls="cases-games"><span>Games UI/brand</span><span class="chev" aria-hidden="true">▶</span></button>
+          <div class="cases" id="cases-games">
+            <div>
+              <div class="cases__grid">
+                <a class="case" href="wallet-wars/index.html"><img src="wallet-wars/assets/hero.jpg" alt="" loading="lazy"><div class="case__meta"><span class="case__n">Case study 01</span><span class="case__t">Wallet Wars <span>→</span></span><span class="case__d">A Web3 arcade game that plays like a game first</span></div></a>
+                <a class="case" href="valorant-mobile/index.html"><img src="valorant-mobile/assets/hero.jpg" alt="" loading="lazy"><div class="case__meta"><span class="case__n">Case study 02</span><span class="case__t">Valorant Mobile <span>→</span></span><span class="case__d">Valorant's HUD and menus, rethought for touch</span></div></a>
+                <a class="case" href="aew-rise-to-the-top/index.html"><img src="aew-rise-to-the-top/assets/hero.jpg" alt="" loading="lazy"><div class="case__meta"><span class="case__n">Case study 03</span><span class="case__t">AEW: Rise to the Top <span>→</span></span><span class="case__d">Weekly live events and wrestler identities</span></div></a>
+              </div>
+            </div>
+          </div>
+        </li>
         <li class="xp__item reveal" id="experiential"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><button class="xp__btn c-white" aria-expanded="false" aria-controls="cases-exp"><span>Experiential</span><span class="chev" aria-hidden="true">▶</span></button>
           <div class="cases" id="cases-exp">
             <div>
@@ -723,7 +733,7 @@ obsessed with the
     const panel = document.getElementById(toggle.getAttribute('aria-controls'));
     const setOpen = (open) => { toggle.setAttribute('aria-expanded', open); panel.classList.toggle('is-open', open); panel.inert = !open; };
     const id = panel.id;
-    setOpen((id === 'cases-brand' && (location.hash === '#work' || location.hash === '#brand-design')) || (id === 'cases-exp' && location.hash === '#experiential') || (id === 'cases-pd' && location.hash === '#product-design') || (id === 'cases-reel' && location.hash === '#showreel'));
+    setOpen((id === 'cases-brand' && (location.hash === '#work' || location.hash === '#brand-design')) || (id === 'cases-exp' && location.hash === '#experiential') || (id === 'cases-pd' && location.hash === '#product-design') || (id === 'cases-reel' && location.hash === '#showreel') || (id === 'cases-games' && location.hash === '#games'));
     toggle.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
   });
 
