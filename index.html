@@ -344,6 +344,7 @@
   .hh__v89 { left: calc(336 * var(--u)); top: calc(819.8 * var(--u)); width: calc(411.5 * var(--u)); }
   .hh__v88 { left: calc(659 * var(--u)); top: calc(679 * var(--u)); width: calc(705 * var(--u)); }
   .hh__desk { left: calc(5 * var(--u)); top: calc(292 * var(--u)); width: calc(2035 * var(--u)); height: calc(847 * var(--u)); max-width: none; }
+  .hh__head { left: calc(465.39 * var(--u)); top: calc(318.5 * var(--u)); width: calc(225.89 * var(--u)); height: calc(225.23 * var(--u)); max-width: none; transform-origin: 60.1% 73.5%; transform: translate(calc(var(--hx, 0) * var(--u)), calc(var(--hy, 0) * var(--u))) rotate(calc(var(--hr, 0) * 1deg)); will-change: transform; }
   .hh__chair { left: 0; top: calc(279 * var(--u)); width: calc(484 * var(--u)); height: calc(859 * var(--u)); max-width: none; }
   .hh__robots { left: calc(183 * var(--u)); top: calc(225 * var(--u)); width: calc(213 * var(--u)); height: calc(351 * var(--u)); max-width: none; }
   .hh__reel { border-radius: 50%; overflow: hidden; }
@@ -543,7 +544,8 @@
       <div class="hh__name" aria-hidden="true">Sunil<br>Sebastian</div>
       <svg class="hh__shape hh__v89" viewBox="0 0 412 265" aria-hidden="true"><path fill="#2B253B" d="M278.5 1.24977C362.5 -5.15023 387.833 14.5831 390 25.2498L376.5 40.7498L411.5 136.25V147.25C402.167 149.25 386.8 154.25 400 158.25C416.5 163.25 407.5 173.75 402 176.25C397.6 178.25 373.5 175.416 362 173.75H356L263 191.25L181 240.25L91.5 259.75L51.5 264.25L23 182.25L8.5 165.75L0 146.75L8.5 134.25V92.2498L23 73.2498L33 69.7498H62.5L75.5 61.7498C108.167 44.2498 194.5 7.64977 278.5 1.24977Z"/></svg>
       <svg class="hh__shape hh__v88" viewBox="0 0 705 457" aria-hidden="true"><path fill="#FF1801" d="M705 64L285.5 16L126.5 0L0 16L10.5 64L195 98L180 457H494.5L517.5 138.5L705 64Z"/></svg>
-      <img class="hh__desk" src="assets/home/hero-desk.webp" alt="Illustration of Sunil working at his desk with a laptop, curved monitor, keyboard and reel-to-reel tape deck" width="3072" height="1278" fetchpriority="high">
+      <img class="hh__desk" src="assets/home/hero-desk-body.webp" alt="Illustration of Sunil working at his desk with a laptop, curved monitor, keyboard and reel-to-reel tape deck" width="3072" height="1278" fetchpriority="high">
+      <img class="hh__head" src="assets/home/hero-head.webp" alt="" width="341" height="340" fetchpriority="high">
       <img class="hh__chair" src="assets/home/hero-chair.webp" alt="" width="972" height="1725">
       <div class="hh__reel hh__reel--r" aria-hidden="true"><video src="assets/home/hero-reels.mp4" poster="assets/home/hero-reels.jpg" muted loop playsinline autoplay preload="auto"></video></div>
       <div class="hh__reel hh__reel--l" aria-hidden="true"><video src="assets/home/hero-reels.mp4" poster="assets/home/hero-reels.jpg" muted loop playsinline autoplay preload="auto"></video></div>
@@ -770,6 +772,29 @@ obsessed with the
     const off = () => { clip.pause(); reelCard.classList.remove('is-live'); };
     reelCard.addEventListener('pointerenter', on); reelCard.addEventListener('pointerleave', off);
     reelCard.addEventListener('focus', on); reelCard.addEventListener('blur', off);
+  }
+
+  // Hero head turns to follow the cursor
+  const head = document.querySelector('.hh__head');
+  if (head && !reduce) {
+    const hero = document.querySelector('.h-hero');
+    let tx = 0, ty = 0, tr = 0, cx = 0, cy = 0, cr = 0, raf = 0;
+    const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+    const tick = () => {
+      cx += (tx - cx) * .12; cy += (ty - cy) * .12; cr += (tr - cr) * .12;
+      head.style.setProperty('--hx', cx.toFixed(2)); head.style.setProperty('--hy', cy.toFixed(2)); head.style.setProperty('--hr', cr.toFixed(2));
+      raf = Math.abs(tx - cx) + Math.abs(ty - cy) + Math.abs(tr - cr) > .01 ? requestAnimationFrame(tick) : 0;
+    };
+    const aim = (x, y) => {
+      const r = head.getBoundingClientRect(), h = hero.getBoundingClientRect();
+      if (h.bottom < 0 || h.top > innerHeight) return;
+      const px = r.left + r.width * .6, py = r.top + r.height * .45;
+      const dx = clamp((x - px) / (h.width * .45), -1, 1), dy = clamp((y - py) / (h.height * .5), -1, 1);
+      tx = dx * 5; ty = dy * 3; tr = clamp(dy * 6 + dx * 1.5, -5, 4);
+      if (!raf) raf = requestAnimationFrame(tick);
+    };
+    addEventListener('pointermove', (e) => aim(e.clientX, e.clientY), { passive: true });
+    document.documentElement.addEventListener('pointerleave', () => { tx = ty = tr = 0; if (!raf) raf = requestAnimationFrame(tick); });
   }
 
   // Hero reels: paused for reduced motion
