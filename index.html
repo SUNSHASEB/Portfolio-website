@@ -344,7 +344,14 @@
   .hh__v89 { left: calc(336 * var(--u)); top: calc(819.8 * var(--u)); width: calc(411.5 * var(--u)); }
   .hh__v88 { left: calc(659 * var(--u)); top: calc(679 * var(--u)); width: calc(705 * var(--u)); }
   .hh__desk { left: calc(5 * var(--u)); top: calc(292 * var(--u)); width: calc(2035 * var(--u)); height: calc(847 * var(--u)); max-width: none; }
-  .hh__head { left: calc(465.39 * var(--u)); top: calc(318.5 * var(--u)); width: calc(225.89 * var(--u)); height: calc(225.23 * var(--u)); max-width: none; transform-origin: 60.1% 73.5%; transform: translate(calc(var(--hx, 0) * var(--u)), calc(var(--hy, 0) * var(--u))) rotate(calc(var(--hr, 0) * 1deg)); will-change: transform; }
+  .hh__screen { left: calc(1103.32 * var(--u)); top: calc(311.87 * var(--u)); width: calc(225.23 * var(--u)); height: calc(376.26 * var(--u)); overflow: hidden; clip-path: polygon(98.53% 0.0%, 95.59% 1.76%, 92.65% 3.17%, 89.41% 4.58%, 86.18% 5.99%, 82.94% 7.39%, 79.41% 8.8%, 75.88% 10.21%, 71.76% 11.62%, 67.65% 13.03%, 62.94% 14.44%, 57.94% 15.85%, 52.65% 17.25%, 46.76% 18.66%, 40.0% 20.07%, 33.24% 21.48%, 25.29% 22.89%, 16.76% 24.3%, 11.76% 25.7%, 11.47% 27.11%, 11.18% 28.52%, 10.88% 29.93%, 10.59% 31.34%, 10.29% 32.75%, 10.29% 34.15%, 10.0% 35.56%, 9.71% 36.97%, 9.41% 38.38%, 9.12% 39.79%, 8.82% 41.2%, 8.53% 42.61%, 8.24% 44.01%, 7.94% 45.42%, 7.65% 46.83%, 7.65% 48.24%, 7.35% 49.65%, 7.06% 51.06%, 6.76% 52.46%, 6.47% 53.87%, 6.18% 55.28%, 6.18% 56.69%, 5.88% 58.1%, 5.59% 59.51%, 5.29% 60.92%, 5.0% 62.32%, 4.71% 63.73%, 4.41% 65.14%, 4.12% 66.55%, 3.82% 67.96%, 3.53% 69.37%, 3.24% 70.77%, 3.24% 72.18%, 2.94% 73.59%, 2.65% 75.0%, 2.35% 76.41%, 2.06% 77.82%, 1.76% 79.23%, 1.47% 80.63%, 1.47% 82.04%, 1.18% 83.45%, 0.88% 84.86%, 0.59% 86.27%, 0.29% 87.68%, 0.0% 89.08%, 13.82% 90.49%, 27.65% 91.9%, 40.0% 93.31%, 50.29% 94.72%, 59.12% 96.13%, 67.35% 97.54%, 74.71% 98.94%, 77.65% 100.0%, 79.41% 100.0%, 79.41% 98.94%, 79.71% 97.54%, 80.0% 96.13%, 80.29% 94.72%, 80.59% 93.31%, 80.88% 91.9%, 81.18% 90.49%, 81.47% 89.08%, 81.76% 87.68%, 82.06% 86.27%, 82.65% 84.86%, 82.94% 83.45%, 82.94% 82.04%, 83.53% 80.63%, 83.82% 79.23%, 83.82% 77.82%, 84.12% 76.41%, 84.41% 75.0%, 84.71% 73.59%, 85.0% 72.18%, 85.29% 70.77%, 85.59% 69.37%, 85.88% 67.96%, 86.18% 66.55%, 86.47% 65.14%, 86.76% 63.73%, 87.06% 62.32%, 87.35% 60.92%, 87.65% 59.51%, 88.24% 58.1%, 88.24% 56.69%, 88.53% 55.28%, 89.12% 53.87%, 89.12% 52.46%, 89.41% 51.06%, 90.0% 49.65%, 90.29% 48.24%, 90.59% 46.83%, 90.88% 45.42%, 91.18% 44.01%, 91.47% 42.61%, 91.76% 41.2%, 92.06% 39.79%, 92.35% 38.38%, 92.65% 36.97%, 92.94% 35.56%, 92.94% 34.15%, 93.24% 32.75%, 93.82% 31.34%, 94.12% 29.93%, 94.41% 28.52%, 94.71% 27.11%, 95.0% 25.7%, 95.29% 24.3%, 95.29% 22.89%, 95.59% 21.48%, 95.88% 20.07%, 96.18% 18.66%, 96.47% 17.25%, 96.76% 15.85%, 97.06% 14.44%, 97.35% 13.03%, 97.65% 11.62%, 98.24% 10.21%, 98.24% 8.8%, 98.53% 7.39%, 99.12% 5.99%, 99.12% 4.58%, 99.71% 3.17%, 99.71% 1.76%, 100.0% 0.0%); background: #111; }
+  .hh__feed { position: absolute; left: 0; top: 0; width: 800px; height: 500px; overflow: hidden; transform-origin: 0 0; background: #111; }
+  .hh__track { will-change: transform; }
+  .hh__track.is-moving { transition: transform .8s cubic-bezier(.65, 0, .25, 1); }
+  .hh__slide { position: relative; margin: 0; width: 800px; height: 500px; }
+  .hh__slide img { display: block; width: 800px; height: 500px; object-fit: cover; max-width: none; }
+  .hh__slide figcaption { position: absolute; left: 28px; bottom: 26px; padding: 9px 16px; border-radius: 999px; background: rgba(0,0,0,.72); color: #fff; font-family: "Plus Jakarta Sans", "Helvetica Neue", Arial, sans-serif; font-weight: 700; font-size: 26px; letter-spacing: -.01em; }
+  .hh__glare { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(115deg, rgba(255,255,255,.16) 0%, rgba(255,255,255,0) 38%, rgba(255,255,255,0) 70%, rgba(255,255,255,.06) 100%); }
   .hh__chair { left: 0; top: calc(279 * var(--u)); width: calc(484 * var(--u)); height: calc(859 * var(--u)); max-width: none; }
   .hh__robots { left: calc(183 * var(--u)); top: calc(225 * var(--u)); width: calc(213 * var(--u)); height: calc(351 * var(--u)); max-width: none; }
   .hh__reel { border-radius: 50%; overflow: hidden; }
@@ -544,8 +551,8 @@
       <div class="hh__name" aria-hidden="true">Sunil<br>Sebastian</div>
       <svg class="hh__shape hh__v89" viewBox="0 0 412 265" aria-hidden="true"><path fill="#2B253B" d="M278.5 1.24977C362.5 -5.15023 387.833 14.5831 390 25.2498L376.5 40.7498L411.5 136.25V147.25C402.167 149.25 386.8 154.25 400 158.25C416.5 163.25 407.5 173.75 402 176.25C397.6 178.25 373.5 175.416 362 173.75H356L263 191.25L181 240.25L91.5 259.75L51.5 264.25L23 182.25L8.5 165.75L0 146.75L8.5 134.25V92.2498L23 73.2498L33 69.7498H62.5L75.5 61.7498C108.167 44.2498 194.5 7.64977 278.5 1.24977Z"/></svg>
       <svg class="hh__shape hh__v88" viewBox="0 0 705 457" aria-hidden="true"><path fill="#FF1801" d="M705 64L285.5 16L126.5 0L0 16L10.5 64L195 98L180 457H494.5L517.5 138.5L705 64Z"/></svg>
-      <img class="hh__desk" src="assets/home/hero-desk-body.webp" alt="Illustration of Sunil working at his desk with a laptop, curved monitor, keyboard and reel-to-reel tape deck" width="3072" height="1278" fetchpriority="high">
-      <img class="hh__head" src="assets/home/hero-head.webp" alt="" width="341" height="340" fetchpriority="high">
+      <img class="hh__desk" src="assets/home/hero-desk.webp" alt="Illustration of Sunil working at his desk with a laptop, curved monitor, keyboard and reel-to-reel tape deck" width="3072" height="1278" fetchpriority="high">
+      <div class="hh__screen" aria-hidden="true"><div class="hh__feed"><div class="hh__track"><figure class="hh__slide"><img data-src="assets/home/screen/01-namma-farm.jpg" alt="" width="800" height="500" decoding="async"><figcaption>Namma Farm</figcaption></figure><figure class="hh__slide"><img data-src="assets/home/screen/02-scooch.jpg" alt="" width="800" height="500" decoding="async"><figcaption>Scooch Over</figcaption></figure><figure class="hh__slide"><img data-src="assets/home/screen/03-apc.jpg" alt="" width="800" height="500" decoding="async"><figcaption>APC</figcaption></figure><figure class="hh__slide"><img data-src="assets/home/screen/04-imagination.jpg" alt="" width="800" height="500" decoding="async"><figcaption>Imagination Holdings</figcaption></figure><figure class="hh__slide"><img data-src="assets/home/screen/05-coca-cola.jpg" alt="" width="800" height="500" decoding="async"><figcaption>Coca-Cola UMM</figcaption></figure><figure class="hh__slide"><img data-src="assets/home/screen/06-al-siraat.jpg" alt="" width="800" height="500" decoding="async"><figcaption>Al Siraat</figcaption></figure><figure class="hh__slide"><img data-src="assets/home/screen/07-kcg.jpg" alt="" width="800" height="500" decoding="async"><figcaption>King C. Gillette</figcaption></figure><figure class="hh__slide"><img data-src="assets/home/screen/08-twistails.jpg" alt="" width="800" height="500" decoding="async"><figcaption>Twistails</figcaption></figure><figure class="hh__slide"><img data-src="assets/home/screen/09-grey-goose.jpg" alt="" width="800" height="500" decoding="async"><figcaption>Grey Goose</figcaption></figure><figure class="hh__slide"><img data-src="assets/home/screen/10-baskin.jpg" alt="" width="800" height="500" decoding="async"><figcaption>Baskin Robbins</figcaption></figure><figure class="hh__slide"><img data-src="assets/home/screen/11-martini.jpg" alt="" width="800" height="500" decoding="async"><figcaption>Martini Bitter</figcaption></figure><figure class="hh__slide"><img data-src="assets/home/screen/12-wallet-wars.jpg" alt="" width="800" height="500" decoding="async"><figcaption>Wallet Wars</figcaption></figure><figure class="hh__slide"><img data-src="assets/home/screen/13-valorant.jpg" alt="" width="800" height="500" decoding="async"><figcaption>Valorant Mobile</figcaption></figure><figure class="hh__slide"><img data-src="assets/home/screen/14-aew.jpg" alt="" width="800" height="500" decoding="async"><figcaption>AEW: Rise to the Top</figcaption></figure><figure class="hh__slide"><img data-src="assets/home/screen/15-brawl3rs.jpg" alt="" width="800" height="500" decoding="async"><figcaption>Brawl3rs</figcaption></figure><figure class="hh__slide"><img data-src="assets/home/screen/16-bacardi.jpg" alt="" width="800" height="500" decoding="async"><figcaption>Bacardi House Party</figcaption></figure><figure class="hh__slide"><img data-src="assets/home/screen/17-gg-windows.jpg" alt="" width="800" height="500" decoding="async"><figcaption>Grey Goose windows</figcaption></figure><figure class="hh__slide"><img data-src="assets/home/screen/18-bombay.jpg" alt="" width="800" height="500" decoding="async"><figcaption>Bombay Sapphire</figcaption></figure><figure class="hh__slide"><img data-src="assets/home/screen/19-pixel-pals.jpg" alt="" width="800" height="500" decoding="async"><figcaption>Pixel Pals</figcaption></figure><figure class="hh__slide"><img data-src="assets/home/screen/20-nca.jpg" alt="" width="800" height="500" decoding="async"><figcaption>NCA Triennale</figcaption></figure><figure class="hh__slide"><img data-src="assets/home/screen/21-gundam.jpg" alt="" width="800" height="500" decoding="async"><figcaption>Gundam build</figcaption></figure><figure class="hh__slide"><img data-src="assets/home/screen/22-photography.jpg" alt="" width="800" height="500" decoding="async"><figcaption>Photography</figcaption></figure><figure class="hh__slide"><img data-src="assets/home/screen/23-showreel.jpg" alt="" width="800" height="500" decoding="async"><figcaption>Showreel</figcaption></figure></div><span class="hh__glare"></span></div></div>
       <img class="hh__chair" src="assets/home/hero-chair.webp" alt="" width="972" height="1725">
       <div class="hh__reel hh__reel--r" aria-hidden="true"><video src="assets/home/hero-reels.mp4" poster="assets/home/hero-reels.jpg" muted loop playsinline autoplay preload="auto"></video></div>
       <div class="hh__reel hh__reel--l" aria-hidden="true"><video src="assets/home/hero-reels.mp4" poster="assets/home/hero-reels.jpg" muted loop playsinline autoplay preload="auto"></video></div>
@@ -774,27 +781,39 @@ obsessed with the
     reelCard.addEventListener('focus', on); reelCard.addEventListener('blur', off);
   }
 
-  // Hero head turns to follow the cursor
-  const head = document.querySelector('.hh__head');
-  if (head && !reduce) {
-    const hero = document.querySelector('.h-hero');
-    let tx = 0, ty = 0, tr = 0, cx = 0, cy = 0, cr = 0, raf = 0;
-    const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
-    const tick = () => {
-      cx += (tx - cx) * .12; cy += (ty - cy) * .12; cr += (tr - cr) * .12;
-      head.style.setProperty('--hx', cx.toFixed(2)); head.style.setProperty('--hy', cy.toFixed(2)); head.style.setProperty('--hr', cr.toFixed(2));
-      raf = Math.abs(tx - cx) + Math.abs(ty - cy) + Math.abs(tr - cr) > .01 ? requestAnimationFrame(tick) : 0;
+  // Monitor screen: a scrolling feed of one image per project, warped into the curved screen
+  const screen = document.querySelector('.hh__screen');
+  if (screen) {
+    const feed = screen.querySelector('.hh__feed'), track = screen.querySelector('.hh__track');
+    const slides = [...track.children];
+    track.appendChild(slides[0].cloneNode(true));
+    const all = [...track.children];
+    const load = (i) => { const img = all[i] && all[i].querySelector('img[data-src]'); if (img) { img.src = img.dataset.src; img.removeAttribute('data-src'); } };
+    [0, 1, all.length - 1].forEach(load);
+    const C = [[12.39, 25.0], [99.74, 0.35], [78.72, 99.47], [0.62, 89.26]];
+    // Rectangle (800 x 500) → screen corners, pushed out 6% so the curved edges never show white
+    const solve = (A, b) => { const n = b.length; for (let i = 0; i < n; i++) { let p = i; for (let r = i + 1; r < n; r++) if (Math.abs(A[r][i]) > Math.abs(A[p][i])) p = r; [A[i], A[p]] = [A[p], A[i]]; [b[i], b[p]] = [b[p], b[i]]; for (let r = i + 1; r < n; r++) { const f = A[r][i] / A[i][i]; for (let k = i; k < n; k++) A[r][k] -= f * A[i][k]; b[r] -= f * b[i]; } } const x = Array(n).fill(0); for (let i = n - 1; i >= 0; i--) { let t = b[i]; for (let k = i + 1; k < n; k++) t -= A[i][k] * x[k]; x[i] = t / A[i][i]; } return x; };
+    const warp = () => {
+      const w = screen.clientWidth, h = screen.clientHeight;
+      const pts = C.map(([x, y]) => [x / 100 * w, y / 100 * h]);
+      const cx = pts.reduce((s, p) => s + p[0], 0) / 4, cy = pts.reduce((s, p) => s + p[1], 0) / 4;
+      const dst = pts.map(([x, y]) => [cx + (x - cx) * 1.06, cy + (y - cy) * 1.06]);
+      const src = [[0, 0], [800, 0], [800, 500], [0, 500]], A = [], b = [];
+      src.forEach(([x, y], i) => { const [u, v] = dst[i]; A.push([x, y, 1, 0, 0, 0, -u * x, -u * y]); b.push(u); A.push([0, 0, 0, x, y, 1, -v * x, -v * y]); b.push(v); });
+      const [a, bb, c, d, e, f, g, hh] = solve(A, b);
+      feed.style.transform = `matrix3d(${a},${d},0,${g},${bb},${e},0,${hh},0,0,1,0,${c},${f},0,1)`;
     };
-    const aim = (x, y) => {
-      const r = head.getBoundingClientRect(), h = hero.getBoundingClientRect();
-      if (h.bottom < 0 || h.top > innerHeight) return;
-      const px = r.left + r.width * .6, py = r.top + r.height * .45;
-      const dx = clamp((x - px) / (h.width * .45), -1, 1), dy = clamp((y - py) / (h.height * .5), -1, 1);
-      tx = dx * 5; ty = dy * 3; tr = clamp(dy * 6 + dx * 1.5, -5, 4);
-      if (!raf) raf = requestAnimationFrame(tick);
+    warp(); new ResizeObserver(warp).observe(screen);
+    let i = 0, timer = null;
+    const go = () => {
+      load(i + 1); load(i + 2);
+      i++; track.classList.add('is-moving'); track.style.transform = `translateY(${-i * 500}px)`;
     };
-    addEventListener('pointermove', (e) => aim(e.clientX, e.clientY), { passive: true });
-    document.documentElement.addEventListener('pointerleave', () => { tx = ty = tr = 0; if (!raf) raf = requestAnimationFrame(tick); });
+    track.addEventListener('transitionend', () => { if (i === all.length - 1) { track.classList.remove('is-moving'); i = 0; track.style.transform = 'translateY(0)'; } });
+    const start = () => { if (!timer && !reduce) timer = setInterval(go, 2800); };
+    const stop = () => { clearInterval(timer); timer = null; };
+    new IntersectionObserver(([e]) => e.isIntersecting ? start() : stop()).observe(screen);
+    document.addEventListener('visibilitychange', () => document.hidden ? stop() : start());
   }
 
   // Hero reels: paused for reduced motion
