@@ -1,6 +1,6 @@
 # Portfolio website
 
-Sunil Sebastian's portfolio: a home page built from the Figma landing page, four brand design case studies and a showreel page. Plain HTML, CSS and JavaScript, no build step.
+Sunil Sebastian's portfolio: a home page built from the Figma landing page, four brand design case studies, an experiential page and a showreel page. Plain HTML, CSS and JavaScript, no build step.
 
 ## Pages
 
@@ -12,6 +12,7 @@ Sunil Sebastian's portfolio: a home page built from the Figma landing page, four
 | APC | `accelerated-professional-center/` |
 | Imagination Holdings | `imagination-holdings/` |
 | Showreel | `showreel/` |
+| Experiential | `experiential/` |
 
 ## Preview locally
 
