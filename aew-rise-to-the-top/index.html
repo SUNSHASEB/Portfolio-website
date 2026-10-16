@@ -494,6 +494,15 @@
   .uxg .frame { margin: 0; background: #111; }
   .uxg .b-venue { grid-column: 3; grid-row: 1 / span 2; }
   .uxg .b-venue img { height: 100%; object-fit: cover; object-position: top; }
+  .yt { position: relative; }
+  .yt iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .yt__play { all: unset; cursor: pointer; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: inline-flex; align-items: center; gap: 12px; background: var(--accent); color: #000; border-radius: 999px; padding: clamp(12px, 1.4vw, 18px) clamp(20px, 2.4vw, 32px); font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: clamp(20px, 2.2vw, 34px); line-height: 1; box-shadow: 0 10px 40px rgba(0,0,0,.5); transition: transform .3s var(--ease); white-space: nowrap; }
+  .yt__play:hover { transform: translate(-50%, -50%) scale(1.06); }
+  .yt__play:focus-visible { outline: 3px solid var(--yellow); outline-offset: 4px; }
+  .yt.is-playing img, .yt.is-playing .yt__play { display: none; }
+  .cmp--tall { max-width: 720px; margin-left: auto; margin-right: auto; }
+  .feats .frame--vid { margin: 0; min-height: 170px; }
+  .feats .frame--vid video { position: absolute; inset: 0; height: 100%; aspect-ratio: auto; }
   @media (max-width: 960px) {
     .steps--4, .feats--4 { grid-template-columns: 1fr 1fr; }
     .split, .marks { grid-template-columns: 1fr; }
@@ -645,8 +654,8 @@
     <div class="wrap next__grid">
       <img class="next__guy" src="assets/sunil-binoculars.png" alt="" aria-hidden="true" loading="lazy" width="860" height="1103">
       <div class="next__text">
-        <div class="next__kicker">Back to</div>
-        <a class="next__link next__link--long" href="../wallet-wars/index.html">Wallet Wars <span class="arrow">→</span></a>
+        <div class="next__kicker">Next case study</div>
+        <a class="next__link next__link--long" href="../brawl3rs/index.html">Brawl3rs <span class="arrow">→</span></a>
         <div><a class="next__prev" href="../index.html#games">← All work</a></div>
       </div>
     </div>
@@ -760,6 +769,16 @@
     });
   }, { rootMargin: '200px 0px' });
   document.querySelectorAll('.lazy-video').forEach(v => { if (reduce) v.controls = true; vio.observe(v); });
+
+  // Click-to-play YouTube: the embed only loads once someone asks for it
+  document.querySelectorAll('.yt').forEach(y => y.querySelector('.yt__play').addEventListener('click', () => {
+    const f = document.createElement('iframe');
+    f.src = `https://www.youtube-nocookie.com/embed/${y.dataset.yt}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
+    f.title = y.dataset.title || 'Video';
+    f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+    f.allowFullscreen = true;
+    y.classList.add('is-playing'); y.appendChild(f);
+  }));
 
   // Lightbox
   const lb = document.querySelector('.lb');

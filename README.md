@@ -18,6 +18,7 @@ Sunil Sebastian's portfolio: a home page built from the Figma landing page, four
 | Wallet Wars (games UI/brand) | `wallet-wars/` |
 | Valorant Mobile (games UI/brand) | `valorant-mobile/` |
 | AEW: Rise to the Top (games UI/brand) | `aew-rise-to-the-top/` |
+| Brawl3rs (games UI/brand) | `brawl3rs/` |
 
 ## Preview locally
 
