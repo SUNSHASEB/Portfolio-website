@@ -12,6 +12,8 @@ Sunil Sebastian's portfolio: a home page built from the Figma landing page, four
 | APC | `accelerated-professional-center/` |
 | Imagination Holdings | `imagination-holdings/` |
 | ORO Chocolate | `oro-chocolate/` |
+| Tamuda Bay | `tamuda-bay/` |
+| Khalta | `khalta/` |
 | Showreel | `showreel/` |
 | Experiential | `experiential/` |
 | Coca-Cola UMM (product design) | `coca-cola-umm/` |
