@@ -487,9 +487,9 @@
     .jrow .frame { flex: none !important; }
   }
 
-  .swatches { grid-template-columns: repeat(4, 1fr); }
+  .swatches { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .swatches .swatch { aspect-ratio: 16 / 9; }
-  @media (max-width: 600px) { .swatches { grid-template-columns: repeat(2, 1fr); } .swatches .swatch:first-child { grid-column: auto; aspect-ratio: 16 / 9; } }
+  @media (max-width: 600px) { .swatches { grid-template-columns: repeat(2, minmax(0, 1fr)); } .swatches .swatch:first-child { grid-column: auto; aspect-ratio: 16 / 9; } }
 </style>
 <link rel="stylesheet" href="../assets/readable-type.css">
 </head>
