@@ -525,6 +525,10 @@
   .jump a:hover { background: var(--accent); border-color: var(--accent); color: #000; }
   .jump a:hover small { color: #000; }
   .proj-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .duo--fill .frame { aspect-ratio: 16 / 9; }
+  .duo--fill .frame img { object-fit: cover; }
+  .oro-link { display: inline-block; margin-top: clamp(28px, 3vw, 40px); font-weight: 700; color: var(--accent); text-decoration: none; border-bottom: 2px solid currentColor; padding-bottom: 2px; }
+  .oro-link:hover { color: #fff; }
   .proj-meta span { border-radius: 999px; padding: 7px 13px; font-size: 13px; font-weight: 600; background: #1a1a1a; }
   .strip { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(8px, 1vw, 14px); margin-top: 16px; }
   .strip .frame { margin: 0; background: #fff; aspect-ratio: 4 / 3; }
@@ -580,14 +584,14 @@
 <main>
   <section class="hero" aria-labelledby="title">
     <div class="wrap">
-      <div class="hero__kicker">Packaging design · 5 projects</div>
+      <div class="hero__kicker">Packaging design · 6 projects</div>
       <h1 id="title" class="display hero__title hero__title--pd hero__title--long">
         <svg class="eye eye--hero" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg>
         <span>Packaging</span> <span style="color:var(--accent)">design</span>
       </h1>
       <div class="hero__intro">
         <p class="hero__lede">Boxes, bottles, pods and tubs that people want to pick up. From structure and dielines to labels, renders and the shelf.</p>
-        <dl class="meta"><div><dt>Brands</dt><dd>King C. Gillette · Bacardi · Grey Goose · Baskin Robbins · Martini</dd></div><div><dt>Craft</dt><dd>Structure, graphics, 3D visualisation</dd></div><div><dt>Formats</dt><dd>Gift boxes, pods, bottles, tubs, POS</dd></div><div><dt>Deliverables</dt><dd>Dielines, labels, renders, playbooks</dd></div></dl>
+        <dl class="meta"><div><dt>Brands</dt><dd>King C. Gillette · Bacardi · Grey Goose · Baskin Robbins · Martini · ORO</dd></div><div><dt>Craft</dt><dd>Structure, graphics, 3D visualisation</dd></div><div><dt>Formats</dt><dd>Gift boxes, pods, bottles, tubs, POS</dd></div><div><dt>Deliverables</dt><dd>Dielines, labels, renders, playbooks</dd></div></dl>
       </div>
       <figure class="hero__media frame" style="margin-left:0;margin-right:0;margin-bottom:0">
         <img src="assets/br-gift-box.jpg" alt="Baskin Robbins ice cream macaron gift box with a gold ribbon, open and closed" fetchpriority="high">
@@ -601,8 +605,8 @@
 
   <section id="index" aria-label="Projects" style="padding-bottom:0">
     <div class="wrap">
-      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>00</b> Five projects</div>
-      <nav class="jump reveal" aria-label="Projects on this page"><a href="#kcg"><small>01</small>King C. Gillette</a><a href="#twistails"><small>02</small>Twistails</a><a href="#greygoose"><small>03</small>Grey Goose</a><a href="#baskin"><small>04</small>Baskin Robbins</a><a href="#martini"><small>05</small>Martini Bitter</a></nav>
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>00</b> Six projects</div>
+      <nav class="jump reveal" aria-label="Projects on this page"><a href="#kcg"><small>01</small>King C. Gillette</a><a href="#twistails"><small>02</small>Twistails</a><a href="#greygoose"><small>03</small>Grey Goose</a><a href="#baskin"><small>04</small>Baskin Robbins</a><a href="#martini"><small>05</small>Martini Bitter</a><a href="#oro"><small>06</small>ORO</a></nav>
     </div>
   </section>
 
@@ -729,6 +733,34 @@
         <h3 class="reveal"><small>Option 02 · drag for the specs</small>A slide-out box with a glass</h3>
         <div class="cmp reveal"><img src="assets/mb-opt2.jpg" alt="Option 02 slide-out box with bottle and glass" loading="lazy"><div class="cmp__after"><img src="assets/mb-opt2-specs.jpg" alt="Option 02 with material callouts: latch, window and gold foil border" loading="lazy"></div><input type="range" min="0" max="100" value="50" aria-label="Drag to compare 3D and Specs"><span class="cmp__line"></span><span class="cmp__knob" aria-hidden="true">⇄</span><span class="cmp__tag cmp__tag--b">3D</span><span class="cmp__tag cmp__tag--a">Specs</span></div>
       </div>
+    </div>
+  </section>
+
+  <section id="oro" class="proj" aria-labelledby="oro-h">
+    <div class="wrap">
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>06</b> ORO Chocolate &amp; Coffee</div>
+      <h2 id="oro-h" class="display h2 reveal">A box worth <span style="color:var(--accent)">opening.</span></h2>
+      
+      <p class="sub reveal">Chocolate and coffee packs for a Nicaraguan brand. Every material is natural, down to the ink. The chocolate box adds a small moment of excitement each time it opens.</p>
+      <div class="proj-meta reveal"><span>Chocolate box</span><span>Flavour system</span><span>Coffee bags</span><span>Retail displays</span><span>Café</span></div>
+      <p class="sub-h reveal">From sketch to structure</p>
+      <div class="sw reveal"><div class="sw-tabs"><button class="sw-tab is-on" aria-pressed="true">Sketches</button><button class="sw-tab" aria-pressed="false">3D mechanics</button><button class="sw-tab" aria-pressed="false">Artwork</button></div><div class="sw-stage is-auto" style="--ar:1918 / 1080"><img class="sw-img is-on" src="assets/oro-pack-sketches.jpg" alt="Initial sketches of box nets and folding chocolate packs" loading="lazy"><img class="sw-img" src="assets/oro-mechanics.jpg" alt="3D product mechanics: folding stages of the chocolate box" loading="lazy"><img class="sw-img" src="assets/oro-artwork.jpg" alt="Artwork details: dielines and colour-coded insert cards for every flavour" loading="lazy"><span class="sw-bar" aria-hidden="true"></span></div><div class="sw-notes" aria-live="polite"><p class="sw-note is-on">Sketching the unboxing: nets, folds and reveals.</p><p class="sw-note">Testing how the box folds, step by step, in 3D.</p><p class="sw-note">Dielines and a colour-coded insert for every flavour.</p></div></div>
+      <p class="sub-h reveal">Chocolate</p>
+      <figure class="frame wide reveal"><img src="assets/oro-bars.jpg" alt="Five ORO chocolate bars in black wrappers with gold marks and colour-coded flavour labels" loading="lazy"><span class="cap">The bar line-up</span></figure>
+      <div class="duo duo--fill">
+        <figure class="frame reveal "><img src="assets/oro-display.jpg" alt="Counter display stacked with colourful ORO chocolate boxes" loading="lazy"><span class="cap">Counter display</span></figure>
+        <figure class="frame reveal "><img src="assets/oro-stands.jpg" alt="Free-standing retail units for ORO chocolate and coffee" loading="lazy"><span class="cap">Free-standing units</span></figure>
+      </div>
+      <p class="sub-h reveal">Coffee</p>
+      <div class="duo duo--fill">
+        <figure class="frame reveal "><img src="assets/oro-coffee-bags.jpg" alt="Black ORO coffee bags front and back beside a coffee cup" loading="lazy"><span class="cap">Coffee bags</span></figure>
+        <figure class="frame reveal "><img src="assets/oro-coffee-box.jpg" alt="Black ORO Coffee box with gold foil mark and flowing lines" loading="lazy"><span class="cap">Coffee box</span></figure>
+      </div>
+      <div class="duo duo--fill">
+        <figure class="frame reveal "><img src="assets/oro-cups.jpg" alt="Black ORO coffee cups with the gold star" loading="lazy"><span class="cap">Cups</span></figure>
+        <figure class="frame reveal "><img src="assets/oro-carrier.jpg" alt="Black two-cup carrier with the ORO Coffee logo" loading="lazy"><span class="cap">Carrier</span></figure>
+      </div>
+      <a class="oro-link reveal" href="../oro-chocolate/index.html">See the full ORO brand story →</a>
     </div>
   </section>
 
