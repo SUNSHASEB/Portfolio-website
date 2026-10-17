@@ -1,0 +1,933 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Imagination DLS — Sunil Sebastian</title>
+<meta name="description" content="Imagination DLS by Sunil Sebastian: leading the design language system that makes 40+ Imagination Holdings apps feel like one brand.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+
+  @font-face {
+    font-family: "Kirgina";
+    src: local("Kirgina Extra Bold"), local("Kirgina-ExtraBold"), url("fonts/Kirgina-ExtraBold.ttf") format("truetype");
+    font-weight: 800;
+    font-display: swap;
+  }
+
+  :root {
+    /* Landing page palette */
+    --black: #000;
+    --ink: #0b0b0b;
+    --white: #fff;
+    --paper: #efefef;
+    --yellow: #f6cb00;
+    --red: #ff1801;
+    --blue: #2151d8;
+    --sky: #2979ff;
+    --orange: #ffa800;
+    /* Namma Farm palette */
+    --nf-lime: #82ce26;
+    --nf-green: #003d17;
+    --nf-black: #171717;
+    --nf-yellow: #ff9b00;
+
+    --display: "Kirgina", "Anton", "Oswald", Impact, sans-serif;
+    --body: "BBH Bogle", "Helvetica Neue", Arial, sans-serif;
+
+    --gutter: clamp(16px, 4vw, 64px);
+    --max: 1440px;
+    --radius: 18px;
+    --ease: cubic-bezier(.2, .7, .1, 1);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--body);
+    font-size: clamp(16px, 1.15vw, 19px);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+  }
+  html { overflow-x: clip; }
+  img { display: block; max-width: 100%; height: auto; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+
+  .wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+
+  .display {
+    font-family: var(--display);
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: .86;
+    letter-spacing: -.005em;
+    margin: 0;
+  }
+  .c-yellow { color: var(--yellow); }
+  .c-red { color: var(--red); }
+  .c-blue { color: var(--sky); }
+  .c-orange { color: var(--orange); }
+  .c-lime { color: var(--nf-lime); }
+
+  /* ---------- Nav ---------- */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(0,0,0,.86);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+  .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
+  .nav__brand { font-family: var(--display); font-size: 28px; color: var(--yellow); text-decoration: none; letter-spacing: .02em; line-height: 1; text-transform: uppercase; display: inline-flex; align-items: center; gap: 10px; white-space: nowrap; }
+  .nav__logo { width: 40px; height: 40px; flex: none; }
+  .nav__links { display: flex; gap: clamp(12px, 2.5vw, 32px); align-items: center; font-size: 14px; text-transform: uppercase; letter-spacing: .08em; }
+  .nav__links a { text-decoration: none; opacity: .75; transition: opacity .2s; }
+  .nav__links a:hover { opacity: 1; }
+  .nav__progress { position: absolute; left: 0; bottom: -1px; height: 3px; width: 100%; background: var(--red); transform-origin: 0 50%; transform: scaleX(0); }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: clamp(40px, 7vw, 96px) 0 clamp(32px, 5vw, 64px); position: relative; }
+  .hero__kicker { display: flex; align-items: center; gap: 14px; text-transform: uppercase; letter-spacing: .12em; font-size: 14px; margin-bottom: clamp(16px, 2vw, 28px); }
+  .hero__title { font-size: clamp(96px, 23vw, 360px); display: flex; flex-wrap: wrap; align-items: flex-end; column-gap: .12em; }
+  .hero__title .eye { width: .7em; height: auto; margin-bottom: .1em; }
+  .hero__intro { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(24px, 5vw, 80px); margin-top: clamp(24px, 3vw, 40px); align-items: end; }
+  .hero__lede { font-size: clamp(22px, 2.3vw, 34px); line-height: 1.2; margin: 0; max-width: 22ch; }
+  .meta { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; margin: 0; border-top: 1px solid rgba(255,255,255,.2); }
+  .meta div { padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.2); }
+  .meta div:nth-child(odd) { padding-right: 16px; }
+  .meta dt { font-size: 12px; text-transform: uppercase; letter-spacing: .12em; opacity: .6; }
+  .meta dd { margin: 2px 0 0; font-size: 18px; }
+
+  .hero__media { margin-top: clamp(32px, 4vw, 56px); border-radius: var(--radius); overflow: hidden; position: relative; aspect-ratio: 16 / 9; }
+  .hero__media img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.08); transition: transform .1s linear; will-change: transform; }
+
+  /* ---------- Ticker ---------- */
+  .ticker { background: var(--red); color: var(--black); overflow: hidden; white-space: nowrap; padding: 10px 0; transform: rotate(-1.2deg); margin: clamp(24px, 4vw, 48px) -2vw; border-top: 3px solid var(--black); border-bottom: 3px solid var(--black); }
+  .ticker__track { display: inline-flex; gap: 40px; animation: marquee 26s linear infinite; padding-left: 40px; }
+  .ticker span { font-family: var(--display); font-size: clamp(40px, 6vw, 84px); line-height: 1; text-transform: uppercase; display: inline-flex; align-items: center; gap: 40px; }
+  .ticker span::after { content: "✺"; font-family: var(--body); font-size: .5em; }
+  .ticker.is-blue { background: var(--blue); color: var(--white); transform: rotate(1.2deg); }
+  @keyframes marquee { to { transform: translateX(-50%); } }
+
+  /* ---------- Sections ---------- */
+  section { padding: clamp(64px, 9vw, 140px) 0; position: relative; }
+  .label { display: flex; align-items: center; gap: 14px; font-size: 14px; text-transform: uppercase; letter-spacing: .14em; margin-bottom: clamp(16px, 2vw, 24px); }
+  .label .eye { width: 60px; height: auto; }
+  .label b { font-weight: 400; color: var(--yellow); }
+  .h2 { font-size: clamp(56px, 9.5vw, 156px); max-width: 14ch; }
+  .sub { font-size: clamp(18px, 1.5vw, 22px); max-width: 52ch; opacity: .85; margin: clamp(16px, 2vw, 24px) 0 0; }
+
+  /* Brief */
+  .brief__head { display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(24px, 5vw, 80px); align-items: end; }
+  .namma-word { background: var(--yellow); color: var(--black); border-radius: var(--radius); padding: clamp(20px, 2.5vw, 32px); transform: rotate(2deg); transition: transform .4s var(--ease); }
+  .namma-word:hover { transform: rotate(0) scale(1.02); }
+  .namma-word .tamil { font-size: clamp(48px, 6vw, 88px); line-height: 1.1; font-weight: 700; display: block; }
+  .namma-word p { margin: 8px 0 0; font-size: 18px; }
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(12px, 1.5vw, 20px); margin-top: clamp(40px, 5vw, 72px); }
+  .card { border-radius: var(--radius); padding: clamp(22px, 2.4vw, 36px); min-height: 280px; display: flex; flex-direction: column; justify-content: space-between; transition: transform .35s var(--ease); }
+  .card:hover { transform: translateY(-6px); }
+  .card h3 { font-family: var(--display); font-weight: 800; font-size: clamp(40px, 4vw, 64px); line-height: .9; text-transform: uppercase; margin: 0 0 24px; }
+  .card p { margin: 0; font-size: clamp(18px, 1.5vw, 22px); line-height: 1.3; }
+  .card--red { background: var(--red); color: var(--black); }
+  .card--blue { background: var(--blue); }
+  .card--white { background: var(--paper); color: var(--black); }
+  .card__n { font-size: 13px; letter-spacing: .14em; opacity: .7; margin-bottom: 8px; }
+
+
+  /* Media frames */
+  .frame { border-radius: var(--radius); overflow: hidden; background: var(--paper); position: relative; cursor: zoom-in; }
+  .frame img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s var(--ease); }
+  .frame video { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .7s var(--ease); }
+  .frame:hover img, .frame:hover video { transform: scale(1.04); }
+  .frame--contain img { object-fit: contain; }
+  .frame--pad { padding: clamp(16px, 3vw, 48px); }
+  .cap { position: absolute; left: 12px; bottom: 12px; background: var(--black); color: var(--white); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; padding: 6px 10px; border-radius: 999px; pointer-events: none; }
+
+  .full { margin-top: clamp(32px, 4vw, 56px); }
+
+  /* Directions */
+  .routes { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 2vw, 28px); margin-top: clamp(40px, 5vw, 72px); }
+  .route { border: 1px solid rgba(255,255,255,.18); border-radius: calc(var(--radius) + 6px); padding: clamp(18px, 2vw, 28px); display: flex; flex-direction: column; gap: 16px; position: relative; }
+  .route--win { border-color: var(--yellow); box-shadow: 0 0 0 1px var(--yellow) inset; }
+  .route__tag { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; opacity: .7; }
+  .route h3 { font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: clamp(40px, 4.4vw, 72px); line-height: .9; margin: 0; }
+  .route p { margin: 0; max-width: 40ch; opacity: .85; }
+  .route__media { display: grid; grid-template-columns: .8fr 1.2fr; gap: 12px; margin-top: auto; }
+  .route__media .frame { aspect-ratio: 3 / 4; }
+  .route__media .frame--contain { aspect-ratio: auto; background: var(--white); display: flex; align-items: center; }
+  .stamp { position: absolute; top: -18px; right: 18px; background: var(--yellow); color: var(--black); font-family: var(--display); font-size: 28px; line-height: 1; padding: 10px 14px 8px; border-radius: 999px; transform: rotate(6deg); text-transform: uppercase; }
+  .kolam { margin-top: clamp(16px, 2vw, 28px); background: var(--white); border-radius: var(--radius); padding: clamp(16px, 3vw, 40px); display: grid; grid-template-columns: auto 1fr; gap: clamp(16px, 3vw, 48px); align-items: center; color: var(--black); }
+  .kolam h4 { font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: clamp(32px, 3.4vw, 52px); line-height: .9; margin: 0; max-width: 9ch; }
+  .kolam img { cursor: zoom-in; }
+
+  /* Before / after */
+  .ba { margin-top: clamp(40px, 5vw, 72px); position: relative; aspect-ratio: 16 / 8; border-radius: var(--radius); overflow: hidden; background: #f4f4f4; user-select: none; touch-action: pan-y; }
+  .ba__pane { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+  .ba__pane { background: #fff; }
+  .ba__pane img { width: auto; height: 52%; max-width: 70%; object-fit: contain; }
+  .ba__pane--before { background: #f5f5f5; box-shadow: inset -1px 0 0 rgba(0,0,0,.06); clip-path: inset(0 calc(100% - var(--pos, 50%)) 0 0); }
+  .ba__pane--before img { height: 46%; }
+  .ba__tag { position: absolute; top: 16px; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; background: var(--black); color: var(--white); padding: 6px 12px; border-radius: 999px; }
+  .ba__tag--l { left: 16px; } .ba__tag--r { right: 16px; }
+  .ba__handle { position: absolute; top: 0; bottom: 0; left: var(--pos, 50%); width: 3px; background: var(--red); transform: translateX(-50%); pointer-events: none; }
+  .ba__knob { position: absolute; top: 50%; left: 50%; width: 64px; height: 64px; border-radius: 50%; background: var(--red); transform: translate(-50%, -50%); display: grid; place-items: center; color: var(--black); font-family: var(--display); font-size: 26px; }
+  .ba input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; margin: 0; }
+  .ba__note { display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: start; margin-top: 24px; max-width: 760px; }
+  .ba__note strong { font-family: var(--display); font-weight: 800; font-size: 32px; color: var(--yellow); text-transform: uppercase; line-height: 1; }
+  .ba__note p { margin: 0; opacity: .85; }
+
+  /* Identity bento */
+  .bento { display: grid; grid-template-columns: repeat(6, 1fr); grid-auto-rows: clamp(110px, 12.5vw, 190px); gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(40px, 5vw, 72px);
+    grid-template-areas: "a a a b b b" "a a a b b b" "a a a c c d" "a a a c c e" "f f f f f f"; }
+  .bento .b1 { grid-area: a; }
+  .bento .b2 { grid-area: b; }
+  .bento .b3 { grid-area: c; }
+  .bento .b4 { grid-area: d; background: #1f1f1f; cursor: default; }
+  .bento .b5 { grid-area: e; background: var(--nf-lime); display: grid; place-items: center; cursor: default; }
+  .bento .b6 { grid-area: f; background: var(--white); display: grid; grid-template-columns: repeat(4, 1fr); align-items: center; justify-items: center; padding: clamp(14px, 2vw, 28px) clamp(16px, 4vw, 64px); gap: clamp(8px, 2vw, 32px); cursor: default; }
+  .bento .b4 img { object-fit: contain; padding: 20%; }
+  .bento .b6 img { width: auto; height: 100%; max-height: 150px; max-width: 100%; object-fit: contain; transition: transform .35s var(--ease); }
+  .bento .b6:hover img { transform: none; }
+  .bento .b6 img:hover { transform: translateY(-6px) scale(1.05); }
+  .b5 span { font-family: var(--display); font-size: clamp(24px, 2.6vw, 40px); color: var(--nf-green); line-height: .9; text-align: center; text-transform: uppercase; }
+
+  .swatches { display: grid; grid-template-columns: repeat(5, 1fr); gap: clamp(8px, 1vw, 14px); margin-top: clamp(16px, 2vw, 24px); }
+  .swatch { border: 0; border-radius: var(--radius); aspect-ratio: 4 / 3; padding: 16px; text-align: left; font: inherit; color: inherit; cursor: pointer; display: flex; flex-direction: column; justify-content: flex-end; transition: transform .35s var(--ease); position: relative; }
+  .swatch:hover { transform: translateY(-8px) rotate(-1.5deg); }
+  .swatch strong { font-size: clamp(14px, 1.2vw, 18px); font-weight: 400; display: block; }
+  .swatch small { font-size: 13px; opacity: .75; letter-spacing: .06em; }
+  .swatch .copied { position: absolute; top: 14px; right: 14px; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; opacity: 0; transition: opacity .2s; }
+  .swatch.is-copied .copied { opacity: 1; }
+
+  .kit { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(10px, 1.2vw, 16px); }
+  .kit figure { margin: 0; background: var(--white); border-radius: var(--radius); padding: 20px; color: var(--black); display: flex; flex-direction: column; gap: 12px; cursor: zoom-in; }
+  .kit figcaption { font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: 28px; line-height: 1; }
+  .kit img { width: 100%; height: 220px; object-fit: contain; }
+
+  /* Icons & pattern */
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+  .chip { border: 1.5px solid currentColor; border-radius: 999px; padding: 8px 16px; font-size: 14px; text-transform: uppercase; letter-spacing: .08em; }
+  .icons-row { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 2vw, 28px); margin-top: clamp(40px, 5vw, 72px); align-items: stretch; }
+  .icons-row .frame { background: var(--white); }
+  .icons-row .frame img { object-fit: contain; padding: 6%; }
+  .flipcard { margin-top: clamp(16px, 2vw, 28px); background: var(--nf-green); border-radius: var(--radius); padding: clamp(20px, 3vw, 48px); display: grid; grid-template-columns: 1fr minmax(0, 560px); gap: clamp(20px, 4vw, 64px); align-items: center; }
+  .flipcard__tag { display: inline-block; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; background: var(--nf-lime); color: var(--nf-green); padding: 6px 12px; border-radius: 999px; }
+  .flipcard h3 { font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: clamp(48px, 6vw, 96px); line-height: .88; margin: 18px 0 16px; color: var(--nf-yellow); }
+  .flipcard p { margin: 0; max-width: 32ch; color: #fff; opacity: .9; }
+  .flipcard__gif { width: 100%; height: auto; border-radius: calc(var(--radius) - 4px); }
+  .pattern { margin-top: clamp(16px, 2vw, 28px); height: clamp(260px, 38vw, 560px); border-radius: var(--radius); background: url("assets/pattern.png") repeat-x center / auto 100%; animation: pan 60s linear infinite; cursor: zoom-in; }
+  @keyframes pan { to { background-position: -2544px center; } }
+
+  /* World gallery */
+  .world { display: grid; grid-template-columns: repeat(12, 1fr); gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(40px, 5vw, 72px); }
+  .world .w1 { grid-column: span 7; aspect-ratio: 16 / 9.2; }
+  .world .w2 { grid-column: span 5; aspect-ratio: auto; }
+  .world .w3 { grid-column: span 12; aspect-ratio: 2 / 1; }
+  .world .w4 { grid-column: span 12; aspect-ratio: 2000 / 1137; background: var(--white); }
+
+  .delivered { display: flex; flex-wrap: wrap; gap: 10px; margin-top: clamp(32px, 4vw, 48px); }
+  .delivered .chip { color: var(--yellow); }
+
+  /* Quote */
+  .quote { background: var(--yellow); color: var(--black); }
+  .quote blockquote { margin: 0; font-size: clamp(48px, 8vw, 132px); }
+  .quote cite { display: block; margin-top: 28px; font-style: normal; font-size: 14px; letter-spacing: .14em; text-transform: uppercase; }
+
+  /* Footer / next */
+  .next { padding-bottom: 0; overflow: hidden; }
+  .next__grid { display: grid; grid-template-columns: auto 1fr; align-items: end; gap: 24px; }
+  .next__text { justify-self: end; text-align: right; padding-bottom: clamp(24px, 4vw, 56px); }
+  .next__kicker { font-size: 14px; letter-spacing: .14em; text-transform: uppercase; opacity: .7; }
+  .next__link { font-family: var(--display); font-weight: 800; font-size: clamp(72px, 15vw, 240px); line-height: .85; text-transform: uppercase; color: var(--sky); text-decoration: none; display: inline-flex; align-items: center; gap: .1em; transition: color .25s; }
+  .next__link:hover { color: var(--red); }
+  .next__link .arrow { display: inline-block; transition: transform .35s var(--ease); font-size: .6em; }
+  .next__link:hover .arrow { transform: translateX(.2em); }
+  .next__guy { width: clamp(180px, 24vw, 360px); margin-bottom: -4px; transform: translateY(10%); transition: transform .6s var(--ease); }
+  .next:hover .next__guy { transform: translateY(0); }
+  .foot { border-top: 1px solid rgba(255,255,255,.15); }
+  .foot .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; padding-top: 20px; padding-bottom: 28px; font-size: 14px; }
+  .foot nav { display: flex; gap: 24px; text-transform: uppercase; letter-spacing: .08em; }
+  .foot a { text-decoration: none; opacity: .75; }
+  .foot a:hover { opacity: 1; color: var(--yellow); }
+
+  /* Lightbox */
+  .lb { position: fixed; inset: 0; z-index: 100; background: rgba(0,0,0,.92); display: grid; place-items: center; padding: 24px; opacity: 0; pointer-events: none; transition: opacity .25s; cursor: zoom-out; }
+  .lb.is-open { opacity: 1; pointer-events: auto; }
+  .lb img { max-width: min(1600px, 100%); max-height: 90vh; width: auto; height: auto; border-radius: 12px; background: var(--white); transform: scale(.96); transition: transform .3s var(--ease); }
+  .lb.is-open img { transform: scale(1); }
+  .lb__close { position: absolute; top: 16px; right: 16px; background: var(--white); color: var(--black); border: 0; width: 48px; height: 48px; border-radius: 50%; font-size: 22px; cursor: pointer; }
+
+  /* Reveal */
+  .reveal { opacity: 0; transform: translateY(40px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+  .reveal.is-in { opacity: 1; transform: none; }
+
+  /* Eye */
+  /* Eye: a red lid drops and the iris glances right, then snaps back */
+  .eye { overflow: visible; }
+  .eye__body, .eye__iris, .eye__lid { transform-box: view-box; transition: transform .14s cubic-bezier(.3, .7, .3, 1); }
+  .eye__body { transform-origin: 60px 32px; }
+  .eye__lid { transform: translateY(-40px); }
+  .eye.is-look .eye__body, .eye.is-look .eye__iris, .eye.is-look .eye__lid { transition-duration: .18s; }
+  .eye.is-look .eye__body { transform: scale(1.045); }
+  .eye.is-look .eye__iris { transform: translate(28px, 1.5px); }
+  .eye.is-look .eye__lid { transform: none; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 960px) {
+    .hero__intro, .brief__head { grid-template-columns: 1fr; }
+    .cards { grid-template-columns: 1fr; }
+    .card { min-height: 0; }
+    .routes { grid-template-columns: 1fr; }
+    .bento { grid-template-columns: 1fr 1fr; grid-auto-rows: auto; grid-template-areas: "a a" "b b" "c c" "d e" "f f"; }
+    .bento .b1 { aspect-ratio: 1 / 1; }
+    .bento .b2, .bento .b3 { aspect-ratio: 4 / 3; }
+    .bento .b4, .bento .b5 { aspect-ratio: 1 / 1; }
+    .bento .b6 { aspect-ratio: 3.4 / 1; }
+    .kit { grid-template-columns: 1fr; }
+    .icons-row { grid-template-columns: 1fr; }
+    .flipcard { grid-template-columns: 1fr; }
+    .icons-row .frame { aspect-ratio: 1 / 1; }
+    .world .w1, .world .w2, .world .w3, .world .w4 { grid-column: span 12; }
+    .world .w2 { aspect-ratio: 16 / 9.6; }
+    .world .w3 { aspect-ratio: 4 / 3; }
+    .kolam { grid-template-columns: 1fr; }
+    .ba { aspect-ratio: 4 / 3; }
+    .next__grid { grid-template-columns: 1fr; }
+    .next__text { order: -1; padding-bottom: 0; }
+    .next__guy { justify-self: start; }
+  }
+  @media (max-width: 600px) {
+    .nav__links a:not(.nav__back) { display: none; }
+    .swatches { grid-template-columns: repeat(2, 1fr); }
+    .swatch:first-child { grid-column: span 2; aspect-ratio: 2.2 / 1; }
+    .meta { grid-template-columns: 1fr; }
+    .meta div:nth-child(odd) { padding-right: 0; }
+    .route__media { grid-template-columns: 1fr; }
+    .route__media .frame { aspect-ratio: 4 / 3; }
+    .ba__knob { width: 48px; height: 48px; font-size: 20px; }
+    .ba__note { grid-template-columns: 1fr; gap: 8px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+    .reveal { opacity: 1; transform: none; }
+    .hero__media img { transform: none; }
+  }
+  :root { --accent: #3ddc97; }
+
+  /* ---------- Product design ---------- */
+  .hero__title--pd { font-size: clamp(76px, 14vw, 220px); }
+  .hero__media { background: #111; }
+  .hero__media img { object-fit: cover; object-position: top left; transform: none; }
+  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(24px, 3vw, 40px); }
+  .stat { border: 1.5px solid rgba(255,255,255,.16); border-radius: var(--radius); padding: clamp(18px, 2vw, 28px); }
+  .stat b { display: block; font-family: var(--display); font-weight: 800; font-size: clamp(56px, 6vw, 104px); line-height: .85; color: var(--accent); }
+  .stat span { display: block; margin-top: 10px; font-size: 14px; letter-spacing: .1em; text-transform: uppercase; opacity: .7; }
+
+  .lead { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(24px, 5vw, 80px); align-items: start; margin-top: clamp(28px, 3vw, 44px); }
+  .lead p { margin: 0 0 16px; font-size: clamp(18px, 1.45vw, 22px); line-height: 1.4; opacity: .9; }
+  .lead p.big { font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: clamp(32px, 3.4vw, 58px); line-height: .92; opacity: 1; }
+  .lead p.big em { font-style: normal; color: var(--accent); }
+
+  .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(28px, 3vw, 44px); counter-reset: s; }
+  .step { border-radius: var(--radius); padding: clamp(18px, 2vw, 28px); background: #141414; border: 1.5px solid rgba(255,255,255,.1); transition: transform .35s var(--ease), border-color .3s; }
+  .step:hover { transform: translateY(-4px); border-color: var(--accent); }
+  .step__n { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: var(--accent); color: #000; font-size: 14px; }
+  .step b { display: block; margin-top: 16px; font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: clamp(30px, 2.6vw, 42px); line-height: .9; }
+  .step p { margin: 8px 0 0; opacity: .8; font-size: 16px; line-height: 1.35; }
+
+  .probs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(32px, 4vw, 56px); }
+  .prob { border-radius: var(--radius); padding: clamp(18px, 2vw, 26px); background: #141414; border-left: 4px solid var(--accent); }
+  .prob small { font-size: 12px; letter-spacing: .14em; opacity: .55; }
+  .prob b { display: block; margin: 8px 0; font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: clamp(26px, 2.2vw, 36px); line-height: .92; }
+  .prob p { margin: 0; font-size: 16px; line-height: 1.4; opacity: .8; }
+
+  .path { list-style: none; margin: clamp(32px, 4vw, 56px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; position: relative; }
+  .path::before { content: ""; position: absolute; left: 0; right: 0; top: 21px; height: 2px; background: rgba(255,255,255,.18); }
+  .path li { position: relative; padding-right: 18px; }
+  .path i { position: relative; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: #000; border: 2px solid var(--accent); font-style: normal; font-size: 14px; transition: background .3s, color .3s; }
+  .path li:hover i { background: var(--accent); color: #000; }
+  .path b { display: block; margin-top: 16px; font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: clamp(28px, 2.4vw, 40px); line-height: .9; }
+  .path p { margin: 8px 0 0; font-size: 15px; line-height: 1.4; opacity: .8; }
+  .principle { margin-top: clamp(28px, 3vw, 44px); background: var(--accent); color: #000; border-radius: var(--radius); padding: clamp(20px, 2.4vw, 34px); font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: clamp(30px, 3.2vw, 54px); line-height: .92; }
+
+  .sev-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: clamp(28px, 3vw, 40px); }
+  .sev-chip { all: unset; cursor: pointer; border: 1.5px solid rgba(255,255,255,.35); border-radius: 999px; padding: 9px 16px; font-size: 14px; text-transform: uppercase; letter-spacing: .08em; transition: background .2s, color .2s, border-color .2s; }
+  .sev-chip.is-on { background: #fff; color: #000; border-color: #fff; }
+  .sev-chip:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+  .audit { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 16px; }
+  .audit th { text-align: left; font-weight: 400; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; opacity: .55; padding: 0 12px 12px 0; border-bottom: 1px solid rgba(255,255,255,.2); }
+  .audit td { padding: 16px 12px 16px 0; border-bottom: 1px solid rgba(255,255,255,.12); vertical-align: top; line-height: 1.35; transition: opacity .3s; }
+  .audit td:first-child { font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: 22px; line-height: 1; }
+  .audit tr.is-dim td { opacity: .18; }
+  .sev { display: inline-block; padding: 5px 10px; border-radius: 999px; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
+  .sev--critical { background: #ff1801; color: #fff; } .sev--high { background: var(--orange); color: #000; } .sev--moderate { background: #2979ff; color: #fff; }
+
+  .ba-block { margin-top: clamp(48px, 6vw, 88px); }
+  .ba-block h3 { font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: clamp(36px, 4vw, 66px); line-height: .9; margin: 0; }
+  .ba-block h3 small { display: block; font-family: var(--body); font-weight: 400; font-size: 13px; letter-spacing: .14em; color: var(--accent); margin-bottom: 10px; }
+  .cmp { position: relative; margin-top: 20px; border-radius: var(--radius); overflow: hidden; background: #000; --x: 50%; user-select: none; touch-action: pan-y; }
+  .cmp img { display: block; width: 100%; height: auto; pointer-events: none; }
+  .cmp__after { position: absolute; inset: 0; clip-path: inset(0 0 0 var(--x)); }
+  .cmp__after img { height: 100%; object-fit: cover; }
+  .cmp__line { position: absolute; top: 0; bottom: 0; left: var(--x); width: 3px; margin-left: -1.5px; background: var(--accent); pointer-events: none; }
+  .cmp__knob { position: absolute; top: 50%; left: var(--x); width: 56px; height: 56px; margin: -28px 0 0 -28px; border-radius: 50%; background: var(--accent); color: #000; display: grid; place-items: center; font-size: 18px; pointer-events: none; box-shadow: 0 6px 24px rgba(0,0,0,.4); }
+  .cmp__tag { position: absolute; top: 12px; padding: 6px 10px; border-radius: 999px; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; background: rgba(0,0,0,.7); color: #fff; pointer-events: none; }
+  .cmp__tag--b { left: 12px; } .cmp__tag--a { right: 12px; background: var(--accent); color: #000; }
+  .cmp input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; }
+  .cmp input:focus-visible + .cmp__line { box-shadow: 0 0 0 3px var(--yellow); }
+  .ba-notes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(12px, 1.5vw, 20px); margin-top: 14px; }
+  .ba-notes ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font-size: 16px; line-height: 1.35; }
+  .ba-notes li { display: flex; gap: 10px; }
+  .ba-notes li::before { content: "✕"; color: #ff4d4d; flex: none; }
+  .ba-notes ul.after li::before { content: "✓"; color: var(--accent); }
+  .ba-notes h4 { margin: 0 0 8px; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; opacity: .55; font-weight: 400; }
+  .duo { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(12px, 1.5vw, 20px); margin-top: 20px; }
+  .duo .frame { margin: 0; background: #111; }
+  .duo .frame img { object-fit: contain; }
+
+  .wide { margin: clamp(32px, 4vw, 56px) 0 0; background: #111; }
+  .pair { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: clamp(12px, 1.5vw, 20px); margin-top: clamp(32px, 4vw, 56px); align-items: start; }
+  .pair .frame { margin: 0; background: #111; }
+
+  .sw { margin-top: clamp(32px, 4vw, 56px); }
+  .sw-tabs { display: flex; flex-wrap: wrap; gap: 8px; }
+  .sw-tab { all: unset; cursor: pointer; border: 1.5px solid rgba(255,255,255,.35); border-radius: 999px; padding: 10px 16px; font-size: 14px; text-transform: uppercase; letter-spacing: .08em; transition: background .2s, color .2s, border-color .2s; }
+  .sw-tab:hover { border-color: #fff; }
+  .sw-tab.is-on { background: var(--accent); border-color: var(--accent); color: #000; }
+  .sw-tab:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+  .sw-stage { position: relative; margin-top: 16px; aspect-ratio: var(--ar, 16 / 9); border-radius: var(--radius); overflow: hidden; background: #1b1b1b; cursor: pointer; }
+  .sw-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.03); transition: opacity .5s var(--ease), transform 1.2s var(--ease); }
+  .sw-img.is-on { opacity: 1; transform: none; }
+  .sw-bar { position: absolute; left: 0; bottom: 0; height: 4px; width: 100%; background: var(--accent); transform-origin: 0 50%; transform: scaleX(0); }
+  .sw-stage.is-auto .sw-bar { animation: swBar 3.8s linear forwards; }
+  @keyframes swBar { to { transform: scaleX(1); } }
+  .sw-notes { position: relative; min-height: 2.4em; margin-top: 12px; }
+  .sw-note { position: absolute; inset: 0 auto auto 0; margin: 0; font-size: clamp(18px, 1.5vw, 22px); opacity: 0; transform: translateY(8px); transition: opacity .35s, transform .35s var(--ease); }
+  .sw-note.is-on { opacity: 1; transform: none; }
+
+  .mods { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+  .mods span { border: 1.5px solid rgba(255,255,255,.22); border-radius: 999px; padding: 8px 14px; font-size: 14px; transition: transform .3s var(--ease), opacity .3s; }
+  .mods span.keep { border-color: var(--accent); color: var(--accent); }
+  .mods:hover span:not(.keep) { opacity: .25; transform: scale(.94); }
+  .pull { margin: 20px 0 0; padding-left: 18px; border-left: 3px solid var(--accent); font-size: clamp(20px, 1.8vw, 26px); line-height: 1.3; }
+  .pull cite { display: block; margin-top: 8px; font-size: 13px; font-style: normal; letter-spacing: .1em; text-transform: uppercase; opacity: .6; }
+  .prio { list-style: none; margin: 20px 0 0; padding: 0; display: grid; gap: 10px; }
+  .prio li { display: flex; gap: 14px; align-items: center; background: #141414; border-radius: 14px; padding: 14px 16px; font-size: 17px; }
+  .prio b { flex: none; width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; background: var(--accent); color: #000; font-family: var(--display); font-weight: 800; font-size: 22px; }
+
+  .feats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(32px, 4vw, 56px); }
+  .feat { border-radius: var(--radius); padding: clamp(18px, 2vw, 26px); background: #141414; border: 1.5px solid rgba(255,255,255,.08); transition: transform .35s var(--ease), border-color .3s; }
+  .feat:hover { transform: translateY(-4px); border-color: var(--accent); }
+  .feat small { font-size: 12px; letter-spacing: .14em; color: var(--accent); }
+  .feat b { display: block; margin: 8px 0; font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: clamp(26px, 2.2vw, 36px); line-height: .92; }
+  .feat p { margin: 0; font-size: 16px; line-height: 1.4; opacity: .8; }
+  .lessons { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(32px, 4vw, 56px); }
+  .lesson { border-radius: var(--radius); padding: clamp(20px, 2.4vw, 32px); background: #141414; }
+  .lesson b { display: block; font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: clamp(30px, 2.8vw, 46px); line-height: .9; color: var(--accent); }
+  .lesson p { margin: 10px 0 0; font-size: 17px; line-height: 1.4; opacity: .85; }
+  .review { margin-top: clamp(14px, 1.5vw, 20px); background: var(--accent); color: #000; border-radius: var(--radius); padding: clamp(22px, 2.6vw, 40px); }
+  .review p { margin: 0; font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: clamp(30px, 3.2vw, 54px); line-height: .92; }
+  .review cite { display: block; margin-top: 14px; font-style: normal; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; }
+
+  .next__prev { display: inline-block; margin-top: 18px; font-size: 14px; letter-spacing: .12em; text-transform: uppercase; opacity: .7; text-decoration: none; }
+  .next__prev:hover { opacity: 1; color: var(--yellow); }
+  .next__link--long { font-size: clamp(56px, 9vw, 150px); }
+
+  @media (max-width: 960px) {
+    .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .lead, .pair { grid-template-columns: 1fr; }
+    .steps, .probs, .feats { grid-template-columns: 1fr 1fr; }
+    .path { grid-template-columns: 1fr; gap: 22px; }
+    .path::before { display: none; }
+    .audit th:nth-child(4), .audit td:nth-child(4) { display: none; }
+  }
+  @media (max-width: 600px) {
+    .steps, .probs, .feats, .lessons, .duo, .ba-notes { grid-template-columns: 1fr; }
+    .audit { font-size: 14px; }
+    .audit td:first-child { font-size: 18px; }
+    .cmp__knob { width: 44px; height: 44px; margin: -22px 0 0 -22px; }
+  }
+
+
+  :root { --accent: #a58bff; --l-blue: #3ea6ff; --l-purple: #a58bff; --l-teal: #43e0d0; }
+
+  /* Before / after routes */
+  .routes .route p { font-size: clamp(16px, 1.15vw, 18px); }
+  .route__flow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: auto; font-family: var(--body); font-size: 14px; font-weight: 600; }
+  .route__flow span { border: 1.5px solid rgba(255,255,255,.25); border-radius: 999px; padding: 7px 12px; }
+  .route__flow i { font-style: normal; opacity: .6; }
+  .route--bad .route__flow span:last-child { border-color: var(--red); color: var(--red); }
+  .route--win { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
+  .route--win .route__flow span { border-color: var(--accent); }
+
+  /* Library tree */
+  .tree { margin-top: clamp(32px, 4vw, 56px); display: grid; justify-items: center; gap: 0; font-family: var(--body); }
+  .tree__row { display: flex; justify-content: center; gap: clamp(12px, 6vw, 120px); position: relative; padding-top: 34px; width: 100%; }
+  .tree__row:first-child { padding-top: 0; }
+  .tree__row:not(:first-child)::before { content: ""; position: absolute; top: 0; left: 50%; width: 2px; height: 34px; background: linear-gradient(rgba(255,255,255,.15), rgba(255,255,255,.5)); }
+  .tree__row:not(:first-child)::after { content: ""; position: absolute; top: 0; left: calc(50% - 4px); width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px var(--accent); animation: drip 2.4s linear infinite; }
+  @keyframes drip { from { transform: translate(-1px, -6px); opacity: 0; } 20% { opacity: 1; } to { transform: translate(-1px, 30px); opacity: 0; } }
+  .node { border-radius: 14px; padding: 12px 18px; font-weight: 700; font-size: clamp(14px, 1.1vw, 17px); text-align: center; border: 1.5px solid rgba(255,255,255,.3); background: #111; }
+  .node small { display: block; font-weight: 500; font-size: 13px; opacity: .7; margin-top: 4px; }
+  .node--spt { background: #2bb24c; border-color: #2bb24c; color: #000; }
+  .node--rapid { background: #ff9a3c; border-color: #ff9a3c; color: #000; }
+  .node--mother { background: var(--l-blue); border-color: var(--l-blue); color: #001; padding: 16px 24px; font-size: clamp(16px, 1.4vw, 22px); }
+  .node--mother small { opacity: .8; }
+  .lock { display: inline-block; width: 1em; height: 1em; vertical-align: -0.12em; margin-right: 6px; }
+  .layers { width: 100%; display: grid; gap: 34px; position: relative; padding-top: 34px; }
+  .layers::before { content: ""; position: absolute; top: 0; bottom: 30px; left: 50%; width: 2px; background: rgba(255,255,255,.18); }
+  .layer { position: relative; border-radius: 18px; padding: clamp(14px, 1.6vw, 20px); border: 1.5px solid var(--c); background: color-mix(in srgb, var(--c) 10%, #000); transition: transform .35s var(--ease), background .3s; }
+  .layer:hover { transform: translateY(-4px); background: color-mix(in srgb, var(--c) 20%, #000); }
+  .layer__head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 16px; align-items: baseline; margin-bottom: 12px; }
+  .layer__head b { font-family: var(--body); font-weight: 800; font-size: clamp(18px, 1.5vw, 24px); color: var(--c); }
+  .layer__head span { font-size: 14px; opacity: .75; }
+  .layer__kits { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+  .layer__kits span { border-radius: 10px; padding: 10px 8px; text-align: center; font-size: 14px; font-weight: 600; background: color-mix(in srgb, var(--c) 22%, #000); border: 1px solid color-mix(in srgb, var(--c) 50%, transparent); }
+  .tree__note { margin: 18px 0 0; max-width: 60ch; text-align: center; opacity: .8; font-size: 15px; }
+
+  /* Token tiers */
+  .tiers { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(32px, 4vw, 56px); counter-reset: t; }
+  .tier { position: relative; border-radius: var(--radius); padding: clamp(18px, 2vw, 24px); background: #141414; border: 1.5px solid rgba(255,255,255,.08); display: flex; flex-direction: column; gap: 10px; transition: transform .35s var(--ease), border-color .3s; }
+  .tier:hover { transform: translateY(-6px); border-color: var(--accent); }
+  .tier:not(:last-child)::after { content: "→"; position: absolute; right: calc(-1 * clamp(10px, 1.2vw, 16px)); top: 50%; transform: translate(50%, -50%); z-index: 1; width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; background: var(--accent); color: #000; font-size: 14px; font-weight: 800; }
+  .tier small { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
+  .tier b { font-family: var(--body); font-weight: 800; font-size: clamp(20px, 1.6vw, 26px); line-height: 1.15; letter-spacing: -.02em; }
+  .tier p { margin: 0; opacity: .85; font-size: 15px; }
+  .tier dl { margin: auto 0 0; display: grid; gap: 4px; font-size: 13px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,.1); }
+  .tier dt { opacity: .55; text-transform: uppercase; letter-spacing: .1em; font-size: 11px; }
+  .tier dd { margin: 0 0 6px; font-weight: 600; }
+
+  /* Theme toy */
+  .toy { margin-top: clamp(32px, 4vw, 56px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 360px); gap: clamp(20px, 3vw, 48px); align-items: center; border-radius: calc(var(--radius) + 6px); border: 1.5px solid rgba(255,255,255,.12); padding: clamp(18px, 3vw, 40px); background: #0e0e0e; }
+  .toy__label { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; opacity: .7; margin: 0 0 12px; font-weight: 600; }
+  .toy__picks { display: flex; flex-wrap: wrap; gap: 8px; }
+  .toy__pick { all: unset; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; border: 1.5px solid rgba(255,255,255,.3); border-radius: 999px; padding: 9px 14px 9px 10px; font-size: 14px; font-weight: 600; transition: border-color .2s, background .2s; }
+  .toy__pick i { width: 14px; height: 14px; border-radius: 50%; background: var(--dot); }
+  .toy__pick:hover { border-color: #fff; }
+  .toy__pick.is-on { background: #fff; color: #000; border-color: #fff; }
+  .toy__pick:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+  .chain { list-style: none; margin: clamp(20px, 2.4vw, 32px) 0 0; padding: 0; display: grid; gap: 8px; font-size: 14px; }
+  .chain li { display: grid; grid-template-columns: 92px auto 1fr; align-items: center; gap: 10px; }
+  .chain li small { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; opacity: .55; }
+  .chain code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 13px; background: #1c1c1c; border: 1px solid rgba(255,255,255,.12); border-radius: 8px; padding: 6px 10px; transition: border-color .3s, color .3s; }
+  .chain li.is-hot code { border-color: var(--b5); color: var(--b5); }
+  .chain li span { font-size: 13px; opacity: .65; }
+  .toy__note { margin: 16px 0 0; font-size: 13px; opacity: .6; }
+
+  .phone { --b5: #8b66d9; --b1: #efeafc; --b7: #6a46c0; --on: #fff; border-radius: 34px; background: #fafafa; color: #18181b; padding: 18px 16px 16px; box-shadow: 0 0 0 8px #1d1d1d, 0 30px 60px rgba(0,0,0,.5); font-family: var(--body); max-width: 340px; width: 100%; justify-self: center; }
+  .phone * { transition: background-color .45s var(--ease), color .45s var(--ease), border-color .45s var(--ease); }
+  .ph__bar { display: flex; justify-content: space-between; font-size: 11px; font-weight: 700; opacity: .8; padding: 0 6px 10px; }
+  .ph__title { text-align: center; font-weight: 700; font-size: 17px; margin: 4px 0 12px; }
+  .ph__tabs { display: flex; justify-content: space-around; font-size: 13px; font-weight: 600; color: #71717a; border-bottom: 1px solid #e4e4e7; margin-bottom: 10px; }
+  .ph__tabs span { padding: 8px 4px; border-bottom: 2px solid transparent; margin-bottom: -1px; }
+  .ph__tabs .on { color: var(--b5); border-color: var(--b5); }
+  .ph__item { display: flex; align-items: center; gap: 10px; padding: 9px 8px; border-radius: 12px; background: #fff; margin-bottom: 8px; box-shadow: 0 1px 2px rgba(0,0,0,.05); }
+  .ph__ico { width: 34px; height: 34px; border-radius: 10px; background: var(--b1); display: grid; place-items: center; color: var(--b5); font-size: 13px; font-weight: 800; flex: none; }
+  .ph__item b { display: block; font-size: 13px; }
+  .ph__item small { display: block; font-size: 11px; color: #71717a; }
+  .ph__chips { display: flex; gap: 6px; margin: 12px 0; }
+  .ph__chips span { font-size: 11px; font-weight: 700; padding: 6px 10px; border-radius: 999px; background: var(--b1); color: var(--b7); }
+  .ph__chips span:first-child { background: var(--b5); color: var(--on); }
+  .ph__row { display: flex; align-items: center; justify-content: space-between; font-size: 13px; font-weight: 600; padding: 4px 4px 12px; }
+  .ph__toggle { width: 40px; height: 24px; border-radius: 999px; background: var(--b5); position: relative; }
+  .ph__toggle::after { content: ""; position: absolute; right: 3px; top: 3px; width: 18px; height: 18px; border-radius: 50%; background: #fff; }
+  .ph__cta { display: block; width: 100%; border: 0; border-radius: 14px; padding: 14px; font: inherit; font-weight: 700; font-size: 14px; background: var(--b5); color: var(--on); }
+
+  /* Categories */
+  .cats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(32px, 4vw, 56px); }
+  .cat { border-radius: var(--radius); padding: clamp(18px, 2vw, 24px); background: #141414; border: 1.5px solid rgba(255,255,255,.08); transition: transform .35s var(--ease), border-color .3s; }
+  .cat:hover { transform: translateY(-4px); border-color: var(--dot); }
+  .cat__head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 12px; }
+  .cat__head b { font-family: var(--body); font-weight: 800; font-size: clamp(20px, 1.6vw, 26px); letter-spacing: -.02em; }
+  .cat__head span { font-family: var(--display); font-size: clamp(34px, 3vw, 48px); line-height: .8; color: var(--dot); }
+  .cat ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+  .cat li { font-size: 13px; font-weight: 600; padding: 5px 10px; border-radius: 999px; background: #1e1e1e; border: 1px solid rgba(255,255,255,.1); }
+  .cat li a { text-decoration: none; color: var(--accent); }
+  .cat li a:hover { text-decoration: underline; }
+
+  /* App screens */
+  .phones { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: clamp(8px, 1.2vw, 18px); margin-top: clamp(32px, 4vw, 56px); }
+  .phones .frame { margin: 0; border-radius: clamp(14px, 1.6vw, 26px); background: #111; aspect-ratio: 412 / 917; }
+  .phones .frame:nth-child(even) { transform: translateY(clamp(12px, 3vw, 48px)); }
+  .phones .frame img { object-fit: cover; }
+  .phones-note { margin-top: clamp(28px, 4vw, 72px); }
+
+  .dls-sw .sw-img { object-fit: contain; background: #1e1e1e; }
+
+  .xlink { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; font-weight: 700; color: var(--accent); text-decoration: none; border-bottom: 2px solid currentColor; padding-bottom: 2px; }
+
+  @media (max-width: 960px) {
+    .tiers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .tier:nth-child(2)::after { display: none; }
+    .toy { grid-template-columns: 1fr; }
+    .cats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .phones { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .phones .frame:nth-child(even) { transform: none; }
+    .phones .frame:nth-child(3n+2) { transform: translateY(24px); }
+  }
+  @media (max-width: 600px) {
+    .tiers, .cats { grid-template-columns: 1fr; }
+    .tier::after { display: none; }
+    .layer__kits { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .tree__row { gap: 10px; }
+    .chain li { grid-template-columns: 1fr; gap: 4px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .tree__row::after { animation: none; display: none; }
+  }
+</style>
+<link rel="stylesheet" href="../assets/readable-type.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <path id="eye-almond" d="M2 32 C 28 -9, 92 -9, 118 32 C 92 73, 28 73, 2 32 Z"/>
+    <clipPath id="eye-clip"><use href="#eye-almond"/></clipPath>
+  </defs>
+</svg>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="nav__brand" href="../index.html">Sunil Sebastian</a>
+    <nav class="nav__links" aria-label="Main">
+      <a class="nav__back" href="../index.html#product-design">← All work</a>
+      <a href="../index.html#about">About</a>
+      <a href="mailto:sunil@sebastians.tv">Contact</a>
+    </nav>
+  </div>
+  <div class="nav__progress" aria-hidden="true"></div>
+</header>
+
+<main>
+  <section class="hero" aria-labelledby="title">
+    <div class="wrap">
+      <div class="hero__kicker">Product design · Case study 03</div>
+      <h1 id="title" class="display hero__title hero__title--pd">
+        <svg class="eye eye--hero" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg>
+        <span>Imagination</span> <span style="color:var(--accent)">DLS</span>
+      </h1>
+      <div class="hero__intro">
+        <p class="hero__lede">One design language for 40+ apps, so everything Imagination Holdings ships feels like one brand.</p>
+        <dl class="meta"><div><dt>Company</dt><dd>Imagination Holdings</dd></div><div><dt>Role</dt><dd>Design lead</dd></div><div><dt>Team</dt><dd>Product design team</dd></div><div><dt>Scope</dt><dd>Library structure, tokens, components, governance</dd></div></dl>
+      </div>
+      <figure class="hero__media frame" style="margin-left:0;margin-right:0;margin-bottom:0">
+        <img src="assets/hero.jpg" alt="Design Language System V.1 cover: typography, buttons, icons and colour tokens" fetchpriority="high">
+      </figure>
+    </div>
+  </section>
+
+  <section id="results" aria-label="At a glance" style="padding-top:0;padding-bottom:0">
+    <div class="wrap">
+      <div class="stats">
+        <div class="stat reveal"><b data-to="40" data-suf="+">40+</b><span>Apps on one system</span></div>
+        <div class="stat reveal"><b data-to="6">6</b><span>Product categories</span></div>
+        <div class="stat reveal"><b data-to="4">4</b><span>Token tiers</span></div>
+        <div class="stat reveal"><b data-to="4000" data-suf="+">4000+</b><span>Icons in 4 styles</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="context" aria-labelledby="context-h">
+    <div class="wrap">
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>01</b> The brief</div>
+      <h2 id="context-h" class="display h2 reveal">Many apps. <span style="color:var(--accent)">One brand.</span></h2>
+      
+      <div class="lead reveal">
+        <p class="big">Imagination Holdings ships dozens of apps. <em>They should feel like one family.</em></p>
+        <div><p>The portfolio spans PDF tools, AI tutors, Quran learning, social, entertainment and utility apps, built by different studios (9D, ImaginationAI) and different teams.</p><p>I led the design team to build one Design Language System (DLS) for all of it. The goal: once an app hits the store, it should feel like it comes from the same brand.</p></div>
+      </div>
+    </div>
+  </section>
+  <section id="portfolio" aria-labelledby="portfolio-h" style="padding-top:0">
+    <div class="wrap">
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>02</b> The portfolio</div>
+      <h2 id="portfolio-h" class="display h2 reveal">Six categories. <span style="color:var(--accent)">Forty-one apps.</span></h2>
+      
+      <p class="sub reveal">We mapped every product into a category first. Categories became the middle layer of the system.</p>
+      <div class="cats"><article class="cat reveal" style="--dot:#3b82f6"><div class="cat__head"><b>Docu</b><span>10</span></div><ul><li>PDF Reader</li><li>PDF Experimental</li><li>PDF Scanner</li><li>PDF Reader AI</li><li>PDF Editor</li><li>Docu-fence</li><li>Document Scanner</li><li>Xeno</li><li>Word Reader</li><li>Synapse</li></ul></article><article class="cat reveal" style="--dot:#eab308"><div class="cat__head"><b>Utility</b><span>16</span></div><ul><li>GPS Speedometer</li><li>Live Earth Map</li><li>AI Interior</li><li>Qibla Finder</li><li>Photo Translator</li><li>App Locker</li><li>Live Street View</li><li>Calculator</li><li>Astrology</li><li>Speak to Translate</li><li>Notepad</li><li>Resume Builder</li><li>Digital Clock</li><li>Go Novel</li><li>QR Scanner</li><li>QR Reader</li></ul></article><article class="cat reveal" style="--dot:#22c55e"><div class="cat__head"><b>Education</b><span>05</span></div><ul><li><a href="../al-siraat/index.html">Al Siraat →</a></li><li>Al Quran iOS</li><li>Al Quran Android</li><li>Lerna AI</li><li>Dictionary</li></ul></article><article class="cat reveal" style="--dot:#ef4444"><div class="cat__head"><b>Social</b><span>04</span></div><ul><li>Tawk</li><li>Rayye</li><li>Face Swap</li><li>Wardrobe</li></ul></article><article class="cat reveal" style="--dot:#ec4899"><div class="cat__head"><b>Entertainment</b><span>04</span></div><ul><li>Binge Beyond</li><li>Music Player</li><li>Video Downloader</li><li>Music AI</li></ul></article><article class="cat reveal" style="--dot:#43e0d0"><div class="cat__head"><b>Health</b><span>02</span></div><ul><li>Femverse</li><li>Calorie Tracker</li></ul></article></div>
+    </div>
+  </section>
+  <section id="problem" aria-labelledby="problem-h" style="padding-top:0">
+    <div class="wrap">
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>03</b> The problem</div>
+      <h2 id="problem-h" class="display h2 reveal">Copies <span style="color:var(--accent)">drift.</span></h2>
+      
+      <p class="sub reveal">We ran a DSL session in FigJam to compare how the library worked against how it should work.</p>
+      <div class="routes">
+        <article class="route route--bad reveal"><span class="route__tag">Before</span><h3>Copy &amp; edit</h3><p>Teams duplicated the locked mother file and edited their copy for each project. Every copy started drifting on day one, and fixes never travelled back.</p><div class="route__flow"><span>Mother file</span><i>→</i><span>Copy</span><i>→</i><span>Edit</span><i>→</i><span>Drift</span></div></article>
+        <article class="route route--win reveal"><span class="route__tag">After</span><h3>Publish &amp; subscribe</h3><p>The mother file stays locked and is published as a Figma library. Every category and product file links to it, never copies it, so one update reaches every app.</p><div class="route__flow"><span>Publish</span><i>→</i><span>Subscribe</span><i>→</i><span>Override</span><i>→</i><span>In sync</span></div></article>
+      </div>
+      <figure class="frame wide reveal"><img src="assets/session.jpg" alt="The DSL session FigJam board: library structure, tokenization strategy and the rapid-project track" loading="lazy"><span class="cap">The DSL session board</span></figure>
+    </div>
+  </section>
+  <section id="structure" aria-labelledby="structure-h" style="padding-top:0">
+    <div class="wrap">
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>04</b> Library structure</div>
+      <h2 id="structure-h" class="display h2 reveal">One parent. <span style="color:var(--accent)">Many children.</span></h2>
+      
+      <p class="sub reveal">Two kinds of projects feed one locked library, which flows down through categories into each brand.</p>
+      <div class="tree reveal" role="img" aria-label="Library structure: SPT and Rapid projects both use the locked IH Design System Library, which flows into category and brand libraries, each with foundations, icons, components and patterns">
+        <div class="tree__row"><div class="node">Company design system libraries</div></div>
+        <div class="tree__row"><div class="node node--spt">SPT projects</div><div class="node node--rapid">Rapid projects</div></div>
+        <div class="tree__row"><div class="node node--mother"><svg class="lock" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 10V7a5 5 0 0 1 10 0v3h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1h1Zm2 0h6V7a3 3 0 0 0-6 0v3Z"/></svg>IH Design System Library<small>The locked mother file, shared across the portfolio</small></div></div>
+        <div class="layers">
+          <div class="layer" style="--c:var(--l-blue)"><div class="layer__head"><b>Parent sub-libraries</b><span>Owned by the core DS team</span></div><div class="layer__kits"><span>Foundations</span><span>Icons</span><span>Components</span><span>Patterns</span></div></div>
+          <div class="layer" style="--c:var(--l-purple)"><div class="layer__head"><b>Categories</b><span>Docu, Health, Education… owned by category leads</span></div><div class="layer__kits"><span>Foundations</span><span>Icons</span><span>Components</span><span>Patterns</span></div></div>
+          <div class="layer" style="--c:var(--l-teal)"><div class="layer__head"><b>Brands</b><span>One per app, owned by its senior designer</span></div><div class="layer__kits"><span>Foundations</span><span>Icons</span><span>Components</span><span>Patterns</span></div></div>
+        </div>
+        <p class="tree__note">Each level only defines what it changes. Everything else is inherited.</p>
+      </div>
+    </div>
+  </section>
+  <section id="tokens" aria-labelledby="tokens-h" style="padding-top:0">
+    <div class="wrap">
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>05</b> Tokenization</div>
+      <h2 id="tokens-h" class="display h2 reveal">Four tiers. <span style="color:var(--accent)">Clear owners.</span></h2>
+      
+      <p class="sub reveal">Components never touch raw values. They read intent, and each tier above them has one owner.</p>
+      <div class="tiers">
+        <article class="tier reveal"><small>Tier 1</small><b>Core / primitive</b><p>Raw values, like purple.500. Never used by components directly. Never changes per brand.</p><dl><dt>Lives in</dt><dd>IH parent DLS</dd><dt>Owner</dt><dd>Core DS team</dd></dl></article>
+        <article class="tier reveal"><small>Tier 2</small><b>Semantic</b><p>Names what a value is for, not what it is. The only layer components reference.</p><dl><dt>Lives in</dt><dd>IH parent DLS</dd><dt>Owner</dt><dd>Core DS team</dd></dl></article>
+        <article class="tier reveal"><small>Tier 3</small><b>Category theme</b><p>The shared "feel" of all Docu apps, all Health apps, and so on.</p><dl><dt>Lives in</dt><dd>Category DLS files</dd><dt>Owner</dt><dd>Category design lead</dd></dl></article>
+        <article class="tier reveal"><small>Tier 4</small><b>Product brand</b><p>Final overrides for one app. Only what must differ from its category.</p><dl><dt>Lives in</dt><dd>Product DLS files</dd><dt>Owner</dt><dd>Product senior designer</dd></dl></article>
+      </div>
+      <div class="toy reveal">
+        <div>
+          <p class="toy__label">Try it: swap the category theme</p>
+          <div class="toy__picks"><button class="toy__pick is-on" aria-pressed="true" data-t="core" style="--dot:#8b66d9"><i></i>IH core</button><button class="toy__pick" aria-pressed="false" data-t="docu" style="--dot:#3b82f6"><i></i>Docu</button><button class="toy__pick" aria-pressed="false" data-t="education" style="--dot:#22c55e"><i></i>Education</button><button class="toy__pick" aria-pressed="false" data-t="social" style="--dot:#ef4444"><i></i>Social</button><button class="toy__pick" aria-pressed="false" data-t="entertainment" style="--dot:#ec4899"><i></i>Entertainment</button><button class="toy__pick" aria-pressed="false" data-t="utility" style="--dot:#eab308"><i></i>Utility</button></div>
+          <ol class="chain" aria-live="polite">
+            <li><small>Component</small><code>button.background</code><span>never changes</span></li>
+            <li><small>Tier 2</small><code>color.brand.primary</code><span>never changes</span></li>
+            <li class="is-hot"><small>Tier 3</small><code data-k="theme">core.brand</code><span>one switch here…</span></li>
+            <li class="is-hot"><small>Tier 1</small><code data-k="prim">purple.500</code><span>…re-themes every screen</span></li>
+          </ol>
+          <p class="toy__note">An illustration of the mechanism. Real category palettes are defined by each category lead.</p>
+        </div>
+        <div class="phone" aria-hidden="true">
+          <div class="ph__bar"><span>2:45</span><span>●●● ▮</span></div>
+          <div class="ph__title">PDF Scanner</div>
+          <div class="ph__tabs"><span class="on">All</span><span>Recent</span><span>Favourite</span></div>
+          <div class="ph__item"><span class="ph__ico">PDF</span><div><b>Quarterly report</b><small>Scanned today</small></div></div>
+          <div class="ph__item"><span class="ph__ico">PDF</span><div><b>Lease agreement</b><small>Edited yesterday</small></div></div>
+          <div class="ph__chips"><span>All files</span><span>Images</span><span>Docs</span></div>
+          <div class="ph__row">AI summaries<span class="ph__toggle"></span></div>
+          <button class="ph__cta" tabindex="-1">Continue</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="foundations" aria-labelledby="foundations-h" style="padding-top:0">
+    <div class="wrap">
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>06</b> Foundations</div>
+      <h2 id="foundations-h" class="display h2 reveal">Colour, type, <span style="color:var(--accent)">spacing.</span></h2>
+      
+      <p class="sub reveal">Seven colour ramps with light and dark pairs. Inter for type. A strict spacing and radius scale. Every token says when to use it, and when not to.</p>
+      <figure class="frame wide reveal"><img src="assets/prims.jpg" alt="Colour primitives: red, purple, green, pink, blue, gravois and yellow ramps from 50 to 950 with light and dark pairs" loading="lazy"><span class="cap">Colour primitives</span></figure>
+      <div class="pair">
+        <figure class="frame reveal"><img src="assets/colusage.jpg" alt="Semantic colour usage for surfaces, text and borders across neutral, brand and status colours" loading="lazy"><span class="cap">Semantic colour</span></figure>
+        <figure class="frame reveal"><img src="assets/tokens-type.jpg" alt="Typography token table with value, when to use and when to avoid" loading="lazy"><span class="cap">Type tokens</span></figure>
+      </div>
+    </div>
+  </section>
+  <section id="components" aria-labelledby="components-h" style="padding-top:0">
+    <div class="wrap">
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>07</b> Components</div>
+      <h2 id="components-h" class="display h2 reveal">Built once. <span style="color:var(--accent)">Used everywhere.</span></h2>
+      
+      <p class="sub reveal">Every component reads semantic tokens, so it re-themes itself in any category or brand.</p>
+      <div class="sw dls-sw reveal"><div class="sw-tabs"><button class="sw-tab is-on" aria-pressed="true">Buttons</button><button class="sw-tab" aria-pressed="false">Cards</button><button class="sw-tab" aria-pressed="false">Navigation</button><button class="sw-tab" aria-pressed="false">Dialogs</button><button class="sw-tab" aria-pressed="false">Icons</button></div><div class="sw-stage is-auto" style="--ar:16 / 10"><img class="sw-img is-on" src="assets/buttons.jpg" alt="CTA buttons in three sizes, three shapes and every state, plus social sign-in buttons" loading="lazy"><img class="sw-img" src="assets/cards.jpg" alt="List cards from single title to file previews, settings rows and chat cards" loading="lazy"><img class="sw-img" src="assets/nav.jpg" alt="Bottom navigation bars in six patterns with active states" loading="lazy"><img class="sw-img" src="assets/dialog.jpg" alt="Menu, details sheet, rename dialog and rate-us dialog" loading="lazy"><img class="sw-img" src="assets/icons.jpg" alt="Essential icons in outline, bold, two-tone and bulk styles" loading="lazy"><span class="sw-bar" aria-hidden="true"></span></div><div class="sw-notes" aria-live="polite"><p class="sw-note is-on">CTAs in 3 sizes, 3 shapes and every state.</p><p class="sw-note">List cards, from a single title to file previews.</p><p class="sw-note">Bottom nav in 6 patterns, with or without a centre action.</p><p class="sw-note">Menus, sheets and dialogs from the same tokens.</p><p class="sw-note">4,000+ icons in 31 sets, each in 4 styles.</p></div></div>
+    </div>
+  </section>
+  <section id="apps" aria-labelledby="apps-h" style="padding-top:0">
+    <div class="wrap">
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>08</b> In the wild</div>
+      <h2 id="apps-h" class="display h2 reveal">Different apps. <span style="color:var(--accent)">Same DNA.</span></h2>
+      
+      <p class="sub reveal">Xeno AI, Brainly Tutor and PDF Scanner are built by different teams for different users. They still share every button, field, sheet and nav bar.</p>
+      <div class="phones"><figure class="frame reveal"><img src="assets/scr-1.jpg" alt="Xeno AI onboarding: AI summarization" loading="lazy"></figure><figure class="frame reveal"><img src="assets/scr-4.jpg" alt="Edit profile form with filled fields" loading="lazy"></figure><figure class="frame reveal"><img src="assets/scr-5.jpg" alt="Brainly Tutor paywall with plan cards" loading="lazy"></figure><figure class="frame reveal"><img src="assets/scr-6.jpg" alt="PDF Scanner file list with tabs and bottom nav" loading="lazy"></figure><figure class="frame reveal"><img src="assets/scr-8.jpg" alt="Rate-us dialog over the file list" loading="lazy"></figure><figure class="frame reveal"><img src="assets/scr-9.jpg" alt="File details bottom sheet" loading="lazy"></figure></div>
+      <p class="sub phones-note reveal">Want the brand side of the story? <a class="xlink" href="../imagination-holdings/index.html">Imagination Holdings identity →</a></p>
+    </div>
+  </section>
+  <section id="rapid" aria-labelledby="rapid-h" style="padding-top:0">
+    <div class="wrap">
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>09</b> Rapid projects</div>
+      <h2 id="rapid-h" class="display h2 reveal">Speed without <span style="color:var(--accent)">forks.</span></h2>
+      
+      <div class="lead reveal">
+        <p class="big">Some apps have to ship in weeks. <em>Speed can't mean a fork.</em></p>
+        <div><p>Rapid projects use the same locked library as everything else. What changes is the workflow around it.</p></div>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><span class="step__n">01</span><b>Pre-approved kits</b><p>Ready-made screens and components the team can use without a review.</p></div>
+        <div class="step reveal"><span class="step__n">02</span><b>AI tool integration</b><p>AI tools plugged into the workflow to go from brief to screens faster.</p></div>
+        <div class="step reveal"><span class="step__n">03</span><b>Fewer approval gates</b><p>Because the parts are already approved, only the new parts need sign-off.</p></div>
+      </div>
+    </div>
+  </section>
+  <section id="reflections" aria-labelledby="reflections-h" style="padding-top:0">
+    <div class="wrap">
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>10</b> Reflections</div>
+      <h2 id="reflections-h" class="display h2 reveal">What it <span style="color:var(--accent)">taught me.</span></h2>
+      
+      <div class="lessons">
+        <article class="lesson reveal"><b>Link, don't copy.</b><p>The biggest change wasn't a component. It was moving from duplicated files to one published library.</p></article>
+        <article class="lesson reveal"><b>Name the intent.</b><p>Semantic tokens let one component serve 40+ apps without anyone touching its code.</p></article>
+        <article class="lesson reveal"><b>Every layer needs an owner.</b><p>Core team, category lead, product designer. Clear owners stop "quick fixes" from leaking into the parent.</p></article>
+        <article class="lesson reveal"><b>Make the fast path the right path.</b><p>If the system is the quickest way to ship, rapid teams use it instead of working around it.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="next" aria-label="Next case study">
+    <div class="wrap next__grid">
+      <img class="next__guy" src="assets/sunil-binoculars.png" alt="" aria-hidden="true" loading="lazy" width="860" height="1103">
+      <div class="next__text">
+        <div class="next__kicker">Back to</div>
+        <a class="next__link next__link--long" href="../coca-cola-umm/index.html">Coca-Cola UMM <span class="arrow">→</span></a>
+        <div><a class="next__prev" href="../index.html#product-design">← All work</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>© 2026 Sunil Sebastian</span>
+    <nav aria-label="Social">
+      <a href="https://www.linkedin.com/in/sunil-shahzad-a7a59797/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.behance.net/sunshaseb" target="_blank" rel="noopener">Behance</a>
+      <a href="https://www.instagram.com/sunilsebastian/" target="_blank" rel="noopener">Instagram</a>
+    </nav>
+  </div>
+</footer>
+
+<div class="lb" role="dialog" aria-modal="true" aria-label="Image preview">
+  <button class="lb__close" aria-label="Close preview">✕</button>
+  <img alt="">
+</div>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Progress bar
+  const bar = document.querySelector('.nav__progress');
+  let ticking = false;
+  addEventListener('scroll', () => {
+    if (ticking) return; ticking = true;
+    requestAnimationFrame(() => { const h = document.documentElement; bar.style.transform = `scaleX(${h.scrollTop / (h.scrollHeight - h.clientHeight)})`; ticking = false; });
+  }, { passive: true });
+
+  // Eyes: side-glance with a dropping lid, on a loose loop and on hover
+  document.querySelectorAll('.eye').forEach((eye, i) => {
+    let hovering = false;
+    const set = on => eye.classList.toggle('is-look', on);
+    const wait = ms => new Promise(r => setTimeout(r, ms));
+    const loop = async () => {
+      await wait(i === 0 ? 1400 : 1200 + Math.random() * 3500);
+      for (;;) {
+        if (!hovering) set(true);  await wait(850);
+        if (!hovering) set(false); await wait(450);
+        if (!hovering) set(true);  await wait(950);
+        if (!hovering) set(false); await wait(2600 + Math.random() * 2400);
+      }
+    };
+    if (!reduce) loop();
+    const host = eye.closest('.hero__title, .label') || eye;
+    host.addEventListener('pointerenter', () => { hovering = true; set(true); });
+    host.addEventListener('pointerleave', () => { hovering = false; set(false); });
+  });
+
+  // Before / after sliders
+  document.querySelectorAll('.cmp').forEach(c => {
+    const r = c.querySelector('input');
+    const set = () => c.style.setProperty('--x', r.value + '%');
+    r.addEventListener('input', set); set();
+  });
+
+  // Tab switchers that auto-advance while on screen and stop once someone picks a tab
+  document.querySelectorAll('.sw').forEach(sw => {
+    const tabs = [...sw.querySelectorAll('.sw-tab')], imgs = [...sw.querySelectorAll('.sw-img')], notes = [...sw.querySelectorAll('.sw-note')];
+    const stage = sw.querySelector('.sw-stage'), sbar = sw.querySelector('.sw-bar');
+    let cur = 0, timer = null;
+    const restart = () => { sbar.style.animation = 'none'; void sbar.offsetWidth; sbar.style.animation = ''; };
+    const show = (i) => { cur = (i + tabs.length) % tabs.length; tabs.forEach((t, j) => { t.classList.toggle('is-on', j === cur); t.setAttribute('aria-pressed', j === cur); }); imgs.forEach((m, j) => m.classList.toggle('is-on', j === cur)); notes.forEach((n, j) => n.classList.toggle('is-on', j === cur)); };
+    const pause = () => { clearInterval(timer); timer = null; };
+    const stop = () => { pause(); stage.classList.remove('is-auto'); };
+    const start = () => { if (timer || !stage.classList.contains('is-auto')) return; restart(); timer = setInterval(() => { show(cur + 1); restart(); }, 3800); };
+    tabs.forEach((t, j) => t.addEventListener('click', () => { stop(); show(j); }));
+    stage.addEventListener('click', () => { show(cur + 1); if (timer) { pause(); start(); } });
+    if (!reduce) new IntersectionObserver(([e]) => e.isIntersecting ? start() : pause(), { threshold: .4 }).observe(stage);
+    else stage.classList.remove('is-auto');
+  });
+
+  // Severity filter for the audit table
+  const chips = [...document.querySelectorAll('.sev-chip')];
+  chips.forEach(ch => ch.addEventListener('click', () => {
+    chips.forEach(c => { c.classList.toggle('is-on', c === ch); c.setAttribute('aria-pressed', c === ch); });
+    const f = ch.dataset.f;
+    document.querySelectorAll('.audit tbody tr').forEach(tr => tr.classList.toggle('is-dim', f !== 'all' && tr.dataset.sev !== f));
+  }));
+
+  // Count-up stats
+  const stats = document.querySelectorAll('.stat b[data-to]');
+  if (stats.length) {
+    const sio = new IntersectionObserver((entries) => entries.forEach(e => {
+      if (!e.isIntersecting) return; sio.unobserve(e.target);
+      const el = e.target, to = parseFloat(el.dataset.to), dec = (el.dataset.to.split('.')[1] || '').length, suf = el.dataset.suf || '';
+      if (reduce) { el.textContent = to.toFixed(dec) + suf; return; }
+      const t0 = performance.now(), dur = 1200;
+      const step = (t) => { const p = Math.min((t - t0) / dur, 1), v = to * (1 - Math.pow(1 - p, 3)); el.textContent = v.toFixed(dec) + suf; if (p < 1) requestAnimationFrame(step); };
+      requestAnimationFrame(step);
+    }), { threshold: .6 });
+    stats.forEach(s => sio.observe(s));
+  }
+
+  // Lightbox
+  const lb = document.querySelector('.lb');
+  const lbImg = lb.querySelector('img');
+  const open = (src, alt) => { lbImg.src = src; lbImg.alt = alt || ''; lb.classList.add('is-open'); lb.querySelector('.lb__close').focus(); };
+  const close = () => lb.classList.remove('is-open');
+  document.querySelectorAll('.frame > img').forEach(img => img.addEventListener('click', () => open(img.currentSrc || img.src, img.alt)));
+  lb.addEventListener('click', close);
+  addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+})();
+</script>
+
+
+<script>
+(() => {
+  // Category theme toy: one Tier 3 switch re-themes the whole mock screen
+  const T = {core:['purple','#8b66d9'],docu:['blue','#3b82f6'],education:['green','#22c55e'],social:['red','#ef4444'],entertainment:['pink','#ec4899'],utility:['yellow','#eab308']};
+  const R = {purple:['#8b66d9', '#efeafc', '#6a46c0', '#fff'],blue:['#3b82f6', '#dbeafe', '#1d4ed8', '#fff'],green:['#16a34a', '#dcfce7', '#15803d', '#fff'],red:['#ef4444', '#fee2e2', '#b91c1c', '#fff'],pink:['#ec4899', '#fce7f3', '#be185d', '#fff'],yellow:['#eab308', '#fef9c3', '#a16207', '#18181b']};
+  const phone = document.querySelector('.phone');
+  const picks = [...document.querySelectorAll('.toy__pick')];
+  const theme = document.querySelector('[data-k="theme"]'), prim = document.querySelector('[data-k="prim"]');
+  const toy = document.querySelector('.toy');
+  picks.forEach(p => p.addEventListener('click', () => {
+    const [ramp] = T[p.dataset.t], [b5, b1, b7, on] = R[ramp];
+    picks.forEach(q => { q.classList.toggle('is-on', q === p); q.setAttribute('aria-pressed', q === p); });
+    phone.style.setProperty('--b5', b5); phone.style.setProperty('--b1', b1); phone.style.setProperty('--b7', b7); phone.style.setProperty('--on', on);
+    toy.style.setProperty('--b5', b5);
+    theme.textContent = p.dataset.t + '.brand'; prim.textContent = ramp + '.500';
+  }));
+  toy.style.setProperty('--b5', R.purple[0]);
+})();
+</script>
+</body>
+</html>

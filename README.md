@@ -15,6 +15,7 @@ Sunil Sebastian's portfolio: a home page built from the Figma landing page, four
 | Experiential | `experiential/` |
 | Coca-Cola UMM (product design) | `coca-cola-umm/` |
 | Al Siraat (product design) | `al-siraat/` |
+| Imagination DLS (product design) | `imagination-dls/` |
 | Packaging design (5 projects) | `packaging-design/` |
 | Wallet Wars (games UI/brand) | `wallet-wars/` |
 | Valorant Mobile (games UI/brand) | `valorant-mobile/` |
