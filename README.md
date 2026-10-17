@@ -11,6 +11,7 @@ Sunil Sebastian's portfolio: a home page built from the Figma landing page, four
 | Scooch Over | `scooch/` |
 | APC | `accelerated-professional-center/` |
 | Imagination Holdings | `imagination-holdings/` |
+| ORO Chocolate | `oro-chocolate/` |
 | Showreel | `showreel/` |
 | Experiential | `experiential/` |
 | Coca-Cola UMM (product design) | `coca-cola-umm/` |

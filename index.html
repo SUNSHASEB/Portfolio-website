@@ -469,6 +469,8 @@
   .cases__grid--3 .case { aspect-ratio: 4 / 4.4; }
   .cases__grid--3 .case__t { font-size: clamp(28px, 2.6vw, 44px); }
   .cases__grid--1 { grid-template-columns: 1fr; }
+  .case--wide { grid-column: 1 / -1; aspect-ratio: 21 / 8; }
+  @media (max-width: 600px) { .case--wide { aspect-ratio: 16 / 11; } }
   .case--reel { aspect-ratio: 21 / 9; }
   .case--reel video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .4s; }
   .case--reel.is-live video { opacity: 1; }
@@ -617,6 +619,7 @@ obsessed with the
                 <a class="case" href="scooch/index.html"><img src="scooch/assets/app-purple.jpg" alt="" loading="lazy"><div class="case__meta"><span class="case__n">Case study 02</span><span class="case__t">Scooch Over <span>→</span></span><span class="case__d">Identity for a film company bringing a famous book to screen</span></div></a>
                 <a class="case" href="accelerated-professional-center/index.html"><img src="accelerated-professional-center/assets/signage.jpg" alt="" loading="lazy"><div class="case__meta"><span class="case__n">Case study 03</span><span class="case__t">APC <span>→</span></span><span class="case__d">A Saudi learning brand built for Vision 2030</span></div></a>
                 <a class="case" href="imagination-holdings/index.html"><img src="imagination-holdings/assets/conference-a.jpg" alt="" loading="lazy"><div class="case__meta"><span class="case__n">Case study 04</span><span class="case__t">Imagination Holdings <span>→</span></span><span class="case__d">One parent brand for two tech companies</span></div></a>
+                <a class="case case--wide" href="oro-chocolate/index.html"><img src="oro-chocolate/assets/bars.jpg" alt="" loading="lazy"><div class="case__meta"><span class="case__n">Case study 05</span><span class="case__t">ORO Chocolate <span>→</span></span><span class="case__d">Identity, guidelines &amp; packaging for Nicaraguan chocolate and coffee</span></div></a>
               </div>
             </div>
           </div>
