@@ -587,6 +587,10 @@
     .gc-ink { fill-opacity: 1; stroke: none; animation: none !important; }
     .gcb__replay { display: none; }
   }
+
+  .bs-pal { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .bs-pal span { display: inline-flex; align-items: center; gap: 8px; border-radius: 999px; padding: 6px 12px 6px 6px; background: #1a1a1a; font-size: 13px; font-weight: 600; }
+  .bs-pal i { width: 20px; height: 20px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(255,255,255,.2); }
 </style>
 <link rel="stylesheet" href="../assets/readable-type.css">
 </head>
@@ -614,14 +618,14 @@
 <main>
   <section class="hero" aria-labelledby="title">
     <div class="wrap">
-      <div class="hero__kicker">Packaging design · 7 projects</div>
+      <div class="hero__kicker">Packaging design · 8 projects</div>
       <h1 id="title" class="display hero__title hero__title--pd hero__title--long">
         <svg class="eye eye--hero" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg>
         <span>Packaging</span> <span style="color:var(--accent)">design</span>
       </h1>
       <div class="hero__intro">
         <p class="hero__lede">Boxes, bottles, pods and tubs that people want to pick up. From structure and dielines to labels, renders and the shelf.</p>
-        <dl class="meta"><div><dt>Brands</dt><dd>King C. Gillette · Bacardi · Grey Goose · Baskin Robbins · Martini · ORO</dd></div><div><dt>Craft</dt><dd>Structure, graphics, 3D visualisation</dd></div><div><dt>Formats</dt><dd>Gift boxes, pods, bottles, tubs, POS</dd></div><div><dt>Deliverables</dt><dd>Dielines, labels, renders, playbooks</dd></div></dl>
+        <dl class="meta"><div><dt>Brands</dt><dd>King C. Gillette · Bacardi · Grey Goose · Baskin Robbins · Martini · ORO · Bombay Sapphire</dd></div><div><dt>Craft</dt><dd>Structure, graphics, 3D visualisation</dd></div><div><dt>Formats</dt><dd>Gift boxes, pods, bottles, tubs, POS</dd></div><div><dt>Deliverables</dt><dd>Dielines, labels, renders, playbooks</dd></div></dl>
       </div>
       <figure class="hero__media frame" style="margin-left:0;margin-right:0;margin-bottom:0">
         <img src="assets/br-gift-box.jpg" alt="Baskin Robbins ice cream macaron gift box with a gold ribbon, open and closed" fetchpriority="high">
@@ -635,8 +639,8 @@
 
   <section id="index" aria-label="Projects" style="padding-bottom:0">
     <div class="wrap">
-      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>00</b> Seven projects</div>
-      <nav class="jump reveal" aria-label="Projects on this page"><a href="#kcg"><small>01</small>King C. Gillette</a><a href="#twistails"><small>02</small>Twistails</a><a href="#greygoose"><small>03</small>Grey Goose</a><a href="#baskin"><small>04</small>Baskin Robbins</a><a href="#martini"><small>05</small>Martini Bitter</a><a href="#oro"><small>06</small>ORO</a><a href="#greygoose-cards"><small>07</small>Grey Goose Cards</a></nav>
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>00</b> Eight projects</div>
+      <nav class="jump reveal" aria-label="Projects on this page"><a href="#kcg"><small>01</small>King C. Gillette</a><a href="#twistails"><small>02</small>Twistails</a><a href="#greygoose"><small>03</small>Grey Goose</a><a href="#baskin"><small>04</small>Baskin Robbins</a><a href="#martini"><small>05</small>Martini Bitter</a><a href="#oro"><small>06</small>ORO</a><a href="#greygoose-cards"><small>07</small>Grey Goose Cards</a><a href="#bombay"><small>08</small>Bombay Sapphire</a></nav>
     </div>
   </section>
 
@@ -819,6 +823,22 @@
       <div class="sw reveal"><div class="sw-tabs"><button class="sw-tab is-on" aria-pressed="true">Ace &amp; two</button><button class="sw-tab" aria-pressed="false">Hearts &amp; diamonds</button><button class="sw-tab" aria-pressed="false">Queen &amp; King</button><button class="sw-tab" aria-pressed="false">Jack &amp; Joker</button><button class="sw-tab" aria-pressed="false">Tens</button><button class="sw-tab" aria-pressed="false">The box</button><button class="sw-tab" aria-pressed="false">Gift case</button></div><div class="sw-stage is-auto" style="--ar:3000 / 2008"><img class="sw-img is-on" src="assets/gc-ace.jpg" alt="Ace of spades in Grey Goose blue beside the two of clubs" loading="lazy"><img class="sw-img" src="assets/gc-hearts.jpg" alt="Two of hearts and two of diamonds" loading="lazy"><img class="sw-img" src="assets/gc-court.jpg" alt="Queen and King built from pattern stripes" loading="lazy"><img class="sw-img" src="assets/gc-joker.jpg" alt="Jack and Joker" loading="lazy"><img class="sw-img" src="assets/gc-tens.jpg" alt="Ten of clubs and ten of hearts" loading="lazy"><img class="sw-img" src="assets/gc-box.jpg" alt="The blue Grey Goose card box beside the ace of spades" loading="lazy"><img class="sw-img" src="assets/gc-case.jpg" alt="Two decks in a wooden gift case" loading="lazy"><span class="sw-bar" aria-hidden="true"></span></div><div class="sw-notes" aria-live="polite"><p class="sw-note is-on">The Lord of the Cards: an ace in Grey Goose blue.</p><p class="sw-note">Every pip is cut from the same diagonal lines.</p><p class="sw-note">Court figures built from stripes and parquet blocks.</p><p class="sw-note">The Jack and the Joker, in the same line language.</p><p class="sw-note">Number cards keep the hatching at every size.</p><p class="sw-note">A blue box with the goose foil, like the bottle.</p><p class="sw-note">Boxed as a gift for Grey Goose guests.</p></div></div>
       <p class="sub-h reveal">In motion</p>
       <figure class="gc-flip reveal"><video src="assets/gc-flip.mp4" poster="assets/gc-flip.jpg" autoplay muted loop playsinline aria-label="Cards flipping one by one on Grey Goose blue: ace, ten, Joker, Jack and Queen"></video></figure>
+    </div>
+  </section>
+
+  <section id="bombay" class="proj" aria-labelledby="bombay-h">
+    <div class="wrap">
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>08</b> Bombay Sapphire Mixers</div>
+      <h2 id="bombay-h" class="display h2 reveal">Three mixers. <span style="color:var(--accent)">One sapphire.</span></h2>
+      
+      <p class="sub reveal">A concept range of Bombay Sapphire mixers: tonic water, soda water and ginger ale. Each bottle borrows the gin’s sapphire glass, copper cap and Queen Victoria label, so the drink looks like one brand from bottle to glass.</p>
+      <div class="proj-meta reveal"><span>Mixer range</span><span>Bottle form</span><span>Label system</span><span>Key visuals</span></div>
+      <figure class="frame wide reveal"><img src="assets/bs-hero.jpg" alt="Bombay Sapphire gin and the three mixers on a sunlit pool edge, with a gin and tonic in a balloon glass" loading="lazy"><span class="cap">The family</span></figure>
+      <p class="sub-h reveal">From mood to bottle</p>
+      <div class="sw reveal"><div class="sw-tabs"><button class="sw-tab is-on" aria-pressed="true">01 Material &amp; mood</button><button class="sw-tab" aria-pressed="false">02 Bottle form</button><button class="sw-tab" aria-pressed="false">03 Label &amp; range</button></div><div class="sw-stage is-auto" style="--ar:1536 / 1024"><img class="sw-img is-on" src="assets/bs-mood.jpg" alt="Material and mood board: sparkling water, faceted glass, ice, copper cap, gold foil, botanical engraving and serving cues" loading="lazy"><img class="sw-img" src="assets/bs-form.jpg" alt="Bottle form studies: heritage facet, soft shoulder and tall facet, with cap, shoulder, heel and label details" loading="lazy"><img class="sw-img" src="assets/bs-label.jpg" alt="Label and range studies: heritage frame, botanical field and clear window labels, plus the three-mixer family" loading="lazy"><span class="sw-bar" aria-hidden="true"></span></div><div class="sw-notes" aria-live="polite"><p class="sw-note is-on">Light, ice, copper and foil: the gin’s world, made fizzy.</p><p class="sw-note">Three shapes: heritage facet, soft shoulder and tall facet.</p><p class="sw-note">Three label routes, then one coherent family.</p></div></div>
+      <div class="bs-pal reveal" aria-label="Material palette"><span><i style="background:#1C7FD0"></i>Sapphire</span><span><i style="background:#D7E6F3"></i>Ice</span><span><i style="background:#17285A"></i>Navy</span><span><i style="background:#B5643E"></i>Copper</span><span><i style="background:#C9A04A"></i>Foil</span><span><i style="background:#F1ECE1"></i>Paper</span></div>
+      <p class="sub-h reveal">The range</p>
+      <div class="sw reveal"><div class="sw-tabs"><button class="sw-tab is-on" aria-pressed="true">Tonic water</button><button class="sw-tab" aria-pressed="false">Soda water</button><button class="sw-tab" aria-pressed="false">Ginger ale</button><button class="sw-tab" aria-pressed="false">All three</button></div><div class="sw-stage is-auto" style="--ar:1536 / 1024"><img class="sw-img is-on" src="assets/bs-tonic.jpg" alt="Bombay Sapphire Tonic Water bottle beside a gin and tonic with lime on a seaside terrace" loading="lazy"><img class="sw-img" src="assets/bs-soda.jpg" alt="Bombay Sapphire Soda Water bottle beside a highball with lemon at golden hour" loading="lazy"><img class="sw-img" src="assets/bs-ginger.jpg" alt="Bombay Sapphire Ginger Ale bottle beside a glass with orange at a bar" loading="lazy"><img class="sw-img" src="assets/bs-all.jpg" alt="Tonic water, soda water and ginger ale bottles side by side in sunlight" loading="lazy"><span class="sw-bar" aria-hidden="true"></span></div><div class="sw-notes" aria-live="polite"><p class="sw-note is-on">Tonic water, with lime on a Mediterranean terrace.</p><p class="sw-note">Soda water, with a lemon twist at golden hour.</p><p class="sw-note">Ginger ale, with orange at the bar.</p><p class="sw-note">Three mixers, one family.</p></div></div>
     </div>
   </section>
 
