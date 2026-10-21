@@ -611,7 +611,7 @@ obsessed with the
       <ul class="xp">
         <li class="xp__item reveal">
           <svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg>
-          <button class="xp__btn c-white" aria-expanded="false" aria-controls="cases-brand"><span>Brand design</span><span class="chev" aria-hidden="true">▶</span></button>
+          <button class="xp__btn c-white" aria-expanded="false" aria-controls="cases-brand"><span>Brand design systems</span><span class="chev" aria-hidden="true">▶</span></button>
           <div class="cases" id="cases-brand">
             <div>
               <div class="cases__grid">
@@ -622,6 +622,7 @@ obsessed with the
                 <a class="case case--wide" href="oro-chocolate/index.html"><img src="oro-chocolate/assets/bars.jpg" alt="" loading="lazy"><div class="case__meta"><span class="case__n">Case study 05</span><span class="case__t">ORO Chocolate <span>→</span></span><span class="case__d">Identity, guidelines &amp; packaging for Nicaraguan chocolate and coffee</span></div></a>
                 <a class="case" href="tamuda-bay/index.html"><img src="tamuda-bay/assets/p-heaven.jpg" alt="" loading="lazy" style="object-position:center 30%"><div class="case__meta"><span class="case__n">Case study 06</span><span class="case__t">Tamuda Bay <span>→</span></span><span class="case__d">Logo and campaign for a Moroccan coastal development</span></div></a>
                 <a class="case" href="khalta/index.html"><img src="khalta/assets/hummus.jpg" alt="" loading="lazy"><div class="case__meta"><span class="case__n">Case study 07</span><span class="case__t">Khalta <span>→</span></span><span class="case__d">A hand-drawn identity for a Lebanese restaurant</span></div></a>
+                <a class="case case--wide" href="green-school/index.html"><img src="green-school/assets/gs-collage.jpg" alt="" loading="lazy"><div class="case__meta"><span class="case__n">Case study 08</span><span class="case__t">Green School <span>→</span></span><span class="case__d">Brand guidelines for a global network of eco-schools</span></div></a>
               </div>
             </div>
           </div>
@@ -774,7 +775,7 @@ obsessed with the
     host.addEventListener('pointerleave', () => { hovering = false; set(false); });
   });
 
-  // Work rows open their case-study previews (Brand design opens by default from #work)
+  // Work rows open their case-study previews (Brand design systems opens by default from #work)
   document.querySelectorAll('.xp__btn[aria-controls]').forEach(toggle => {
     const panel = document.getElementById(toggle.getAttribute('aria-controls'));
     const setOpen = (open) => { toggle.setAttribute('aria-expanded', open); panel.classList.toggle('is-open', open); panel.inert = !open; };
