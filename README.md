@@ -9,7 +9,7 @@ Sunil Sebastian's portfolio: a home page built from the Figma landing page, bran
 | Home | `index.html` |
 | Namma Farm | `namma-farm/` |
 | Scooch Over | `scooch/` |
-| APC | `accelerated-professional-center/` |
+| APL (Accelerated Professional Learning) | `accelerated-professional-center/` |
 | Imagination Holdings | `imagination-holdings/` |
 | ORO Chocolate | `oro-chocolate/` |
 | Tamuda Bay | `tamuda-bay/` |
