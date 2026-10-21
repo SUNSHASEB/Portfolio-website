@@ -591,6 +591,27 @@
   .bs-pal { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
   .bs-pal span { display: inline-flex; align-items: center; gap: 8px; border-radius: 999px; padding: 6px 12px 6px 6px; background: #1a1a1a; font-size: 13px; font-weight: 600; }
   .bs-pal i { width: 20px; height: 20px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(255,255,255,.2); }
+
+  #baskin-vegan, .proj { scroll-margin-top: 90px; }
+  .hm { margin-top: clamp(32px, 4vw, 56px); display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: repeat(2, minmax(0, 1fr)); gap: clamp(8px, 1vw, 14px); aspect-ratio: 16 / 9; }
+  .hm__tile { position: relative; overflow: hidden; border-radius: var(--radius); background: #111; display: block; color: #fff; text-decoration: none; }
+  .hm--big { grid-row: 1 / span 2; }
+  .hm--wide { grid-column: 2 / span 2; }
+  .hm__tile img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease), filter .5s; filter: brightness(.85); }
+  .hm__tile:hover img, .hm__tile:focus-visible img { transform: scale(1.05); filter: brightness(1); }
+  .hm__lbl { position: absolute; inset: auto 0 0 0; padding: clamp(12px, 1.4vw, 20px); background: linear-gradient(to top, rgba(0,0,0,.8), transparent); display: grid; gap: 2px; }
+  .hm__lbl small { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; opacity: .8; font-weight: 600; }
+  .hm__lbl b { font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: clamp(22px, 2.2vw, 40px); line-height: .95; }
+  .hm--big .hm__lbl b { font-size: clamp(30px, 3.4vw, 60px); }
+  .hm__lbl i { font-style: normal; color: var(--accent); display: inline-block; transition: transform .35s var(--ease); }
+  .hm__tile:hover .hm__lbl i { transform: translateX(6px); }
+  .hm__tile:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+  @media (max-width: 760px) {
+    .hm { aspect-ratio: auto; grid-template-columns: 1fr 1fr; grid-template-rows: none; }
+    .hm__tile { aspect-ratio: 1; }
+    .hm__lbl small { font-size: 10px; }
+    .hm--big, .hm--wide { grid-row: auto; grid-column: 1 / -1; aspect-ratio: 16 / 10; }
+  }
 </style>
 <link rel="stylesheet" href="../assets/readable-type.css">
 </head>
@@ -627,9 +648,7 @@
         <p class="hero__lede">Boxes, bottles, pods and tubs that people want to pick up. From structure and dielines to labels, renders and the shelf.</p>
         <dl class="meta"><div><dt>Brands</dt><dd>King C. Gillette · Bacardi · Grey Goose · Baskin Robbins · Martini · ORO · Bombay Sapphire</dd></div><div><dt>Craft</dt><dd>Structure, graphics, 3D visualisation</dd></div><div><dt>Formats</dt><dd>Gift boxes, pods, bottles, tubs, POS</dd></div><div><dt>Deliverables</dt><dd>Dielines, labels, renders, playbooks</dd></div></dl>
       </div>
-      <figure class="hero__media frame" style="margin-left:0;margin-right:0;margin-bottom:0">
-        <img src="assets/br-gift-box.jpg" alt="Baskin Robbins ice cream macaron gift box with a gold ribbon, open and closed" fetchpriority="high">
-      </figure>
+      <nav class="hm" aria-label="Featured projects"><a class="hm__tile hm--big" href="#bombay"><img src="assets/bs-all.jpg" alt="Bombay Sapphire tonic water, soda water and ginger ale bottles in sunlight" fetchpriority="high"><span class="hm__lbl"><small>08 · Mixer range</small><b>Bombay Sapphire <i aria-hidden="true">→</i></b></span></a><a class="hm__tile " href="#baskin-vegan"><img src="assets/br-vegan-all.jpg" alt="Four Baskin Robbins vegan ice cream tubs"><span class="hm__lbl"><small>04 · Vegan range</small><b>Baskin Robbins <i aria-hidden="true">→</i></b></span></a><a class="hm__tile " href="#oro"><img src="assets/oro-bars.jpg" alt="ORO chocolate bars in black wrappers with colour-coded labels"><span class="hm__lbl"><small>06 · Chocolate &amp; coffee</small><b>ORO <i aria-hidden="true">→</i></b></span></a><a class="hm__tile hm--wide" href="#greygoose-cards"><img src="assets/gc-spread.jpg" alt="Grey Goose playing cards: the card back and the two of clubs on marble"><span class="hm__lbl"><small>07 · Playing cards</small><b>Grey Goose <i aria-hidden="true">→</i></b></span></a></nav>
     </div>
   </section>
 
@@ -730,7 +749,7 @@
       <div class="proj-meta reveal"><span>Pre-packs</span><span>Vegan range</span><span>Twin pack</span><span>Gifting</span></div>
       <p class="sub-h reveal">Regular pre-packs</p>
       <div class="sw reveal"><div class="sw-tabs"><button class="sw-tab is-on" aria-pressed="true">Jamoca Almond Fudge</button><button class="sw-tab" aria-pressed="false">Pralines 'n Cream</button><button class="sw-tab" aria-pressed="false">Chocolate Chip</button><button class="sw-tab" aria-pressed="false">All three</button></div><div class="sw-stage is-auto" style="--ar:1800 / 1012"><img class="sw-img is-on" src="assets/br-jamoca.jpg" alt="Jamoca Almond Fudge label, lid and tub" loading="lazy"><img class="sw-img" src="assets/br-pralines.jpg" alt="Pralines 'n Cream label, lid and tub" loading="lazy"><img class="sw-img" src="assets/br-chocchip.jpg" alt="Chocolate Chip label, lid and tub" loading="lazy"><img class="sw-img" src="assets/br-regular-all.jpg" alt="Three regular pre-pack tubs side by side" loading="lazy"><span class="sw-bar" aria-hidden="true"></span></div><div class="sw-notes" aria-live="polite"><p class="sw-note is-on">Flat label, lid and tub for Jamoca Almond Fudge.</p><p class="sw-note">Flat label, lid and tub for Pralines 'n Cream.</p><p class="sw-note">Flat label, lid and tub for Chocolate Chip.</p><p class="sw-note">The range on shelf: ingredients lead every label.</p></div></div>
-      <p class="sub-h reveal">Vegan range</p>
+      <p class="sub-h reveal" id="baskin-vegan">Vegan range</p>
       <div class="sw reveal"><div class="sw-tabs"><button class="sw-tab is-on" aria-pressed="true">French Vanilla Bean</button><button class="sw-tab" aria-pressed="false">Belgian Chocolate</button><button class="sw-tab" aria-pressed="false">Coconutty Chocolate</button><button class="sw-tab" aria-pressed="false">Acai Berry Bliss</button><button class="sw-tab" aria-pressed="false">All four</button></div><div class="sw-stage is-auto" style="--ar:1800 / 1012"><img class="sw-img is-on" src="assets/br-vanilla.jpg" alt="Vegan French Vanilla Bean label, lid and tub" loading="lazy"><img class="sw-img" src="assets/br-belgian.jpg" alt="Vegan Belgian Chocolate label, lid and tub" loading="lazy"><img class="sw-img" src="assets/br-coconutty.jpg" alt="Vegan Coconutty Chocolate label, lid and tub" loading="lazy"><img class="sw-img" src="assets/br-acai.jpg" alt="Vegan Acai Berry Bliss label, lid and tub" loading="lazy"><img class="sw-img" src="assets/br-vegan-all.jpg" alt="Four vegan tubs side by side" loading="lazy"><span class="sw-bar" aria-hidden="true"></span></div><div class="sw-notes" aria-live="polite"><p class="sw-note is-on">Vegan French Vanilla Bean.</p><p class="sw-note">Vegan Belgian Chocolate.</p><p class="sw-note">Vegan Coconutty Chocolate.</p><p class="sw-note">Vegan Acai Berry Bliss.</p><p class="sw-note">Four vegan flavours, one family.</p></div></div>
       <div class="duo">
         <figure class="frame reveal "><img src="assets/br-social-vegan.jpg" alt="Social post: Vegan ice cream with two tubs" loading="lazy"><span class="cap">Launch post</span></figure>
