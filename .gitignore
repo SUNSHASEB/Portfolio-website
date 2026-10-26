@@ -26,6 +26,7 @@
 !/ggi/
 !/side-quests/
 !/campaigns/
+!/v2/
 !/.claude/
 /.claude/*
 !/.claude/launch.json

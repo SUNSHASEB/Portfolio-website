@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sunil Sebastian — Brands, Products &amp; Games</title>
+<meta name="description" content="Sunil Sebastian: brands, products and games designer. Brand systems, product UI, packaging, games and campaigns for brands that operate at scale.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="../assets/icons/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png">
+<meta name="theme-color" content="#f3f1ec">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f3f1ec; --paper-2: #e9e6df; --ink: #111110; --muted: #75736d; --line: rgba(17,17,16,.14);
+    --night: #0f0f0e; --night-line: rgba(255,255,255,.14); --accent: #f6cb00;
+    --font: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+    --gutter: clamp(16px, 2.6vw, 40px); --ease: cubic-bezier(.2,.7,.1,1);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font); font-size: 16px; line-height: 1.5; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+  img { display: block; max-width: 100%; height: auto; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { padding: 0 var(--gutter); }
+  .lbl { font-size: 12px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; }
+  .rule { border: 0; border-top: 1px solid var(--line); margin: 0; }
+
+  /* Header */
+  .hd { position: fixed; inset: 0 0 auto 0; z-index: 30; display: flex; align-items: center; justify-content: space-between; padding: 18px var(--gutter); color: #fff; transition: background .35s, color .35s, border-color .35s; border-bottom: 1px solid transparent; }
+  .hd.is-solid { background: rgba(243,241,236,.92); backdrop-filter: blur(10px); color: var(--ink); border-bottom-color: var(--line); }
+  .hd__brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; font-size: 15px; letter-spacing: -.01em; }
+  .hd__brand img { width: 26px; height: 26px; }
+  .hd nav { display: flex; gap: clamp(14px, 2.4vw, 32px); font-size: 13px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; }
+  .hd nav a { position: relative; }
+  .hd nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -3px; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform .4s var(--ease); }
+  .hd nav a:hover::after { transform: scaleX(1); transform-origin: left; }
+
+  /* Hero viewer (Minhwan Kim) */
+  .hv { position: relative; height: 100svh; min-height: 520px; background: #000; overflow: hidden; cursor: none; }
+  .hv__slide { position: absolute; inset: 0; margin: 0; opacity: 0; transition: opacity .9s var(--ease); }
+  .hv__slide.is-on { opacity: 1; }
+  .hv__slide img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.04); transition: transform 6s linear; }
+  .hv__slide.is-on img { transform: scale(1); }
+  .hv::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,.45), transparent 22%, transparent 70%, rgba(0,0,0,.5)); pointer-events: none; }
+  .hv__caps { position: absolute; z-index: 2; left: var(--gutter); bottom: 28px; right: 40%; color: #fff; }
+  .hv__cap { position: absolute; left: 0; bottom: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px; font-size: 15px; opacity: 0; transform: translateY(8px); transition: opacity .5s, transform .6s var(--ease); pointer-events: none; cursor: pointer; }
+  .hv__cap.is-on { opacity: 1; transform: none; pointer-events: auto; }
+  .hv__cap b { font-weight: 600; }
+  .hv__cap span { opacity: .85; }
+  .hv__cap i { font-style: normal; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; background: rgba(255,255,255,.18); backdrop-filter: blur(6px); }
+  .hv__count { position: absolute; z-index: 2; right: var(--gutter); bottom: 28px; color: #fff; font-size: 13px; font-weight: 500; letter-spacing: .12em; font-variant-numeric: tabular-nums; }
+  .hv__bar { position: absolute; z-index: 2; left: 0; bottom: 0; height: 2px; width: 100%; background: var(--accent); transform-origin: 0 50%; transform: scaleX(0); }
+  .hv.is-run .hv__bar { animation: hvbar 6s linear forwards; }
+  @keyframes hvbar { to { transform: scaleX(1); } }
+  .hv__cursor { position: fixed; z-index: 40; left: 0; top: 0; pointer-events: none; color: #fff; mix-blend-mode: difference; font-size: 12px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; transform: translate(-50%, -50%); opacity: 0; transition: opacity .2s; }
+  .hv:hover ~ .hv__cursor, .hv__cursor.is-on { opacity: 1; }
+
+  /* Intro statement (Box Eight) */
+  .intro { padding: clamp(80px, 12vw, 180px) var(--gutter) clamp(60px, 8vw, 120px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 3fr); gap: var(--gutter); }
+  .intro p { margin: 0; font-size: clamp(30px, 4.2vw, 64px); line-height: 1.06; font-weight: 400; letter-spacing: -.035em; max-width: 20ch; }
+  .intro p em { font-style: italic; font-weight: 300; }
+  .intro p mark { background: none; color: inherit; box-shadow: inset 0 -.14em 0 var(--accent); }
+
+  /* Featured grid */
+  .sec-h { display: flex; justify-content: space-between; align-items: baseline; padding: 18px var(--gutter); border-top: 1px solid var(--line); }
+  .sec-h a { font-size: 13px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; }
+  .feat { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: clamp(28px, 4vw, 64px) var(--gutter); padding: clamp(16px, 2vw, 28px) var(--gutter) clamp(80px, 10vw, 140px); }
+  .ft { display: block; }
+  .ft__img { overflow: hidden; background: var(--paper-2); }
+  .ft__img img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+  .ft:hover .ft__img img { transform: scale(1.035); }
+  .ft__meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin-top: 12px; font-size: 15px; }
+  .ft__meta b { font-weight: 600; }
+  .ft__meta span { color: var(--muted); }
+  .ft__meta i { margin-left: auto; font-style: normal; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  .f1 { grid-column: 1 / span 8; } .f1 .ft__img { aspect-ratio: 16 / 10; }
+  .f2 { grid-column: 9 / span 4; align-self: end; } .f2 .ft__img { aspect-ratio: 4 / 5; }
+  .f3 { grid-column: 1 / span 5; align-self: center; } .f3 .ft__img { aspect-ratio: 16 / 10; }
+  .f4 { grid-column: 6 / span 7; align-self: center; } .f4 .ft__img { aspect-ratio: 16 / 9; }
+  .f5 { grid-column: 2 / span 6; } .f5 .ft__img { aspect-ratio: 16 / 10; }
+  .f6 { grid-column: 8 / span 5; margin-top: clamp(40px, 8vw, 120px); } .f6 .ft__img { aspect-ratio: 1 / 1; }
+
+  /* Index */
+  .ix { padding: 0 var(--gutter) clamp(80px, 10vw, 140px); }
+  .ix__fl { display: flex; flex-wrap: wrap; gap: 6px 20px; padding: 6px 0 22px; }
+  .fl { all: unset; cursor: pointer; font-size: clamp(20px, 2.2vw, 32px); font-weight: 400; letter-spacing: -.03em; color: var(--muted); transition: color .2s; }
+  .fl sup { font-size: .42em; letter-spacing: 0; margin-left: 3px; }
+  .fl:hover, .fl.is-on { color: var(--ink); }
+  .fl.is-on { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .18em; }
+  .fl:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+  .ix__list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+  .ix__row { border-bottom: 1px solid var(--line); }
+  .ix__row[hidden] { display: none; }
+  .ix__row a { display: grid; grid-template-columns: 48px minmax(0, 1.1fr) minmax(0, 1.6fr) 140px; gap: 16px; align-items: baseline; padding: 16px 0; transition: padding .4s var(--ease), color .3s; }
+  .ix__n { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .ix__t { font-size: clamp(18px, 1.6vw, 24px); font-weight: 500; letter-spacing: -.02em; }
+  .ix__d { color: var(--muted); }
+  .ix__c { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); text-align: right; }
+  .ix__thumb { display: none; }
+  .ix__list:hover .ix__row a { color: var(--muted); }
+  .ix__list .ix__row a:hover { color: var(--ink); padding-left: 14px; }
+  .ix__peek { position: fixed; z-index: 20; left: 0; top: 0; width: 340px; aspect-ratio: 4 / 3; pointer-events: none; overflow: hidden; opacity: 0; transform: translate(-50%, -50%) scale(.92); transition: opacity .25s, transform .4s var(--ease); background: var(--paper-2); }
+  .ix__peek.is-on { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  .ix__peek img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* Capabilities (Box Eight) */
+  .caps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--line); }
+  .cap { padding: 22px var(--gutter) 40px; border-right: 1px solid var(--line); }
+  .cap:last-child { border-right: 0; }
+  .cap small { font-size: 12px; color: var(--muted); }
+  .cap b { display: block; margin: 10px 0 18px; font-size: clamp(22px, 2vw, 30px); font-weight: 500; letter-spacing: -.03em; }
+  .cap ul { list-style: none; margin: 0; padding: 0; }
+  .cap li { padding: 8px 0; border-top: 1px solid var(--line); font-size: 15px; color: #3d3c39; }
+
+  /* About / at a glance */
+  .about { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 120px); padding: clamp(80px, 10vw, 150px) var(--gutter); border-top: 1px solid var(--line); }
+  .about__txt p { margin: 0 0 18px; font-size: clamp(18px, 1.5vw, 22px); line-height: 1.45; letter-spacing: -.01em; max-width: 42ch; }
+  .about__txt p:first-of-type { font-size: clamp(24px, 2.3vw, 34px); line-height: 1.2; letter-spacing: -.03em; }
+  .glance { list-style: none; margin: 18px 0 0; padding: 0; border-top: 1px solid var(--ink); }
+  .glance li { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .glance b { font-weight: 500; }
+  .glance span { color: var(--muted); }
+
+  /* Contact band */
+  .ct { background: var(--night); color: #f3f1ec; padding: clamp(80px, 11vw, 160px) var(--gutter) clamp(60px, 8vw, 110px); }
+  .ct .lbl { color: rgba(243,241,236,.6); }
+  .ct h2 { margin: 18px 0 clamp(36px, 5vw, 64px); font-size: clamp(44px, 7.6vw, 128px); line-height: .96; font-weight: 400; letter-spacing: -.05em; max-width: 13ch; }
+  .ct h2 em { font-style: italic; font-weight: 300; color: var(--accent); }
+  .ct__row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gutter); border-top: 1px solid var(--night-line); padding-top: 22px; }
+  .ct__row a, .ct__row p { margin: 6px 0 0; font-size: clamp(16px, 1.3vw, 19px); }
+  .ct__mail { font-size: clamp(22px, 2.4vw, 34px) !important; letter-spacing: -.03em; border-bottom: 1px solid currentColor; }
+  .ct__mail:hover { color: var(--accent); }
+  .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); margin-right: 8px; box-shadow: 0 0 0 4px rgba(246,203,0,.18); }
+
+  /* Footer */
+  .ft-wrap { background: var(--night); color: rgba(243,241,236,.7); padding: 0 var(--gutter) 18px; overflow: hidden; }
+  .ft-nav { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding: 22px 0; border-top: 1px solid var(--night-line); font-size: 13px; letter-spacing: .1em; text-transform: uppercase; }
+  .ft-nav nav { display: flex; gap: 22px; }
+  .ft-nav a:hover { color: #fff; }
+  .wordmark { display: block; color: #f3f1ec; font-size: clamp(54px, 15.2vw, 260px); font-weight: 500; letter-spacing: -.065em; line-height: .8; white-space: nowrap; margin: 10px 0 0 -.04em; }
+
+  /* Reveal */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .9s var(--ease), transform 1s var(--ease); }
+  .reveal.is-in { opacity: 1; transform: none; }
+
+  @media (max-width: 900px) {
+    .intro { grid-template-columns: 1fr; }
+    .feat { grid-template-columns: 1fr; }
+    .f1, .f2, .f3, .f4, .f5, .f6 { grid-column: auto; align-self: auto; margin-top: 0; }
+    .f2 .ft__img, .f3 .ft__img, .f6 .ft__img { aspect-ratio: 4 / 3; }
+    .caps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .cap:nth-child(2) { border-right: 0; }
+    .cap:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+    .about { grid-template-columns: 1fr; }
+    .ct__row { grid-template-columns: 1fr; }
+    .ix__row a { grid-template-columns: 34px minmax(0, 1fr) 76px; }
+    .ix__d { grid-column: 2 / span 2; order: 4; font-size: 14px; }
+    .ix__c { grid-row: 1; grid-column: 3; }
+    .ix__peek { display: none; }
+  }
+  @media (max-width: 600px) {
+    .hd nav a:not(.hd__mail) { display: none; }
+    .hv { height: 82svh; cursor: auto; }
+    .hv__caps { right: var(--gutter); bottom: 54px; }
+    .hv__cursor { display: none; }
+    .caps { grid-template-columns: 1fr; }
+    .cap { border-right: 0; border-bottom: 1px solid var(--line); }
+    .ix__row a { grid-template-columns: 64px minmax(0, 1fr); padding: 12px 0; }
+    .ix__thumb { display: block; grid-row: 1 / span 3; grid-column: 1; width: 64px; height: 64px; object-fit: cover; }
+    .ix__n { display: none; }
+    .ix__t, .ix__d, .ix__c { grid-column: 2; }
+    .ix__c { grid-row: auto; text-align: left; }
+    .glance li { grid-template-columns: 1fr; gap: 2px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .hv__slide img { transition: none; transform: none; }
+    .hv.is-run .hv__bar { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hd">
+  <a class="hd__brand" href="#top"><img src="../assets/icons/favicon-64.png" alt="" width="26" height="26">Sunil Sebastian</a>
+  <nav aria-label="Main"><a href="#work">Work</a><a href="#index">Index</a><a href="#about">About</a><a class="hd__mail" href="#contact">Contact</a></nav>
+</header>
+
+<main id="top">
+  <section class="hv" aria-roledescription="carousel" aria-label="Selected work">
+    <figure class="hv__slide is-on" data-i="0"><img src="../packaging-design/assets/bs-all.jpg" alt="Bombay Sapphire: A concept mixer range: tonic, soda and ginger ale." width="1536" height="1024"></figure><figure class="hv__slide" data-i="1"><img src="../oro-chocolate/assets/hero.jpg" alt="ORO Chocolate: Identity, guidelines and packaging, grown from the star inside a cacao pod." loading="lazy" width="1920" height="1080"></figure><figure class="hv__slide" data-i="2"><img src="../green-school/assets/gs-intro.jpg" alt="Green School: Brand guidelines for a global network of eco-schools." loading="lazy" width="1600" height="666"></figure><figure class="hv__slide" data-i="3"><img src="../al-siraat/assets/three-phones.jpg" alt="Al Siraat: An AI Quran learning app, used by more than a million people." loading="lazy" width="2000" height="1439"></figure><figure class="hv__slide" data-i="4"><img src="../imagination-holdings/assets/conference-a.jpg" alt="Imagination Holdings: One parent brand for two tech companies." loading="lazy" width="2000" height="1204"></figure><figure class="hv__slide" data-i="5"><img src="../packaging-design/assets/gc-spread.jpg" alt="Grey Goose Cards: A playing card deck cut from the brand pattern." loading="lazy" width="2000" height="1339"></figure><figure class="hv__slide" data-i="6"><img src="../accelerated-professional-center/assets/apl-courtyard.jpg" alt="APL: Where Saudi leaders meet world-class executive education." loading="lazy" width="1536" height="1024"></figure><figure class="hv__slide" data-i="7"><img src="../khalta/assets/hummus.jpg" alt="Khalta: A hand-drawn identity for a Lebanese restaurant." loading="lazy" width="2000" height="1537"></figure><figure class="hv__slide" data-i="8"><img src="../ggi/assets/hero.jpg" alt="GGI: A neon brand and tournament platform for Iraqi gamers." loading="lazy" width="2200" height="1193"></figure><figure class="hv__slide" data-i="9"><img src="../tamuda-bay/assets/bb-retreat.jpg" alt="Tamuda Bay: Where heaven meets earth: a coastal brand for Morocco." loading="lazy" width="2000" height="1342"></figure>
+    <div class="hv__caps" aria-live="polite"><a class="hv__cap is-on" href="../packaging-design/index.html#bombay"><b>Bombay Sapphire</b> <span>A concept mixer range: tonic, soda and ginger ale.</span><i>Packaging</i></a><a class="hv__cap" href="../oro-chocolate/index.html"><b>ORO Chocolate</b> <span>Identity, guidelines and packaging, grown from the star inside a cacao pod.</span><i>Brand system</i></a><a class="hv__cap" href="../green-school/index.html"><b>Green School</b> <span>Brand guidelines for a global network of eco-schools.</span><i>Brand system</i></a><a class="hv__cap" href="../al-siraat/index.html"><b>Al Siraat</b> <span>An AI Quran learning app, used by more than a million people.</span><i>Product</i></a><a class="hv__cap" href="../imagination-holdings/index.html"><b>Imagination Holdings</b> <span>One parent brand for two tech companies.</span><i>Brand system</i></a><a class="hv__cap" href="../packaging-design/index.html#greygoose-cards"><b>Grey Goose Cards</b> <span>A playing card deck cut from the brand pattern.</span><i>Packaging</i></a><a class="hv__cap" href="../accelerated-professional-center/index.html"><b>APL</b> <span>Where Saudi leaders meet world-class executive education.</span><i>Brand system</i></a><a class="hv__cap" href="../khalta/index.html"><b>Khalta</b> <span>A hand-drawn identity for a Lebanese restaurant.</span><i>Brand system</i></a><a class="hv__cap" href="../ggi/index.html"><b>GGI</b> <span>A neon brand and tournament platform for Iraqi gamers.</span><i>Games</i></a><a class="hv__cap" href="../tamuda-bay/index.html"><b>Tamuda Bay</b> <span>Where heaven meets earth: a coastal brand for Morocco.</span><i>Brand system</i></a></div>
+    <div class="hv__count"><span class="hv__i">01</span> / 10</div>
+    <span class="hv__bar" aria-hidden="true"></span>
+  </section>
+  <div class="hv__cursor" aria-hidden="true">Next</div>
+
+  <section class="intro" aria-label="Introduction">
+    <span class="lbl reveal">Brands, products &amp; games</span>
+    <p class="reveal">Sunil Sebastian is a designer building <mark>brand systems</mark>, products and games <em>for brands that operate at scale</em>: identities, packaging, interfaces and campaigns, made over nearly two decades.</p>
+  </section>
+
+  <section id="work" aria-label="Featured work">
+    <div class="sec-h"><span class="lbl">Selected work</span><a href="#index">See all work ↓</a></div>
+    <div class="feat"><a class="ft f1" href="../oro-chocolate/index.html"><div class="ft__img"><img src="../oro-chocolate/assets/bars.jpg" alt="ORO Chocolate" loading="lazy" width="2000" height="1121"></div><div class="ft__meta"><b>ORO Chocolate</b><span>Chocolate &amp; coffee, Nicaragua</span><i>Brand system</i></div></a><a class="ft f2" href="../al-siraat/index.html"><div class="ft__img"><img src="../al-siraat/assets/three-phones.jpg" alt="Al Siraat" loading="lazy" width="2000" height="1439"></div><div class="ft__meta"><b>Al Siraat</b><span>AI Quran learning, 1M+ users</span><i>Product</i></div></a><a class="ft f3" href="../green-school/index.html"><div class="ft__img"><img src="../green-school/assets/gs-collage.jpg" alt="Green School" loading="lazy" width="2000" height="1251"></div><div class="ft__meta"><b>Green School</b><span>Guidelines for a global eco-school</span><i>Brand system</i></div></a><a class="ft f4" href="../packaging-design/index.html#bombay"><div class="ft__img"><img src="../packaging-design/assets/bs-hero.jpg" alt="Bombay Sapphire" loading="lazy" width="1965" height="800"></div><div class="ft__meta"><b>Bombay Sapphire</b><span>Mixer range concept</span><i>Packaging</i></div></a><a class="ft f5" href="../ggi/index.html"><div class="ft__img"><img src="../ggi/assets/hero.jpg" alt="GGI" loading="lazy" width="2200" height="1193"></div><div class="ft__meta"><b>GGI</b><span>Esports brand &amp; platform</span><i>Games</i></div></a><a class="ft f6" href="../imagination-dls/index.html"><div class="ft__img"><img src="../imagination-dls/assets/card.jpg" alt="Imagination DLS" loading="lazy" width="1100" height="1100"></div><div class="ft__meta"><b>Imagination DLS</b><span>One system, 40+ apps</span><i>Product</i></div></a></div>
+  </section>
+
+  <section id="index" class="ix" aria-label="All work">
+    <div class="sec-h" style="padding-left:0;padding-right:0"><span class="lbl">Index · 37 projects</span></div>
+    <div class="ix__fl" role="group" aria-label="Filter by discipline"><button class="fl is-on" type="button" aria-pressed="true" data-f="All">All<sup>37</sup></button><button class="fl" type="button" aria-pressed="false" data-f="Brand systems">Brand systems<sup>8</sup></button><button class="fl" type="button" aria-pressed="false" data-f="Product">Product<sup>3</sup></button><button class="fl" type="button" aria-pressed="false" data-f="Packaging">Packaging<sup>8</sup></button><button class="fl" type="button" aria-pressed="false" data-f="Games">Games<sup>5</sup></button><button class="fl" type="button" aria-pressed="false" data-f="Experiential">Experiential<sup>3</sup></button><button class="fl" type="button" aria-pressed="false" data-f="Campaigns">Campaigns<sup>5</sup></button><button class="fl" type="button" aria-pressed="false" data-f="Side quests">Side quests<sup>4</sup></button><button class="fl" type="button" aria-pressed="false" data-f="Motion">Motion<sup>1</sup></button></div>
+    <ul class="ix__list"><li class="ix__row" data-cat="Brand systems"><a href="../namma-farm/index.html" data-img="../namma-farm/assets/hero-farmer.jpg"><span class="ix__n">01</span><span class="ix__t">Namma Farm</span><span class="ix__d">Bilingual identity &amp; packaging for a South Indian food brand</span><span class="ix__c">Brand systems</span><img class="ix__thumb" src="../namma-farm/assets/hero-farmer.jpg" alt="" loading="lazy"></a></li><li class="ix__row" data-cat="Brand systems"><a href="../scooch/index.html" data-img="../scooch/assets/app-purple.jpg"><span class="ix__n">02</span><span class="ix__t">Scooch Over</span><span class="ix__d">Identity for a film company bringing a famous book to screen</span><span class="ix__c">Brand systems</span><img class="ix__thumb" src="../scooch/assets/app-purple.jpg" alt="" loading="lazy"></a></li><li class="ix__row" data-cat="Brand systems"><a href="../green-school/index.html" data-img="../green-school/assets/gs-collage.jpg"><span class="ix__n">03</span><span class="ix__t">Green School</span><span class="ix__d">Brand guidelines for a global network of eco-schools</span><span class="ix__c">Brand systems</span><img class="ix__thumb" src="../green-school/assets/gs-collage.jpg" alt="" loading="lazy"></a></li><li class="ix__row" data-cat="Brand systems"><a href="../accelerated-professional-center/index.html" data-img="../accelerated-professional-center/assets/apl-courtyard.jpg"><span class="ix__n">04</span><span class="ix__t">APL</span><span class="ix__d">A Saudi bridge between Vision 2030 and global executive education</span><span class="ix__c">Brand systems</span><img class="ix__thumb" src="../accelerated-professional-center/assets/apl-courtyard.jpg" alt="" loading="lazy"></a></li><li class="ix__row" data-cat="Brand systems"><a href="../imagination-holdings/index.html" data-img="../imagination-holdings/assets/conference-a.jpg"><span class="ix__n">05</span><span class="ix__t">Imagination Holdings</span><span class="ix__d">One parent brand for two tech companies</span><span class="ix__c">Brand systems</span><img class="ix__thumb" src="../imagination-holdings/assets/conference-a.jpg" alt="" loading="lazy"></a></li><li class="ix__row" data-cat="Brand systems"><a href="../oro-chocolate/index.html" data-img="../oro-chocolate/assets/hero.jpg"><span class="ix__n">06</span><span class="ix__t">ORO Chocolate</span><span class="ix__d">Identity, guidelines &amp; packaging for Nicaraguan chocolate and coffee</span><span class="ix__c">Brand systems</span><img class="ix__thumb" src="../oro-chocolate/assets/hero.jpg" alt="" loading="lazy"></a></li><li class="ix__row" data-cat="Brand systems"><a href="../tamuda-bay/index.html" data-img="../tamuda-bay/assets/bb-retreat.jpg"><span class="ix__n">07</span><span class="ix__t">Tamuda Bay</span><span class="ix__d">Logo and campaign for a Moroccan coastal development</span><span class="ix__c">Brand systems</span><img class="ix__thumb" src="../tamuda-bay/assets/bb-retreat.jpg" alt="" loading="lazy"></a></li><li class="ix__row" data-cat="Brand systems"><a href="../khalta/index.html" data-img="../khalta/assets/hummus.jpg"><span class="ix__n">08</span><span class="ix__t">Khalta</span><span class="ix__d">A hand-drawn identity for a Lebanese restaurant</span><span class="ix__c">Brand systems</span><img class="ix__thumb" src="../khalta/assets/hummus.jpg" alt="" loading="lazy"></a></li><li class="ix__row" data-cat="Product"><a href="../coca-cola-umm/index.html" data-img="../coca-cola-umm/assets/hero.jpg"><span class="ix__n">09</span><span class="ix__t">Coca-Cola UMM</span><span class="ix__d">Redesigning a marketing measurement dashboard</span><span class="ix__c">Product</span><img class="ix__thumb" src="../coca-cola-umm/assets/hero.jpg" alt="" loading="lazy"></a></li><li class="ix__row" data-cat="Product"><a href="../al-siraat/index.html" data-img="../al-siraat/assets/three-phones.jpg"><span class="ix__n">10</span><span class="ix__t">Al Siraat</span><span class="ix__d">A Quran app turned AI learning product, 1M+ users</span><span class="ix__c">Product</span><img class="ix__thumb" src="../al-siraat/assets/three-phones.jpg" alt="" loading="lazy"></a></li><li class="ix__row" data-cat="Product"><a href="../imagination-dls/index.html" data-img="../imagination-dls/assets/hero.jpg"><span class="ix__n">11</span><span class="ix__t">Imagination DLS</span><span class="ix__d">One design language for 40+ apps</span><span class="ix__c">Product</span><img class="ix__thumb" src="../imagination-dls/assets/hero.jpg" alt="" loading="lazy"></a></li><li class="ix__row" data-cat="Packaging"><a href="../packaging-design/index.html#kcg" data-img="../packaging-design/assets/kcg-render-closed.jpg"><span class="ix__n">12</span><span class="ix__t">King C. Gillette</span><span class="ix__d">A gift box with two ways to open</span><span class="ix__c">Packaging</span><img class="ix__thumb" src="../packaging-design/assets/kcg-render-closed.jpg" alt="" loading="lazy"></a></li><li class="ix__row" data-cat="Packaging"><a href="../packaging-design/index.html#twistails" data-img="../packaging-design/assets/tw-pods.jpg"><span class="ix__n">13</span><span class="ix__t">Twistails</span><span class="ix__d">Bacardi cocktail pods, tubes and displays</span><span class="ix__c">Packaging</span><img class="ix__thumb" src="../packaging-design/assets/tw-pods.jpg" alt="" loading="lazy"></a></li><li class="ix__row" data-cat="Packaging"><a href="../packaging-design/index.html#greygoose" data-img="../packaging-design/assets/gg-kv-orange.jpg"><span class="ix__n">14</span><span class="ix__t">Grey Goose</span><span class="ix__d">A prebatched cocktail bottle and labels</span><span class="ix__c">Packaging</span><img class="ix__thumb" src="../packaging-design/assets/gg-kv-orange.jpg" alt="" loading="lazy"></a></li><li class="ix__row" data-cat="Packaging"><a href="../packaging-design/index.html#baskin" data-img="../packaging-design/assets/br-vegan-all.jpg"><span class="ix__n">15</span><span class="ix__t">Baskin Robbins</span><span class="ix__d">Pre-packs, a vegan range and gifting</span><span class="ix__c">Packaging</span><img class="ix__thumb" src="../packaging-design/assets/br-vegan-all.jpg" alt="" loading="lazy"></a></li><li class="ix__row" data-cat="Packaging"><a href="../packaging-design/index.html#martini" data-img="../packaging-design/assets/mb-opt2.jpg"><span class="ix__n">16</span><span class="ix__t">Martini Bitter</span><span class="ix__d">A bottle-and-glass gift pack</span><span class="ix__c">Packaging</span><img class="ix__thumb" src="../packaging-design/assets/mb-opt2.jpg" alt="" loading="lazy"></a></li><li class="ix__row" data-cat="Packaging"><a href="../packaging-design/index.html#oro" data-img="../packaging-design/assets/oro-bars.jpg"><span class="ix__n">17</span><span class="ix__t">ORO Packaging</span><span class="ix__d">Chocolate and coffee packs, natural to the ink</span><span class="ix__c">Packaging</span><img class="ix__thumb" src="../packaging-design/assets/oro-bars.jpg" alt="" loading="lazy"></a></li><li class="ix__row" data-cat="Packaging"><a href="../packaging-design/index.html#greygoose-cards" data-img="../packaging-design/assets/gc-spread.jpg"><span class="ix__n">18</span><span class="ix__t">Grey Goose Cards</span><span class="ix__d">A playing card deck built from the brand pattern</span><span class="ix__c">Packaging</span><img class="ix__thumb" src="../packaging-design/assets/gc-spread.jpg" alt="" loading="lazy"></a></li><li class="ix__row" data-cat="Packaging"><a href="../packaging-design/index.html#bombay" data-img="../packaging-design/assets/bs-all.jpg"><span class="ix__n">19</span><span class="ix__t">Bombay Sapphire</span><span class="ix__d">A concept mixer range: tonic, soda and ginger ale</span><span class="ix__c">Packaging</span><img class="ix__thumb" src="../packaging-design/assets/bs-all.jpg" alt="" loading="lazy"></a></li><li class="ix__row" data-cat="Games"><a href="../wallet-wars/index.html" data-img="../wallet-wars/assets/hero.jpg"><span class="ix__n">20</span><span class="ix__t">Wallet Wars</span><span class="ix__d">A Web3 arcade game that plays like a game first</span><span class="ix__c">Games</span><img class="ix__thumb" src="../wallet-wars/assets/hero.jpg" alt="" loading="lazy"></a></li><li class="ix__row" data-cat="Games"><a href="../valorant-mobile/index.html" data-img="../valorant-mobile/assets/hero.jpg"><span class="ix__n">21</span><span class="ix__t">Valorant Mobile</span><span class="ix__d">Valorant&#x27;s HUD and menus, rethought for touch</span><span class="ix__c">Games</span><img class="ix__thumb" src="../valorant-mobile/assets/hero.jpg" alt="" loading="lazy"></a></li><li class="ix__row" data-cat="Games"><a href="../aew-rise-to-the-top/index.html" data-img="../aew-rise-to-the-top/assets/hero.jpg"><span class="ix__n">22</span><span class="ix__t">AEW: Rise to the Top</span><span class="ix__d">Weekly live events and wrestler identities</span><span class="ix__c">Games</span><img class="ix__thumb" src="../aew-rise-to-the-top/assets/hero.jpg" alt="" loading="lazy"></a></li><li class="ix__row" data-cat="Games"><a href="../brawl3rs/index.html" data-img="../brawl3rs/assets/trailer.jpg"><span class="ix__n">23</span><span class="ix__t">Brawl3rs</span><span class="ix__d">Brand and UI system for a meme-coin autobattler</span><span class="ix__c">Games</span><img class="ix__thumb" src="../brawl3rs/assets/trailer.jpg" alt="" loading="lazy"></a></li><li class="ix__row" data-cat="Games"><a href="../ggi/index.html" data-img="../ggi/assets/hero.jpg"><span class="ix__n">24</span><span class="ix__t">GGI</span><span class="ix__d">A neon brand and tournament platform for Iraqi gamers</span><span class="ix__c">Games</span><img class="ix__thumb" src="../ggi/assets/hero.jpg" alt="" loading="lazy"></a></li><li class="ix__row" data-cat="Experiential"><a href="../experiential/index.html#bacardi" data-img="../experiential/assets/bac-ev-house.jpg"><span class="ix__n">25</span><span class="ix__t">Bacardi House Party</span><span class="ix__d">A real, movable house with games inside, Dubai</span><span class="ix__c">Experiential</span><img class="ix__thumb" src="../experiential/assets/bac-ev-house.jpg" alt="" loading="lazy"></a></li><li class="ix__row" data-cat="Experiential"><a href="../experiential/index.html#greygoose" data-img="../experiential/assets/gg-vivid-card.jpg"><span class="ix__n">26</span><span class="ix__t">Grey Goose windows</span><span class="ix__d">Five window displays that stop the street</span><span class="ix__c">Experiential</span><img class="ix__thumb" src="../experiential/assets/gg-vivid-card.jpg" alt="" loading="lazy"></a></li><li class="ix__row" data-cat="Experiential"><a href="../experiential/index.html#bombay" data-img="../experiential/assets/bs-bar.jpg"><span class="ix__n">27</span><span class="ix__t">Bombay Sapphire pop-up</span><span class="ix__d">A glasshouse bar built on botanicals</span><span class="ix__c">Experiential</span><img class="ix__thumb" src="../experiential/assets/bs-bar.jpg" alt="" loading="lazy"></a></li><li class="ix__row" data-cat="Campaigns"><a href="../campaigns/index.html#martini" data-img="../campaigns/assets/mb-dream.jpg"><span class="ix__n">28</span><span class="ix__t">Martini · Begin Desire</span><span class="ix__d">A global platform, rebuilt for Lagos and Luanda</span><span class="ix__c">Campaigns</span><img class="ix__thumb" src="../campaigns/assets/mb-dream.jpg" alt="" loading="lazy"></a></li><li class="ix__row" data-cat="Campaigns"><a href="../campaigns/index.html#head-shoulders" data-img="../campaigns/assets/hs-kv.jpg"><span class="ix__n">29</span><span class="ix__t">Head &amp; Shoulders</span><span class="ix__d">A women-first launch across MENA</span><span class="ix__c">Campaigns</span><img class="ix__thumb" src="../campaigns/assets/hs-kv.jpg" alt="" loading="lazy"></a></li><li class="ix__row" data-cat="Campaigns"><a href="../campaigns/index.html#sprite" data-img="../campaigns/assets/sp-cricket-poster.jpg"><span class="ix__n">30</span><span class="ix__t">Sprite</span><span class="ix__d">Spice, street cricket and thirst in Pakistan</span><span class="ix__c">Campaigns</span><img class="ix__thumb" src="../campaigns/assets/sp-cricket-poster.jpg" alt="" loading="lazy"></a></li><li class="ix__row" data-cat="Campaigns"><a href="../campaigns/index.html#fanta" data-img="../campaigns/assets/fa-rocks-poster.jpg"><span class="ix__n">31</span><span class="ix__t">Fanta</span><span class="ix__d">Crazy Chase, Fanta Rocks and Great Taste</span><span class="ix__c">Campaigns</span><img class="ix__thumb" src="../campaigns/assets/fa-rocks-poster.jpg" alt="" loading="lazy"></a></li><li class="ix__row" data-cat="Campaigns"><a href="../campaigns/index.html#coca-cola" data-img="../campaigns/assets/cc-studio-invite.jpg"><span class="ix__n">32</span><span class="ix__t">Coca-Cola</span><span class="ix__d">T20 cricket and Coke Studio Season 5</span><span class="ix__c">Campaigns</span><img class="ix__thumb" src="../campaigns/assets/cc-studio-invite.jpg" alt="" loading="lazy"></a></li><li class="ix__row" data-cat="Side quests"><a href="../side-quests/index.html#pixel-pals" data-img="../side-quests/assets/card-pixel-pals.jpg"><span class="ix__n">33</span><span class="ix__t">Pixel Pals</span><span class="ix__d">A pixel art editor with a museum inside</span><span class="ix__c">Side quests</span><img class="ix__thumb" src="../side-quests/assets/card-pixel-pals.jpg" alt="" loading="lazy"></a></li><li class="ix__row" data-cat="Side quests"><a href="../side-quests/index.html#soundtrack" data-img="../side-quests/assets/nca-loop.jpg"><span class="ix__n">34</span><span class="ix__t">Soundtrack &amp; film</span><span class="ix__d">150 years of NCA, played on its own tools</span><span class="ix__c">Side quests</span><img class="ix__thumb" src="../side-quests/assets/nca-loop.jpg" alt="" loading="lazy"></a></li><li class="ix__row" data-cat="Side quests"><a href="../side-quests/index.html#gundam" data-img="../side-quests/assets/gundam-ms06.jpg"><span class="ix__n">35</span><span class="ix__t">Gundam build</span><span class="ix__d">A Zaku II kit, painted from scratch</span><span class="ix__c">Side quests</span><img class="ix__thumb" src="../side-quests/assets/gundam-ms06.jpg" alt="" loading="lazy"></a></li><li class="ix__row" data-cat="Side quests"><a href="../side-quests/index.html#photography" data-img="../side-quests/assets/photo-12.jpg"><span class="ix__n">36</span><span class="ix__t">Photography</span><span class="ix__d">Street, travel and quiet details</span><span class="ix__c">Side quests</span><img class="ix__thumb" src="../side-quests/assets/photo-12.jpg" alt="" loading="lazy"></a></li><li class="ix__row" data-cat="Motion"><a href="../showreel/index.html" data-img="../showreel/assets/poster.jpg"><span class="ix__n">37</span><span class="ix__t">Showreel</span><span class="ix__d">One minute of motion: games, brands, 3D and live action</span><span class="ix__c">Motion</span><img class="ix__thumb" src="../showreel/assets/poster.jpg" alt="" loading="lazy"></a></li></ul>
+  </section>
+  <div class="ix__peek" aria-hidden="true"><img alt=""></div>
+
+  <section aria-label="Capabilities">
+    <div class="sec-h"><span class="lbl">Capabilities</span></div>
+    <div class="caps"><div class="cap reveal"><small>01</small><b>Brand systems</b><ul><li>Identity &amp; logo systems</li><li>Brand guidelines</li><li>Bilingual Arabic / English</li><li>Brand architecture</li></ul></div><div class="cap reveal"><small>02</small><b>Product &amp; UI</b><ul><li>Design language systems</li><li>UX strategy &amp; research</li><li>App &amp; dashboard UI</li><li>Prototyping</li></ul></div><div class="cap reveal"><small>03</small><b>Packaging</b><ul><li>Structure &amp; dielines</li><li>Labels &amp; range systems</li><li>3D visualisation</li><li>Retail &amp; POS</li></ul></div><div class="cap reveal"><small>04</small><b>Games &amp; motion</b><ul><li>Game UI &amp; HUD</li><li>Esports brands</li><li>Motion &amp; key visuals</li><li>Showreels &amp; films</li></ul></div></div>
+  </section>
+
+  <section id="about" class="about" aria-label="About">
+    <div class="about__txt reveal">
+      <span class="lbl">About</span>
+      <p style="margin-top:18px">I’ve spent nearly two decades designing for brands that operate at scale, across advertising, marketing, games, product and beyond.</p>
+      <p>For the past ten years I’ve run an independent design consultancy, from brand guidelines and campaigns to pitch presentations and end-to-end design systems.</p>
+      <p>I bring the perspective of someone who has built and run a creative business: direct client relationships, and results across industries, time zones and disciplines.</p>
+    </div>
+    <div class="reveal">
+      <span class="lbl">At a glance</span>
+      <ul class="glance"><li><b>Nearly two decades</b><span>designing for brands that operate at scale</span></li><li><b>10 years independent</b><span>running a freelance design consultancy</span></li><li><b>1M+ learners</b><span>on Al Siraat, an AI Quran product I led</span></li><li><b>40+ apps</b><span>on one design language system</span></li><li><b>37 projects</b><span>across brand, product, packaging, games and campaigns</span></li></ul>
+    </div>
+  </section>
+</main>
+
+<section id="contact" class="ct" aria-label="Contact">
+  <span class="lbl"><span class="dot" aria-hidden="true"></span>Available for full-time, remote and new projects</span>
+  <h2>Let’s make something <em>worth keeping.</em></h2>
+  <div class="ct__row">
+    <div><span class="lbl">Email</span><p><a class="ct__mail" href="mailto:sunil@sebastians.tv">sunil@sebastians.tv</a></p></div>
+    <div><span class="lbl">Elsewhere</span><p><a href="https://www.linkedin.com/in/sunil-shahzad-a7a59797/" target="_blank" rel="noopener">LinkedIn ↗</a></p><p><a href="https://www.behance.net/sunshaseb" target="_blank" rel="noopener">Behance ↗</a></p><p><a href="https://www.instagram.com/sunilsebastian/" target="_blank" rel="noopener">Instagram ↗</a></p></div>
+    <div><span class="lbl">Work authorization</span><p>US Employment Authorization Card (EAD)</p></div>
+  </div>
+</section>
+
+<footer class="ft-wrap">
+  <div class="ft-nav"><span>© 2026 Sunil Sebastian</span><nav aria-label="Footer"><a href="#work">Work</a><a href="#index">Index</a><a href="#about">About</a><a href="../showreel/index.html">Showreel</a></nav></div>
+  <span class="wordmark" aria-hidden="true">Sunil Sebastian</span>
+</footer>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Reveal on scroll
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Header turns solid once the hero is scrolled past
+  const hd = document.querySelector('.hd');
+  const hdSet = () => hd.classList.toggle('is-solid', scrollY > document.querySelector('.hv').offsetHeight - 70);
+  addEventListener('scroll', hdSet, { passive: true }); hdSet();
+
+  // Hero viewer: click (or arrow keys) to advance, auto-advances while visible
+  const hv = document.querySelector('.hv'), slides = [...hv.querySelectorAll('.hv__slide')], caps = [...hv.querySelectorAll('.hv__cap')];
+  const num = hv.querySelector('.hv__i'), cur = document.querySelector('.hv__cursor');
+  let i = 0, timer = null, seen = true;
+  const show = n => {
+    i = (n + slides.length) % slides.length;
+    slides.forEach((s, k) => s.classList.toggle('is-on', k === i)); caps.forEach((c, k) => c.classList.toggle('is-on', k === i));
+    num.textContent = String(i + 1).padStart(2, '0');
+    const nx = slides[(i + 1) % slides.length].querySelector('img'); if (nx.loading === 'lazy') nx.loading = 'eager';
+    if (!reduce) { hv.classList.remove('is-run'); void hv.offsetWidth; hv.classList.add('is-run'); }
+  };
+  const start = () => { if (reduce || timer) return; timer = setInterval(() => show(i + 1), 6000); hv.classList.add('is-run'); };
+  const stop = () => { clearInterval(timer); timer = null; };
+  hv.addEventListener('click', ev => { if (ev.target.closest('.hv__cap')) return; const back = ev.clientX < innerWidth * .33; stop(); show(i + (back ? -1 : 1)); start(); });
+  addEventListener('keydown', ev => { if (!seen) return; if (ev.key === 'ArrowRight') { stop(); show(i + 1); start(); } if (ev.key === 'ArrowLeft') { stop(); show(i - 1); start(); } });
+  new IntersectionObserver(([e]) => { seen = e.isIntersecting; seen ? start() : stop(); }, { threshold: .3 }).observe(hv);
+  hv.addEventListener('pointermove', ev => { cur.style.left = ev.clientX + 'px'; cur.style.top = ev.clientY + 'px'; cur.textContent = ev.target.closest('.hv__cap') ? 'Open' : (ev.clientX < innerWidth * .33 ? 'Prev' : 'Next'); cur.classList.add('is-on'); });
+  hv.addEventListener('pointerleave', () => cur.classList.remove('is-on'));
+  show(0);
+
+  // Index: filter by discipline, image peek follows the cursor
+  const rows = [...document.querySelectorAll('.ix__row')], fls = [...document.querySelectorAll('.fl')];
+  fls.forEach(b => b.addEventListener('click', () => {
+    fls.forEach(x => { x.classList.toggle('is-on', x === b); x.setAttribute('aria-pressed', x === b); });
+    rows.forEach(r => r.hidden = !(b.dataset.f === 'All' || r.dataset.cat === b.dataset.f));
+  }));
+  const peek = document.querySelector('.ix__peek'), pimg = peek.querySelector('img');
+  let px = 0, py = 0, tx = 0, ty = 0, raf = 0;
+  const loop = () => { px += (tx - px) * .18; py += (ty - py) * .18; peek.style.left = px + 'px'; peek.style.top = py + 'px'; raf = requestAnimationFrame(loop); };
+  document.querySelectorAll('.ix__row a').forEach(a => {
+    a.addEventListener('pointerenter', ev => { pimg.src = a.dataset.img; tx = px = ev.clientX + 200; ty = py = ev.clientY; peek.classList.add('is-on'); if (!raf) loop(); });
+    a.addEventListener('pointermove', ev => { tx = ev.clientX + 200; ty = ev.clientY; });
+    a.addEventListener('pointerleave', () => { peek.classList.remove('is-on'); });
+  });
+  document.querySelector('.ix__list').addEventListener('pointerleave', () => { cancelAnimationFrame(raf); raf = 0; });
+})();
+</script>
+</body>
+</html>
