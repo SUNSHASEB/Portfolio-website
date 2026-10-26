@@ -522,6 +522,19 @@
     .world { grid-template-columns: 1fr; }
   }
   @media (prefers-reduced-motion: reduce) { .shine { animation: none; } }
+
+  .oro-anim { margin: clamp(14px, 1.6vw, 22px) 0 0; background: #090909; aspect-ratio: 16 / 9; }
+  .oro-anim video { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .oro-range { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(10px, 1.4vw, 20px); margin-top: 16px; }
+  .oro-range .frame, .oro-src .frame { margin: 0; aspect-ratio: 1; background: #111; }
+  .oro-src { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(10px, 1.4vw, 20px); margin-top: clamp(32px, 4vw, 56px); }
+  .oro-src .s-big { grid-column: 1 / span 2; grid-row: 1 / span 2; }
+  @media (max-width: 760px) {
+    .oro-range { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .oro-src { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .oro-src .s-big { grid-row: auto; }
+  }
+  .sub-h { margin: clamp(40px, 5vw, 64px) 0 0; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
 </style>
 <link rel="stylesheet" href="../assets/readable-type.css">
 </head>
@@ -595,6 +608,7 @@
         <article class="reveal"><small>03</small><b>Keep it geometric</b><p>Clean lines and simple shapes turned the star into a mark that works tiny or huge.</p></article>
       </div>
       <div class="jrow first reveal"><figure class="frame reveal" style="flex:1.7778 1 0%"><img src="assets/logo-sketches.jpg" alt="Pencil sketches of cacao pod cross-sections turning into star shapes and the ORO wordmark" loading="lazy"><span class="cap">Logo study</span></figure><figure class="frame reveal" style="flex:1.7778 1 0%"><img src="assets/mark.jpg" alt="The final gold ORO star mark on black" loading="lazy"><span class="cap">Final mark</span></figure></div>
+      <figure class="frame oro-anim reveal"><video src="assets/logo-anim.mp4" poster="assets/logo-anim.jpg" autoplay muted loop playsinline aria-label="ORO logo animation: the cacao star unfolds petal by petal, then the wordmark appears"></video><span class="cap">Logo animation</span></figure>
     </div>
   </section>
   <section id="guidelines" aria-labelledby="guidelines-h" style="padding-top:0">
@@ -620,12 +634,26 @@
         <figure class="reveal"><div class="frame"><img src="assets/mechanics.jpg" alt="3D product mechanics: folding stages of the chocolate box" loading="lazy"></div><figcaption>Test the mechanics in 3D</figcaption></figure>
         <figure class="reveal"><div class="frame"><img src="assets/artwork.jpg" alt="Artwork details: dielines and colour-coded insert cards for every flavour" loading="lazy"></div><figcaption>Colour-code every flavour</figcaption></figure>
       </div>
-      <figure class="frame wide reveal"><img src="assets/bars.jpg" alt="Five ORO chocolate bars in black wrappers with gold marks and colour-coded flavour labels" loading="lazy"><span class="cap">Chocolate line</span></figure><div class="jrow reveal"><figure class="frame reveal" style="flex:1.4993 1 0%"><img src="assets/coffee-bags.jpg" alt="Black ORO coffee bags front and back beside a coffee cup" loading="lazy"><span class="cap">Coffee bags</span></figure><figure class="frame reveal" style="flex:1.7778 1 0%"><img src="assets/coffee-box.jpg" alt="Black ORO Coffee box with gold foil mark and flowing lines" loading="lazy"><span class="cap">Coffee box</span></figure></div><div class="jrow reveal"><figure class="frame reveal" style="flex:1.7778 1 0%"><img src="assets/display.jpg" alt="Counter display stacked with colourful ORO chocolate boxes" loading="lazy"><span class="cap">Counter display</span></figure><figure class="frame reveal" style="flex:1.7778 1 0%"><img src="assets/stands.jpg" alt="Free-standing retail units for ORO chocolate and coffee" loading="lazy"><span class="cap">Free-standing units</span></figure></div>
+      <p class="sub-h reveal">The range</p><div class="oro-range"><figure class="frame reveal"><img src="assets/tuma-render.jpg" alt="ORO Tuma 78% cacao bar in a black wrapper with the gold star and an indigo label" loading="lazy" width="1400" height="1400"><span class="cap">Tuma 78%</span></figure><figure class="frame reveal"><img src="assets/tuma-label.jpg" alt="Close-up of the Tuma label: gold star, ORO wordmark and flowing gold lines" loading="lazy" width="1400" height="1400"><span class="cap">Label detail</span></figure><figure class="frame reveal"><img src="assets/plate-dark.jpg" alt="Single Origin Dark bar with a blue label on a gold-rimmed plate" loading="lazy" width="1400" height="1400"><span class="cap">Single Origin Dark</span></figure><figure class="frame reveal"><img src="assets/plate-coffee.jpg" alt="Coffee bar with an orange label on a gold-rimmed plate" loading="lazy" width="1400" height="1400"><span class="cap">Coffee</span></figure><figure class="frame reveal"><img src="assets/plate-ginger.jpg" alt="Ginger bar with a green label on a gold-rimmed plate" loading="lazy" width="1400" height="1400"><span class="cap">Ginger</span></figure><figure class="frame reveal"><img src="assets/gift-stack.jpg" alt="A stack of ORO bars tied with gold ribbon as a corporate gift" loading="lazy" width="1400" height="1400"><span class="cap">Corporate gifting</span></figure></div><div class="jrow reveal"><figure class="frame reveal" style="flex:1.4993 1 0%"><img src="assets/coffee-bags.jpg" alt="Black ORO coffee bags front and back beside a coffee cup" loading="lazy"><span class="cap">Coffee bags</span></figure><figure class="frame reveal" style="flex:1.7778 1 0%"><img src="assets/coffee-box.jpg" alt="Black ORO Coffee box with gold foil mark and flowing lines" loading="lazy"><span class="cap">Coffee box</span></figure></div><div class="jrow reveal"><figure class="frame reveal" style="flex:1.7778 1 0%"><img src="assets/display.jpg" alt="Counter display stacked with colourful ORO chocolate boxes" loading="lazy"><span class="cap">Counter display</span></figure><figure class="frame reveal" style="flex:1.7778 1 0%"><img src="assets/stands.jpg" alt="Free-standing retail units for ORO chocolate and coffee" loading="lazy"><span class="cap">Free-standing units</span></figure></div>
+    </div>
+  </section>
+  <section id="source" aria-labelledby="source-h" style="padding-top:0">
+    <div class="wrap">
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>05</b> From the source</div>
+      <h2 id="source-h" class="display h2 reveal">Pod to <span class="c-gold">bar.</span></h2>
+      <p class="sub reveal">The packaging tells a true story: cacao grown by families in Nicaragua, made into chocolate at ORO’s own factory, then tasted bar by bar.</p>
+      <div class="oro-src">
+        <figure class="frame s-big reveal"><img src="assets/origin-pod.jpg" alt="A farmer harvests a ripe red cacao pod from the trunk of a tree in Nicaragua" loading="lazy" width="1400" height="1400"><span class="cap">01 · Harvest</span></figure>
+        <figure class="frame reveal"><img src="assets/origin-pulp.jpg" alt="An opened cacao pod shell holding fresh pulp" loading="lazy" width="1400" height="1400"><span class="cap">02 · Pulp</span></figure>
+        <figure class="frame reveal"><img src="assets/process-refining.jpg" alt="A chocolate maker refines liquid chocolate in a stone grinder" loading="lazy" width="1400" height="1400"><span class="cap">03 · Refine</span></figure>
+        <figure class="frame reveal"><img src="assets/process-temper.jpg" alt="A chocolate maker in an ORO apron pours tempered chocolate into a mould" loading="lazy" width="1400" height="1400"><span class="cap">04 · Temper</span></figure>
+        <figure class="frame reveal"><img src="assets/tasting-board.jpg" alt="A tasting board of single-variety cacao with a printed flavour guide" loading="lazy" width="1400" height="1400"><span class="cap">05 · Taste</span></figure>
+      </div>
     </div>
   </section>
   <section id="world" aria-labelledby="world-h" style="padding-top:0">
     <div class="wrap">
-      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>05</b> In the world</div>
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>06</b> In the world</div>
       <h2 id="world-h" class="display h2 reveal">From bean <span class="c-gold">to café.</span></h2>
       
       <p class="sub reveal">One brand world across retail, hospitality and wholesale.</p>
