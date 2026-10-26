@@ -456,6 +456,43 @@
     .cmp__knob { width: 44px; height: 44px; margin: -22px 0 0 -22px; }
   }
 
+
+  .sub-h { margin: clamp(40px, 5vw, 64px) 0 0; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+  .live { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(16px, 2.4vw, 36px); margin-top: clamp(32px, 4vw, 56px); align-items: stretch; }
+  .live__phone { border-radius: calc(var(--radius) + 6px); background: radial-gradient(ellipse at 50% 40%, #2a2350 0%, #0d0c14 70%); display: grid; place-items: center; padding: clamp(18px, 3vw, 40px) 0; }
+  .live__phone .lottie { width: min(100%, 420px); aspect-ratio: 600 / 900; }
+  .live__side { display: flex; flex-direction: column; gap: clamp(12px, 1.5vw, 20px); }
+  .live__card { border-radius: var(--radius); background: #f7f4ee; color: #111; padding: clamp(16px, 2vw, 24px); overflow: hidden; }
+  .live__card small { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; color: #6c4bd1; }
+  .live__card b { display: block; margin-top: 6px; font-family: var(--body); font-weight: 800; font-size: clamp(20px, 1.7vw, 26px); letter-spacing: -.02em; }
+  .lottie--qaida { width: 100%; aspect-ratio: 1164 / 700; margin-top: 8px; }
+  .live__steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+  .live__steps li { display: flex; gap: 14px; align-items: baseline; padding: 12px 16px; border-radius: 14px; background: #141414; border: 1px solid rgba(255,255,255,.08); font-size: 16px; }
+  .live__steps b { color: var(--accent); font-size: 13px; letter-spacing: .1em; }
+  .live__link { align-self: flex-start; font-weight: 700; color: var(--accent); text-decoration: none; border-bottom: 2px solid currentColor; padding-bottom: 2px; }
+  .live__link:hover { color: #fff; }
+  .films { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(12px, 1.5vw, 20px); margin-top: clamp(14px, 1.6vw, 22px); }
+  .film { margin: 0; }
+  .film video { display: block; width: 100%; aspect-ratio: 16 / 9; border-radius: var(--radius); background: #000; }
+  .film figcaption { margin-top: 10px; font-size: 15px; opacity: .85; }
+  .film figcaption b { color: var(--accent); margin-right: 8px; }
+  .mots { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(10px, 1.2vw, 16px); margin-top: 16px; }
+  .mot { border-radius: var(--radius); background: #f7f4ee; color: #111; padding: clamp(16px, 2vw, 22px); }
+  .lottie--icon { width: 72px; height: 72px; margin-bottom: 8px; }
+  .mot b { display: block; font-family: var(--body); font-weight: 800; font-size: 18px; letter-spacing: -.01em; }
+  .mot p { margin: 6px 0 0; font-size: 14px; line-height: 1.4; opacity: .75; }
+  .tools { list-style: none; margin: 16px 0 0; padding: 0 0 8px; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(150px, 1fr); gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; }
+  .tools li { scroll-snap-align: start; transition: transform .35s var(--ease); }
+  .tools li:hover { transform: translateY(-6px); }
+  .tools img { width: 100%; height: auto; border-radius: 18px; display: block; }
+  @media (max-width: 960px) {
+    .live { grid-template-columns: 1fr; }
+    .mots { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 600px) {
+    .films, .mots { grid-template-columns: 1fr; }
+    .tools { grid-auto-columns: 44%; }
+  }
 </style>
 <link rel="stylesheet" href="../assets/readable-type.css">
 </head>
@@ -616,18 +653,43 @@
     </div>
   </section>
 
+  <section id="motion" aria-labelledby="mo-h" style="padding-top:0">
+    <div class="wrap">
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>09</b> The product, live</div>
+      <h2 id="mo-h" class="display h2 reveal">Recite. <span style="color:var(--accent)">Get corrected.</span></h2>
+      <p class="sub reveal">The real app flows, as they run in the shipped product: pick a surah, track your progress, then recite while the AI listens.</p>
+      <div class="live">
+        <div class="live__phone reveal"><div class="lottie" data-anim="phone-animation" role="img" aria-label="App walkthrough: the Learn Quran list with progress per surah, then the recitation screen with tap and hold to read"></div></div>
+        <div class="live__side">
+          <div class="live__card reveal"><small>AI Qaida</small><b>Tap a letter. Say it. Hear it back.</b><div class="lottie lottie--qaida" data-anim="ai-assistant" role="img" aria-label="Qaida screen: Arabic letters with a microphone button that listens to pronunciation"></div></div>
+          <ol class="live__steps reveal"><li><b>01</b>Choose a surah or a Qaida lesson</li><li><b>02</b>Tap and hold the mic, then recite</li><li><b>03</b>The AI marks mistakes and Tajweed in real time</li><li><b>04</b>Earn badges and track progress</li></ol>
+          <a class="live__link reveal" href="https://alsiraat.ai" target="_blank" rel="noopener">See it live at alsiraat.ai ↗</a>
+        </div>
+      </div>
+      <figure class="frame wide reveal"><img src="assets/three-phones.jpg" alt="Three app screens: Quran lessons with progress, live recitation of Al-Baqarah, and a Gold badge unlocked for Al-Fatiah" loading="lazy" width="2000" height="1439"><span class="cap">Lessons · Recitation · Rewards</span></figure>
+      <div class="films">
+        <figure class="film reveal"><video src="assets/launch-film.mp4" poster="assets/launch-film.jpg" controls preload="none" playsinline aria-label="Al Siraat launch film"></video><figcaption><b>Launch film</b> “What’s holding you back from the Quran?”</figcaption></figure>
+        <figure class="film reveal"><video src="assets/product-film.mp4" poster="assets/product-film.jpg" controls preload="none" playsinline aria-label="Al Siraat product film: learners using the app at home"></video><figcaption><b>Product film</b> Real learners, real lessons</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
   <section id="shipped" aria-labelledby="sh-h" style="padding-top:0">
     <div class="wrap">
-      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>09</b> What we shipped</div>
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>10</b> What we shipped</div>
       <h2 id="sh-h" class="display h2 reveal">A personal AI tutor. <span style="color:var(--accent)">24/7.</span></h2>
       <p class="sub reveal">Launched on a freemium model and still shipping: audio while learning, Qaida articulations, Ramadan theming, home-screen widgets and more.</p>
       <div class="feats"><article class="feat reveal"><small>AI CORE</small><b>Real-time mistake detection</b><p>The AI listens to recitation, highlights errors instantly and corrects on the spot.</p></article><article class="feat reveal"><small>AI CORE</small><b>Pronunciation &amp; Tajweed</b><p>Feedback on pronunciation and Tajweed while you recite.</p></article><article class="feat reveal"><small>LEARNING</small><b>Interactive AI Qaida</b><p>A beginner track from Arabic letters and sounds up to fluent reading.</p></article><article class="feat reveal"><small>LEARNING</small><b>Adaptive lessons &amp; rewards</b><p>AI-tailored paths, daily limits that build consistency, progress insights and rewards.</p></article><article class="feat reveal"><small>RECITATION</small><b>World-renowned Qari audio</b><p>Listen and compare against masters like Abdul-Basit and Al-Sudais, with a mistake log.</p></article><article class="feat reveal"><small>DAILY WORSHIP</small><b>Essential Islamic tools</b><p>Prayer times, Qibla, Tasbih, calendar, Duas and Azkar. Kept, now decluttered.</p></article></div>
+      <p class="sub-h reveal">Motivation, built in</p>
+      <div class="mots"><article class="mot reveal"><div class="lottie lottie--icon" data-anim="lessonPlans" aria-hidden="true"></div><b>Adaptive lesson plans</b><p>Learn at your own pace with AI-tailored content.</p></article><article class="mot reveal"><div class="lottie lottie--icon" data-anim="reward" aria-hidden="true"></div><b>Earn rewards</b><p>Daily progress unlocks badges and streaks.</p></article><article class="mot reveal"><div class="lottie lottie--icon" data-anim="progress" aria-hidden="true"></div><b>Progress insights</b><p>See growth and focus where it matters.</p></article><article class="mot reveal"><div class="lottie lottie--icon" data-anim="feedback" aria-hidden="true"></div><b>Smart feedback</b><p>Real-time correction from Al Siraat AI.</p></article></div>
+      <p class="sub-h reveal">Daily worship tools</p>
+      <ul class="tools reveal" aria-label="Worship tool cards"><li><img src="assets/tool-quran.jpg" alt="Quran feature card" loading="lazy" width="375" height="516"></li><li><img src="assets/tool-qaida.jpg" alt="Qaida feature card" loading="lazy" width="375" height="516"></li><li><img src="assets/tool-prayer.jpg" alt="Prayer times feature card" loading="lazy" width="376" height="512"></li><li><img src="assets/tool-qibla.jpg" alt="Qibla feature card" loading="lazy" width="375" height="512"></li><li><img src="assets/tool-tasbih.jpg" alt="Tasbeeh feature card" loading="lazy" width="374" height="512"></li><li><img src="assets/tool-dua-azkar.jpg" alt="Dua & Azkar feature card" loading="lazy" width="375" height="512"></li><li><img src="assets/tool-calendar.jpg" alt="Hijri calendar feature card" loading="lazy" width="374" height="512"></li></ul>
     </div>
   </section>
 
   <section id="reflections" aria-labelledby="rf-h" style="padding-top:0">
     <div class="wrap">
-      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>10</b> Reflections</div>
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>11</b> Reflections</div>
       <h2 id="rf-h" class="display h2 reveal">What it <span style="color:var(--accent)">taught me.</span></h2>
       <div class="lessons"><article class="lesson reveal"><b>Subtraction is a strategy.</b><p>The biggest decision wasn't adding AI. It was demoting a dozen features so two learning journeys could lead.</p></article><article class="lesson reveal"><b>Prioritisation is a deliverable.</b><p>The P1 / P2 / P3 module structure aligned design, engineering and business, and the shipped product followed it.</p></article><article class="lesson reveal"><b>Options beat opinions.</b><p>Four dashboard directions and three full style systems turned debates into structured decisions.</p></article><article class="lesson reveal"><b>A rename is a product decision.</b><p>"Al Siraat, the straight path" states the product's promise in two words.</p></article></div>
       <div class="review reveal"><p>"I'm loving the whole app. I would recommend this to every Muslim trying to learn Quranic Arabic."</p><cite>Google Play review, July 2026</cite></div>
@@ -756,5 +818,23 @@
 })();
 </script>
 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+<script>
+(() => {
+  // Product animations from alsiraat.ai: load each Lottie when it scrolls near, pause when off screen
+  if (!window.lottie) return;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    const el = e.target;
+    if (e.isIntersecting && !el._anim) {
+      el._anim = lottie.loadAnimation({ container: el, renderer: 'svg', loop: true, autoplay: !reduce, path: 'assets/anim/' + el.dataset.anim + '.json',
+        rendererSettings: { preserveAspectRatio: 'xMidYMid meet' } });
+      if (reduce) el._anim.addEventListener('DOMLoaded', () => el._anim.goToAndStop(Math.floor(el._anim.totalFrames * .6), true));
+    } else if (el._anim && !reduce) { e.isIntersecting ? el._anim.play() : el._anim.pause(); }
+  }), { rootMargin: '200px 0px' });
+  document.querySelectorAll('.lottie[data-anim]').forEach(el => io.observe(el));
+})();
+</script>
 </body>
 </html>
