@@ -14,6 +14,7 @@ Sunil Sebastian's portfolio: a home page built from the Figma landing page, bran
 | ORO Chocolate | `oro-chocolate/` |
 | Tamuda Bay | `tamuda-bay/` |
 | Khalta | `khalta/` |
+| LHP (Lighthouse Productions) | `lhp/` |
 | Green School | `green-school/` |
 | Showreel | `showreel/` |
 | Experiential | `experiential/` |
