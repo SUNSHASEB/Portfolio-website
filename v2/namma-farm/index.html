@@ -59,16 +59,21 @@
 
 
   .hd { color: var(--ink); background: rgba(243,241,236,.92); backdrop-filter: blur(10px); border-bottom-color: var(--line); }
-  .ch { padding: clamp(110px, 14vw, 200px) var(--gutter) clamp(28px, 4vw, 56px); }
-  .ch__k { display: flex; justify-content: space-between; gap: 16px; color: var(--muted); }
-  .ch h1 { margin: clamp(18px, 2.4vw, 32px) 0 clamp(28px, 4vw, 64px); font-size: clamp(56px, 12.4vw, 220px); line-height: .86; font-weight: 500; letter-spacing: -.06em; }
-  .ch__info { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 96px); border-top: 1px solid var(--ink); padding-top: 20px; }
-  .ch__lede { margin: 0; font-size: clamp(22px, 2.2vw, 34px); line-height: 1.18; letter-spacing: -.03em; max-width: 26ch; }
-  .ch__meta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px var(--gutter); margin: 0; }
-  .ch__meta dt { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
-  .ch__meta dd { margin: 4px 0 0; font-size: 16px; }
-  .ch__media { margin: 0; }
-  .ch__media img, .ch__media video { display: block; width: 100%; height: auto; max-height: 92svh; object-fit: cover; background: #000; }
+  .cx { padding: clamp(110px, 14vw, 200px) var(--gutter) clamp(28px, 4vw, 56px); }
+  .cx__k { display: flex; justify-content: space-between; gap: 16px; color: var(--muted); }
+  .cx h1 { margin: clamp(18px, 2.4vw, 32px) 0 clamp(28px, 4vw, 64px); font-size: clamp(52px, 11vw, 200px); line-height: .88; font-weight: 500; letter-spacing: -.06em; }
+  .cx__info { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 96px); border-top: 1px solid var(--ink); padding-top: 20px; }
+  .cx__lede { margin: 0; font-size: clamp(22px, 2.2vw, 34px); line-height: 1.18; letter-spacing: -.03em; max-width: 26ch; }
+  .cx__meta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px var(--gutter); margin: 0; }
+  .cx__meta dt { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .cx__meta dd { margin: 4px 0 0; font-size: 16px; }
+  .cx__stats { list-style: none; margin: clamp(32px, 4vw, 56px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: var(--gutter); }
+  .cx__stats li { border-top: 1px solid var(--line); padding-top: 14px; }
+  .cx__stats b { display: block; font-size: clamp(36px, 4.6vw, 76px); font-weight: 400; letter-spacing: -.05em; line-height: 1; }
+  .cx__stats span { display: block; margin-top: 8px; color: var(--muted); font-size: 14px; }
+  .cx__media { margin: 0; }
+  .cx__media img, .cx__media video { display: block; width: 100%; height: auto; max-height: 92svh; object-fit: cover; background: #000; }
+  .cx__media .wx { margin: 0; }
 
   .cs { padding: clamp(80px, 10vw, 160px) var(--gutter) 0; }
   .cs__head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 3fr); gap: var(--gutter); border-top: 1px solid var(--line); padding-top: 18px; }
@@ -76,6 +81,9 @@
   .cs__lbl b { color: var(--ink); font-weight: 500; }
   .cs h2 { margin: 0; font-size: clamp(32px, 4.4vw, 72px); line-height: 1.02; font-weight: 400; letter-spacing: -.045em; max-width: 18ch; }
   .cs__sub { margin: 22px 0 0; font-size: clamp(17px, 1.35vw, 20px); color: #3d3c39; max-width: 52ch; }
+  .cs__ql { margin: clamp(32px, 4vw, 56px) 0 0; font-size: clamp(24px, 2.6vw, 40px); line-height: 1.12; letter-spacing: -.03em; font-weight: 300; font-style: italic; max-width: 30ch; }
+  .cs__chips { list-style: none; margin: 24px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .cs__chips li { border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: 14px; }
   .pts { list-style: none; margin: clamp(32px, 4vw, 56px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr)); gap: 0 var(--gutter); }
   .pts li { border-top: 1px solid var(--ink); padding: 14px 0 6px; }
   .pts small { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
@@ -101,6 +109,9 @@
   .tiles .m__box { aspect-ratio: 1 !important; }
   .tiles .m figcaption { display: none; }
   .m figcaption { margin-top: 10px; font-size: 13px; color: var(--muted); }
+  .wx { min-width: 0; }
+  .wx--dark { background: #0f0f0e; color: #f3f1ec; padding: clamp(18px, 3vw, 44px); font-family: var(--font); }
+  .wx--dark :is(h3, b) { font-family: var(--font); }
 
   .sws { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); margin-top: clamp(32px, 4vw, 56px); }
   .sw { aspect-ratio: 4 / 3; padding: 14px; display: flex; flex-direction: column; justify-content: flex-end; font-size: 14px; }
@@ -126,20 +137,22 @@
   .reveal.is-in { opacity: 1; transform: none; }
 
   @media (max-width: 900px) {
-    .ch__info, .cs__head, .nx { grid-template-columns: 1fr; }
+    .cx__info, .cs__head, .nx { grid-template-columns: 1fr; }
     .cs__body { margin-left: 0; }
     .pts { grid-template-columns: 1fr; }
+    .cx__stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .sws { grid-template-columns: repeat(min(var(--n), 4), minmax(0, 1fr)); }
     .ct__row { grid-template-columns: 1fr; }
   }
   @media (max-width: 600px) {
     .hd nav a:not(.hd__mail) { display: none; }
-    .ch__meta { grid-template-columns: 1fr 1fr; }
+    .cx__meta { grid-template-columns: 1fr 1fr; }
     .row { flex-direction: column; }
     .row .m { flex: none !important; width: 100%; max-width: none !important; }
     .sws { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .sw { aspect-ratio: 2 / 1; }
     .tiles { grid-template-columns: repeat(min(var(--n), 4), minmax(0, 1fr)); }
+    .wx--dark { padding: 14px; }
   }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
@@ -158,6 +171,7 @@
   .ba__knob { position: absolute; top: 50%; left: 50%; width: 56px; height: 56px; border-radius: 50%; background: var(--accent); color: var(--ink); transform: translate(-50%, -50%); display: grid; place-items: center; font-size: 22px; }
   .ba input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; margin: 0; }
   @media (max-width: 600px) { .ba { aspect-ratio: 4 / 3; } .ba__knob { width: 44px; height: 44px; font-size: 18px; } }
+
 </style>
 </head>
 <body>
@@ -168,15 +182,16 @@
 </header>
 
 <main>
-  <section class="ch" aria-labelledby="title">
-    <div class="ch__k lbl"><span>Brand systems</span><span>01 / 09</span></div>
+  <section class="cx" aria-labelledby="title">
+    <div class="cx__k lbl"><span>Brand systems</span><span>01 / 09</span></div>
     <h1 id="title">Namma Farm</h1>
-    <div class="ch__info">
-      <p class="ch__lede">A South Indian food brand, rebuilt to stand out on shelves around the world.</p>
-      <dl class="ch__meta"><div><dt>Role</dt><dd>Sole designer</dd></div><div><dt>Timeline</dt><dd>6 months</dd></div><div><dt>Scope</dt><dd>Logo, identity, packaging</dd></div><div><dt>Markets</dt><dd>US · UK · Middle East</dd></div></dl>
+    <div class="cx__info">
+      <p class="cx__lede">A South Indian food brand, rebuilt to stand out on shelves around the world.</p>
+      <dl class="cx__meta"><div><dt>Role</dt><dd>Sole designer</dd></div><div><dt>Timeline</dt><dd>6 months</dd></div><div><dt>Scope</dt><dd>Logo, identity, packaging</dd></div><div><dt>Markets</dt><dd>US · UK · Middle East</dd></div></dl>
     </div>
+    
   </section>
-  <figure class="ch__media"><img src="../../namma-farm/assets/hero-farmer.jpg" alt="Smiling farmer in a banana plantation with the new Namma Farm wordmark behind him" width="2000" height="1124" fetchpriority="high"></figure>
+  <figure class="cx__media"><img src="../../namma-farm/assets/hero-farmer.jpg" alt="Smiling farmer in a banana plantation with the new Namma Farm wordmark behind him" width="2000" height="1124" fetchpriority="high"></figure>
 
   <section class="cs" id="brief">
     <div class="cs__head reveal"><span class="cs__lbl lbl"><b>01</b>The brief</span><div><h2>Modernise without losing soul.</h2></div></div>
@@ -221,7 +236,7 @@
   </section>
   <section class="cs" id="icons">
     <div class="cs__head reveal"><span class="cs__lbl lbl"><b>06</b>Icons &amp; pattern</span><div><h2>70+ icons. One pattern.</h2></div></div>
-    <div class="cs__body"></div>
+    <div class="cs__body"><ul class="cs__chips reveal"><li>Farm &amp; field</li><li>Tools &amp; work</li><li>Food</li><li>Kitchen ritual</li><li>Culture</li></ul></div>
     
     
     <div class="rows"><div class="row"><figure class="m reveal" style="--ar:1.2422;flex:1.2422 1 0%"><div class="m__box" style="aspect-ratio:2000 / 1610"><img src="../../namma-farm/assets/icon-sketches.jpg" alt="Sketchbook pages of hand-drawn icon ideas" loading="lazy" width="2000" height="1610"></div></figure><figure class="m reveal" style="--ar:1.0200;flex:1.0200 1 0%"><div class="m__box" style="aspect-ratio:1073 / 1052"><img src="../../namma-farm/assets/icon-sets.png" alt="Grid of icons in green, orange and yellow, grouped by theme" loading="lazy" width="1073" height="1052"></div></figure><figure class="m reveal" style="--ar:1.0000;flex:1.0000 1 0%"><div class="m__box" style="aspect-ratio:600 / 600"><img src="../../namma-farm/assets/icons-flip.gif" alt="Animated grid of Namma Farm icons flipping one after another in a diagonal wave" loading="lazy" width="600" height="600"></div></figure></div></div>
@@ -239,7 +254,7 @@
     <div>
       <span class="lbl" style="color:var(--muted)">Next case study</span>
       <a href="../scooch/index.html"><span class="nx__t">Scooch Over</span><span class="nx__d">Identity for a film company bringing a famous book to screen</span></a>
-      <a class="nx__back" href="../lhp/index.html">← Previous: Lighthouse</a>
+      <a class="nx__back" href="../showreel/index.html">← Previous: Showreel 2026</a>
     </div>
     <a href="../scooch/index.html" aria-hidden="true" tabindex="-1"><div class="nx__img"><img src="../../scooch/assets/app-purple.jpg" alt="" loading="lazy"></div></a>
   </nav>

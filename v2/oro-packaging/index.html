@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ORO Packaging — Sunil Sebastian</title>
+<meta name="description" content="ORO Packaging by Sunil Sebastian. Chocolate and coffee packs for a Nicaraguan brand. Every material is natural, down to the ink. The chocolate box adds a small moment of excitement each time it opens.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
+<meta name="theme-color" content="#f3f1ec">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f3f1ec; --paper-2: #e9e6df; --ink: #111110; --muted: #75736d; --line: rgba(17,17,16,.14);
+    --night: #0f0f0e; --night-line: rgba(255,255,255,.14); --accent: #f6cb00;
+    --font: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+    --gutter: clamp(16px, 2.6vw, 40px); --ease: cubic-bezier(.2,.7,.1,1);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font); font-size: 16px; line-height: 1.5; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+  img { display: block; max-width: 100%; height: auto; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { padding: 0 var(--gutter); }
+  .lbl { font-size: 12px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; }
+  .rule { border: 0; border-top: 1px solid var(--line); margin: 0; }
+
+  /* Header */
+  .hd { position: fixed; inset: 0 0 auto 0; z-index: 30; display: flex; align-items: center; justify-content: space-between; padding: 18px var(--gutter); color: #fff; transition: background .35s, color .35s, border-color .35s; border-bottom: 1px solid transparent; }
+  .hd.is-solid { background: rgba(243,241,236,.92); backdrop-filter: blur(10px); color: var(--ink); border-bottom-color: var(--line); }
+  .hd__brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; font-size: 15px; letter-spacing: -.01em; }
+  .hd__brand img { width: 26px; height: 26px; }
+  .hd nav { display: flex; gap: clamp(14px, 2.4vw, 32px); font-size: 13px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; }
+  .hd nav a { position: relative; }
+  .hd nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -3px; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform .4s var(--ease); }
+  .hd nav a:hover::after { transform: scaleX(1); transform-origin: left; }
+
+  /* Contact band */
+  .ct { background: var(--night); color: #f3f1ec; padding: clamp(80px, 11vw, 160px) var(--gutter) clamp(60px, 8vw, 110px); }
+  .ct .lbl { color: rgba(243,241,236,.6); }
+  .ct h2 { margin: 18px 0 clamp(36px, 5vw, 64px); font-size: clamp(44px, 7.6vw, 128px); line-height: .96; font-weight: 400; letter-spacing: -.05em; max-width: 13ch; }
+  .ct h2 em { font-style: italic; font-weight: 300; color: var(--accent); }
+  .ct__row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gutter); border-top: 1px solid var(--night-line); padding-top: 22px; }
+  .ct__row a, .ct__row p { margin: 6px 0 0; font-size: clamp(16px, 1.3vw, 19px); }
+  .ct__mail { font-size: clamp(22px, 2.4vw, 34px) !important; letter-spacing: -.03em; border-bottom: 1px solid currentColor; }
+  .ct__mail:hover { color: var(--accent); }
+  .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); margin-right: 8px; box-shadow: 0 0 0 4px rgba(246,203,0,.18); }
+
+  /* Footer */
+  .ft-wrap { background: var(--night); color: rgba(243,241,236,.7); padding: 0 var(--gutter) 18px; overflow: hidden; }
+  .ft-nav { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding: 22px 0; border-top: 1px solid var(--night-line); font-size: 13px; letter-spacing: .1em; text-transform: uppercase; }
+  .ft-nav nav { display: flex; gap: 22px; }
+  .ft-nav a:hover { color: #fff; }
+  .wordmark { display: block; color: #f3f1ec; font-size: clamp(54px, 15.2vw, 260px); font-weight: 500; letter-spacing: -.065em; line-height: .8; white-space: nowrap; margin: 10px 0 0 -.04em; }
+
+
+  .hd { color: var(--ink); background: rgba(243,241,236,.92); backdrop-filter: blur(10px); border-bottom-color: var(--line); }
+  .cx { padding: clamp(110px, 14vw, 200px) var(--gutter) clamp(28px, 4vw, 56px); }
+  .cx__k { display: flex; justify-content: space-between; gap: 16px; color: var(--muted); }
+  .cx h1 { margin: clamp(18px, 2.4vw, 32px) 0 clamp(28px, 4vw, 64px); font-size: clamp(52px, 11vw, 200px); line-height: .88; font-weight: 500; letter-spacing: -.06em; }
+  .cx__info { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 96px); border-top: 1px solid var(--ink); padding-top: 20px; }
+  .cx__lede { margin: 0; font-size: clamp(22px, 2.2vw, 34px); line-height: 1.18; letter-spacing: -.03em; max-width: 26ch; }
+  .cx__meta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px var(--gutter); margin: 0; }
+  .cx__meta dt { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .cx__meta dd { margin: 4px 0 0; font-size: 16px; }
+  .cx__stats { list-style: none; margin: clamp(32px, 4vw, 56px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: var(--gutter); }
+  .cx__stats li { border-top: 1px solid var(--line); padding-top: 14px; }
+  .cx__stats b { display: block; font-size: clamp(36px, 4.6vw, 76px); font-weight: 400; letter-spacing: -.05em; line-height: 1; }
+  .cx__stats span { display: block; margin-top: 8px; color: var(--muted); font-size: 14px; }
+  .cx__media { margin: 0; }
+  .cx__media img, .cx__media video { display: block; width: 100%; height: auto; max-height: 92svh; object-fit: cover; background: #000; }
+  .cx__media .wx { margin: 0; }
+
+  .cs { padding: clamp(80px, 10vw, 160px) var(--gutter) 0; }
+  .cs__head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 3fr); gap: var(--gutter); border-top: 1px solid var(--line); padding-top: 18px; }
+  .cs__lbl { display: flex; gap: 12px; color: var(--muted); }
+  .cs__lbl b { color: var(--ink); font-weight: 500; }
+  .cs h2 { margin: 0; font-size: clamp(32px, 4.4vw, 72px); line-height: 1.02; font-weight: 400; letter-spacing: -.045em; max-width: 18ch; }
+  .cs__sub { margin: 22px 0 0; font-size: clamp(17px, 1.35vw, 20px); color: #3d3c39; max-width: 52ch; }
+  .cs__ql { margin: clamp(32px, 4vw, 56px) 0 0; font-size: clamp(24px, 2.6vw, 40px); line-height: 1.12; letter-spacing: -.03em; font-weight: 300; font-style: italic; max-width: 30ch; }
+  .cs__chips { list-style: none; margin: 24px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .cs__chips li { border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: 14px; }
+  .pts { list-style: none; margin: clamp(32px, 4vw, 56px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr)); gap: 0 var(--gutter); }
+  .pts li { border-top: 1px solid var(--ink); padding: 14px 0 6px; }
+  .pts small { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .pts b { display: block; margin: 8px 0 6px; font-size: clamp(18px, 1.5vw, 22px); font-weight: 500; letter-spacing: -.02em; }
+  .pts p { margin: 0; color: var(--muted); font-size: 15px; }
+  .cs__body { margin-left: calc((100% - var(--gutter) * 3) / 4 + var(--gutter)); }
+
+  .rows { display: grid; gap: clamp(10px, 1.4vw, 22px); margin-top: clamp(36px, 5vw, 72px); }
+  .row { display: flex; gap: clamp(10px, 1.4vw, 22px); align-items: flex-start; }
+  .row--1 .m, .row--solo .m { flex: 1; }
+  .row--solo .m { max-width: min(100%, 72svh * var(--ar, 1)); }
+  .row--solo { justify-content: center; }
+  .m { margin: 0; min-width: 0; }
+  .m__box { overflow: hidden; background: var(--paper-2); }
+  .m__box img, .m__box video { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .m--contain .m__box { background: var(--paper-2); }
+  .m--contain .m__box img { object-fit: contain; padding: 8%; }
+  .m--dark .m__box { background: #1c1c1a; }
+  .m--tall { max-width: 760px; margin: 0 auto; width: 100%; }
+  .m--tall .m__box { height: min(80svh, 860px); overflow-y: auto; overscroll-behavior: contain; }
+  .m--tall .m__box img { height: auto; }
+  .tiles { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: clamp(8px, 1vw, 14px); }
+  .tiles .m__box { aspect-ratio: 1 !important; }
+  .tiles .m figcaption { display: none; }
+  .m figcaption { margin-top: 10px; font-size: 13px; color: var(--muted); }
+  .wx { min-width: 0; }
+  .wx--dark { background: #0f0f0e; color: #f3f1ec; padding: clamp(18px, 3vw, 44px); font-family: var(--font); }
+  .wx--dark :is(h3, b) { font-family: var(--font); }
+
+  .sws { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); margin-top: clamp(32px, 4vw, 56px); }
+  .sw { aspect-ratio: 4 / 3; padding: 14px; display: flex; flex-direction: column; justify-content: flex-end; font-size: 14px; }
+  .sw small { opacity: .7; font-variant-numeric: tabular-nums; }
+
+  .quote { padding: clamp(110px, 14vw, 220px) var(--gutter); }
+  .quote p { margin: 0 auto; max-width: 16ch; text-align: center; font-size: clamp(36px, 6vw, 104px); line-height: 1; letter-spacing: -.05em; font-weight: 300; font-style: italic; }
+  .dl { padding: 0 var(--gutter) clamp(60px, 8vw, 110px); }
+  .dl ul { list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .dl li { border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: 14px; }
+
+  .nx { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--gutter); padding: clamp(28px, 4vw, 56px) var(--gutter) clamp(80px, 10vw, 140px); border-top: 1px solid var(--line); }
+  .nx a { display: block; }
+  .nx__t { display: block; margin: 12px 0 8px; font-size: clamp(40px, 6.8vw, 116px); line-height: .92; font-weight: 500; letter-spacing: -.055em; transition: color .3s; }
+  .nx a:hover .nx__t { color: var(--muted); }
+  .nx__d { color: var(--muted); }
+  .nx__img { overflow: hidden; aspect-ratio: 16 / 10; background: var(--paper-2); }
+  .nx__img img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+  .nx a:hover .nx__img img { transform: scale(1.035); }
+  .nx__back { display: inline-block; margin-top: 26px; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; border-bottom: 1px solid currentColor; }
+
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .9s var(--ease), transform 1s var(--ease); }
+  .reveal.is-in { opacity: 1; transform: none; }
+
+  @media (max-width: 900px) {
+    .cx__info, .cs__head, .nx { grid-template-columns: 1fr; }
+    .cs__body { margin-left: 0; }
+    .pts { grid-template-columns: 1fr; }
+    .cx__stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .sws { grid-template-columns: repeat(min(var(--n), 4), minmax(0, 1fr)); }
+    .ct__row { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .hd nav a:not(.hd__mail) { display: none; }
+    .cx__meta { grid-template-columns: 1fr 1fr; }
+    .row { flex-direction: column; }
+    .row .m { flex: none !important; width: 100%; max-width: none !important; }
+    .sws { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .sw { aspect-ratio: 2 / 1; }
+    .tiles { grid-template-columns: repeat(min(var(--n), 4), minmax(0, 1fr)); }
+    .wx--dark { padding: 14px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+
+  .w-cap { margin: 10px 0 0; font-size: 13px; color: var(--muted); }
+
+</style>
+</head>
+<body>
+
+<header class="hd">
+  <a class="hd__brand" href="../index.html"><img src="../../assets/icons/favicon-64.png" alt="" width="26" height="26">Sunil Sebastian</a>
+  <nav aria-label="Main"><a href="../index.html#work">Work</a><a href="../index.html#index">Index</a><a href="../index.html#about">About</a><a class="hd__mail" href="#contact">Contact</a></nav>
+</header>
+
+<main>
+  <section class="cx" aria-labelledby="title">
+    <div class="cx__k lbl"><span>Packaging</span><span>06 / 08</span></div>
+    <h1 id="title">ORO Packaging</h1>
+    <div class="cx__info">
+      <p class="cx__lede">Chocolate and coffee packs for a Nicaraguan brand. Every material is natural, down to the ink. The chocolate box adds a small moment of excitement each time it opens.</p>
+      <dl class="cx__meta"><div><dt>Scope</dt><dd>Chocolate box · Flavour system · Coffee bags · Retail displays · Café</dd></div></dl>
+    </div>
+    
+  </section>
+  <figure class="cx__media"><img src="../../packaging-design/assets/oro-pack-sketches.jpg" alt="Initial sketches of box nets and folding chocolate packs" width="1918" height="1080" fetchpriority="high"></figure>
+
+  <section class="cs" id="overview">
+    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>01</b>Overview</span><div><h2>A box worth opening.</h2></div></div>
+    <div class="cs__body"></div>
+    
+    
+    <div class="rows"></div>
+  </section>
+  <section class="cs" id="s2">
+    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>02</b></span><div><h2>From sketch to structure</h2></div></div>
+    <div class="cs__body"></div>
+    
+    
+    <div class="rows"><div class="row row--1"><figure class="m reveal" style="--ar:1.7868"><div class="m__box" style="aspect-ratio:1919 / 1074"><img src="../../packaging-design/assets/oro-mechanics.jpg" alt="3D product mechanics: folding stages of the chocolate box" loading="lazy" width="1919" height="1074"></div></figure></div><div class="row row--solo"><figure class="m reveal" style="--ar:1.7795"><div class="m__box" style="aspect-ratio:1614 / 907"><img src="../../packaging-design/assets/oro-artwork.jpg" alt="Artwork details: dielines and colour-coded insert cards for every flavour" loading="lazy" width="1614" height="907"></div></figure></div></div>
+  </section>
+  <section class="cs" id="s3">
+    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>03</b></span><div><h2>Chocolate</h2></div></div>
+    <div class="cs__body"></div>
+    
+    
+    <div class="rows"><div class="row row--1"><figure class="m reveal" style="--ar:1.7841"><div class="m__box" style="aspect-ratio:2000 / 1121"><img src="../../packaging-design/assets/oro-bars.jpg" alt="Five ORO chocolate bars in black wrappers with gold marks and colour-coded flavour labels" loading="lazy" width="2000" height="1121"></div><figcaption>The bar line-up</figcaption></figure></div><div class="row"><figure class="m reveal" style="--ar:1.7778;flex:1.7778 1 0%"><div class="m__box" style="aspect-ratio:2000 / 1125"><img src="../../packaging-design/assets/oro-display.jpg" alt="Counter display stacked with colourful ORO chocolate boxes" loading="lazy" width="2000" height="1125"></div><figcaption>Counter display</figcaption></figure><figure class="m reveal" style="--ar:1.7778;flex:1.7778 1 0%"><div class="m__box" style="aspect-ratio:2000 / 1125"><img src="../../packaging-design/assets/oro-stands.jpg" alt="Free-standing retail units for ORO chocolate and coffee" loading="lazy" width="2000" height="1125"></div><figcaption>Free-standing units</figcaption></figure></div></div>
+  </section>
+  <section class="cs" id="s4">
+    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>04</b></span><div><h2>Coffee</h2></div></div>
+    <div class="cs__body"></div>
+    
+    
+    <div class="rows"><div class="row row--1"><figure class="m reveal" style="--ar:1.4993"><div class="m__box" style="aspect-ratio:2000 / 1334"><img src="../../packaging-design/assets/oro-coffee-bags.jpg" alt="Black ORO coffee bags front and back beside a coffee cup" loading="lazy" width="2000" height="1334"></div><figcaption>Coffee bags</figcaption></figure></div><div class="row"><figure class="m reveal" style="--ar:1.7778;flex:1.7778 1 0%"><div class="m__box" style="aspect-ratio:2000 / 1125"><img src="../../packaging-design/assets/oro-coffee-box.jpg" alt="Black ORO Coffee box with gold foil mark and flowing lines" loading="lazy" width="2000" height="1125"></div><figcaption>Coffee box</figcaption></figure><figure class="m reveal" style="--ar:1.7778;flex:1.7778 1 0%"><div class="m__box" style="aspect-ratio:2000 / 1125"><img src="../../packaging-design/assets/oro-cups.jpg" alt="Black ORO coffee cups with the gold star" loading="lazy" width="2000" height="1125"></div><figcaption>Cups</figcaption></figure></div><div class="row row--solo"><figure class="m reveal" style="--ar:1.7778"><div class="m__box" style="aspect-ratio:2000 / 1125"><img src="../../packaging-design/assets/oro-carrier.jpg" alt="Black two-cup carrier with the ORO Coffee logo" loading="lazy" width="2000" height="1125"></div><figcaption>Carrier</figcaption></figure></div></div>
+  </section>
+  <div style="height:clamp(80px,10vw,160px)"></div>
+  
+  <nav class="nx" aria-label="Next case study">
+    <div>
+      <span class="lbl" style="color:var(--muted)">Next case study</span>
+      <a href="../grey-goose-cards/index.html"><span class="nx__t">Grey Goose Cards</span><span class="nx__d">A playing card deck built from the brand pattern</span></a>
+      <a class="nx__back" href="../martini-bitter/index.html">← Previous: Martini Bitter</a>
+    </div>
+    <a href="../grey-goose-cards/index.html" aria-hidden="true" tabindex="-1"><div class="nx__img"><img src="../../packaging-design/assets/gc-field.jpg" alt="" loading="lazy"></div></a>
+  </nav>
+</main>
+
+<section id="contact" class="ct" aria-label="Contact">
+  <span class="lbl"><span class="dot" aria-hidden="true"></span>Available for full-time, remote and new projects</span>
+  <h2>Let’s make something <em>worth keeping.</em></h2>
+  <div class="ct__row">
+    <div><span class="lbl">Email</span><p><a class="ct__mail" href="mailto:sunil@sebastians.tv">sunil@sebastians.tv</a></p></div>
+    <div><span class="lbl">Elsewhere</span><p><a href="https://www.linkedin.com/in/sunil-shahzad-a7a59797/" target="_blank" rel="noopener">LinkedIn ↗</a></p><p><a href="https://www.behance.net/sunshaseb" target="_blank" rel="noopener">Behance ↗</a></p><p><a href="https://www.instagram.com/sunilsebastian/" target="_blank" rel="noopener">Instagram ↗</a></p></div>
+    <div><span class="lbl">Work authorization</span><p>US Employment Authorization Card (EAD)</p></div>
+  </div>
+</section>
+
+<footer class="ft-wrap">
+  <div class="ft-nav"><span>© 2026 Sunil Sebastian</span><nav aria-label="Footer"><a href="#work">Work</a><a href="#index">Index</a><a href="#about">About</a><a href="../showreel/index.html">Showreel</a></nav></div>
+  <span class="wordmark" aria-hidden="true">Sunil Sebastian</span>
+</footer>
+
+
+<script>
+(() => {
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  // Looping clips play only while on screen
+  const vo = new IntersectionObserver(es => es.forEach(e => { const v = e.target; if (e.isIntersecting) { v.preload = 'auto'; v.play().catch(() => {}); } else v.pause(); }), { threshold: .2 });
+  document.querySelectorAll('video.lv').forEach(v => vo.observe(v));
+})();
+</script>
+
+</body>
+</html>

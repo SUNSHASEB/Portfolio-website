@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Al Siraat — Sunil Sebastian</title>
+<meta name="description" content="Al Siraat by Sunil Sebastian. Turning a crowded Quran utility app into an AI learning product, now used by over a million people.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
+<meta name="theme-color" content="#f3f1ec">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f3f1ec; --paper-2: #e9e6df; --ink: #111110; --muted: #75736d; --line: rgba(17,17,16,.14);
+    --night: #0f0f0e; --night-line: rgba(255,255,255,.14); --accent: #f6cb00;
+    --font: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+    --gutter: clamp(16px, 2.6vw, 40px); --ease: cubic-bezier(.2,.7,.1,1);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font); font-size: 16px; line-height: 1.5; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+  img { display: block; max-width: 100%; height: auto; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { padding: 0 var(--gutter); }
+  .lbl { font-size: 12px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; }
+  .rule { border: 0; border-top: 1px solid var(--line); margin: 0; }
+
+  /* Header */
+  .hd { position: fixed; inset: 0 0 auto 0; z-index: 30; display: flex; align-items: center; justify-content: space-between; padding: 18px var(--gutter); color: #fff; transition: background .35s, color .35s, border-color .35s; border-bottom: 1px solid transparent; }
+  .hd.is-solid { background: rgba(243,241,236,.92); backdrop-filter: blur(10px); color: var(--ink); border-bottom-color: var(--line); }
+  .hd__brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; font-size: 15px; letter-spacing: -.01em; }
+  .hd__brand img { width: 26px; height: 26px; }
+  .hd nav { display: flex; gap: clamp(14px, 2.4vw, 32px); font-size: 13px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; }
+  .hd nav a { position: relative; }
+  .hd nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -3px; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform .4s var(--ease); }
+  .hd nav a:hover::after { transform: scaleX(1); transform-origin: left; }
+
+  /* Contact band */
+  .ct { background: var(--night); color: #f3f1ec; padding: clamp(80px, 11vw, 160px) var(--gutter) clamp(60px, 8vw, 110px); }
+  .ct .lbl { color: rgba(243,241,236,.6); }
+  .ct h2 { margin: 18px 0 clamp(36px, 5vw, 64px); font-size: clamp(44px, 7.6vw, 128px); line-height: .96; font-weight: 400; letter-spacing: -.05em; max-width: 13ch; }
+  .ct h2 em { font-style: italic; font-weight: 300; color: var(--accent); }
+  .ct__row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gutter); border-top: 1px solid var(--night-line); padding-top: 22px; }
+  .ct__row a, .ct__row p { margin: 6px 0 0; font-size: clamp(16px, 1.3vw, 19px); }
+  .ct__mail { font-size: clamp(22px, 2.4vw, 34px) !important; letter-spacing: -.03em; border-bottom: 1px solid currentColor; }
+  .ct__mail:hover { color: var(--accent); }
+  .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); margin-right: 8px; box-shadow: 0 0 0 4px rgba(246,203,0,.18); }
+
+  /* Footer */
+  .ft-wrap { background: var(--night); color: rgba(243,241,236,.7); padding: 0 var(--gutter) 18px; overflow: hidden; }
+  .ft-nav { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding: 22px 0; border-top: 1px solid var(--night-line); font-size: 13px; letter-spacing: .1em; text-transform: uppercase; }
+  .ft-nav nav { display: flex; gap: 22px; }
+  .ft-nav a:hover { color: #fff; }
+  .wordmark { display: block; color: #f3f1ec; font-size: clamp(54px, 15.2vw, 260px); font-weight: 500; letter-spacing: -.065em; line-height: .8; white-space: nowrap; margin: 10px 0 0 -.04em; }
+
+
+  .hd { color: var(--ink); background: rgba(243,241,236,.92); backdrop-filter: blur(10px); border-bottom-color: var(--line); }
+  .cx { padding: clamp(110px, 14vw, 200px) var(--gutter) clamp(28px, 4vw, 56px); }
+  .cx__k { display: flex; justify-content: space-between; gap: 16px; color: var(--muted); }
+  .cx h1 { margin: clamp(18px, 2.4vw, 32px) 0 clamp(28px, 4vw, 64px); font-size: clamp(52px, 11vw, 200px); line-height: .88; font-weight: 500; letter-spacing: -.06em; }
+  .cx__info { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 96px); border-top: 1px solid var(--ink); padding-top: 20px; }
+  .cx__lede { margin: 0; font-size: clamp(22px, 2.2vw, 34px); line-height: 1.18; letter-spacing: -.03em; max-width: 26ch; }
+  .cx__meta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px var(--gutter); margin: 0; }
+  .cx__meta dt { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .cx__meta dd { margin: 4px 0 0; font-size: 16px; }
+  .cx__stats { list-style: none; margin: clamp(32px, 4vw, 56px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: var(--gutter); }
+  .cx__stats li { border-top: 1px solid var(--line); padding-top: 14px; }
+  .cx__stats b { display: block; font-size: clamp(36px, 4.6vw, 76px); font-weight: 400; letter-spacing: -.05em; line-height: 1; }
+  .cx__stats span { display: block; margin-top: 8px; color: var(--muted); font-size: 14px; }
+  .cx__media { margin: 0; }
+  .cx__media img, .cx__media video { display: block; width: 100%; height: auto; max-height: 92svh; object-fit: cover; background: #000; }
+  .cx__media .wx { margin: 0; }
+
+  .cs { padding: clamp(80px, 10vw, 160px) var(--gutter) 0; }
+  .cs__head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 3fr); gap: var(--gutter); border-top: 1px solid var(--line); padding-top: 18px; }
+  .cs__lbl { display: flex; gap: 12px; color: var(--muted); }
+  .cs__lbl b { color: var(--ink); font-weight: 500; }
+  .cs h2 { margin: 0; font-size: clamp(32px, 4.4vw, 72px); line-height: 1.02; font-weight: 400; letter-spacing: -.045em; max-width: 18ch; }
+  .cs__sub { margin: 22px 0 0; font-size: clamp(17px, 1.35vw, 20px); color: #3d3c39; max-width: 52ch; }
+  .cs__ql { margin: clamp(32px, 4vw, 56px) 0 0; font-size: clamp(24px, 2.6vw, 40px); line-height: 1.12; letter-spacing: -.03em; font-weight: 300; font-style: italic; max-width: 30ch; }
+  .cs__chips { list-style: none; margin: 24px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .cs__chips li { border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: 14px; }
+  .pts { list-style: none; margin: clamp(32px, 4vw, 56px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr)); gap: 0 var(--gutter); }
+  .pts li { border-top: 1px solid var(--ink); padding: 14px 0 6px; }
+  .pts small { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .pts b { display: block; margin: 8px 0 6px; font-size: clamp(18px, 1.5vw, 22px); font-weight: 500; letter-spacing: -.02em; }
+  .pts p { margin: 0; color: var(--muted); font-size: 15px; }
+  .cs__body { margin-left: calc((100% - var(--gutter) * 3) / 4 + var(--gutter)); }
+
+  .rows { display: grid; gap: clamp(10px, 1.4vw, 22px); margin-top: clamp(36px, 5vw, 72px); }
+  .row { display: flex; gap: clamp(10px, 1.4vw, 22px); align-items: flex-start; }
+  .row--1 .m, .row--solo .m { flex: 1; }
+  .row--solo .m { max-width: min(100%, 72svh * var(--ar, 1)); }
+  .row--solo { justify-content: center; }
+  .m { margin: 0; min-width: 0; }
+  .m__box { overflow: hidden; background: var(--paper-2); }
+  .m__box img, .m__box video { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .m--contain .m__box { background: var(--paper-2); }
+  .m--contain .m__box img { object-fit: contain; padding: 8%; }
+  .m--dark .m__box { background: #1c1c1a; }
+  .m--tall { max-width: 760px; margin: 0 auto; width: 100%; }
+  .m--tall .m__box { height: min(80svh, 860px); overflow-y: auto; overscroll-behavior: contain; }
+  .m--tall .m__box img { height: auto; }
+  .tiles { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: clamp(8px, 1vw, 14px); }
+  .tiles .m__box { aspect-ratio: 1 !important; }
+  .tiles .m figcaption { display: none; }
+  .m figcaption { margin-top: 10px; font-size: 13px; color: var(--muted); }
+  .wx { min-width: 0; }
+  .wx--dark { background: #0f0f0e; color: #f3f1ec; padding: clamp(18px, 3vw, 44px); font-family: var(--font); }
+  .wx--dark :is(h3, b) { font-family: var(--font); }
+
+  .sws { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); margin-top: clamp(32px, 4vw, 56px); }
+  .sw { aspect-ratio: 4 / 3; padding: 14px; display: flex; flex-direction: column; justify-content: flex-end; font-size: 14px; }
+  .sw small { opacity: .7; font-variant-numeric: tabular-nums; }
+
+  .quote { padding: clamp(110px, 14vw, 220px) var(--gutter); }
+  .quote p { margin: 0 auto; max-width: 16ch; text-align: center; font-size: clamp(36px, 6vw, 104px); line-height: 1; letter-spacing: -.05em; font-weight: 300; font-style: italic; }
+  .dl { padding: 0 var(--gutter) clamp(60px, 8vw, 110px); }
+  .dl ul { list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .dl li { border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: 14px; }
+
+  .nx { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--gutter); padding: clamp(28px, 4vw, 56px) var(--gutter) clamp(80px, 10vw, 140px); border-top: 1px solid var(--line); }
+  .nx a { display: block; }
+  .nx__t { display: block; margin: 12px 0 8px; font-size: clamp(40px, 6.8vw, 116px); line-height: .92; font-weight: 500; letter-spacing: -.055em; transition: color .3s; }
+  .nx a:hover .nx__t { color: var(--muted); }
+  .nx__d { color: var(--muted); }
+  .nx__img { overflow: hidden; aspect-ratio: 16 / 10; background: var(--paper-2); }
+  .nx__img img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+  .nx a:hover .nx__img img { transform: scale(1.035); }
+  .nx__back { display: inline-block; margin-top: 26px; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; border-bottom: 1px solid currentColor; }
+
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .9s var(--ease), transform 1s var(--ease); }
+  .reveal.is-in { opacity: 1; transform: none; }
+
+  @media (max-width: 900px) {
+    .cx__info, .cs__head, .nx { grid-template-columns: 1fr; }
+    .cs__body { margin-left: 0; }
+    .pts { grid-template-columns: 1fr; }
+    .cx__stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .sws { grid-template-columns: repeat(min(var(--n), 4), minmax(0, 1fr)); }
+    .ct__row { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .hd nav a:not(.hd__mail) { display: none; }
+    .cx__meta { grid-template-columns: 1fr 1fr; }
+    .row { flex-direction: column; }
+    .row .m { flex: none !important; width: 100%; max-width: none !important; }
+    .sws { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .sw { aspect-ratio: 2 / 1; }
+    .tiles { grid-template-columns: repeat(min(var(--n), 4), minmax(0, 1fr)); }
+    .wx--dark { padding: 14px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+
+  .w-cap { margin: 10px 0 0; font-size: 13px; color: var(--muted); }
+  .wx--dark { 
+    /* Landing page palette */
+    --black: #000;
+    --ink: #0b0b0b;
+    --white: #fff;
+    --paper: #efefef;
+    --yellow: #f6cb00;
+    --red: #ff1801;
+    --blue: #2151d8;
+    --sky: #2979ff;
+    --orange: #ffa800;
+    /* Namma Farm palette */
+    --nf-lime: #82ce26;
+    --nf-green: #003d17;
+    --nf-black: #171717;
+    --nf-yellow: #ff9b00;
+
+    --display: "Kirgina", "Anton", "Oswald", Impact, sans-serif;
+    --body: "BBH Bogle", "Helvetica Neue", Arial, sans-serif;
+
+    --gutter: clamp(16px, 4vw, 64px);
+    --max: 1440px;
+    --radius: 18px;
+    --ease: cubic-bezier(.2, .7, .1, 1);
+   --display: "Inter Tight", sans-serif; --body: "Inter Tight", sans-serif; --radius: 0px; }
+.live { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(16px, 2.4vw, 36px); margin-top: clamp(32px, 4vw, 56px); align-items: stretch; }
+.live__phone { border-radius: calc(var(--radius) + 6px); background: radial-gradient(ellipse at 50% 40%, #2a2350 0%, #0d0c14 70%); display: grid; place-items: center; padding: clamp(18px, 3vw, 40px) 0; }
+.live__phone .lottie { width: min(100%, 420px); aspect-ratio: 600 / 900; }
+.live__side { display: flex; flex-direction: column; gap: clamp(12px, 1.5vw, 20px); }
+.live__card { border-radius: var(--radius); background: #f7f4ee; color: #111; padding: clamp(16px, 2vw, 24px); overflow: hidden; }
+.live__card small { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; color: #6c4bd1; }
+.live__card b { display: block; margin-top: 6px; font-family: var(--body); font-weight: 800; font-size: clamp(20px, 1.7vw, 26px); letter-spacing: -.02em; }
+.lottie--qaida { width: 100%; aspect-ratio: 1164 / 700; margin-top: 8px; }
+.live__steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.live__steps li { display: flex; gap: 14px; align-items: baseline; padding: 12px 16px; border-radius: 14px; background: #141414; border: 1px solid rgba(255,255,255,.08); font-size: 16px; }
+.live__steps b { color: var(--accent); font-size: 13px; letter-spacing: .1em; }
+.live__link { align-self: flex-start; font-weight: 700; color: var(--accent); text-decoration: none; border-bottom: 2px solid currentColor; padding-bottom: 2px; }
+.live__link:hover { color: #fff; }
+.mots { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(10px, 1.2vw, 16px); margin-top: 16px; }
+.mot { border-radius: var(--radius); background: #f7f4ee; color: #111; padding: clamp(16px, 2vw, 22px); }
+.lottie--icon { width: 72px; height: 72px; margin-bottom: 8px; }
+.mot b { display: block; font-family: var(--body); font-weight: 800; font-size: 18px; letter-spacing: -.01em; }
+.mot p { margin: 6px 0 0; font-size: 14px; line-height: 1.4; opacity: .75; }
+@media (max-width: 960px) {.live { grid-template-columns: 1fr; }
+.mots { grid-template-columns: repeat(2, minmax(0, 1fr)); }}
+@media (max-width: 600px) {.films, .mots { grid-template-columns: 1fr; }}
+</style>
+</head>
+<body>
+
+<header class="hd">
+  <a class="hd__brand" href="../index.html"><img src="../../assets/icons/favicon-64.png" alt="" width="26" height="26">Sunil Sebastian</a>
+  <nav aria-label="Main"><a href="../index.html#work">Work</a><a href="../index.html#index">Index</a><a href="../index.html#about">About</a><a class="hd__mail" href="#contact">Contact</a></nav>
+</header>
+
+<main>
+  <section class="cx" aria-labelledby="title">
+    <div class="cx__k lbl"><span>Product</span><span>02 / 03</span></div>
+    <h1 id="title">Al Siraat</h1>
+    <div class="cx__info">
+      <p class="cx__lede">Turning a crowded Quran utility app into an AI learning product, now used by over a million people.</p>
+      <dl class="cx__meta"><div><dt>Timeline</dt><dd>June 2024 → launch Dec 2025</dd></div><div><dt>Role</dt><dd>Head of Design</dd></div><div><dt>Team</dt><dd>4 designers, PM &amp; engineering</dd></div><div><dt>Scope</dt><dd>Strategy, UX/UI, logo &amp; identity</dd></div></dl>
+    </div>
+    <ul class="cx__stats" style="--n:4"><li class="reveal"><b>1M+</b><span>Google Play downloads</span></li><li class="reveal"><b>4.8★</b><span>Play rating · 4.4K reviews</span></li><li class="reveal"><b>4.7★</b><span>App Store rating</span></li><li class="reveal"><b>9</b><span>Languages</span></li></ul>
+  </section>
+  <figure class="cx__media"><img src="../../al-siraat/assets/brand-logo.jpg" alt="Al Siraat logo, app icons and the app on a phone home screen" width="1700" height="948" fetchpriority="high"></figure>
+
+  <section class="cs" id="context">
+    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>01</b>Context</span><div><h2>Read less. Learn more.</h2><p class="cs__sub">Most Quran apps help you read. Very few help you learn.</p></div></div>
+    <div class="cs__body"></div>
+    
+    
+    <div class="rows"><div class="row row--1"><figure class="m reveal" style="--ar:2.3053"><div class="m__box" style="aspect-ratio:1646 / 714"><img src="../../al-siraat/assets/screens.jpg" alt="Five redesigned Al Siraat app screens" loading="lazy" width="1646" height="714"></div><figcaption>The redesigned app</figcaption></figure></div></div>
+  </section>
+  <section class="cs" id="problem">
+    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>02</b>The problem</span><div><h2>Everything. Optimised for nothing.</h2></div></div>
+    <div class="cs__body"></div>
+    
+    
+    <div class="rows"></div>
+  </section>
+  <section class="cs" id="research">
+    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>03</b>Research</span><div><h2>Learning from the AI-Quran space.</h2></div></div>
+    <div class="cs__body"><ol class="pts" style="--n:3"><li class="reveal"><small>01</small><b>AI feedback wins</b><p>Recite, get corrected, improve. That loop brings people back daily.</p></li><li class="reveal"><small>02</small><b>Beginners need an on-ramp</b><p>Apps that started at full recitation lost first-time learners. An alphabet-first Qaida track was essential.</p></li><li class="reveal"><small>03</small><b>Progress drives habit</b><p>Streaks, mistake logs and trackers turn learning into a routine.</p></li></ol></div>
+    
+    
+    <div class="rows"></div>
+  </section>
+  <section class="cs" id="process">
+    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>04</b>Process · 9D JAM</span><div><h2>Design together. Decide fast.</h2><p class="cs__sub">A team design sprint: map old modules to the new structure, draw the flows, then sketches → wireframes → high fidelity.</p></div></div>
+    <div class="cs__body"></div>
+    
+    
+    <div class="rows"><div class="row row--1"><figure class="m reveal" style="--ar:1.7774"><div class="m__box" style="aspect-ratio:1852 / 1042"><img src="../../al-siraat/assets/flow.jpg" alt="9D JAM flow chart and wireframes mapping old modules to the new structure" loading="lazy" width="1852" height="1042"></div><figcaption>Flows &amp; wireframes</figcaption></figure></div><div class="row row--solo"><figure class="m reveal" style="--ar:1.7759"><div class="m__box" style="aspect-ratio:1062 / 598"><img src="../../al-siraat/assets/moodboard.jpg" alt="Team moodboard of learning, prayer and fintech apps" loading="lazy" width="1062" height="598"></div><figcaption>Moodboard</figcaption></figure></div><div class="row row--1"><figure class="m reveal" style="--ar:2.3447"><div class="m__box" style="aspect-ratio:2000 / 853"><img src="../../al-siraat/assets/jam-board.jpg" alt="New module structure and prioritisation alongside the team&#x27;s design explorations" loading="lazy" width="2000" height="853"></div><figcaption>Modules &amp; prioritisation</figcaption></figure></div></div>
+  </section>
+  <section class="cs" id="directions">
+    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>05</b>Four directions</span><div><h2>Options, side by side.</h2><p class="cs__sub">Each designer explored one direction for the new home. Seeing them together made the trade-offs obvious.</p></div></div>
+    <div class="cs__body"></div>
+    
+    
+    <div class="rows"><div class="row row--1"><figure class="m reveal" style="--ar:1.7816"><div class="m__box" style="aspect-ratio:930 / 522"><img src="../../al-siraat/assets/dir-1.jpg" alt="Dashboard direction 1: clean cards with a green accent" loading="lazy" width="930" height="522"></div></figure></div><div class="row"><figure class="m reveal" style="--ar:1.7816;flex:1.7816 1 0%"><div class="m__box" style="aspect-ratio:930 / 522"><img src="../../al-siraat/assets/dir-2.jpg" alt="Dashboard direction 2: warm gold with quick actions" loading="lazy" width="930" height="522"></div></figure><figure class="m reveal" style="--ar:1.7816;flex:1.7816 1 0%"><div class="m__box" style="aspect-ratio:930 / 522"><img src="../../al-siraat/assets/dir-4.jpg" alt="Dashboard direction 3: photographic with soft gradient cards" loading="lazy" width="930" height="522"></div></figure></div><div class="row row--solo"><figure class="m reveal" style="--ar:1.7816"><div class="m__box" style="aspect-ratio:930 / 522"><img src="../../al-siraat/assets/dir-3.jpg" alt="Dashboard direction 4: deep green with mosque imagery" loading="lazy" width="930" height="522"></div></figure></div></div>
+  </section>
+  <section class="cs" id="converge">
+    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>06</b>The breakthrough</span><div><h2>&quot;Salam! Learn with AI.&quot;</h2><p class="cs__sub">We stopped treating home as a tool launcher. Qaida and Quran learning became the two hero cards; worship tools moved to a supporting layer. A dozen layouts later, it clicked.</p></div></div>
+    <div class="cs__body"></div>
+    
+    
+    <div class="rows"><div class="row row--1"><figure class="m reveal" style="--ar:1.7778"><div class="m__box" style="aspect-ratio:2000 / 1125"><img src="../../al-siraat/assets/converge.jpg" alt="Iterations of the learning-first dashboard from grayscale to full colour" loading="lazy" width="2000" height="1125"></div><figcaption>From grayscale to colour</figcaption></figure></div></div>
+  </section>
+  <section class="cs" id="systems">
+    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>07</b>Three visual systems</span><div><h2>Compare systems, not vibes.</h2><p class="cs__sub">The leading direction, built three times with its own palette, gradients and type, applied to the same screens.</p></div></div>
+    <div class="cs__body"></div>
+    
+    
+    <div class="rows"><div class="row row--1"><figure class="m reveal" style="--ar:1.7793"><div class="m__box" style="aspect-ratio:1032 / 580"><img src="../../al-siraat/assets/sys-1.jpg" alt="Style guide 1: midnight navy and teal" loading="lazy" width="1032" height="580"></div></figure></div><div class="row"><figure class="m reveal" style="--ar:1.7793;flex:1.7793 1 0%"><div class="m__box" style="aspect-ratio:1032 / 580"><img src="../../al-siraat/assets/sys-2.jpg" alt="Style guide 2: orange and green" loading="lazy" width="1032" height="580"></div></figure><figure class="m reveal" style="--ar:1.7793;flex:1.7793 1 0%"><div class="m__box" style="aspect-ratio:1032 / 580"><img src="../../al-siraat/assets/sys-3.jpg" alt="Style guide 3: green and gold" loading="lazy" width="1032" height="580"></div></figure></div><div class="row row--solo"><figure class="m reveal" style="--ar:1.7793"><div class="m__box" style="aspect-ratio:1032 / 580"><img src="../../al-siraat/assets/sys-final.jpg" alt="The final summary screens presented to stakeholders" loading="lazy" width="1032" height="580"></div></figure></div></div>
+  </section>
+  <section class="cs" id="brand">
+    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>08</b>Brand identity</span><div><h2>Al Siraat. The straight path.</h2><p class="cs__sub">Not a collection of tools. Guidance along a path.</p></div></div>
+    <div class="cs__body"></div>
+    
+    
+    <div class="rows"><div class="row row--1"><figure class="m reveal" style="--ar:1.4710"><div class="m__box" style="aspect-ratio:1874 / 1274"><img src="../../al-siraat/assets/brand-board.jpg" alt="Al Siraat identity board: icon explorations, app icon on a phone, and the mark in light and dark" loading="lazy" width="1874" height="1274"></div><figcaption>Identity explorations</figcaption></figure></div></div>
+  </section>
+  <section class="cs" id="motion">
+    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>09</b>The product, live</span><div><h2>Recite. Get corrected.</h2><p class="cs__sub">The real app flows, as they run in the shipped product: pick a surah, track your progress, then recite while the AI listens.</p></div></div>
+    <div class="cs__body"></div>
+    
+    
+    <div class="rows"><div class="wx wx--dark reveal"><div class="live">
+        <div class="live__phone reveal"><div class="lottie" data-anim="phone-animation" role="img" aria-label="App walkthrough: the Learn Quran list with progress per surah, then the recitation screen with tap and hold to read"></div></div>
+        <div class="live__side">
+          <div class="live__card reveal"><small>AI Qaida</small><b>Tap a letter. Say it. Hear it back.</b><div class="lottie lottie--qaida" data-anim="ai-assistant" role="img" aria-label="Qaida screen: Arabic letters with a microphone button that listens to pronunciation"></div></div>
+          <ol class="live__steps reveal"><li><b>01</b>Choose a surah or a Qaida lesson</li><li><b>02</b>Tap and hold the mic, then recite</li><li><b>03</b>The AI marks mistakes and Tajweed in real time</li><li><b>04</b>Earn badges and track progress</li></ol>
+          <a class="live__link reveal" href="https://alsiraat.ai" target="_blank" rel="noopener">See it live at alsiraat.ai ↗</a>
+        </div>
+      </div></div><div class="row row--solo"><figure class="m reveal" style="--ar:1.3899"><div class="m__box" style="aspect-ratio:2000 / 1439"><img src="../../al-siraat/assets/three-phones.jpg" alt="Three app screens: Quran lessons with progress, live recitation of Al-Baqarah, and a Gold badge unlocked for Al-Fatiah" loading="lazy" width="2000" height="1439"></div><figcaption>Lessons · Recitation · Rewards</figcaption></figure></div><div class="row row--1"><figure class="m reveal" style="--ar:1.7778"><div class="m__box" style="aspect-ratio:1280 / 720"><video src="../../al-siraat/assets/launch-film.mp4" poster="../../al-siraat/assets/launch-film.jpg" controls playsinline preload="none" aria-label="Al Siraat launch film"></video></div></figure></div><div class="row row--1"><figure class="m reveal" style="--ar:1.7778"><div class="m__box" style="aspect-ratio:1280 / 720"><video src="../../al-siraat/assets/product-film.mp4" poster="../../al-siraat/assets/product-film.jpg" controls playsinline preload="none" aria-label="Al Siraat product film: learners using the app at home"></video></div></figure></div></div>
+  </section>
+  <section class="cs" id="shipped">
+    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>10</b>What we shipped</span><div><h2>A personal AI tutor. 24/7.</h2><p class="cs__sub">Launched on a freemium model and still shipping: audio while learning, Qaida articulations, Ramadan theming, home-screen widgets and more.</p></div></div>
+    <div class="cs__body"><ol class="pts" style="--n:4"><li class="reveal"><small>01</small><b>Real-time mistake detection</b><p>The AI listens to recitation, highlights errors instantly and corrects on the spot.</p></li><li class="reveal"><small>02</small><b>Pronunciation &amp; Tajweed</b><p>Feedback on pronunciation and Tajweed while you recite.</p></li><li class="reveal"><small>03</small><b>Interactive AI Qaida</b><p>A beginner track from Arabic letters and sounds up to fluent reading.</p></li><li class="reveal"><small>04</small><b>Adaptive lessons &amp; rewards</b><p>AI-tailored paths, daily limits that build consistency, progress insights and rewards.</p></li><li class="reveal"><small>05</small><b>World-renowned Qari audio</b><p>Listen and compare against masters like Abdul-Basit and Al-Sudais, with a mistake log.</p></li><li class="reveal"><small>06</small><b>Essential Islamic tools</b><p>Prayer times, Qibla, Tasbih, calendar, Duas and Azkar. Kept, now decluttered.</p></li></ol></div>
+    
+    
+    <div class="rows"><div class="wx wx--dark reveal"><div class="mots"><article class="mot reveal"><div class="lottie lottie--icon" data-anim="lessonPlans" aria-hidden="true"></div><b>Adaptive lesson plans</b><p>Learn at your own pace with AI-tailored content.</p></article><article class="mot reveal"><div class="lottie lottie--icon" data-anim="reward" aria-hidden="true"></div><b>Earn rewards</b><p>Daily progress unlocks badges and streaks.</p></article><article class="mot reveal"><div class="lottie lottie--icon" data-anim="progress" aria-hidden="true"></div><b>Progress insights</b><p>See growth and focus where it matters.</p></article><article class="mot reveal"><div class="lottie lottie--icon" data-anim="feedback" aria-hidden="true"></div><b>Smart feedback</b><p>Real-time correction from Al Siraat AI.</p></article></div></div><div class="row"><figure class="m reveal" style="--ar:0.7267;flex:0.7267 1 0%"><div class="m__box" style="aspect-ratio:375 / 516"><img src="../../al-siraat/assets/tool-quran.jpg" alt="Quran feature card" loading="lazy" width="375" height="516"></div></figure><figure class="m reveal" style="--ar:0.7267;flex:0.7267 1 0%"><div class="m__box" style="aspect-ratio:375 / 516"><img src="../../al-siraat/assets/tool-qaida.jpg" alt="Qaida feature card" loading="lazy" width="375" height="516"></div></figure><figure class="m reveal" style="--ar:0.7344;flex:0.7344 1 0%"><div class="m__box" style="aspect-ratio:376 / 512"><img src="../../al-siraat/assets/tool-prayer.jpg" alt="Prayer times feature card" loading="lazy" width="376" height="512"></div></figure></div><div class="row"><figure class="m reveal" style="--ar:0.7324;flex:0.7324 1 0%"><div class="m__box" style="aspect-ratio:375 / 512"><img src="../../al-siraat/assets/tool-qibla.jpg" alt="Qibla feature card" loading="lazy" width="375" height="512"></div></figure><figure class="m reveal" style="--ar:0.7305;flex:0.7305 1 0%"><div class="m__box" style="aspect-ratio:374 / 512"><img src="../../al-siraat/assets/tool-tasbih.jpg" alt="Tasbeeh feature card" loading="lazy" width="374" height="512"></div></figure><figure class="m reveal" style="--ar:0.7324;flex:0.7324 1 0%"><div class="m__box" style="aspect-ratio:375 / 512"><img src="../../al-siraat/assets/tool-dua-azkar.jpg" alt="Dua &amp; Azkar feature card" loading="lazy" width="375" height="512"></div></figure></div><div class="row row--solo"><figure class="m reveal" style="--ar:0.7305"><div class="m__box" style="aspect-ratio:374 / 512"><img src="../../al-siraat/assets/tool-calendar.jpg" alt="Hijri calendar feature card" loading="lazy" width="374" height="512"></div></figure></div></div>
+  </section>
+  <section class="cs" id="reflections">
+    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>11</b>Reflections</span><div><h2>What it taught me.</h2></div></div>
+    <div class="cs__body"><ol class="pts" style="--n:4"><li class="reveal"><small>01</small><b>Subtraction is a strategy.</b><p>The biggest decision wasn&#x27;t adding AI. It was demoting a dozen features so two learning journeys could lead.</p></li><li class="reveal"><small>02</small><b>Prioritisation is a deliverable.</b><p>The P1 / P2 / P3 module structure aligned design, engineering and business, and the shipped product followed it.</p></li><li class="reveal"><small>03</small><b>Options beat opinions.</b><p>Four dashboard directions and three full style systems turned debates into structured decisions.</p></li><li class="reveal"><small>04</small><b>A rename is a product decision.</b><p>&quot;Al Siraat, the straight path&quot; states the product&#x27;s promise in two words.</p></li></ol></div>
+    
+    
+    <div class="rows"></div>
+  </section>
+  <section class="quote" aria-label="Closing thought"><p class="reveal">&quot;The current design seems overloaded with functionality and too confusing to quickly solve the user&#x27;s need.&quot;My UI analysis, June 2024</p></section>
+  
+  <nav class="nx" aria-label="Next case study">
+    <div>
+      <span class="lbl" style="color:var(--muted)">Next case study</span>
+      <a href="../imagination-dls/index.html"><span class="nx__t">Imagination DLS</span><span class="nx__d">One design language for 40+ apps</span></a>
+      <a class="nx__back" href="../coca-cola-umm/index.html">← Previous: Coca-Cola UMM</a>
+    </div>
+    <a href="../imagination-dls/index.html" aria-hidden="true" tabindex="-1"><div class="nx__img"><img src="../../imagination-dls/assets/hero.jpg" alt="" loading="lazy"></div></a>
+  </nav>
+</main>
+
+<section id="contact" class="ct" aria-label="Contact">
+  <span class="lbl"><span class="dot" aria-hidden="true"></span>Available for full-time, remote and new projects</span>
+  <h2>Let’s make something <em>worth keeping.</em></h2>
+  <div class="ct__row">
+    <div><span class="lbl">Email</span><p><a class="ct__mail" href="mailto:sunil@sebastians.tv">sunil@sebastians.tv</a></p></div>
+    <div><span class="lbl">Elsewhere</span><p><a href="https://www.linkedin.com/in/sunil-shahzad-a7a59797/" target="_blank" rel="noopener">LinkedIn ↗</a></p><p><a href="https://www.behance.net/sunshaseb" target="_blank" rel="noopener">Behance ↗</a></p><p><a href="https://www.instagram.com/sunilsebastian/" target="_blank" rel="noopener">Instagram ↗</a></p></div>
+    <div><span class="lbl">Work authorization</span><p>US Employment Authorization Card (EAD)</p></div>
+  </div>
+</section>
+
+<footer class="ft-wrap">
+  <div class="ft-nav"><span>© 2026 Sunil Sebastian</span><nav aria-label="Footer"><a href="#work">Work</a><a href="#index">Index</a><a href="#about">About</a><a href="../showreel/index.html">Showreel</a></nav></div>
+  <span class="wordmark" aria-hidden="true">Sunil Sebastian</span>
+</footer>
+
+
+<script>
+(() => {
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  // Looping clips play only while on screen
+  const vo = new IntersectionObserver(es => es.forEach(e => { const v = e.target; if (e.isIntersecting) { v.preload = 'auto'; v.play().catch(() => {}); } else v.pause(); }), { threshold: .2 });
+  document.querySelectorAll('video.lv').forEach(v => vo.observe(v));
+})();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+<script>(() => {
+  // Product animations: load each Lottie when it scrolls near, pause when off screen
+  if (window.lottie) {
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const lo = new IntersectionObserver(es => es.forEach(e => {
+      const el = e.target;
+      if (e.isIntersecting && !el._anim) {
+        el._anim = lottie.loadAnimation({ container: el, renderer: 'svg', loop: true, autoplay: !reduce, path: '../../al-siraat/assets/anim/' + el.dataset.anim + '.json',
+          rendererSettings: { preserveAspectRatio: 'xMidYMid meet' } });
+        if (reduce) el._anim.addEventListener('DOMLoaded', () => el._anim.goToAndStop(Math.floor(el._anim.totalFrames * .6), true));
+      } else if (el._anim && !reduce) { e.isIntersecting ? el._anim.play() : el._anim.pause(); }
+    }), { rootMargin: '200px 0px' });
+    document.querySelectorAll('.lottie[data-anim]').forEach(el => lo.observe(el));
+  }
+})();</script>
+</body>
+</html>

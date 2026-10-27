@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Imagination DLS — Sunil Sebastian</title>
+<meta name="description" content="Imagination DLS by Sunil Sebastian. One design language for 40+ apps, so everything Imagination Holdings ships feels like one brand.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
+<meta name="theme-color" content="#f3f1ec">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f3f1ec; --paper-2: #e9e6df; --ink: #111110; --muted: #75736d; --line: rgba(17,17,16,.14);
+    --night: #0f0f0e; --night-line: rgba(255,255,255,.14); --accent: #f6cb00;
+    --font: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+    --gutter: clamp(16px, 2.6vw, 40px); --ease: cubic-bezier(.2,.7,.1,1);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font); font-size: 16px; line-height: 1.5; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+  img { display: block; max-width: 100%; height: auto; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { padding: 0 var(--gutter); }
+  .lbl { font-size: 12px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; }
+  .rule { border: 0; border-top: 1px solid var(--line); margin: 0; }
+
+  /* Header */
+  .hd { position: fixed; inset: 0 0 auto 0; z-index: 30; display: flex; align-items: center; justify-content: space-between; padding: 18px var(--gutter); color: #fff; transition: background .35s, color .35s, border-color .35s; border-bottom: 1px solid transparent; }
+  .hd.is-solid { background: rgba(243,241,236,.92); backdrop-filter: blur(10px); color: var(--ink); border-bottom-color: var(--line); }
+  .hd__brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; font-size: 15px; letter-spacing: -.01em; }
+  .hd__brand img { width: 26px; height: 26px; }
+  .hd nav { display: flex; gap: clamp(14px, 2.4vw, 32px); font-size: 13px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; }
+  .hd nav a { position: relative; }
+  .hd nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -3px; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform .4s var(--ease); }
+  .hd nav a:hover::after { transform: scaleX(1); transform-origin: left; }
+
+  /* Contact band */
+  .ct { background: var(--night); color: #f3f1ec; padding: clamp(80px, 11vw, 160px) var(--gutter) clamp(60px, 8vw, 110px); }
+  .ct .lbl { color: rgba(243,241,236,.6); }
+  .ct h2 { margin: 18px 0 clamp(36px, 5vw, 64px); font-size: clamp(44px, 7.6vw, 128px); line-height: .96; font-weight: 400; letter-spacing: -.05em; max-width: 13ch; }
+  .ct h2 em { font-style: italic; font-weight: 300; color: var(--accent); }
+  .ct__row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gutter); border-top: 1px solid var(--night-line); padding-top: 22px; }
+  .ct__row a, .ct__row p { margin: 6px 0 0; font-size: clamp(16px, 1.3vw, 19px); }
+  .ct__mail { font-size: clamp(22px, 2.4vw, 34px) !important; letter-spacing: -.03em; border-bottom: 1px solid currentColor; }
+  .ct__mail:hover { color: var(--accent); }
+  .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); margin-right: 8px; box-shadow: 0 0 0 4px rgba(246,203,0,.18); }
+
+  /* Footer */
+  .ft-wrap { background: var(--night); color: rgba(243,241,236,.7); padding: 0 var(--gutter) 18px; overflow: hidden; }
+  .ft-nav { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding: 22px 0; border-top: 1px solid var(--night-line); font-size: 13px; letter-spacing: .1em; text-transform: uppercase; }
+  .ft-nav nav { display: flex; gap: 22px; }
+  .ft-nav a:hover { color: #fff; }
+  .wordmark { display: block; color: #f3f1ec; font-size: clamp(54px, 15.2vw, 260px); font-weight: 500; letter-spacing: -.065em; line-height: .8; white-space: nowrap; margin: 10px 0 0 -.04em; }
+
+
+  .hd { color: var(--ink); background: rgba(243,241,236,.92); backdrop-filter: blur(10px); border-bottom-color: var(--line); }
+  .cx { padding: clamp(110px, 14vw, 200px) var(--gutter) clamp(28px, 4vw, 56px); }
+  .cx__k { display: flex; justify-content: space-between; gap: 16px; color: var(--muted); }
+  .cx h1 { margin: clamp(18px, 2.4vw, 32px) 0 clamp(28px, 4vw, 64px); font-size: clamp(52px, 11vw, 200px); line-height: .88; font-weight: 500; letter-spacing: -.06em; }
+  .cx__info { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 96px); border-top: 1px solid var(--ink); padding-top: 20px; }
+  .cx__lede { margin: 0; font-size: clamp(22px, 2.2vw, 34px); line-height: 1.18; letter-spacing: -.03em; max-width: 26ch; }
+  .cx__meta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px var(--gutter); margin: 0; }
+  .cx__meta dt { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .cx__meta dd { margin: 4px 0 0; font-size: 16px; }
+  .cx__stats { list-style: none; margin: clamp(32px, 4vw, 56px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: var(--gutter); }
+  .cx__stats li { border-top: 1px solid var(--line); padding-top: 14px; }
+  .cx__stats b { display: block; font-size: clamp(36px, 4.6vw, 76px); font-weight: 400; letter-spacing: -.05em; line-height: 1; }
+  .cx__stats span { display: block; margin-top: 8px; color: var(--muted); font-size: 14px; }
+  .cx__media { margin: 0; }
+  .cx__media img, .cx__media video { display: block; width: 100%; height: auto; max-height: 92svh; object-fit: cover; background: #000; }
+  .cx__media .wx { margin: 0; }
+
+  .cs { padding: clamp(80px, 10vw, 160px) var(--gutter) 0; }
+  .cs__head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 3fr); gap: var(--gutter); border-top: 1px solid var(--line); padding-top: 18px; }
+  .cs__lbl { display: flex; gap: 12px; color: var(--muted); }
+  .cs__lbl b { color: var(--ink); font-weight: 500; }
+  .cs h2 { margin: 0; font-size: clamp(32px, 4.4vw, 72px); line-height: 1.02; font-weight: 400; letter-spacing: -.045em; max-width: 18ch; }
+  .cs__sub { margin: 22px 0 0; font-size: clamp(17px, 1.35vw, 20px); color: #3d3c39; max-width: 52ch; }
+  .cs__ql { margin: clamp(32px, 4vw, 56px) 0 0; font-size: clamp(24px, 2.6vw, 40px); line-height: 1.12; letter-spacing: -.03em; font-weight: 300; font-style: italic; max-width: 30ch; }
+  .cs__chips { list-style: none; margin: 24px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .cs__chips li { border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: 14px; }
+  .pts { list-style: none; margin: clamp(32px, 4vw, 56px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr)); gap: 0 var(--gutter); }
+  .pts li { border-top: 1px solid var(--ink); padding: 14px 0 6px; }
+  .pts small { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .pts b { display: block; margin: 8px 0 6px; font-size: clamp(18px, 1.5vw, 22px); font-weight: 500; letter-spacing: -.02em; }
+  .pts p { margin: 0; color: var(--muted); font-size: 15px; }
+  .cs__body { margin-left: calc((100% - var(--gutter) * 3) / 4 + var(--gutter)); }
+
+  .rows { display: grid; gap: clamp(10px, 1.4vw, 22px); margin-top: clamp(36px, 5vw, 72px); }
+  .row { display: flex; gap: clamp(10px, 1.4vw, 22px); align-items: flex-start; }
+  .row--1 .m, .row--solo .m { flex: 1; }
+  .row--solo .m { max-width: min(100%, 72svh * var(--ar, 1)); }
+  .row--solo { justify-content: center; }
+  .m { margin: 0; min-width: 0; }
+  .m__box { overflow: hidden; background: var(--paper-2); }
+  .m__box img, .m__box video { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .m--contain .m__box { background: var(--paper-2); }
+  .m--contain .m__box img { object-fit: contain; padding: 8%; }
+  .m--dark .m__box { background: #1c1c1a; }
+  .m--tall { max-width: 760px; margin: 0 auto; width: 100%; }
+  .m--tall .m__box { height: min(80svh, 860px); overflow-y: auto; overscroll-behavior: contain; }
+  .m--tall .m__box img { height: auto; }
+  .tiles { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: clamp(8px, 1vw, 14px); }
+  .tiles .m__box { aspect-ratio: 1 !important; }
+  .tiles .m figcaption { display: none; }
+  .m figcaption { margin-top: 10px; font-size: 13px; color: var(--muted); }
+  .wx { min-width: 0; }
+  .wx--dark { background: #0f0f0e; color: #f3f1ec; padding: clamp(18px, 3vw, 44px); font-family: var(--font); }
+  .wx--dark :is(h3, b) { font-family: var(--font); }
+
+  .sws { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); margin-top: clamp(32px, 4vw, 56px); }
+  .sw { aspect-ratio: 4 / 3; padding: 14px; display: flex; flex-direction: column; justify-content: flex-end; font-size: 14px; }
+  .sw small { opacity: .7; font-variant-numeric: tabular-nums; }
+
+  .quote { padding: clamp(110px, 14vw, 220px) var(--gutter); }
+  .quote p { margin: 0 auto; max-width: 16ch; text-align: center; font-size: clamp(36px, 6vw, 104px); line-height: 1; letter-spacing: -.05em; font-weight: 300; font-style: italic; }
+  .dl { padding: 0 var(--gutter) clamp(60px, 8vw, 110px); }
+  .dl ul { list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .dl li { border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: 14px; }
+
+  .nx { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--gutter); padding: clamp(28px, 4vw, 56px) var(--gutter) clamp(80px, 10vw, 140px); border-top: 1px solid var(--line); }
+  .nx a { display: block; }
+  .nx__t { display: block; margin: 12px 0 8px; font-size: clamp(40px, 6.8vw, 116px); line-height: .92; font-weight: 500; letter-spacing: -.055em; transition: color .3s; }
+  .nx a:hover .nx__t { color: var(--muted); }
+  .nx__d { color: var(--muted); }
+  .nx__img { overflow: hidden; aspect-ratio: 16 / 10; background: var(--paper-2); }
+  .nx__img img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+  .nx a:hover .nx__img img { transform: scale(1.035); }
+  .nx__back { display: inline-block; margin-top: 26px; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; border-bottom: 1px solid currentColor; }
+
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .9s var(--ease), transform 1s var(--ease); }
+  .reveal.is-in { opacity: 1; transform: none; }
+
+  @media (max-width: 900px) {
+    .cx__info, .cs__head, .nx { grid-template-columns: 1fr; }
+    .cs__body { margin-left: 0; }
+    .pts { grid-template-columns: 1fr; }
+    .cx__stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .sws { grid-template-columns: repeat(min(var(--n), 4), minmax(0, 1fr)); }
+    .ct__row { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .hd nav a:not(.hd__mail) { display: none; }
+    .cx__meta { grid-template-columns: 1fr 1fr; }
+    .row { flex-direction: column; }
+    .row .m { flex: none !important; width: 100%; max-width: none !important; }
+    .sws { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .sw { aspect-ratio: 2 / 1; }
+    .tiles { grid-template-columns: repeat(min(var(--n), 4), minmax(0, 1fr)); }
+    .wx--dark { padding: 14px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+
+  .w-cap { margin: 10px 0 0; font-size: 13px; color: var(--muted); }
+
+</style>
+</head>
+<body>
+
+<header class="hd">
+  <a class="hd__brand" href="../index.html"><img src="../../assets/icons/favicon-64.png" alt="" width="26" height="26">Sunil Sebastian</a>
+  <nav aria-label="Main"><a href="../index.html#work">Work</a><a href="../index.html#index">Index</a><a href="../index.html#about">About</a><a class="hd__mail" href="#contact">Contact</a></nav>
+</header>
+
+<main>
+  <section class="cx" aria-labelledby="title">
+    <div class="cx__k lbl"><span>Product</span><span>03 / 03</span></div>
+    <h1 id="title">Imagination DLS</h1>
+    <div class="cx__info">
+      <p class="cx__lede">One design language for 40+ apps, so everything Imagination Holdings ships feels like one brand.</p>
+      <dl class="cx__meta"><div><dt>Company</dt><dd>Imagination Holdings</dd></div><div><dt>Role</dt><dd>Design lead</dd></div><div><dt>Team</dt><dd>Product design team</dd></div><div><dt>Scope</dt><dd>Library structure, tokens, components, governance</dd></div><div><dt>Lives in</dt><dd>IH parent DLS</dd></div><div><dt>Owner</dt><dd>Core DS team</dd></div><div><dt>Lives in</dt><dd>IH parent DLS</dd></div><div><dt>Owner</dt><dd>Core DS team</dd></div><div><dt>Lives in</dt><dd>Category DLS files</dd></div><div><dt>Owner</dt><dd>Category design lead</dd></div><div><dt>Lives in</dt><dd>Product DLS files</dd></div><div><dt>Owner</dt><dd>Product senior designer</dd></div></dl>
+    </div>
+    <ul class="cx__stats" style="--n:4"><li class="reveal"><b>40+</b><span>Apps on one system</span></li><li class="reveal"><b>6</b><span>Product categories</span></li><li class="reveal"><b>4</b><span>Token tiers</span></li><li class="reveal"><b>4000+</b><span>Icons in 4 styles</span></li></ul>
+  </section>
+  <figure class="cx__media"><img src="../../imagination-dls/assets/hero.jpg" alt="Design Language System V.1 cover: typography, buttons, icons and colour tokens" width="2400" height="1350" fetchpriority="high"></figure>
+
+  <section class="cs" id="context">
+    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>01</b>The brief</span><div><h2>Many apps. One brand.</h2><p class="cs__sub">Imagination Holdings ships dozens of apps. They should feel like one family.</p></div></div>
+    <div class="cs__body"></div>
+    
+    
+    <div class="rows"></div>
+  </section>
+  <section class="cs" id="portfolio">
+    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>02</b>The portfolio</span><div><h2>Six categories. Forty-one apps.</h2><p class="cs__sub">We mapped every product into a category first. Categories became the middle layer of the system.</p></div></div>
+    <div class="cs__body"><ol class="pts" style="--n:4"><li class="reveal"><small>01</small><b>Docu</b><p></p></li><li class="reveal"><small>02</small><b>Utility</b><p></p></li><li class="reveal"><small>03</small><b>Education</b><p></p></li><li class="reveal"><small>04</small><b>Social</b><p></p></li><li class="reveal"><small>05</small><b>Entertainment</b><p></p></li><li class="reveal"><small>06</small><b>Health</b><p></p></li></ol></div>
+    
+    
+    <div class="rows"></div>
+  </section>
+  <section class="cs" id="problem">
+    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>03</b>The problem</span><div><h2>Copies drift.</h2><p class="cs__sub">We ran a DSL session in FigJam to compare how the library worked against how it should work.</p></div></div>
+    <div class="cs__body"><ol class="pts" style="--n:2"><li class="reveal"><small>01</small><b>Copy &amp; edit</b><p>Teams duplicated the locked mother file and edited their copy for each project. Every copy started drifting on day one, and fixes never travelled back.</p></li><li class="reveal"><small>02</small><b>Publish &amp; subscribe</b><p>The mother file stays locked and is published as a Figma library. Every category and product file links to it, never copies it, so one update reaches every app.</p></li></ol></div>
+    
+    
+    <div class="rows"><div class="row row--1"><figure class="m reveal" style="--ar:2.6711"><div class="m__box" style="aspect-ratio:3200 / 1198"><img src="../../imagination-dls/assets/session.jpg" alt="The DSL session FigJam board: library structure, tokenization strategy and the rapid-project track" loading="lazy" width="3200" height="1198"></div><figcaption>The DSL session board</figcaption></figure></div></div>
+  </section>
+  <section class="cs" id="structure">
+    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>04</b>Library structure</span><div><h2>One parent. Many children.</h2><p class="cs__sub">Two kinds of projects feed one locked library, which flows down through categories into each brand.</p></div></div>
+    <div class="cs__body"></div>
+    
+    
+    <div class="rows"></div>
+  </section>
+  <section class="cs" id="tokens">
+    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>05</b>Tokenization</span><div><h2>Four tiers. Clear owners.</h2><p class="cs__sub">Components never touch raw values. They read intent, and each tier above them has one owner.</p></div></div>
+    <div class="cs__body"><ol class="pts" style="--n:4"><li class="reveal"><small>01</small><b>Core / primitive</b><p>Raw values, like purple.500. Never used by components directly. Never changes per brand.</p></li><li class="reveal"><small>02</small><b>Semantic</b><p>Names what a value is for, not what it is. The only layer components reference.</p></li><li class="reveal"><small>03</small><b>Category theme</b><p>The shared &quot;feel&quot; of all Docu apps, all Health apps, and so on.</p></li><li class="reveal"><small>04</small><b>Product brand</b><p>Final overrides for one app. Only what must differ from its category.</p></li></ol></div>
+    
+    
+    <div class="rows"></div>
+  </section>
+  <section class="cs" id="foundations">
+    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>06</b>Foundations</span><div><h2>Colour, type, spacing.</h2><p class="cs__sub">Seven colour ramps with light and dark pairs. Inter for type. A strict spacing and radius scale. Every token says when to use it, and when not to.</p></div></div>
+    <div class="cs__body"></div>
+    
+    
+    <div class="rows"><div class="row row--1"><figure class="m reveal" style="--ar:1.5852"><div class="m__box" style="aspect-ratio:2400 / 1514"><img src="../../imagination-dls/assets/prims.jpg" alt="Colour primitives: red, purple, green, pink, blue, gravois and yellow ramps from 50 to 950 with light and dark pairs" loading="lazy" width="2400" height="1514"></div><figcaption>Colour primitives</figcaption></figure></div><div class="row"><figure class="m reveal" style="--ar:1.6461;flex:1.6461 1 0%"><div class="m__box" style="aspect-ratio:2400 / 1458"><img src="../../imagination-dls/assets/colusage.jpg" alt="Semantic colour usage for surfaces, text and borders across neutral, brand and status colours" loading="lazy" width="2400" height="1458"></div><figcaption>Semantic colour</figcaption></figure><figure class="m reveal" style="--ar:1.1842;flex:1.1842 1 0%"><div class="m__box" style="aspect-ratio:1800 / 1520"><img src="../../imagination-dls/assets/tokens-type.jpg" alt="Typography token table with value, when to use and when to avoid" loading="lazy" width="1800" height="1520"></div><figcaption>Type tokens</figcaption></figure></div></div>
+  </section>
+  <section class="cs" id="components">
+    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>07</b>Components</span><div><h2>Built once. Used everywhere.</h2><p class="cs__sub">Every component reads semantic tokens, so it re-themes itself in any category or brand.</p></div></div>
+    <div class="cs__body"></div>
+    
+    
+    <div class="rows"><div class="row"><figure class="m reveal" style="--ar:1.1719;flex:1.1719 1 0%"><div class="m__box" style="aspect-ratio:2400 / 2048"><img src="../../imagination-dls/assets/buttons.jpg" alt="CTA buttons in three sizes, three shapes and every state, plus social sign-in buttons" loading="lazy" width="2400" height="2048"></div></figure><figure class="m reveal" style="--ar:1.0241;flex:1.0241 1 0%"><div class="m__box" style="aspect-ratio:1700 / 1660"><img src="../../imagination-dls/assets/cards.jpg" alt="List cards from single title to file previews, settings rows and chat cards" loading="lazy" width="1700" height="1660"></div></figure><figure class="m reveal" style="--ar:1.1027;flex:1.1027 1 0%"><div class="m__box" style="aspect-ratio:2309 / 2094"><img src="../../imagination-dls/assets/nav.jpg" alt="Bottom navigation bars in six patterns with active states" loading="lazy" width="2309" height="2094"></div></figure></div><div class="row row--solo"><figure class="m reveal" style="--ar:1.7173"><div class="m__box" style="aspect-ratio:2035 / 1185"><img src="../../imagination-dls/assets/dialog.jpg" alt="Menu, details sheet, rename dialog and rate-us dialog" loading="lazy" width="2035" height="1185"></div></figure></div><div class="row row--1"><figure class="m reveal" style="--ar:3.0075"><div class="m__box" style="aspect-ratio:2400 / 798"><img src="../../imagination-dls/assets/icons.jpg" alt="Essential icons in outline, bold, two-tone and bulk styles" loading="lazy" width="2400" height="798"></div></figure></div></div>
+  </section>
+  <section class="cs" id="apps">
+    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>08</b>In the wild</span><div><h2>Different apps. Same DNA.</h2><p class="cs__sub">Xeno AI, Brainly Tutor and PDF Scanner are built by different teams for different users. They still share every button, field, sheet and nav bar.</p></div></div>
+    <div class="cs__body"></div>
+    
+    
+    <div class="rows"><div class="row row--1"><figure class="m m--tall reveal" style="--ar:0.4493"><div class="m__box" tabindex="0" aria-label="Scroll to see the full page"><img src="../../imagination-dls/assets/scr-1.jpg" alt="Xeno AI onboarding: AI summarization" loading="lazy" width="824" height="1834"></div></figure></div><div class="row row--1"><figure class="m m--tall reveal" style="--ar:0.4493"><div class="m__box" tabindex="0" aria-label="Scroll to see the full page"><img src="../../imagination-dls/assets/scr-4.jpg" alt="Edit profile form with filled fields" loading="lazy" width="824" height="1834"></div></figure></div><div class="row row--1"><figure class="m m--tall reveal" style="--ar:0.4493"><div class="m__box" tabindex="0" aria-label="Scroll to see the full page"><img src="../../imagination-dls/assets/scr-5.jpg" alt="Brainly Tutor paywall with plan cards" loading="lazy" width="824" height="1834"></div></figure></div><div class="row row--1"><figure class="m m--tall reveal" style="--ar:0.4493"><div class="m__box" tabindex="0" aria-label="Scroll to see the full page"><img src="../../imagination-dls/assets/scr-6.jpg" alt="PDF Scanner file list with tabs and bottom nav" loading="lazy" width="824" height="1834"></div></figure></div><div class="row row--1"><figure class="m m--tall reveal" style="--ar:0.4493"><div class="m__box" tabindex="0" aria-label="Scroll to see the full page"><img src="../../imagination-dls/assets/scr-8.jpg" alt="Rate-us dialog over the file list" loading="lazy" width="824" height="1834"></div></figure></div><div class="row row--1"><figure class="m m--tall reveal" style="--ar:0.4493"><div class="m__box" tabindex="0" aria-label="Scroll to see the full page"><img src="../../imagination-dls/assets/scr-9.jpg" alt="File details bottom sheet" loading="lazy" width="824" height="1834"></div></figure></div></div>
+  </section>
+  <section class="cs" id="rapid">
+    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>09</b>Rapid projects</span><div><h2>Speed without forks.</h2><p class="cs__sub">Some apps have to ship in weeks. Speed can&#x27;t mean a fork.</p></div></div>
+    <div class="cs__body"></div>
+    
+    
+    <div class="rows"></div>
+  </section>
+  <section class="cs" id="reflections">
+    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>10</b>Reflections</span><div><h2>What it taught me.</h2></div></div>
+    <div class="cs__body"><ol class="pts" style="--n:4"><li class="reveal"><small>01</small><b>Link, don&#x27;t copy.</b><p>The biggest change wasn&#x27;t a component. It was moving from duplicated files to one published library.</p></li><li class="reveal"><small>02</small><b>Name the intent.</b><p>Semantic tokens let one component serve 40+ apps without anyone touching its code.</p></li><li class="reveal"><small>03</small><b>Every layer needs an owner.</b><p>Core team, category lead, product designer. Clear owners stop &quot;quick fixes&quot; from leaking into the parent.</p></li><li class="reveal"><small>04</small><b>Make the fast path the right path.</b><p>If the system is the quickest way to ship, rapid teams use it instead of working around it.</p></li></ol></div>
+    
+    
+    <div class="rows"></div>
+  </section>
+  <div style="height:clamp(80px,10vw,160px)"></div>
+  
+  <nav class="nx" aria-label="Next case study">
+    <div>
+      <span class="lbl" style="color:var(--muted)">Next case study</span>
+      <a href="../king-c-gillette/index.html"><span class="nx__t">King C. Gillette</span><span class="nx__d">A gift box with two ways to open</span></a>
+      <a class="nx__back" href="../al-siraat/index.html">← Previous: Al Siraat</a>
+    </div>
+    <a href="../king-c-gillette/index.html" aria-hidden="true" tabindex="-1"><div class="nx__img"><img src="../../packaging-design/assets/kcg-render-closed.jpg" alt="" loading="lazy"></div></a>
+  </nav>
+</main>
+
+<section id="contact" class="ct" aria-label="Contact">
+  <span class="lbl"><span class="dot" aria-hidden="true"></span>Available for full-time, remote and new projects</span>
+  <h2>Let’s make something <em>worth keeping.</em></h2>
+  <div class="ct__row">
+    <div><span class="lbl">Email</span><p><a class="ct__mail" href="mailto:sunil@sebastians.tv">sunil@sebastians.tv</a></p></div>
+    <div><span class="lbl">Elsewhere</span><p><a href="https://www.linkedin.com/in/sunil-shahzad-a7a59797/" target="_blank" rel="noopener">LinkedIn ↗</a></p><p><a href="https://www.behance.net/sunshaseb" target="_blank" rel="noopener">Behance ↗</a></p><p><a href="https://www.instagram.com/sunilsebastian/" target="_blank" rel="noopener">Instagram ↗</a></p></div>
+    <div><span class="lbl">Work authorization</span><p>US Employment Authorization Card (EAD)</p></div>
+  </div>
+</section>
+
+<footer class="ft-wrap">
+  <div class="ft-nav"><span>© 2026 Sunil Sebastian</span><nav aria-label="Footer"><a href="#work">Work</a><a href="#index">Index</a><a href="#about">About</a><a href="../showreel/index.html">Showreel</a></nav></div>
+  <span class="wordmark" aria-hidden="true">Sunil Sebastian</span>
+</footer>
+
+
+<script>
+(() => {
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  // Looping clips play only while on screen
+  const vo = new IntersectionObserver(es => es.forEach(e => { const v = e.target; if (e.isIntersecting) { v.preload = 'auto'; v.play().catch(() => {}); } else v.pause(); }), { threshold: .2 });
+  document.querySelectorAll('video.lv').forEach(v => vo.observe(v));
+})();
+</script>
+
+</body>
+</html>
