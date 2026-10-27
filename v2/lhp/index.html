@@ -146,6 +146,12 @@
     .reveal { opacity: 1; transform: none; transition: none; }
   }
 
+  .w-cap { margin: 10px 0 0; font-size: 13px; color: var(--muted); }
+  .web { margin: clamp(36px, 5vw, 72px) auto 0; max-width: 760px; height: min(78vh, 820px); overflow: hidden; position: relative; background: #000; outline-offset: 4px; }
+  .web img { width: 100%; height: auto; transition: transform 9s ease-in-out; }
+  .web:hover img, .web:focus img, .web:focus-within img { transform: translateY(calc(-100% + min(78vh, 820px))); }
+  @media (max-width: 600px) { .web { height: 70vh; } .web:hover img, .web:focus img { transform: translateY(calc(-100% + 70vh)); } }
+  @media (prefers-reduced-motion: reduce) { .web { overflow-y: auto; } .web img { transition: none; transform: none !important; } }
 </style>
 </head>
 <body>
@@ -170,11 +176,13 @@
     <div class="cs__head reveal"><span class="cs__lbl lbl"><b>01</b>The brief</span><div><h2>Breathe new life into the mark.</h2></div></div>
     <div class="cs__body"><ol class="pts" style="--n:3"><li class="reveal"><small>01</small><b>Refine, don’t replace</b><p>Evolve the existing LHP logo instead of starting over.</p></li><li class="reveal"><small>02</small><b>The legacy</b><p>Honour the heritage, so it still feels familiar.</p></li><li class="reveal"><small>03</small><b>A sharper edge</b><p>A contemporary look that works across digital and physical.</p></li></ol></div>
     
+    
     <div class="rows"></div>
   </section>
   <section class="cs" id="logo">
     <div class="cs__head reveal"><span class="cs__lbl lbl"><b>02</b>The logo</span><div><h2>Sharpened like a blade.</h2><p class="cs__sub">The client referenced a katana. Instead of drawing a sword, the refined mark borrows its discipline: clean, precise lines, strong geometric balance and a sharper silhouette that stays legible at any size.</p></div></div>
     <div class="cs__body"></div>
+    
     
     <div class="rows"><div class="row row--1"><figure class="m reveal" style="--ar:1.7762"><div class="m__box" style="aspect-ratio:2000 / 1126"><video class="lv" src="../../lhp/assets/logo-reveal.mp4" poster="../../lhp/assets/hero.jpg" muted loop playsinline preload="none" aria-label="LHP logo reveal: a light sweep draws the wordmark, then the mark lands in its HUD frame"></video></div><figcaption>Logo reveal</figcaption></figure></div><div class="row row--solo"><figure class="m reveal" style="--ar:1.7794"><div class="m__box" style="aspect-ratio:2000 / 1124"><img src="../../lhp/assets/logo-versions.jpg" alt="Logo versions: the LHP mark alone, stacked with the wordmark, horizontal and vertical lockups" loading="lazy" width="2000" height="1124"></div><figcaption>Lockups</figcaption></figure></div></div>
   </section>
@@ -182,11 +190,13 @@
     <div class="cs__head reveal"><span class="cs__lbl lbl"><b>03</b>Visual language</span><div><h2>Cut from the blade.</h2><p class="cs__sub">Supporting shapes taken from the “blade section”: angled cuts, hazard stripes and HUD lines, in high-contrast black with lime and orange.</p></div></div>
     <div class="cs__body"></div>
     
+    
     <div class="rows"><div class="row row--1"><figure class="m reveal" style="--ar:1.5140"><div class="m__box" style="aspect-ratio:2000 / 1321"><img src="../../lhp/assets/elements.jpg" alt="Graphic elements: angled cyberpunk-style frames, chevrons, stripes, barcodes and social icons in lime and orange" loading="lazy" width="2000" height="1321"></div><figcaption>Graphic elements</figcaption></figure></div><div class="row"><figure class="m reveal" style="--ar:1.7841;flex:1.7841 1 0%"><div class="m__box" style="aspect-ratio:2000 / 1121"><img src="../../lhp/assets/apparel.jpg" alt="Master Samurai apparel: black tee with the lime LHP mark, front and back" loading="lazy" width="2000" height="1121"></div><figcaption>Apparel</figcaption></figure><figure class="m reveal" style="--ar:1.6340;flex:1.6340 1 0%"><div class="m__box" style="aspect-ratio:750 / 459"><img src="../../lhp/assets/tape.jpg" alt="Branded yellow event tape with the LHP mark wrapped across a black wall" loading="lazy" width="750" height="459"></div><figcaption>Event tape</figcaption></figure></div></div>
   </section>
   <section class="cs" id="guidelines">
     <div class="cs__head reveal"><span class="cs__lbl lbl"><b>04</b>Brand guidelines</span><div><h2>A system to grow into.</h2></div></div>
     <div class="cs__body"><ol class="pts" style="--n:4"><li class="reveal"><small>01</small><b>Logo rules</b><p>Usage, clear space and minimum sizes.</p></li><li class="reveal"><small>02</small><b>Colour</b><p>Black and white, lime as signal, orange as heat.</p></li><li class="reveal"><small>03</small><b>Typography</b><p>A refined, consistent type system.</p></li><li class="reveal"><small>04</small><b>Applications</b><p>Apparel, vehicles, stationery and screens.</p></li></ol></div>
+    
     
     <div class="rows"><div class="row row--1"><figure class="m reveal" style="--ar:1.3889"><div class="m__box" style="aspect-ratio:2000 / 1440"><img src="../../lhp/assets/guidelines.jpg" alt="Overview of the LHP brand guidelines pages: logo revamp, concept approach, graphic elements, apparel, vehicles and stationery" loading="lazy" width="2000" height="1440"></div><figcaption>Guidelines overview</figcaption></figure></div></div>
   </section>
@@ -194,7 +204,9 @@
     <div class="cs__head reveal"><span class="cs__lbl lbl"><b>05</b>In use</span><div><h2>Built for the screen.</h2></div></div>
     <div class="cs__body"></div>
     
-    <div class="rows"><div class="row row--1"><figure class="m m--tall reveal" style="--ar:0.2297"><div class="m__box" tabindex="0" aria-label="Scroll to see the full page"><img src="../../lhp/assets/website.jpg" alt="Full LHP website page: hero with the mark, about, stats, services, process and contact form" loading="lazy" width="1337" height="5820"></div><figcaption>Website</figcaption></figure></div></div>
+    <figure class="web reveal" tabindex="0"><img src="../../lhp/assets/website.jpg" alt="Full LHP website page: hero with the mark, about, stats, services, process and contact form" loading="lazy" width="1337" height="5820"></figure>
+    <p class="w-cap" style="text-align:center">Hover or tap to scroll the page</p>
+    <div class="rows"></div>
   </section>
   <section class="quote" aria-label="Closing thought"><p class="reveal">Reveal what was already there.</p></section>
   <section class="dl" aria-label="What I delivered"><span class="lbl">Delivered</span><ul><li>Logo refinement</li><li>Logo reveal</li><li>Visual language</li><li>Brand guidelines</li><li>Apparel</li><li>Website styling</li></ul></section>
@@ -233,5 +245,6 @@
   document.querySelectorAll('video.lv').forEach(v => vo.observe(v));
 })();
 </script>
+
 </body>
 </html>

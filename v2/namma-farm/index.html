@@ -146,6 +146,18 @@
     .reveal { opacity: 1; transform: none; transition: none; }
   }
 
+  .w-cap { margin: 10px 0 0; font-size: 13px; color: var(--muted); }
+  .ba { margin-top: clamp(36px, 5vw, 72px); position: relative; aspect-ratio: 16 / 8; overflow: hidden; background: #fff; user-select: none; touch-action: pan-y; }
+  .ba__pane { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: #fff; }
+  .ba__pane img { width: auto; height: 52%; max-width: 70%; object-fit: contain; }
+  .ba__pane--before { background: var(--paper-2); clip-path: inset(0 calc(100% - var(--pos, 50%)) 0 0); }
+  .ba__pane--before img { height: 46%; }
+  .ba__tag { position: absolute; top: 16px; font-size: 12px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; background: var(--ink); color: var(--paper); padding: 6px 12px; border-radius: 999px; }
+  .ba__tag--l { left: 16px; } .ba__tag--r { right: 16px; }
+  .ba__handle { position: absolute; top: 0; bottom: 0; left: var(--pos, 50%); width: 2px; background: var(--ink); transform: translateX(-50%); pointer-events: none; }
+  .ba__knob { position: absolute; top: 50%; left: 50%; width: 56px; height: 56px; border-radius: 50%; background: var(--accent); color: var(--ink); transform: translate(-50%, -50%); display: grid; place-items: center; font-size: 22px; }
+  .ba input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; margin: 0; }
+  @media (max-width: 600px) { .ba { aspect-ratio: 4 / 3; } .ba__knob { width: 44px; height: 44px; font-size: 18px; } }
 </style>
 </head>
 <body>
@@ -170,11 +182,13 @@
     <div class="cs__head reveal"><span class="cs__lbl lbl"><b>01</b>The brief</span><div><h2>Modernise without losing soul.</h2></div></div>
     <div class="cs__body"><ol class="pts" style="--n:3"><li class="reveal"><small>01</small><b>Lost in the aisle</b><p>The old logo was busy and text-heavy. Like its competitors, it disappeared on the shelf.</p></li><li class="reveal"><small>02</small><b>South Indians abroad</b><p>South Indians abroad come first. Curious food lovers looking for safe, honest food come second.</p></li><li class="reveal"><small>03</small><b>Simple. Modern. Tamil.</b><p>A premium identity you can spot from 20 feet away, with its heritage still in it.</p></li></ol></div>
     
+    
     <div class="rows"></div>
   </section>
   <section class="cs" id="inspiration">
     <div class="cs__head reveal"><span class="cs__lbl lbl"><b>02</b>Inspiration</span><div><h2>Temples, kolams &amp; paddy fields.</h2><p class="cs__sub">Everything started from real South Indian life: rituals, food, farmers and folk art.</p></div></div>
     <div class="cs__body"></div>
+    
     
     <div class="rows"><div class="row row--1"><figure class="m reveal" style="--ar:1.6353"><div class="m__box" style="aspect-ratio:2000 / 1223"><img src="../../namma-farm/assets/moodboard.jpg" alt="Moodboard: kolam patterns, temple art, paddy fields, banana-leaf meals and modern food packaging" loading="lazy" width="2000" height="1223"></div></figure></div></div>
   </section>
@@ -182,29 +196,40 @@
     <div class="cs__head reveal"><span class="cs__lbl lbl"><b>03</b>Two routes</span><div><h2>Pencil first.</h2></div></div>
     <div class="cs__body"><ol class="pts" style="--n:2"><li class="reveal"><small>01</small><b>Initials + leaf</b><p>An “NF” monogram with a leaf for the farm. Clean, but it could belong to any brand.</p></li><li class="reveal"><small>02</small><b>Heritage geometry</b><p>A mark drawn from kolam floor art. The name is written in Tamil and English.</p></li></ol></div>
     
+    
     <div class="rows"><div class="row row--solo"><figure class="m reveal" style="--ar:0.6295"><div class="m__box" style="aspect-ratio:1259 / 2000"><img src="../../namma-farm/assets/dir1-sketch.jpg" alt="Pencil sketches of NF monogram ideas with a leaf" loading="lazy" width="1259" height="2000"></div></figure></div><div class="row row--1"><figure class="m m--contain m--dark reveal" style="--ar:2.3547"><div class="m__box" style="aspect-ratio:2350 / 998"><img src="../../namma-farm/assets/dir1-options.png" alt="Three digital NF monogram logo options" loading="lazy" width="2350" height="998"></div></figure></div><div class="row"><figure class="m reveal" style="--ar:0.7935;flex:0.7935 1 0%"><div class="m__box" style="aspect-ratio:1587 / 2000"><img src="../../namma-farm/assets/dir2-sketch.jpg" alt="Pencil sketches combining the letter N with kolam geometry" loading="lazy" width="1587" height="2000"></div></figure><figure class="m m--contain m--dark reveal" style="--ar:2.1488;flex:2.1488 1 0%"><div class="m__box" style="aspect-ratio:2484 / 1156"><img src="../../namma-farm/assets/dir2-options.png" alt="Three kolam-inspired Namma Farm logo options" loading="lazy" width="2484" height="1156"></div></figure></div><div class="row row--1"><figure class="m m--contain m--dark reveal" style="--ar:3.2787"><div class="m__box" style="aspect-ratio:1400 / 427"><img src="../../namma-farm/assets/kolam.png" alt="Three traditional kolam dot-and-line patterns redrawn as clean line art" loading="lazy" width="1400" height="427"></div></figure></div></div>
   </section>
   <section class="cs" id="before-after">
     <div class="cs__head reveal"><span class="cs__lbl lbl"><b>04</b>Before / after</span><div><h2>From clutter to clarity.</h2></div></div>
     <div class="cs__body"></div>
     
-    <div class="rows"><div class="row"><figure class="m m--contain reveal" style="--ar:1.0369;flex:1.0369 1 0%"><div class="m__box" style="aspect-ratio:309 / 298"><img src="../../namma-farm/assets/logo-after.svg" alt="New Namma Farm logo: kolam-inspired mark above a bilingual wordmark" loading="lazy" width="309" height="298"></div></figure><figure class="m m--contain reveal" style="--ar:1.6039;flex:1.6039 1 0%"><div class="m__box" style="aspect-ratio:996 / 621"><img src="../../namma-farm/assets/logo-before.png" alt="Old Namma Farm logo: green Tamil lettering with a palm tree and cattle" loading="lazy" width="996" height="621"></div></figure></div></div>
+    <div class="ba reveal" style="--pos:50%">
+      <div class="ba__pane ba__pane--after"><img src="../../namma-farm/assets/logo-after.svg" alt="New Namma Farm logo: kolam-inspired mark above a bilingual wordmark" width="309" height="298"></div>
+      <div class="ba__pane ba__pane--before"><img src="../../namma-farm/assets/logo-before.png" alt="Old Namma Farm logo: green Tamil lettering with a palm tree and cattle" width="996" height="621"></div>
+      <span class="ba__tag ba__tag--l">Before</span><span class="ba__tag ba__tag--r">After</span>
+      <div class="ba__handle" aria-hidden="true"><div class="ba__knob">⇆</div></div>
+      <input type="range" min="0" max="100" value="50" aria-label="Compare old and new logo">
+    </div><p class="w-cap">Drag to compare</p>
+    <div class="rows"></div>
   </section>
   <section class="cs" id="identity">
     <div class="cs__head reveal"><span class="cs__lbl lbl"><b>05</b>The identity</span><div><h2>One mark. Many moods.</h2></div></div>
     <div class="cs__body"></div>
     <div class="sws reveal" style="--n:5"><div class="sw" style="background:#003D17;color:#fff"><span>Deep Green</span><small>#003D17</small></div><div class="sw" style="background:#82CE26;color:#111"><span>Light Green</span><small>#82CE26</small></div><div class="sw" style="background:#FF9B00;color:#111"><span>Radiant Yellow</span><small>#FF9B00</small></div><div class="sw" style="background:#171717;color:#fff"><span>Cynical Black</span><small>#171717</small></div><div class="sw" style="background:#FFFFFF;color:#111"><span>Pure White</span><small>#FFFFFF</small></div></div>
+    
     <div class="rows"><div class="row"><figure class="m reveal" style="--ar:1.0870;flex:1.0870 1 0%"><div class="m__box" style="aspect-ratio:1400 / 1288"><img src="../../namma-farm/assets/aerial.jpg" alt="White Namma Farm logo over an aerial view of green crop fields" loading="lazy" width="1400" height="1288"></div></figure><figure class="m reveal" style="--ar:1.3333;flex:1.3333 1 0%"><div class="m__box" style="aspect-ratio:2000 / 1500"><video class="lv" src="../../namma-farm/assets/namma-dancers.mp4" poster="../../namma-farm/assets/tiger.jpg" muted loop playsinline preload="none" aria-label="Video: Namma Farm logo over tiger-painted folk dancers at a festival"></video></div></figure><figure class="m reveal" style="--ar:1.5576;flex:1.5576 1 0%"><div class="m__box" style="aspect-ratio:2000 / 1284"><img src="../../namma-farm/assets/hands.jpg" alt="Cupped hands holding rice with the Namma Farm mark" loading="lazy" width="2000" height="1284"></div></figure></div><div class="tiles" style="--n:5"><figure class="m m--contain m--dark reveal" style="--ar:1.0417"><div class="m__box" style="aspect-ratio:1000 / 960"><img src="../../namma-farm/assets/logo-white.png" alt="Namma Farm logo in white on dark grey" loading="lazy" width="1000" height="960"></div></figure><figure class="m m--contain reveal" style="--ar:1.0420"><div class="m__box" style="aspect-ratio:124 / 119"><img src="../../namma-farm/assets/logo-black-ink.svg" alt="Namma Farm logo in black" loading="lazy" width="124" height="119"></div></figure><figure class="m m--contain reveal" style="--ar:1.0420"><div class="m__box" style="aspect-ratio:124 / 119"><img src="../../namma-farm/assets/logo-deep-green.svg" alt="Namma Farm logo in deep green" loading="lazy" width="124" height="119"></div></figure><figure class="m m--contain reveal" style="--ar:1.0420"><div class="m__box" style="aspect-ratio:124 / 119"><img src="../../namma-farm/assets/logo-light-green.svg" alt="Namma Farm logo in light green" loading="lazy" width="124" height="119"></div></figure><figure class="m m--contain reveal" style="--ar:1.0420"><div class="m__box" style="aspect-ratio:124 / 119"><img src="../../namma-farm/assets/logo-yellow.svg" alt="Namma Farm logo in yellow" loading="lazy" width="124" height="119"></div></figure></div><div class="row"><figure class="m reveal" style="--ar:1.7915;flex:1.7915 1 0%"><div class="m__box" style="aspect-ratio:842 / 470"><img src="../../namma-farm/assets/type-main.png" alt="Kaivalya typeface specimen" loading="lazy" width="842" height="470"></div></figure><figure class="m reveal" style="--ar:1.2671;flex:1.2671 1 0%"><div class="m__box" style="aspect-ratio:612 / 483"><img src="../../namma-farm/assets/type-tamil.png" alt="Four Tamil typeface options for the word Namma" loading="lazy" width="612" height="483"></div></figure></div><div class="row row--1"><figure class="m reveal" style="--ar:2.4795"><div class="m__box" style="aspect-ratio:786 / 317"><img src="../../namma-farm/assets/legal-icons.png" alt="Non-GMO, gluten-free and organic product badges" loading="lazy" width="786" height="317"></div></figure></div></div>
   </section>
   <section class="cs" id="icons">
     <div class="cs__head reveal"><span class="cs__lbl lbl"><b>06</b>Icons &amp; pattern</span><div><h2>70+ icons. One pattern.</h2></div></div>
     <div class="cs__body"></div>
     
+    
     <div class="rows"><div class="row"><figure class="m reveal" style="--ar:1.2422;flex:1.2422 1 0%"><div class="m__box" style="aspect-ratio:2000 / 1610"><img src="../../namma-farm/assets/icon-sketches.jpg" alt="Sketchbook pages of hand-drawn icon ideas" loading="lazy" width="2000" height="1610"></div></figure><figure class="m reveal" style="--ar:1.0200;flex:1.0200 1 0%"><div class="m__box" style="aspect-ratio:1073 / 1052"><img src="../../namma-farm/assets/icon-sets.png" alt="Grid of icons in green, orange and yellow, grouped by theme" loading="lazy" width="1073" height="1052"></div></figure><figure class="m reveal" style="--ar:1.0000;flex:1.0000 1 0%"><div class="m__box" style="aspect-ratio:600 / 600"><img src="../../namma-farm/assets/icons-flip.gif" alt="Animated grid of Namma Farm icons flipping one after another in a diagonal wave" loading="lazy" width="600" height="600"></div></figure></div></div>
   </section>
   <section class="cs" id="world">
     <div class="cs__head reveal"><span class="cs__lbl lbl"><b>07</b>In the world</span><div><h2>Harvested with love.</h2></div></div>
     <div class="cs__body"></div>
+    
     
     <div class="rows"><div class="row row--1"><figure class="m reveal" style="--ar:1.7301"><div class="m__box" style="aspect-ratio:2000 / 1156"><img src="../../namma-farm/assets/rice-planting.jpg" alt="Campaign image: a farmer carrying rice seedlings, with the Namma Farm logo" loading="lazy" width="2000" height="1156"></div><figcaption>Campaign</figcaption></figure></div><div class="row"><figure class="m reveal" style="--ar:1.6681;flex:1.6681 1 0%"><div class="m__box" style="aspect-ratio:2000 / 1199"><img src="../../namma-farm/assets/billboard.jpg" alt="Roadside billboard with an elderly farmer and the line Harvested with love" loading="lazy" width="2000" height="1199"></div><figcaption>Out of home</figcaption></figure><figure class="m reveal" style="--ar:1.9743;flex:1.9743 1 0%"><div class="m__box" style="aspect-ratio:2000 / 1013"><img src="../../namma-farm/assets/touchpoints.jpg" alt="Brand touchpoints: Instagram profile, business card, garden tools, shipping container, truck and website" loading="lazy" width="2000" height="1013"></div><figcaption>Digital + touchpoints</figcaption></figure></div><div class="row row--solo"><figure class="m reveal" style="--ar:1.7590"><div class="m__box" style="aspect-ratio:2000 / 1137"><img src="../../namma-farm/assets/merch.jpg" alt="Tote bag, pin badges, delivery truck and Red Rice, White Rice and Almond packs, all wrapped in the icon pattern" loading="lazy" width="2000" height="1137"></div><figcaption>Packaging, merch + fleet</figcaption></figure></div></div>
   </section>
@@ -245,5 +270,30 @@
   document.querySelectorAll('video.lv').forEach(v => vo.observe(v));
 })();
 </script>
+<script>(() => {
+  // Before / after slider, with a small nudge the first time it is seen
+  const ba = document.querySelector('.ba');
+  if (ba) {
+    const range = ba.querySelector('input');
+    const setPos = v => ba.style.setProperty('--pos', v + '%');
+    range.addEventListener('input', () => setPos(range.value));
+    range.addEventListener('pointerdown', () => range.dataset.touched = 1);
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const nudge = new IntersectionObserver(([e]) => {
+        if (!e.isIntersecting) return;
+        nudge.disconnect();
+        let t = 0;
+        const step = () => {
+          t += 1;
+          if (range.dataset.touched) return;
+          const v = 50 + Math.sin(t / 18) * 18 * Math.max(0, 1 - t / 110);
+          range.value = v; setPos(v);
+          if (t < 110) requestAnimationFrame(step);
+        };
+        setTimeout(() => requestAnimationFrame(step), 400);
+      }, { threshold: .6 });
+      nudge.observe(ba);
+    }
+  }})();</script>
 </body>
 </html>
