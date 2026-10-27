@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Namma Farm — Sunil Sebastian</title>
+<meta name="description" content="Namma Farm by Sunil Sebastian. A South Indian food brand, rebuilt to stand out on shelves around the world.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
+<meta name="theme-color" content="#f3f1ec">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f3f1ec; --paper-2: #e9e6df; --ink: #111110; --muted: #75736d; --line: rgba(17,17,16,.14);
+    --night: #0f0f0e; --night-line: rgba(255,255,255,.14); --accent: #f6cb00;
+    --font: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+    --gutter: clamp(16px, 2.6vw, 40px); --ease: cubic-bezier(.2,.7,.1,1);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font); font-size: 16px; line-height: 1.5; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+  img { display: block; max-width: 100%; height: auto; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { padding: 0 var(--gutter); }
+  .lbl { font-size: 12px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; }
+  .rule { border: 0; border-top: 1px solid var(--line); margin: 0; }
+
+  /* Header */
+  .hd { position: fixed; inset: 0 0 auto 0; z-index: 30; display: flex; align-items: center; justify-content: space-between; padding: 18px var(--gutter); color: #fff; transition: background .35s, color .35s, border-color .35s; border-bottom: 1px solid transparent; }
+  .hd.is-solid { background: rgba(243,241,236,.92); backdrop-filter: blur(10px); color: var(--ink); border-bottom-color: var(--line); }
+  .hd__brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; font-size: 15px; letter-spacing: -.01em; }
+  .hd__brand img { width: 26px; height: 26px; }
+  .hd nav { display: flex; gap: clamp(14px, 2.4vw, 32px); font-size: 13px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; }
+  .hd nav a { position: relative; }
+  .hd nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -3px; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform .4s var(--ease); }
+  .hd nav a:hover::after { transform: scaleX(1); transform-origin: left; }
+
+  /* Contact band */
+  .ct { background: var(--night); color: #f3f1ec; padding: clamp(80px, 11vw, 160px) var(--gutter) clamp(60px, 8vw, 110px); }
+  .ct .lbl { color: rgba(243,241,236,.6); }
+  .ct h2 { margin: 18px 0 clamp(36px, 5vw, 64px); font-size: clamp(44px, 7.6vw, 128px); line-height: .96; font-weight: 400; letter-spacing: -.05em; max-width: 13ch; }
+  .ct h2 em { font-style: italic; font-weight: 300; color: var(--accent); }
+  .ct__row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gutter); border-top: 1px solid var(--night-line); padding-top: 22px; }
+  .ct__row a, .ct__row p { margin: 6px 0 0; font-size: clamp(16px, 1.3vw, 19px); }
+  .ct__mail { font-size: clamp(22px, 2.4vw, 34px) !important; letter-spacing: -.03em; border-bottom: 1px solid currentColor; }
+  .ct__mail:hover { color: var(--accent); }
+  .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); margin-right: 8px; box-shadow: 0 0 0 4px rgba(246,203,0,.18); }
+
+  /* Footer */
+  .ft-wrap { background: var(--night); color: rgba(243,241,236,.7); padding: 0 var(--gutter) 18px; overflow: hidden; }
+  .ft-nav { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding: 22px 0; border-top: 1px solid var(--night-line); font-size: 13px; letter-spacing: .1em; text-transform: uppercase; }
+  .ft-nav nav { display: flex; gap: 22px; }
+  .ft-nav a:hover { color: #fff; }
+  .wordmark { display: block; color: #f3f1ec; font-size: clamp(54px, 15.2vw, 260px); font-weight: 500; letter-spacing: -.065em; line-height: .8; white-space: nowrap; margin: 10px 0 0 -.04em; }
+
+
+  .hd { color: var(--ink); background: rgba(243,241,236,.92); backdrop-filter: blur(10px); border-bottom-color: var(--line); }
+  .ch { padding: clamp(110px, 14vw, 200px) var(--gutter) clamp(28px, 4vw, 56px); }
+  .ch__k { display: flex; justify-content: space-between; gap: 16px; color: var(--muted); }
+  .ch h1 { margin: clamp(18px, 2.4vw, 32px) 0 clamp(28px, 4vw, 64px); font-size: clamp(56px, 12.4vw, 220px); line-height: .86; font-weight: 500; letter-spacing: -.06em; }
+  .ch__info { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 96px); border-top: 1px solid var(--ink); padding-top: 20px; }
+  .ch__lede { margin: 0; font-size: clamp(22px, 2.2vw, 34px); line-height: 1.18; letter-spacing: -.03em; max-width: 26ch; }
+  .ch__meta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px var(--gutter); margin: 0; }
+  .ch__meta dt { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .ch__meta dd { margin: 4px 0 0; font-size: 16px; }
+  .ch__media { margin: 0; }
+  .ch__media img, .ch__media video { display: block; width: 100%; height: auto; max-height: 92svh; object-fit: cover; background: #000; }
+
+  .cs { padding: clamp(80px, 10vw, 160px) var(--gutter) 0; }
+  .cs__head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 3fr); gap: var(--gutter); border-top: 1px solid var(--line); padding-top: 18px; }
+  .cs__lbl { display: flex; gap: 12px; color: var(--muted); }
+  .cs__lbl b { color: var(--ink); font-weight: 500; }
+  .cs h2 { margin: 0; font-size: clamp(32px, 4.4vw, 72px); line-height: 1.02; font-weight: 400; letter-spacing: -.045em; max-width: 18ch; }
+  .cs__sub { margin: 22px 0 0; font-size: clamp(17px, 1.35vw, 20px); color: #3d3c39; max-width: 52ch; }
+  .pts { list-style: none; margin: clamp(32px, 4vw, 56px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr)); gap: 0 var(--gutter); }
+  .pts li { border-top: 1px solid var(--ink); padding: 14px 0 6px; }
+  .pts small { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .pts b { display: block; margin: 8px 0 6px; font-size: clamp(18px, 1.5vw, 22px); font-weight: 500; letter-spacing: -.02em; }
+  .pts p { margin: 0; color: var(--muted); font-size: 15px; }
+  .cs__body { margin-left: calc((100% - var(--gutter) * 3) / 4 + var(--gutter)); }
+
+  .rows { display: grid; gap: clamp(10px, 1.4vw, 22px); margin-top: clamp(36px, 5vw, 72px); }
+  .row { display: flex; gap: clamp(10px, 1.4vw, 22px); align-items: flex-start; }
+  .row--1 .m, .row--solo .m { flex: 1; }
+  .row--solo .m { max-width: min(100%, 72svh * var(--ar, 1)); }
+  .row--solo { justify-content: center; }
+  .m { margin: 0; min-width: 0; }
+  .m__box { overflow: hidden; background: var(--paper-2); }
+  .m__box img, .m__box video { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .m--contain .m__box { background: var(--paper-2); }
+  .m--contain .m__box img { object-fit: contain; padding: 8%; }
+  .m--dark .m__box { background: #1c1c1a; }
+  .m--tall { max-width: 760px; margin: 0 auto; width: 100%; }
+  .m--tall .m__box { height: min(80svh, 860px); overflow-y: auto; overscroll-behavior: contain; }
+  .m--tall .m__box img { height: auto; }
+  .tiles { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: clamp(8px, 1vw, 14px); }
+  .tiles .m__box { aspect-ratio: 1 !important; }
+  .tiles .m figcaption { display: none; }
+  .m figcaption { margin-top: 10px; font-size: 13px; color: var(--muted); }
+
+  .sws { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); margin-top: clamp(32px, 4vw, 56px); }
+  .sw { aspect-ratio: 4 / 3; padding: 14px; display: flex; flex-direction: column; justify-content: flex-end; font-size: 14px; }
+  .sw small { opacity: .7; font-variant-numeric: tabular-nums; }
+
+  .quote { padding: clamp(110px, 14vw, 220px) var(--gutter); }
+  .quote p { margin: 0 auto; max-width: 16ch; text-align: center; font-size: clamp(36px, 6vw, 104px); line-height: 1; letter-spacing: -.05em; font-weight: 300; font-style: italic; }
+  .dl { padding: 0 var(--gutter) clamp(60px, 8vw, 110px); }
+  .dl ul { list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .dl li { border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: 14px; }
+
+  .nx { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--gutter); padding: clamp(28px, 4vw, 56px) var(--gutter) clamp(80px, 10vw, 140px); border-top: 1px solid var(--line); }
+  .nx a { display: block; }
+  .nx__t { display: block; margin: 12px 0 8px; font-size: clamp(40px, 6.8vw, 116px); line-height: .92; font-weight: 500; letter-spacing: -.055em; transition: color .3s; }
+  .nx a:hover .nx__t { color: var(--muted); }
+  .nx__d { color: var(--muted); }
+  .nx__img { overflow: hidden; aspect-ratio: 16 / 10; background: var(--paper-2); }
+  .nx__img img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+  .nx a:hover .nx__img img { transform: scale(1.035); }
+  .nx__back { display: inline-block; margin-top: 26px; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; border-bottom: 1px solid currentColor; }
+
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .9s var(--ease), transform 1s var(--ease); }
+  .reveal.is-in { opacity: 1; transform: none; }
+
+  @media (max-width: 900px) {
+    .ch__info, .cs__head, .nx { grid-template-columns: 1fr; }
+    .cs__body { margin-left: 0; }
+    .pts { grid-template-columns: 1fr; }
+    .sws { grid-template-columns: repeat(min(var(--n), 4), minmax(0, 1fr)); }
+    .ct__row { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .hd nav a:not(.hd__mail) { display: none; }
+    .ch__meta { grid-template-columns: 1fr 1fr; }
+    .row { flex-direction: column; }
+    .row .m { flex: none !important; width: 100%; max-width: none !important; }
+    .sws { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .sw { aspect-ratio: 2 / 1; }
+    .tiles { grid-template-columns: repeat(min(var(--n), 4), minmax(0, 1fr)); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+
+</style>
+</head>
+<body>
+
+<header class="hd">
+  <a class="hd__brand" href="../index.html"><img src="../../assets/icons/favicon-64.png" alt="" width="26" height="26">Sunil Sebastian</a>
+  <nav aria-label="Main"><a href="../index.html#work">Work</a><a href="../index.html#index">Index</a><a href="../index.html#about">About</a><a class="hd__mail" href="#contact">Contact</a></nav>
+</header>
+
+<main>
+  <section class="ch" aria-labelledby="title">
+    <div class="ch__k lbl"><span>Brand systems</span><span>01 / 09</span></div>
+    <h1 id="title">Namma Farm</h1>
+    <div class="ch__info">
+      <p class="ch__lede">A South Indian food brand, rebuilt to stand out on shelves around the world.</p>
+      <dl class="ch__meta"><div><dt>Role</dt><dd>Sole designer</dd></div><div><dt>Timeline</dt><dd>6 months</dd></div><div><dt>Scope</dt><dd>Logo, identity, packaging</dd></div><div><dt>Markets</dt><dd>US · UK · Middle East</dd></div></dl>
+    </div>
+  </section>
+  <figure class="ch__media"><img src="../../namma-farm/assets/hero-farmer.jpg" alt="Smiling farmer in a banana plantation with the new Namma Farm wordmark behind him" width="2000" height="1124" fetchpriority="high"></figure>
+
+  <section class="cs" id="brief">
+    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>01</b>The brief</span><div><h2>Modernise without losing soul.</h2></div></div>
+    <div class="cs__body"><ol class="pts" style="--n:3"><li class="reveal"><small>01</small><b>Lost in the aisle</b><p>The old logo was busy and text-heavy. Like its competitors, it disappeared on the shelf.</p></li><li class="reveal"><small>02</small><b>South Indians abroad</b><p>South Indians abroad come first. Curious food lovers looking for safe, honest food come second.</p></li><li class="reveal"><small>03</small><b>Simple. Modern. Tamil.</b><p>A premium identity you can spot from 20 feet away, with its heritage still in it.</p></li></ol></div>
+    
+    <div class="rows"></div>
+  </section>
+  <section class="cs" id="inspiration">
+    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>02</b>Inspiration</span><div><h2>Temples, kolams &amp; paddy fields.</h2><p class="cs__sub">Everything started from real South Indian life: rituals, food, farmers and folk art.</p></div></div>
+    <div class="cs__body"></div>
+    
+    <div class="rows"><div class="row row--1"><figure class="m reveal" style="--ar:1.6353"><div class="m__box" style="aspect-ratio:2000 / 1223"><img src="../../namma-farm/assets/moodboard.jpg" alt="Moodboard: kolam patterns, temple art, paddy fields, banana-leaf meals and modern food packaging" loading="lazy" width="2000" height="1223"></div></figure></div></div>
+  </section>
+  <section class="cs" id="routes">
+    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>03</b>Two routes</span><div><h2>Pencil first.</h2></div></div>
+    <div class="cs__body"><ol class="pts" style="--n:2"><li class="reveal"><small>01</small><b>Initials + leaf</b><p>An “NF” monogram with a leaf for the farm. Clean, but it could belong to any brand.</p></li><li class="reveal"><small>02</small><b>Heritage geometry</b><p>A mark drawn from kolam floor art. The name is written in Tamil and English.</p></li></ol></div>
+    
+    <div class="rows"><div class="row row--solo"><figure class="m reveal" style="--ar:0.6295"><div class="m__box" style="aspect-ratio:1259 / 2000"><img src="../../namma-farm/assets/dir1-sketch.jpg" alt="Pencil sketches of NF monogram ideas with a leaf" loading="lazy" width="1259" height="2000"></div></figure></div><div class="row row--1"><figure class="m m--contain m--dark reveal" style="--ar:2.3547"><div class="m__box" style="aspect-ratio:2350 / 998"><img src="../../namma-farm/assets/dir1-options.png" alt="Three digital NF monogram logo options" loading="lazy" width="2350" height="998"></div></figure></div><div class="row"><figure class="m reveal" style="--ar:0.7935;flex:0.7935 1 0%"><div class="m__box" style="aspect-ratio:1587 / 2000"><img src="../../namma-farm/assets/dir2-sketch.jpg" alt="Pencil sketches combining the letter N with kolam geometry" loading="lazy" width="1587" height="2000"></div></figure><figure class="m m--contain m--dark reveal" style="--ar:2.1488;flex:2.1488 1 0%"><div class="m__box" style="aspect-ratio:2484 / 1156"><img src="../../namma-farm/assets/dir2-options.png" alt="Three kolam-inspired Namma Farm logo options" loading="lazy" width="2484" height="1156"></div></figure></div><div class="row row--1"><figure class="m m--contain m--dark reveal" style="--ar:3.2787"><div class="m__box" style="aspect-ratio:1400 / 427"><img src="../../namma-farm/assets/kolam.png" alt="Three traditional kolam dot-and-line patterns redrawn as clean line art" loading="lazy" width="1400" height="427"></div></figure></div></div>
+  </section>
+  <section class="cs" id="before-after">
+    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>04</b>Before / after</span><div><h2>From clutter to clarity.</h2></div></div>
+    <div class="cs__body"></div>
+    
+    <div class="rows"><div class="row"><figure class="m m--contain reveal" style="--ar:1.0369;flex:1.0369 1 0%"><div class="m__box" style="aspect-ratio:309 / 298"><img src="../../namma-farm/assets/logo-after.svg" alt="New Namma Farm logo: kolam-inspired mark above a bilingual wordmark" loading="lazy" width="309" height="298"></div></figure><figure class="m m--contain reveal" style="--ar:1.6039;flex:1.6039 1 0%"><div class="m__box" style="aspect-ratio:996 / 621"><img src="../../namma-farm/assets/logo-before.png" alt="Old Namma Farm logo: green Tamil lettering with a palm tree and cattle" loading="lazy" width="996" height="621"></div></figure></div></div>
+  </section>
+  <section class="cs" id="identity">
+    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>05</b>The identity</span><div><h2>One mark. Many moods.</h2></div></div>
+    <div class="cs__body"></div>
+    <div class="sws reveal" style="--n:5"><div class="sw" style="background:#003D17;color:#fff"><span>Deep Green</span><small>#003D17</small></div><div class="sw" style="background:#82CE26;color:#111"><span>Light Green</span><small>#82CE26</small></div><div class="sw" style="background:#FF9B00;color:#111"><span>Radiant Yellow</span><small>#FF9B00</small></div><div class="sw" style="background:#171717;color:#fff"><span>Cynical Black</span><small>#171717</small></div><div class="sw" style="background:#FFFFFF;color:#111"><span>Pure White</span><small>#FFFFFF</small></div></div>
+    <div class="rows"><div class="row"><figure class="m reveal" style="--ar:1.0870;flex:1.0870 1 0%"><div class="m__box" style="aspect-ratio:1400 / 1288"><img src="../../namma-farm/assets/aerial.jpg" alt="White Namma Farm logo over an aerial view of green crop fields" loading="lazy" width="1400" height="1288"></div></figure><figure class="m reveal" style="--ar:1.3333;flex:1.3333 1 0%"><div class="m__box" style="aspect-ratio:2000 / 1500"><video class="lv" src="../../namma-farm/assets/namma-dancers.mp4" poster="../../namma-farm/assets/tiger.jpg" muted loop playsinline preload="none" aria-label="Video: Namma Farm logo over tiger-painted folk dancers at a festival"></video></div></figure><figure class="m reveal" style="--ar:1.5576;flex:1.5576 1 0%"><div class="m__box" style="aspect-ratio:2000 / 1284"><img src="../../namma-farm/assets/hands.jpg" alt="Cupped hands holding rice with the Namma Farm mark" loading="lazy" width="2000" height="1284"></div></figure></div><div class="tiles" style="--n:5"><figure class="m m--contain m--dark reveal" style="--ar:1.0417"><div class="m__box" style="aspect-ratio:1000 / 960"><img src="../../namma-farm/assets/logo-white.png" alt="Namma Farm logo in white on dark grey" loading="lazy" width="1000" height="960"></div></figure><figure class="m m--contain reveal" style="--ar:1.0420"><div class="m__box" style="aspect-ratio:124 / 119"><img src="../../namma-farm/assets/logo-black-ink.svg" alt="Namma Farm logo in black" loading="lazy" width="124" height="119"></div></figure><figure class="m m--contain reveal" style="--ar:1.0420"><div class="m__box" style="aspect-ratio:124 / 119"><img src="../../namma-farm/assets/logo-deep-green.svg" alt="Namma Farm logo in deep green" loading="lazy" width="124" height="119"></div></figure><figure class="m m--contain reveal" style="--ar:1.0420"><div class="m__box" style="aspect-ratio:124 / 119"><img src="../../namma-farm/assets/logo-light-green.svg" alt="Namma Farm logo in light green" loading="lazy" width="124" height="119"></div></figure><figure class="m m--contain reveal" style="--ar:1.0420"><div class="m__box" style="aspect-ratio:124 / 119"><img src="../../namma-farm/assets/logo-yellow.svg" alt="Namma Farm logo in yellow" loading="lazy" width="124" height="119"></div></figure></div><div class="row"><figure class="m reveal" style="--ar:1.7915;flex:1.7915 1 0%"><div class="m__box" style="aspect-ratio:842 / 470"><img src="../../namma-farm/assets/type-main.png" alt="Kaivalya typeface specimen" loading="lazy" width="842" height="470"></div></figure><figure class="m reveal" style="--ar:1.2671;flex:1.2671 1 0%"><div class="m__box" style="aspect-ratio:612 / 483"><img src="../../namma-farm/assets/type-tamil.png" alt="Four Tamil typeface options for the word Namma" loading="lazy" width="612" height="483"></div></figure></div><div class="row row--1"><figure class="m reveal" style="--ar:2.4795"><div class="m__box" style="aspect-ratio:786 / 317"><img src="../../namma-farm/assets/legal-icons.png" alt="Non-GMO, gluten-free and organic product badges" loading="lazy" width="786" height="317"></div></figure></div></div>
+  </section>
+  <section class="cs" id="icons">
+    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>06</b>Icons &amp; pattern</span><div><h2>70+ icons. One pattern.</h2></div></div>
+    <div class="cs__body"></div>
+    
+    <div class="rows"><div class="row"><figure class="m reveal" style="--ar:1.2422;flex:1.2422 1 0%"><div class="m__box" style="aspect-ratio:2000 / 1610"><img src="../../namma-farm/assets/icon-sketches.jpg" alt="Sketchbook pages of hand-drawn icon ideas" loading="lazy" width="2000" height="1610"></div></figure><figure class="m reveal" style="--ar:1.0200;flex:1.0200 1 0%"><div class="m__box" style="aspect-ratio:1073 / 1052"><img src="../../namma-farm/assets/icon-sets.png" alt="Grid of icons in green, orange and yellow, grouped by theme" loading="lazy" width="1073" height="1052"></div></figure><figure class="m reveal" style="--ar:1.0000;flex:1.0000 1 0%"><div class="m__box" style="aspect-ratio:600 / 600"><img src="../../namma-farm/assets/icons-flip.gif" alt="Animated grid of Namma Farm icons flipping one after another in a diagonal wave" loading="lazy" width="600" height="600"></div></figure></div></div>
+  </section>
+  <section class="cs" id="world">
+    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>07</b>In the world</span><div><h2>Harvested with love.</h2></div></div>
+    <div class="cs__body"></div>
+    
+    <div class="rows"><div class="row row--1"><figure class="m reveal" style="--ar:1.7301"><div class="m__box" style="aspect-ratio:2000 / 1156"><img src="../../namma-farm/assets/rice-planting.jpg" alt="Campaign image: a farmer carrying rice seedlings, with the Namma Farm logo" loading="lazy" width="2000" height="1156"></div><figcaption>Campaign</figcaption></figure></div><div class="row"><figure class="m reveal" style="--ar:1.6681;flex:1.6681 1 0%"><div class="m__box" style="aspect-ratio:2000 / 1199"><img src="../../namma-farm/assets/billboard.jpg" alt="Roadside billboard with an elderly farmer and the line Harvested with love" loading="lazy" width="2000" height="1199"></div><figcaption>Out of home</figcaption></figure><figure class="m reveal" style="--ar:1.9743;flex:1.9743 1 0%"><div class="m__box" style="aspect-ratio:2000 / 1013"><img src="../../namma-farm/assets/touchpoints.jpg" alt="Brand touchpoints: Instagram profile, business card, garden tools, shipping container, truck and website" loading="lazy" width="2000" height="1013"></div><figcaption>Digital + touchpoints</figcaption></figure></div><div class="row row--solo"><figure class="m reveal" style="--ar:1.7590"><div class="m__box" style="aspect-ratio:2000 / 1137"><img src="../../namma-farm/assets/merch.jpg" alt="Tote bag, pin badges, delivery truck and Red Rice, White Rice and Almond packs, all wrapped in the icon pattern" loading="lazy" width="2000" height="1137"></div><figcaption>Packaging, merch + fleet</figcaption></figure></div></div>
+  </section>
+  <section class="quote" aria-label="Closing thought"><p class="reveal">South Indian heritage belongs on the world’s finest shelves.</p></section>
+  <section class="dl" aria-label="What I delivered"><span class="lbl">Delivered</span><ul><li>Logo system</li><li>Colour</li><li>Typography</li><li>Icons</li><li>Pattern</li><li>Packaging</li><li>Campaign</li><li>Web &amp; social</li></ul></section>
+  <nav class="nx" aria-label="Next case study">
+    <div>
+      <span class="lbl" style="color:var(--muted)">Next case study</span>
+      <a href="../scooch/index.html"><span class="nx__t">Scooch Over</span><span class="nx__d">Identity for a film company bringing a famous book to screen</span></a>
+      <a class="nx__back" href="../lhp/index.html">← Previous: Lighthouse</a>
+    </div>
+    <a href="../scooch/index.html" aria-hidden="true" tabindex="-1"><div class="nx__img"><img src="../../scooch/assets/app-purple.jpg" alt="" loading="lazy"></div></a>
+  </nav>
+</main>
+
+<section id="contact" class="ct" aria-label="Contact">
+  <span class="lbl"><span class="dot" aria-hidden="true"></span>Available for full-time, remote and new projects</span>
+  <h2>Let’s make something <em>worth keeping.</em></h2>
+  <div class="ct__row">
+    <div><span class="lbl">Email</span><p><a class="ct__mail" href="mailto:sunil@sebastians.tv">sunil@sebastians.tv</a></p></div>
+    <div><span class="lbl">Elsewhere</span><p><a href="https://www.linkedin.com/in/sunil-shahzad-a7a59797/" target="_blank" rel="noopener">LinkedIn ↗</a></p><p><a href="https://www.behance.net/sunshaseb" target="_blank" rel="noopener">Behance ↗</a></p><p><a href="https://www.instagram.com/sunilsebastian/" target="_blank" rel="noopener">Instagram ↗</a></p></div>
+    <div><span class="lbl">Work authorization</span><p>US Employment Authorization Card (EAD)</p></div>
+  </div>
+</section>
+
+<footer class="ft-wrap">
+  <div class="ft-nav"><span>© 2026 Sunil Sebastian</span><nav aria-label="Footer"><a href="#work">Work</a><a href="#index">Index</a><a href="#about">About</a><a href="../showreel/index.html">Showreel</a></nav></div>
+  <span class="wordmark" aria-hidden="true">Sunil Sebastian</span>
+</footer>
+
+
+<script>
+(() => {
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  // Looping clips play only while on screen
+  const vo = new IntersectionObserver(es => es.forEach(e => { const v = e.target; if (e.isIntersecting) { v.preload = 'auto'; v.play().catch(() => {}); } else v.pause(); }), { threshold: .2 });
+  document.querySelectorAll('video.lv').forEach(v => vo.observe(v));
+})();
+</script>
+</body>
+</html>
