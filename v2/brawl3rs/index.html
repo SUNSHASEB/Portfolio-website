@@ -72,7 +72,7 @@
   .cx__stats b { display: block; font-size: clamp(36px, 4.6vw, 76px); font-weight: 400; letter-spacing: -.05em; line-height: 1; }
   .cx__stats span { display: block; margin-top: 8px; color: var(--muted); font-size: 14px; }
   .cx__media { margin: 0; }
-  .cx__media img, .cx__media video { display: block; width: 100%; height: auto; max-height: 92svh; object-fit: cover; background: #000; }
+  .cx__media img, .cx__media video { display: block; width: 100%; height: auto; background: #000; }
   .cx__media .wx { margin: 0; }
 
   .cs { padding: clamp(80px, 10vw, 160px) var(--gutter) 0; }
@@ -172,6 +172,13 @@
   .cmp input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; }
   .cmp--tall { max-width: 720px; margin-left: auto; margin-right: auto; }
   @media (max-width: 600px) { .cmp__knob { width: 42px; height: 42px; margin: -21px 0 0 -21px; } }
+
+  /* Trailer in the banner: a poster until it is played */
+  .cx__media.yt { position: relative; aspect-ratio: 16 / 9; background: #000; }
+  .cx__media.yt img, .cx__media.yt iframe { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border: 0; max-height: none; }
+  .yt__play { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); appearance: none; border: 0; border-radius: 999px; padding: 14px 22px; background: var(--accent); color: var(--ink); font: inherit; font-size: 15px; font-weight: 600; letter-spacing: -.01em; cursor: pointer; transition: transform .2s var(--ease); }
+  .cx__media.yt:hover .yt__play { transform: translate(-50%, -50%) scale(1.06); }
+  .yt__play:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
 </style>
 </head>
 <body>
@@ -191,7 +198,7 @@
     </div>
     <ul class="cx__stats" style="--n:4"><li class="reveal"><b>2</b><span>Months, blank canvas to launch</span></li><li class="reveal"><b>16</b><span>Devs, game designers &amp; 3D artists</span></li><li class="reveal"><b>10+</b><span>Major screens designed</span></li><li class="reveal"><b>3</b><span>Breakpoints for every screen</span></li></ul>
   </section>
-  <figure class="cx__media"><img src="../../brawl3rs/assets/trailer.jpg" alt="Brawl3rs key art: the roster of low-poly meme fighters with Pepe facing Doge" width="1280" height="720" fetchpriority="high"></figure>
+  <figure class="cx__media yt" data-yt="ghAWdVwj6Jw" data-title="Brawl3rs trailer"><img src="../../brawl3rs/assets/trailer.jpg" alt="Brawl3rs key art: the roster of low-poly meme fighters with Pepe facing Doge" width="1280" height="720" fetchpriority="high"><button class="yt__play" type="button" aria-label="Play the Brawl3rs trailer">▶ Watch trailer</button></figure>
 
   <section class="cs" id="overview">
     <div class="cs__head reveal"><span class="cs__lbl lbl"><b>01</b>Overview</span><div><h2>Meme coins, in the ring.</h2><p class="cs__sub">Gaming immersion. Trader-grade clarity.</p></div></div>
@@ -283,6 +290,18 @@
   document.querySelectorAll('.cmp').forEach(c => {
     const r = c.querySelector('input'); const set = () => c.style.setProperty('--x', r.value + '%');
     r.addEventListener('input', set); set();
+  });
+})();</script>
+<script>(() => {
+  // Load YouTube only when the viewer asks for it
+  document.querySelectorAll('.yt').forEach(y => {
+    const play = () => {
+      const f = document.createElement('iframe');
+      f.src = `https://www.youtube-nocookie.com/embed/${y.dataset.yt}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
+      f.title = y.dataset.title; f.allow = 'autoplay; encrypted-media; picture-in-picture'; f.allowFullscreen = true;
+      y.replaceChildren(f);
+    };
+    y.querySelector('.yt__play').addEventListener('click', play);
   });
 })();</script>
 </body>

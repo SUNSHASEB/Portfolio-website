@@ -72,7 +72,7 @@
   .cx__stats b { display: block; font-size: clamp(36px, 4.6vw, 76px); font-weight: 400; letter-spacing: -.05em; line-height: 1; }
   .cx__stats span { display: block; margin-top: 8px; color: var(--muted); font-size: 14px; }
   .cx__media { margin: 0; }
-  .cx__media img, .cx__media video { display: block; width: 100%; height: auto; max-height: 92svh; object-fit: cover; background: #000; }
+  .cx__media img, .cx__media video { display: block; width: 100%; height: auto; background: #000; }
   .cx__media .wx { margin: 0; }
 
   .cs { padding: clamp(80px, 10vw, 160px) var(--gutter) 0; }
@@ -206,6 +206,27 @@
 @media (max-width: 960px) {.live { grid-template-columns: 1fr; }
 .mots { grid-template-columns: repeat(2, minmax(0, 1fr)); }}
 @media (max-width: 600px) {.films, .mots { grid-template-columns: 1fr; }}
+
+  /* One display, many screens: auto-rotating switcher */
+  .sx { margin: 0; min-width: 0; }
+  .sx__stage { position: relative; width: min(100%, calc(84svh * var(--ar))); aspect-ratio: var(--ar); margin-inline: auto; overflow: hidden; background: var(--paper-2); }
+  .sx__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; transition: opacity .6s var(--ease); }
+  .sx__img.is-on { opacity: 1; }
+  .sx__tabs { display: flex; flex-wrap: wrap; gap: 0 clamp(10px, 1.4vw, 22px); margin-top: 14px; }
+  .sx__tab { flex: 1 1 0; min-width: max-content; position: relative; appearance: none; background: none; border: 0; border-top: 1px solid var(--line); padding: 10px 0 8px; font: inherit; font-size: 14px; letter-spacing: -.01em; text-align: left; color: var(--muted); cursor: pointer; transition: color .2s; }
+  .sx__tab:hover, .sx__tab.is-on { color: var(--ink); }
+  .sx__tab:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+  .sx__tab i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 8px; }
+  .sx__tab::before { content: ""; position: absolute; left: 0; top: -1px; width: 100%; height: 2px; background: var(--ink); transform: scaleX(0); transform-origin: 0 50%; }
+  .sx__tab.is-on::before { transform: scaleX(1); }
+  .sx.is-play .sx__tab.is-on::before { animation: sxfill 4.5s linear both; }
+  @keyframes sxfill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  .sx__note { margin: 8px 0 0; font-size: clamp(16px, 1.4vw, 20px); letter-spacing: -.02em; min-height: 1.3em; }
+  @media (max-width: 900px) {
+    .sx__tabs { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+    .sx__tabs::-webkit-scrollbar { display: none; }
+    .sx__tab { flex: none; padding-inline-end: 6px; }
+  }
 </style>
 </head>
 <body>
@@ -260,7 +281,7 @@
     <div class="cs__body"></div>
     
     
-    <div class="rows"><div class="row row--1"><figure class="m reveal" style="--ar:1.7816"><div class="m__box" style="aspect-ratio:930 / 522"><img src="../../al-siraat/assets/dir-1.jpg" alt="Dashboard direction 1: clean cards with a green accent" loading="lazy" width="930" height="522"></div></figure></div><div class="row"><figure class="m reveal" style="--ar:1.7816;flex:1.7816 1 0%"><div class="m__box" style="aspect-ratio:930 / 522"><img src="../../al-siraat/assets/dir-2.jpg" alt="Dashboard direction 2: warm gold with quick actions" loading="lazy" width="930" height="522"></div></figure><figure class="m reveal" style="--ar:1.7816;flex:1.7816 1 0%"><div class="m__box" style="aspect-ratio:930 / 522"><img src="../../al-siraat/assets/dir-4.jpg" alt="Dashboard direction 3: photographic with soft gradient cards" loading="lazy" width="930" height="522"></div></figure></div><div class="row row--solo"><figure class="m reveal" style="--ar:1.7816"><div class="m__box" style="aspect-ratio:930 / 522"><img src="../../al-siraat/assets/dir-3.jpg" alt="Dashboard direction 4: deep green with mosque imagery" loading="lazy" width="930" height="522"></div></figure></div></div>
+    <div class="rows"><div class="sx reveal" style="--ar:1.7816"><div class="sx__stage"><img class="sx__img is-on" src="../../al-siraat/assets/dir-1.jpg" alt="Dashboard direction 1: clean cards with a green accent" loading="lazy" width="930" height="522"><img class="sx__img" src="../../al-siraat/assets/dir-2.jpg" alt="Dashboard direction 2: warm gold with quick actions" loading="lazy" width="930" height="522"><img class="sx__img" src="../../al-siraat/assets/dir-4.jpg" alt="Dashboard direction 3: photographic with soft gradient cards" loading="lazy" width="930" height="522"><img class="sx__img" src="../../al-siraat/assets/dir-3.jpg" alt="Dashboard direction 4: deep green with mosque imagery" loading="lazy" width="930" height="522"></div><div class="sx__tabs"><button class="sx__tab is-on" type="button" aria-pressed="true" data-note="Clean, card-based, green accent.">Option 01</button><button class="sx__tab" type="button" aria-pressed="false" data-note="Warm gold, quick-action driven.">Option 02</button><button class="sx__tab" type="button" aria-pressed="false" data-note="Photographic, soft gradient cards.">Option 03</button><button class="sx__tab" type="button" aria-pressed="false" data-note="Deep green, mosque imagery, tool-first.">Option 04</button></div><p class="sx__note">Clean, card-based, green accent.</p></div></div>
   </section>
   <section class="cs" id="converge">
     <div class="cs__head reveal"><span class="cs__lbl lbl"><b>06</b>The breakthrough</span><div><h2>&quot;Salam! Learn with AI.&quot;</h2><p class="cs__sub">We stopped treating home as a tool launcher. Qaida and Quran learning became the two hero cards; worship tools moved to a supporting layer. A dozen layouts later, it clicked.</p></div></div>
@@ -274,7 +295,7 @@
     <div class="cs__body"></div>
     
     
-    <div class="rows"><div class="row row--1"><figure class="m reveal" style="--ar:1.7793"><div class="m__box" style="aspect-ratio:1032 / 580"><img src="../../al-siraat/assets/sys-1.jpg" alt="Style guide 1: midnight navy and teal" loading="lazy" width="1032" height="580"></div></figure></div><div class="row"><figure class="m reveal" style="--ar:1.7793;flex:1.7793 1 0%"><div class="m__box" style="aspect-ratio:1032 / 580"><img src="../../al-siraat/assets/sys-2.jpg" alt="Style guide 2: orange and green" loading="lazy" width="1032" height="580"></div></figure><figure class="m reveal" style="--ar:1.7793;flex:1.7793 1 0%"><div class="m__box" style="aspect-ratio:1032 / 580"><img src="../../al-siraat/assets/sys-3.jpg" alt="Style guide 3: green and gold" loading="lazy" width="1032" height="580"></div></figure></div><div class="row row--solo"><figure class="m reveal" style="--ar:1.7793"><div class="m__box" style="aspect-ratio:1032 / 580"><img src="../../al-siraat/assets/sys-final.jpg" alt="The final summary screens presented to stakeholders" loading="lazy" width="1032" height="580"></div></figure></div></div>
+    <div class="rows"><div class="sx reveal" style="--ar:1.7793"><div class="sx__stage"><img class="sx__img is-on" src="../../al-siraat/assets/sys-1.jpg" alt="Style guide 1: midnight navy and teal" loading="lazy" width="1032" height="580"><img class="sx__img" src="../../al-siraat/assets/sys-2.jpg" alt="Style guide 2: orange and green" loading="lazy" width="1032" height="580"><img class="sx__img" src="../../al-siraat/assets/sys-3.jpg" alt="Style guide 3: green and gold" loading="lazy" width="1032" height="580"><img class="sx__img" src="../../al-siraat/assets/sys-final.jpg" alt="The final summary screens presented to stakeholders" loading="lazy" width="1032" height="580"></div><div class="sx__tabs"><button class="sx__tab is-on" type="button" aria-pressed="true" data-note="Midnight navy &amp; teal, set in Lato.">System 01</button><button class="sx__tab" type="button" aria-pressed="false" data-note="Orange &amp; green, set in Plus Jakarta Sans.">System 02</button><button class="sx__tab" type="button" aria-pressed="false" data-note="Green &amp; gold, set in Urbanist.">System 03</button><button class="sx__tab" type="button" aria-pressed="false" data-note="The summary presented to stakeholders.">Final</button></div><p class="sx__note">Midnight navy &amp; teal, set in Lato.</p></div></div>
   </section>
   <section class="cs" id="brand">
     <div class="cs__head reveal"><span class="cs__lbl lbl"><b>08</b>Brand identity</span><div><h2>Al Siraat. The straight path.</h2><p class="cs__sub">Not a collection of tools. Guidance along a path.</p></div></div>
@@ -363,6 +384,37 @@
     }), { rootMargin: '200px 0px' });
     document.querySelectorAll('.lottie[data-anim]').forEach(el => lo.observe(el));
   }
+})();</script>
+<script>(() => {
+  // Each switcher rotates on its own while on screen; hovering or focusing it holds the current screen
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('.sx').forEach(sx => {
+    const tabs = [...sx.querySelectorAll('.sx__tab')], imgs = [...sx.querySelectorAll('.sx__img')];
+    const note = sx.querySelector('.sx__note'), bar = sx.querySelector('.sx__tabs');
+    let at = 0, timer, seen = false, held = false;
+    const show = n => {
+      at = n;
+      tabs.forEach((t, k) => { t.classList.toggle('is-on', k === n); t.setAttribute('aria-pressed', k === n); });
+      imgs.forEach((im, k) => im.classList.toggle('is-on', k === n));
+      note.textContent = tabs[n].dataset.note;
+      if (bar.scrollWidth > bar.clientWidth) bar.scrollTo({ left: tabs[n].offsetLeft - 16, behavior: 'smooth' });
+    };
+    const run = () => {
+      clearTimeout(timer); sx.classList.remove('is-play'); void sx.offsetWidth;
+      if (still || !seen || held) return;
+      sx.classList.add('is-play');
+      timer = setTimeout(() => { show((at + 1) % tabs.length); run(); }, 4500);
+    };
+    const hold = v => () => { held = v; run(); };
+    tabs.forEach((t, k) => t.addEventListener('click', () => { show(k); run(); }));
+    sx.addEventListener('pointerenter', hold(true)); sx.addEventListener('pointerleave', hold(false));
+    sx.addEventListener('focusin', hold(true)); sx.addEventListener('focusout', hold(false));
+    new IntersectionObserver(([e]) => {
+      seen = e.isIntersecting;
+      if (seen) imgs.forEach(im => { im.loading = 'eager'; });
+      run();
+    }, { threshold: .35 }).observe(sx);
+  });
 })();</script>
 </body>
 </html>

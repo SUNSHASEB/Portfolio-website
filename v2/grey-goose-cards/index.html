@@ -72,7 +72,7 @@
   .cx__stats b { display: block; font-size: clamp(36px, 4.6vw, 76px); font-weight: 400; letter-spacing: -.05em; line-height: 1; }
   .cx__stats span { display: block; margin-top: 8px; color: var(--muted); font-size: 14px; }
   .cx__media { margin: 0; }
-  .cx__media img, .cx__media video { display: block; width: 100%; height: auto; max-height: 92svh; object-fit: cover; background: #000; }
+  .cx__media img, .cx__media video { display: block; width: 100%; height: auto; background: #000; }
   .cx__media .wx { margin: 0; }
 
   .cs { padding: clamp(80px, 10vw, 160px) var(--gutter) 0; }
@@ -207,6 +207,27 @@
 @media (prefers-reduced-motion: reduce) {.gcb__replay { display: none; }}
 @keyframes g-draw { to { stroke-dashoffset: 0; } }
 @keyframes g-fill { to { fill-opacity: 1; stroke-opacity: 0; } }
+
+  /* One display, many screens: auto-rotating switcher */
+  .sx { margin: 0; min-width: 0; }
+  .sx__stage { position: relative; width: min(100%, calc(84svh * var(--ar))); aspect-ratio: var(--ar); margin-inline: auto; overflow: hidden; background: var(--paper-2); }
+  .sx__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; transition: opacity .6s var(--ease); }
+  .sx__img.is-on { opacity: 1; }
+  .sx__tabs { display: flex; flex-wrap: wrap; gap: 0 clamp(10px, 1.4vw, 22px); margin-top: 14px; }
+  .sx__tab { flex: 1 1 0; min-width: max-content; position: relative; appearance: none; background: none; border: 0; border-top: 1px solid var(--line); padding: 10px 0 8px; font: inherit; font-size: 14px; letter-spacing: -.01em; text-align: left; color: var(--muted); cursor: pointer; transition: color .2s; }
+  .sx__tab:hover, .sx__tab.is-on { color: var(--ink); }
+  .sx__tab:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+  .sx__tab i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 8px; }
+  .sx__tab::before { content: ""; position: absolute; left: 0; top: -1px; width: 100%; height: 2px; background: var(--ink); transform: scaleX(0); transform-origin: 0 50%; }
+  .sx__tab.is-on::before { transform: scaleX(1); }
+  .sx.is-play .sx__tab.is-on::before { animation: sxfill 4.5s linear both; }
+  @keyframes sxfill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  .sx__note { margin: 8px 0 0; font-size: clamp(16px, 1.4vw, 20px); letter-spacing: -.02em; min-height: 1.3em; }
+  @media (max-width: 900px) {
+    .sx__tabs { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+    .sx__tabs::-webkit-scrollbar { display: none; }
+    .sx__tab { flex: none; padding-inline-end: 6px; }
+  }
 </style>
 </head>
 <body>
@@ -254,7 +275,7 @@
     <div class="cs__body"></div>
     
     
-    <div class="rows"><div class="row row--1"><figure class="m reveal" style="--ar:1.4937"><div class="m__box" style="aspect-ratio:2000 / 1339"><img src="../../packaging-design/assets/gc-ace.jpg" alt="Ace of spades in Grey Goose blue beside the two of clubs" loading="lazy" width="2000" height="1339"></div></figure></div><div class="row"><figure class="m reveal" style="--ar:1.4937;flex:1.4937 1 0%"><div class="m__box" style="aspect-ratio:2000 / 1339"><img src="../../packaging-design/assets/gc-hearts.jpg" alt="Two of hearts and two of diamonds" loading="lazy" width="2000" height="1339"></div></figure><figure class="m reveal" style="--ar:1.4937;flex:1.4937 1 0%"><div class="m__box" style="aspect-ratio:2000 / 1339"><img src="../../packaging-design/assets/gc-court.jpg" alt="Queen and King built from pattern stripes" loading="lazy" width="2000" height="1339"></div></figure></div><div class="row"><figure class="m reveal" style="--ar:1.4937;flex:1.4937 1 0%"><div class="m__box" style="aspect-ratio:2000 / 1339"><img src="../../packaging-design/assets/gc-joker.jpg" alt="Jack and Joker" loading="lazy" width="2000" height="1339"></div></figure><figure class="m reveal" style="--ar:1.4937;flex:1.4937 1 0%"><div class="m__box" style="aspect-ratio:2000 / 1339"><img src="../../packaging-design/assets/gc-tens.jpg" alt="Ten of clubs and ten of hearts" loading="lazy" width="2000" height="1339"></div></figure></div><div class="row"><figure class="m reveal" style="--ar:1.4937;flex:1.4937 1 0%"><div class="m__box" style="aspect-ratio:2000 / 1339"><img src="../../packaging-design/assets/gc-box.jpg" alt="The blue Grey Goose card box beside the ace of spades" loading="lazy" width="2000" height="1339"></div></figure><figure class="m reveal" style="--ar:1.4993;flex:1.4993 1 0%"><div class="m__box" style="aspect-ratio:1024 / 683"><img src="../../packaging-design/assets/gc-case.jpg" alt="Two decks in a wooden gift case" loading="lazy" width="1024" height="683"></div></figure></div></div>
+    <div class="rows"><div class="sx reveal" style="--ar:1.4937"><div class="sx__stage"><img class="sx__img is-on" src="../../packaging-design/assets/gc-ace.jpg" alt="Ace of spades in Grey Goose blue beside the two of clubs" loading="lazy" width="2000" height="1339"><img class="sx__img" src="../../packaging-design/assets/gc-hearts.jpg" alt="Two of hearts and two of diamonds" loading="lazy" width="2000" height="1339"><img class="sx__img" src="../../packaging-design/assets/gc-court.jpg" alt="Queen and King built from pattern stripes" loading="lazy" width="2000" height="1339"><img class="sx__img" src="../../packaging-design/assets/gc-joker.jpg" alt="Jack and Joker" loading="lazy" width="2000" height="1339"><img class="sx__img" src="../../packaging-design/assets/gc-tens.jpg" alt="Ten of clubs and ten of hearts" loading="lazy" width="2000" height="1339"><img class="sx__img" src="../../packaging-design/assets/gc-box.jpg" alt="The blue Grey Goose card box beside the ace of spades" loading="lazy" width="2000" height="1339"><img class="sx__img" src="../../packaging-design/assets/gc-case.jpg" alt="Two decks in a wooden gift case" loading="lazy" width="1024" height="683"></div><div class="sx__tabs"><button class="sx__tab is-on" type="button" aria-pressed="true" data-note="The Lord of the Cards: an ace in Grey Goose blue.">Ace &amp; two</button><button class="sx__tab" type="button" aria-pressed="false" data-note="Every pip is cut from the same diagonal lines.">Hearts &amp; diamonds</button><button class="sx__tab" type="button" aria-pressed="false" data-note="Court figures built from stripes and parquet blocks.">Queen &amp; King</button><button class="sx__tab" type="button" aria-pressed="false" data-note="The Jack and the Joker, in the same line language.">Jack &amp; Joker</button><button class="sx__tab" type="button" aria-pressed="false" data-note="Number cards keep the hatching at every size.">Tens</button><button class="sx__tab" type="button" aria-pressed="false" data-note="A blue box with the goose foil, like the bottle.">The box</button><button class="sx__tab" type="button" aria-pressed="false" data-note="Boxed as a gift for Grey Goose guests.">Gift case</button></div><p class="sx__note">The Lord of the Cards: an ace in Grey Goose blue.</p></div></div>
   </section>
   <section class="cs" id="s4">
     <div class="cs__head reveal"><span class="cs__lbl lbl"><b>04</b></span><div><h2>In motion</h2></div></div>
@@ -312,6 +333,37 @@
   b.querySelector('.gcb__replay').addEventListener('click', () => panels.forEach(play));
 
   })();
+})();</script>
+<script>(() => {
+  // Each switcher rotates on its own while on screen; hovering or focusing it holds the current screen
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('.sx').forEach(sx => {
+    const tabs = [...sx.querySelectorAll('.sx__tab')], imgs = [...sx.querySelectorAll('.sx__img')];
+    const note = sx.querySelector('.sx__note'), bar = sx.querySelector('.sx__tabs');
+    let at = 0, timer, seen = false, held = false;
+    const show = n => {
+      at = n;
+      tabs.forEach((t, k) => { t.classList.toggle('is-on', k === n); t.setAttribute('aria-pressed', k === n); });
+      imgs.forEach((im, k) => im.classList.toggle('is-on', k === n));
+      note.textContent = tabs[n].dataset.note;
+      if (bar.scrollWidth > bar.clientWidth) bar.scrollTo({ left: tabs[n].offsetLeft - 16, behavior: 'smooth' });
+    };
+    const run = () => {
+      clearTimeout(timer); sx.classList.remove('is-play'); void sx.offsetWidth;
+      if (still || !seen || held) return;
+      sx.classList.add('is-play');
+      timer = setTimeout(() => { show((at + 1) % tabs.length); run(); }, 4500);
+    };
+    const hold = v => () => { held = v; run(); };
+    tabs.forEach((t, k) => t.addEventListener('click', () => { show(k); run(); }));
+    sx.addEventListener('pointerenter', hold(true)); sx.addEventListener('pointerleave', hold(false));
+    sx.addEventListener('focusin', hold(true)); sx.addEventListener('focusout', hold(false));
+    new IntersectionObserver(([e]) => {
+      seen = e.isIntersecting;
+      if (seen) imgs.forEach(im => { im.loading = 'eager'; });
+      run();
+    }, { threshold: .35 }).observe(sx);
+  });
 })();</script>
 </body>
 </html>

@@ -72,7 +72,7 @@
   .cx__stats b { display: block; font-size: clamp(36px, 4.6vw, 76px); font-weight: 400; letter-spacing: -.05em; line-height: 1; }
   .cx__stats span { display: block; margin-top: 8px; color: var(--muted); font-size: 14px; }
   .cx__media { margin: 0; }
-  .cx__media img, .cx__media video { display: block; width: 100%; height: auto; max-height: 92svh; object-fit: cover; background: #000; }
+  .cx__media img, .cx__media video { display: block; width: 100%; height: auto; background: #000; }
   .cx__media .wx { margin: 0; }
 
   .cs { padding: clamp(80px, 10vw, 160px) var(--gutter) 0; }
@@ -161,6 +161,27 @@
 
   .w-cap { margin: 10px 0 0; font-size: 13px; color: var(--muted); }
 
+
+  /* One display, many screens: auto-rotating switcher */
+  .sx { margin: 0; min-width: 0; }
+  .sx__stage { position: relative; width: min(100%, calc(84svh * var(--ar))); aspect-ratio: var(--ar); margin-inline: auto; overflow: hidden; background: var(--paper-2); }
+  .sx__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; transition: opacity .6s var(--ease); }
+  .sx__img.is-on { opacity: 1; }
+  .sx__tabs { display: flex; flex-wrap: wrap; gap: 0 clamp(10px, 1.4vw, 22px); margin-top: 14px; }
+  .sx__tab { flex: 1 1 0; min-width: max-content; position: relative; appearance: none; background: none; border: 0; border-top: 1px solid var(--line); padding: 10px 0 8px; font: inherit; font-size: 14px; letter-spacing: -.01em; text-align: left; color: var(--muted); cursor: pointer; transition: color .2s; }
+  .sx__tab:hover, .sx__tab.is-on { color: var(--ink); }
+  .sx__tab:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+  .sx__tab i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 8px; }
+  .sx__tab::before { content: ""; position: absolute; left: 0; top: -1px; width: 100%; height: 2px; background: var(--ink); transform: scaleX(0); transform-origin: 0 50%; }
+  .sx__tab.is-on::before { transform: scaleX(1); }
+  .sx.is-play .sx__tab.is-on::before { animation: sxfill 4.5s linear both; }
+  @keyframes sxfill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  .sx__note { margin: 8px 0 0; font-size: clamp(16px, 1.4vw, 20px); letter-spacing: -.02em; min-height: 1.3em; }
+  @media (max-width: 900px) {
+    .sx__tabs { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+    .sx__tabs::-webkit-scrollbar { display: none; }
+    .sx__tab { flex: none; padding-inline-end: 6px; }
+  }
 </style>
 </head>
 <body>
@@ -201,7 +222,7 @@
     <div class="cs__body"></div>
     
     
-    <div class="rows"><div class="row row--1"><figure class="m reveal" style="--ar:1.7778"><div class="m__box" style="aspect-ratio:1600 / 900"><img src="../../green-school/assets/gs-logo-global.jpg" alt="Global logo page with the Green School mark reversed on dark green" loading="lazy" width="1600" height="900"></div></figure></div><div class="row"><figure class="m reveal" style="--ar:1.7778;flex:1.7778 1 0%"><div class="m__box" style="aspect-ratio:1600 / 900"><img src="../../green-school/assets/gs-logo-clearspace.jpg" alt="Logo construction and clear space grid" loading="lazy" width="1600" height="900"></div></figure><figure class="m reveal" style="--ar:1.7778;flex:1.7778 1 0%"><div class="m__box" style="aspect-ratio:1600 / 900"><img src="../../green-school/assets/gs-logo-scale.jpg" alt="Logo shown at three sizes with minimum size" loading="lazy" width="1600" height="900"></div></figure></div><div class="row"><figure class="m reveal" style="--ar:1.7778;flex:1.7778 1 0%"><div class="m__box" style="aspect-ratio:1600 / 900"><img src="../../green-school/assets/gs-logo-colour.jpg" alt="Logo colour variants on white, green, grey and black" loading="lazy" width="1600" height="900"></div></figure><figure class="m reveal" style="--ar:1.7778;flex:1.7778 1 0%"><div class="m__box" style="aspect-ratio:1600 / 900"><img src="../../green-school/assets/gs-logo-misuse.jpg" alt="Grid of logo misuse examples" loading="lazy" width="1600" height="900"></div></figure></div><div class="row"><figure class="m reveal" style="--ar:1.7778;flex:1.7778 1 0%"><div class="m__box" style="aspect-ratio:1600 / 900"><img src="../../green-school/assets/gs-logo-locations.jpg" alt="Location logos for Bali, South Africa, New Zealand and Tulum" loading="lazy" width="1600" height="900"></div></figure><figure class="m reveal" style="--ar:1.7778;flex:1.7778 1 0%"><div class="m__box" style="aspect-ratio:1600 / 900"><img src="../../green-school/assets/gs-family.jpg" alt="Sub-brand logos: Bio Bus, Kul Kul Connection, KemBali and The Bridge" loading="lazy" width="1600" height="900"></div></figure></div></div>
+    <div class="rows"><div class="sx reveal" style="--ar:1.7778"><div class="sx__stage"><img class="sx__img is-on" src="../../green-school/assets/gs-logo-global.jpg" alt="Global logo page with the Green School mark reversed on dark green" loading="lazy" width="1600" height="900"><img class="sx__img" src="../../green-school/assets/gs-logo-clearspace.jpg" alt="Logo construction and clear space grid" loading="lazy" width="1600" height="900"><img class="sx__img" src="../../green-school/assets/gs-logo-scale.jpg" alt="Logo shown at three sizes with minimum size" loading="lazy" width="1600" height="900"><img class="sx__img" src="../../green-school/assets/gs-logo-colour.jpg" alt="Logo colour variants on white, green, grey and black" loading="lazy" width="1600" height="900"><img class="sx__img" src="../../green-school/assets/gs-logo-misuse.jpg" alt="Grid of logo misuse examples" loading="lazy" width="1600" height="900"><img class="sx__img" src="../../green-school/assets/gs-logo-locations.jpg" alt="Location logos for Bali, South Africa, New Zealand and Tulum" loading="lazy" width="1600" height="900"><img class="sx__img" src="../../green-school/assets/gs-family.jpg" alt="Sub-brand logos: Bio Bus, Kul Kul Connection, KemBali and The Bridge" loading="lazy" width="1600" height="900"></div><div class="sx__tabs"><button class="sx__tab is-on" type="button" aria-pressed="true" data-note="The default global logo.">Global logo</button><button class="sx__tab" type="button" aria-pressed="false" data-note="Clear space so the mark can breathe.">Clear space</button><button class="sx__tab" type="button" aria-pressed="false" data-note="Built to scale down to 100px.">Scale</button><button class="sx__tab" type="button" aria-pressed="false" data-note="Full colour first, reversed when needed.">Colour</button><button class="sx__tab" type="button" aria-pressed="false" data-note="What never to do with the mark.">Misuse</button><button class="sx__tab" type="button" aria-pressed="false" data-note="Each campus adds its location, nothing more.">Locations</button><button class="sx__tab" type="button" aria-pressed="false" data-note="Sub-brands carry a Green School lock-up.">Brand family</button></div><p class="sx__note">The default global logo.</p></div></div>
   </section>
   <section class="cs" id="colour">
     <div class="cs__head reveal"><span class="cs__lbl lbl"><b>04</b>Colour &amp; type</span><div><h2>Fresh, modern, distinctive.</h2><p class="cs__sub">Two greens and a light brown lead every piece. Open Sans keeps type simple and readable, like the campus itself.</p></div></div>
@@ -215,7 +236,7 @@
     <div class="cs__body"></div>
     
     
-    <div class="rows"><div class="row row--1"><figure class="m reveal" style="--ar:1.7778"><div class="m__box" style="aspect-ratio:1600 / 900"><img src="../../green-school/assets/gs-photo-style.jpg" alt="Photography style: a child hammering at a workbench" loading="lazy" width="1600" height="900"></div></figure></div><div class="row"><figure class="m reveal" style="--ar:1.7778;flex:1.7778 1 0%"><div class="m__box" style="aspect-ratio:1600 / 900"><img src="../../green-school/assets/gs-photo-composition.jpg" alt="Composition: bamboo pavilion with open space" loading="lazy" width="1600" height="900"></div></figure><figure class="m reveal" style="--ar:1.7778;flex:1.7778 1 0%"><div class="m__box" style="aspect-ratio:1600 / 900"><img src="../../green-school/assets/gs-photo-lighting.jpg" alt="Lighting and colour: bamboo building in the jungle" loading="lazy" width="1600" height="900"></div></figure></div><div class="row"><figure class="m reveal" style="--ar:1.7778;flex:1.7778 1 0%"><div class="m__box" style="aspect-ratio:1600 / 900"><img src="../../green-school/assets/gs-photo-location.jpg" alt="Location: children dancing in a bamboo hall" loading="lazy" width="1600" height="900"></div></figure><figure class="m reveal" style="--ar:1.7778;flex:1.7778 1 0%"><div class="m__box" style="aspect-ratio:1600 / 900"><img src="../../green-school/assets/gs-photo-dont-1.jpg" alt="Photography misuse: filters, vignettes, black and white, oversaturation" loading="lazy" width="1600" height="900"></div></figure></div><div class="row row--solo"><figure class="m reveal" style="--ar:1.7778"><div class="m__box" style="aspect-ratio:1600 / 900"><img src="../../green-school/assets/gs-photo-dont-3.jpg" alt="Photography misuse: static moments, low resolution, dramatic lighting" loading="lazy" width="1600" height="900"></div></figure></div></div>
+    <div class="rows"><div class="sx reveal" style="--ar:1.7778"><div class="sx__stage"><img class="sx__img is-on" src="../../green-school/assets/gs-photo-style.jpg" alt="Photography style: a child hammering at a workbench" loading="lazy" width="1600" height="900"><img class="sx__img" src="../../green-school/assets/gs-photo-composition.jpg" alt="Composition: bamboo pavilion with open space" loading="lazy" width="1600" height="900"><img class="sx__img" src="../../green-school/assets/gs-photo-lighting.jpg" alt="Lighting and colour: bamboo building in the jungle" loading="lazy" width="1600" height="900"><img class="sx__img" src="../../green-school/assets/gs-photo-location.jpg" alt="Location: children dancing in a bamboo hall" loading="lazy" width="1600" height="900"><img class="sx__img" src="../../green-school/assets/gs-photo-dont-1.jpg" alt="Photography misuse: filters, vignettes, black and white, oversaturation" loading="lazy" width="1600" height="900"><img class="sx__img" src="../../green-school/assets/gs-photo-dont-3.jpg" alt="Photography misuse: static moments, low resolution, dramatic lighting" loading="lazy" width="1600" height="900"></div><div class="sx__tabs"><button class="sx__tab is-on" type="button" aria-pressed="true" data-note="Capture a moment in the day of a learner.">Style</button><button class="sx__tab" type="button" aria-pressed="false" data-note="Bold use of open space.">Composition</button><button class="sx__tab" type="button" aria-pressed="false" data-note="Natural daylight, no filters.">Lighting</button><button class="sx__tab" type="button" aria-pressed="false" data-note="Show the campus as part of the story.">Location</button><button class="sx__tab" type="button" aria-pressed="false" data-note="No filters, vignettes or heavy edits.">Don’ts</button><button class="sx__tab" type="button" aria-pressed="false" data-note="No static, blurry or over-dramatic shots.">More don’ts</button></div><p class="sx__note">Capture a moment in the day of a learner.</p></div></div>
   </section>
   <section class="cs" id="icons">
     <div class="cs__head reveal"><span class="cs__lbl lbl"><b>06</b>Icon set</span><div><h2>Drawn by hand.</h2><p class="cs__sub">Thirteen hand-drawn icons for the learning programme and the campus’s green systems, from the Bio Bus to the hydro vortex.</p></div></div>
@@ -229,7 +250,7 @@
     <div class="cs__body"></div>
     
     
-    <div class="rows"><div class="row row--1"><figure class="m reveal" style="--ar:1.7778"><div class="m__box" style="aspect-ratio:1600 / 900"><img src="../../green-school/assets/gs-social-sizes.jpg" alt="Instagram post, story and IGTV sizes" loading="lazy" width="1600" height="900"></div></figure></div><div class="row"><figure class="m reveal" style="--ar:1.7778;flex:1.7778 1 0%"><div class="m__box" style="aspect-ratio:1600 / 900"><img src="../../green-school/assets/gs-social-theme.jpg" alt="Theme for Instagram: focused subject examples" loading="lazy" width="1600" height="900"></div></figure><figure class="m reveal" style="--ar:1.7778;flex:1.7778 1 0%"><div class="m__box" style="aspect-ratio:1600 / 900"><img src="../../green-school/assets/gs-social-inquiry.jpg" alt="Theme for Instagram: focused inquiry, do and don’t" loading="lazy" width="1600" height="900"></div></figure></div><div class="row"><figure class="m reveal" style="--ar:1.7778;flex:1.7778 1 0%"><div class="m__box" style="aspect-ratio:1600 / 900"><img src="../../green-school/assets/gs-social-approach.jpg" alt="Approach for Instagram: perspective, do and don’t" loading="lazy" width="1600" height="900"></div></figure><figure class="m reveal" style="--ar:1.7778;flex:1.7778 1 0%"><div class="m__box" style="aspect-ratio:1600 / 900"><img src="../../green-school/assets/gs-social-engagement.jpg" alt="Examples of high-engagement posts" loading="lazy" width="1600" height="900"></div></figure></div></div>
+    <div class="rows"><div class="sx reveal" style="--ar:1.7778"><div class="sx__stage"><img class="sx__img is-on" src="../../green-school/assets/gs-social-sizes.jpg" alt="Instagram post, story and IGTV sizes" loading="lazy" width="1600" height="900"><img class="sx__img" src="../../green-school/assets/gs-social-theme.jpg" alt="Theme for Instagram: focused subject examples" loading="lazy" width="1600" height="900"><img class="sx__img" src="../../green-school/assets/gs-social-inquiry.jpg" alt="Theme for Instagram: focused inquiry, do and don’t" loading="lazy" width="1600" height="900"><img class="sx__img" src="../../green-school/assets/gs-social-approach.jpg" alt="Approach for Instagram: perspective, do and don’t" loading="lazy" width="1600" height="900"><img class="sx__img" src="../../green-school/assets/gs-social-engagement.jpg" alt="Examples of high-engagement posts" loading="lazy" width="1600" height="900"></div><div class="sx__tabs"><button class="sx__tab is-on" type="button" aria-pressed="true" data-note="Every format and ratio, in one place.">Sizes</button><button class="sx__tab" type="button" aria-pressed="false" data-note="Tight frames on a student’s face and hands.">Focused subject</button><button class="sx__tab" type="button" aria-pressed="false" data-note="The learning tool sits at the centre.">Inquiry</button><button class="sx__tab" type="button" aria-pressed="false" data-note="Shoot as a participant, not an observer.">Perspective</button><button class="sx__tab" type="button" aria-pressed="false" data-note="What makes a post win.">Engagement</button></div><p class="sx__note">Every format and ratio, in one place.</p></div></div>
   </section>
   <section class="cs" id="merch">
     <div class="cs__head reveal"><span class="cs__lbl lbl"><b>08</b>Merchandise</span><div><h2>Gifts that grow.</h2><p class="cs__sub">Natural materials only: kraft, bamboo and raw paper, laser-engraved with the mark.</p></div></div>
@@ -276,5 +297,36 @@
 })();
 </script>
 
+<script>(() => {
+  // Each switcher rotates on its own while on screen; hovering or focusing it holds the current screen
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('.sx').forEach(sx => {
+    const tabs = [...sx.querySelectorAll('.sx__tab')], imgs = [...sx.querySelectorAll('.sx__img')];
+    const note = sx.querySelector('.sx__note'), bar = sx.querySelector('.sx__tabs');
+    let at = 0, timer, seen = false, held = false;
+    const show = n => {
+      at = n;
+      tabs.forEach((t, k) => { t.classList.toggle('is-on', k === n); t.setAttribute('aria-pressed', k === n); });
+      imgs.forEach((im, k) => im.classList.toggle('is-on', k === n));
+      note.textContent = tabs[n].dataset.note;
+      if (bar.scrollWidth > bar.clientWidth) bar.scrollTo({ left: tabs[n].offsetLeft - 16, behavior: 'smooth' });
+    };
+    const run = () => {
+      clearTimeout(timer); sx.classList.remove('is-play'); void sx.offsetWidth;
+      if (still || !seen || held) return;
+      sx.classList.add('is-play');
+      timer = setTimeout(() => { show((at + 1) % tabs.length); run(); }, 4500);
+    };
+    const hold = v => () => { held = v; run(); };
+    tabs.forEach((t, k) => t.addEventListener('click', () => { show(k); run(); }));
+    sx.addEventListener('pointerenter', hold(true)); sx.addEventListener('pointerleave', hold(false));
+    sx.addEventListener('focusin', hold(true)); sx.addEventListener('focusout', hold(false));
+    new IntersectionObserver(([e]) => {
+      seen = e.isIntersecting;
+      if (seen) imgs.forEach(im => { im.loading = 'eager'; });
+      run();
+    }, { threshold: .35 }).observe(sx);
+  });
+})();</script>
 </body>
 </html>
