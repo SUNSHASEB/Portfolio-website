@@ -52,17 +52,13 @@
   .hv__slide img, .hv__slide video { display: block; width: 100%; height: 100%; object-fit: cover; }
   .hv__slide img { transform: scale(1.04); transition: transform 6s linear; }
   .hv__slide.is-on img { transform: scale(1); }
-  /* Three phones playing the app walkthrough (Al Siraat) */
-  .trio { position: relative; width: 100%; height: 100%; overflow: hidden; container-type: size; background: radial-gradient(ellipse at 50% 42%, #262140 0%, #101014 72%); perspective: 2000px; }
-  .trio__set { position: absolute; left: 50%; top: 50%; display: flex; align-items: center; gap: min(2.4cqw, 4cqh); transform: translate(-50%, -54%) rotateX(32deg) rotateZ(-15deg); transform-style: preserve-3d; }
-  .trio__ph { flex: none; width: min(33cqw, 64cqh); aspect-ratio: 600 / 900; filter: drop-shadow(0 40px 50px rgba(0,0,0,.55)); }
-  .trio__ph:nth-child(2) { transform: translateZ(40px); }
-  .ft .trio__ph { width: min(46cqw, 60cqh); }
+  /* A white page recording, shown as a rounded card on the Al Siraat backdrop */
+  .hv__slide--card { display: grid; place-items: center; background: radial-gradient(ellipse at 50% 42%, #262140 0%, #101014 72%); }
+  .hv__slide.hv__slide--card video { width: auto; height: min(78svh, 900px); max-width: 88vw; aspect-ratio: 1440 / 1252; object-fit: contain; border-radius: 16px; background: #fff; }
   @media (max-width: 600px) {
-    .hv .trio__set { transform: translate(-50%, -62%) rotateX(32deg) rotateZ(-15deg); }
-    .hv .trio__ph { width: min(50cqw, 48cqh); }
+    .hv__slide--card { padding: 64px 0 170px; }
+    .hv__slide.hv__slide--card video { width: 88vw; height: auto; }
   }
-  .hv::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,.45), transparent 22%, transparent 70%, rgba(0,0,0,.5)); pointer-events: none; }
   .hv__caps { position: absolute; z-index: 2; left: var(--gutter); bottom: 28px; right: 40%; color: #fff; }
   .hv__cap { position: absolute; left: 0; bottom: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px; font-size: 15px; opacity: 0; transform: translateY(8px); transition: opacity .5s, transform .6s var(--ease); pointer-events: none; cursor: pointer; }
   .hv__cap.is-on { opacity: 1; transform: none; pointer-events: auto; }
@@ -221,7 +217,7 @@
 
 <main id="top">
   <section class="hv" aria-roledescription="carousel" aria-label="Selected work">
-    <figure class="hv__slide is-on" data-i="0"><video src="../green-school/assets/gs-intro.mp4" poster="../green-school/assets/gs-intro.jpg" muted loop playsinline preload="auto" aria-label="Green School: Brand guidelines for a global network of eco-schools."></video></figure><figure class="hv__slide" data-i="1"><img src="../namma-farm/assets/hero-farmer.jpg" alt="Namma Farm: A bilingual identity for a South Indian food brand, rooted in kolam art." loading="lazy" width="2000" height="1124"></figure><figure class="hv__slide" data-i="2"><img src="../packaging-design/assets/bs-all.jpg" alt="Bombay Sapphire: A concept mixer range: tonic, soda and ginger ale." loading="lazy" width="1536" height="1024"></figure><figure class="hv__slide" data-i="3"><img src="../campaigns/assets/mb-outcome.jpg" alt="Martini · Begin Desire: A global platform, rebuilt for Lagos and Luanda." loading="lazy" width="1344" height="841"></figure><figure class="hv__slide" data-i="4"><img src="../oro-chocolate/assets/hero.jpg" alt="ORO Chocolate: Identity, guidelines and packaging, grown from the star inside a cacao pod." loading="lazy" width="1920" height="1080"></figure><figure class="hv__slide" data-i="5"><video src="../v2/assets/nca-loop.mp4" poster="../v2/assets/nca-loop.jpg" muted loop playsinline preload="none" aria-label="150 years of NCA: A soundtrack and film, played on the college’s own tools."></video></figure><figure class="hv__slide hv__slide--trio" data-i="6"><div class="trio" data-anim="../al-siraat/assets/anim/phone-animation.json" role="img" aria-label="Al Siraat: three phones playing the app, the lesson list, reciting with the mic, and a medal unlocked on the results screen."><div class="trio__set"><div class="trio__ph" data-seg="60,180" data-still="150"></div><div class="trio__ph" data-seg="330,450" data-still="400"></div><div class="trio__ph" data-seg="532,630" data-still="600"></div></div></div></figure><figure class="hv__slide" data-i="7"><img src="../imagination-holdings/assets/conference-a.jpg" alt="Imagination Holdings: One parent brand for two tech companies." loading="lazy" width="2000" height="1204"></figure><figure class="hv__slide" data-i="8"><img src="../packaging-design/assets/gc-spread.jpg" alt="Grey Goose Cards: A playing card deck cut from the brand pattern." loading="lazy" width="2000" height="1339"></figure><figure class="hv__slide" data-i="9"><img src="../accelerated-professional-center/assets/apl-courtyard.jpg" alt="APL: Where Saudi leaders meet world-class executive education." loading="lazy" width="1536" height="1024"></figure><figure class="hv__slide" data-i="10"><img src="../khalta/assets/hummus.jpg" alt="Khalta: A hand-drawn identity for a Lebanese restaurant." loading="lazy" width="2000" height="1537"></figure><figure class="hv__slide" data-i="11"><img src="../ggi/assets/hero.jpg" alt="GGI: A neon brand and tournament platform for Iraqi gamers." loading="lazy" width="2200" height="1193"></figure><figure class="hv__slide" data-i="12"><img src="../tamuda-bay/assets/bb-retreat.jpg" alt="Tamuda Bay: Where heaven meets earth: a coastal brand for Morocco." loading="lazy" width="2000" height="1342"></figure>
+    <figure class="hv__slide is-on" data-i="0"><video src="../green-school/assets/gs-intro.mp4" poster="../green-school/assets/gs-intro.jpg" muted loop playsinline preload="auto" aria-label="Green School: Brand guidelines for a global network of eco-schools."></video></figure><figure class="hv__slide" data-i="1"><img src="../namma-farm/assets/hero-farmer.jpg" alt="Namma Farm: A bilingual identity for a South Indian food brand, rooted in kolam art." loading="lazy" width="2000" height="1124"></figure><figure class="hv__slide" data-i="2"><img src="../packaging-design/assets/bs-all.jpg" alt="Bombay Sapphire: A concept mixer range: tonic, soda and ginger ale." loading="lazy" width="1536" height="1024"></figure><figure class="hv__slide" data-i="3"><img src="../campaigns/assets/mb-outcome.jpg" alt="Martini · Begin Desire: A global platform, rebuilt for Lagos and Luanda." loading="lazy" width="1344" height="841"></figure><figure class="hv__slide" data-i="4"><img src="../oro-chocolate/assets/hero.jpg" alt="ORO Chocolate: Identity, guidelines and packaging, grown from the star inside a cacao pod." loading="lazy" width="1920" height="1080"></figure><figure class="hv__slide" data-i="5"><video src="../v2/assets/nca-loop.mp4" poster="../v2/assets/nca-loop.jpg" muted loop playsinline preload="none" aria-label="150 years of NCA: A soundtrack and film, played on the college’s own tools."></video></figure><figure class="hv__slide hv__slide--card" data-i="6"><video src="../al-siraat/assets/personalized.mp4" poster="../al-siraat/assets/personalized.jpg" muted loop playsinline preload="none" aria-label="Al Siraat: the Personalized Learning section, the app walkthrough playing on a phone between adaptive lesson plans, progress insights, rewards and smart feedback."></video></figure><figure class="hv__slide" data-i="7"><img src="../imagination-holdings/assets/conference-a.jpg" alt="Imagination Holdings: One parent brand for two tech companies." loading="lazy" width="2000" height="1204"></figure><figure class="hv__slide" data-i="8"><img src="../packaging-design/assets/gc-spread.jpg" alt="Grey Goose Cards: A playing card deck cut from the brand pattern." loading="lazy" width="2000" height="1339"></figure><figure class="hv__slide" data-i="9"><img src="../accelerated-professional-center/assets/apl-courtyard.jpg" alt="APL: Where Saudi leaders meet world-class executive education." loading="lazy" width="1536" height="1024"></figure><figure class="hv__slide" data-i="10"><img src="../khalta/assets/hummus.jpg" alt="Khalta: A hand-drawn identity for a Lebanese restaurant." loading="lazy" width="2000" height="1537"></figure><figure class="hv__slide" data-i="11"><img src="../ggi/assets/hero.jpg" alt="GGI: A neon brand and tournament platform for Iraqi gamers." loading="lazy" width="2200" height="1193"></figure><figure class="hv__slide" data-i="12"><img src="../tamuda-bay/assets/bb-retreat.jpg" alt="Tamuda Bay: Where heaven meets earth: a coastal brand for Morocco." loading="lazy" width="2000" height="1342"></figure>
     <div class="hv__caps" aria-live="polite"><a class="hv__cap is-on" href="../v2/green-school/index.html"><b>Green School</b> <span>Brand guidelines for a global network of eco-schools.</span><i>Brand systems</i></a><a class="hv__cap" href="../v2/namma-farm/index.html"><b>Namma Farm</b> <span>A bilingual identity for a South Indian food brand, rooted in kolam art.</span><i>Brand systems</i></a><a class="hv__cap" href="../v2/bombay-sapphire/index.html"><b>Bombay Sapphire</b> <span>A concept mixer range: tonic, soda and ginger ale.</span><i>Packaging</i></a><a class="hv__cap" href="../v2/martini-begin-desire/index.html"><b>Martini · Begin Desire</b> <span>A global platform, rebuilt for Lagos and Luanda.</span><i>Campaigns</i></a><a class="hv__cap" href="../v2/oro-chocolate/index.html"><b>ORO Chocolate</b> <span>Identity, guidelines and packaging, grown from the star inside a cacao pod.</span><i>Brand systems</i></a><a class="hv__cap" href="../v2/soundtrack-and-film/index.html"><b>150 years of NCA</b> <span>A soundtrack and film, played on the college’s own tools.</span><i>Side quests</i></a><a class="hv__cap" href="../v2/al-siraat/index.html"><b>Al Siraat</b> <span>An AI Quran learning app, used by more than a million people.</span><i>Product</i></a><a class="hv__cap" href="../v2/imagination-holdings/index.html"><b>Imagination Holdings</b> <span>One parent brand for two tech companies.</span><i>Brand systems</i></a><a class="hv__cap" href="../v2/grey-goose-cards/index.html"><b>Grey Goose Cards</b> <span>A playing card deck cut from the brand pattern.</span><i>Packaging</i></a><a class="hv__cap" href="../v2/accelerated-professional-center/index.html"><b>APL</b> <span>Where Saudi leaders meet world-class executive education.</span><i>Brand systems</i></a><a class="hv__cap" href="../v2/khalta/index.html"><b>Khalta</b> <span>A hand-drawn identity for a Lebanese restaurant.</span><i>Brand systems</i></a><a class="hv__cap" href="../v2/ggi/index.html"><b>GGI</b> <span>A neon brand and tournament platform for Iraqi gamers.</span><i>Games</i></a><a class="hv__cap" href="../v2/tamuda-bay/index.html"><b>Tamuda Bay</b> <span>Where heaven meets earth: a coastal brand for Morocco.</span><i>Brand systems</i></a></div>
     <div class="hv__count"><span class="hv__i">01</span> / 13</div>
     <span class="hv__bar" aria-hidden="true"></span>
@@ -298,37 +294,17 @@
   const num = hv.querySelector('.hv__i'), cur = document.querySelector('.hv__cursor');
   let i = 0, timer = null, seen = true;
   const dur = n => +(slides[n].dataset.dur || 5000);
-  // Al Siraat trio: one walkthrough Lottie, three phones, each looping its own stretch of the app.
-  // The player and the JSON load once, only when a trio is about to be seen.
-  let lib = null; const json = {};
-  const needLottie = () => lib || (lib = new Promise(ok => { const s = document.createElement('script'); s.src = 'https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js'; s.onload = () => ok(window.lottie); document.head.appendChild(s); }));
-  const getJson = url => json[url] || (json[url] = fetch(url).then(r => r.text()));
-  const trioAt = (el, on) => {
-    el._on = on;
-    if (!el._load) el._load = Promise.all([needLottie(), getJson(el.dataset.anim)]).then(([L, txt]) => {
-      el._anims = [...el.querySelectorAll('.trio__ph')].map(ph => Object.assign(
-        L.loadAnimation({ container: ph, renderer: 'svg', loop: true, autoplay: false, animationData: JSON.parse(txt) }),
-        { seg: ph.dataset.seg.split(',').map(Number), still: +ph.dataset.still }));
-    });
-    el._load.then(() => el._anims.forEach(a => {
-      if (!el._on) return a.pause();
-      if (reduce) return a.goToAndStop(a.still, true);
-      a.playSegments(a.seg, true);
-    }));
-  };
   const show = n => {
     i = (n + slides.length) % slides.length;
     slides.forEach((s, k) => {
       s.classList.toggle('is-on', k === i);
-      const tr = s.querySelector('.trio'); if (tr) { if (k === i || tr._load) trioAt(tr, k === i && seen); return; }
       const v = s.querySelector('video'); if (!v) return;
       if (k === i && seen) { v.preload = 'auto'; v.currentTime = 0; v.play().catch(() => {}); } else v.pause();
     });
     caps.forEach((c, k) => c.classList.toggle('is-on', k === i));
     num.textContent = String(i + 1).padStart(2, '0');
-    const nx = slides[(i + 1) % slides.length], nm = nx.querySelector('img, video, .trio');
-    if (nm.classList.contains('trio')) trioAt(nm, false);
-    else if (nm.tagName === 'IMG' && nm.loading === 'lazy') nm.loading = 'eager'; else if (nm.tagName === 'VIDEO') nm.preload = 'auto';
+    const nx = slides[(i + 1) % slides.length], nm = nx.querySelector('img, video');
+    if (nm.tagName === 'IMG' && nm.loading === 'lazy') nm.loading = 'eager'; else if (nm.tagName === 'VIDEO') nm.preload = 'auto';
     hv.style.setProperty('--dur', dur(i) + 'ms');
     if (!reduce) { hv.classList.remove('is-run'); void hv.offsetWidth; hv.classList.add('is-run'); }
   };
@@ -338,16 +314,15 @@
   hv.addEventListener('click', ev => { if (ev.target.closest('.hv__cap')) return; const back = ev.clientX < innerWidth * .33; stop(); show(i + (back ? -1 : 1)); start(); });
   addEventListener('keydown', ev => { if (!seen) return; if (ev.key === 'ArrowRight') { stop(); show(i + 1); start(); } if (ev.key === 'ArrowLeft') { stop(); show(i - 1); start(); } });
   new IntersectionObserver(([e]) => {
-    seen = e.isIntersecting; const v = slides[i].querySelector('video'), tr = slides[i].querySelector('.trio');
+    seen = e.isIntersecting; const v = slides[i].querySelector('video');
     if (seen) { start(); if (v) v.play().catch(() => {}); } else { stop(); if (v) v.pause(); }
-    if (tr) trioAt(tr, seen);
   }, { threshold: .3 }).observe(hv);
   hv.addEventListener('pointermove', ev => { cur.style.left = ev.clientX + 'px'; cur.style.top = ev.clientY + 'px'; cur.textContent = ev.target.closest('.hv__cap') ? 'Open' : (ev.clientX < innerWidth * .33 ? 'Prev' : 'Next'); cur.classList.add('is-on'); });
   hv.addEventListener('pointerleave', () => cur.classList.remove('is-on'));
   show(0);
 
-  // Trio in the Selected work grid plays only while on screen
-  document.querySelectorAll('.ft .trio').forEach(el => new IntersectionObserver(([e]) => trioAt(el, e.isIntersecting), { rootMargin: '200px 0px' }).observe(el));
+  // Videos in the Selected work grid play only while on screen
+  document.querySelectorAll('.ft__vid').forEach(v => new IntersectionObserver(([e]) => { if (e.isIntersecting) { v.preload = 'auto'; v.play().catch(() => {}); } else v.pause(); }, { threshold: .25 }).observe(v));
 
 
   // Stickers drift a little against the scroll
