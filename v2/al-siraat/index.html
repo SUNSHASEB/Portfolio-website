@@ -184,7 +184,7 @@
     --max: 1440px;
     --radius: 18px;
     --ease: cubic-bezier(.2, .7, .1, 1);
-   --display: "Inter Tight", sans-serif; --body: "Inter Tight", sans-serif; --radius: 0px; }
+   --display: "Inter Tight", sans-serif; --body: "Inter Tight", sans-serif; --radius: 12px; }
 .live { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(16px, 2.4vw, 36px); margin-top: clamp(32px, 4vw, 56px); align-items: stretch; }
 .live__phone { border-radius: calc(var(--radius) + 6px); background: radial-gradient(ellipse at 50% 40%, #2a2350 0%, #0d0c14 70%); display: grid; place-items: center; padding: clamp(18px, 3vw, 40px) 0; }
 .live__phone .lottie { width: min(100%, 420px); aspect-ratio: 600 / 900; }
@@ -227,6 +227,11 @@
     .sx__tabs::-webkit-scrollbar { display: none; }
     .sx__tab { flex: none; padding-inline-end: 6px; }
   }
+
+  /* Rounded visual cards, one radius across the site */
+  :root { --card-r: 16px; }
+  .cx__media { margin: 0 var(--gutter); }
+  .cx__media, .m__box, .sx__stage, .nx__img, .cmp, .web, .ba, .build, .wx--dark, .sws, .yt { border-radius: var(--card-r); overflow: hidden; isolation: isolate; }
 </style>
 </head>
 <body>

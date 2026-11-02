@@ -161,6 +161,11 @@
 
   .w-cap { margin: 10px 0 0; font-size: 13px; color: var(--muted); }
 
+
+  /* Rounded visual cards, one radius across the site */
+  :root { --card-r: 16px; }
+  .cx__media { margin: 0 var(--gutter); }
+  .cx__media, .m__box, .sx__stage, .nx__img, .cmp, .web, .ba, .build, .wx--dark, .sws, .yt { border-radius: var(--card-r); overflow: hidden; isolation: isolate; }
 </style>
 </head>
 <body>
@@ -223,7 +228,7 @@
     <div>
       <span class="lbl" style="color:var(--muted)">Next case study</span>
       <a href="../oro-chocolate/index.html"><span class="nx__t">ORO Chocolate</span><span class="nx__d">Identity, guidelines &amp; packaging for Nicaraguan chocolate and coffee</span></a>
-      <a class="nx__back" href="../accelerated-professional-center/index.html">← Previous: Accelerated Professional Learning</a>
+      <a class="nx__back" href="../accelerated-professional-center/index.html">← Previous: APL</a>
     </div>
     <a href="../oro-chocolate/index.html" aria-hidden="true" tabindex="-1"><div class="nx__img"><img src="../../oro-chocolate/assets/hero.jpg" alt="" loading="lazy"></div></a>
   </nav>

@@ -184,7 +184,7 @@
     --max: 1440px;
     --radius: 18px;
     --ease: cubic-bezier(.2, .7, .1, 1);
-   --display: "Inter Tight", sans-serif; --body: "Inter Tight", sans-serif; --radius: 0px; }
+   --display: "Inter Tight", sans-serif; --body: "Inter Tight", sans-serif; --radius: 12px; }
 .pp { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(16px, 2vw, 28px); margin-top: clamp(28px, 3vw, 44px); }
 .pp-stage { position: relative; border-radius: var(--radius); overflow: hidden; background-color: #0b0d0e; background-image: repeating-conic-gradient(#131617 0 25%, transparent 0 50%); background-size: 12px 12px; display: grid; place-items: center; min-height: 360px; padding: 28px; }
 .pp-poke { all: unset; cursor: pointer; line-height: 0; }
@@ -214,6 +214,11 @@
   @keyframes byte-hop { 0% { transform: translateY(0) } 25% { transform: translateY(-22%) } 45% { transform: translateY(-26%) } 70% { transform: translateY(0) } 82% { transform: translateY(-8%) } 100% { transform: translateY(0) } }
   @keyframes byte-wiggle { 0%,24% { transform: translateX(-3%) } 25%,49% { transform: translateX(3%) } 50%,74% { transform: translateX(-2%) } 75%,100% { transform: translateX(2%) } }
 
+
+  /* Rounded visual cards, one radius across the site */
+  :root { --card-r: 16px; }
+  .cx__media { margin: 0 var(--gutter); }
+  .cx__media, .m__box, .sx__stage, .nx__img, .cmp, .web, .ba, .build, .wx--dark, .sws, .yt { border-radius: var(--card-r); overflow: hidden; isolation: isolate; }
 </style>
 </head>
 <body>

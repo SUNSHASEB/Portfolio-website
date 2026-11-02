@@ -184,7 +184,7 @@
     --max: 1440px;
     --radius: 18px;
     --ease: cubic-bezier(.2, .7, .1, 1);
-   --display: "Inter Tight", sans-serif; --body: "Inter Tight", sans-serif; --radius: 0px; }
+   --display: "Inter Tight", sans-serif; --body: "Inter Tight", sans-serif; --radius: 12px; }
 .gcb { position: relative; margin: 20px 0 0; }
 .gcb__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(10px, 1.4vw, 20px); }
 .gcb__panel { position: relative; border-radius: var(--radius); background: #f7f7f4; padding: clamp(44px, 4vw, 60px) clamp(16px, 2.4vw, 36px) clamp(20px, 2.4vw, 36px); display: flex; align-items: center; justify-content: center; }
@@ -228,6 +228,11 @@
     .sx__tabs::-webkit-scrollbar { display: none; }
     .sx__tab { flex: none; padding-inline-end: 6px; }
   }
+
+  /* Rounded visual cards, one radius across the site */
+  :root { --card-r: 16px; }
+  .cx__media { margin: 0 var(--gutter); }
+  .cx__media, .m__box, .sx__stage, .nx__img, .cmp, .web, .ba, .build, .wx--dark, .sws, .yt { border-radius: var(--card-r); overflow: hidden; isolation: isolate; }
 </style>
 </head>
 <body>

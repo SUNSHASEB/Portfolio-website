@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Showreel 2026 — Sunil Sebastian</title>
+<title>Showreel — Sunil Sebastian</title>
 <meta name="description" content="Showreel 2026 by Sunil Sebastian. One minute of motion. Games, brands, 3D and live action.">
 <meta name="robots" content="noindex">
 <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
@@ -184,7 +184,7 @@
     --max: 1440px;
     --radius: 18px;
     --ease: cubic-bezier(.2, .7, .1, 1);
-   --display: "Inter Tight", sans-serif; --body: "Inter Tight", sans-serif; --radius: 0px; }
+   --display: "Inter Tight", sans-serif; --body: "Inter Tight", sans-serif; --radius: 12px; }
 .reel { margin: clamp(20px, 2.4vw, 36px) 0 0; position: relative; aspect-ratio: 16 / 9; border-radius: var(--radius); overflow: hidden; background: #000; cursor: default; }
 .reel video { width: 100%; height: 100%; object-fit: cover; display: block; }
 .reel__cover { all: unset; position: absolute; inset: 0; cursor: pointer; display: grid; place-items: center; background: linear-gradient(to top, rgba(0,0,0,.55), rgba(0,0,0,0) 45%); transition: opacity .35s var(--ease); }
@@ -233,6 +233,11 @@
     66.666% { fill: #2979ff; animation-timing-function: cubic-bezier(0, 0, .58, 1); }
     100% { fill: #fff; }
   }
+
+  /* Rounded visual cards, one radius across the site */
+  :root { --card-r: 16px; }
+  .cx__media { margin: 0 var(--gutter); }
+  .cx__media, .m__box, .sx__stage, .nx__img, .cmp, .web, .ba, .build, .wx--dark, .sws, .yt { border-radius: var(--card-r); overflow: hidden; isolation: isolate; }
 </style>
 </head>
 <body>

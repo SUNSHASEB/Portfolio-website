@@ -179,6 +179,11 @@
   .yt__play { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); appearance: none; border: 0; border-radius: 999px; padding: 14px 22px; background: var(--accent); color: var(--ink); font: inherit; font-size: 15px; font-weight: 600; letter-spacing: -.01em; cursor: pointer; transition: transform .2s var(--ease); }
   .cx__media.yt:hover .yt__play { transform: translate(-50%, -50%) scale(1.06); }
   .yt__play:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
+  /* Rounded visual cards, one radius across the site */
+  :root { --card-r: 16px; }
+  .cx__media { margin: 0 var(--gutter); }
+  .cx__media, .m__box, .sx__stage, .nx__img, .cmp, .web, .ba, .build, .wx--dark, .sws, .yt { border-radius: var(--card-r); overflow: hidden; isolation: isolate; }
 </style>
 </head>
 <body>

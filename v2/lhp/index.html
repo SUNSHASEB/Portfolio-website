@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lighthouse — Sunil Sebastian</title>
+<title>LHP — Sunil Sebastian</title>
 <meta name="description" content="Lighthouse by Sunil Sebastian. A sharper LHP: refining a multidisciplinary agency’s logo and identity, inspired by the precision of a katana blade.">
 <meta name="robots" content="noindex">
 <link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
@@ -166,6 +166,11 @@
   @media (max-width: 600px) { .web { height: 70vh; } .web:hover img, .web:focus img { transform: translateY(calc(-100% + 70vh)); } }
   @media (prefers-reduced-motion: reduce) { .web { overflow-y: auto; } .web img { transition: none; transform: none !important; } }
 
+
+  /* Rounded visual cards, one radius across the site */
+  :root { --card-r: 16px; }
+  .cx__media { margin: 0 var(--gutter); }
+  .cx__media, .m__box, .sx__stage, .nx__img, .cmp, .web, .ba, .build, .wx--dark, .sws, .yt { border-radius: var(--card-r); overflow: hidden; isolation: isolate; }
 </style>
 </head>
 <body>

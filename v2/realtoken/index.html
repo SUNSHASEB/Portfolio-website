@@ -161,6 +161,11 @@
 
   .w-cap { margin: 10px 0 0; font-size: 13px; color: var(--muted); }
 
+
+  /* Rounded visual cards, one radius across the site */
+  :root { --card-r: 16px; }
+  .cx__media { margin: 0 var(--gutter); }
+  .cx__media, .m__box, .sx__stage, .nx__img, .cmp, .web, .ba, .build, .wx--dark, .sws, .yt { border-radius: var(--card-r); overflow: hidden; isolation: isolate; }
 </style>
 </head>
 <body>
@@ -223,7 +228,7 @@
     <div>
       <span class="lbl" style="color:var(--muted)">Next case study</span>
       <a href="../coca-cola-umm/index.html"><span class="nx__t">Coca-Cola UMM</span><span class="nx__d">Redesigning a marketing measurement dashboard</span></a>
-      <a class="nx__back" href="../lhp/index.html">← Previous: Lighthouse</a>
+      <a class="nx__back" href="../lhp/index.html">← Previous: LHP</a>
     </div>
     <a href="../coca-cola-umm/index.html" aria-hidden="true" tabindex="-1"><div class="nx__img"><img src="../../coca-cola-umm/assets/hero.jpg" alt="" loading="lazy"></div></a>
   </nav>
