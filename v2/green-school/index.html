@@ -188,6 +188,32 @@
   .cx__media { margin: 0 var(--gutter); }
   .cx__media, .m__box, .sx__stage, .nx__img, .cmp, .web, .ba, .build, .wx--dark, .sws, .yt { border-radius: var(--card-r); overflow: hidden; isolation: isolate; }
 
+  /* Icon set: outline and solid on the two faces of each icon */
+  .gi__bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+  .gi__bar p { margin: 0; font-size: 15px; color: var(--muted); }
+  .gi__toggle { display: inline-flex; gap: 4px; padding: 4px; border-radius: 999px; box-shadow: inset 0 0 0 1px var(--line); background: #fff; }
+  .gi__toggle button { appearance: none; border: 0; cursor: pointer; padding: 8px 16px; border-radius: 999px; background: none; font: inherit; font-size: 14px; font-weight: 500; color: var(--muted); transition: background .25s, color .25s; }
+  .gi__toggle button[aria-pressed="true"] { background: var(--ink); color: #fff; }
+  .gi__toggle button:focus-visible, .gi__ic:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+  .gi__grid { list-style: none; margin: 16px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(132px, 1fr)); gap: clamp(8px, 1vw, 14px); }
+  .gi__grid li { display: flex; flex-direction: column; align-items: center; padding: 14px 12px 16px; border-radius: var(--card-r, 16px); background: #fff; text-align: center; transition: transform .35s var(--ease), box-shadow .35s; }
+  .gi__grid li:hover { transform: translateY(-3px); box-shadow: 0 14px 30px -18px rgba(0,0,0,.35); }
+  .gi__ic { appearance: none; border: 0; padding: 0; background: none; cursor: pointer; width: 78%; border-radius: 12px; }
+  .gi__flip { position: relative; display: block; aspect-ratio: 1; perspective: 600px; }
+  .gi__flip img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; backface-visibility: hidden; transition: transform .6s cubic-bezier(.2,.7,.1,1); }
+  .gi__flip .solid { transform: rotateY(180deg); }
+  .gi.is-solid li:not(.is-flip) .line, .gi:not(.is-solid) li.is-flip .line { transform: rotateY(-180deg); }
+  .gi.is-solid li:not(.is-flip) .solid, .gi:not(.is-solid) li.is-flip .solid { transform: rotateY(0); }
+  @media (hover: hover) {
+    .gi:not(.is-solid) li:not(.is-flip):hover .line { transform: rotateY(-180deg); }
+    .gi:not(.is-solid) li:not(.is-flip):hover .solid { transform: rotateY(0); }
+    .gi.is-solid li:not(.is-flip):hover .line { transform: rotateY(0); }
+    .gi.is-solid li:not(.is-flip):hover .solid { transform: rotateY(180deg); }
+  }
+  .gi__grid b { display: block; margin-top: 10px; font-size: 13px; font-weight: 500; line-height: 1.25; letter-spacing: -.01em; }
+  @media (max-width: 600px) { .gi__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (prefers-reduced-motion: reduce) { .gi__flip img { transition: none; } .gi__grid li { transition: none; } }
+
   /* V3 case study: sticky info on the left, the work on the right */
   :root { --bg: var(--paper); --red: #df0c01; --yellow: #f6cb00; --mono: "Geist Mono", ui-monospace, Menlo, monospace; --tint: #e2dfff; }
   body { background: var(--bg); }
@@ -326,7 +352,7 @@
     <div class="cs__body"></div>
     
     
-    <div class="rows"><div class="tiles" style="--n:7"><figure class="m reveal" style="--ar:1.0000"><div class="m__box" style="aspect-ratio:360 / 360"><img src="../../green-school/assets/gs-icon-01-line.png" alt="" loading="lazy" width="360" height="360"></div></figure><figure class="m reveal" style="--ar:1.0000"><div class="m__box" style="aspect-ratio:360 / 360"><img src="../../green-school/assets/gs-icon-02-line.png" alt="" loading="lazy" width="360" height="360"></div></figure><figure class="m reveal" style="--ar:1.0000"><div class="m__box" style="aspect-ratio:360 / 360"><img src="../../green-school/assets/gs-icon-03-line.png" alt="" loading="lazy" width="360" height="360"></div></figure><figure class="m reveal" style="--ar:1.0000"><div class="m__box" style="aspect-ratio:360 / 360"><img src="../../green-school/assets/gs-icon-04-line.png" alt="" loading="lazy" width="360" height="360"></div></figure><figure class="m reveal" style="--ar:1.0000"><div class="m__box" style="aspect-ratio:360 / 360"><img src="../../green-school/assets/gs-icon-05-line.png" alt="" loading="lazy" width="360" height="360"></div></figure><figure class="m reveal" style="--ar:1.0000"><div class="m__box" style="aspect-ratio:360 / 360"><img src="../../green-school/assets/gs-icon-06-line.png" alt="" loading="lazy" width="360" height="360"></div></figure><figure class="m reveal" style="--ar:1.0000"><div class="m__box" style="aspect-ratio:360 / 360"><img src="../../green-school/assets/gs-icon-07-line.png" alt="" loading="lazy" width="360" height="360"></div></figure><figure class="m reveal" style="--ar:1.0000"><div class="m__box" style="aspect-ratio:360 / 360"><img src="../../green-school/assets/gs-icon-08-line.png" alt="" loading="lazy" width="360" height="360"></div></figure><figure class="m reveal" style="--ar:1.0000"><div class="m__box" style="aspect-ratio:360 / 360"><img src="../../green-school/assets/gs-icon-09-line.png" alt="" loading="lazy" width="360" height="360"></div></figure><figure class="m reveal" style="--ar:1.0000"><div class="m__box" style="aspect-ratio:360 / 360"><img src="../../green-school/assets/gs-icon-10-line.png" alt="" loading="lazy" width="360" height="360"></div></figure><figure class="m reveal" style="--ar:1.0000"><div class="m__box" style="aspect-ratio:360 / 360"><img src="../../green-school/assets/gs-icon-11-line.png" alt="" loading="lazy" width="360" height="360"></div></figure><figure class="m reveal" style="--ar:1.0000"><div class="m__box" style="aspect-ratio:360 / 360"><img src="../../green-school/assets/gs-icon-12-line.png" alt="" loading="lazy" width="360" height="360"></div></figure><figure class="m reveal" style="--ar:1.0000"><div class="m__box" style="aspect-ratio:360 / 360"><img src="../../green-school/assets/gs-icon-13-line.png" alt="" loading="lazy" width="360" height="360"></div></figure></div></div>
+    <div class="rows"><div class="gi reveal"><div class="gi__bar"><p>Hover or tap an icon to flip it, or switch the whole set.</p><div class="gi__toggle" role="group" aria-label="Icon style"><button type="button" aria-pressed="true" data-v="line">Outline</button><button type="button" aria-pressed="false" data-v="solid">Solid</button></div></div><ul class="gi__grid"><li><button class="gi__ic" type="button" aria-pressed="false" aria-label="Flip the Purposeful learning programme icon"><span class="gi__flip"><img class="line" src="../../green-school/assets/gs-icon-01-line.png" alt="" loading="lazy"><img class="solid" src="../../green-school/assets/gs-icon-01-solid.png" alt="" loading="lazy"></span></button><b>Purposeful learning programme</b></li><li><button class="gi__ic" type="button" aria-pressed="false" aria-label="Flip the Passionate community of learners icon"><span class="gi__flip"><img class="line" src="../../green-school/assets/gs-icon-02-line.png" alt="" loading="lazy"><img class="solid" src="../../green-school/assets/gs-icon-02-solid.png" alt="" loading="lazy"></span></button><b>Passionate community of learners</b></li><li><button class="gi__ic" type="button" aria-pressed="false" aria-label="Flip the Wall-less learning environment icon"><span class="gi__flip"><img class="line" src="../../green-school/assets/gs-icon-03-line.png" alt="" loading="lazy"><img class="solid" src="../../green-school/assets/gs-icon-03-solid.png" alt="" loading="lazy"></span></button><b>Wall-less learning environment</b></li><li><button class="gi__ic" type="button" aria-pressed="false" aria-label="Flip the Special programme icon"><span class="gi__flip"><img class="line" src="../../green-school/assets/gs-icon-04-line.png" alt="" loading="lazy"><img class="solid" src="../../green-school/assets/gs-icon-04-solid.png" alt="" loading="lazy"></span></button><b>Special programme</b></li><li><button class="gi__ic" type="button" aria-pressed="false" aria-label="Flip the Solar panel icon"><span class="gi__flip"><img class="line" src="../../green-school/assets/gs-icon-05-line.png" alt="" loading="lazy"><img class="solid" src="../../green-school/assets/gs-icon-05-solid.png" alt="" loading="lazy"></span></button><b>Solar panel</b></li><li><button class="gi__ic" type="button" aria-pressed="false" aria-label="Flip the Hydro vortex icon"><span class="gi__flip"><img class="line" src="../../green-school/assets/gs-icon-06-line.png" alt="" loading="lazy"><img class="solid" src="../../green-school/assets/gs-icon-06-solid.png" alt="" loading="lazy"></span></button><b>Hydro vortex</b></li><li><button class="gi__ic" type="button" aria-pressed="false" aria-label="Flip the Water filtration system icon"><span class="gi__flip"><img class="line" src="../../green-school/assets/gs-icon-07-line.png" alt="" loading="lazy"><img class="solid" src="../../green-school/assets/gs-icon-07-solid.png" alt="" loading="lazy"></span></button><b>Water filtration system</b></li><li><button class="gi__ic" type="button" aria-pressed="false" aria-label="Flip the Waste management centre icon"><span class="gi__flip"><img class="line" src="../../green-school/assets/gs-icon-08-line.png" alt="" loading="lazy"><img class="solid" src="../../green-school/assets/gs-icon-08-solid.png" alt="" loading="lazy"></span></button><b>Waste management centre</b></li><li><button class="gi__ic" type="button" aria-pressed="false" aria-label="Flip the Compost station icon"><span class="gi__flip"><img class="line" src="../../green-school/assets/gs-icon-09-line.png" alt="" loading="lazy"><img class="solid" src="../../green-school/assets/gs-icon-09-solid.png" alt="" loading="lazy"></span></button><b>Compost station</b></li><li><button class="gi__ic" type="button" aria-pressed="false" aria-label="Flip the Aquaponics centre icon"><span class="gi__flip"><img class="line" src="../../green-school/assets/gs-icon-10-line.png" alt="" loading="lazy"><img class="solid" src="../../green-school/assets/gs-icon-10-solid.png" alt="" loading="lazy"></span></button><b>Aquaponics centre</b></li><li><button class="gi__ic" type="button" aria-pressed="false" aria-label="Flip the Bio Bus icon"><span class="gi__flip"><img class="line" src="../../green-school/assets/gs-icon-11-line.png" alt="" loading="lazy"><img class="solid" src="../../green-school/assets/gs-icon-11-solid.png" alt="" loading="lazy"></span></button><b>Bio Bus</b></li><li><button class="gi__ic" type="button" aria-pressed="false" aria-label="Flip the Learning support icon"><span class="gi__flip"><img class="line" src="../../green-school/assets/gs-icon-12-line.png" alt="" loading="lazy"><img class="solid" src="../../green-school/assets/gs-icon-12-solid.png" alt="" loading="lazy"></span></button><b>Learning support</b></li><li><button class="gi__ic" type="button" aria-pressed="false" aria-label="Flip the Affiliations icon"><span class="gi__flip"><img class="line" src="../../green-school/assets/gs-icon-13-line.png" alt="" loading="lazy"><img class="solid" src="../../green-school/assets/gs-icon-13-solid.png" alt="" loading="lazy"></span></button><b>Affiliations</b></li></ul></div></div>
   </section>
   <section class="cs" id="social">
     <div class="pj__chip" aria-hidden="true"><span>07 · Social media</span></div>
@@ -415,6 +441,19 @@
       run();
     }, { threshold: .35 }).observe(sx);
   });
+})();</script>
+<script>(() => {
+  // Icon set: switch the whole set, or tap one icon to see its other face
+  const gi = document.querySelector('.gi'); if (!gi) return;
+  const btns = [...gi.querySelectorAll('.gi__toggle button')], items = [...gi.querySelectorAll('.gi__grid li')];
+  btns.forEach(b => b.addEventListener('click', () => {
+    btns.forEach(x => x.setAttribute('aria-pressed', x === b));
+    gi.classList.toggle('is-solid', b.dataset.v === 'solid');
+    items.forEach(li => { li.classList.remove('is-flip'); li.querySelector('.gi__ic').setAttribute('aria-pressed', 'false'); });
+  }));
+  items.forEach(li => li.querySelector('.gi__ic').addEventListener('click', e => {
+    const on = li.classList.toggle('is-flip'); e.currentTarget.setAttribute('aria-pressed', on);
+  }));
 })();</script>
 <script>(() => {
   // Section list in the sticky column follows the scroll
