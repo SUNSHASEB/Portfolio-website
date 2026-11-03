@@ -181,6 +181,7 @@
   /* V3 case study: sticky info on the left, the work on the right */
   :root { --bg: #f1f1ef; --red: #df0c01; --yellow: #f6cb00; --mono: "Geist Mono", ui-monospace, Menlo, monospace; --tint: #e2dfff; }
   body { background: var(--bg); }
+  .hd + .pj { padding-top: 96px; }
   .k { display: inline-flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 13px; }
   .k::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--red); }
   /* Pill navigation */
@@ -256,7 +257,8 @@
   .pj__main .nx { padding-bottom: 0; }
 
   /* Project switcher, bottom left */
-  .sw3 { position: fixed; left: var(--gutter); bottom: 16px; z-index: 30; }
+  .sw3 { position: fixed; left: var(--gutter); bottom: 16px; z-index: 30; transition: opacity .3s, transform .3s; }
+  .sw3.is-off { opacity: 0; transform: translateY(10px); pointer-events: none; }
   .sw3__btn { appearance: none; border: 0; cursor: pointer; display: flex; align-items: center; gap: 22px; padding: 10px 12px 10px 14px; border-radius: 12px; background: rgba(255,255,255,.94); backdrop-filter: blur(10px); box-shadow: 0 0 0 1px var(--line), 0 10px 30px -14px rgba(0,0,0,.35); font: inherit; text-align: left; color: var(--ink); }
   .sw3__btn small { display: flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 12px; color: var(--muted); }
   .sw3__btn small::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--red); }
@@ -446,6 +448,9 @@
   btn.addEventListener('click', () => { menu.hidden = !menu.hidden; btn.setAttribute('aria-expanded', !menu.hidden); });
   addEventListener('click', e => { if (!e.target.closest('.sw3')) { menu.hidden = true; btn.setAttribute('aria-expanded', 'false'); } });
   addEventListener('keydown', e => { if (e.key === 'Escape') { menu.hidden = true; btn.setAttribute('aria-expanded', 'false'); } });
+  // The switcher steps aside once the contact section is on screen
+  const sw = document.querySelector('.sw3'), ct = document.getElementById('contact');
+  if (ct) new IntersectionObserver(([e]) => { sw.classList.toggle('is-off', e.isIntersecting); if (e.isIntersecting) menu.hidden = true; }).observe(ct);
 })();</script>
 </body>
 </html>
