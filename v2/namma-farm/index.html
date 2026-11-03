@@ -196,8 +196,8 @@
   .pj__lede { margin: 22px 0 26px; font-size: clamp(24px, 2.1vw, 32px); line-height: 1.12; font-weight: 500; letter-spacing: -.035em; }
   .pj__kv { margin: 0; border-top: 1px solid var(--ink); }
   .pj__kv div { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line); font-family: var(--mono); font-size: 13px; }
-  .pj__kv dt { color: var(--muted); }
-  .pj__kv dd { margin: 0; text-align: right; }
+  .pj__kv dt { flex: none; color: var(--muted); }
+  .pj__kv dd { margin: 0; min-width: 0; text-align: right; overflow-wrap: anywhere; line-height: 1.45; }
   .pj__stats { list-style: none; margin: 22px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
   .pj__stats li { padding: 14px; border-radius: 12px; background: #fff; box-shadow: 0 0 0 1px var(--line); }
   .pj__stats b { display: block; font-size: clamp(20px, 1.7vw, 26px); font-weight: 600; letter-spacing: -.03em; }
@@ -211,8 +211,8 @@
   .pj__main { min-width: 0; padding-bottom: clamp(60px, 8vw, 120px); }
   .pj__main .cx__media { margin: 0; }
   .pj__main .cs { position: relative; padding: clamp(64px, 8vw, 120px) 0 0; }
-  .pj__chip { position: sticky; top: 84px; z-index: 5; height: 0; display: flex; justify-content: flex-end; pointer-events: none; }
-  .pj__chip span { pointer-events: auto; padding: 7px 12px; border-radius: 8px; background: rgba(255,255,255,.92); backdrop-filter: blur(8px); box-shadow: 0 0 0 1px var(--line); font-family: var(--mono); font-size: 13px; }
+  .pj__chip { position: sticky; top: 84px; z-index: 5; height: 0; display: flex; justify-content: flex-end; align-items: flex-start; pointer-events: none; }
+  .pj__chip span { pointer-events: auto; display: inline-flex; align-items: center; line-height: 1.2; white-space: nowrap; padding: 8px 12px; border-radius: 8px; background: rgba(255,255,255,.92); backdrop-filter: blur(8px); box-shadow: 0 0 0 1px var(--line); font-family: var(--mono); font-size: 13px; }
   .pj__main .cs__head { display: block; border-top: 0; padding: 0 clamp(120px, 16vw, 260px) 0 0; }
   .pj__main .cs h2 { font-size: clamp(30px, 3.2vw, 52px); max-width: 20ch; }
   .pj__main .cs__sub { max-width: 52ch; }
@@ -268,7 +268,9 @@
   </div></aside>
   <div class="pj__main">
     <figure class="cx__media"><img src="../../namma-farm/assets/hero-farmer.jpg" alt="Smiling farmer in a banana plantation with the new Namma Farm wordmark behind him" width="2000" height="1124" fetchpriority="high"></figure>
-    <section class="cs" id="brief">
+    
+
+  <section class="cs" id="brief">
     <div class="pj__chip" aria-hidden="true"><span>01 · The brief</span></div>
     <div class="cs__head reveal"><div><h2>Modernise without losing soul.</h2></div></div>
     <div class="cs__body"><ol class="pts" style="--n:3"><li class="reveal"><small>01</small><b>Lost in the aisle</b><p>The old logo was busy and text-heavy. Like its competitors, it disappeared on the shelf.</p></li><li class="reveal"><small>02</small><b>South Indians abroad</b><p>South Indians abroad come first. Curious food lovers looking for safe, honest food come second.</p></li><li class="reveal"><small>03</small><b>Simple. Modern. Tamil.</b><p>A premium identity you can spot from 20 feet away, with its heritage still in it.</p></li></ol></div>

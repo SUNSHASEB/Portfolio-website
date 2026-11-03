@@ -12,7 +12,7 @@
 <meta name="theme-color" content="#f3f1ec">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
 <style>
   :root {
     --paper: #f3f1ec; --paper-2: #e9e6df; --ink: #111110; --muted: #75736d; --line: rgba(17,17,16,.14);
@@ -184,71 +184,150 @@
   :root { --card-r: 16px; }
   .cx__media { margin: 0 var(--gutter); }
   .cx__media, .m__box, .sx__stage, .nx__img, .cmp, .web, .ba, .build, .wx--dark, .sws, .yt { border-radius: var(--card-r); overflow: hidden; isolation: isolate; }
+
+  /* V3 case study: sticky info on the left, the work on the right */
+  :root { --bg: var(--paper); --red: #df0c01; --yellow: #f6cb00; --mono: "Geist Mono", ui-monospace, Menlo, monospace; --tint: #e2dfff; }
+  body { background: var(--bg); }
+  .hd + .pj { padding-top: 96px; }
+  .k { display: inline-flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 13px; }
+  .k::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--red); }
+
+  .pj { display: grid; grid-template-columns: minmax(300px, 30%) minmax(0, 1fr); gap: clamp(28px, 3.4vw, 64px); padding: 92px var(--gutter) 0; }
+  .pj__stick { position: sticky; top: 84px; max-height: calc(100svh - 100px); overflow-y: auto; scrollbar-width: none; padding-bottom: 90px; }
+  .pj__stick::-webkit-scrollbar { display: none; }
+  .pj__tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pj__name, .pj__cat { margin: 0; display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 8px; font-family: var(--mono); font-size: 13px; font-weight: 500; letter-spacing: -.01em; }
+  .pj__name { background: var(--tint); }
+  .pj__name::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--red); }
+  .pj__cat { background: #fff; box-shadow: 0 0 0 1px var(--line); font-weight: 400; }
+  .pj__lede { margin: 22px 0 26px; font-size: clamp(24px, 2.1vw, 32px); line-height: 1.12; font-weight: 500; letter-spacing: -.035em; }
+  .pj__kv { margin: 0; border-top: 1px solid var(--ink); }
+  .pj__kv div { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line); font-family: var(--mono); font-size: 13px; }
+  .pj__kv dt { flex: none; color: var(--muted); }
+  .pj__kv dd { margin: 0; min-width: 0; text-align: right; overflow-wrap: anywhere; line-height: 1.45; }
+  .pj__stats { list-style: none; margin: 22px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .pj__stats li { padding: 14px; border-radius: 12px; background: #fff; box-shadow: 0 0 0 1px var(--line); }
+  .pj__stats b { display: block; font-size: clamp(20px, 1.7vw, 26px); font-weight: 600; letter-spacing: -.03em; }
+  .pj__stats span { font-size: 13px; color: var(--muted); }
+  .pj__toc { margin-top: 26px; display: grid; }
+  .pj__toc a { display: flex; align-items: center; gap: 10px; padding: 7px 0; font-family: var(--mono); font-size: 13px; color: var(--muted); transition: color .2s; }
+  .pj__toc a small { font-size: 11px; width: 18px; }
+  .pj__toc a::after { content: ""; width: 6px; height: 6px; margin-left: auto; border-radius: 50%; background: var(--red); opacity: 0; transition: opacity .2s; }
+  .pj__toc a:hover, .pj__toc a.is-on { color: var(--ink); }
+  .pj__toc a.is-on::after { opacity: 1; }
+  .pj__main { min-width: 0; padding-bottom: clamp(60px, 8vw, 120px); }
+  .pj__main .cx__media { margin: 0; }
+  .pj__main .cs { position: relative; padding: clamp(64px, 8vw, 120px) 0 0; }
+  .pj__chip { position: sticky; top: 84px; z-index: 5; height: 0; display: flex; justify-content: flex-end; align-items: flex-start; pointer-events: none; }
+  .pj__chip span { pointer-events: auto; display: inline-flex; align-items: center; line-height: 1.2; white-space: nowrap; padding: 8px 12px; border-radius: 8px; background: rgba(255,255,255,.92); backdrop-filter: blur(8px); box-shadow: 0 0 0 1px var(--line); font-family: var(--mono); font-size: 13px; }
+  .pj__main .cs__head { display: block; border-top: 0; padding: 0 clamp(120px, 16vw, 260px) 0 0; }
+  .pj__main .cs h2 { font-size: clamp(30px, 3.2vw, 52px); max-width: 20ch; }
+  .pj__main .cs__sub { max-width: 52ch; }
+  .pj__main .cs__body { margin-left: 0; }
+  .pj__main .pts { grid-template-columns: repeat(min(var(--n, 3), 3), minmax(0, 1fr)); }
+  .pj__main .quote { padding: clamp(90px, 11vw, 170px) 0; }
+  .pj__main .dl, .pj__main .nx { padding-left: 0; padding-right: 0; }
+  .pj__main .nx { padding-bottom: 0; }
+
+  /* Project switcher, bottom left */
+  .sw3 { position: fixed; left: var(--gutter); bottom: 16px; z-index: 30; transition: opacity .3s, transform .3s; }
+  .sw3.is-off { opacity: 0; transform: translateY(10px); pointer-events: none; }
+  .sw3__btn { appearance: none; border: 0; cursor: pointer; display: flex; align-items: center; gap: 22px; padding: 10px 12px 10px 14px; border-radius: 12px; background: rgba(255,255,255,.94); backdrop-filter: blur(10px); box-shadow: 0 0 0 1px var(--line), 0 10px 30px -14px rgba(0,0,0,.35); font: inherit; text-align: left; color: var(--ink); }
+  .sw3__btn small { display: flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .sw3__btn small::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--red); }
+  .sw3__btn b { display: block; margin-top: 2px; font-family: var(--mono); font-size: 13px; font-weight: 500; }
+  .sw3__btn i { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 8px; background: var(--bg); font-style: normal; }
+  .sw3__menu { position: absolute; left: 0; bottom: calc(100% + 8px); min-width: 260px; padding: 6px; border-radius: 14px; background: #fff; box-shadow: 0 0 0 1px var(--line), 0 18px 40px -18px rgba(0,0,0,.4); }
+  .sw3__menu[hidden] { display: none; }
+  .sw3__menu a { display: flex; justify-content: space-between; gap: 16px; padding: 10px 12px; border-radius: 9px; font-family: var(--mono); font-size: 13px; }
+  .sw3__menu a:hover, .sw3__menu a[aria-current] { background: var(--tint); }
+
+  @media (max-width: 900px) { .nv .hide-m { display: none; } }
+  @media (max-width: 1000px) {
+    .pj { grid-template-columns: 1fr; padding-top: 84px; }
+    .pj__stick { position: static; max-height: none; overflow: visible; padding-bottom: 8px; }
+    .pj__toc { display: none; }
+    .pj__main .cs__head { padding-right: 0; }
+    .pj__chip { position: static; height: auto; justify-content: flex-start; margin-bottom: 14px; }
+  }
+  @media (max-width: 600px) {
+    .nv { inset: 10px 10px auto; }
+    .pill--brand small, .pill--dark span { display: none; }
+    .pj__main .pts { grid-template-columns: 1fr; }
+    .sw3 { left: 10px; bottom: 10px; }
+  }
 </style>
 </head>
-<body>
+<body style="--tint:#d3e9ff">
 
 <header class="hd">
   <a class="hd__brand" href="../index.html"><img src="../../assets/icons/favicon-64.png" alt="" width="26" height="26">Sunil Sebastian</a>
   <nav aria-label="Main"><a href="../index.html#work">Work</a><a href="../index.html#index">Index</a><a href="../index.html#about">About</a><a class="hd__mail" href="#contact">Contact</a></nav>
 </header>
 
-<main>
-  <section class="cx" aria-labelledby="title">
-    <div class="cx__k lbl"><span>Games</span><span>04 / 05</span></div>
-    <h1 id="title">Brawl3rs</h1>
-    <div class="cx__info">
-      <p class="cx__lede">An AI-driven autobattler where meme-coin fighters brawl and players bet on the outcome. I built the brand and the full UI system in two months.</p>
-      <dl class="cx__meta"><div><dt>Role</dt><dd>Sole UI designer, team of 16</dd></div><div><dt>Scope</dt><dd>Brand, UI system, animation, social</dd></div><div><dt>Tools</dt><dd>Figma, Adobe Suite, Blender</dd></div><div><dt>Platform</dt><dd>Desktop, tablet &amp; mobile</dd></div></dl>
-    </div>
-    <ul class="cx__stats" style="--n:4"><li class="reveal"><b>2</b><span>Months, blank canvas to launch</span></li><li class="reveal"><b>16</b><span>Devs, game designers &amp; 3D artists</span></li><li class="reveal"><b>10+</b><span>Major screens designed</span></li><li class="reveal"><b>3</b><span>Breakpoints for every screen</span></li></ul>
-  </section>
-  <figure class="cx__media yt" data-yt="ghAWdVwj6Jw" data-title="Brawl3rs trailer"><img src="../../brawl3rs/assets/trailer.jpg" alt="Brawl3rs key art: the roster of low-poly meme fighters with Pepe facing Doge" width="1280" height="720" fetchpriority="high"><button class="yt__play" type="button" aria-label="Play the Brawl3rs trailer">▶ Watch trailer</button></figure>
+<main class="pj">
+  <aside class="pj__side"><div class="pj__stick">
+    <div class="pj__tags"><h1 id="title" class="pj__name">Brawl3rs</h1><span class="pj__cat">Games</span></div>
+    <p class="pj__lede">An AI-driven autobattler where meme-coin fighters brawl and players bet on the outcome. I built the brand and the full UI system in two months.</p>
+    <dl class="pj__kv"><div><dt>Role</dt><dd>Sole UI designer, team of 16</dd></div><div><dt>Scope</dt><dd>Brand, UI system, animation, social</dd></div><div><dt>Tools</dt><dd>Figma, Adobe Suite, Blender</dd></div><div><dt>Platform</dt><dd>Desktop, tablet &amp; mobile</dd></div></dl>
+    <ul class="pj__stats"><li><b>2</b><span>Months, blank canvas to launch</span></li><li><b>16</b><span>Devs, game designers &amp; 3D artists</span></li><li><b>10+</b><span>Major screens designed</span></li><li><b>3</b><span>Breakpoints for every screen</span></li></ul>
+    <nav class="pj__toc" aria-label="Sections"><a href="#overview"><small>01</small>Overview</a><a href="#problem"><small>02</small>The problem</a><a href="#origin"><small>03</small>The origin story</a><a href="#decisions"><small>04</small>Key design decisions</a><a href="#system"><small>05</small>UI system</a><a href="#social"><small>06</small>Social &amp; community</a><a href="#outcome"><small>07</small>Outcome &amp; reflection</a></nav>
+  </div></aside>
+  <div class="pj__main">
+    <figure class="cx__media yt" data-yt="ghAWdVwj6Jw" data-title="Brawl3rs trailer"><img src="../../brawl3rs/assets/trailer.jpg" alt="Brawl3rs key art: the roster of low-poly meme fighters with Pepe facing Doge" width="1280" height="720" fetchpriority="high"><button class="yt__play" type="button" aria-label="Play the Brawl3rs trailer">▶ Watch trailer</button></figure>
+    
 
   <section class="cs" id="overview">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>01</b>Overview</span><div><h2>Meme coins, in the ring.</h2><p class="cs__sub">Gaming immersion. Trader-grade clarity.</p></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>01 · Overview</span></div>
+    <div class="cs__head reveal"><div><h2>Meme coins, in the ring.</h2><p class="cs__sub">Gaming immersion. Trader-grade clarity.</p></div></div>
     <div class="cs__body"></div>
     
     
     <div class="rows"></div>
   </section>
   <section class="cs" id="problem">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>02</b>The problem</span><div><h2>Four challenges, one deadline.</h2></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>02 · The problem</span></div>
+    <div class="cs__head reveal"><div><h2>Four challenges, one deadline.</h2></div></div>
     <div class="cs__body"><ol class="pts" style="--n:4"><li class="reveal"><small>01</small><b>A brand from zero</b><p>No logo, no colours, no voice. Everything had to be created.</p></li><li class="reveal"><small>02</small><b>Game meets trading floor</b><p>Gamer immersion and trader-grade data, on the same screen.</p></li><li class="reveal"><small>03</small><b>Dark, still readable</b><p>An atmospheric theme that never costs legibility.</p></li><li class="reveal"><small>04</small><b>Every screen size</b><p>Desktop, tablet and mobile, each with its own navigation.</p></li></ol></div>
     
     
     <div class="rows"></div>
   </section>
   <section class="cs" id="origin">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>03</b>The origin story</span><div><h2>From Frogs vs Dogs to Brawl3rs.</h2><p class="cs__sub">It started as Frogs vs Dogs: Pepe versus Doge, two of crypto&#x27;s biggest meme coins. As the roster and mechanics grew, the name had to grow too. The brand had to feel rooted in meme culture but scale to an unlimited roster.</p></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>03 · The origin story</span></div>
+    <div class="cs__head reveal"><div><h2>From Frogs vs Dogs to Brawl3rs.</h2><p class="cs__sub">It started as Frogs vs Dogs: Pepe versus Doge, two of crypto&#x27;s biggest meme coins. As the roster and mechanics grew, the name had to grow too. The brand had to feel rooted in meme culture but scale to an unlimited roster.</p></div></div>
     <div class="cs__body"></div>
     
     
     <div class="rows"><div class="wx reveal"><div class="cmp cmp--tall reveal"><img src="../../brawl3rs/assets/origin-dogs-frogs.jpg" alt="Early Dogs vs Frogs logo explorations and glitch key art" loading="lazy"><div class="cmp__after"><img src="../../brawl3rs/assets/origin-brawl3rs.jpg" alt="Brawl3rs logo process: sketches, colour versions and final wordmark" loading="lazy"></div><input type="range" min="0" max="100" value="50" aria-label="Drag to compare Frogs vs Dogs and Brawl3rs"><span class="cmp__line"></span><span class="cmp__knob" aria-hidden="true">⇄</span><span class="cmp__tag cmp__tag--b">Frogs vs Dogs</span><span class="cmp__tag cmp__tag--a">Brawl3rs</span></div></div></div>
   </section>
   <section class="cs" id="decisions">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>04</b>Key design decisions</span><div><h2>Five calls that shaped it.</h2></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>04 · Key design decisions</span></div>
+    <div class="cs__head reveal"><div><h2>Five calls that shaped it.</h2></div></div>
     <div class="cs__body"><ol class="pts" style="--n:4"><li class="reveal"><small>01</small><b>Dark is the brand</b><p>Not a mode, the identity. Every colour, contrast and glow was made for dark backgrounds.</p></li><li class="reveal"><small>02</small><b>Neon green</b><p>&quot;Go&quot; in games, &quot;profit&quot; in trading. One colour that speaks both languages.</p></li><li class="reveal"><small>03</small><b>Activity as social proof</b><p>A live stream and chat show what others bet, win and react to.</p></li><li class="reveal"><small>04</small><b>Progressive complexity</b><p>Degen Mode and Turbo stay hidden until players go deeper.</p></li><li class="reveal"><small>05</small><b>Component-first</b><p>A system, not screens, so 16 people could build from day one.</p></li></ol></div>
     
     
     <div class="rows"><div class="row row--solo"><figure class="m reveal" style="--ar:1.1111"><div class="m__box" style="aspect-ratio:800 / 720"><video class="lv" src="../../brawl3rs/assets/fight.mp4" poster="../../brawl3rs/assets/fight.jpg" muted loop playsinline preload="none" aria-label="Low-poly frog fighter throwing a punch in comic-book style"></video></div><figcaption>In the ring</figcaption></figure></div></div>
   </section>
   <section class="cs" id="system">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>05</b>UI system</span><div><h2>One system, built for the dark.</h2><p class="cs__sub">Buttons, cards, panels, navigation, modals, forms, tables, charts and status indicators. Every screen at desktop, tablet and mobile.</p></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>05 · UI system</span></div>
+    <div class="cs__head reveal"><div><h2>One system, built for the dark.</h2><p class="cs__sub">Buttons, cards, panels, navigation, modals, forms, tables, charts and status indicators. Every screen at desktop, tablet and mobile.</p></div></div>
     <div class="cs__body"><ul class="cs__chips reveal"><li>Fight Roster</li><li>Live Stream</li><li>Derivatives Market</li><li>Leaderboards</li><li>Rankings</li><li>Profile &amp; Quests</li><li>Cashier</li><li>Turbo Mode</li><li>Degen Mode</li><li>Onboarding</li><li>Activity Stream &amp; Chat</li></ul></div>
     
     
     <div class="rows"><div class="row"><figure class="m reveal" style="--ar:1.1111;flex:1.1111 1 0%"><div class="m__box" style="aspect-ratio:1800 / 1620"><img src="../../brawl3rs/assets/ui-kit-1.jpg" alt="Brawl3rs UI kit: live match view, betting panels, leaderboards and rank badges" loading="lazy" width="1800" height="1620"></div><figcaption>UI kit · 01</figcaption></figure><figure class="m reveal" style="--ar:1.1111;flex:1.1111 1 0%"><div class="m__box" style="aspect-ratio:1800 / 1620"><img src="../../brawl3rs/assets/ui-kit-2.jpg" alt="Brawl3rs UI kit: responsive layouts, data tables and controls" loading="lazy" width="1800" height="1620"></div><figcaption>UI kit · 02</figcaption></figure></div></div>
   </section>
   <section class="cs" id="social">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>06</b>Social &amp; community</span><div><h2>Built to launch a community.</h2><p class="cs__sub">Twitter and Discord visuals: profile images, banners, announcement templates, stickers and promo graphics, ready before launch day.</p></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>06 · Social &amp; community</span></div>
+    <div class="cs__head reveal"><div><h2>Built to launch a community.</h2><p class="cs__sub">Twitter and Discord visuals: profile images, banners, announcement templates, stickers and promo graphics, ready before launch day.</p></div></div>
     <div class="cs__body"></div>
     
     
     <div class="rows"><div class="row"><figure class="m reveal" style="--ar:1.1111;flex:1.1111 1 0%"><div class="m__box" style="aspect-ratio:1800 / 1620"><img src="../../brawl3rs/assets/marketing.jpg" alt="Marketing assets: Discord and Twitter banners, stickers, emojis and fight club posters" loading="lazy" width="1800" height="1620"></div><figcaption>Marketing assets</figcaption></figure><figure class="m reveal" style="--ar:1.1111;flex:1.1111 1 0%"><div class="m__box" style="aspect-ratio:800 / 720"><video class="lv" src="../../brawl3rs/assets/arena.mp4" poster="../../brawl3rs/assets/arena.jpg" muted loop playsinline preload="none" aria-label="Comic-style fight sequence that ends in the arena with a Doge is back on the menu callout"></video></div><figcaption>Fight night</figcaption></figure></div></div>
   </section>
   <section class="cs" id="outcome">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>07</b>Outcome &amp; reflection</span><div><h2>Shipped in two months.</h2><p class="cs__sub">Launched in 2023. Still live at brawl3rs.ai.</p></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>07 · Outcome &amp; reflection</span></div>
+    <div class="cs__head reveal"><div><h2>Shipped in two months.</h2><p class="cs__sub">Launched in 2023. Still live at brawl3rs.ai.</p></div></div>
     <div class="cs__body"></div>
     
     
@@ -264,7 +343,11 @@
     </div>
     <a href="../ggi/index.html" aria-hidden="true" tabindex="-1"><div class="nx__img"><img src="../../ggi/assets/hero.jpg" alt="" loading="lazy"></div></a>
   </nav>
+
+  </div>
 </main>
+
+<div class="sw3"><div class="sw3__menu" hidden><a href="../wallet-wars/index.html"><span>Wallet Wars</span><span>01</span></a><a href="../valorant-mobile/index.html"><span>Valorant Mobile</span><span>02</span></a><a href="../aew-rise-to-the-top/index.html"><span>AEW: Rise to the Top</span><span>03</span></a><a href="../brawl3rs/index.html" aria-current="page"><span>Brawl3rs</span><span>04</span></a><a href="../ggi/index.html"><span>GGI</span><span>05</span></a></div><button class="sw3__btn" type="button" aria-expanded="false" aria-label="Other Games projects"><span><small>Games</small><b>Brawl3rs</b></span><i aria-hidden="true">≡</i></button></div>
 
 <section id="contact" class="ct" aria-label="Contact">
   <span class="lbl"><span class="dot" aria-hidden="true"></span>Available for full-time, remote and new projects</span>
@@ -280,7 +363,6 @@
   <div class="ft-nav"><span>© 2026 Sunil Sebastian</span><nav aria-label="Footer"><a href="../index.html#work">Work</a><a href="../index.html#index">Index</a><a href="../index.html#about">About</a><a href="../showreel/index.html">Showreel</a></nav></div>
   <span class="wordmark" aria-hidden="true">Sunil Sebastian</span>
 </footer>
-
 
 <script>
 (() => {
@@ -308,6 +390,23 @@
     };
     y.querySelector('.yt__play').addEventListener('click', play);
   });
+})();</script>
+<script>(() => {
+  // Section list in the sticky column follows the scroll
+  const links = [...document.querySelectorAll('.pj__toc a')], secs = links.map(a => document.querySelector(a.hash));
+  const mark = () => {
+    let on = 0; secs.forEach((s, k) => { if (s.getBoundingClientRect().top < innerHeight * .4) on = k; });
+    links.forEach((a, k) => a.classList.toggle('is-on', k === on));
+  };
+  addEventListener('scroll', mark, { passive: true }); mark();
+  // Project switcher
+  const btn = document.querySelector('.sw3__btn'), menu = document.querySelector('.sw3__menu');
+  btn.addEventListener('click', () => { menu.hidden = !menu.hidden; btn.setAttribute('aria-expanded', !menu.hidden); });
+  addEventListener('click', e => { if (!e.target.closest('.sw3')) { menu.hidden = true; btn.setAttribute('aria-expanded', 'false'); } });
+  addEventListener('keydown', e => { if (e.key === 'Escape') { menu.hidden = true; btn.setAttribute('aria-expanded', 'false'); } });
+  // The switcher steps aside once the contact section is on screen
+  const sw = document.querySelector('.sw3'), ct = document.getElementById('contact');
+  if (ct) new IntersectionObserver(([e]) => { sw.classList.toggle('is-off', e.isIntersecting); if (e.isIntersecting) menu.hidden = true; }).observe(ct);
 })();</script>
 </body>
 </html>

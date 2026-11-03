@@ -12,7 +12,7 @@
 <meta name="theme-color" content="#f3f1ec">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
 <style>
   :root {
     --paper: #f3f1ec; --paper-2: #e9e6df; --ink: #111110; --muted: #75736d; --line: rgba(17,17,16,.14);
@@ -187,64 +187,142 @@
   :root { --card-r: 16px; }
   .cx__media { margin: 0 var(--gutter); }
   .cx__media, .m__box, .sx__stage, .nx__img, .cmp, .web, .ba, .build, .wx--dark, .sws, .yt { border-radius: var(--card-r); overflow: hidden; isolation: isolate; }
+
+  /* V3 case study: sticky info on the left, the work on the right */
+  :root { --bg: var(--paper); --red: #df0c01; --yellow: #f6cb00; --mono: "Geist Mono", ui-monospace, Menlo, monospace; --tint: #e2dfff; }
+  body { background: var(--bg); }
+  .hd + .pj { padding-top: 96px; }
+  .k { display: inline-flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 13px; }
+  .k::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--red); }
+
+  .pj { display: grid; grid-template-columns: minmax(300px, 30%) minmax(0, 1fr); gap: clamp(28px, 3.4vw, 64px); padding: 92px var(--gutter) 0; }
+  .pj__stick { position: sticky; top: 84px; max-height: calc(100svh - 100px); overflow-y: auto; scrollbar-width: none; padding-bottom: 90px; }
+  .pj__stick::-webkit-scrollbar { display: none; }
+  .pj__tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pj__name, .pj__cat { margin: 0; display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 8px; font-family: var(--mono); font-size: 13px; font-weight: 500; letter-spacing: -.01em; }
+  .pj__name { background: var(--tint); }
+  .pj__name::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--red); }
+  .pj__cat { background: #fff; box-shadow: 0 0 0 1px var(--line); font-weight: 400; }
+  .pj__lede { margin: 22px 0 26px; font-size: clamp(24px, 2.1vw, 32px); line-height: 1.12; font-weight: 500; letter-spacing: -.035em; }
+  .pj__kv { margin: 0; border-top: 1px solid var(--ink); }
+  .pj__kv div { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line); font-family: var(--mono); font-size: 13px; }
+  .pj__kv dt { flex: none; color: var(--muted); }
+  .pj__kv dd { margin: 0; min-width: 0; text-align: right; overflow-wrap: anywhere; line-height: 1.45; }
+  .pj__stats { list-style: none; margin: 22px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .pj__stats li { padding: 14px; border-radius: 12px; background: #fff; box-shadow: 0 0 0 1px var(--line); }
+  .pj__stats b { display: block; font-size: clamp(20px, 1.7vw, 26px); font-weight: 600; letter-spacing: -.03em; }
+  .pj__stats span { font-size: 13px; color: var(--muted); }
+  .pj__toc { margin-top: 26px; display: grid; }
+  .pj__toc a { display: flex; align-items: center; gap: 10px; padding: 7px 0; font-family: var(--mono); font-size: 13px; color: var(--muted); transition: color .2s; }
+  .pj__toc a small { font-size: 11px; width: 18px; }
+  .pj__toc a::after { content: ""; width: 6px; height: 6px; margin-left: auto; border-radius: 50%; background: var(--red); opacity: 0; transition: opacity .2s; }
+  .pj__toc a:hover, .pj__toc a.is-on { color: var(--ink); }
+  .pj__toc a.is-on::after { opacity: 1; }
+  .pj__main { min-width: 0; padding-bottom: clamp(60px, 8vw, 120px); }
+  .pj__main .cx__media { margin: 0; }
+  .pj__main .cs { position: relative; padding: clamp(64px, 8vw, 120px) 0 0; }
+  .pj__chip { position: sticky; top: 84px; z-index: 5; height: 0; display: flex; justify-content: flex-end; align-items: flex-start; pointer-events: none; }
+  .pj__chip span { pointer-events: auto; display: inline-flex; align-items: center; line-height: 1.2; white-space: nowrap; padding: 8px 12px; border-radius: 8px; background: rgba(255,255,255,.92); backdrop-filter: blur(8px); box-shadow: 0 0 0 1px var(--line); font-family: var(--mono); font-size: 13px; }
+  .pj__main .cs__head { display: block; border-top: 0; padding: 0 clamp(120px, 16vw, 260px) 0 0; }
+  .pj__main .cs h2 { font-size: clamp(30px, 3.2vw, 52px); max-width: 20ch; }
+  .pj__main .cs__sub { max-width: 52ch; }
+  .pj__main .cs__body { margin-left: 0; }
+  .pj__main .pts { grid-template-columns: repeat(min(var(--n, 3), 3), minmax(0, 1fr)); }
+  .pj__main .quote { padding: clamp(90px, 11vw, 170px) 0; }
+  .pj__main .dl, .pj__main .nx { padding-left: 0; padding-right: 0; }
+  .pj__main .nx { padding-bottom: 0; }
+
+  /* Project switcher, bottom left */
+  .sw3 { position: fixed; left: var(--gutter); bottom: 16px; z-index: 30; transition: opacity .3s, transform .3s; }
+  .sw3.is-off { opacity: 0; transform: translateY(10px); pointer-events: none; }
+  .sw3__btn { appearance: none; border: 0; cursor: pointer; display: flex; align-items: center; gap: 22px; padding: 10px 12px 10px 14px; border-radius: 12px; background: rgba(255,255,255,.94); backdrop-filter: blur(10px); box-shadow: 0 0 0 1px var(--line), 0 10px 30px -14px rgba(0,0,0,.35); font: inherit; text-align: left; color: var(--ink); }
+  .sw3__btn small { display: flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .sw3__btn small::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--red); }
+  .sw3__btn b { display: block; margin-top: 2px; font-family: var(--mono); font-size: 13px; font-weight: 500; }
+  .sw3__btn i { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 8px; background: var(--bg); font-style: normal; }
+  .sw3__menu { position: absolute; left: 0; bottom: calc(100% + 8px); min-width: 260px; padding: 6px; border-radius: 14px; background: #fff; box-shadow: 0 0 0 1px var(--line), 0 18px 40px -18px rgba(0,0,0,.4); }
+  .sw3__menu[hidden] { display: none; }
+  .sw3__menu a { display: flex; justify-content: space-between; gap: 16px; padding: 10px 12px; border-radius: 9px; font-family: var(--mono); font-size: 13px; }
+  .sw3__menu a:hover, .sw3__menu a[aria-current] { background: var(--tint); }
+
+  @media (max-width: 900px) { .nv .hide-m { display: none; } }
+  @media (max-width: 1000px) {
+    .pj { grid-template-columns: 1fr; padding-top: 84px; }
+    .pj__stick { position: static; max-height: none; overflow: visible; padding-bottom: 8px; }
+    .pj__toc { display: none; }
+    .pj__main .cs__head { padding-right: 0; }
+    .pj__chip { position: static; height: auto; justify-content: flex-start; margin-bottom: 14px; }
+  }
+  @media (max-width: 600px) {
+    .nv { inset: 10px 10px auto; }
+    .pill--brand small, .pill--dark span { display: none; }
+    .pj__main .pts { grid-template-columns: 1fr; }
+    .sw3 { left: 10px; bottom: 10px; }
+  }
 </style>
 </head>
-<body>
+<body style="--tint:#e2dfff">
 
 <header class="hd">
   <a class="hd__brand" href="../index.html"><img src="../../assets/icons/favicon-64.png" alt="" width="26" height="26">Sunil Sebastian</a>
   <nav aria-label="Main"><a href="../index.html#work">Work</a><a href="../index.html#index">Index</a><a href="../index.html#about">About</a><a class="hd__mail" href="#contact">Contact</a></nav>
 </header>
 
-<main>
-  <section class="cx" aria-labelledby="title">
-    <div class="cx__k lbl"><span>Brand systems</span><span>06 / 10</span></div>
-    <h1 id="title">ORO Chocolate</h1>
-    <div class="cx__info">
-      <p class="cx__lede">A golden identity for Nicaraguan chocolate and coffee, grown from the star inside a cacao pod.</p>
-      <dl class="cx__meta"><div><dt>Role</dt><dd>Brand identity, guidelines &amp; packaging lead</dd></div><div><dt>Timeline</dt><dd>1 year · 2024</dd></div><div><dt>Scope</dt><dd>Logo, guidelines, coffee &amp; chocolate packaging</dd></div><div><dt>Partner</dt><dd>With Echo Digital</dd></div></dl>
-    </div>
+<main class="pj">
+  <aside class="pj__side"><div class="pj__stick">
+    <div class="pj__tags"><h1 id="title" class="pj__name">ORO Chocolate</h1><span class="pj__cat">Brand systems</span></div>
+    <p class="pj__lede">A golden identity for Nicaraguan chocolate and coffee, grown from the star inside a cacao pod.</p>
+    <dl class="pj__kv"><div><dt>Role</dt><dd>Brand identity, guidelines &amp; packaging lead</dd></div><div><dt>Timeline</dt><dd>1 year · 2024</dd></div><div><dt>Scope</dt><dd>Logo, guidelines, coffee &amp; chocolate packaging</dd></div><div><dt>Partner</dt><dd>With Echo Digital</dd></div></dl>
     
-  </section>
-  <figure class="cx__media"><img src="../../oro-chocolate/assets/hero.jpg" alt="Black ORO coffee and drinking chocolate bags with the gold star mark, on stone in a rainforest" width="1920" height="1080" fetchpriority="high"></figure>
+    <nav class="pj__toc" aria-label="Sections"><a href="#brief"><small>01</small>The brief</a><a href="#idea"><small>02</small>The idea</a><a href="#guidelines"><small>03</small>Brand guidelines</a><a href="#packaging"><small>04</small>Packaging</a><a href="#source"><small>05</small>From the source</a><a href="#world"><small>06</small>In the world</a></nav>
+  </div></aside>
+  <div class="pj__main">
+    <figure class="cx__media"><img src="../../oro-chocolate/assets/hero.jpg" alt="Black ORO coffee and drinking chocolate bags with the gold star mark, on stone in a rainforest" width="1920" height="1080" fetchpriority="high"></figure>
+    
 
   <section class="cs" id="brief">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>01</b>The brief</span><div><h2>Two categories. One gold.</h2></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>01 · The brief</span></div>
+    <div class="cs__head reveal"><div><h2>Two categories. One gold.</h2></div></div>
     <div class="cs__body"><ol class="pts" style="--n:3"><li class="reveal"><small>01</small><b>No voice</b><p>A premium, ethically sourced product with no visual language to carry its story.</p></li><li class="reveal"><small>02</small><b>Coffee + cacao</b><p>One identity that works for single-origin coffee and artisan chocolate.</p></li><li class="reveal"><small>03</small><b>Honest origin</b><p>Show Nicaragua&#x27;s volcanic soil, rainforest and craft, without borrowing clichés.</p></li></ol></div>
     
     
     <div class="rows"></div>
   </section>
   <section class="cs" id="idea">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>02</b>The idea</span><div><h2>Cut from cacao.</h2></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>02 · The idea</span></div>
+    <div class="cs__head reveal"><div><h2>Cut from cacao.</h2></div></div>
     <div class="cs__body"><ol class="pts" style="--n:3"><li class="reveal"><small>01</small><b>ORO means gold</b><p>The name made the palette obvious. Gold leads, everything else supports it.</p></li><li class="reveal"><small>02</small><b>Look inside the pod</b><p>A cacao pod&#x27;s cross-section hides a star. That shape started the sketches.</p></li><li class="reveal"><small>03</small><b>Keep it geometric</b><p>Clean lines and simple shapes turned the star into a mark that works tiny or huge.</p></li></ol></div>
     
     
     <div class="rows"><div class="row row--1"><figure class="m reveal" style="--ar:1.7778"><div class="m__box" style="aspect-ratio:1920 / 1080"><img src="../../oro-chocolate/assets/logo-sketches.jpg" alt="Pencil sketches of cacao pod cross-sections turning into star shapes and the ORO wordmark" loading="lazy" width="1920" height="1080"></div><figcaption>Logo study</figcaption></figure></div><div class="row"><figure class="m reveal" style="--ar:1.7778;flex:1.7778 1 0%"><div class="m__box" style="aspect-ratio:2000 / 1125"><img src="../../oro-chocolate/assets/mark.jpg" alt="The final gold ORO star mark on black" loading="lazy" width="2000" height="1125"></div><figcaption>Final mark</figcaption></figure><figure class="m reveal" style="--ar:1.7778;flex:1.7778 1 0%"><div class="m__box" style="aspect-ratio:1600 / 900"><video class="lv" src="../../oro-chocolate/assets/logo-anim.mp4" poster="../../oro-chocolate/assets/logo-anim.jpg" muted loop playsinline preload="none" aria-label="ORO logo animation: the cacao star unfolds petal by petal, then the wordmark appears"></video></div><figcaption>Logo animation</figcaption></figure></div></div>
   </section>
   <section class="cs" id="guidelines">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>03</b>Brand guidelines</span><div><h2>One book. Every team.</h2><p class="cs__sub">Strong enough to onboard any future agency or in-house team without watering the brand down.</p></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>03 · Brand guidelines</span></div>
+    <div class="cs__head reveal"><div><h2>One book. Every team.</h2><p class="cs__sub">Strong enough to onboard any future agency or in-house team without watering the brand down.</p></div></div>
     <div class="cs__body"></div>
     <div class="sws reveal" style="--n:3"><div class="sw" style="background:#B3995E;color:#111"><span>ORO Gold</span><small>#B3995E</small></div><div class="sw" style="background:#231F20;color:#fff"><span>Cacao Black</span><small>#231F20</small></div><div class="sw" style="background:#4C4C4C;color:#fff"><span>Volcanic Grey</span><small>#4C4C4C</small></div></div>
     
     <div class="rows"><div class="sx reveal" style="--ar:1.7778"><div class="sx__stage"><img class="sx__img is-on" src="../../oro-chocolate/assets/g-contents.jpg" alt="Contents page over a Nicaraguan coastline" loading="lazy" width="2000" height="1125"><img class="sx__img" src="../../oro-chocolate/assets/g-framework.jpg" alt="Brand framework page over golden rainforest hills" loading="lazy" width="2000" height="1125"><img class="sx__img" src="../../oro-chocolate/assets/g-indulgence.jpg" alt="Reflective Indulgence spread with a cacao tree seen through a circle" loading="lazy" width="1400" height="787"><img class="sx__img" src="../../oro-chocolate/assets/g-palette.jpg" alt="Primary palette page: gold, black and dark grey" loading="lazy" width="2000" height="1125"><img class="sx__img" src="../../oro-chocolate/assets/g-logos.jpg" alt="Primary logo versions for ORO Chocolate and ORO Coffee on gold, black and grey" loading="lazy" width="2000" height="1125"><img class="sx__img" src="../../oro-chocolate/assets/g-type.jpg" alt="Typography on digital page showing Poppins" loading="lazy" width="2000" height="1125"></div><div class="sx__tabs"><button class="sx__tab is-on" type="button" aria-pressed="true" data-note="Contents: framework, brand world, packaging and more.">Contents</button><button class="sx__tab" type="button" aria-pressed="false" data-note="The framework: purpose, story, customer and voice.">Framework</button><button class="sx__tab" type="button" aria-pressed="false" data-note="The big idea: Reflective Indulgence.">Big idea</button><button class="sx__tab" type="button" aria-pressed="false" data-note="Gold first, with black and grey to hold it.">Colour</button><button class="sx__tab" type="button" aria-pressed="false" data-note="One mark, two lines: Chocolate and Coffee.">Logo</button><button class="sx__tab" type="button" aria-pressed="false" data-note="Poppins across every digital surface.">Type</button></div><p class="sx__note">Contents: framework, brand world, packaging and more.</p></div><div class="row row--solo"><figure class="m reveal" style="--ar:1.5004;flex:1.5004 1 0%"><div class="m__box" style="aspect-ratio:2000 / 1333"><img src="../../oro-chocolate/assets/book-icons.jpg" alt="Guidelines book open on the iconography and pattern pages" loading="lazy" width="2000" height="1333"></div><figcaption>Iconography &amp; pattern</figcaption></figure></div><div class="row row--solo"><figure class="m reveal" style="--ar:1.5004"><div class="m__box" style="aspect-ratio:2000 / 1333"><img src="../../oro-chocolate/assets/book-apparel.jpg" alt="Guidelines book open on apparel, cups and carrier pages" loading="lazy" width="2000" height="1333"></div><figcaption>Apparel &amp; café</figcaption></figure></div></div>
   </section>
   <section class="cs" id="packaging">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>04</b>Packaging</span><div><h2>Natural, down to the ink.</h2><p class="cs__sub">Every material is natural. For chocolate, the goal was a small moment of excitement every time a box opens. Also in Packaging design →</p></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>04 · Packaging</span></div>
+    <div class="cs__head reveal"><div><h2>Natural, down to the ink.</h2><p class="cs__sub">Every material is natural. For chocolate, the goal was a small moment of excitement every time a box opens. Also in Packaging design →</p></div></div>
     <div class="cs__body"></div>
     
     
     <div class="rows"><div class="row row--1"><figure class="m reveal" style="--ar:1.7759"><div class="m__box" style="aspect-ratio:1918 / 1080"><img src="../../oro-chocolate/assets/pack-sketches.jpg" alt="Initial sketches of box nets and folding chocolate packs" loading="lazy" width="1918" height="1080"></div></figure></div><div class="row"><figure class="m reveal" style="--ar:1.7868;flex:1.7868 1 0%"><div class="m__box" style="aspect-ratio:1919 / 1074"><img src="../../oro-chocolate/assets/mechanics.jpg" alt="3D product mechanics: folding stages of the chocolate box" loading="lazy" width="1919" height="1074"></div></figure><figure class="m reveal" style="--ar:1.7795;flex:1.7795 1 0%"><div class="m__box" style="aspect-ratio:1614 / 907"><img src="../../oro-chocolate/assets/artwork.jpg" alt="Artwork details: dielines and colour-coded insert cards for every flavour" loading="lazy" width="1614" height="907"></div></figure></div><div class="row"><figure class="m reveal" style="--ar:1.0000;flex:1.0000 1 0%"><div class="m__box" style="aspect-ratio:1400 / 1400"><img src="../../oro-chocolate/assets/tuma-render.jpg" alt="ORO Tuma 78% cacao bar in a black wrapper with the gold star and an indigo label" loading="lazy" width="1400" height="1400"></div><figcaption>Tuma 78%</figcaption></figure><figure class="m reveal" style="--ar:1.0000;flex:1.0000 1 0%"><div class="m__box" style="aspect-ratio:1400 / 1400"><img src="../../oro-chocolate/assets/tuma-label.jpg" alt="Close-up of the Tuma label: gold star, ORO wordmark and flowing gold lines" loading="lazy" width="1400" height="1400"></div><figcaption>Label detail</figcaption></figure><figure class="m reveal" style="--ar:1.0000;flex:1.0000 1 0%"><div class="m__box" style="aspect-ratio:1400 / 1400"><img src="../../oro-chocolate/assets/plate-dark.jpg" alt="Single Origin Dark bar with a blue label on a gold-rimmed plate" loading="lazy" width="1400" height="1400"></div><figcaption>Single Origin Dark</figcaption></figure></div><div class="row"><figure class="m reveal" style="--ar:1.0000;flex:1.0000 1 0%"><div class="m__box" style="aspect-ratio:1400 / 1400"><img src="../../oro-chocolate/assets/plate-coffee.jpg" alt="Coffee bar with an orange label on a gold-rimmed plate" loading="lazy" width="1400" height="1400"></div><figcaption>Coffee</figcaption></figure><figure class="m reveal" style="--ar:1.0000;flex:1.0000 1 0%"><div class="m__box" style="aspect-ratio:1400 / 1400"><img src="../../oro-chocolate/assets/plate-ginger.jpg" alt="Ginger bar with a green label on a gold-rimmed plate" loading="lazy" width="1400" height="1400"></div><figcaption>Ginger</figcaption></figure><figure class="m reveal" style="--ar:1.0000;flex:1.0000 1 0%"><div class="m__box" style="aspect-ratio:1400 / 1400"><img src="../../oro-chocolate/assets/gift-stack.jpg" alt="A stack of ORO bars tied with gold ribbon as a corporate gift" loading="lazy" width="1400" height="1400"></div><figcaption>Corporate gifting</figcaption></figure></div><div class="row"><figure class="m reveal" style="--ar:1.4993;flex:1.4993 1 0%"><div class="m__box" style="aspect-ratio:2000 / 1334"><img src="../../oro-chocolate/assets/coffee-bags.jpg" alt="Black ORO coffee bags front and back beside a coffee cup" loading="lazy" width="2000" height="1334"></div><figcaption>Coffee bags</figcaption></figure><figure class="m reveal" style="--ar:1.7778;flex:1.7778 1 0%"><div class="m__box" style="aspect-ratio:2000 / 1125"><img src="../../oro-chocolate/assets/coffee-box.jpg" alt="Black ORO Coffee box with gold foil mark and flowing lines" loading="lazy" width="2000" height="1125"></div><figcaption>Coffee box</figcaption></figure></div><div class="row"><figure class="m reveal" style="--ar:1.7778;flex:1.7778 1 0%"><div class="m__box" style="aspect-ratio:2000 / 1125"><img src="../../oro-chocolate/assets/display.jpg" alt="Counter display stacked with colourful ORO chocolate boxes" loading="lazy" width="2000" height="1125"></div><figcaption>Counter display</figcaption></figure><figure class="m reveal" style="--ar:1.7778;flex:1.7778 1 0%"><div class="m__box" style="aspect-ratio:2000 / 1125"><img src="../../oro-chocolate/assets/stands.jpg" alt="Free-standing retail units for ORO chocolate and coffee" loading="lazy" width="2000" height="1125"></div><figcaption>Free-standing units</figcaption></figure></div></div>
   </section>
   <section class="cs" id="source">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>05</b>From the source</span><div><h2>Pod to bar.</h2><p class="cs__sub">The packaging tells a true story: cacao grown by families in Nicaragua, made into chocolate at ORO’s own factory, then tasted bar by bar.</p></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>05 · From the source</span></div>
+    <div class="cs__head reveal"><div><h2>Pod to bar.</h2><p class="cs__sub">The packaging tells a true story: cacao grown by families in Nicaragua, made into chocolate at ORO’s own factory, then tasted bar by bar.</p></div></div>
     <div class="cs__body"></div>
     
     
     <div class="rows"><div class="row"><figure class="m reveal" style="--ar:1.0000;flex:1.0000 1 0%"><div class="m__box" style="aspect-ratio:1400 / 1400"><img src="../../oro-chocolate/assets/origin-pod.jpg" alt="A farmer harvests a ripe red cacao pod from the trunk of a tree in Nicaragua" loading="lazy" width="1400" height="1400"></div><figcaption>01 · Harvest</figcaption></figure><figure class="m reveal" style="--ar:1.0000;flex:1.0000 1 0%"><div class="m__box" style="aspect-ratio:1400 / 1400"><img src="../../oro-chocolate/assets/origin-pulp.jpg" alt="An opened cacao pod shell holding fresh pulp" loading="lazy" width="1400" height="1400"></div><figcaption>02 · Pulp</figcaption></figure><figure class="m reveal" style="--ar:1.0000;flex:1.0000 1 0%"><div class="m__box" style="aspect-ratio:1400 / 1400"><img src="../../oro-chocolate/assets/process-refining.jpg" alt="A chocolate maker refines liquid chocolate in a stone grinder" loading="lazy" width="1400" height="1400"></div><figcaption>03 · Refine</figcaption></figure></div><div class="row"><figure class="m reveal" style="--ar:1.0000;flex:1.0000 1 0%"><div class="m__box" style="aspect-ratio:1400 / 1400"><img src="../../oro-chocolate/assets/process-temper.jpg" alt="A chocolate maker in an ORO apron pours tempered chocolate into a mould" loading="lazy" width="1400" height="1400"></div><figcaption>04 · Temper</figcaption></figure><figure class="m reveal" style="--ar:1.0000;flex:1.0000 1 0%"><div class="m__box" style="aspect-ratio:1400 / 1400"><img src="../../oro-chocolate/assets/tasting-board.jpg" alt="A tasting board of single-variety cacao with a printed flavour guide" loading="lazy" width="1400" height="1400"></div><figcaption>05 · Taste</figcaption></figure></div></div>
   </section>
   <section class="cs" id="world">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>06</b>In the world</span><div><h2>From bean to café.</h2><p class="cs__sub">One brand world across retail, hospitality and wholesale.</p></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>06 · In the world</span></div>
+    <div class="cs__head reveal"><div><h2>From bean to café.</h2><p class="cs__sub">One brand world across retail, hospitality and wholesale.</p></div></div>
     <div class="cs__body"></div>
     
     
@@ -260,7 +338,11 @@
     </div>
     <a href="../tamuda-bay/index.html" aria-hidden="true" tabindex="-1"><div class="nx__img"><img src="../../tamuda-bay/assets/cover.jpg" alt="" loading="lazy"></div></a>
   </nav>
+
+  </div>
 </main>
+
+<div class="sw3"><div class="sw3__menu" hidden><a href="../namma-farm/index.html"><span>Namma Farm</span><span>01</span></a><a href="../scooch/index.html"><span>Scooch Over</span><span>02</span></a><a href="../green-school/index.html"><span>Green School</span><span>03</span></a><a href="../accelerated-professional-center/index.html"><span>APL</span><span>04</span></a><a href="../imagination-holdings/index.html"><span>Imagination Holdings</span><span>05</span></a><a href="../oro-chocolate/index.html" aria-current="page"><span>ORO Chocolate</span><span>06</span></a><a href="../tamuda-bay/index.html"><span>Tamuda Bay</span><span>07</span></a><a href="../khalta/index.html"><span>Khalta</span><span>08</span></a><a href="../lhp/index.html"><span>LHP</span><span>09</span></a><a href="../realtoken/index.html"><span>$REAL Token</span><span>10</span></a></div><button class="sw3__btn" type="button" aria-expanded="false" aria-label="Other Brand systems projects"><span><small>Brand systems</small><b>ORO Chocolate</b></span><i aria-hidden="true">≡</i></button></div>
 
 <section id="contact" class="ct" aria-label="Contact">
   <span class="lbl"><span class="dot" aria-hidden="true"></span>Available for full-time, remote and new projects</span>
@@ -276,7 +358,6 @@
   <div class="ft-nav"><span>© 2026 Sunil Sebastian</span><nav aria-label="Footer"><a href="../index.html#work">Work</a><a href="../index.html#index">Index</a><a href="../index.html#about">About</a><a href="../showreel/index.html">Showreel</a></nav></div>
   <span class="wordmark" aria-hidden="true">Sunil Sebastian</span>
 </footer>
-
 
 <script>
 (() => {
@@ -318,6 +399,23 @@
       run();
     }, { threshold: .35 }).observe(sx);
   });
+})();</script>
+<script>(() => {
+  // Section list in the sticky column follows the scroll
+  const links = [...document.querySelectorAll('.pj__toc a')], secs = links.map(a => document.querySelector(a.hash));
+  const mark = () => {
+    let on = 0; secs.forEach((s, k) => { if (s.getBoundingClientRect().top < innerHeight * .4) on = k; });
+    links.forEach((a, k) => a.classList.toggle('is-on', k === on));
+  };
+  addEventListener('scroll', mark, { passive: true }); mark();
+  // Project switcher
+  const btn = document.querySelector('.sw3__btn'), menu = document.querySelector('.sw3__menu');
+  btn.addEventListener('click', () => { menu.hidden = !menu.hidden; btn.setAttribute('aria-expanded', !menu.hidden); });
+  addEventListener('click', e => { if (!e.target.closest('.sw3')) { menu.hidden = true; btn.setAttribute('aria-expanded', 'false'); } });
+  addEventListener('keydown', e => { if (e.key === 'Escape') { menu.hidden = true; btn.setAttribute('aria-expanded', 'false'); } });
+  // The switcher steps aside once the contact section is on screen
+  const sw = document.querySelector('.sw3'), ct = document.getElementById('contact');
+  if (ct) new IntersectionObserver(([e]) => { sw.classList.toggle('is-off', e.isIntersecting); if (e.isIntersecting) menu.hidden = true; }).observe(ct);
 })();</script>
 </body>
 </html>

@@ -12,7 +12,7 @@
 <meta name="theme-color" content="#f3f1ec">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
 <style>
   :root {
     --paper: #f3f1ec; --paper-2: #e9e6df; --ink: #111110; --muted: #75736d; --line: rgba(17,17,16,.14);
@@ -187,85 +187,166 @@
   :root { --card-r: 16px; }
   .cx__media { margin: 0 var(--gutter); }
   .cx__media, .m__box, .sx__stage, .nx__img, .cmp, .web, .ba, .build, .wx--dark, .sws, .yt { border-radius: var(--card-r); overflow: hidden; isolation: isolate; }
+
+  /* V3 case study: sticky info on the left, the work on the right */
+  :root { --bg: var(--paper); --red: #df0c01; --yellow: #f6cb00; --mono: "Geist Mono", ui-monospace, Menlo, monospace; --tint: #e2dfff; }
+  body { background: var(--bg); }
+  .hd + .pj { padding-top: 96px; }
+  .k { display: inline-flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 13px; }
+  .k::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--red); }
+
+  .pj { display: grid; grid-template-columns: minmax(300px, 30%) minmax(0, 1fr); gap: clamp(28px, 3.4vw, 64px); padding: 92px var(--gutter) 0; }
+  .pj__stick { position: sticky; top: 84px; max-height: calc(100svh - 100px); overflow-y: auto; scrollbar-width: none; padding-bottom: 90px; }
+  .pj__stick::-webkit-scrollbar { display: none; }
+  .pj__tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pj__name, .pj__cat { margin: 0; display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 8px; font-family: var(--mono); font-size: 13px; font-weight: 500; letter-spacing: -.01em; }
+  .pj__name { background: var(--tint); }
+  .pj__name::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--red); }
+  .pj__cat { background: #fff; box-shadow: 0 0 0 1px var(--line); font-weight: 400; }
+  .pj__lede { margin: 22px 0 26px; font-size: clamp(24px, 2.1vw, 32px); line-height: 1.12; font-weight: 500; letter-spacing: -.035em; }
+  .pj__kv { margin: 0; border-top: 1px solid var(--ink); }
+  .pj__kv div { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line); font-family: var(--mono); font-size: 13px; }
+  .pj__kv dt { flex: none; color: var(--muted); }
+  .pj__kv dd { margin: 0; min-width: 0; text-align: right; overflow-wrap: anywhere; line-height: 1.45; }
+  .pj__stats { list-style: none; margin: 22px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .pj__stats li { padding: 14px; border-radius: 12px; background: #fff; box-shadow: 0 0 0 1px var(--line); }
+  .pj__stats b { display: block; font-size: clamp(20px, 1.7vw, 26px); font-weight: 600; letter-spacing: -.03em; }
+  .pj__stats span { font-size: 13px; color: var(--muted); }
+  .pj__toc { margin-top: 26px; display: grid; }
+  .pj__toc a { display: flex; align-items: center; gap: 10px; padding: 7px 0; font-family: var(--mono); font-size: 13px; color: var(--muted); transition: color .2s; }
+  .pj__toc a small { font-size: 11px; width: 18px; }
+  .pj__toc a::after { content: ""; width: 6px; height: 6px; margin-left: auto; border-radius: 50%; background: var(--red); opacity: 0; transition: opacity .2s; }
+  .pj__toc a:hover, .pj__toc a.is-on { color: var(--ink); }
+  .pj__toc a.is-on::after { opacity: 1; }
+  .pj__main { min-width: 0; padding-bottom: clamp(60px, 8vw, 120px); }
+  .pj__main .cx__media { margin: 0; }
+  .pj__main .cs { position: relative; padding: clamp(64px, 8vw, 120px) 0 0; }
+  .pj__chip { position: sticky; top: 84px; z-index: 5; height: 0; display: flex; justify-content: flex-end; align-items: flex-start; pointer-events: none; }
+  .pj__chip span { pointer-events: auto; display: inline-flex; align-items: center; line-height: 1.2; white-space: nowrap; padding: 8px 12px; border-radius: 8px; background: rgba(255,255,255,.92); backdrop-filter: blur(8px); box-shadow: 0 0 0 1px var(--line); font-family: var(--mono); font-size: 13px; }
+  .pj__main .cs__head { display: block; border-top: 0; padding: 0 clamp(120px, 16vw, 260px) 0 0; }
+  .pj__main .cs h2 { font-size: clamp(30px, 3.2vw, 52px); max-width: 20ch; }
+  .pj__main .cs__sub { max-width: 52ch; }
+  .pj__main .cs__body { margin-left: 0; }
+  .pj__main .pts { grid-template-columns: repeat(min(var(--n, 3), 3), minmax(0, 1fr)); }
+  .pj__main .quote { padding: clamp(90px, 11vw, 170px) 0; }
+  .pj__main .dl, .pj__main .nx { padding-left: 0; padding-right: 0; }
+  .pj__main .nx { padding-bottom: 0; }
+
+  /* Project switcher, bottom left */
+  .sw3 { position: fixed; left: var(--gutter); bottom: 16px; z-index: 30; transition: opacity .3s, transform .3s; }
+  .sw3.is-off { opacity: 0; transform: translateY(10px); pointer-events: none; }
+  .sw3__btn { appearance: none; border: 0; cursor: pointer; display: flex; align-items: center; gap: 22px; padding: 10px 12px 10px 14px; border-radius: 12px; background: rgba(255,255,255,.94); backdrop-filter: blur(10px); box-shadow: 0 0 0 1px var(--line), 0 10px 30px -14px rgba(0,0,0,.35); font: inherit; text-align: left; color: var(--ink); }
+  .sw3__btn small { display: flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .sw3__btn small::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--red); }
+  .sw3__btn b { display: block; margin-top: 2px; font-family: var(--mono); font-size: 13px; font-weight: 500; }
+  .sw3__btn i { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 8px; background: var(--bg); font-style: normal; }
+  .sw3__menu { position: absolute; left: 0; bottom: calc(100% + 8px); min-width: 260px; padding: 6px; border-radius: 14px; background: #fff; box-shadow: 0 0 0 1px var(--line), 0 18px 40px -18px rgba(0,0,0,.4); }
+  .sw3__menu[hidden] { display: none; }
+  .sw3__menu a { display: flex; justify-content: space-between; gap: 16px; padding: 10px 12px; border-radius: 9px; font-family: var(--mono); font-size: 13px; }
+  .sw3__menu a:hover, .sw3__menu a[aria-current] { background: var(--tint); }
+
+  @media (max-width: 900px) { .nv .hide-m { display: none; } }
+  @media (max-width: 1000px) {
+    .pj { grid-template-columns: 1fr; padding-top: 84px; }
+    .pj__stick { position: static; max-height: none; overflow: visible; padding-bottom: 8px; }
+    .pj__toc { display: none; }
+    .pj__main .cs__head { padding-right: 0; }
+    .pj__chip { position: static; height: auto; justify-content: flex-start; margin-bottom: 14px; }
+  }
+  @media (max-width: 600px) {
+    .nv { inset: 10px 10px auto; }
+    .pill--brand small, .pill--dark span { display: none; }
+    .pj__main .pts { grid-template-columns: 1fr; }
+    .sw3 { left: 10px; bottom: 10px; }
+  }
 </style>
 </head>
-<body>
+<body style="--tint:#d3e9ff">
 
 <header class="hd">
   <a class="hd__brand" href="../index.html"><img src="../../assets/icons/favicon-64.png" alt="" width="26" height="26">Sunil Sebastian</a>
   <nav aria-label="Main"><a href="../index.html#work">Work</a><a href="../index.html#index">Index</a><a href="../index.html#about">About</a><a class="hd__mail" href="#contact">Contact</a></nav>
 </header>
 
-<main>
-  <section class="cx" aria-labelledby="title">
-    <div class="cx__k lbl"><span>Games</span><span>05 / 05</span></div>
-    <h1 id="title">GGI</h1>
-    <div class="cx__info">
-      <p class="cx__lede">Good Game Iraq: a neon brand and a mobile-first tournament platform for Iraq&#x27;s competitive gamers.</p>
-      <dl class="cx__meta"><div><dt>Client</dt><dd>Estaz Esports</dd></div><div><dt>Role</dt><dd>Creative direction, brand &amp; UI</dd></div><div><dt>Timeline</dt><dd>2 months · 2026</dd></div><div><dt>Platform</dt><dd>Mobile-first web · English &amp; Arabic</dd></div></dl>
-    </div>
-    <ul class="cx__stats" style="--n:4"><li class="reveal"><b>10s</b><span>To see the game, the prize and how to join</span></li><li class="reveal"><b>375px</b><span>Every layout designed here first</span></li><li class="reveal"><b>2</b><span>Languages, English &amp; Arabic</span></li><li class="reveal"><b>2</b><span>Months, brief to hand-off</span></li></ul>
-  </section>
-  <figure class="cx__media"><img src="../../ggi/assets/hero.jpg" alt="GGI key visual: gamers in a neon city street facing a glowing GGI mark, with the line Where Champions Are Forged" width="2200" height="1193" fetchpriority="high"></figure>
+<main class="pj">
+  <aside class="pj__side"><div class="pj__stick">
+    <div class="pj__tags"><h1 id="title" class="pj__name">GGI</h1><span class="pj__cat">Games</span></div>
+    <p class="pj__lede">Good Game Iraq: a neon brand and a mobile-first tournament platform for Iraq&#x27;s competitive gamers.</p>
+    <dl class="pj__kv"><div><dt>Client</dt><dd>Estaz Esports</dd></div><div><dt>Role</dt><dd>Creative direction, brand &amp; UI</dd></div><div><dt>Timeline</dt><dd>2 months · 2026</dd></div><div><dt>Platform</dt><dd>Mobile-first web · English &amp; Arabic</dd></div></dl>
+    <ul class="pj__stats"><li><b>10s</b><span>To see the game, the prize and how to join</span></li><li><b>375px</b><span>Every layout designed here first</span></li><li><b>2</b><span>Languages, English &amp; Arabic</span></li><li><b>2</b><span>Months, brief to hand-off</span></li></ul>
+    <nav class="pj__toc" aria-label="Sections"><a href="#brief"><small>01</small>The brief</a><a href="#tone"><small>02</small>Tone</a><a href="#direction"><small>03</small>Creative direction</a><a href="#logo"><small>04</small>The logo</a><a href="#kv"><small>05</small>Key visual</a><a href="#system"><small>06</small>Brand system</a><a href="#platform"><small>07</small>The platform</a><a href="#social"><small>08</small>Social</a><a href="#reflection"><small>09</small>Reflection</a></nav>
+  </div></aside>
+  <div class="pj__main">
+    <figure class="cx__media"><img src="../../ggi/assets/hero.jpg" alt="GGI key visual: gamers in a neon city street facing a glowing GGI mark, with the line Where Champions Are Forged" width="2200" height="1193" fetchpriority="high"></figure>
+    
 
   <section class="cs" id="brief">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>01</b>The brief</span><div><h2>Iraq&#x27;s arena. No identity.</h2><p class="cs__sub">A big platform for Iraqi gamers. No visual voice yet.</p></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>01 · The brief</span></div>
+    <div class="cs__head reveal"><div><h2>Iraq&#x27;s arena. No identity.</h2><p class="cs__sub">A big platform for Iraqi gamers. No visual voice yet.</p></div></div>
     <div class="cs__body"></div>
     
     
     <div class="rows"></div>
   </section>
   <section class="cs" id="tone">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>02</b>Tone</span><div><h2>Loud, but never generic.</h2><p class="cs__sub">Before opening Figma, I wrote the creative brief: audience, voice, key messages and references. These rules came out of it.</p></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>02 · Tone</span></div>
+    <div class="cs__head reveal"><div><h2>Loud, but never generic.</h2><p class="cs__sub">Before opening Figma, I wrote the creative brief: audience, voice, key messages and references. These rules came out of it.</p></div></div>
     <div class="cs__body"></div>
     
     
     <div class="rows"></div>
   </section>
   <section class="cs" id="direction">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>03</b>Creative direction</span><div><h2>Two worlds, one arena.</h2></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>03 · Creative direction</span></div>
+    <div class="cs__head reveal"><div><h2>Two worlds, one arena.</h2></div></div>
     <div class="cs__body"></div>
     
     
     <div class="rows"><div class="row row--1"><figure class="m reveal" style="--ar:1.7828"><div class="m__box" style="aspect-ratio:2200 / 1234"><img src="../../ggi/assets/board.jpg" alt="Direction board: Cyberpunk styling plus Babylonian heritage becomes a Neo-Babylonian approach, with four visual directions" loading="lazy" width="2200" height="1234"></div><figcaption>Direction board</figcaption></figure></div><div class="row row--solo"><figure class="m reveal" style="--ar:1.2821"><div class="m__box" style="aspect-ratio:2200 / 1716"><img src="../../ggi/assets/moodboard.jpg" alt="Moodboard: Cyberpunk 2077 and Assassin’s Creed sites, HUD icons, Babylonian architecture and gold patterns" loading="lazy" width="2200" height="1716"></div><figcaption>Moodboard</figcaption></figure></div></div>
   </section>
   <section class="cs" id="logo">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>04</b>The logo</span><div><h2>Same mark. New voltage.</h2><p class="cs__sub">GGI already had a mark. I kept its geometry and gave it a new life: first in gold, then as neon, so it could glow on a dark city screen.</p></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>04 · The logo</span></div>
+    <div class="cs__head reveal"><div><h2>Same mark. New voltage.</h2><p class="cs__sub">GGI already had a mark. I kept its geometry and gave it a new life: first in gold, then as neon, so it could glow on a dark city screen.</p></div></div>
     <div class="cs__body"></div>
     
     
     <div class="rows"><div class="row row--1"><figure class="m reveal" style="--ar:1.8044"><div class="m__box" style="aspect-ratio:655 / 363"><img src="../../ggi/assets/logo-gold.jpg" alt="Gold 3D exploration of the GGI mark" loading="lazy" width="655" height="363"></div></figure></div><div class="row"><figure class="m reveal" style="--ar:1.9486;flex:1.9486 1 0%"><div class="m__box" style="aspect-ratio:2200 / 1129"><img src="../../ggi/assets/taglines.jpg" alt="Bilingual taglines: Sign In. Rise Up. Dominate. Enter the Arena. Earn the Throne. GGI: Where Champions Are Forged." loading="lazy" width="2200" height="1129"></div><figcaption>Taglines, EN &amp; AR</figcaption></figure><figure class="m reveal" style="--ar:1.7857;flex:1.7857 1 0%"><div class="m__box" style="aspect-ratio:2200 / 1232"><img src="../../ggi/assets/brand-kit.jpg" alt="Brand kit: taglines, gold diamond pattern, 3D logo set and ticker banners" loading="lazy" width="2200" height="1232"></div><figcaption>Brand kit</figcaption></figure></div></div>
   </section>
   <section class="cs" id="kv">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>05</b>Key visual</span><div><h2>Where champions are forged.</h2><p class="cs__sub">Four directions, from heritage gold to neon city. The neon city won: it felt like a place gamers would want to enter.</p></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>05 · Key visual</span></div>
+    <div class="cs__head reveal"><div><h2>Where champions are forged.</h2><p class="cs__sub">Four directions, from heritage gold to neon city. The neon city won: it felt like a place gamers would want to enter.</p></div></div>
     <div class="cs__body"></div>
     
     
     <div class="rows"><div class="sx reveal" style="--ar:1.7925"><div class="sx__stage"><img class="sx__img is-on" src="../../ggi/assets/kv-1.jpg" alt="Direction 01: gold mark in a purple and gold arena tunnel" loading="lazy" width="1728" height="964"><img class="sx__img" src="../../ggi/assets/kv-2.jpg" alt="Direction 02: golden temple arches with Enter the Arena, Earn the Throne" loading="lazy" width="1728" height="964"><img class="sx__img" src="../../ggi/assets/kv-3.jpg" alt="Direction 03: glowing gold mark on deep navy" loading="lazy" width="1728" height="964"><img class="sx__img" src="../../ggi/assets/kv-4.jpg" alt="Direction 04: neon city street with a holographic cyan mark" loading="lazy" width="1728" height="964"><img class="sx__img" src="../../ggi/assets/kv-final.jpg" alt="Final key visual: game characters walk toward the neon GGI mark under the line Where Champions Are Forged" loading="lazy" width="2059" height="1117"></div><div class="sx__tabs"><button class="sx__tab is-on" type="button" aria-pressed="true" data-note="An arena tunnel in purple and gold.">Direction 01</button><button class="sx__tab" type="button" aria-pressed="false" data-note="Golden arches: heritage first.">Direction 02</button><button class="sx__tab" type="button" aria-pressed="false" data-note="A glowing mark on deep navy.">Direction 03</button><button class="sx__tab" type="button" aria-pressed="false" data-note="A neon city with a holographic mark. The winner.">Direction 04</button><button class="sx__tab" type="button" aria-pressed="false" data-note="The final key visual: &quot;Where champions are forged.&quot;">Final</button></div><p class="sx__note">An arena tunnel in purple and gold.</p></div><div class="row row--1"><figure class="m reveal" style="--ar:2.6520"><div class="m__box" style="aspect-ratio:1692 / 638"><img src="../../ggi/assets/kv-sizes.jpg" alt="The key visual adapted to story, banner, mobile hero and desktop sizes" loading="lazy" width="1692" height="638"></div><figcaption>One visual, every size</figcaption></figure></div></div>
   </section>
   <section class="cs" id="system">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>06</b>Brand system</span><div><h2>Signal, not noise.</h2><p class="cs__sub">A near-black base with blue undertones. Neon used sparingly, as a signal. Sharp, modular parts that feel like a game HUD.</p></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>06 · Brand system</span></div>
+    <div class="cs__head reveal"><div><h2>Signal, not noise.</h2><p class="cs__sub">A near-black base with blue undertones. Neon used sparingly, as a signal. Sharp, modular parts that feel like a game HUD.</p></div></div>
     <div class="cs__body"></div>
     <div class="sws reveal" style="--n:3"><div class="sw" style="background:#0A0F1E;color:#fff"><span>Dark Base</span><small>#0A0F1E</small></div><div class="sw" style="background:#00E5FF;color:#111"><span>Neon Accent</span><small>#00E5FF</small></div><div class="sw" style="background:#0EA5E9;color:#fff"><span>Cool Blue</span><small>#0EA5E9</small></div></div>
     
     <div class="rows"><div class="row"><figure class="m reveal" style="--ar:1.2739;flex:1.2739 1 0%"><div class="m__box" style="aspect-ratio:2200 / 1727"><img src="../../ggi/assets/elements.jpg" alt="Design elements: colour palettes, diamond patterns, ticker banners and card options" loading="lazy" width="2200" height="1727"></div><figcaption>Design elements</figcaption></figure><figure class="m reveal" style="--ar:1.7241;flex:1.7241 1 0%"><div class="m__box" style="aspect-ratio:2200 / 1276"><img src="../../ggi/assets/icons.jpg" alt="Icon set and rank badges from Rookie to Platinum" loading="lazy" width="2200" height="1276"></div><figcaption>Icons &amp; ranks</figcaption></figure></div><div class="row row--solo"><figure class="m reveal" style="--ar:1.7828"><div class="m__box" style="aspect-ratio:2200 / 1234"><img src="../../ggi/assets/blocks.jpg" alt="Components and building blocks: card frames, buttons, tags and status chips" loading="lazy" width="2200" height="1234"></div><figcaption>Building blocks</figcaption></figure></div></div>
   </section>
   <section class="cs" id="platform">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>07</b>The platform</span><div><h2>Built for the phone.</h2><p class="cs__sub">Every element is a reusable Figma component, so the team can launch new tournaments, games and seasons without starting over.</p></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>07 · The platform</span></div>
+    <div class="cs__head reveal"><div><h2>Built for the phone.</h2><p class="cs__sub">Every element is a reusable Figma component, so the team can launch new tournaments, games and seasons without starting over.</p></div></div>
     <div class="cs__body"><ol class="pts" style="--n:4"><li class="reveal"><small>01</small><b>Mobile-first</b><p>Tested at 375px first. What works on a phone earns its place on desktop.</p></li><li class="reveal"><small>02</small><b>Hierarchy first</b><p>Drama comes from structure and contrast, not added effects.</p></li><li class="reveal"><small>03</small><b>Ten-second cards</b><p>Game, dates, mode, prize and one button. Nothing else.</p></li><li class="reveal"><small>04</small><b>Sponsors stay visible</b><p>Sponsor logos get their own layer, always readable.</p></li><li class="reveal"><small>05</small><b>Templates, not tickets</b><p>Fixed image ratios and banner templates keep uploads on-brand.</p></li><li class="reveal"><small>06</small><b>Proud, not literal</b><p>Iraqi identity lives in atmosphere and tone, not clichés.</p></li></ol></div>
     
     
     <div class="rows"><div class="sx reveal" style="--ar:1.7241"><div class="sx__stage"><img class="sx__img is-on" src="../../ggi/assets/ui-nav.jpg" alt="Headers, side menus and tournament cards in the dark HUD style" loading="lazy" width="2200" height="1276"><img class="sx__img" src="../../ggi/assets/ui-dash.jpg" alt="Notifications, player profile, rank card and tournament history" loading="lazy" width="2200" height="1276"><img class="sx__img" src="../../ggi/assets/ui-pages.jpg" alt="Homepage, tournament listing and detail layouts with key visuals" loading="lazy" width="2200" height="1276"><img class="sx__img" src="../../ggi/assets/ui-kv.jpg" alt="Tournament banners and podium visuals for champions and runners-up" loading="lazy" width="2200" height="1276"></div><div class="sx__tabs"><button class="sx__tab is-on" type="button" aria-pressed="true" data-note="Headers, menus and tournament cards.">Navigation</button><button class="sx__tab" type="button" aria-pressed="false" data-note="Profile, notifications, rank and history.">Player hub</button><button class="sx__tab" type="button" aria-pressed="false" data-note="Homepage, listings and detail pages.">Pages</button><button class="sx__tab" type="button" aria-pressed="false" data-note="Event banners and winner podiums.">Podiums</button></div><p class="sx__note">Headers, menus and tournament cards.</p></div></div>
   </section>
   <section class="cs" id="social">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>08</b>Social</span><div><h2>Two languages, one voice.</h2><p class="cs__sub">Posts and stories in English and Arabic, built from the same key visual.</p></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>08 · Social</span></div>
+    <div class="cs__head reveal"><div><h2>Two languages, one voice.</h2><p class="cs__sub">Posts and stories in English and Arabic, built from the same key visual.</p></div></div>
     <div class="cs__body"></div>
     
     
     <div class="rows"><div class="row"><figure class="m reveal" style="--ar:0.8000;flex:0.8000 1 0%"><div class="m__box" style="aspect-ratio:1080 / 1350"><img src="../../ggi/assets/post-en.jpg" alt="English social post: Where champions are forged. Enter the arena, earn the throne. Enter the fight." loading="lazy" width="1080" height="1350"></div><figcaption>Post · EN</figcaption></figure><figure class="m reveal" style="--ar:0.5625;flex:0.5625 1 0%"><div class="m__box" style="aspect-ratio:1080 / 1920"><img src="../../ggi/assets/story-ar.jpg" alt="Arabic story version of the key visual" loading="lazy" width="1080" height="1920"></div><figcaption>Story · AR</figcaption></figure></div></div>
   </section>
   <section class="cs" id="reflection">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>09</b>Reflection</span><div><h2>The brief is the deliverable.</h2></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>09 · Reflection</span></div>
+    <div class="cs__head reveal"><div><h2>The brief is the deliverable.</h2></div></div>
     <div class="cs__body"></div>
     
     
@@ -281,7 +362,11 @@
     </div>
     <a href="../bacardi-house-party/index.html" aria-hidden="true" tabindex="-1"><div class="nx__img"><img src="../../experiential/assets/bac-crowd.jpg" alt="" loading="lazy"></div></a>
   </nav>
+
+  </div>
 </main>
+
+<div class="sw3"><div class="sw3__menu" hidden><a href="../wallet-wars/index.html"><span>Wallet Wars</span><span>01</span></a><a href="../valorant-mobile/index.html"><span>Valorant Mobile</span><span>02</span></a><a href="../aew-rise-to-the-top/index.html"><span>AEW: Rise to the Top</span><span>03</span></a><a href="../brawl3rs/index.html"><span>Brawl3rs</span><span>04</span></a><a href="../ggi/index.html" aria-current="page"><span>GGI</span><span>05</span></a></div><button class="sw3__btn" type="button" aria-expanded="false" aria-label="Other Games projects"><span><small>Games</small><b>GGI</b></span><i aria-hidden="true">≡</i></button></div>
 
 <section id="contact" class="ct" aria-label="Contact">
   <span class="lbl"><span class="dot" aria-hidden="true"></span>Available for full-time, remote and new projects</span>
@@ -297,7 +382,6 @@
   <div class="ft-nav"><span>© 2026 Sunil Sebastian</span><nav aria-label="Footer"><a href="../index.html#work">Work</a><a href="../index.html#index">Index</a><a href="../index.html#about">About</a><a href="../showreel/index.html">Showreel</a></nav></div>
   <span class="wordmark" aria-hidden="true">Sunil Sebastian</span>
 </footer>
-
 
 <script>
 (() => {
@@ -339,6 +423,23 @@
       run();
     }, { threshold: .35 }).observe(sx);
   });
+})();</script>
+<script>(() => {
+  // Section list in the sticky column follows the scroll
+  const links = [...document.querySelectorAll('.pj__toc a')], secs = links.map(a => document.querySelector(a.hash));
+  const mark = () => {
+    let on = 0; secs.forEach((s, k) => { if (s.getBoundingClientRect().top < innerHeight * .4) on = k; });
+    links.forEach((a, k) => a.classList.toggle('is-on', k === on));
+  };
+  addEventListener('scroll', mark, { passive: true }); mark();
+  // Project switcher
+  const btn = document.querySelector('.sw3__btn'), menu = document.querySelector('.sw3__menu');
+  btn.addEventListener('click', () => { menu.hidden = !menu.hidden; btn.setAttribute('aria-expanded', !menu.hidden); });
+  addEventListener('click', e => { if (!e.target.closest('.sw3')) { menu.hidden = true; btn.setAttribute('aria-expanded', 'false'); } });
+  addEventListener('keydown', e => { if (e.key === 'Escape') { menu.hidden = true; btn.setAttribute('aria-expanded', 'false'); } });
+  // The switcher steps aside once the contact section is on screen
+  const sw = document.querySelector('.sw3'), ct = document.getElementById('contact');
+  if (ct) new IntersectionObserver(([e]) => { sw.classList.toggle('is-off', e.isIntersecting); if (e.isIntersecting) menu.hidden = true; }).observe(ct);
 })();</script>
 </body>
 </html>

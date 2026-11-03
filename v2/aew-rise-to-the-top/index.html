@@ -12,7 +12,7 @@
 <meta name="theme-color" content="#f3f1ec">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
 <style>
   :root {
     --paper: #f3f1ec; --paper-2: #e9e6df; --ink: #111110; --muted: #75736d; --line: rgba(17,17,16,.14);
@@ -166,71 +166,150 @@
   :root { --card-r: 16px; }
   .cx__media { margin: 0 var(--gutter); }
   .cx__media, .m__box, .sx__stage, .nx__img, .cmp, .web, .ba, .build, .wx--dark, .sws, .yt { border-radius: var(--card-r); overflow: hidden; isolation: isolate; }
+
+  /* V3 case study: sticky info on the left, the work on the right */
+  :root { --bg: var(--paper); --red: #df0c01; --yellow: #f6cb00; --mono: "Geist Mono", ui-monospace, Menlo, monospace; --tint: #e2dfff; }
+  body { background: var(--bg); }
+  .hd + .pj { padding-top: 96px; }
+  .k { display: inline-flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 13px; }
+  .k::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--red); }
+
+  .pj { display: grid; grid-template-columns: minmax(300px, 30%) minmax(0, 1fr); gap: clamp(28px, 3.4vw, 64px); padding: 92px var(--gutter) 0; }
+  .pj__stick { position: sticky; top: 84px; max-height: calc(100svh - 100px); overflow-y: auto; scrollbar-width: none; padding-bottom: 90px; }
+  .pj__stick::-webkit-scrollbar { display: none; }
+  .pj__tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pj__name, .pj__cat { margin: 0; display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 8px; font-family: var(--mono); font-size: 13px; font-weight: 500; letter-spacing: -.01em; }
+  .pj__name { background: var(--tint); }
+  .pj__name::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--red); }
+  .pj__cat { background: #fff; box-shadow: 0 0 0 1px var(--line); font-weight: 400; }
+  .pj__lede { margin: 22px 0 26px; font-size: clamp(24px, 2.1vw, 32px); line-height: 1.12; font-weight: 500; letter-spacing: -.035em; }
+  .pj__kv { margin: 0; border-top: 1px solid var(--ink); }
+  .pj__kv div { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line); font-family: var(--mono); font-size: 13px; }
+  .pj__kv dt { flex: none; color: var(--muted); }
+  .pj__kv dd { margin: 0; min-width: 0; text-align: right; overflow-wrap: anywhere; line-height: 1.45; }
+  .pj__stats { list-style: none; margin: 22px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .pj__stats li { padding: 14px; border-radius: 12px; background: #fff; box-shadow: 0 0 0 1px var(--line); }
+  .pj__stats b { display: block; font-size: clamp(20px, 1.7vw, 26px); font-weight: 600; letter-spacing: -.03em; }
+  .pj__stats span { font-size: 13px; color: var(--muted); }
+  .pj__toc { margin-top: 26px; display: grid; }
+  .pj__toc a { display: flex; align-items: center; gap: 10px; padding: 7px 0; font-family: var(--mono); font-size: 13px; color: var(--muted); transition: color .2s; }
+  .pj__toc a small { font-size: 11px; width: 18px; }
+  .pj__toc a::after { content: ""; width: 6px; height: 6px; margin-left: auto; border-radius: 50%; background: var(--red); opacity: 0; transition: opacity .2s; }
+  .pj__toc a:hover, .pj__toc a.is-on { color: var(--ink); }
+  .pj__toc a.is-on::after { opacity: 1; }
+  .pj__main { min-width: 0; padding-bottom: clamp(60px, 8vw, 120px); }
+  .pj__main .cx__media { margin: 0; }
+  .pj__main .cs { position: relative; padding: clamp(64px, 8vw, 120px) 0 0; }
+  .pj__chip { position: sticky; top: 84px; z-index: 5; height: 0; display: flex; justify-content: flex-end; align-items: flex-start; pointer-events: none; }
+  .pj__chip span { pointer-events: auto; display: inline-flex; align-items: center; line-height: 1.2; white-space: nowrap; padding: 8px 12px; border-radius: 8px; background: rgba(255,255,255,.92); backdrop-filter: blur(8px); box-shadow: 0 0 0 1px var(--line); font-family: var(--mono); font-size: 13px; }
+  .pj__main .cs__head { display: block; border-top: 0; padding: 0 clamp(120px, 16vw, 260px) 0 0; }
+  .pj__main .cs h2 { font-size: clamp(30px, 3.2vw, 52px); max-width: 20ch; }
+  .pj__main .cs__sub { max-width: 52ch; }
+  .pj__main .cs__body { margin-left: 0; }
+  .pj__main .pts { grid-template-columns: repeat(min(var(--n, 3), 3), minmax(0, 1fr)); }
+  .pj__main .quote { padding: clamp(90px, 11vw, 170px) 0; }
+  .pj__main .dl, .pj__main .nx { padding-left: 0; padding-right: 0; }
+  .pj__main .nx { padding-bottom: 0; }
+
+  /* Project switcher, bottom left */
+  .sw3 { position: fixed; left: var(--gutter); bottom: 16px; z-index: 30; transition: opacity .3s, transform .3s; }
+  .sw3.is-off { opacity: 0; transform: translateY(10px); pointer-events: none; }
+  .sw3__btn { appearance: none; border: 0; cursor: pointer; display: flex; align-items: center; gap: 22px; padding: 10px 12px 10px 14px; border-radius: 12px; background: rgba(255,255,255,.94); backdrop-filter: blur(10px); box-shadow: 0 0 0 1px var(--line), 0 10px 30px -14px rgba(0,0,0,.35); font: inherit; text-align: left; color: var(--ink); }
+  .sw3__btn small { display: flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .sw3__btn small::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--red); }
+  .sw3__btn b { display: block; margin-top: 2px; font-family: var(--mono); font-size: 13px; font-weight: 500; }
+  .sw3__btn i { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 8px; background: var(--bg); font-style: normal; }
+  .sw3__menu { position: absolute; left: 0; bottom: calc(100% + 8px); min-width: 260px; padding: 6px; border-radius: 14px; background: #fff; box-shadow: 0 0 0 1px var(--line), 0 18px 40px -18px rgba(0,0,0,.4); }
+  .sw3__menu[hidden] { display: none; }
+  .sw3__menu a { display: flex; justify-content: space-between; gap: 16px; padding: 10px 12px; border-radius: 9px; font-family: var(--mono); font-size: 13px; }
+  .sw3__menu a:hover, .sw3__menu a[aria-current] { background: var(--tint); }
+
+  @media (max-width: 900px) { .nv .hide-m { display: none; } }
+  @media (max-width: 1000px) {
+    .pj { grid-template-columns: 1fr; padding-top: 84px; }
+    .pj__stick { position: static; max-height: none; overflow: visible; padding-bottom: 8px; }
+    .pj__toc { display: none; }
+    .pj__main .cs__head { padding-right: 0; }
+    .pj__chip { position: static; height: auto; justify-content: flex-start; margin-bottom: 14px; }
+  }
+  @media (max-width: 600px) {
+    .nv { inset: 10px 10px auto; }
+    .pill--brand small, .pill--dark span { display: none; }
+    .pj__main .pts { grid-template-columns: 1fr; }
+    .sw3 { left: 10px; bottom: 10px; }
+  }
 </style>
 </head>
-<body>
+<body style="--tint:#d3e9ff">
 
 <header class="hd">
   <a class="hd__brand" href="../index.html"><img src="../../assets/icons/favicon-64.png" alt="" width="26" height="26">Sunil Sebastian</a>
   <nav aria-label="Main"><a href="../index.html#work">Work</a><a href="../index.html#index">Index</a><a href="../index.html#about">About</a><a class="hd__mail" href="#contact">Contact</a></nav>
 </header>
 
-<main>
-  <section class="cx" aria-labelledby="title">
-    <div class="cx__k lbl"><span>Games</span><span>03 / 05</span></div>
-    <h1 id="title">AEW: Rise to the Top</h1>
-    <div class="cx__info">
-      <p class="cx__lede">UI art for AEW’s official idle wrestling game: weekly live events, community features and an identity system for a huge licensed roster.</p>
-      <dl class="cx__meta"><div><dt>Contract</dt><dd>1 year</dd></div><div><dt>Role</dt><dd>UI artist</dd></div><div><dt>Tools</dt><dd>Photoshop, Illustrator, Figma</dd></div><div><dt>Genre</dt><dd>Idle simulation · East Side Games</dd></div></dl>
-    </div>
-    <ul class="cx__stats" style="--n:4"><li class="reveal"><b>100K+</b><span>Google Play downloads</span></li><li class="reveal"><b>4.5★</b><span>App Store rating (1.6K+)</span></li><li class="reveal"><b>Weekly</b><span>Live event cadence</span></li><li class="reveal"><b>90+</b><span>Story episodes shipped</span></li></ul>
-  </section>
-  <figure class="cx__media"><img src="../../aew-rise-to-the-top/assets/hero.jpg" alt="AEW Rise to the Top key art: the logo between two wrestlers" width="1356" height="684" fetchpriority="high"></figure>
+<main class="pj">
+  <aside class="pj__side"><div class="pj__stick">
+    <div class="pj__tags"><h1 id="title" class="pj__name">AEW: Rise to the Top</h1><span class="pj__cat">Games</span></div>
+    <p class="pj__lede">UI art for AEW’s official idle wrestling game: weekly live events, community features and an identity system for a huge licensed roster.</p>
+    <dl class="pj__kv"><div><dt>Contract</dt><dd>1 year</dd></div><div><dt>Role</dt><dd>UI artist</dd></div><div><dt>Tools</dt><dd>Photoshop, Illustrator, Figma</dd></div><div><dt>Genre</dt><dd>Idle simulation · East Side Games</dd></div></dl>
+    <ul class="pj__stats"><li><b>100K+</b><span>Google Play downloads</span></li><li><b>4.5★</b><span>App Store rating (1.6K+)</span></li><li><b>Weekly</b><span>Live event cadence</span></li><li><b>90+</b><span>Story episodes shipped</span></li></ul>
+    <nav class="pj__toc" aria-label="Sections"><a href="#overview"><small>01</small>Overview</a><a href="#challenge"><small>02</small>The challenge</a><a href="#events"><small>03</small>Live events UI &amp; UX</a><a href="#ux"><small>04</small>UX decisions</a><a href="#identities"><small>05</small>Wrestler identities</a><a href="#icons"><small>06</small>Iconography</a><a href="#outcome"><small>07</small>Outcome</a></nav>
+  </div></aside>
+  <div class="pj__main">
+    <figure class="cx__media"><img src="../../aew-rise-to-the-top/assets/hero.jpg" alt="AEW Rise to the Top key art: the logo between two wrestlers" width="1356" height="684" fetchpriority="high"></figure>
+    
 
   <section class="cs" id="overview">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>01</b>Overview</span><div><h2>Live events, community &amp; identity UI.</h2><p class="cs__sub">A new themed event. Every single week.</p></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>01 · Overview</span></div>
+    <div class="cs__head reveal"><div><h2>Live events, community &amp; identity UI.</h2><p class="cs__sub">A new themed event. Every single week.</p></div></div>
     <div class="cs__body"></div>
     
     
     <div class="rows"></div>
   </section>
   <section class="cs" id="challenge">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>02</b>The challenge</span><div><h2>A lot on screen. A licensed brand.</h2></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>02 · The challenge</span></div>
+    <div class="cs__head reveal"><div><h2>A lot on screen. A licensed brand.</h2></div></div>
     <div class="cs__body"><ol class="pts" style="--n:4"><li class="reveal"><small>01</small><b>Density</b><p>Progression, timers, milestones and rewards, without burying the core idle loop.</p></li><li class="reveal"><small>02</small><b>Cadence</b><p>A new event every week. Designs had to be templates, not one-offs.</p></li><li class="reveal"><small>03</small><b>Brand fidelity</b><p>Every wrestler is a real person. Every logo and background needed AEW approval.</p></li><li class="reveal"><small>04</small><b>Retention</b><p>Factions and chat had to make a single-player game feel social.</p></li></ol></div>
     
     
     <div class="rows"><div class="row row--1"><figure class="m reveal" style="--ar:1.5282"><div class="m__box" style="aspect-ratio:1600 / 1047"><img src="../../aew-rise-to-the-top/assets/challenge.jpg" alt="Game HUD screens, wrestler cards and event icons" loading="lazy" width="1600" height="1047"></div><figcaption>In-game HUD &amp; cards</figcaption></figure></div></div>
   </section>
   <section class="cs" id="events">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>03</b>Live events UI &amp; UX</span><div><h2>Every week, a mini product.</h2><p class="cs__sub">Each event has an entry point, intro, themed venue, milestone track, leaderboards and rewards. I designed a modular framework so every week looks new but plays familiar.</p></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>03 · Live events UI &amp; UX</span></div>
+    <div class="cs__head reveal"><div><h2>Every week, a mini product.</h2><p class="cs__sub">Each event has an entry point, intro, themed venue, milestone track, leaderboards and rewards. I designed a modular framework so every week looks new but plays familiar.</p></div></div>
     <div class="cs__body"><ul class="cs__chips reveal"><li>Rise to the Top ladders</li><li>House Rules road tours</li><li>Double or Nothing</li><li>Rampage show nights</li><li>Dynamite show nights</li></ul></div>
     
     
     <div class="rows"><div class="row row--1"><figure class="m reveal" style="--ar:1.7186"><div class="m__box" style="aspect-ratio:1600 / 931"><img src="../../aew-rise-to-the-top/assets/live-events.jpg" alt="Dynamite event screen with match card, plus event logos for Rise to the Top, House Rules Tour, Rampage and Dynamite" loading="lazy" width="1600" height="931"></div><figcaption>Event framework</figcaption></figure></div></div>
   </section>
   <section class="cs" id="ux">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>04</b>UX decisions</span><div><h2>Decisions that mattered.</h2></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>04 · UX decisions</span></div>
+    <div class="cs__head reveal"><div><h2>Decisions that mattered.</h2></div></div>
     <div class="cs__body"><ol class="pts" style="--n:4"><li class="reveal"><small>01</small><b>One-glance status</b><p>Time left, current milestone and unclaimed rewards on one HUD.</p></li><li class="reveal"><small>02</small><b>Progressive disclosure</b><p>Rules and scoring one tap deep. The default view says what to do next.</p></li><li class="reveal"><small>03</small><b>Reward transparency</b><p>Tracks preview every reward up front, answering feedback about opaque paywalls.</p></li><li class="reveal"><small>04</small><b>Template-first</b><p>Figma components meant a new event could be themed in days, not weeks.</p></li></ol></div>
     
     
     <div class="rows"><div class="row row--1"><figure class="m reveal" style="--ar:1.7900"><div class="m__box" style="aspect-ratio:716 / 400"><img src="../../aew-rise-to-the-top/assets/ux-ladder-full.jpg" alt="Rise to the Top ladder event key art" loading="lazy" width="716" height="400"></div><figcaption>Event identity</figcaption></figure></div><div class="row"><figure class="m reveal" style="--ar:1.1792;flex:1.1792 1 0%"><div class="m__box" style="aspect-ratio:658 / 558"><img src="../../aew-rise-to-the-top/assets/ux-match.jpg" alt="Match presentation in the ring with goals, boosts and timers" loading="lazy" width="658" height="558"></div><figcaption>Match view</figcaption></figure><figure class="m reveal" style="--ar:0.5714;flex:0.5714 1 0%"><div class="m__box" style="aspect-ratio:640 / 1120"><img src="../../aew-rise-to-the-top/assets/ux-venue.jpg" alt="Themed arena venue with stage, lighting and crowd" loading="lazy" width="640" height="1120"></div><figcaption>Themed venues</figcaption></figure><figure class="m reveal" style="--ar:1.2345;flex:1.2345 1 0%"><div class="m__box" style="aspect-ratio:716 / 580"><img src="../../aew-rise-to-the-top/assets/ux-stakes.jpg" alt="Escalating stakes: darker, hotter stage states for later milestones" loading="lazy" width="716" height="580"></div><figcaption>Escalating stakes</figcaption></figure></div><div class="row row--solo"><figure class="m reveal" style="--ar:1.9398"><div class="m__box" style="aspect-ratio:644 / 332"><img src="../../aew-rise-to-the-top/assets/ux-ring.jpg" alt="Reskinnable ring with swappable mats, ropes and aprons" loading="lazy" width="644" height="332"></div><figcaption>Reskinnable ring</figcaption></figure></div></div>
   </section>
   <section class="cs" id="identities">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>05</b>Wrestler identities</span><div><h2>Every wrestler, instantly known.</h2><p class="cs__sub">Logotypes that turn each wrestler&#x27;s real persona into the game&#x27;s visual language, plus backgrounds behind their cards, matches and story moments. Approved by AEW and the talent.</p></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>05 · Wrestler identities</span></div>
+    <div class="cs__head reveal"><div><h2>Every wrestler, instantly known.</h2><p class="cs__sub">Logotypes that turn each wrestler&#x27;s real persona into the game&#x27;s visual language, plus backgrounds behind their cards, matches and story moments. Approved by AEW and the talent.</p></div></div>
     <div class="cs__body"></div>
     
     
     <div class="rows"><div class="row row--1"><figure class="m reveal" style="--ar:1.6194"><div class="m__box" style="aspect-ratio:1600 / 988"><img src="../../aew-rise-to-the-top/assets/passes.jpg" alt="Backstage Pass screens themed for Dustin Rhodes, Bryan Danielson and Swerve Strickland" loading="lazy" width="1600" height="988"></div><figcaption>Backstage Pass · Season 1</figcaption></figure></div><div class="row"><figure class="m reveal" style="--ar:1.2085;flex:1.2085 1 0%"><div class="m__box" style="aspect-ratio:1600 / 1324"><img src="../../aew-rise-to-the-top/assets/backgrounds.jpg" alt="Background artwork paired with final cards for Saraya, Bryan Danielson and Julia Hart" loading="lazy" width="1600" height="1324"></div><figcaption>Background → card</figcaption></figure><figure class="m reveal" style="--ar:1.5922;flex:1.5922 1 0%"><div class="m__box" style="aspect-ratio:984 / 618"><img src="../../aew-rise-to-the-top/assets/logos.jpg" alt="Grid of wrestler logotypes: Sting, Dustin Rhodes, Swerve, FTR, Saraya and more" loading="lazy" width="984" height="618"></div><figcaption>Wrestler logotypes</figcaption></figure></div></div>
   </section>
   <section class="cs" id="icons">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>06</b>Iconography</span><div><h2>Readable at 24px.</h2><p class="cs__sub">One icon language for factions, match types, timers, rewards and the event economy. Hundreds of icons on a shared grid, stroke and silhouette system.</p></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>06 · Iconography</span></div>
+    <div class="cs__head reveal"><div><h2>Readable at 24px.</h2><p class="cs__sub">One icon language for factions, match types, timers, rewards and the event economy. Hundreds of icons on a shared grid, stroke and silhouette system.</p></div></div>
     <div class="cs__body"></div>
     
     
     <div class="rows"><div class="row row--1"><figure class="m reveal" style="--ar:1.3389"><div class="m__box" style="aspect-ratio:1600 / 1195"><img src="../../aew-rise-to-the-top/assets/icons.jpg" alt="Icon set: faction crests, match types, boosts, ranks, passes and currency counters" loading="lazy" width="1600" height="1195"></div><figcaption>Icon system</figcaption></figure></div><div class="row row--solo"><figure class="m reveal" style="--ar:0.9132"><div class="m__box" style="aspect-ratio:800 / 876"><img src="../../aew-rise-to-the-top/assets/badges.jpg" alt="Deal timers, daily and weekly PvP badges and star ratings" loading="lazy" width="800" height="876"></div><figcaption>Deals &amp; badges</figcaption></figure></div></div>
   </section>
   <section class="cs" id="outcome">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>07</b>Outcome</span><div><h2>Where it landed.</h2></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>07 · Outcome</span></div>
+    <div class="cs__head reveal"><div><h2>Where it landed.</h2></div></div>
     <div class="cs__body"><ol class="pts" style="--n:4"><li class="reveal"><small>01</small><b>4.5★ App Store</b><p>1.6K+ ratings and 100K+ Google Play downloads.</p></li><li class="reveal"><small>02</small><b>Dozens of events</b><p>Rise to the Top, House Rules Tour, Oh Canada, Collision, Full Gear and more.</p></li><li class="reveal"><small>03</small><b>Factions &amp; chat</b><p>A headline launch with leaderboards, custom prizes and a social layer.</p></li><li class="reveal"><small>04</small><b>Identity system</b><p>Every new wrestler slots into set logo, background and icon patterns.</p></li></ol></div>
     
     
@@ -246,7 +325,11 @@
     </div>
     <a href="../brawl3rs/index.html" aria-hidden="true" tabindex="-1"><div class="nx__img"><img src="../../brawl3rs/assets/trailer.jpg" alt="" loading="lazy"></div></a>
   </nav>
+
+  </div>
 </main>
+
+<div class="sw3"><div class="sw3__menu" hidden><a href="../wallet-wars/index.html"><span>Wallet Wars</span><span>01</span></a><a href="../valorant-mobile/index.html"><span>Valorant Mobile</span><span>02</span></a><a href="../aew-rise-to-the-top/index.html" aria-current="page"><span>AEW: Rise to the Top</span><span>03</span></a><a href="../brawl3rs/index.html"><span>Brawl3rs</span><span>04</span></a><a href="../ggi/index.html"><span>GGI</span><span>05</span></a></div><button class="sw3__btn" type="button" aria-expanded="false" aria-label="Other Games projects"><span><small>Games</small><b>AEW: Rise to the Top</b></span><i aria-hidden="true">≡</i></button></div>
 
 <section id="contact" class="ct" aria-label="Contact">
   <span class="lbl"><span class="dot" aria-hidden="true"></span>Available for full-time, remote and new projects</span>
@@ -263,7 +346,6 @@
   <span class="wordmark" aria-hidden="true">Sunil Sebastian</span>
 </footer>
 
-
 <script>
 (() => {
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
@@ -274,5 +356,22 @@
 })();
 </script>
 
+<script>(() => {
+  // Section list in the sticky column follows the scroll
+  const links = [...document.querySelectorAll('.pj__toc a')], secs = links.map(a => document.querySelector(a.hash));
+  const mark = () => {
+    let on = 0; secs.forEach((s, k) => { if (s.getBoundingClientRect().top < innerHeight * .4) on = k; });
+    links.forEach((a, k) => a.classList.toggle('is-on', k === on));
+  };
+  addEventListener('scroll', mark, { passive: true }); mark();
+  // Project switcher
+  const btn = document.querySelector('.sw3__btn'), menu = document.querySelector('.sw3__menu');
+  btn.addEventListener('click', () => { menu.hidden = !menu.hidden; btn.setAttribute('aria-expanded', !menu.hidden); });
+  addEventListener('click', e => { if (!e.target.closest('.sw3')) { menu.hidden = true; btn.setAttribute('aria-expanded', 'false'); } });
+  addEventListener('keydown', e => { if (e.key === 'Escape') { menu.hidden = true; btn.setAttribute('aria-expanded', 'false'); } });
+  // The switcher steps aside once the contact section is on screen
+  const sw = document.querySelector('.sw3'), ct = document.getElementById('contact');
+  if (ct) new IntersectionObserver(([e]) => { sw.classList.toggle('is-off', e.isIntersecting); if (e.isIntersecting) menu.hidden = true; }).observe(ct);
+})();</script>
 </body>
 </html>

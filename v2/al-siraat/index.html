@@ -12,7 +12,7 @@
 <meta name="theme-color" content="#f3f1ec">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
 <style>
   :root {
     --paper: #f3f1ec; --paper-2: #e9e6df; --ink: #111110; --muted: #75736d; --line: rgba(17,17,16,.14);
@@ -268,85 +268,166 @@
     .tc { overflow-x: auto; }
     .tc__track { animation: none; }
   }
+
+  /* V3 case study: sticky info on the left, the work on the right */
+  :root { --bg: var(--paper); --red: #df0c01; --yellow: #f6cb00; --mono: "Geist Mono", ui-monospace, Menlo, monospace; --tint: #e2dfff; }
+  body { background: var(--bg); }
+  .hd + .pj { padding-top: 96px; }
+  .k { display: inline-flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 13px; }
+  .k::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--red); }
+
+  .pj { display: grid; grid-template-columns: minmax(300px, 30%) minmax(0, 1fr); gap: clamp(28px, 3.4vw, 64px); padding: 92px var(--gutter) 0; }
+  .pj__stick { position: sticky; top: 84px; max-height: calc(100svh - 100px); overflow-y: auto; scrollbar-width: none; padding-bottom: 90px; }
+  .pj__stick::-webkit-scrollbar { display: none; }
+  .pj__tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pj__name, .pj__cat { margin: 0; display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 8px; font-family: var(--mono); font-size: 13px; font-weight: 500; letter-spacing: -.01em; }
+  .pj__name { background: var(--tint); }
+  .pj__name::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--red); }
+  .pj__cat { background: #fff; box-shadow: 0 0 0 1px var(--line); font-weight: 400; }
+  .pj__lede { margin: 22px 0 26px; font-size: clamp(24px, 2.1vw, 32px); line-height: 1.12; font-weight: 500; letter-spacing: -.035em; }
+  .pj__kv { margin: 0; border-top: 1px solid var(--ink); }
+  .pj__kv div { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line); font-family: var(--mono); font-size: 13px; }
+  .pj__kv dt { flex: none; color: var(--muted); }
+  .pj__kv dd { margin: 0; min-width: 0; text-align: right; overflow-wrap: anywhere; line-height: 1.45; }
+  .pj__stats { list-style: none; margin: 22px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .pj__stats li { padding: 14px; border-radius: 12px; background: #fff; box-shadow: 0 0 0 1px var(--line); }
+  .pj__stats b { display: block; font-size: clamp(20px, 1.7vw, 26px); font-weight: 600; letter-spacing: -.03em; }
+  .pj__stats span { font-size: 13px; color: var(--muted); }
+  .pj__toc { margin-top: 26px; display: grid; }
+  .pj__toc a { display: flex; align-items: center; gap: 10px; padding: 7px 0; font-family: var(--mono); font-size: 13px; color: var(--muted); transition: color .2s; }
+  .pj__toc a small { font-size: 11px; width: 18px; }
+  .pj__toc a::after { content: ""; width: 6px; height: 6px; margin-left: auto; border-radius: 50%; background: var(--red); opacity: 0; transition: opacity .2s; }
+  .pj__toc a:hover, .pj__toc a.is-on { color: var(--ink); }
+  .pj__toc a.is-on::after { opacity: 1; }
+  .pj__main { min-width: 0; padding-bottom: clamp(60px, 8vw, 120px); }
+  .pj__main .cx__media { margin: 0; }
+  .pj__main .cs { position: relative; padding: clamp(64px, 8vw, 120px) 0 0; }
+  .pj__chip { position: sticky; top: 84px; z-index: 5; height: 0; display: flex; justify-content: flex-end; align-items: flex-start; pointer-events: none; }
+  .pj__chip span { pointer-events: auto; display: inline-flex; align-items: center; line-height: 1.2; white-space: nowrap; padding: 8px 12px; border-radius: 8px; background: rgba(255,255,255,.92); backdrop-filter: blur(8px); box-shadow: 0 0 0 1px var(--line); font-family: var(--mono); font-size: 13px; }
+  .pj__main .cs__head { display: block; border-top: 0; padding: 0 clamp(120px, 16vw, 260px) 0 0; }
+  .pj__main .cs h2 { font-size: clamp(30px, 3.2vw, 52px); max-width: 20ch; }
+  .pj__main .cs__sub { max-width: 52ch; }
+  .pj__main .cs__body { margin-left: 0; }
+  .pj__main .pts { grid-template-columns: repeat(min(var(--n, 3), 3), minmax(0, 1fr)); }
+  .pj__main .quote { padding: clamp(90px, 11vw, 170px) 0; }
+  .pj__main .dl, .pj__main .nx { padding-left: 0; padding-right: 0; }
+  .pj__main .nx { padding-bottom: 0; }
+
+  /* Project switcher, bottom left */
+  .sw3 { position: fixed; left: var(--gutter); bottom: 16px; z-index: 30; transition: opacity .3s, transform .3s; }
+  .sw3.is-off { opacity: 0; transform: translateY(10px); pointer-events: none; }
+  .sw3__btn { appearance: none; border: 0; cursor: pointer; display: flex; align-items: center; gap: 22px; padding: 10px 12px 10px 14px; border-radius: 12px; background: rgba(255,255,255,.94); backdrop-filter: blur(10px); box-shadow: 0 0 0 1px var(--line), 0 10px 30px -14px rgba(0,0,0,.35); font: inherit; text-align: left; color: var(--ink); }
+  .sw3__btn small { display: flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .sw3__btn small::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--red); }
+  .sw3__btn b { display: block; margin-top: 2px; font-family: var(--mono); font-size: 13px; font-weight: 500; }
+  .sw3__btn i { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 8px; background: var(--bg); font-style: normal; }
+  .sw3__menu { position: absolute; left: 0; bottom: calc(100% + 8px); min-width: 260px; padding: 6px; border-radius: 14px; background: #fff; box-shadow: 0 0 0 1px var(--line), 0 18px 40px -18px rgba(0,0,0,.4); }
+  .sw3__menu[hidden] { display: none; }
+  .sw3__menu a { display: flex; justify-content: space-between; gap: 16px; padding: 10px 12px; border-radius: 9px; font-family: var(--mono); font-size: 13px; }
+  .sw3__menu a:hover, .sw3__menu a[aria-current] { background: var(--tint); }
+
+  @media (max-width: 900px) { .nv .hide-m { display: none; } }
+  @media (max-width: 1000px) {
+    .pj { grid-template-columns: 1fr; padding-top: 84px; }
+    .pj__stick { position: static; max-height: none; overflow: visible; padding-bottom: 8px; }
+    .pj__toc { display: none; }
+    .pj__main .cs__head { padding-right: 0; }
+    .pj__chip { position: static; height: auto; justify-content: flex-start; margin-bottom: 14px; }
+  }
+  @media (max-width: 600px) {
+    .nv { inset: 10px 10px auto; }
+    .pill--brand small, .pill--dark span { display: none; }
+    .pj__main .pts { grid-template-columns: 1fr; }
+    .sw3 { left: 10px; bottom: 10px; }
+  }
 </style>
 </head>
-<body>
+<body style="--tint:#d4f3e2">
 
 <header class="hd">
   <a class="hd__brand" href="../index.html"><img src="../../assets/icons/favicon-64.png" alt="" width="26" height="26">Sunil Sebastian</a>
   <nav aria-label="Main"><a href="../index.html#work">Work</a><a href="../index.html#index">Index</a><a href="../index.html#about">About</a><a class="hd__mail" href="#contact">Contact</a></nav>
 </header>
 
-<main>
-  <section class="cx" aria-labelledby="title">
-    <div class="cx__k lbl"><span>Product</span><span>02 / 03</span></div>
-    <h1 id="title">Al Siraat</h1>
-    <div class="cx__info">
-      <p class="cx__lede">Turning a crowded Quran utility app into an AI learning product, now used by over a million people.</p>
-      <dl class="cx__meta"><div><dt>Timeline</dt><dd>June 2024 → launch Dec 2025</dd></div><div><dt>Role</dt><dd>Head of Design</dd></div><div><dt>Team</dt><dd>4 designers, PM &amp; engineering</dd></div><div><dt>Scope</dt><dd>Strategy, UX/UI, logo &amp; identity</dd></div></dl>
-    </div>
-    <ul class="cx__stats" style="--n:4"><li class="reveal"><b>1M+</b><span>Google Play downloads</span></li><li class="reveal"><b>4.8★</b><span>Play rating · 4.4K reviews</span></li><li class="reveal"><b>4.7★</b><span>App Store rating</span></li><li class="reveal"><b>9</b><span>Languages</span></li></ul>
-  </section>
-  <figure class="cx__media"><img src="../../al-siraat/assets/brand-logo.jpg" alt="Al Siraat logo, app icons and the app on a phone home screen" width="1700" height="948" fetchpriority="high"></figure>
+<main class="pj">
+  <aside class="pj__side"><div class="pj__stick">
+    <div class="pj__tags"><h1 id="title" class="pj__name">Al Siraat</h1><span class="pj__cat">Product</span></div>
+    <p class="pj__lede">Turning a crowded Quran utility app into an AI learning product, now used by over a million people.</p>
+    <dl class="pj__kv"><div><dt>Timeline</dt><dd>June 2024 → launch Dec 2025</dd></div><div><dt>Role</dt><dd>Head of Design</dd></div><div><dt>Team</dt><dd>4 designers, PM &amp; engineering</dd></div><div><dt>Scope</dt><dd>Strategy, UX/UI, logo &amp; identity</dd></div></dl>
+    <ul class="pj__stats"><li><b>1M+</b><span>Google Play downloads</span></li><li><b>4.8★</b><span>Play rating · 4.4K reviews</span></li><li><b>4.7★</b><span>App Store rating</span></li><li><b>9</b><span>Languages</span></li></ul>
+    <nav class="pj__toc" aria-label="Sections"><a href="#context"><small>01</small>Context</a><a href="#problem"><small>02</small>The problem</a><a href="#research"><small>03</small>Research</a><a href="#process"><small>04</small>Process · 9D JAM</a><a href="#directions"><small>05</small>Four directions</a><a href="#converge"><small>06</small>The breakthrough</a><a href="#systems"><small>07</small>Three visual systems</a><a href="#brand"><small>08</small>Brand identity</a><a href="#motion"><small>09</small>The product, live</a><a href="#shipped"><small>10</small>What we shipped</a><a href="#reflections"><small>11</small>Reflections</a></nav>
+  </div></aside>
+  <div class="pj__main">
+    <figure class="cx__media"><img src="../../al-siraat/assets/brand-logo.jpg" alt="Al Siraat logo, app icons and the app on a phone home screen" width="1700" height="948" fetchpriority="high"></figure>
+    
 
   <section class="cs" id="context">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>01</b>Context</span><div><h2>Read less. Learn more.</h2><p class="cs__sub">Most Quran apps help you read. Very few help you learn.</p></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>01 · Context</span></div>
+    <div class="cs__head reveal"><div><h2>Read less. Learn more.</h2><p class="cs__sub">Most Quran apps help you read. Very few help you learn.</p></div></div>
     <div class="cs__body"></div>
     
     
     <div class="rows"><div class="row row--1"><figure class="m reveal" style="--ar:2.3053"><div class="m__box" style="aspect-ratio:1646 / 714"><img src="../../al-siraat/assets/screens.jpg" alt="Five redesigned Al Siraat app screens" loading="lazy" width="1646" height="714"></div><figcaption>The redesigned app</figcaption></figure></div></div>
   </section>
   <section class="cs" id="problem">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>02</b>The problem</span><div><h2>Everything. Optimised for nothing.</h2></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>02 · The problem</span></div>
+    <div class="cs__head reveal"><div><h2>Everything. Optimised for nothing.</h2></div></div>
     <div class="cs__body"></div>
     
     
     <div class="rows"></div>
   </section>
   <section class="cs" id="research">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>03</b>Research</span><div><h2>Learning from the AI-Quran space.</h2></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>03 · Research</span></div>
+    <div class="cs__head reveal"><div><h2>Learning from the AI-Quran space.</h2></div></div>
     <div class="cs__body"><ol class="pts" style="--n:3"><li class="reveal"><small>01</small><b>AI feedback wins</b><p>Recite, get corrected, improve. That loop brings people back daily.</p></li><li class="reveal"><small>02</small><b>Beginners need an on-ramp</b><p>Apps that started at full recitation lost first-time learners. An alphabet-first Qaida track was essential.</p></li><li class="reveal"><small>03</small><b>Progress drives habit</b><p>Streaks, mistake logs and trackers turn learning into a routine.</p></li></ol></div>
     
     
     <div class="rows"></div>
   </section>
   <section class="cs" id="process">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>04</b>Process · 9D JAM</span><div><h2>Design together. Decide fast.</h2><p class="cs__sub">A team design sprint: map old modules to the new structure, draw the flows, then sketches → wireframes → high fidelity.</p></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>04 · Process · 9D JAM</span></div>
+    <div class="cs__head reveal"><div><h2>Design together. Decide fast.</h2><p class="cs__sub">A team design sprint: map old modules to the new structure, draw the flows, then sketches → wireframes → high fidelity.</p></div></div>
     <div class="cs__body"></div>
     
     
     <div class="rows"><div class="row row--1"><figure class="m reveal" style="--ar:1.7774"><div class="m__box" style="aspect-ratio:1852 / 1042"><img src="../../al-siraat/assets/flow.jpg" alt="9D JAM flow chart and wireframes mapping old modules to the new structure" loading="lazy" width="1852" height="1042"></div><figcaption>Flows &amp; wireframes</figcaption></figure></div><div class="row row--solo"><figure class="m reveal" style="--ar:1.7759"><div class="m__box" style="aspect-ratio:1062 / 598"><img src="../../al-siraat/assets/moodboard.jpg" alt="Team moodboard of learning, prayer and fintech apps" loading="lazy" width="1062" height="598"></div><figcaption>Moodboard</figcaption></figure></div><div class="row row--1"><figure class="m reveal" style="--ar:2.3447"><div class="m__box" style="aspect-ratio:2000 / 853"><img src="../../al-siraat/assets/jam-board.jpg" alt="New module structure and prioritisation alongside the team&#x27;s design explorations" loading="lazy" width="2000" height="853"></div><figcaption>Modules &amp; prioritisation</figcaption></figure></div></div>
   </section>
   <section class="cs" id="directions">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>05</b>Four directions</span><div><h2>Options, side by side.</h2><p class="cs__sub">Each designer explored one direction for the new home. Seeing them together made the trade-offs obvious.</p></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>05 · Four directions</span></div>
+    <div class="cs__head reveal"><div><h2>Options, side by side.</h2><p class="cs__sub">Each designer explored one direction for the new home. Seeing them together made the trade-offs obvious.</p></div></div>
     <div class="cs__body"></div>
     
     
     <div class="rows"><div class="sx reveal" style="--ar:1.7816"><div class="sx__stage"><img class="sx__img is-on" src="../../al-siraat/assets/dir-1.jpg" alt="Dashboard direction 1: clean cards with a green accent" loading="lazy" width="930" height="522"><img class="sx__img" src="../../al-siraat/assets/dir-2.jpg" alt="Dashboard direction 2: warm gold with quick actions" loading="lazy" width="930" height="522"><img class="sx__img" src="../../al-siraat/assets/dir-4.jpg" alt="Dashboard direction 3: photographic with soft gradient cards" loading="lazy" width="930" height="522"><img class="sx__img" src="../../al-siraat/assets/dir-3.jpg" alt="Dashboard direction 4: deep green with mosque imagery" loading="lazy" width="930" height="522"></div><div class="sx__tabs"><button class="sx__tab is-on" type="button" aria-pressed="true" data-note="Clean, card-based, green accent.">Option 01</button><button class="sx__tab" type="button" aria-pressed="false" data-note="Warm gold, quick-action driven.">Option 02</button><button class="sx__tab" type="button" aria-pressed="false" data-note="Photographic, soft gradient cards.">Option 03</button><button class="sx__tab" type="button" aria-pressed="false" data-note="Deep green, mosque imagery, tool-first.">Option 04</button></div><p class="sx__note">Clean, card-based, green accent.</p></div></div>
   </section>
   <section class="cs" id="converge">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>06</b>The breakthrough</span><div><h2>&quot;Salam! Learn with AI.&quot;</h2><p class="cs__sub">We stopped treating home as a tool launcher. Qaida and Quran learning became the two hero cards; worship tools moved to a supporting layer. A dozen layouts later, it clicked.</p></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>06 · The breakthrough</span></div>
+    <div class="cs__head reveal"><div><h2>&quot;Salam! Learn with AI.&quot;</h2><p class="cs__sub">We stopped treating home as a tool launcher. Qaida and Quran learning became the two hero cards; worship tools moved to a supporting layer. A dozen layouts later, it clicked.</p></div></div>
     <div class="cs__body"></div>
     
     
     <div class="rows"><div class="row row--1"><figure class="m reveal" style="--ar:1.7778"><div class="m__box" style="aspect-ratio:2000 / 1125"><img src="../../al-siraat/assets/converge.jpg" alt="Iterations of the learning-first dashboard from grayscale to full colour" loading="lazy" width="2000" height="1125"></div><figcaption>From grayscale to colour</figcaption></figure></div></div>
   </section>
   <section class="cs" id="systems">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>07</b>Three visual systems</span><div><h2>Compare systems, not vibes.</h2><p class="cs__sub">The leading direction, built three times with its own palette, gradients and type, applied to the same screens.</p></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>07 · Three visual systems</span></div>
+    <div class="cs__head reveal"><div><h2>Compare systems, not vibes.</h2><p class="cs__sub">The leading direction, built three times with its own palette, gradients and type, applied to the same screens.</p></div></div>
     <div class="cs__body"></div>
     
     
     <div class="rows"><div class="sx reveal" style="--ar:1.7793"><div class="sx__stage"><img class="sx__img is-on" src="../../al-siraat/assets/sys-1.jpg" alt="Style guide 1: midnight navy and teal" loading="lazy" width="1032" height="580"><img class="sx__img" src="../../al-siraat/assets/sys-2.jpg" alt="Style guide 2: orange and green" loading="lazy" width="1032" height="580"><img class="sx__img" src="../../al-siraat/assets/sys-3.jpg" alt="Style guide 3: green and gold" loading="lazy" width="1032" height="580"><img class="sx__img" src="../../al-siraat/assets/sys-final.jpg" alt="The final summary screens presented to stakeholders" loading="lazy" width="1032" height="580"></div><div class="sx__tabs"><button class="sx__tab is-on" type="button" aria-pressed="true" data-note="Midnight navy &amp; teal, set in Lato.">System 01</button><button class="sx__tab" type="button" aria-pressed="false" data-note="Orange &amp; green, set in Plus Jakarta Sans.">System 02</button><button class="sx__tab" type="button" aria-pressed="false" data-note="Green &amp; gold, set in Urbanist.">System 03</button><button class="sx__tab" type="button" aria-pressed="false" data-note="The summary presented to stakeholders.">Final</button></div><p class="sx__note">Midnight navy &amp; teal, set in Lato.</p></div></div>
   </section>
   <section class="cs" id="brand">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>08</b>Brand identity</span><div><h2>Al Siraat. The straight path.</h2><p class="cs__sub">Not a collection of tools. Guidance along a path.</p></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>08 · Brand identity</span></div>
+    <div class="cs__head reveal"><div><h2>Al Siraat. The straight path.</h2><p class="cs__sub">Not a collection of tools. Guidance along a path.</p></div></div>
     <div class="cs__body"></div>
     
     
     <div class="rows"><div class="row row--1"><figure class="m reveal" style="--ar:1.4710"><div class="m__box" style="aspect-ratio:1874 / 1274"><img src="../../al-siraat/assets/brand-board.jpg" alt="Al Siraat identity board: icon explorations, app icon on a phone, and the mark in light and dark" loading="lazy" width="1874" height="1274"></div><figcaption>Identity explorations</figcaption></figure></div></div>
   </section>
   <section class="cs" id="motion">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>09</b>The product, live</span><div><h2>Recite. Get corrected.</h2><p class="cs__sub">The real app flows, as they run in the shipped product: pick a surah, track your progress, then recite while the AI listens.</p></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>09 · The product, live</span></div>
+    <div class="cs__head reveal"><div><h2>Recite. Get corrected.</h2><p class="cs__sub">The real app flows, as they run in the shipped product: pick a surah, track your progress, then recite while the AI listens.</p></div></div>
     <div class="cs__body"></div>
     
     
@@ -360,14 +441,16 @@
       </div></div><div class="row row--1"><figure class="m reveal" style="--ar:1.7778"><div class="m__box" style="aspect-ratio:1280 / 720"><video src="../../al-siraat/assets/launch-film.mp4" poster="../../al-siraat/assets/launch-film.jpg" controls playsinline preload="none" aria-label="Al Siraat launch film"></video></div></figure></div><div class="row row--1"><figure class="m reveal" style="--ar:1.7778"><div class="m__box" style="aspect-ratio:1280 / 720"><video src="../../al-siraat/assets/product-film.mp4" poster="../../al-siraat/assets/product-film.jpg" controls playsinline preload="none" aria-label="Al Siraat product film: learners using the app at home"></video></div></figure></div></div>
   </section>
   <section class="cs" id="shipped">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>10</b>What we shipped</span><div><h2>A personal AI tutor. 24/7.</h2><p class="cs__sub">Launched on a freemium model and still shipping: audio while learning, Qaida articulations, Ramadan theming, home-screen widgets and more.</p></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>10 · What we shipped</span></div>
+    <div class="cs__head reveal"><div><h2>A personal AI tutor. 24/7.</h2><p class="cs__sub">Launched on a freemium model and still shipping: audio while learning, Qaida articulations, Ramadan theming, home-screen widgets and more.</p></div></div>
     <div class="cs__body"><ol class="pts" style="--n:4"><li class="reveal"><small>01</small><b>Real-time mistake detection</b><p>The AI listens to recitation, highlights errors instantly and corrects on the spot.</p></li><li class="reveal"><small>02</small><b>Pronunciation &amp; Tajweed</b><p>Feedback on pronunciation and Tajweed while you recite.</p></li><li class="reveal"><small>03</small><b>Interactive AI Qaida</b><p>A beginner track from Arabic letters and sounds up to fluent reading.</p></li><li class="reveal"><small>04</small><b>Adaptive lessons &amp; rewards</b><p>AI-tailored paths, daily limits that build consistency, progress insights and rewards.</p></li><li class="reveal"><small>05</small><b>World-renowned Qari audio</b><p>Listen and compare against masters like Abdul-Basit and Al-Sudais, with a mistake log.</p></li><li class="reveal"><small>06</small><b>Essential Islamic tools</b><p>Prayer times, Qibla, Tasbih, calendar, Duas and Azkar. Kept, now decluttered.</p></li></ol></div>
     
     
     <div class="rows"><div class="wx wx--dark reveal"><div class="mots"><article class="mot reveal"><div class="lottie lottie--icon" data-anim="lessonPlans" aria-hidden="true"></div><b>Adaptive lesson plans</b><p>Learn at your own pace with AI-tailored content.</p></article><article class="mot reveal"><div class="lottie lottie--icon" data-anim="reward" aria-hidden="true"></div><b>Earn rewards</b><p>Daily progress unlocks badges and streaks.</p></article><article class="mot reveal"><div class="lottie lottie--icon" data-anim="progress" aria-hidden="true"></div><b>Progress insights</b><p>See growth and focus where it matters.</p></article><article class="mot reveal"><div class="lottie lottie--icon" data-anim="feedback" aria-hidden="true"></div><b>Smart feedback</b><p>Real-time correction from Al Siraat AI.</p></article></div></div><div class="subh reveal"><span class="lbl">What Al Siraat can do</span><span class="subh__d">Learning first, tools second</span></div><div class="cando"><article class="cd cd--quran reveal"><div class="cd__txt"><b>Quran Learning</b><p>Set up your personalized learning path with AI.</p></div><div class="cd__art"><div class="lottie cd__blob" data-anim="quran-card" aria-hidden="true"></div><img class="cd__fg" src="../../al-siraat/assets/quran-calligraphy.svg" alt="" width="265" height="234" loading="lazy"></div></article><article class="cd cd--ai reveal"><div class="cd__art cd__art--ui"><div class="lottie" data-anim="ai-assistant" role="img" aria-label="Qaida lesson: a progress bar reaches 82% and the app says Good job, you’re mastering this quickly"></div></div><div class="cd__txt cd__txt--c"><b>AI Learning Assistant</b><p>Recite, get corrected, keep going.</p></div></article><article class="cd cd--qaida reveal"><div class="cd__txt"><b>Qaida Learning</b><p>Start from the letters and build up to fluent reading.</p></div><div class="cd__art"><div class="lottie cd__blob" data-anim="qaida-card" aria-hidden="true"></div><img class="cd__fg" src="../../al-siraat/assets/qaida-letters.svg" alt="" width="265" height="241" loading="lazy"></div></article></div><div class="subh reveal"><span class="lbl">Learn anytime, anywhere</span><span class="subh__d">Prayer times, Qibla, Tasbeeh, Duas and more</span></div><div class="tc reveal" role="region" aria-label="Islamic tools in Al Siraat"><div class="tc__track"><figure class="tc__card"><img src="../../al-siraat/assets/tool-quran.png" alt="Quran feature card" loading="lazy" width="375" height="516"></figure><figure class="tc__card"><img src="../../al-siraat/assets/tool-qaida.png" alt="Qaida feature card" loading="lazy" width="375" height="516"></figure><figure class="tc__card"><img src="../../al-siraat/assets/tool-prayer.png" alt="Prayer times feature card" loading="lazy" width="376" height="512"></figure><figure class="tc__card"><img src="../../al-siraat/assets/tool-qibla.png" alt="Qibla feature card" loading="lazy" width="375" height="512"></figure><figure class="tc__card"><img src="../../al-siraat/assets/tool-tasbih.png" alt="Tasbeeh feature card" loading="lazy" width="374" height="512"></figure><figure class="tc__card"><img src="../../al-siraat/assets/tool-dua-azkar.png" alt="Dua &amp; Azkar feature card" loading="lazy" width="375" height="512"></figure><figure class="tc__card"><img src="../../al-siraat/assets/tool-calendar.png" alt="Hijri calendar feature card" loading="lazy" width="374" height="512"></figure><figure class="tc__card" aria-hidden="true"><img src="../../al-siraat/assets/tool-quran.png" alt="" loading="lazy" width="375" height="516"></figure><figure class="tc__card" aria-hidden="true"><img src="../../al-siraat/assets/tool-qaida.png" alt="" loading="lazy" width="375" height="516"></figure><figure class="tc__card" aria-hidden="true"><img src="../../al-siraat/assets/tool-prayer.png" alt="" loading="lazy" width="376" height="512"></figure><figure class="tc__card" aria-hidden="true"><img src="../../al-siraat/assets/tool-qibla.png" alt="" loading="lazy" width="375" height="512"></figure><figure class="tc__card" aria-hidden="true"><img src="../../al-siraat/assets/tool-tasbih.png" alt="" loading="lazy" width="374" height="512"></figure><figure class="tc__card" aria-hidden="true"><img src="../../al-siraat/assets/tool-dua-azkar.png" alt="" loading="lazy" width="375" height="512"></figure><figure class="tc__card" aria-hidden="true"><img src="../../al-siraat/assets/tool-calendar.png" alt="" loading="lazy" width="374" height="512"></figure></div></div></div>
   </section>
   <section class="cs" id="reflections">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>11</b>Reflections</span><div><h2>What it taught me.</h2></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>11 · Reflections</span></div>
+    <div class="cs__head reveal"><div><h2>What it taught me.</h2></div></div>
     <div class="cs__body"><ol class="pts" style="--n:4"><li class="reveal"><small>01</small><b>Subtraction is a strategy.</b><p>The biggest decision wasn&#x27;t adding AI. It was demoting a dozen features so two learning journeys could lead.</p></li><li class="reveal"><small>02</small><b>Prioritisation is a deliverable.</b><p>The P1 / P2 / P3 module structure aligned design, engineering and business, and the shipped product followed it.</p></li><li class="reveal"><small>03</small><b>Options beat opinions.</b><p>Four dashboard directions and three full style systems turned debates into structured decisions.</p></li><li class="reveal"><small>04</small><b>A rename is a product decision.</b><p>&quot;Al Siraat, the straight path&quot; states the product&#x27;s promise in two words.</p></li></ol></div>
     
     
@@ -383,7 +466,11 @@
     </div>
     <a href="../imagination-dls/index.html" aria-hidden="true" tabindex="-1"><div class="nx__img"><img src="../../imagination-dls/assets/hero.jpg" alt="" loading="lazy"></div></a>
   </nav>
+
+  </div>
 </main>
+
+<div class="sw3"><div class="sw3__menu" hidden><a href="../coca-cola-umm/index.html"><span>Coca-Cola UMM</span><span>01</span></a><a href="../al-siraat/index.html" aria-current="page"><span>Al Siraat</span><span>02</span></a><a href="../imagination-dls/index.html"><span>Imagination DLS</span><span>03</span></a></div><button class="sw3__btn" type="button" aria-expanded="false" aria-label="Other Product projects"><span><small>Product</small><b>Al Siraat</b></span><i aria-hidden="true">≡</i></button></div>
 
 <section id="contact" class="ct" aria-label="Contact">
   <span class="lbl"><span class="dot" aria-hidden="true"></span>Available for full-time, remote and new projects</span>
@@ -399,7 +486,6 @@
   <div class="ft-nav"><span>© 2026 Sunil Sebastian</span><nav aria-label="Footer"><a href="../index.html#work">Work</a><a href="../index.html#index">Index</a><a href="../index.html#about">About</a><a href="../showreel/index.html">Showreel</a></nav></div>
   <span class="wordmark" aria-hidden="true">Sunil Sebastian</span>
 </footer>
-
 
 <script>
 (() => {
@@ -456,6 +542,23 @@
       run();
     }, { threshold: .35 }).observe(sx);
   });
+})();</script>
+<script>(() => {
+  // Section list in the sticky column follows the scroll
+  const links = [...document.querySelectorAll('.pj__toc a')], secs = links.map(a => document.querySelector(a.hash));
+  const mark = () => {
+    let on = 0; secs.forEach((s, k) => { if (s.getBoundingClientRect().top < innerHeight * .4) on = k; });
+    links.forEach((a, k) => a.classList.toggle('is-on', k === on));
+  };
+  addEventListener('scroll', mark, { passive: true }); mark();
+  // Project switcher
+  const btn = document.querySelector('.sw3__btn'), menu = document.querySelector('.sw3__menu');
+  btn.addEventListener('click', () => { menu.hidden = !menu.hidden; btn.setAttribute('aria-expanded', !menu.hidden); });
+  addEventListener('click', e => { if (!e.target.closest('.sw3')) { menu.hidden = true; btn.setAttribute('aria-expanded', 'false'); } });
+  addEventListener('keydown', e => { if (e.key === 'Escape') { menu.hidden = true; btn.setAttribute('aria-expanded', 'false'); } });
+  // The switcher steps aside once the contact section is on screen
+  const sw = document.querySelector('.sw3'), ct = document.getElementById('contact');
+  if (ct) new IntersectionObserver(([e]) => { sw.classList.toggle('is-off', e.isIntersecting); if (e.isIntersecting) menu.hidden = true; }).observe(ct);
 })();</script>
 </body>
 </html>

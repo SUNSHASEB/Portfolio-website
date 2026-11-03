@@ -12,7 +12,7 @@
 <meta name="theme-color" content="#f3f1ec">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
 <style>
   :root {
     --paper: #f3f1ec; --paper-2: #e9e6df; --ink: #111110; --muted: #75736d; --line: rgba(17,17,16,.14);
@@ -166,43 +166,118 @@
   :root { --card-r: 16px; }
   .cx__media { margin: 0 var(--gutter); }
   .cx__media, .m__box, .sx__stage, .nx__img, .cmp, .web, .ba, .build, .wx--dark, .sws, .yt { border-radius: var(--card-r); overflow: hidden; isolation: isolate; }
+
+  /* V3 case study: sticky info on the left, the work on the right */
+  :root { --bg: var(--paper); --red: #df0c01; --yellow: #f6cb00; --mono: "Geist Mono", ui-monospace, Menlo, monospace; --tint: #e2dfff; }
+  body { background: var(--bg); }
+  .hd + .pj { padding-top: 96px; }
+  .k { display: inline-flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 13px; }
+  .k::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--red); }
+
+  .pj { display: grid; grid-template-columns: minmax(300px, 30%) minmax(0, 1fr); gap: clamp(28px, 3.4vw, 64px); padding: 92px var(--gutter) 0; }
+  .pj__stick { position: sticky; top: 84px; max-height: calc(100svh - 100px); overflow-y: auto; scrollbar-width: none; padding-bottom: 90px; }
+  .pj__stick::-webkit-scrollbar { display: none; }
+  .pj__tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pj__name, .pj__cat { margin: 0; display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 8px; font-family: var(--mono); font-size: 13px; font-weight: 500; letter-spacing: -.01em; }
+  .pj__name { background: var(--tint); }
+  .pj__name::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--red); }
+  .pj__cat { background: #fff; box-shadow: 0 0 0 1px var(--line); font-weight: 400; }
+  .pj__lede { margin: 22px 0 26px; font-size: clamp(24px, 2.1vw, 32px); line-height: 1.12; font-weight: 500; letter-spacing: -.035em; }
+  .pj__kv { margin: 0; border-top: 1px solid var(--ink); }
+  .pj__kv div { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line); font-family: var(--mono); font-size: 13px; }
+  .pj__kv dt { flex: none; color: var(--muted); }
+  .pj__kv dd { margin: 0; min-width: 0; text-align: right; overflow-wrap: anywhere; line-height: 1.45; }
+  .pj__stats { list-style: none; margin: 22px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .pj__stats li { padding: 14px; border-radius: 12px; background: #fff; box-shadow: 0 0 0 1px var(--line); }
+  .pj__stats b { display: block; font-size: clamp(20px, 1.7vw, 26px); font-weight: 600; letter-spacing: -.03em; }
+  .pj__stats span { font-size: 13px; color: var(--muted); }
+  .pj__toc { margin-top: 26px; display: grid; }
+  .pj__toc a { display: flex; align-items: center; gap: 10px; padding: 7px 0; font-family: var(--mono); font-size: 13px; color: var(--muted); transition: color .2s; }
+  .pj__toc a small { font-size: 11px; width: 18px; }
+  .pj__toc a::after { content: ""; width: 6px; height: 6px; margin-left: auto; border-radius: 50%; background: var(--red); opacity: 0; transition: opacity .2s; }
+  .pj__toc a:hover, .pj__toc a.is-on { color: var(--ink); }
+  .pj__toc a.is-on::after { opacity: 1; }
+  .pj__main { min-width: 0; padding-bottom: clamp(60px, 8vw, 120px); }
+  .pj__main .cx__media { margin: 0; }
+  .pj__main .cs { position: relative; padding: clamp(64px, 8vw, 120px) 0 0; }
+  .pj__chip { position: sticky; top: 84px; z-index: 5; height: 0; display: flex; justify-content: flex-end; align-items: flex-start; pointer-events: none; }
+  .pj__chip span { pointer-events: auto; display: inline-flex; align-items: center; line-height: 1.2; white-space: nowrap; padding: 8px 12px; border-radius: 8px; background: rgba(255,255,255,.92); backdrop-filter: blur(8px); box-shadow: 0 0 0 1px var(--line); font-family: var(--mono); font-size: 13px; }
+  .pj__main .cs__head { display: block; border-top: 0; padding: 0 clamp(120px, 16vw, 260px) 0 0; }
+  .pj__main .cs h2 { font-size: clamp(30px, 3.2vw, 52px); max-width: 20ch; }
+  .pj__main .cs__sub { max-width: 52ch; }
+  .pj__main .cs__body { margin-left: 0; }
+  .pj__main .pts { grid-template-columns: repeat(min(var(--n, 3), 3), minmax(0, 1fr)); }
+  .pj__main .quote { padding: clamp(90px, 11vw, 170px) 0; }
+  .pj__main .dl, .pj__main .nx { padding-left: 0; padding-right: 0; }
+  .pj__main .nx { padding-bottom: 0; }
+
+  /* Project switcher, bottom left */
+  .sw3 { position: fixed; left: var(--gutter); bottom: 16px; z-index: 30; transition: opacity .3s, transform .3s; }
+  .sw3.is-off { opacity: 0; transform: translateY(10px); pointer-events: none; }
+  .sw3__btn { appearance: none; border: 0; cursor: pointer; display: flex; align-items: center; gap: 22px; padding: 10px 12px 10px 14px; border-radius: 12px; background: rgba(255,255,255,.94); backdrop-filter: blur(10px); box-shadow: 0 0 0 1px var(--line), 0 10px 30px -14px rgba(0,0,0,.35); font: inherit; text-align: left; color: var(--ink); }
+  .sw3__btn small { display: flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .sw3__btn small::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--red); }
+  .sw3__btn b { display: block; margin-top: 2px; font-family: var(--mono); font-size: 13px; font-weight: 500; }
+  .sw3__btn i { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 8px; background: var(--bg); font-style: normal; }
+  .sw3__menu { position: absolute; left: 0; bottom: calc(100% + 8px); min-width: 260px; padding: 6px; border-radius: 14px; background: #fff; box-shadow: 0 0 0 1px var(--line), 0 18px 40px -18px rgba(0,0,0,.4); }
+  .sw3__menu[hidden] { display: none; }
+  .sw3__menu a { display: flex; justify-content: space-between; gap: 16px; padding: 10px 12px; border-radius: 9px; font-family: var(--mono); font-size: 13px; }
+  .sw3__menu a:hover, .sw3__menu a[aria-current] { background: var(--tint); }
+
+  @media (max-width: 900px) { .nv .hide-m { display: none; } }
+  @media (max-width: 1000px) {
+    .pj { grid-template-columns: 1fr; padding-top: 84px; }
+    .pj__stick { position: static; max-height: none; overflow: visible; padding-bottom: 8px; }
+    .pj__toc { display: none; }
+    .pj__main .cs__head { padding-right: 0; }
+    .pj__chip { position: static; height: auto; justify-content: flex-start; margin-bottom: 14px; }
+  }
+  @media (max-width: 600px) {
+    .nv { inset: 10px 10px auto; }
+    .pill--brand small, .pill--dark span { display: none; }
+    .pj__main .pts { grid-template-columns: 1fr; }
+    .sw3 { left: 10px; bottom: 10px; }
+  }
 </style>
 </head>
-<body>
+<body style="--tint:#e3efc9">
 
 <header class="hd">
   <a class="hd__brand" href="../index.html"><img src="../../assets/icons/favicon-64.png" alt="" width="26" height="26">Sunil Sebastian</a>
   <nav aria-label="Main"><a href="../index.html#work">Work</a><a href="../index.html#index">Index</a><a href="../index.html#about">About</a><a class="hd__mail" href="#contact">Contact</a></nav>
 </header>
 
-<main>
-  <section class="cx" aria-labelledby="title">
-    <div class="cx__k lbl"><span>Side quests</span><span>02 / 04</span></div>
-    <h1 id="title">Soundtrack &amp; film</h1>
-    <div class="cx__info">
-      <p class="cx__lede">&quot;Kasb-e-Kamal Kun&quot;, Sonic Tapestry of Artistry. A four-minute soundtrack and film for the first NCA Triennale in 2025, made with Baber Baig, Head of Visual Communication Design. Every sound comes from art-making at the National College of Arts, Lahore.</p>
-      <dl class="cx__meta"></dl>
-    </div>
-    <ul class="cx__stats" style="--n:4"><li class="reveal"><b>12</b><span>Departments recorded</span></li><li class="reveal"><b>6</b><span>Days of field recording</span></li><li class="reveal"><b>4</b><span>Movements</span></li><li class="reveal"><b>5</b><span>Months, start to finish</span></li></ul>
-  </section>
-  <figure class="cx__media"><video src="../../side-quests/assets/nca-film.mp4" poster="../../side-quests/assets/nca-film.jpg" controls playsinline preload="none" aria-label="Kasb-e-Kamal Kun, the full four-minute film with soundtrack"></video></figure>
+<main class="pj">
+  <aside class="pj__side"><div class="pj__stick">
+    <div class="pj__tags"><h1 id="title" class="pj__name">Soundtrack &amp; film</h1><span class="pj__cat">Side quests</span></div>
+    <p class="pj__lede">&quot;Kasb-e-Kamal Kun&quot;, Sonic Tapestry of Artistry. A four-minute soundtrack and film for the first NCA Triennale in 2025, made with Baber Baig, Head of Visual Communication Design. Every sound comes from art-making at the National College of Arts, Lahore.</p>
+    <dl class="pj__kv"></dl>
+    <ul class="pj__stats"><li><b>12</b><span>Departments recorded</span></li><li><b>6</b><span>Days of field recording</span></li><li><b>4</b><span>Movements</span></li><li><b>5</b><span>Months, start to finish</span></li></ul>
+    <nav class="pj__toc" aria-label="Sections"><a href="#overview"><small>01</small>Overview</a><a href="#s2"><small>02</small></a><a href="#s3"><small>03</small></a></nav>
+  </div></aside>
+  <div class="pj__main">
+    <figure class="cx__media"><video src="../../side-quests/assets/nca-film.mp4" poster="../../side-quests/assets/nca-film.jpg" controls playsinline preload="none" aria-label="Kasb-e-Kamal Kun, the full four-minute film with soundtrack"></video></figure>
+    
 
   <section class="cs" id="overview">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>01</b>Overview</span><div><h2>150 years of NCA, played on its own tools.</h2></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>01 · Overview</span></div>
+    <div class="cs__head reveal"><div><h2>150 years of NCA, played on its own tools.</h2></div></div>
     <div class="cs__body"><p class="cs__ql reveal">When sound, image and craft converge, they create experiences that feel alive and deeply human.</p></div>
     
     
     <div class="rows"></div>
   </section>
   <section class="cs" id="s2">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>02</b></span><div><h2>Four movements, one day in the studio</h2></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>02 · </span></div>
+    <div class="cs__head reveal"><div><h2>Four movements, one day in the studio</h2></div></div>
     <div class="cs__body"><ol class="pts" style="--n:4"><li class="reveal"><small>01</small><b>Genesis</b><p>0:00 – 1:00Fountain drips, pencil scratches and brush swishes build out of glitchy chaos.</p></li><li class="reveal"><small>02</small><b>Craft</b><p>1:00 – 2:30The rhythmic heart: hammered metal, chisels and loom clicks played like tabla and dhol.</p></li><li class="reveal"><small>03</small><b>Mastery</b><p>2:30 – 3:30Glass clinks become chimes, wheel hum becomes bass, sitar and tabla rise in.</p></li><li class="reveal"><small>04</small><b>Culmination</b><p>3:30 – 4:00Every layer at once: 150 years of the college breathing as one.</p></li></ol></div>
     
     
     <div class="rows"></div>
   </section>
   <section class="cs" id="s3">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>03</b></span><div><h2>Sounds collected</h2><p class="cs__sub">Recorded with Ali Aabid&#x27;s team on a Zoom H6, hydrophones and contact mics, then shaped in Ableton Live: granular pads, gated percussion, pencil taps pitched into kalimba melodies.</p></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>03 · </span></div>
+    <div class="cs__head reveal"><div><h2>Sounds collected</h2><p class="cs__sub">Recorded with Ali Aabid&#x27;s team on a Zoom H6, hydrophones and contact mics, then shaped in Ableton Live: granular pads, gated percussion, pencil taps pitched into kalimba melodies.</p></div></div>
     <div class="cs__body"><ul class="cs__chips reveal"><li>Palette knives</li><li>Brush strokes</li><li>Spray cans</li><li>Chisel strikes</li><li>Pottery wheels</li><li>Welding</li><li>Looms &amp; shuttles</li><li>Sewing machines</li><li>Blueprint paper</li><li>3D printers</li><li>Print presses</li><li>Shutter clicks</li><li>Courtyard fountain</li><li>Birdsong</li></ul></div>
     
     
@@ -218,7 +293,11 @@
     </div>
     <a href="../gundam-build/index.html" aria-hidden="true" tabindex="-1"><div class="nx__img"><img src="../../side-quests/assets/gundam-ogre.jpg" alt="" loading="lazy"></div></a>
   </nav>
+
+  </div>
 </main>
+
+<div class="sw3"><div class="sw3__menu" hidden><a href="../pixel-pals/index.html"><span>Pixel Pals</span><span>01</span></a><a href="../soundtrack-and-film/index.html" aria-current="page"><span>Soundtrack &amp; film</span><span>02</span></a><a href="../gundam-build/index.html"><span>Gundam build</span><span>03</span></a><a href="../photography/index.html"><span>Photography</span><span>04</span></a></div><button class="sw3__btn" type="button" aria-expanded="false" aria-label="Other Side quests projects"><span><small>Side quests</small><b>Soundtrack &amp; film</b></span><i aria-hidden="true">≡</i></button></div>
 
 <section id="contact" class="ct" aria-label="Contact">
   <span class="lbl"><span class="dot" aria-hidden="true"></span>Available for full-time, remote and new projects</span>
@@ -235,7 +314,6 @@
   <span class="wordmark" aria-hidden="true">Sunil Sebastian</span>
 </footer>
 
-
 <script>
 (() => {
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
@@ -246,5 +324,22 @@
 })();
 </script>
 
+<script>(() => {
+  // Section list in the sticky column follows the scroll
+  const links = [...document.querySelectorAll('.pj__toc a')], secs = links.map(a => document.querySelector(a.hash));
+  const mark = () => {
+    let on = 0; secs.forEach((s, k) => { if (s.getBoundingClientRect().top < innerHeight * .4) on = k; });
+    links.forEach((a, k) => a.classList.toggle('is-on', k === on));
+  };
+  addEventListener('scroll', mark, { passive: true }); mark();
+  // Project switcher
+  const btn = document.querySelector('.sw3__btn'), menu = document.querySelector('.sw3__menu');
+  btn.addEventListener('click', () => { menu.hidden = !menu.hidden; btn.setAttribute('aria-expanded', !menu.hidden); });
+  addEventListener('click', e => { if (!e.target.closest('.sw3')) { menu.hidden = true; btn.setAttribute('aria-expanded', 'false'); } });
+  addEventListener('keydown', e => { if (e.key === 'Escape') { menu.hidden = true; btn.setAttribute('aria-expanded', 'false'); } });
+  // The switcher steps aside once the contact section is on screen
+  const sw = document.querySelector('.sw3'), ct = document.getElementById('contact');
+  if (ct) new IntersectionObserver(([e]) => { sw.classList.toggle('is-off', e.isIntersecting); if (e.isIntersecting) menu.hidden = true; }).observe(ct);
+})();</script>
 </body>
 </html>

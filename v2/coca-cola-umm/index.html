@@ -12,7 +12,7 @@
 <meta name="theme-color" content="#f3f1ec">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
 <style>
   :root {
     --paper: #f3f1ec; --paper-2: #e9e6df; --ink: #111110; --muted: #75736d; --line: rgba(17,17,16,.14);
@@ -177,64 +177,142 @@
   :root { --card-r: 16px; }
   .cx__media { margin: 0 var(--gutter); }
   .cx__media, .m__box, .sx__stage, .nx__img, .cmp, .web, .ba, .build, .wx--dark, .sws, .yt { border-radius: var(--card-r); overflow: hidden; isolation: isolate; }
+
+  /* V3 case study: sticky info on the left, the work on the right */
+  :root { --bg: var(--paper); --red: #df0c01; --yellow: #f6cb00; --mono: "Geist Mono", ui-monospace, Menlo, monospace; --tint: #e2dfff; }
+  body { background: var(--bg); }
+  .hd + .pj { padding-top: 96px; }
+  .k { display: inline-flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 13px; }
+  .k::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--red); }
+
+  .pj { display: grid; grid-template-columns: minmax(300px, 30%) minmax(0, 1fr); gap: clamp(28px, 3.4vw, 64px); padding: 92px var(--gutter) 0; }
+  .pj__stick { position: sticky; top: 84px; max-height: calc(100svh - 100px); overflow-y: auto; scrollbar-width: none; padding-bottom: 90px; }
+  .pj__stick::-webkit-scrollbar { display: none; }
+  .pj__tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pj__name, .pj__cat { margin: 0; display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 8px; font-family: var(--mono); font-size: 13px; font-weight: 500; letter-spacing: -.01em; }
+  .pj__name { background: var(--tint); }
+  .pj__name::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--red); }
+  .pj__cat { background: #fff; box-shadow: 0 0 0 1px var(--line); font-weight: 400; }
+  .pj__lede { margin: 22px 0 26px; font-size: clamp(24px, 2.1vw, 32px); line-height: 1.12; font-weight: 500; letter-spacing: -.035em; }
+  .pj__kv { margin: 0; border-top: 1px solid var(--ink); }
+  .pj__kv div { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line); font-family: var(--mono); font-size: 13px; }
+  .pj__kv dt { flex: none; color: var(--muted); }
+  .pj__kv dd { margin: 0; min-width: 0; text-align: right; overflow-wrap: anywhere; line-height: 1.45; }
+  .pj__stats { list-style: none; margin: 22px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .pj__stats li { padding: 14px; border-radius: 12px; background: #fff; box-shadow: 0 0 0 1px var(--line); }
+  .pj__stats b { display: block; font-size: clamp(20px, 1.7vw, 26px); font-weight: 600; letter-spacing: -.03em; }
+  .pj__stats span { font-size: 13px; color: var(--muted); }
+  .pj__toc { margin-top: 26px; display: grid; }
+  .pj__toc a { display: flex; align-items: center; gap: 10px; padding: 7px 0; font-family: var(--mono); font-size: 13px; color: var(--muted); transition: color .2s; }
+  .pj__toc a small { font-size: 11px; width: 18px; }
+  .pj__toc a::after { content: ""; width: 6px; height: 6px; margin-left: auto; border-radius: 50%; background: var(--red); opacity: 0; transition: opacity .2s; }
+  .pj__toc a:hover, .pj__toc a.is-on { color: var(--ink); }
+  .pj__toc a.is-on::after { opacity: 1; }
+  .pj__main { min-width: 0; padding-bottom: clamp(60px, 8vw, 120px); }
+  .pj__main .cx__media { margin: 0; }
+  .pj__main .cs { position: relative; padding: clamp(64px, 8vw, 120px) 0 0; }
+  .pj__chip { position: sticky; top: 84px; z-index: 5; height: 0; display: flex; justify-content: flex-end; align-items: flex-start; pointer-events: none; }
+  .pj__chip span { pointer-events: auto; display: inline-flex; align-items: center; line-height: 1.2; white-space: nowrap; padding: 8px 12px; border-radius: 8px; background: rgba(255,255,255,.92); backdrop-filter: blur(8px); box-shadow: 0 0 0 1px var(--line); font-family: var(--mono); font-size: 13px; }
+  .pj__main .cs__head { display: block; border-top: 0; padding: 0 clamp(120px, 16vw, 260px) 0 0; }
+  .pj__main .cs h2 { font-size: clamp(30px, 3.2vw, 52px); max-width: 20ch; }
+  .pj__main .cs__sub { max-width: 52ch; }
+  .pj__main .cs__body { margin-left: 0; }
+  .pj__main .pts { grid-template-columns: repeat(min(var(--n, 3), 3), minmax(0, 1fr)); }
+  .pj__main .quote { padding: clamp(90px, 11vw, 170px) 0; }
+  .pj__main .dl, .pj__main .nx { padding-left: 0; padding-right: 0; }
+  .pj__main .nx { padding-bottom: 0; }
+
+  /* Project switcher, bottom left */
+  .sw3 { position: fixed; left: var(--gutter); bottom: 16px; z-index: 30; transition: opacity .3s, transform .3s; }
+  .sw3.is-off { opacity: 0; transform: translateY(10px); pointer-events: none; }
+  .sw3__btn { appearance: none; border: 0; cursor: pointer; display: flex; align-items: center; gap: 22px; padding: 10px 12px 10px 14px; border-radius: 12px; background: rgba(255,255,255,.94); backdrop-filter: blur(10px); box-shadow: 0 0 0 1px var(--line), 0 10px 30px -14px rgba(0,0,0,.35); font: inherit; text-align: left; color: var(--ink); }
+  .sw3__btn small { display: flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .sw3__btn small::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--red); }
+  .sw3__btn b { display: block; margin-top: 2px; font-family: var(--mono); font-size: 13px; font-weight: 500; }
+  .sw3__btn i { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 8px; background: var(--bg); font-style: normal; }
+  .sw3__menu { position: absolute; left: 0; bottom: calc(100% + 8px); min-width: 260px; padding: 6px; border-radius: 14px; background: #fff; box-shadow: 0 0 0 1px var(--line), 0 18px 40px -18px rgba(0,0,0,.4); }
+  .sw3__menu[hidden] { display: none; }
+  .sw3__menu a { display: flex; justify-content: space-between; gap: 16px; padding: 10px 12px; border-radius: 9px; font-family: var(--mono); font-size: 13px; }
+  .sw3__menu a:hover, .sw3__menu a[aria-current] { background: var(--tint); }
+
+  @media (max-width: 900px) { .nv .hide-m { display: none; } }
+  @media (max-width: 1000px) {
+    .pj { grid-template-columns: 1fr; padding-top: 84px; }
+    .pj__stick { position: static; max-height: none; overflow: visible; padding-bottom: 8px; }
+    .pj__toc { display: none; }
+    .pj__main .cs__head { padding-right: 0; }
+    .pj__chip { position: static; height: auto; justify-content: flex-start; margin-bottom: 14px; }
+  }
+  @media (max-width: 600px) {
+    .nv { inset: 10px 10px auto; }
+    .pill--brand small, .pill--dark span { display: none; }
+    .pj__main .pts { grid-template-columns: 1fr; }
+    .sw3 { left: 10px; bottom: 10px; }
+  }
 </style>
 </head>
-<body>
+<body style="--tint:#d4f3e2">
 
 <header class="hd">
   <a class="hd__brand" href="../index.html"><img src="../../assets/icons/favicon-64.png" alt="" width="26" height="26">Sunil Sebastian</a>
   <nav aria-label="Main"><a href="../index.html#work">Work</a><a href="../index.html#index">Index</a><a href="../index.html#about">About</a><a class="hd__mail" href="#contact">Contact</a></nav>
 </header>
 
-<main>
-  <section class="cx" aria-labelledby="title">
-    <div class="cx__k lbl"><span>Product</span><span>01 / 03</span></div>
-    <h1 id="title">Coca-Cola UMM</h1>
-    <div class="cx__info">
-      <p class="cx__lede">Redesigning a marketing measurement dashboard. One dark system, filters that stay put, charts you can read.</p>
-      <dl class="cx__meta"><div><dt>Timeline</dt><dd>6 months</dd></div><div><dt>Role</dt><dd>Product / UI designer</dd></div><div><dt>Client</dt><dd>The Coca-Cola Company</dd></div><div><dt>Scope</dt><dd>Onboarding → reporting → planning</dd></div></dl>
-    </div>
+<main class="pj">
+  <aside class="pj__side"><div class="pj__stick">
+    <div class="pj__tags"><h1 id="title" class="pj__name">Coca-Cola UMM</h1><span class="pj__cat">Product</span></div>
+    <p class="pj__lede">Redesigning a marketing measurement dashboard. One dark system, filters that stay put, charts you can read.</p>
+    <dl class="pj__kv"><div><dt>Timeline</dt><dd>6 months</dd></div><div><dt>Role</dt><dd>Product / UI designer</dd></div><div><dt>Client</dt><dd>The Coca-Cola Company</dd></div><div><dt>Scope</dt><dd>Onboarding → reporting → planning</dd></div></dl>
     
-  </section>
-  <figure class="cx__media"><img src="../../coca-cola-umm/assets/hero.jpg" alt="The redesigned UMM summary dashboard: investment KPIs with sparklines and a left filter rail" width="1858" height="986" fetchpriority="high"></figure>
+    <nav class="pj__toc" aria-label="Sections"><a href="#umm"><small>01</small>Context</a><a href="#challenge"><small>02</small>The challenge</a><a href="#approach"><small>03</small>Approach</a><a href="#audit"><small>04</small>Heuristic audit</a><a href="#before-after"><small>05</small>Before / after</a><a href="#system"><small>06</small>Design system</a></nav>
+  </div></aside>
+  <div class="pj__main">
+    <figure class="cx__media"><img src="../../coca-cola-umm/assets/hero.jpg" alt="The redesigned UMM summary dashboard: investment KPIs with sparklines and a left filter rail" width="1858" height="986" fetchpriority="high"></figure>
+    
 
   <section class="cs" id="umm">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>01</b>Context</span><div><h2>What is UMM?</h2><p class="cs__sub">See how every brand performs. Then spend better.</p></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>01 · Context</span></div>
+    <div class="cs__head reveal"><div><h2>What is UMM?</h2><p class="cs__sub">See how every brand performs. Then spend better.</p></div></div>
     <div class="cs__body"></div>
     
     
     <div class="rows"></div>
   </section>
   <section class="cs" id="challenge">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>02</b>The challenge</span><div><h2>What held the old UI back.</h2></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>02 · The challenge</span></div>
+    <div class="cs__head reveal"><div><h2>What held the old UI back.</h2></div></div>
     <div class="cs__body"><ol class="pts" style="--n:4"><li class="reveal"><small>01</small><b>Inconsistent theming</b><p>Onboarding was flat gray, reporting flipped to white. No visual continuity.</p></li><li class="reveal"><small>02</small><b>Filters hidden in modals</b><p>Brands, markets and touchpoints sat behind an &quot;Edit Profile&quot; modal. Every re-scope lost context.</p></li><li class="reveal"><small>03</small><b>Flat, unscalable lists</b><p>Plain checklists for dozens of markets and nested touchpoints.</p></li><li class="reveal"><small>04</small><b>No touchpoint filter</b><p>The most important analytical cut wasn&#x27;t visualised at all.</p></li><li class="reveal"><small>05</small><b>Weak legends &amp; density</b><p>No clear legends, trends or deltas. Comparing was slow.</p></li><li class="reveal"><small>06</small><b>Planning as an afterthought</b><p>Simulation tools were buried and vaguely named (&quot;Sandbox&quot;).</p></li></ol></div>
     
     
     <div class="rows"></div>
   </section>
   <section class="cs" id="approach">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>03</b>Approach</span><div><h2>Five moves.</h2></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>03 · Approach</span></div>
+    <div class="cs__head reveal"><div><h2>Five moves.</h2></div></div>
     <div class="cs__body"><ol class="pts" style="--n:4"><li class="reveal"><small>01</small><b>Audit</b><p>Mapped every screen old → new and ranked issues by severity.</p></li><li class="reveal"><small>02</small><b>System</b><p>One dark theme with a shared token set for colour, type and spacing.</p></li><li class="reveal"><small>03</small><b>Restructure</b><p>Filters moved out of modals into a persistent left rail.</p></li><li class="reveal"><small>04</small><b>Scale</b><p>Searchable, nested selectors for markets and touchpoints.</p></li><li class="reveal"><small>05</small><b>Extend</b><p>Designed the missing states: touchpoint filter and the full planning suite.</p></li></ol></div>
     
     
     <div class="rows"></div>
   </section>
   <section class="cs" id="audit">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>04</b>Heuristic audit</span><div><h2>Ranked by severity.</h2></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>04 · Heuristic audit</span></div>
+    <div class="cs__head reveal"><div><h2>Ranked by severity.</h2></div></div>
     <div class="cs__body"></div>
     
     
     <div class="rows"></div>
   </section>
   <section class="cs" id="before-after">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>05</b>Before / after</span><div><h2>Drag to compare.</h2></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>05 · Before / after</span></div>
+    <div class="cs__head reveal"><div><h2>Drag to compare.</h2></div></div>
     <div class="cs__body"></div>
     
     
     <div class="rows"><div class="row row--1"><figure class="m reveal" style="--ar:3.2990"><div class="m__box" style="aspect-ratio:1280 / 388"><img src="../../coca-cola-umm/assets/onb-before.jpg" alt="Before: three flat gray setup pop-ups with plain lists" loading="lazy" width="1280" height="388"></div><figcaption>Before</figcaption></figure></div><div class="row row--1"><figure class="m reveal" style="--ar:3.2547"><div class="m__box" style="aspect-ratio:1380 / 424"><img src="../../coca-cola-umm/assets/onb-after.jpg" alt="After: dark, searchable, multi-select setup steps" loading="lazy" width="1380" height="424"></div><figcaption>After</figcaption></figure></div><div class="wx reveal"><div class="cmp reveal"><img src="../../coca-cola-umm/assets/kpi-before.jpg" alt="Before: white KPI dashboard with filters on the right" loading="lazy"><div class="cmp__after"><img src="../../coca-cola-umm/assets/kpi-after.jpg" alt="After: dark KPI dashboard with a left filter rail and sparklines" loading="lazy"></div><input type="range" min="0" max="100" value="50" aria-label="Drag to compare before and after"><span class="cmp__line"></span><span class="cmp__knob" aria-hidden="true">⇄</span><span class="cmp__tag cmp__tag--b">Before</span><span class="cmp__tag cmp__tag--a">After</span></div></div><div class="wx reveal"><div class="cmp reveal"><img src="../../coca-cola-umm/assets/viz-before.jpg" alt="Before: single-colour bar chart with no legend" loading="lazy"><div class="cmp__after"><img src="../../coca-cola-umm/assets/viz-after.jpg" alt="After: colour-coded bar chart with value labels and legend chips" loading="lazy"></div><input type="range" min="0" max="100" value="50" aria-label="Drag to compare before and after"><span class="cmp__line"></span><span class="cmp__knob" aria-hidden="true">⇄</span><span class="cmp__tag cmp__tag--b">Before</span><span class="cmp__tag cmp__tag--a">After</span></div></div><div class="wx reveal"><div class="cmp reveal"><img src="../../coca-cola-umm/assets/plan-before.jpg" alt="Before: three stacked simulator cards including a vague Sandbox" loading="lazy"><div class="cmp__after"><img src="../../coca-cola-umm/assets/plan-after.jpg" alt="After: a Planning Tool with Auto and Manual simulation side by side" loading="lazy"></div><input type="range" min="0" max="100" value="50" aria-label="Drag to compare before and after"><span class="cmp__line"></span><span class="cmp__knob" aria-hidden="true">⇄</span><span class="cmp__tag cmp__tag--b">Before</span><span class="cmp__tag cmp__tag--a">After</span></div></div></div>
   </section>
   <section class="cs" id="system">
-    <div class="cs__head reveal"><span class="cs__lbl lbl"><b>06</b>Design system</span><div><h2>One consistent language.</h2></div></div>
+    <div class="pj__chip" aria-hidden="true"><span>06 · Design system</span></div>
+    <div class="cs__head reveal"><div><h2>One consistent language.</h2></div></div>
     <div class="cs__body"></div>
     
     
@@ -250,7 +328,11 @@
     </div>
     <a href="../al-siraat/index.html" aria-hidden="true" tabindex="-1"><div class="nx__img"><img src="../../al-siraat/assets/brand-logo.jpg" alt="" loading="lazy"></div></a>
   </nav>
+
+  </div>
 </main>
+
+<div class="sw3"><div class="sw3__menu" hidden><a href="../coca-cola-umm/index.html" aria-current="page"><span>Coca-Cola UMM</span><span>01</span></a><a href="../al-siraat/index.html"><span>Al Siraat</span><span>02</span></a><a href="../imagination-dls/index.html"><span>Imagination DLS</span><span>03</span></a></div><button class="sw3__btn" type="button" aria-expanded="false" aria-label="Other Product projects"><span><small>Product</small><b>Coca-Cola UMM</b></span><i aria-hidden="true">≡</i></button></div>
 
 <section id="contact" class="ct" aria-label="Contact">
   <span class="lbl"><span class="dot" aria-hidden="true"></span>Available for full-time, remote and new projects</span>
@@ -267,7 +349,6 @@
   <span class="wordmark" aria-hidden="true">Sunil Sebastian</span>
 </footer>
 
-
 <script>
 (() => {
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
@@ -282,6 +363,23 @@
     const r = c.querySelector('input'); const set = () => c.style.setProperty('--x', r.value + '%');
     r.addEventListener('input', set); set();
   });
+})();</script>
+<script>(() => {
+  // Section list in the sticky column follows the scroll
+  const links = [...document.querySelectorAll('.pj__toc a')], secs = links.map(a => document.querySelector(a.hash));
+  const mark = () => {
+    let on = 0; secs.forEach((s, k) => { if (s.getBoundingClientRect().top < innerHeight * .4) on = k; });
+    links.forEach((a, k) => a.classList.toggle('is-on', k === on));
+  };
+  addEventListener('scroll', mark, { passive: true }); mark();
+  // Project switcher
+  const btn = document.querySelector('.sw3__btn'), menu = document.querySelector('.sw3__menu');
+  btn.addEventListener('click', () => { menu.hidden = !menu.hidden; btn.setAttribute('aria-expanded', !menu.hidden); });
+  addEventListener('click', e => { if (!e.target.closest('.sw3')) { menu.hidden = true; btn.setAttribute('aria-expanded', 'false'); } });
+  addEventListener('keydown', e => { if (e.key === 'Escape') { menu.hidden = true; btn.setAttribute('aria-expanded', 'false'); } });
+  // The switcher steps aside once the contact section is on screen
+  const sw = document.querySelector('.sw3'), ct = document.getElementById('contact');
+  if (ct) new IntersectionObserver(([e]) => { sw.classList.toggle('is-off', e.isIntersecting); if (e.isIntersecting) menu.hidden = true; }).observe(ct);
 })();</script>
 </body>
 </html>
