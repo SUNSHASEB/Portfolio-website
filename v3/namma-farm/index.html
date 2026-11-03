@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Namma Farm — Sunil Sebastian</title>
+<meta name="description" content="Namma Farm by Sunil Sebastian. A South Indian food brand, rebuilt to stand out on shelves around the world.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
+<meta name="theme-color" content="#f3f1ec">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f3f1ec; --paper-2: #e9e6df; --ink: #111110; --muted: #75736d; --line: rgba(17,17,16,.14);
+    --night: #0f0f0e; --night-line: rgba(255,255,255,.14); --accent: #f6cb00;
+    --font: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+    --gutter: clamp(16px, 2.6vw, 40px); --ease: cubic-bezier(.2,.7,.1,1);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font); font-size: 16px; line-height: 1.5; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+  img { display: block; max-width: 100%; height: auto; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { padding: 0 var(--gutter); }
+  .lbl { font-size: 12px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; }
+  .rule { border: 0; border-top: 1px solid var(--line); margin: 0; }
+
+  /* Header */
+  .hd { position: fixed; inset: 0 0 auto 0; z-index: 30; display: flex; align-items: center; justify-content: space-between; padding: 18px var(--gutter); color: #fff; transition: background .35s, color .35s, border-color .35s; border-bottom: 1px solid transparent; }
+  .hd.is-solid { background: rgba(243,241,236,.92); backdrop-filter: blur(10px); color: var(--ink); border-bottom-color: var(--line); }
+  .hd__brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; font-size: 15px; letter-spacing: -.01em; }
+  .hd__brand img { width: 26px; height: 26px; }
+  .hd nav { display: flex; gap: clamp(14px, 2.4vw, 32px); font-size: 13px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; }
+  .hd nav a { position: relative; }
+  .hd nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -3px; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform .4s var(--ease); }
+  .hd nav a:hover::after { transform: scaleX(1); transform-origin: left; }
+
+  /* Contact band */
+  .ct { background: var(--night); color: #f3f1ec; padding: clamp(80px, 11vw, 160px) var(--gutter) clamp(60px, 8vw, 110px); }
+  .ct .lbl { color: rgba(243,241,236,.6); }
+  .ct h2 { margin: 18px 0 clamp(36px, 5vw, 64px); font-size: clamp(44px, 7.6vw, 128px); line-height: .96; font-weight: 400; letter-spacing: -.05em; max-width: 13ch; }
+  .ct h2 em { font-style: italic; font-weight: 300; color: var(--accent); }
+  .ct__row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gutter); border-top: 1px solid var(--night-line); padding-top: 22px; }
+  .ct__row a, .ct__row p { margin: 6px 0 0; font-size: clamp(16px, 1.3vw, 19px); }
+  .ct__mail { font-size: clamp(22px, 2.4vw, 34px) !important; letter-spacing: -.03em; border-bottom: 1px solid currentColor; }
+  .ct__mail:hover { color: var(--accent); }
+  .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); margin-right: 8px; box-shadow: 0 0 0 4px rgba(246,203,0,.18); }
+
+  /* Footer */
+  .ft-wrap { background: var(--night); color: rgba(243,241,236,.7); padding: 0 var(--gutter) 18px; overflow: hidden; }
+  .ft-nav { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding: 22px 0; border-top: 1px solid var(--night-line); font-size: 13px; letter-spacing: .1em; text-transform: uppercase; }
+  .ft-nav nav { display: flex; gap: 22px; }
+  .ft-nav a:hover { color: #fff; }
+  .wordmark { display: block; color: #f3f1ec; font-size: clamp(54px, 15.2vw, 260px); font-weight: 500; letter-spacing: -.065em; line-height: .8; white-space: nowrap; margin: 10px 0 0 -.04em; }
+
+
+  .hd { color: var(--ink); background: rgba(243,241,236,.92); backdrop-filter: blur(10px); border-bottom-color: var(--line); }
+  .cx { padding: clamp(110px, 14vw, 200px) var(--gutter) clamp(28px, 4vw, 56px); }
+  .cx__k { display: flex; justify-content: space-between; gap: 16px; color: var(--muted); }
+  .cx h1 { margin: clamp(18px, 2.4vw, 32px) 0 clamp(28px, 4vw, 64px); font-size: clamp(52px, 11vw, 200px); line-height: .88; font-weight: 500; letter-spacing: -.06em; }
+  .cx__info { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 96px); border-top: 1px solid var(--ink); padding-top: 20px; }
+  .cx__lede { margin: 0; font-size: clamp(22px, 2.2vw, 34px); line-height: 1.18; letter-spacing: -.03em; max-width: 26ch; }
+  .cx__meta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px var(--gutter); margin: 0; }
+  .cx__meta dt { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .cx__meta dd { margin: 4px 0 0; font-size: 16px; }
+  .cx__stats { list-style: none; margin: clamp(32px, 4vw, 56px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: var(--gutter); }
+  .cx__stats li { border-top: 1px solid var(--line); padding-top: 14px; }
+  .cx__stats b { display: block; font-size: clamp(36px, 4.6vw, 76px); font-weight: 400; letter-spacing: -.05em; line-height: 1; }
+  .cx__stats span { display: block; margin-top: 8px; color: var(--muted); font-size: 14px; }
+  .cx__media { margin: 0; }
+  .cx__media img, .cx__media video { display: block; width: 100%; height: auto; background: #000; }
+  .cx__media .wx { margin: 0; }
+
+  .cs { padding: clamp(80px, 10vw, 160px) var(--gutter) 0; }
+  .cs__head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 3fr); gap: var(--gutter); border-top: 1px solid var(--line); padding-top: 18px; }
+  .cs__lbl { display: flex; gap: 12px; color: var(--muted); }
+  .cs__lbl b { color: var(--ink); font-weight: 500; }
+  .cs h2 { margin: 0; font-size: clamp(32px, 4.4vw, 72px); line-height: 1.02; font-weight: 400; letter-spacing: -.045em; max-width: 18ch; }
+  .cs__sub { margin: 22px 0 0; font-size: clamp(17px, 1.35vw, 20px); color: #3d3c39; max-width: 52ch; }
+  .cs__ql { margin: clamp(32px, 4vw, 56px) 0 0; font-size: clamp(24px, 2.6vw, 40px); line-height: 1.12; letter-spacing: -.03em; font-weight: 300; font-style: italic; max-width: 30ch; }
+  .cs__chips { list-style: none; margin: 24px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .cs__chips li { border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: 14px; }
+  .pts { list-style: none; margin: clamp(32px, 4vw, 56px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr)); gap: 0 var(--gutter); }
+  .pts li { border-top: 1px solid var(--ink); padding: 14px 0 6px; }
+  .pts small { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .pts b { display: block; margin: 8px 0 6px; font-size: clamp(18px, 1.5vw, 22px); font-weight: 500; letter-spacing: -.02em; }
+  .pts p { margin: 0; color: var(--muted); font-size: 15px; }
+  .cs__body { margin-left: calc((100% - var(--gutter) * 3) / 4 + var(--gutter)); }
+
+  .rows { display: grid; gap: clamp(10px, 1.4vw, 22px); margin-top: clamp(36px, 5vw, 72px); }
+  .row { display: flex; gap: clamp(10px, 1.4vw, 22px); align-items: flex-start; }
+  .row--1 .m, .row--solo .m { flex: 1; }
+  .row--solo .m { max-width: min(100%, 72svh * var(--ar, 1)); }
+  .row--solo { justify-content: center; }
+  .m { margin: 0; min-width: 0; }
+  .m__box { overflow: hidden; background: var(--paper-2); }
+  .m__box img, .m__box video { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .m--contain .m__box { background: var(--paper-2); }
+  .m--contain .m__box img { object-fit: contain; padding: 8%; }
+  .m--dark .m__box { background: #1c1c1a; }
+  .m--tall { max-width: 760px; margin: 0 auto; width: 100%; }
+  .m--tall .m__box { height: min(80svh, 860px); overflow-y: auto; overscroll-behavior: contain; }
+  .m--tall .m__box img { height: auto; }
+  .tiles { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: clamp(8px, 1vw, 14px); }
+  .tiles .m__box { aspect-ratio: 1 !important; }
+  .tiles .m figcaption { display: none; }
+  .m figcaption { margin-top: 10px; font-size: 13px; color: var(--muted); }
+  .wx { min-width: 0; }
+  .wx--dark { background: #0f0f0e; color: #f3f1ec; padding: clamp(18px, 3vw, 44px); font-family: var(--font); }
+  .wx--dark :is(h3, b) { font-family: var(--font); }
+
+  .sws { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); margin-top: clamp(32px, 4vw, 56px); }
+  .sw { aspect-ratio: 4 / 3; padding: 14px; display: flex; flex-direction: column; justify-content: flex-end; font-size: 14px; }
+  .sw small { opacity: .7; font-variant-numeric: tabular-nums; }
+
+  .quote { padding: clamp(110px, 14vw, 220px) var(--gutter); }
+  .quote p { margin: 0 auto; max-width: 16ch; text-align: center; font-size: clamp(36px, 6vw, 104px); line-height: 1; letter-spacing: -.05em; font-weight: 300; font-style: italic; }
+  .dl { padding: 0 var(--gutter) clamp(60px, 8vw, 110px); }
+  .dl ul { list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .dl li { border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: 14px; }
+
+  .nx { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--gutter); padding: clamp(28px, 4vw, 56px) var(--gutter) clamp(80px, 10vw, 140px); border-top: 1px solid var(--line); }
+  .nx a { display: block; }
+  .nx__t { display: block; margin: 12px 0 8px; font-size: clamp(40px, 6.8vw, 116px); line-height: .92; font-weight: 500; letter-spacing: -.055em; transition: color .3s; }
+  .nx a:hover .nx__t { color: var(--muted); }
+  .nx__d { color: var(--muted); }
+  .nx__img { overflow: hidden; aspect-ratio: 16 / 10; background: var(--paper-2); }
+  .nx__img img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+  .nx a:hover .nx__img img { transform: scale(1.035); }
+  .nx__back { display: inline-block; margin-top: 26px; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; border-bottom: 1px solid currentColor; }
+
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .9s var(--ease), transform 1s var(--ease); }
+  .reveal.is-in { opacity: 1; transform: none; }
+
+  @media (max-width: 900px) {
+    .cx__info, .cs__head, .nx { grid-template-columns: 1fr; }
+    .cs__body { margin-left: 0; }
+    .pts { grid-template-columns: 1fr; }
+    .cx__stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .sws { grid-template-columns: repeat(min(var(--n), 4), minmax(0, 1fr)); }
+    .ct__row { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .hd nav a:not(.hd__mail) { display: none; }
+    .cx__meta { grid-template-columns: 1fr 1fr; }
+    .row { flex-direction: column; }
+    .row .m { flex: none !important; width: 100%; max-width: none !important; }
+    .sws { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .sw { aspect-ratio: 2 / 1; }
+    .tiles { grid-template-columns: repeat(min(var(--n), 4), minmax(0, 1fr)); }
+    .wx--dark { padding: 14px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+
+  .w-cap { margin: 10px 0 0; font-size: 13px; color: var(--muted); }
+  .ba { margin-top: clamp(36px, 5vw, 72px); position: relative; aspect-ratio: 16 / 8; overflow: hidden; background: #fff; user-select: none; touch-action: pan-y; }
+  .ba__pane { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: #fff; }
+  .ba__pane img { width: auto; height: 52%; max-width: 70%; object-fit: contain; }
+  .ba__pane--before { background: var(--paper-2); clip-path: inset(0 calc(100% - var(--pos, 50%)) 0 0); }
+  .ba__pane--before img { height: 46%; }
+  .ba__tag { position: absolute; top: 16px; font-size: 12px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; background: var(--ink); color: var(--paper); padding: 6px 12px; border-radius: 999px; }
+  .ba__tag--l { left: 16px; } .ba__tag--r { right: 16px; }
+  .ba__handle { position: absolute; top: 0; bottom: 0; left: var(--pos, 50%); width: 2px; background: var(--ink); transform: translateX(-50%); pointer-events: none; }
+  .ba__knob { position: absolute; top: 50%; left: 50%; width: 56px; height: 56px; border-radius: 50%; background: var(--accent); color: var(--ink); transform: translate(-50%, -50%); display: grid; place-items: center; font-size: 22px; }
+  .ba input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; margin: 0; }
+  @media (max-width: 600px) { .ba { aspect-ratio: 4 / 3; } .ba__knob { width: 44px; height: 44px; font-size: 18px; } }
+
+
+  /* Rounded visual cards, one radius across the site */
+  :root { --card-r: 16px; }
+  .cx__media { margin: 0 var(--gutter); }
+  .cx__media, .m__box, .sx__stage, .nx__img, .cmp, .web, .ba, .build, .wx--dark, .sws, .yt { border-radius: var(--card-r); overflow: hidden; isolation: isolate; }
+
+  /* V3 case study: sticky info on the left, the work on the right */
+  :root { --bg: #f1f1ef; --red: #df0c01; --yellow: #f6cb00; --mono: "Geist Mono", ui-monospace, Menlo, monospace; --tint: #e2dfff; }
+  body { background: var(--bg); }
+  .k { display: inline-flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 13px; }
+  .k::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--red); }
+  /* Pill navigation */
+  .nv { position: fixed; inset: 14px var(--gutter) auto; z-index: 30; display: flex; justify-content: space-between; align-items: center; gap: 12px; pointer-events: none; }
+  .nv > div { display: flex; align-items: center; gap: 6px; pointer-events: auto; }
+  .pill { display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 14px; border-radius: 10px; background: rgba(255,255,255,.9); backdrop-filter: blur(10px); box-shadow: 0 0 0 1px var(--line); font-family: var(--mono); font-size: 13px; white-space: nowrap; transition: transform .25s var(--ease), background .2s; }
+  .pill:hover { transform: translateY(-1px); background: #fff; }
+  .pill--brand { font-family: var(--font); font-size: 15px; font-weight: 600; letter-spacing: -.02em; padding-left: 8px; }
+  .pill--brand .eye { width: 34px; height: auto; }
+  .pill--brand small { font-family: var(--mono); font-weight: 400; font-size: 12px; color: var(--muted); letter-spacing: 0; }
+  .pill--dark { background: var(--ink); color: #fff; box-shadow: none; border-radius: 999px; padding-right: 6px; }
+  .pill--dark:hover { background: #000; }
+  .pill--dark i { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: #fff; color: var(--ink); font-style: normal; }
+  .live { width: 8px; height: 8px; border-radius: 50%; background: #1fb85b; box-shadow: 0 0 0 0 rgba(31,184,91,.5); animation: live 2s infinite; }
+  @keyframes live { 70% { box-shadow: 0 0 0 7px rgba(31,184,91,0); } 100% { box-shadow: 0 0 0 0 rgba(31,184,91,0); } }
+  .eye__lid { transform-box: fill-box; transform-origin: 50% 0; animation: blink 5.5s infinite; }
+  @keyframes blink { 0%, 92%, 100% { transform: scaleY(1); } 95% { transform: scaleY(1.75); } }
+
+  /* Sign-off */
+  .so { background: var(--yellow); padding: clamp(70px, 9vw, 130px) var(--gutter) 28px; }
+  .so__col { max-width: 560px; margin: 0 auto; display: grid; gap: 12px; }
+  .so__name { position: relative; background: #fff; border-radius: 18px; padding: clamp(28px, 4vw, 48px) clamp(20px, 3vw, 36px); overflow: hidden; }
+  .so__name b { display: block; font-size: clamp(76px, 12vw, 150px); line-height: .85; font-weight: 800; letter-spacing: -.07em; }
+  .so__name b em { font-style: normal; color: var(--red); }
+  .so__name img { position: absolute; right: -10px; bottom: -46px; width: clamp(84px, 11vw, 132px); height: auto; transform: rotate(-6deg); }
+  .so__card { background: #fff; border-radius: 18px; padding: 22px; box-shadow: inset 0 0 0 1.5px var(--ink); }
+  .so__card h2 { margin: 0 0 clamp(40px, 6vw, 80px); font-family: var(--mono); font-size: 15px; font-weight: 500; }
+  .so__card p { margin: 0 0 14px; font-family: var(--mono); font-size: 13px; line-height: 1.6; text-transform: uppercase; color: #3b3a36; }
+  .so__card p strong { color: var(--ink); font-weight: 500; }
+  .btn { display: flex; justify-content: center; align-items: center; gap: 8px; height: 46px; border-radius: 10px; background: var(--bg); font-weight: 600; letter-spacing: -.01em; transition: background .2s, transform .2s var(--ease); }
+  .btn:hover { background: var(--ink); color: #fff; }
+  .soc { display: flex; justify-content: center; gap: 8px; margin-top: 6px; }
+  .soc a { padding: 9px 14px; border-radius: 10px; background: rgba(255,255,255,.7); font-family: var(--mono); font-size: 13px; transition: background .2s; }
+  .soc a:hover { background: #fff; }
+  .so small { display: block; margin-top: 10px; text-align: center; font-family: var(--mono); font-size: 12px; }
+
+
+  .pj { display: grid; grid-template-columns: minmax(300px, 30%) minmax(0, 1fr); gap: clamp(28px, 3.4vw, 64px); padding: 92px var(--gutter) 0; }
+  .pj__stick { position: sticky; top: 84px; max-height: calc(100svh - 100px); overflow-y: auto; scrollbar-width: none; padding-bottom: 90px; }
+  .pj__stick::-webkit-scrollbar { display: none; }
+  .pj__tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pj__name, .pj__cat { margin: 0; display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 8px; font-family: var(--mono); font-size: 13px; font-weight: 500; letter-spacing: -.01em; }
+  .pj__name { background: var(--tint); }
+  .pj__name::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--red); }
+  .pj__cat { background: #fff; box-shadow: 0 0 0 1px var(--line); font-weight: 400; }
+  .pj__lede { margin: 22px 0 26px; font-size: clamp(24px, 2.1vw, 32px); line-height: 1.12; font-weight: 500; letter-spacing: -.035em; }
+  .pj__kv { margin: 0; border-top: 1px solid var(--ink); }
+  .pj__kv div { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line); font-family: var(--mono); font-size: 13px; }
+  .pj__kv dt { color: var(--muted); }
+  .pj__kv dd { margin: 0; text-align: right; }
+  .pj__stats { list-style: none; margin: 22px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .pj__stats li { padding: 14px; border-radius: 12px; background: #fff; box-shadow: 0 0 0 1px var(--line); }
+  .pj__stats b { display: block; font-size: clamp(20px, 1.7vw, 26px); font-weight: 600; letter-spacing: -.03em; }
+  .pj__stats span { font-size: 13px; color: var(--muted); }
+  .pj__toc { margin-top: 26px; display: grid; }
+  .pj__toc a { display: flex; align-items: center; gap: 10px; padding: 7px 0; font-family: var(--mono); font-size: 13px; color: var(--muted); transition: color .2s; }
+  .pj__toc a small { font-size: 11px; width: 18px; }
+  .pj__toc a::after { content: ""; width: 6px; height: 6px; margin-left: auto; border-radius: 50%; background: var(--red); opacity: 0; transition: opacity .2s; }
+  .pj__toc a:hover, .pj__toc a.is-on { color: var(--ink); }
+  .pj__toc a.is-on::after { opacity: 1; }
+  .pj__main { min-width: 0; padding-bottom: clamp(60px, 8vw, 120px); }
+  .pj__main .cx__media { margin: 0; }
+  .pj__main .cs { position: relative; padding: clamp(64px, 8vw, 120px) 0 0; }
+  .pj__chip { position: sticky; top: 84px; z-index: 5; height: 0; display: flex; justify-content: flex-end; pointer-events: none; }
+  .pj__chip span { pointer-events: auto; padding: 7px 12px; border-radius: 8px; background: rgba(255,255,255,.92); backdrop-filter: blur(8px); box-shadow: 0 0 0 1px var(--line); font-family: var(--mono); font-size: 13px; }
+  .pj__main .cs__head { display: block; border-top: 0; padding: 0 clamp(120px, 16vw, 260px) 0 0; }
+  .pj__main .cs h2 { font-size: clamp(30px, 3.2vw, 52px); max-width: 20ch; }
+  .pj__main .cs__sub { max-width: 52ch; }
+  .pj__main .cs__body { margin-left: 0; }
+  .pj__main .pts { grid-template-columns: repeat(min(var(--n, 3), 3), minmax(0, 1fr)); }
+  .pj__main .quote { padding: clamp(90px, 11vw, 170px) 0; }
+  .pj__main .dl, .pj__main .nx { padding-left: 0; padding-right: 0; }
+  .pj__main .nx { padding-bottom: 0; }
+
+  /* Project switcher, bottom left */
+  .sw3 { position: fixed; left: var(--gutter); bottom: 16px; z-index: 30; }
+  .sw3__btn { appearance: none; border: 0; cursor: pointer; display: flex; align-items: center; gap: 22px; padding: 10px 12px 10px 14px; border-radius: 12px; background: rgba(255,255,255,.94); backdrop-filter: blur(10px); box-shadow: 0 0 0 1px var(--line), 0 10px 30px -14px rgba(0,0,0,.35); font: inherit; text-align: left; color: var(--ink); }
+  .sw3__btn small { display: flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .sw3__btn small::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--red); }
+  .sw3__btn b { display: block; margin-top: 2px; font-family: var(--mono); font-size: 13px; font-weight: 500; }
+  .sw3__btn i { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 8px; background: var(--bg); font-style: normal; }
+  .sw3__menu { position: absolute; left: 0; bottom: calc(100% + 8px); min-width: 260px; padding: 6px; border-radius: 14px; background: #fff; box-shadow: 0 0 0 1px var(--line), 0 18px 40px -18px rgba(0,0,0,.4); }
+  .sw3__menu[hidden] { display: none; }
+  .sw3__menu a { display: flex; justify-content: space-between; gap: 16px; padding: 10px 12px; border-radius: 9px; font-family: var(--mono); font-size: 13px; }
+  .sw3__menu a:hover, .sw3__menu a[aria-current] { background: var(--tint); }
+
+  @media (max-width: 900px) { .nv .hide-m { display: none; } }
+  @media (max-width: 1000px) {
+    .pj { grid-template-columns: 1fr; padding-top: 84px; }
+    .pj__stick { position: static; max-height: none; overflow: visible; padding-bottom: 8px; }
+    .pj__toc { display: none; }
+    .pj__main .cs__head { padding-right: 0; }
+    .pj__chip { position: static; height: auto; justify-content: flex-start; margin-bottom: 14px; }
+  }
+  @media (max-width: 600px) {
+    .nv { inset: 10px 10px auto; }
+    .pill--brand small, .pill--dark span { display: none; }
+    .pj__main .pts { grid-template-columns: 1fr; }
+    .sw3 { left: 10px; bottom: 10px; }
+  }
+</style>
+</head>
+<body style="--tint:#e2dfff">
+
+<header class="nv">
+  <div>
+    <a class="pill pill--brand" href="../index.html"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><defs><path id="v3-almond" d="M2 32 C 28 -9, 92 -9, 118 32 C 92 73, 28 73, 2 32 Z"/><clipPath id="v3-clip"><use href="#v3-almond"/></clipPath></defs><use href="#v3-almond" fill="#f6cb00"/><g clip-path="url(#v3-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></svg>Sunil Sebastian <small>· Brands, products &amp; games</small></a>
+    <a class="pill hide-m" href="mailto:sunil@sebastians.tv">Say hello 👋</a>
+    <a class="pill hide-m" href="../../v2/showreel/index.html">Showreel</a>
+  </div>
+  <div>
+    <span class="pill hide-m"><span class="live" aria-hidden="true"></span>Available for work</span>
+    <a class="pill pill--dark" href="../index.html#work"><span>All work</span><i aria-hidden="true">↗</i></a>
+  </div>
+</header>
+
+<main class="pj">
+  <aside class="pj__side"><div class="pj__stick">
+    <div class="pj__tags"><h1 id="title" class="pj__name">Namma Farm</h1><span class="pj__cat">Brand systems</span></div>
+    <p class="pj__lede">A South Indian food brand, rebuilt to stand out on shelves around the world.</p>
+    <dl class="pj__kv"><div><dt>Role</dt><dd>Sole designer</dd></div><div><dt>Timeline</dt><dd>6 months</dd></div><div><dt>Scope</dt><dd>Logo, identity, packaging</dd></div><div><dt>Markets</dt><dd>US · UK · Middle East</dd></div></dl>
+    
+    <nav class="pj__toc" aria-label="Sections"><a href="#brief"><small>01</small>The brief</a><a href="#inspiration"><small>02</small>Inspiration</a><a href="#routes"><small>03</small>Two routes</a><a href="#before-after"><small>04</small>Before / after</a><a href="#identity"><small>05</small>The identity</a><a href="#icons"><small>06</small>Icons &amp; pattern</a><a href="#world"><small>07</small>In the world</a></nav>
+  </div></aside>
+  <div class="pj__main">
+    <figure class="cx__media"><img src="../../namma-farm/assets/hero-farmer.jpg" alt="Smiling farmer in a banana plantation with the new Namma Farm wordmark behind him" width="2000" height="1124" fetchpriority="high"></figure>
+    <section class="cs" id="brief">
+    <div class="pj__chip" aria-hidden="true"><span>01 · The brief</span></div>
+    <div class="cs__head reveal"><div><h2>Modernise without losing soul.</h2></div></div>
+    <div class="cs__body"><ol class="pts" style="--n:3"><li class="reveal"><small>01</small><b>Lost in the aisle</b><p>The old logo was busy and text-heavy. Like its competitors, it disappeared on the shelf.</p></li><li class="reveal"><small>02</small><b>South Indians abroad</b><p>South Indians abroad come first. Curious food lovers looking for safe, honest food come second.</p></li><li class="reveal"><small>03</small><b>Simple. Modern. Tamil.</b><p>A premium identity you can spot from 20 feet away, with its heritage still in it.</p></li></ol></div>
+    
+    
+    <div class="rows"></div>
+  </section>
+  <section class="cs" id="inspiration">
+    <div class="pj__chip" aria-hidden="true"><span>02 · Inspiration</span></div>
+    <div class="cs__head reveal"><div><h2>Temples, kolams &amp; paddy fields.</h2><p class="cs__sub">Everything started from real South Indian life: rituals, food, farmers and folk art.</p></div></div>
+    <div class="cs__body"></div>
+    
+    
+    <div class="rows"><div class="row row--1"><figure class="m reveal" style="--ar:1.6353"><div class="m__box" style="aspect-ratio:2000 / 1223"><img src="../../namma-farm/assets/moodboard.jpg" alt="Moodboard: kolam patterns, temple art, paddy fields, banana-leaf meals and modern food packaging" loading="lazy" width="2000" height="1223"></div></figure></div></div>
+  </section>
+  <section class="cs" id="routes">
+    <div class="pj__chip" aria-hidden="true"><span>03 · Two routes</span></div>
+    <div class="cs__head reveal"><div><h2>Pencil first.</h2></div></div>
+    <div class="cs__body"><ol class="pts" style="--n:2"><li class="reveal"><small>01</small><b>Initials + leaf</b><p>An “NF” monogram with a leaf for the farm. Clean, but it could belong to any brand.</p></li><li class="reveal"><small>02</small><b>Heritage geometry</b><p>A mark drawn from kolam floor art. The name is written in Tamil and English.</p></li></ol></div>
+    
+    
+    <div class="rows"><div class="row row--solo"><figure class="m reveal" style="--ar:0.6295"><div class="m__box" style="aspect-ratio:1259 / 2000"><img src="../../namma-farm/assets/dir1-sketch.jpg" alt="Pencil sketches of NF monogram ideas with a leaf" loading="lazy" width="1259" height="2000"></div></figure></div><div class="row row--1"><figure class="m m--contain m--dark reveal" style="--ar:2.3547"><div class="m__box" style="aspect-ratio:2350 / 998"><img src="../../namma-farm/assets/dir1-options.png" alt="Three digital NF monogram logo options" loading="lazy" width="2350" height="998"></div></figure></div><div class="row"><figure class="m reveal" style="--ar:0.7935;flex:0.7935 1 0%"><div class="m__box" style="aspect-ratio:1587 / 2000"><img src="../../namma-farm/assets/dir2-sketch.jpg" alt="Pencil sketches combining the letter N with kolam geometry" loading="lazy" width="1587" height="2000"></div></figure><figure class="m m--contain m--dark reveal" style="--ar:2.1488;flex:2.1488 1 0%"><div class="m__box" style="aspect-ratio:2484 / 1156"><img src="../../namma-farm/assets/dir2-options.png" alt="Three kolam-inspired Namma Farm logo options" loading="lazy" width="2484" height="1156"></div></figure></div><div class="row row--1"><figure class="m m--contain m--dark reveal" style="--ar:3.2787"><div class="m__box" style="aspect-ratio:1400 / 427"><img src="../../namma-farm/assets/kolam.png" alt="Three traditional kolam dot-and-line patterns redrawn as clean line art" loading="lazy" width="1400" height="427"></div></figure></div></div>
+  </section>
+  <section class="cs" id="before-after">
+    <div class="pj__chip" aria-hidden="true"><span>04 · Before / after</span></div>
+    <div class="cs__head reveal"><div><h2>From clutter to clarity.</h2></div></div>
+    <div class="cs__body"></div>
+    
+    <div class="ba reveal" style="--pos:50%">
+      <div class="ba__pane ba__pane--after"><img src="../../namma-farm/assets/logo-after.svg" alt="New Namma Farm logo: kolam-inspired mark above a bilingual wordmark" width="309" height="298"></div>
+      <div class="ba__pane ba__pane--before"><img src="../../namma-farm/assets/logo-before.png" alt="Old Namma Farm logo: green Tamil lettering with a palm tree and cattle" width="996" height="621"></div>
+      <span class="ba__tag ba__tag--l">Before</span><span class="ba__tag ba__tag--r">After</span>
+      <div class="ba__handle" aria-hidden="true"><div class="ba__knob">⇆</div></div>
+      <input type="range" min="0" max="100" value="50" aria-label="Compare old and new logo">
+    </div><p class="w-cap">Drag to compare</p>
+    <div class="rows"></div>
+  </section>
+  <section class="cs" id="identity">
+    <div class="pj__chip" aria-hidden="true"><span>05 · The identity</span></div>
+    <div class="cs__head reveal"><div><h2>One mark. Many moods.</h2></div></div>
+    <div class="cs__body"></div>
+    <div class="sws reveal" style="--n:5"><div class="sw" style="background:#003D17;color:#fff"><span>Deep Green</span><small>#003D17</small></div><div class="sw" style="background:#82CE26;color:#111"><span>Light Green</span><small>#82CE26</small></div><div class="sw" style="background:#FF9B00;color:#111"><span>Radiant Yellow</span><small>#FF9B00</small></div><div class="sw" style="background:#171717;color:#fff"><span>Cynical Black</span><small>#171717</small></div><div class="sw" style="background:#FFFFFF;color:#111"><span>Pure White</span><small>#FFFFFF</small></div></div>
+    
+    <div class="rows"><div class="row"><figure class="m reveal" style="--ar:1.0870;flex:1.0870 1 0%"><div class="m__box" style="aspect-ratio:1400 / 1288"><img src="../../namma-farm/assets/aerial.jpg" alt="White Namma Farm logo over an aerial view of green crop fields" loading="lazy" width="1400" height="1288"></div></figure><figure class="m reveal" style="--ar:1.3333;flex:1.3333 1 0%"><div class="m__box" style="aspect-ratio:2000 / 1500"><video class="lv" src="../../namma-farm/assets/namma-dancers.mp4" poster="../../namma-farm/assets/tiger.jpg" muted loop playsinline preload="none" aria-label="Video: Namma Farm logo over tiger-painted folk dancers at a festival"></video></div></figure><figure class="m reveal" style="--ar:1.5576;flex:1.5576 1 0%"><div class="m__box" style="aspect-ratio:2000 / 1284"><img src="../../namma-farm/assets/hands.jpg" alt="Cupped hands holding rice with the Namma Farm mark" loading="lazy" width="2000" height="1284"></div></figure></div><div class="tiles" style="--n:5"><figure class="m m--contain m--dark reveal" style="--ar:1.0417"><div class="m__box" style="aspect-ratio:1000 / 960"><img src="../../namma-farm/assets/logo-white.png" alt="Namma Farm logo in white on dark grey" loading="lazy" width="1000" height="960"></div></figure><figure class="m m--contain reveal" style="--ar:1.0420"><div class="m__box" style="aspect-ratio:124 / 119"><img src="../../namma-farm/assets/logo-black-ink.svg" alt="Namma Farm logo in black" loading="lazy" width="124" height="119"></div></figure><figure class="m m--contain reveal" style="--ar:1.0420"><div class="m__box" style="aspect-ratio:124 / 119"><img src="../../namma-farm/assets/logo-deep-green.svg" alt="Namma Farm logo in deep green" loading="lazy" width="124" height="119"></div></figure><figure class="m m--contain reveal" style="--ar:1.0420"><div class="m__box" style="aspect-ratio:124 / 119"><img src="../../namma-farm/assets/logo-light-green.svg" alt="Namma Farm logo in light green" loading="lazy" width="124" height="119"></div></figure><figure class="m m--contain reveal" style="--ar:1.0420"><div class="m__box" style="aspect-ratio:124 / 119"><img src="../../namma-farm/assets/logo-yellow.svg" alt="Namma Farm logo in yellow" loading="lazy" width="124" height="119"></div></figure></div><div class="row"><figure class="m reveal" style="--ar:1.7915;flex:1.7915 1 0%"><div class="m__box" style="aspect-ratio:842 / 470"><img src="../../namma-farm/assets/type-main.png" alt="Kaivalya typeface specimen" loading="lazy" width="842" height="470"></div></figure><figure class="m reveal" style="--ar:1.2671;flex:1.2671 1 0%"><div class="m__box" style="aspect-ratio:612 / 483"><img src="../../namma-farm/assets/type-tamil.png" alt="Four Tamil typeface options for the word Namma" loading="lazy" width="612" height="483"></div></figure></div><div class="row row--1"><figure class="m reveal" style="--ar:2.4795"><div class="m__box" style="aspect-ratio:786 / 317"><img src="../../namma-farm/assets/legal-icons.png" alt="Non-GMO, gluten-free and organic product badges" loading="lazy" width="786" height="317"></div></figure></div></div>
+  </section>
+  <section class="cs" id="icons">
+    <div class="pj__chip" aria-hidden="true"><span>06 · Icons &amp; pattern</span></div>
+    <div class="cs__head reveal"><div><h2>70+ icons. One pattern.</h2></div></div>
+    <div class="cs__body"><ul class="cs__chips reveal"><li>Farm &amp; field</li><li>Tools &amp; work</li><li>Food</li><li>Kitchen ritual</li><li>Culture</li></ul></div>
+    
+    
+    <div class="rows"><div class="row"><figure class="m reveal" style="--ar:1.2422;flex:1.2422 1 0%"><div class="m__box" style="aspect-ratio:2000 / 1610"><img src="../../namma-farm/assets/icon-sketches.jpg" alt="Sketchbook pages of hand-drawn icon ideas" loading="lazy" width="2000" height="1610"></div></figure><figure class="m reveal" style="--ar:1.0200;flex:1.0200 1 0%"><div class="m__box" style="aspect-ratio:1073 / 1052"><img src="../../namma-farm/assets/icon-sets.png" alt="Grid of icons in green, orange and yellow, grouped by theme" loading="lazy" width="1073" height="1052"></div></figure><figure class="m reveal" style="--ar:1.0000;flex:1.0000 1 0%"><div class="m__box" style="aspect-ratio:600 / 600"><img src="../../namma-farm/assets/icons-flip.gif" alt="Animated grid of Namma Farm icons flipping one after another in a diagonal wave" loading="lazy" width="600" height="600"></div></figure></div></div>
+  </section>
+  <section class="cs" id="world">
+    <div class="pj__chip" aria-hidden="true"><span>07 · In the world</span></div>
+    <div class="cs__head reveal"><div><h2>Harvested with love.</h2></div></div>
+    <div class="cs__body"></div>
+    
+    
+    <div class="rows"><div class="row row--1"><figure class="m reveal" style="--ar:1.7301"><div class="m__box" style="aspect-ratio:2000 / 1156"><img src="../../namma-farm/assets/rice-planting.jpg" alt="Campaign image: a farmer carrying rice seedlings, with the Namma Farm logo" loading="lazy" width="2000" height="1156"></div><figcaption>Campaign</figcaption></figure></div><div class="row"><figure class="m reveal" style="--ar:1.6681;flex:1.6681 1 0%"><div class="m__box" style="aspect-ratio:2000 / 1199"><img src="../../namma-farm/assets/billboard.jpg" alt="Roadside billboard with an elderly farmer and the line Harvested with love" loading="lazy" width="2000" height="1199"></div><figcaption>Out of home</figcaption></figure><figure class="m reveal" style="--ar:1.9743;flex:1.9743 1 0%"><div class="m__box" style="aspect-ratio:2000 / 1013"><img src="../../namma-farm/assets/touchpoints.jpg" alt="Brand touchpoints: Instagram profile, business card, garden tools, shipping container, truck and website" loading="lazy" width="2000" height="1013"></div><figcaption>Digital + touchpoints</figcaption></figure></div><div class="row row--solo"><figure class="m reveal" style="--ar:1.7590"><div class="m__box" style="aspect-ratio:2000 / 1137"><img src="../../namma-farm/assets/merch.jpg" alt="Tote bag, pin badges, delivery truck and Red Rice, White Rice and Almond packs, all wrapped in the icon pattern" loading="lazy" width="2000" height="1137"></div><figcaption>Packaging, merch + fleet</figcaption></figure></div></div>
+  </section>
+  <section class="quote" aria-label="Closing thought"><p class="reveal">South Indian heritage belongs on the world’s finest shelves.</p></section>
+  <section class="dl" aria-label="What I delivered"><span class="lbl">Delivered</span><ul><li>Logo system</li><li>Colour</li><li>Typography</li><li>Icons</li><li>Pattern</li><li>Packaging</li><li>Campaign</li><li>Web &amp; social</li></ul></section>
+  <nav class="nx" aria-label="Next case study">
+    <div>
+      <span class="lbl" style="color:var(--muted)">Next case study</span>
+      <a href="../../v2/scooch/index.html"><span class="nx__t">Scooch Over</span><span class="nx__d">Identity for a film company bringing a famous book to screen</span></a>
+      <a class="nx__back" href="../../v2/showreel/index.html">← Previous: Showreel</a>
+    </div>
+    <a href="../../v2/scooch/index.html" aria-hidden="true" tabindex="-1"><div class="nx__img"><img src="../../scooch/assets/app-purple.jpg" alt="" loading="lazy"></div></a>
+  </nav>
+
+  </div>
+</main>
+
+<div class="sw3"><div class="sw3__menu" hidden><a href="../namma-farm/index.html" aria-current="page"><span>Namma Farm</span><span>01</span></a><a href="../../v2/scooch/index.html"><span>Scooch Over</span><span>02</span></a><a href="../../v2/green-school/index.html"><span>Green School</span><span>03</span></a><a href="../../v2/accelerated-professional-center/index.html"><span>APL</span><span>04</span></a><a href="../../v2/imagination-holdings/index.html"><span>Imagination Holdings</span><span>05</span></a><a href="../../v2/oro-chocolate/index.html"><span>ORO Chocolate</span><span>06</span></a><a href="../../v2/tamuda-bay/index.html"><span>Tamuda Bay</span><span>07</span></a><a href="../../v2/khalta/index.html"><span>Khalta</span><span>08</span></a><a href="../../v2/lhp/index.html"><span>LHP</span><span>09</span></a><a href="../../v2/realtoken/index.html"><span>$REAL Token</span><span>10</span></a></div><button class="sw3__btn" type="button" aria-expanded="false" aria-label="Other Brand systems projects"><span><small>Brand systems</small><b>Namma Farm</b></span><i aria-hidden="true">≡</i></button></div>
+
+<footer id="contact" class="so" aria-label="Contact">
+  <div class="so__col">
+    <div class="so__name reveal"><b>Sunil<em>.</em></b><img src="../../lhp/assets/sunil-binoculars.png" alt="" width="860" height="1103" loading="lazy"></div>
+    <div class="so__card reveal">
+      <h2>Hey there!</h2>
+      <p>I design <strong>brand systems, products, packaging and games</strong> for brands that operate at scale.</p>
+      <p>Available for <strong>full-time, remote and new projects</strong>.</p>
+      <a class="btn" href="mailto:sunil@sebastians.tv">Say hello 👋</a>
+    </div>
+    <nav class="soc" aria-label="Elsewhere"><a href="https://www.linkedin.com/in/sunil-shahzad-a7a59797/" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.behance.net/sunshaseb" target="_blank" rel="noopener">Behance</a><a href="https://www.instagram.com/sunilsebastian/" target="_blank" rel="noopener">Instagram</a></nav>
+    <small>© 2026 Sunil Sebastian · sunil@sebastians.tv</small>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  // Looping clips play only while on screen
+  const vo = new IntersectionObserver(es => es.forEach(e => { const v = e.target; if (e.isIntersecting) { v.preload = 'auto'; v.play().catch(() => {}); } else v.pause(); }), { threshold: .2 });
+  document.querySelectorAll('video.lv').forEach(v => vo.observe(v));
+})();
+</script>
+<script>(() => {
+  // Before / after slider, with a small nudge the first time it is seen
+  const ba = document.querySelector('.ba');
+  if (ba) {
+    const range = ba.querySelector('input');
+    const setPos = v => ba.style.setProperty('--pos', v + '%');
+    range.addEventListener('input', () => setPos(range.value));
+    range.addEventListener('pointerdown', () => range.dataset.touched = 1);
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const nudge = new IntersectionObserver(([e]) => {
+        if (!e.isIntersecting) return;
+        nudge.disconnect();
+        let t = 0;
+        const step = () => {
+          t += 1;
+          if (range.dataset.touched) return;
+          const v = 50 + Math.sin(t / 18) * 18 * Math.max(0, 1 - t / 110);
+          range.value = v; setPos(v);
+          if (t < 110) requestAnimationFrame(step);
+        };
+        setTimeout(() => requestAnimationFrame(step), 400);
+      }, { threshold: .6 });
+      nudge.observe(ba);
+    }
+  }})();</script>
+<script>(() => {
+  // Section list in the sticky column follows the scroll
+  const links = [...document.querySelectorAll('.pj__toc a')], secs = links.map(a => document.querySelector(a.hash));
+  const mark = () => {
+    let on = 0; secs.forEach((s, k) => { if (s.getBoundingClientRect().top < innerHeight * .4) on = k; });
+    links.forEach((a, k) => a.classList.toggle('is-on', k === on));
+  };
+  addEventListener('scroll', mark, { passive: true }); mark();
+  // Project switcher
+  const btn = document.querySelector('.sw3__btn'), menu = document.querySelector('.sw3__menu');
+  btn.addEventListener('click', () => { menu.hidden = !menu.hidden; btn.setAttribute('aria-expanded', !menu.hidden); });
+  addEventListener('click', e => { if (!e.target.closest('.sw3')) { menu.hidden = true; btn.setAttribute('aria-expanded', 'false'); } });
+  addEventListener('keydown', e => { if (e.key === 'Escape') { menu.hidden = true; btn.setAttribute('aria-expanded', 'false'); } });
+})();</script>
+</body>
+</html>
