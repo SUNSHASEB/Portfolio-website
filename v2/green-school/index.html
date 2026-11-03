@@ -214,6 +214,52 @@
   @media (max-width: 600px) { .gi__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (prefers-reduced-motion: reduce) { .gi__flip img { transition: none; } .gi__grid li { transition: none; } }
 
+  /* Social: try a photo in each Instagram size */
+  .ig { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(20px, 3vw, 48px); align-items: center; margin-top: clamp(20px, 2.4vw, 32px); padding: clamp(20px, 3vw, 44px); border-radius: var(--card-r, 16px); background: #e7ebef; }
+  .ig__dims { display: block; margin-top: 14px; font-size: clamp(30px, 3vw, 46px); font-weight: 500; letter-spacing: -.04em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .ig__name { display: block; margin-top: 6px; color: var(--muted); }
+  .ig__rule { margin: 16px 0 0; max-width: 36ch; font-size: clamp(16px, 1.25vw, 18px); line-height: 1.4; min-height: 4.2em; }
+  .ig__sizes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 20px; }
+  .ig__sizes button { appearance: none; border: 0; cursor: pointer; display: flex; justify-content: space-between; align-items: baseline; gap: 8px; padding: 12px 14px; border-radius: 12px; background: #fff; color: var(--ink); font: inherit; text-align: left; box-shadow: inset 0 0 0 1px var(--line); transition: background .25s, color .25s, transform .2s; }
+  .ig__sizes button:hover { transform: translateY(-1px); }
+  .ig__sizes button b { font-weight: 500; }
+  .ig__sizes button small { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .ig__sizes button[aria-pressed="true"] { background: var(--ink); color: #fff; box-shadow: none; }
+  .ig__sizes button[aria-pressed="true"] small { color: rgba(255,255,255,.7); }
+  .ig__sizes button:focus-visible, .ig__frame:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+  .ig__guide { display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; font-size: 14px; cursor: pointer; }
+  .ig__guide input { width: 16px; height: 16px; accent-color: #1d4a2d; }
+  .ig__hint { margin: 8px 0 0; font-size: 13px; color: var(--muted); }
+  .ig__stage { display: grid; place-items: center; min-height: min(78svh, 760px); }
+  .ig__post { width: min(100%, var(--pw, 380px)); background: #fff; border: 1px solid #dbdbdb; border-radius: 10px; overflow: hidden; transition: width .5s var(--ease); box-shadow: 0 30px 60px -36px rgba(0,0,0,.45); }
+  .ig__top { display: flex; align-items: center; gap: 10px; padding: 10px 12px; font-size: 13px; }
+  .ig__top img { width: 30px; height: 30px; border-radius: 50%; }
+  .ig__top i { margin-left: auto; font-style: normal; letter-spacing: 1px; }
+  .ig__frame { position: relative; overflow: hidden; height: var(--fh, 380px); cursor: grab; touch-action: none; user-select: none; background: #111; transition: height .5s var(--ease); }
+  .ig__frame.is-drag { cursor: grabbing; }
+  .ig__photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--x, 50%) var(--y, 50%); pointer-events: none; }
+  .ig__thirds { position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .25s; background: linear-gradient(to right, transparent calc(33.33% - .5px), rgba(255,255,255,.75) calc(33.33% - .5px), rgba(255,255,255,.75) calc(33.33% + .5px), transparent calc(33.33% + .5px), transparent calc(66.66% - .5px), rgba(255,255,255,.75) calc(66.66% - .5px), rgba(255,255,255,.75) calc(66.66% + .5px), transparent calc(66.66% + .5px)), linear-gradient(to bottom, transparent calc(33.33% - .5px), rgba(255,255,255,.75) calc(33.33% - .5px), rgba(255,255,255,.75) calc(33.33% + .5px), transparent calc(33.33% + .5px), transparent calc(66.66% - .5px), rgba(255,255,255,.75) calc(66.66% - .5px), rgba(255,255,255,.75) calc(66.66% + .5px), transparent calc(66.66% + .5px)); }
+  .ig.is-guides .ig__thirds { opacity: 1; }
+  .ig__safe { position: absolute; left: 0; right: 0; height: 13%; pointer-events: none; opacity: 0; transition: opacity .25s; background: repeating-linear-gradient(-45deg, rgba(223,12,1,.28) 0 6px, rgba(223,12,1,.1) 6px 12px); }
+  .ig__safe--t { top: 0; } .ig__safe--b { bottom: 0; height: 17%; }
+  .ig--story.is-guides .ig__safe { opacity: 1; }
+  .ig__story { position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .3s; color: #fff; font-size: 12px; }
+  .ig--story .ig__story { opacity: 1; }
+  .ig__prog { position: absolute; left: 10px; right: 10px; top: 10px; height: 2px; border-radius: 2px; background: rgba(255,255,255,.4); }
+  .ig__prog::after { content: ""; position: absolute; inset: 0 55% 0 0; border-radius: 2px; background: #fff; }
+  .ig__who { position: absolute; left: 10px; top: 22px; display: flex; align-items: center; gap: 8px; font-weight: 600; text-shadow: 0 1px 6px rgba(0,0,0,.4); }
+  .ig__who img { width: 26px; height: 26px; border-radius: 50%; }
+  .ig__who small { font-weight: 400; opacity: .8; }
+  .ig__reply { position: absolute; left: 10px; right: 10px; bottom: 12px; padding: 9px 14px; border-radius: 999px; border: 1px solid rgba(255,255,255,.75); }
+  .ig__bar { display: flex; align-items: center; gap: 14px; padding: 10px 12px 4px; }
+  .ig__bar span { flex: 1; }
+  .ig__bar svg { width: 22px; height: 22px; fill: none; stroke: #111; stroke-width: 1.7; stroke-linejoin: round; stroke-linecap: round; }
+  .ig__cap { margin: 0; padding: 4px 12px 12px; font-size: 13px; line-height: 1.4; }
+  .ig--story .ig__top, .ig--story .ig__bar, .ig--story .ig__cap { display: none; }
+  .ig--story .ig__post { border-radius: 16px; }
+  @media (max-width: 1100px) { .ig { grid-template-columns: 1fr; } .ig__stage { min-height: 0; } }
+  @media (prefers-reduced-motion: reduce) { .ig__post, .ig__frame { transition: none; } }
+
   /* V3 case study: sticky info on the left, the work on the right */
   :root { --bg: var(--paper); --red: #df0c01; --yellow: #f6cb00; --mono: "Geist Mono", ui-monospace, Menlo, monospace; --tint: #e2dfff; }
   body { background: var(--bg); }
@@ -234,6 +280,8 @@
   .pj__kv div { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line); font-family: var(--mono); font-size: 13px; }
   .pj__kv dt { flex: none; color: var(--muted); }
   .pj__kv dd { margin: 0; min-width: 0; text-align: right; overflow-wrap: anywhere; line-height: 1.45; }
+  .pj__kv a { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  .pj__kv a:hover { color: var(--red); }
   .pj__stats { list-style: none; margin: 22px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
   .pj__stats li { padding: 14px; border-radius: 12px; background: #fff; box-shadow: 0 0 0 1px var(--line); }
   .pj__stats b { display: block; font-size: clamp(20px, 1.7vw, 26px); font-weight: 600; letter-spacing: -.03em; }
@@ -298,7 +346,7 @@
   <aside class="pj__side"><div class="pj__stick">
     <div class="pj__tags"><h1 id="title" class="pj__name">Green School</h1><span class="pj__cat">Brand systems</span></div>
     <p class="pj__lede">Brand guidelines for a global network of eco-schools, from the bamboo campus in Bali to new schools around the world.</p>
-    <dl class="pj__kv"><div><dt>Client</dt><dd>Green School</dd></div><div><dt>Role</dt><dd>Brand guidelines design</dd></div><div><dt>Year</dt><dd>2019–2020</dd></div><div><dt>Deliverables</dt><dd>66-page guidelines, icon set, merchandise</dd></div></dl>
+    <dl class="pj__kv"><div><dt>Client</dt><dd>Green School</dd></div><div><dt>Role</dt><dd>Brand guidelines design</dd></div><div><dt>Year</dt><dd>2019–2020</dd></div><div><dt>Deliverables</dt><dd>66-page guidelines, icon set, merchandise</dd></div><div><dt>Website</dt><dd><a href="https://www.greenschool.org" target="_blank" rel="noopener">greenschool.org ↗</a></dd></div></dl>
     
     <nav class="pj__toc" aria-label="Sections"><a href="#brief"><small>01</small>The brief</a><a href="#dna"><small>02</small>Brand DNA</a><a href="#logo"><small>03</small>Logo system</a><a href="#colour"><small>04</small>Colour &amp; type</a><a href="#photography"><small>05</small>Photography</a><a href="#icons"><small>06</small>Icon set</a><a href="#social"><small>07</small>Social media</a><a href="#merch"><small>08</small>Merchandise</a></nav>
   </div></aside>
@@ -361,6 +409,7 @@
     
     
     <div class="rows"><div class="sx reveal" style="--ar:1.7778"><div class="sx__stage"><img class="sx__img is-on" src="../../green-school/assets/gs-social-sizes.jpg" alt="Instagram post, story and IGTV sizes" loading="lazy" width="1600" height="900"><img class="sx__img" src="../../green-school/assets/gs-social-theme.jpg" alt="Theme for Instagram: focused subject examples" loading="lazy" width="1600" height="900"><img class="sx__img" src="../../green-school/assets/gs-social-inquiry.jpg" alt="Theme for Instagram: focused inquiry, do and don’t" loading="lazy" width="1600" height="900"><img class="sx__img" src="../../green-school/assets/gs-social-approach.jpg" alt="Approach for Instagram: perspective, do and don’t" loading="lazy" width="1600" height="900"><img class="sx__img" src="../../green-school/assets/gs-social-engagement.jpg" alt="Examples of high-engagement posts" loading="lazy" width="1600" height="900"></div><div class="sx__tabs"><button class="sx__tab is-on" type="button" aria-pressed="true" data-note="Every format and ratio, in one place.">Sizes</button><button class="sx__tab" type="button" aria-pressed="false" data-note="Tight frames on a student’s face and hands.">Focused subject</button><button class="sx__tab" type="button" aria-pressed="false" data-note="The learning tool sits at the centre.">Inquiry</button><button class="sx__tab" type="button" aria-pressed="false" data-note="Shoot as a participant, not an observer.">Perspective</button><button class="sx__tab" type="button" aria-pressed="false" data-note="What makes a post win.">Engagement</button></div><p class="sx__note">Every format and ratio, in one place.</p></div></div>
+      <div class="ig reveal"><div class="ig__panel"><span class="lbl">Try the sizes</span><b class="ig__dims">1080 × 1080</b><span class="ig__name">Square post</span><p class="ig__rule">The classic grid post. Keep the subject near the centre, because the profile grid shows every post as a square.</p><div class="ig__sizes" role="group" aria-label="Instagram post size"><button type="button" aria-pressed="true" data-size="square" data-r="1" data-dims="1080 × 1080" data-rule="The classic grid post. Keep the subject near the centre, because the profile grid shows every post as a square."><b>Square</b><small>1:1</small></button><button type="button" aria-pressed="false" data-size="portrait" data-r="0.8" data-dims="1080 × 1350" data-rule="The tallest feed post and the most screen space. Best for people and moments up close."><b>Portrait</b><small>4:5</small></button><button type="button" aria-pressed="false" data-size="story" data-r="0.5625" data-dims="1080 × 1920" data-rule="Full screen. Keep faces and text clear of the top and bottom, where the app’s buttons sit."><b>Story</b><small>9:16</small></button><button type="button" aria-pressed="false" data-size="landscape" data-r="1.91" data-dims="1080 × 566" data-rule="Wide scenes only. It shows smallest in the feed, so keep the subject large in the frame."><b>Landscape</b><small>1.91:1</small></button></div><label class="ig__guide"><input type="checkbox" checked> Show crop guides</label><p class="ig__hint">Drag the photo, or use the arrow keys, to reframe it.</p></div><div class="ig__stage"><div class="ig__post"><div class="ig__top"><img src="../../green-school/assets/gs-avatar.jpg" alt="" width="160" height="160"><b>greenschoolbali</b><i aria-hidden="true">•••</i></div><div class="ig__frame" tabindex="0" role="img" aria-label="Instagram post preview: children holding soil and a young plant together. Drag to reframe."><img class="ig__photo" src="../../green-school/assets/gs-social-planting.jpg" alt="" width="1560" height="875" draggable="false"><span class="ig__thirds" aria-hidden="true"></span><span class="ig__safe ig__safe--t" aria-hidden="true"></span><span class="ig__safe ig__safe--b" aria-hidden="true"></span><span class="ig__story" aria-hidden="true"><span class="ig__prog"></span><span class="ig__who"><img src="../../green-school/assets/gs-avatar.jpg" alt="" width="160" height="160">greenschoolbali <small>2h</small></span><span class="ig__reply">Send message</span></span></div><div class="ig__bar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-9.2-9A5 5 0 0 1 12 6a5 5 0 0 1 9.2 5c-2.2 4.6-9.2 9-9.2 9z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 12a8.5 8.5 0 1 1-3.6-6.9A8.5 8.5 0 0 1 20.5 12zM20.5 12l1 8-5-2"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3 3 10.5l7 2.5 2.5 7L21 3zM10 13l5-5"/></svg><span></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-5-6 5z"/></svg></div><p class="ig__cap"><b>greenschoolbali</b> Hands in the soil. Learning that grows.</p></div></div></div>
   </section>
   <section class="cs" id="merch">
     <div class="pj__chip" aria-hidden="true"><span>08 · Merchandise</span></div>
@@ -454,6 +503,47 @@
   items.forEach(li => li.querySelector('.gi__ic').addEventListener('click', e => {
     const on = li.classList.toggle('is-flip'); e.currentTarget.setAttribute('aria-pressed', on);
   }));
+})();</script>
+<script>(() => {
+  // Social: switch Instagram sizes, toggle crop guides, drag the photo to reframe it
+  const ig = document.querySelector('.ig'); if (!ig) return;
+  const frame = ig.querySelector('.ig__frame'), photo = ig.querySelector('.ig__photo'), stage = ig.querySelector('.ig__stage');
+  const dims = ig.querySelector('.ig__dims'), name = ig.querySelector('.ig__name'), rule = ig.querySelector('.ig__rule');
+  const btns = [...ig.querySelectorAll('.ig__sizes button')], guide = ig.querySelector('.ig__guide input');
+  const pr = 1560 / 875; let r = 1, x = 50, y = 50;
+  const layout = () => {
+    // The post gets as wide as the stage allows while the frame stays within the screen height
+    const maxW = Math.min(stage.clientWidth, 460), maxH = Math.min(innerHeight * .66, 640);
+    const w = Math.max(220, Math.min(maxW, maxH * r));
+    ig.style.setProperty('--pw', w + 'px'); ig.style.setProperty('--fh', (w / r) + 'px');
+  };
+  const set = b => {
+    btns.forEach(x => x.setAttribute('aria-pressed', x === b));
+    r = +b.dataset.r; dims.textContent = b.dataset.dims; rule.textContent = b.dataset.rule;
+    name.textContent = b.querySelector('b').textContent + (b.dataset.size === 'story' ? '' : ' post');
+    ig.classList.toggle('ig--story', b.dataset.size === 'story'); layout();
+  };
+  btns.forEach(b => b.addEventListener('click', () => set(b)));
+  guide.addEventListener('change', () => ig.classList.toggle('is-guides', guide.checked)); ig.classList.add('is-guides');
+  const place = () => { photo.style.setProperty('--x', x + '%'); photo.style.setProperty('--y', y + '%'); };
+  // How far the photo overflows the frame, in pixels, on each axis
+  const spare = () => { const fw = frame.clientWidth, fh = frame.clientHeight, fr = fw / fh; return fr > pr ? [0, fw / pr - fh] : [fh * pr - fw, 0]; };
+  let sx = 0, sy = 0, ox = 0, oy = 0;
+  frame.addEventListener('pointerdown', e => { frame.setPointerCapture(e.pointerId); frame.classList.add('is-drag'); sx = e.clientX; sy = e.clientY; ox = x; oy = y; });
+  frame.addEventListener('pointermove', e => {
+    if (!frame.classList.contains('is-drag')) return;
+    const [sw, sh] = spare();
+    if (sw) x = Math.min(100, Math.max(0, ox - (e.clientX - sx) / sw * 100));
+    if (sh) y = Math.min(100, Math.max(0, oy - (e.clientY - sy) / sh * 100));
+    place();
+  });
+  const end = () => frame.classList.remove('is-drag');
+  frame.addEventListener('pointerup', end); frame.addEventListener('pointercancel', end);
+  frame.addEventListener('keydown', e => {
+    const d = { ArrowLeft: [-4, 0], ArrowRight: [4, 0], ArrowUp: [0, -4], ArrowDown: [0, 4] }[e.key]; if (!d) return;
+    e.preventDefault(); x = Math.min(100, Math.max(0, x + d[0])); y = Math.min(100, Math.max(0, y + d[1])); place();
+  });
+  addEventListener('resize', layout); layout(); place();
 })();</script>
 <script>(() => {
   // Section list in the sticky column follows the scroll
