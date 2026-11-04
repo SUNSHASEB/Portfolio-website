@@ -393,13 +393,15 @@
 })();
 </script>
 <script>(() => {
-  // Logo construction: plays when it scrolls into view, replays on demand
+  // Logo construction: builds, holds the finished mark, then builds again, only while on screen
   const b = document.querySelector('.build');
   if (b) {
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches, CYCLE = 9000;
+    let timer = 0;
     const play = () => { b.classList.remove('is-play'); void b.offsetWidth; b.classList.add('is-play'); };
-    const bo = new IntersectionObserver(([e]) => { if (e.isIntersecting) { play(); bo.disconnect(); } }, { threshold: .45 });
-    bo.observe(b);
-    b.querySelector('.build__replay').addEventListener('click', play);
+    const loop = () => { clearInterval(timer); play(); if (!reduce) timer = setInterval(play, CYCLE); };
+    new IntersectionObserver(([e]) => { if (e.isIntersecting) loop(); else clearInterval(timer); }, { threshold: .45 }).observe(b);
+    b.querySelector('.build__replay').addEventListener('click', loop);
   }})();</script>
 <script>(() => {
   // Each switcher rotates on its own while on screen; hovering or focusing it holds the current screen
