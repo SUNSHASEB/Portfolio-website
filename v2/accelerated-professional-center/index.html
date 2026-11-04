@@ -170,6 +170,30 @@
   .ct { padding-top: clamp(56px, 7vw, 100px); }
   .ct > .lbl + .ct__row { margin-top: clamp(24px, 3vw, 40px); }
 
+  /* The idea: the logo animation from V1, with its meanings */
+  .idea2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(20px, 3vw, 48px); align-items: center; }
+  .idea2__stage { position: relative; aspect-ratio: 1 / .8; display: grid; place-items: center; overflow: hidden; cursor: pointer; border-radius: var(--card-r, 16px); }
+  .idea2__stage::after { content: "Hover to replay"; position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: #fff; opacity: .5; }
+  @media (hover: none) { .idea2__stage::after { content: "Tap to replay"; } }
+  .idea2__stage:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+  .idea2__list { list-style: none; margin: 0; padding: 0; display: grid; }
+  .idea2__list li { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 14px; align-items: baseline; padding: 16px 0; border-top: 1px solid var(--line); }
+  .idea2__list li:last-child { border-bottom: 1px solid var(--line); }
+  .idea2__list b { font-size: 13px; font-weight: 500; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .idea2__list span { font-size: clamp(18px, 1.5vw, 22px); line-height: 1.3; letter-spacing: -.02em; }
+  @media (max-width: 900px) { .idea2 { grid-template-columns: 1fr; } }
+  .idea2--mk .idea2__stage { background: radial-gradient(circle at 50% 40%, #4a493b, #2a2a22 70%); }
+  .idea2--mk .idea2__stage::after { color: #efebe0; }
+  .mk { width: 46%; height: auto; overflow: visible; }
+  .mk__fill { fill: #e4b364; fill-rule: evenodd; }
+  .mk__trace { fill: none; stroke: #e4b364; stroke-width: 1.1; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 0; opacity: 0; }
+  .mk g { --d: calc(var(--i) * 80ms); }
+  .mk.is-play .mk__trace { animation: mkTrace 1.6s cubic-bezier(.5, 0, .2, 1) var(--d) both, mkTraceFade 2.9s linear both; }
+  .mk.is-play .mk__fill { animation: mkFill .8s ease calc(1.4s + var(--i) * 60ms) both; }
+  @keyframes mkTrace { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+  @keyframes mkTraceFade { 0%, 62% { opacity: 1; } 100% { opacity: 0; } }
+  @keyframes mkFill { from { opacity: 0; } to { opacity: 1; } }
+
   /* V3 case study: sticky info on the left, the work on the right */
   :root { --bg: var(--paper); --red: #df0c01; --yellow: #f6cb00; --mono: "Geist Mono", ui-monospace, Menlo, monospace; --tint: #fdf0b4; }
   body { background: var(--bg); }
@@ -300,7 +324,14 @@
     <div class="cs__body"></div>
     
     
-    <div class="rows"><div class="row"><figure class="m reveal" style="--ar:1.0501;flex:1.0501 1 0%"><div class="m__box" style="aspect-ratio:1110 / 1057"><img src="../../accelerated-professional-center/assets/construction.png" alt="Construction grid of the APL mark built on triangle guides" loading="lazy" width="1110" height="1057"></div><figcaption>Construction</figcaption></figure><figure class="m reveal" style="--ar:0.7808;flex:0.7808 1 0%"><div class="m__box" style="aspect-ratio:1129 / 1446"><img src="../../accelerated-professional-center/assets/lockups.png" alt="Vertical and horizontal lockups with Arabic and English names" loading="lazy" width="1129" height="1446"></div><figcaption>Bilingual lockups</figcaption></figure></div></div>
+    <div class="rows"><div class="idea2 idea2--mk reveal"><div class="idea2__stage" role="img" tabindex="0" aria-label="Animation: a fine gold line traces each piece of the APL mark, then the colour fills in"><svg class="mk" viewBox="-4 -4 153 141" aria-hidden="true">
+            <g transform="translate(0 0)" style="--i:0"><path class="mk__fill" d="M64.3066 64.1152L0 64.1152L8.05566 46.0313L34.8525 46.0313L19.002 18.5771L27.29 0Z"/><path class="mk__trace" pathLength="1" d="M64.3066 64.1152L0 64.1152L8.05566 46.0313L34.8525 46.0313L19.002 18.5771L27.29 0Z"/></g>
+            <g transform="translate(0.259 68.207)" style="--i:1"><path class="mk__fill" d="M18.3447 45.5381L34.1953 18.084L7.8916 18.084L0 0L63.8145 0L26.7969 64.1152Z"/><path class="mk__trace" pathLength="1" d="M18.3447 45.5381L34.1953 18.084L7.8916 18.084L0 0L63.8145 0L26.7969 64.1152Z"/></g>
+            <g transform="translate(0 0)" style="--i:2"><path class="mk__fill" d="M87.46 41.7568L77.2383 41.7568L82.3633 50.6348L75.459 64.1152L70.3623 64.1152L33.5371 0L111.568 0Z M73.0801 33.7012L82.8564 16.7686L62.9639 16.7686Z"/><path class="mk__trace" pathLength="1" d="M87.46 41.7568L77.2383 41.7568L82.3633 50.6348L75.459 64.1152L70.3623 64.1152L33.5371 0L111.568 0Z M73.0801 33.7012L82.8564 16.7686L62.9639 16.7686Z"/></g>
+            <g transform="translate(0.259 68.207)" style="--i:3"><path class="mk__fill" d="M56.8818 22.3584L67.1035 22.3584L61.9785 13.4805L68.8828 0L73.9795 0L110.805 64.1152L32.7734 64.1152Z M71.2607 30.4141L61.4854 47.3467L81.377 47.3467Z"/><path class="mk__trace" pathLength="1" d="M56.8818 22.3584L67.1035 22.3584L61.9785 13.4805L68.8828 0L73.9795 0L110.805 64.1152L32.7734 64.1152Z M71.2607 30.4141L61.4854 47.3467L81.377 47.3467Z"/></g>
+            <g transform="translate(0 0)" style="--i:4"><path class="mk__fill" d="M125.997 18.5771L110.146 46.0313L136.45 46.0313L144.341 64.1152L80.5273 64.1152L117.544 0Z"/><path class="mk__trace" pathLength="1" d="M125.997 18.5771L110.146 46.0313L136.45 46.0313L144.341 64.1152L80.5273 64.1152L117.544 0Z"/></g>
+            <g transform="translate(0.259 68.207)" style="--i:5"><path class="mk__fill" d="M80.0342 0L144.342 0L136.286 18.084L109.489 18.084L125.34 45.5381L117.052 64.1152Z"/><path class="mk__trace" pathLength="1" d="M80.0342 0L144.342 0L136.286 18.084L109.489 18.084L125.34 45.5381L117.052 64.1152Z"/></g>
+          </svg></div><ol class="idea2__list"><li><b>01</b><span>Apex: the peak of a triangle, for excellence</span></li><li><b>02</b><span>The initials APL, hidden in the geometry</span></li><li><b>03</b><span>Arabesque patterns, made modern and modular</span></li></ol></div><div class="row"><figure class="m reveal" style="--ar:1.0501;flex:1.0501 1 0%"><div class="m__box" style="aspect-ratio:1110 / 1057"><img src="../../accelerated-professional-center/assets/construction.png" alt="Construction grid of the APL mark built on triangle guides" loading="lazy" width="1110" height="1057"></div><figcaption>Construction</figcaption></figure><figure class="m reveal" style="--ar:0.7808;flex:0.7808 1 0%"><div class="m__box" style="aspect-ratio:1129 / 1446"><img src="../../accelerated-professional-center/assets/lockups.png" alt="Vertical and horizontal lockups with Arabic and English names" loading="lazy" width="1129" height="1446"></div><figcaption>Bilingual lockups</figcaption></figure></div></div>
   </section>
   <section class="cs" id="identity">
     <div class="pj__chip" aria-hidden="true"><span>05 · The identity</span></div>
@@ -366,6 +397,18 @@
 })();
 </script>
 
+<script>(() => {
+  // Logo animation: plays when it comes into view, replays on hover, tap or Enter
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('.idea2__stage').forEach(stage => {
+    const art = stage.querySelector('svg'); if (!art || reduce) return;
+    const play = () => { art.classList.remove('is-play'); void art.getBoundingClientRect(); art.classList.add('is-play'); };
+    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { play(); io.disconnect(); } }, { threshold: .6 });
+    io.observe(stage);
+    stage.addEventListener('pointerenter', play); stage.addEventListener('click', play);
+    stage.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(); } });
+  });
+})();</script>
 <script>(() => {
   // Section list in the sticky column follows the scroll
   const links = [...document.querySelectorAll('.pj__toc a')], secs = links.map(a => document.querySelector(a.hash));

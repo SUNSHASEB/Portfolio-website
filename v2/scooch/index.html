@@ -172,6 +172,28 @@
   .ct { padding-top: clamp(56px, 7vw, 100px); }
   .ct > .lbl + .ct__row { margin-top: clamp(24px, 3vw, 40px); }
 
+  /* The idea: the logo animation from V1, with its meanings */
+  .idea2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(20px, 3vw, 48px); align-items: center; }
+  .idea2__stage { position: relative; aspect-ratio: 1 / .8; display: grid; place-items: center; overflow: hidden; cursor: pointer; border-radius: var(--card-r, 16px); }
+  .idea2__stage::after { content: "Hover to replay"; position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: #fff; opacity: .5; }
+  @media (hover: none) { .idea2__stage::after { content: "Tap to replay"; } }
+  .idea2__stage:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+  .idea2__list { list-style: none; margin: 0; padding: 0; display: grid; }
+  .idea2__list li { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 14px; align-items: baseline; padding: 16px 0; border-top: 1px solid var(--line); }
+  .idea2__list li:last-child { border-bottom: 1px solid var(--line); }
+  .idea2__list b { font-size: 13px; font-weight: 500; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .idea2__list span { font-size: clamp(18px, 1.5vw, 22px); line-height: 1.3; letter-spacing: -.02em; }
+  @media (max-width: 900px) { .idea2 { grid-template-columns: 1fr; } }
+  .idea2--oo .idea2__stage { background: #14141a; }
+  .oo { width: 68%; height: auto; overflow: visible; }
+  .oo__circ { opacity: 0; transform-box: view-box; }
+  .oo.is-play .oo__circ--a { animation: ooA 1.8s cubic-bezier(.2, .8, .2, 1) both; }
+  .oo.is-play .oo__circ--b { animation: ooB 1.8s cubic-bezier(.2, .8, .2, 1) both; }
+  .oo.is-play .oo__real { animation: ooReal 1.8s linear both; }
+  @keyframes ooA { 0%, 30% { transform: translateX(41px); opacity: 1; } 72% { transform: translateX(-4px); } 84%, 92% { transform: none; opacity: 1; } 100% { transform: none; opacity: 0; } }
+  @keyframes ooB { 0% { transform: translateX(170px); opacity: 0; } 14% { opacity: 1; } 66% { transform: translateX(-7px); } 84%, 92% { transform: none; opacity: 1; } 100% { transform: none; opacity: 0; } }
+  @keyframes ooReal { 0%, 86% { opacity: 0; } 100% { opacity: 1; } }
+
   /* V3 case study: sticky info on the left, the work on the right */
   :root { --bg: var(--paper); --red: #df0c01; --yellow: #f6cb00; --mono: "Geist Mono", ui-monospace, Menlo, monospace; --tint: #fdf0b4; }
   body { background: var(--bg); }
@@ -294,7 +316,7 @@
     <div class="cs__body"></div>
     
     
-    <div class="rows"><div class="row row--1"><figure class="m m--contain m--white reveal" style="--ar:3.0000"><div class="m__box" style="aspect-ratio:2460 / 820"><img src="../../scooch/assets/construction.png" alt="Logo construction grid for the SCOOCH wordmark with OVER set sideways, and the interlocking OO mark" loading="lazy" width="2460" height="820"></div><figcaption>Construction</figcaption></figure></div></div>
+    <div class="rows"><div class="idea2 idea2--oo reveal"><div class="idea2__stage" role="img" tabindex="0" aria-label="Animation: one ring slides in and the other scooches over until they lock together into the Scooch Over mark"><svg class="oo" viewBox="-10 -10 288 206" aria-hidden="true"><g class="oo__real"><path d="M186.724 92.5416C186.724 113.658 179.588 133.118 167.574 148.694C166.388 150.233 165.151 151.737 163.868 153.2C155.734 162.484 145.761 170.148 134.511 175.628C132.587 176.566 130.622 177.444 128.622 178.246C117.743 182.651 105.842 185.078 93.3648 185.078C41.7981 185.078 0 143.649 0 92.5416C0 41.4346 41.7981 0 93.3648 0C105.842 0 117.743 2.42694 128.622 6.83176C117.31 12.9471 107.338 21.2067 99.2596 31.0507C97.3099 30.8691 95.345 30.7783 93.3648 30.7783C76.7189 30.7783 61.0707 37.2013 49.3015 48.8668C37.5322 60.5323 31.052 76.0425 31.052 92.5416C31.052 109.041 37.5322 124.546 49.3015 136.211C61.0707 147.877 76.7189 154.3 93.3648 154.3C95.345 154.3 97.3099 154.209 99.2596 154.028C101.245 153.846 103.21 153.568 105.149 153.2C116.017 151.152 126.107 146.267 134.511 138.921C135.509 138.053 136.476 137.15 137.423 136.211C137.683 135.954 137.942 135.692 138.202 135.424C149.477 123.855 155.672 108.667 155.672 92.5416C155.672 76.4159 149.477 61.2235 138.202 49.6539C146.56 42.4639 156.696 37.8976 167.574 36.3839C179.588 51.9547 186.724 71.4207 186.724 92.5416Z" fill="#6232ff"/><path d="M184.268 92.5416C184.268 143.649 143.02 185.078 92.1313 185.078C79.8186 185.078 68.0737 182.651 57.3384 178.246C68.5007 172.131 78.3417 163.872 86.314 154.028C88.233 154.209 90.1771 154.3 92.1313 154.3C108.558 154.3 124 147.877 135.615 136.211C147.229 124.546 153.624 109.036 153.624 92.5416C153.624 76.0475 147.229 60.5323 135.615 48.8668C124 37.2013 108.558 30.7783 92.1313 30.7783C90.1771 30.7783 88.233 30.8691 86.314 31.0507C84.3549 31.2324 82.4158 31.5099 80.5018 31.8782C69.7766 33.9267 59.825 38.8109 51.5312 46.1573C50.5466 47.0251 49.5871 47.9283 48.6528 48.8668C48.3966 49.1241 48.1404 49.3865 47.8842 49.6539C36.7571 61.2235 30.6434 76.4108 30.6434 92.5416C30.6434 108.672 36.7571 123.855 47.8842 135.424C39.6355 142.614 29.6337 147.181 18.8985 148.694C7.04297 133.118 0 113.658 0 92.5416C0 71.4257 7.04297 51.9547 18.8985 36.3839C20.074 34.84 21.2897 33.3414 22.5556 31.8782C30.5832 22.5943 40.4292 14.93 51.5312 9.45044C53.4301 8.51195 55.3642 7.63402 57.3384 6.83176C68.0737 2.42694 79.8186 0 92.1313 0C143.02 0 184.268 41.4296 184.268 92.5416Z" fill="#ceff1c" transform="translate(83.53 0)"/></g><circle class="oo__circ oo__circ--a" cx="93.36" cy="92.54" r="77.2" fill="none" stroke="#6232ff" stroke-width="30.8"/><circle class="oo__circ oo__circ--b" cx="175.66" cy="92.54" r="76.8" fill="none" stroke="#ceff1c" stroke-width="30.7"/></svg></div><ol class="idea2__list"><li><b>01</b><span>Film reels, passing the story from one to the next</span></li><li><b>02</b><span>Two founders, Sergio and Romina, working as one</span></li><li><b>03</b><span>Story and film, locked into a single frame</span></li></ol></div><div class="row row--1"><figure class="m m--contain m--white reveal" style="--ar:3.0000"><div class="m__box" style="aspect-ratio:2460 / 820"><img src="../../scooch/assets/construction.png" alt="Logo construction grid for the SCOOCH wordmark with OVER set sideways, and the interlocking OO mark" loading="lazy" width="2460" height="820"></div><figcaption>Construction</figcaption></figure></div></div>
   </section>
   <section class="cs" id="identity">
     <div class="pj__chip" aria-hidden="true"><span>04 · The identity</span></div>
@@ -360,6 +382,18 @@
 })();
 </script>
 
+<script>(() => {
+  // Logo animation: plays when it comes into view, replays on hover, tap or Enter
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('.idea2__stage').forEach(stage => {
+    const art = stage.querySelector('svg'); if (!art || reduce) return;
+    const play = () => { art.classList.remove('is-play'); void art.getBoundingClientRect(); art.classList.add('is-play'); };
+    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { play(); io.disconnect(); } }, { threshold: .6 });
+    io.observe(stage);
+    stage.addEventListener('pointerenter', play); stage.addEventListener('click', play);
+    stage.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(); } });
+  });
+})();</script>
 <script>(() => {
   // Section list in the sticky column follows the scroll
   const links = [...document.querySelectorAll('.pj__toc a')], secs = links.map(a => document.querySelector(a.hash));
