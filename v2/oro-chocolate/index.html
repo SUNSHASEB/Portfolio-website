@@ -190,6 +190,10 @@
   /* Contact: availability and details, without the headline */
   .ct { padding-top: clamp(56px, 7vw, 100px); }
   .ct > .lbl + .ct__row { margin-top: clamp(24px, 3vw, 40px); }
+  /* Intro film: a near-square clip, whole, on a dark card */
+  .cx__media--square { display: grid; place-items: center; background: #0f0f0e; }
+  .cx__media.cx__media--square video { width: auto; max-width: 100%; height: min(78svh, 760px); aspect-ratio: 594 / 608; object-fit: contain; background: none; }
+  @media (max-width: 1000px) { .cx__media.cx__media--square video { width: 100%; height: auto; } }
 
   /* V3 case study: sticky info on the left, the work on the right */
   :root { --bg: var(--paper); --red: #df0c01; --yellow: #f6cb00; --mono: "Geist Mono", ui-monospace, Menlo, monospace; --tint: #fdf0b4; }
@@ -288,7 +292,7 @@
     <nav class="pj__toc" aria-label="Sections"><a href="#brief"><small>01</small>The brief</a><a href="#idea"><small>02</small>The idea</a><a href="#guidelines"><small>03</small>Brand guidelines</a><a href="#packaging"><small>04</small>Packaging</a><a href="#source"><small>05</small>From the source</a><a href="#world"><small>06</small>In the world</a></nav>
   </div></aside>
   <div class="pj__main">
-    <figure class="cx__media"><img src="../../oro-chocolate/assets/hero.jpg" alt="Black ORO coffee and drinking chocolate bags with the gold star mark, on stone in a rainforest" width="1920" height="1080" fetchpriority="high"></figure>
+    <figure class="cx__media cx__media--square"><video class="lv" src="../../oro-chocolate/assets/oro-stickers.mp4" poster="../../oro-chocolate/assets/oro-stickers.jpg" muted loop playsinline preload="auto" autoplay aria-label="ORO star stickers in gold, black, green, purple, red, yellow and blue, stuck on walls, poles and doors around the city"></video></figure>
     
 
   <section class="cs" id="brief">
