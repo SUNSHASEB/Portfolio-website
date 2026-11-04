@@ -144,7 +144,7 @@
   /* Footer */
   .ft-wrap { background: var(--night); color: rgba(243,241,236,.7); padding: 0 var(--gutter) 18px; overflow: hidden; }
   .ft-nav { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding: 22px 0; border-top: 1px solid var(--night-line); font-size: 13px; letter-spacing: .1em; text-transform: uppercase; }
-  .ft-nav nav { display: flex; gap: 22px; }
+  .ft-nav nav { display: flex; flex-wrap: wrap; gap: 8px 22px; }
   .ft-nav a:hover { color: #fff; }
   .wordmark { display: block; color: #f3f1ec; font-size: clamp(54px, 15.2vw, 260px); font-weight: 500; letter-spacing: -.065em; line-height: .8; white-space: nowrap; margin: 10px 0 0 -.04em; }
 
@@ -192,6 +192,9 @@
     .hv__slide img { transition: none; transform: none; }
     .hv.is-run .hv__bar { animation: none; }
   }
+  /* Contact: availability and details, without the headline */
+  .ct { padding-top: clamp(56px, 7vw, 100px); }
+  .ct > .lbl + .ct__row { margin-top: clamp(24px, 3vw, 40px); }
 </style>
 </head>
 <body>
@@ -248,7 +251,6 @@
 
 <section id="contact" class="ct" aria-label="Contact">
   <span class="lbl"><span class="dot" aria-hidden="true"></span>Available for full-time, remote and new projects</span>
-  <h2>Let’s make something <em>worth keeping.</em></h2>
   <div class="ct__row">
     <div><span class="lbl">Email</span><p><a class="ct__mail" href="mailto:sunil@sebastians.tv">sunil@sebastians.tv</a></p></div>
     <div><span class="lbl">Elsewhere</span><p><a href="https://www.linkedin.com/in/sunil-shahzad-a7a59797/" target="_blank" rel="noopener">LinkedIn ↗</a></p><p><a href="https://www.behance.net/sunshaseb" target="_blank" rel="noopener">Behance ↗</a></p><p><a href="https://www.instagram.com/sunilsebastian/" target="_blank" rel="noopener">Instagram ↗</a></p></div>

@@ -53,7 +53,7 @@
   /* Footer */
   .ft-wrap { background: var(--night); color: rgba(243,241,236,.7); padding: 0 var(--gutter) 18px; overflow: hidden; }
   .ft-nav { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding: 22px 0; border-top: 1px solid var(--night-line); font-size: 13px; letter-spacing: .1em; text-transform: uppercase; }
-  .ft-nav nav { display: flex; gap: 22px; }
+  .ft-nav nav { display: flex; flex-wrap: wrap; gap: 8px 22px; }
   .ft-nav a:hover { color: #fff; }
   .wordmark { display: block; color: #f3f1ec; font-size: clamp(54px, 15.2vw, 260px); font-weight: 500; letter-spacing: -.065em; line-height: .8; white-space: nowrap; margin: 10px 0 0 -.04em; }
 
@@ -187,6 +187,9 @@
   :root { --card-r: 16px; }
   .cx__media { margin: 0 var(--gutter); }
   .cx__media, .m__box, .sx__stage, .nx__img, .cmp, .web, .ba, .build, .wx--dark, .sws, .yt { border-radius: var(--card-r); overflow: hidden; isolation: isolate; }
+  /* Contact: availability and details, without the headline */
+  .ct { padding-top: clamp(56px, 7vw, 100px); }
+  .ct > .lbl + .ct__row { margin-top: clamp(24px, 3vw, 40px); }
 
   /* V3 case study: sticky info on the left, the work on the right */
   :root { --bg: var(--paper); --red: #df0c01; --yellow: #f6cb00; --mono: "Geist Mono", ui-monospace, Menlo, monospace; --tint: #fdf0b4; }
@@ -285,7 +288,7 @@
     <nav class="pj__toc" aria-label="Sections"><a href="#overview"><small>01</small>Overview</a></nav>
   </div></aside>
   <div class="pj__main">
-    <figure class="cx__media"><img src="../../campaigns/assets/cc-t20-ooh-1.jpg" alt="Billboard: friends celebrating around a green car" width="1800" height="614" fetchpriority="high"></figure>
+    <figure class="cx__media"><img src="../../campaigns/assets/cc-t20-ooh-1-v2.jpg" alt="Billboard: friends celebrating around a green car" width="1800" height="610" fetchpriority="high"></figure>
     
 
   <section class="cs" id="overview">
@@ -294,7 +297,7 @@
     <div class="cs__body"></div>
     
     
-    <div class="rows"><div class="row row--solo"><figure class="m reveal" style="--ar:0.7795"><div class="m__box" style="aspect-ratio:1340 / 1719"><img src="../../campaigns/assets/cc-t20-poster.jpg" alt="Poster: fans holding a Hum hain opener apni zindagi ke sign" loading="lazy" width="1340" height="1719"></div><figcaption>Poster</figcaption></figure></div><div class="row row--1"><figure class="m reveal" style="--ar:3.0405"><div class="m__box" style="aspect-ratio:1800 / 592"><img src="../../campaigns/assets/cc-t20-ooh-2.jpg" alt="Billboard: four fans spelling Hum hain opener on their shirts" loading="lazy" width="1800" height="592"></div><figcaption>OOH</figcaption></figure></div><div class="sx reveal" style="--ar:2.9176"><div class="sx__stage"><img class="sx__img is-on" src="../../campaigns/assets/cc-studio-ooh-3.jpg" alt="Coke Studio billboard: Charkha Nolakha" loading="lazy" width="1736" height="574"><img class="sx__img" src="../../campaigns/assets/cc-studio-ooh-1.jpg" alt="Coke Studio billboard: Kandyaari Dhol Geet" loading="lazy" width="1736" height="606"><img class="sx__img" src="../../campaigns/assets/cc-studio-ooh-2.jpg" alt="Coke Studio billboard: Koi Labda" loading="lazy" width="1736" height="595"></div><div class="sx__tabs"><button class="sx__tab is-on" type="button" aria-pressed="true" data-note="Episode 1 · from 13 May.">Charkha Nolakha</button><button class="sx__tab" type="button" aria-pressed="false" data-note="Episode 4 · from 24 June.">Kandyaari Dhol Geet</button><button class="sx__tab" type="button" aria-pressed="false" data-note="Episode 5 · from 8 July.">Koi Labda</button></div><p class="sx__note">Episode 1 · from 13 May.</p></div><div class="row"><figure class="m reveal" style="--ar:1.0000;flex:1.0000 1 0%"><div class="m__box" style="aspect-ratio:942 / 942"><img src="../../campaigns/assets/cc-studio-invite.jpg" alt="Coke Studio Season 5 invitation with a vinyl record" loading="lazy" width="942" height="942"></div><figcaption>Invitation</figcaption></figure><figure class="m reveal" style="--ar:1.0000;flex:1.0000 1 0%"><div class="m__box" style="aspect-ratio:942 / 942"><img src="../../campaigns/assets/cc-studio-folder.jpg" alt="Coke Studio Season 5 folder" loading="lazy" width="942" height="942"></div><figcaption>Folder</figcaption></figure></div></div>
+    <div class="rows"><div class="row row--solo"><figure class="m reveal" style="--ar:0.7783"><div class="m__box" style="aspect-ratio:1334 / 1714"><img src="../../campaigns/assets/cc-t20-poster-v2.jpg" alt="Poster: fans holding a Hum hain opener apni zindagi ke sign" loading="lazy" width="1334" height="1714"></div><figcaption>Poster</figcaption></figure></div><div class="row row--1"><figure class="m reveal" style="--ar:3.0405"><div class="m__box" style="aspect-ratio:1800 / 592"><img src="../../campaigns/assets/cc-t20-ooh-2.jpg" alt="Billboard: four fans spelling Hum hain opener on their shirts" loading="lazy" width="1800" height="592"></div><figcaption>OOH</figcaption></figure></div><div class="sx reveal" style="--ar:2.9176"><div class="sx__stage"><img class="sx__img is-on" src="../../campaigns/assets/cc-studio-ooh-3.jpg" alt="Coke Studio billboard: Charkha Nolakha" loading="lazy" width="1736" height="574"><img class="sx__img" src="../../campaigns/assets/cc-studio-ooh-1-v2.jpg" alt="Coke Studio billboard: Kandyaari Dhol Geet" loading="lazy" width="1736" height="597"><img class="sx__img" src="../../campaigns/assets/cc-studio-ooh-2-v2.jpg" alt="Coke Studio billboard: Koi Labda" loading="lazy" width="1736" height="589"></div><div class="sx__tabs"><button class="sx__tab is-on" type="button" aria-pressed="true" data-note="Episode 1 · from 13 May.">Charkha Nolakha</button><button class="sx__tab" type="button" aria-pressed="false" data-note="Episode 4 · from 24 June.">Kandyaari Dhol Geet</button><button class="sx__tab" type="button" aria-pressed="false" data-note="Episode 5 · from 8 July.">Koi Labda</button></div><p class="sx__note">Episode 1 · from 13 May.</p></div><div class="row"><figure class="m reveal" style="--ar:1.0011;flex:1.0011 1 0%"><div class="m__box" style="aspect-ratio:935 / 934"><img src="../../campaigns/assets/cc-studio-invite-v2.jpg" alt="Coke Studio Season 5 invitation with a vinyl record" loading="lazy" width="935" height="934"></div><figcaption>Invitation</figcaption></figure><figure class="m reveal" style="--ar:1.0086;flex:1.0086 1 0%"><div class="m__box" style="aspect-ratio:942 / 934"><img src="../../campaigns/assets/cc-studio-folder-v2.jpg" alt="Coke Studio Season 5 folder" loading="lazy" width="942" height="934"></div><figcaption>Folder</figcaption></figure></div></div>
   </section>
   <div style="height:clamp(80px,10vw,160px)"></div>
   
@@ -314,7 +317,6 @@
 
 <section id="contact" class="ct" aria-label="Contact">
   <span class="lbl"><span class="dot" aria-hidden="true"></span>Available for full-time, remote and new projects</span>
-  <h2>Let’s make something <em>worth keeping.</em></h2>
   <div class="ct__row">
     <div><span class="lbl">Email</span><p><a class="ct__mail" href="mailto:sunil@sebastians.tv">sunil@sebastians.tv</a></p></div>
     <div><span class="lbl">Elsewhere</span><p><a href="https://www.linkedin.com/in/sunil-shahzad-a7a59797/" target="_blank" rel="noopener">LinkedIn ↗</a></p><p><a href="https://www.behance.net/sunshaseb" target="_blank" rel="noopener">Behance ↗</a></p><p><a href="https://www.instagram.com/sunilsebastian/" target="_blank" rel="noopener">Instagram ↗</a></p></div>
@@ -388,7 +390,7 @@
   addEventListener('click', e => { if (!e.target.closest('.sw3')) { menu.hidden = true; btn.setAttribute('aria-expanded', 'false'); } });
   addEventListener('keydown', e => { if (e.key === 'Escape') { menu.hidden = true; btn.setAttribute('aria-expanded', 'false'); } });
   // The switcher steps aside once the contact section is on screen
-  const sw = document.querySelector('.sw3'), ct = document.getElementById('contact');
+  const sw = document.querySelector('.sw3'), ct = document.getElementById('contact') || document.querySelector('footer');
   if (ct) new IntersectionObserver(([e]) => { sw.classList.toggle('is-off', e.isIntersecting); if (e.isIntersecting) menu.hidden = true; }).observe(ct);
 })();</script>
 </body>

@@ -53,7 +53,7 @@
   /* Footer */
   .ft-wrap { background: var(--night); color: rgba(243,241,236,.7); padding: 0 var(--gutter) 18px; overflow: hidden; }
   .ft-nav { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding: 22px 0; border-top: 1px solid var(--night-line); font-size: 13px; letter-spacing: .1em; text-transform: uppercase; }
-  .ft-nav nav { display: flex; gap: 22px; }
+  .ft-nav nav { display: flex; flex-wrap: wrap; gap: 8px 22px; }
   .ft-nav a:hover { color: #fff; }
   .wordmark { display: block; color: #f3f1ec; font-size: clamp(54px, 15.2vw, 260px); font-weight: 500; letter-spacing: -.065em; line-height: .8; white-space: nowrap; margin: 10px 0 0 -.04em; }
 
@@ -166,6 +166,9 @@
   :root { --card-r: 16px; }
   .cx__media { margin: 0 var(--gutter); }
   .cx__media, .m__box, .sx__stage, .nx__img, .cmp, .web, .ba, .build, .wx--dark, .sws, .yt { border-radius: var(--card-r); overflow: hidden; isolation: isolate; }
+  /* Contact: availability and details, without the headline */
+  .ct { padding-top: clamp(56px, 7vw, 100px); }
+  .ct > .lbl + .ct__row { margin-top: clamp(24px, 3vw, 40px); }
 
   /* V3 case study: sticky info on the left, the work on the right */
   :root { --bg: var(--paper); --red: #df0c01; --yellow: #f6cb00; --mono: "Geist Mono", ui-monospace, Menlo, monospace; --tint: #fdf0b4; }
@@ -309,7 +312,6 @@
 
 <section id="contact" class="ct" aria-label="Contact">
   <span class="lbl"><span class="dot" aria-hidden="true"></span>Available for full-time, remote and new projects</span>
-  <h2>Let’s make something <em>worth keeping.</em></h2>
   <div class="ct__row">
     <div><span class="lbl">Email</span><p><a class="ct__mail" href="mailto:sunil@sebastians.tv">sunil@sebastians.tv</a></p></div>
     <div><span class="lbl">Elsewhere</span><p><a href="https://www.linkedin.com/in/sunil-shahzad-a7a59797/" target="_blank" rel="noopener">LinkedIn ↗</a></p><p><a href="https://www.behance.net/sunshaseb" target="_blank" rel="noopener">Behance ↗</a></p><p><a href="https://www.instagram.com/sunilsebastian/" target="_blank" rel="noopener">Instagram ↗</a></p></div>
@@ -352,7 +354,7 @@
   addEventListener('click', e => { if (!e.target.closest('.sw3')) { menu.hidden = true; btn.setAttribute('aria-expanded', 'false'); } });
   addEventListener('keydown', e => { if (e.key === 'Escape') { menu.hidden = true; btn.setAttribute('aria-expanded', 'false'); } });
   // The switcher steps aside once the contact section is on screen
-  const sw = document.querySelector('.sw3'), ct = document.getElementById('contact');
+  const sw = document.querySelector('.sw3'), ct = document.getElementById('contact') || document.querySelector('footer');
   if (ct) new IntersectionObserver(([e]) => { sw.classList.toggle('is-off', e.isIntersecting); if (e.isIntersecting) menu.hidden = true; }).observe(ct);
 })();</script>
 </body>
