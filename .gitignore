@@ -36,3 +36,6 @@
 !/.claude/launch.json
 !/.claude/serve.py
 .DS_Store
+
+# Raw screen recordings stay local
+*.mov
