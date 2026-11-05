@@ -169,6 +169,8 @@
   /* Contact: availability and details, without the headline */
   .ct { padding-top: clamp(56px, 7vw, 100px); }
   .ct > .lbl + .ct__row { margin-top: clamp(24px, 3vw, 40px); }
+  /* Triennale ident and the two edit grids, each on its own row */
+  .row--solo .m--ident { max-width: min(100%, 560px); margin-inline: auto; }
 
   /* V3 case study: sticky info on the left, the work on the right */
   :root { --bg: var(--paper); --red: #df0c01; --yellow: #f6cb00; --mono: "Geist Mono", ui-monospace, Menlo, monospace; --tint: #fdf0b4; }
@@ -292,7 +294,7 @@
     <div class="cs__body"><ul class="cs__chips reveal"><li>Palette knives</li><li>Brush strokes</li><li>Spray cans</li><li>Chisel strikes</li><li>Pottery wheels</li><li>Welding</li><li>Looms &amp; shuttles</li><li>Sewing machines</li><li>Blueprint paper</li><li>3D printers</li><li>Print presses</li><li>Shutter clicks</li><li>Courtyard fountain</li><li>Birdsong</li></ul></div>
     
     
-    <div class="rows"><div class="row"><figure class="m reveal" style="--ar:0.8000;flex:0.8000 1 0%"><div class="m__box" style="aspect-ratio:720 / 900"><video class="lv" src="../../side-quests/assets/nca-loop.mp4" poster="../../side-quests/assets/nca-loop.jpg" muted loop playsinline preload="none" aria-label="NCA Triennale title card animation on lime"></video></div><figcaption>Triennale ident</figcaption></figure><figure class="m reveal" style="--ar:1.1111;flex:1.1111 1 0%"><div class="m__box" style="aspect-ratio:900 / 810"><video class="lv" src="../../side-quests/assets/nca-motion-1.mp4" poster="../../side-quests/assets/nca-motion-1.jpg" muted loop playsinline preload="none" aria-label="Grid of film frames from the edit"></video></div><figcaption>Edit, part one</figcaption></figure><figure class="m reveal" style="--ar:1.1111;flex:1.1111 1 0%"><div class="m__box" style="aspect-ratio:900 / 810"><video class="lv" src="../../side-quests/assets/nca-motion-2.mp4" poster="../../side-quests/assets/nca-motion-2.jpg" muted loop playsinline preload="none" aria-label="Grid of black and white workshop frames"></video></div><figcaption>Edit, part two</figcaption></figure></div></div>
+    <div class="rows"><div class="row row--solo"><figure class="m m--ident reveal" style="--ar:0.8000"><div class="m__box" style="aspect-ratio:720 / 900"><video class="lv" src="../../side-quests/assets/nca-loop.mp4" poster="../../side-quests/assets/nca-loop.jpg" muted loop playsinline preload="none" aria-label="NCA Triennale title card animation on lime"></video></div><figcaption>Triennale ident</figcaption></figure></div><div class="row row--solo"><figure class="m reveal" style="--ar:1.0306"><div class="m__box" style="aspect-ratio:808 / 784"><video class="lv" src="../../side-quests/assets/nca-edit-1-v2.mp4" poster="../../side-quests/assets/nca-edit-1-v2.jpg" muted loop playsinline preload="none" aria-label="Grid of film frames from the edit"></video></div><figcaption>Edit, part one</figcaption></figure></div><div class="row row--solo"><figure class="m reveal" style="--ar:1.0228"><div class="m__box" style="aspect-ratio:808 / 790"><video class="lv" src="../../side-quests/assets/nca-edit-2-v2.mp4" poster="../../side-quests/assets/nca-edit-2-v2.jpg" muted loop playsinline preload="none" aria-label="Grid of black and white workshop frames"></video></div><figcaption>Edit, part two</figcaption></figure></div></div>
   </section>
   <div style="height:clamp(80px,10vw,160px)"></div>
   
