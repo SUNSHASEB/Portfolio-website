@@ -237,6 +237,7 @@
   .ct { padding-top: clamp(56px, 7vw, 100px); }
   .ct > .lbl + .ct__row { margin-top: clamp(24px, 3vw, 40px); }
   /* Green School v9: interactive guideline pieces */
+  @font-face { font-family: "Eboracum"; src: url("../../green-school/fonts/Eboracum.ttf") format("truetype"); font-display: swap; }
   :root { --gs-g: #1B5633; --gs-gold: #BB9F62; --gs-brown: #63481C; --gs-cream: #f5f1e6; }
   .lq, .gf, .cp, .tv, .nf, .bk { border-radius: var(--card-r, 16px); margin-top: clamp(10px, 1.6vw, 24px); }
   .lq button, .gf button, .cp button, .tv button, .nf button, .bk button { font: inherit; color: inherit; cursor: pointer; }
@@ -339,7 +340,7 @@
   .tv__all { appearance: none; margin-top: 20px; padding: 10px 18px; border-radius: 999px; border: 1px solid rgba(255,255,255,.4); background: none; font-size: 14px; transition: background .25s, color .25s; }
   .tv__all:hover, .tv__all[aria-pressed="true"] { background: var(--gs-gold); border-color: var(--gs-gold); color: #1d1a12; }
   .tv__words { list-style: none; margin: 0; padding: 0; }
-  .tv__words button { appearance: none; border: 0; padding: 0; background: none; display: block; font-family: Georgia, "Times New Roman", serif; font-size: clamp(30px, 3.5vw, 60px); line-height: 1.12; white-space: nowrap; letter-spacing: -.01em; color: transparent; -webkit-text-stroke: 1.2px var(--gs-gold); text-align: left; transition: color .45s, transform .45s cubic-bezier(.3,1.4,.5,1), -webkit-text-stroke-color .45s; }
+  .tv__words button { appearance: none; border: 0; padding: 0; background: none; display: block; font-family: "Eboracum", Georgia, "Times New Roman", serif; font-size: clamp(34px, 4vw, 74px); line-height: 1.04; white-space: nowrap; letter-spacing: -.01em; color: transparent; -webkit-text-stroke: 1.2px var(--gs-gold); text-align: left; transition: color .45s, transform .45s cubic-bezier(.3,1.4,.5,1), -webkit-text-stroke-color .45s; }
   .tv__words button:hover { transform: translateX(10px); }
   .tv__words button[aria-pressed="true"] { color: var(--gs-gold); transform: translateX(14px); }
   .tv__words button[aria-pressed="true"]:hover { transform: translateX(14px); }
@@ -404,7 +405,7 @@
     .cp__set { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
     .cp__sw small { display: none; }
     .cp__sw b { font-size: 11px; }
-    .tv__words button { font-size: 9vw; }
+    .tv__words button { font-size: 10vw; }
     .gf__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px 6px; }
     .gf__ic span { font-size: 10px; }
     .bk__nav { width: 38px; height: 38px; font-size: 22px; }
