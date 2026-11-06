@@ -221,6 +221,69 @@
     .bx__steps { grid-template-columns: repeat(8, minmax(0, 1fr)); }
     .bx__fx { grid-template-columns: 1fr 1fr; } .bx__fx input { grid-column: 1 / -1; grid-row: 1; }
   }
+  /* BIT research: reference board, screen sketches, sketch-to-screen */
+  .rb, .ss, .ps { flex: 1 1 100%; min-width: 0; border-radius: var(--card-r); background: #121313; color: #e8e8e8; padding: clamp(14px, 2vw, 28px); }
+  :where(.rb, .ss, .ps) button { all: unset; cursor: pointer; box-sizing: border-box; }
+  .rb button:focus-visible, .ss button:focus-visible, .ps button:focus-visible, .ps__r:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+  .rb__note span, .ss__bar span, .ps__top > span { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: #8a8f90; }
+  .rb__note { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 3fr); gap: 12px var(--gutter); align-items: baseline; padding-bottom: clamp(14px, 2vw, 22px); margin-bottom: clamp(14px, 2vw, 22px); border-bottom: 1px solid #2a2c2d; }
+  .rb__note p { margin: 0; font-size: clamp(18px, 1.7vw, 26px); line-height: 1.3; letter-spacing: -.02em; color: #fff; max-width: 40ch; }
+  .rb__main { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: clamp(14px, 2vw, 28px); }
+  .rb__stage { position: relative; aspect-ratio: 4 / 3; border-radius: 10px; overflow: hidden; background: #2a2a2a; }
+  .rb__stage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 4%; box-sizing: border-box; opacity: 0; transform: scale(.96) rotate(-1.5deg); transition: opacity .45s var(--ease), transform .7s cubic-bezier(.3,1.3,.5,1); }
+  .rb__stage img.is-on { opacity: 1; transform: none; }
+  .rb__list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .rb__b { display: block; width: 100%; padding: 12px 14px; border-radius: 10px; box-shadow: inset 0 0 0 1px #2a2c2d; transition: background .25s, box-shadow .25s; }
+  .rb__b:hover { box-shadow: inset 0 0 0 1px #5a5f60; }
+  .rb__b small { display: block; font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: #8a8f90; }
+  .rb__b b { display: block; margin-top: 2px; font-size: 16px; font-weight: 500; letter-spacing: -.01em; }
+  .rb__b span { display: block; overflow: hidden; font-size: 14px; line-height: 1.4; color: #b9bdbe; transition: max-height .45s var(--ease), margin .45s var(--ease); }
+  .rb__b.is-on { background: #1c1e1e; box-shadow: inset 0 0 0 1px #ff8a5c; }
+  .rb__b.is-on small { color: #ff8a5c; }
+  .rb__b:not(.is-on) span { max-height: 0; }
+  .rb__b.is-on span { max-height: 8em; margin-top: 6px; }
+
+  .ss__bar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 12px; margin-bottom: clamp(14px, 2vw, 22px); }
+  .ss__bar p { margin: 6px 0 0; font-size: clamp(16px, 1.4vw, 20px); letter-spacing: -.015em; }
+  .ss__all, .ps__play { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; padding: 9px 14px; border-radius: 8px; background: #a7f3c0; color: #0d1f14; }
+  .ss__all[aria-pressed="true"], .ps__play[aria-pressed="true"] { background: #ff8a5c; color: #1d0f08; }
+  .ss__grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(8px, 1vw, 14px); }
+  .ss__t { position: relative; display: block; width: 100%; border-radius: 10px; overflow: hidden; background: #000; }
+  .ss__t img { display: block; width: 100%; height: auto; filter: grayscale(1) brightness(.35) contrast(1.2); transition: filter .5s; }
+  .ss__t:hover img { filter: grayscale(.6) brightness(.6); }
+  .ss__t[aria-pressed="true"] img { filter: none; animation: ssflick .5s steps(2) var(--d, 0s) both; }
+  @keyframes ssflick { 0% { opacity: .2; } 30% { opacity: 1; } 45% { opacity: .4; } 60%, 100% { opacity: 1; } }
+  .ss__t span { position: absolute; left: 10px; bottom: 8px; font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: #8a8f90; }
+  .ss__t[aria-pressed="true"] span { color: #e8e8e8; }
+  .ss__t em { position: absolute; right: 8px; top: 8px; font-style: normal; font-family: var(--mono); font-size: 10px; padding: 3px 7px; border-radius: 999px; background: #ff8a5c; color: #1d0f08; opacity: 0; transform: translateY(-4px); transition: opacity .3s .2s, transform .3s .2s; }
+  .ss__t[aria-pressed="true"] em { opacity: 1; transform: none; }
+
+  .ps__top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .ps__stage { position: relative; aspect-ratio: 16 / 9; border-radius: 10px; overflow: hidden; background: #2a2a2a; }
+  .ps__stage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; transform: scale(1.03); transition: opacity .5s var(--ease), transform .8s var(--ease); }
+  .ps__stage img:last-child { object-fit: cover; }
+  .ps__stage img.is-on { opacity: 1; transform: none; }
+  .ps__r { width: 100%; margin: 16px 0 6px; accent-color: #ff8a5c; }
+  .ps__steps { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; }
+  .ps__steps button { padding: 8px 2px 4px; border-top: 2px solid #2a2c2d; font-size: 14px; color: #8a8f90; transition: color .25s, border-color .25s; }
+  .ps__steps button small { display: block; font-family: var(--mono); font-size: 11px; }
+  .ps__steps button:hover { color: #e8e8e8; }
+  .ps__steps button.is-done { border-color: #5a5f60; }
+  .ps__steps button.is-on { color: #fff; border-color: #ff8a5c; }
+  .ps__note { margin: 10px 2px 0; font-size: clamp(16px, 1.4vw, 20px); letter-spacing: -.015em; min-height: 2.6em; }
+
+  @media (max-width: 900px) {
+    .rb__note, .rb__main { grid-template-columns: 1fr; }
+    .ss__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 600px) {
+    .ps__steps button { font-size: 11px; }
+    .rb__b span { font-size: 13px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .rb__stage img, .ps__stage img, .ss__t img { transition: none; animation: none !important; }
+  }
+
 
   /* V3 case study: sticky info on the left, the work on the right */
   :root { --bg: var(--paper); --red: #df0c01; --yellow: #f6cb00; --mono: "Geist Mono", ui-monospace, Menlo, monospace; --tint: #fdf0b4; }
@@ -316,7 +379,7 @@
     <p class="pj__lede">An eight-track groovebox that runs in the browser, built from my own hardware-style Figma concept.</p>
     <dl class="pj__kv"><div><dt>Role</dt><dd>Concept, design, build</dd></div><div><dt>Made with</dt><dd>Web Audio, plain JavaScript, no dependencies</dd></div><div><dt>Engine</dt><dd>8 tracks, 8 patterns, 16 steps</dd></div><div><dt>Hardware</dt><dd>Faderfox LV3 over Web MIDI</dd></div><div><dt>Live</dt><dd><a href="https://bit-groovebox-sunshaseb.lilac-ant-5711.chatgpt.site" target="_blank" rel="noopener">Open BIT ↗</a></dd></div></dl>
     
-    <nav class="pj__toc" aria-label="Sections"><a href="#overview"><small>01</small>Overview</a><a href="#try-it"><small>02</small>Try it</a><a href="#screen"><small>03</small>The screen</a><a href="#sound"><small>04</small>Sound</a><a href="#mix"><small>05</small>Mix & perform</a><a href="#hardware"><small>06</small>Hardware</a><a href="#modes"><small>07</small>Light & dark</a><a href="#engine"><small>08</small>Under the hood</a></nav>
+    <nav class="pj__toc" aria-label="Sections"><a href="#overview"><small>01</small>Overview</a><a href="#research"><small>02</small>Where it started</a><a href="#try-it"><small>03</small>Try it</a><a href="#screen"><small>04</small>The screen</a><a href="#sound"><small>05</small>Sound</a><a href="#mix"><small>06</small>Mix & perform</a><a href="#hardware"><small>07</small>Hardware</a><a href="#modes"><small>08</small>Light & dark</a><a href="#engine"><small>09</small>Under the hood</a></nav>
   </div></aside>
   <div class="pj__main">
     <figure class="cx__media"><video class="lv" src="../../side-quests/assets/groove-loop.mp4" poster="../../side-quests/assets/groove-loop.jpg" muted loop playsinline preload="auto" autoplay aria-label="The BIT groovebox playing: transport, scope meters, sound, perform and mixer modules with the step sequence running"></video></figure>
@@ -328,42 +391,47 @@
     <div class="cs__body"><ol class="pts" style="--n:2"><li class="reveal"><small>01</small><b>Sequence</b><p>Eight patterns, eight tracks, sixteen steps. Velocity, probability and note per step.</p></li><li class="reveal"><small>02</small><b>Sound</b><p>Drum and synth engines, or load your own sample.</p></li><li class="reveal"><small>03</small><b>Mix</b><p>Eight faders, mute, solo and a master level.</p></li><li class="reveal"><small>04</small><b>Perform</b><p>Two effect scenes and a crossfader between them.</p></li></ol></div>
     <div class="rows"><div class="row row--1"><figure class="m reveal" style="--ar:1.6000"><div class="m__box" style="aspect-ratio:2400 / 1500"><img src="../../side-quests/assets/groove-ui-dark.jpg" alt="The full BIT workspace in dark mode: transport, screen, sound, perform and mixer" loading="lazy" width="2400" height="1500"></div><figcaption>The workspace, dark mode</figcaption></figure></div></div>
   </section>
+  <section class="cs" id="research">
+    <div class="pj__chip" aria-hidden="true"><span>02 · Where it started</span></div>
+    <div class="cs__head reveal"><div><h2>It started with hardware.</h2><p class="cs__sub">Before any code, a Figma board of the boxes I love to play. Then sketches, screens and layouts, until the idea was ready to build.</p></div></div>
+    <div class="rows"><div class="rb reveal"><div class="rb__note"><span>Figma note, day one</span><p>“The idea is to create a software plugin inspired by the Faderfox MIDI controller. To use as a looper / groovebox, something like the Octatrack MK2.”</p></div><div class="rb__main"><div class="rb__stage"><img class="is-on" src="../../side-quests/assets/groove-ref-lv3.jpg" alt="Faderfox LV3" loading="lazy" width="800" height="1200"><img class="" src="../../side-quests/assets/groove-ref-octatrack.jpg" alt="Elektron Octatrack MKII" loading="lazy" width="1600" height="862"><img class="" src="../../side-quests/assets/groove-ref-circuit.jpg" alt="Novation Circuit Tracks" loading="lazy" width="1400" height="1117"><img class="" src="../../side-quests/assets/groove-ref-polyend.jpg" alt="Polyend Play" loading="lazy" width="1600" height="1175"><img class="" src="../../side-quests/assets/groove-ref-smpltrek.jpg" alt="Sonicware SmplTrek" loading="lazy" width="1400" height="1230"></div><ul class="rb__list"><li><button type="button" class="rb__b is-on" aria-pressed="true"><small>01 · The spark</small><b>Faderfox LV3</b><span>Faders and buttons in tight rows. The whole idea began as a software version of this controller, and BIT still maps to it.</span></button></li><li><button type="button" class="rb__b" aria-pressed="false"><small>02 · The brain</small><b>Elektron Octatrack MKII</b><span>Eight tracks, a looper at heart and a crossfader between two scenes. BIT’s A/B scenes come straight from here.</span></button></li><li><button type="button" class="rb__b" aria-pressed="false"><small>03 · The colour</small><b>Novation Circuit Tracks</b><span>Pads you can read from across the room. Colour tells you which track you are on.</span></button></li><li><button type="button" class="rb__b" aria-pressed="false"><small>04 · The screen</small><b>Polyend Play</b><span>A big grid and a screen that changes with the job. One display, many views.</span></button></li><li><button type="button" class="rb__b" aria-pressed="false"><small>05 · The size</small><b>Sonicware SmplTrek</b><span>Small, playful and made to carry. Everything within one thumb’s reach.</span></button></li></ul></div></div><div class="ss reveal"><div class="ss__bar"><div><span>Twelve screen ideas</span><p>Little LED screens, drawn before a single sound existed. Tap one to switch it on.</p></div><button type="button" class="ss__all" aria-pressed="false">Power on</button></div><ul class="ss__grid"><li><button type="button" class="ss__t" aria-pressed="false" style="--d:0.00s"><img src="../../side-quests/assets/groove-scr-tremolo.jpg" alt="Signal flow screen sketch" loading="lazy" width="516" height="276"><span>Signal flow</span><em>Became the Circuit view</em></button></li><li><button type="button" class="ss__t" aria-pressed="false" style="--d:0.07s"><img src="../../side-quests/assets/groove-scr-lfo.jpg" alt="Reel screen sketch" loading="lazy" width="516" height="276"><span>Reel</span><em>Became the Reel view</em></button></li><li><button type="button" class="ss__t" aria-pressed="false" style="--d:0.14s"><img src="../../side-quests/assets/groove-scr-envelope.jpg" alt="Envelope screen sketch" loading="lazy" width="516" height="276"><span>Envelope</span></button></li><li><button type="button" class="ss__t" aria-pressed="false" style="--d:0.21s"><img src="../../side-quests/assets/groove-scr-drumsampler.jpg" alt="Drum sampler screen sketch" loading="lazy" width="516" height="276"><span>Drum sampler</span></button></li><li><button type="button" class="ss__t" aria-pressed="false" style="--d:0.28s"><img src="../../side-quests/assets/groove-scr-dsynth.jpg" alt="Synth panel screen sketch" loading="lazy" width="516" height="276"><span>Synth panel</span></button></li><li><button type="button" class="ss__t" aria-pressed="false" style="--d:0.35s"><img src="../../side-quests/assets/groove-scr-delay.jpg" alt="Delay screen sketch" loading="lazy" width="516" height="276"><span>Delay</span></button></li><li><button type="button" class="ss__t" aria-pressed="false" style="--d:0.42s"><img src="../../side-quests/assets/groove-scr-eq.jpg" alt="EQ screen sketch" loading="lazy" width="516" height="276"><span>EQ</span></button></li><li><button type="button" class="ss__t" aria-pressed="false" style="--d:0.49s"><img src="../../side-quests/assets/groove-scr-arpeggio.jpg" alt="Arpeggio screen sketch" loading="lazy" width="516" height="276"><span>Arpeggio</span></button></li><li><button type="button" class="ss__t" aria-pressed="false" style="--d:0.56s"><img src="../../side-quests/assets/groove-scr-digital.jpg" alt="Digital screen sketch" loading="lazy" width="516" height="276"><span>Digital</span></button></li><li><button type="button" class="ss__t" aria-pressed="false" style="--d:0.63s"><img src="../../side-quests/assets/groove-scr-fm.jpg" alt="FM screen sketch" loading="lazy" width="516" height="276"><span>FM</span></button></li><li><button type="button" class="ss__t" aria-pressed="false" style="--d:0.70s"><img src="../../side-quests/assets/groove-scr-pulse.jpg" alt="Pulse screen sketch" loading="lazy" width="516" height="276"><span>Pulse</span></button></li><li><button type="button" class="ss__t" aria-pressed="false" style="--d:0.77s"><img src="../../side-quests/assets/groove-scr-voltage.jpg" alt="Voltage screen sketch" loading="lazy" width="516" height="276"><span>Voltage</span></button></li></ul></div><div class="ps reveal"><div class="ps__top"><span>From sketch to screen</span><button type="button" class="ps__play" aria-pressed="false">▶ Play the process</button></div><div class="ps__stage"><img class="is-on" src="../../side-quests/assets/groove-step-sketch.jpg" alt="Sketch: A hardware box called BIT///001: LED screen, step grid, a fader and toggle switches." loading="lazy" width="2240" height="1210"><img class="" src="../../side-quests/assets/groove-step-draft.jpg" alt="First draft: Turned upright. Transport, tracks and steps stacked into one column, then three options." loading="lazy" width="1980" height="960"><img class="" src="../../side-quests/assets/groove-step-options.jpg" alt="Layouts: Four layouts tested: patterns, tracks, sixteen steps, eight faders and an FX crossfader." loading="lazy" width="2789" height="1260"><img class="" src="../../side-quests/assets/groove-step-figma.jpg" alt="Figma build: The final pieces in Figma: the screen with its views, the voice, scenes A and B, faders and pads." loading="lazy" width="2749" height="1303"><img class="" src="../../side-quests/assets/groove-ui-dark.jpg" alt="Live: And now it plays, in the browser." loading="lazy" width="2400" height="1500"></div><input class="ps__r" type="range" min="0" max="4" step="1" value="0" aria-label="Process step"><div class="ps__steps"><button type="button" class="is-on" aria-pressed="true" data-note="A hardware box called BIT///001: LED screen, step grid, a fader and toggle switches."><small>01</small>Sketch</button><button type="button" class="" aria-pressed="false" data-note="Turned upright. Transport, tracks and steps stacked into one column, then three options."><small>02</small>First draft</button><button type="button" class="" aria-pressed="false" data-note="Four layouts tested: patterns, tracks, sixteen steps, eight faders and an FX crossfader."><small>03</small>Layouts</button><button type="button" class="" aria-pressed="false" data-note="The final pieces in Figma: the screen with its views, the voice, scenes A and B, faders and pads."><small>04</small>Figma build</button><button type="button" class="" aria-pressed="false" data-note="And now it plays, in the browser."><small>05</small>Live</button></div><p class="ps__note" aria-live="polite">A hardware box called BIT///001: LED screen, step grid, a fader and toggle switches.</p></div></div>
+  </section>
   <section class="cs" id="try-it">
-    <div class="pj__chip" aria-hidden="true"><span>02 · Try it</span></div>
+    <div class="pj__chip" aria-hidden="true"><span>03 · Try it</span></div>
     <div class="cs__head reveal"><div><h2>Tap a step. Press play.</h2><p class="cs__sub">A tiny version of the sequencer, running right here. The real one has eight tracks, eight patterns and a lot more knobs.</p></div></div>
     <div class="rows"><div class="bx reveal" role="group" aria-label="A playable mini sequencer"><div class="bx__top"><div class="bx__brand"><b>BIT</b><i>///</i><span>Mini sequencer</span></div><div class="bx__ctl"><button type="button" class="bx__play" aria-pressed="false">▶ Play</button><label class="bx__bpm">BPM <input type="range" min="80" max="160" value="112" aria-label="Tempo"><output>112</output></label><button type="button" class="bx__clear">Clear</button></div></div><div class="bx__grid"><div class="bx__row" data-t="0"><button type="button" class="bx__trk" aria-pressed="false" title="Mute Kick">Kick</button><div class="bx__steps"><button type=button class=bx__step aria-label="Kick step 1"></button><button type=button class=bx__step aria-label="Kick step 2"></button><button type=button class=bx__step aria-label="Kick step 3"></button><button type=button class=bx__step aria-label="Kick step 4"></button><button type=button class=bx__step aria-label="Kick step 5"></button><button type=button class=bx__step aria-label="Kick step 6"></button><button type=button class=bx__step aria-label="Kick step 7"></button><button type=button class=bx__step aria-label="Kick step 8"></button><button type=button class=bx__step aria-label="Kick step 9"></button><button type=button class=bx__step aria-label="Kick step 10"></button><button type=button class=bx__step aria-label="Kick step 11"></button><button type=button class=bx__step aria-label="Kick step 12"></button><button type=button class=bx__step aria-label="Kick step 13"></button><button type=button class=bx__step aria-label="Kick step 14"></button><button type=button class=bx__step aria-label="Kick step 15"></button><button type=button class=bx__step aria-label="Kick step 16"></button></div></div><div class="bx__row" data-t="1"><button type="button" class="bx__trk" aria-pressed="false" title="Mute Snare">Snare</button><div class="bx__steps"><button type=button class=bx__step aria-label="Snare step 1"></button><button type=button class=bx__step aria-label="Snare step 2"></button><button type=button class=bx__step aria-label="Snare step 3"></button><button type=button class=bx__step aria-label="Snare step 4"></button><button type=button class=bx__step aria-label="Snare step 5"></button><button type=button class=bx__step aria-label="Snare step 6"></button><button type=button class=bx__step aria-label="Snare step 7"></button><button type=button class=bx__step aria-label="Snare step 8"></button><button type=button class=bx__step aria-label="Snare step 9"></button><button type=button class=bx__step aria-label="Snare step 10"></button><button type=button class=bx__step aria-label="Snare step 11"></button><button type=button class=bx__step aria-label="Snare step 12"></button><button type=button class=bx__step aria-label="Snare step 13"></button><button type=button class=bx__step aria-label="Snare step 14"></button><button type=button class=bx__step aria-label="Snare step 15"></button><button type=button class=bx__step aria-label="Snare step 16"></button></div></div><div class="bx__row" data-t="2"><button type="button" class="bx__trk" aria-pressed="false" title="Mute Hat">Hat</button><div class="bx__steps"><button type=button class=bx__step aria-label="Hat step 1"></button><button type=button class=bx__step aria-label="Hat step 2"></button><button type=button class=bx__step aria-label="Hat step 3"></button><button type=button class=bx__step aria-label="Hat step 4"></button><button type=button class=bx__step aria-label="Hat step 5"></button><button type=button class=bx__step aria-label="Hat step 6"></button><button type=button class=bx__step aria-label="Hat step 7"></button><button type=button class=bx__step aria-label="Hat step 8"></button><button type=button class=bx__step aria-label="Hat step 9"></button><button type=button class=bx__step aria-label="Hat step 10"></button><button type=button class=bx__step aria-label="Hat step 11"></button><button type=button class=bx__step aria-label="Hat step 12"></button><button type=button class=bx__step aria-label="Hat step 13"></button><button type=button class=bx__step aria-label="Hat step 14"></button><button type=button class=bx__step aria-label="Hat step 15"></button><button type=button class=bx__step aria-label="Hat step 16"></button></div></div><div class="bx__row" data-t="3"><button type="button" class="bx__trk" aria-pressed="false" title="Mute Synth">Synth</button><div class="bx__steps"><button type=button class=bx__step aria-label="Synth step 1"></button><button type=button class=bx__step aria-label="Synth step 2"></button><button type=button class=bx__step aria-label="Synth step 3"></button><button type=button class=bx__step aria-label="Synth step 4"></button><button type=button class=bx__step aria-label="Synth step 5"></button><button type=button class=bx__step aria-label="Synth step 6"></button><button type=button class=bx__step aria-label="Synth step 7"></button><button type=button class=bx__step aria-label="Synth step 8"></button><button type=button class=bx__step aria-label="Synth step 9"></button><button type=button class=bx__step aria-label="Synth step 10"></button><button type=button class=bx__step aria-label="Synth step 11"></button><button type=button class=bx__step aria-label="Synth step 12"></button><button type=button class=bx__step aria-label="Synth step 13"></button><button type=button class=bx__step aria-label="Synth step 14"></button><button type=button class=bx__step aria-label="Synth step 15"></button><button type=button class=bx__step aria-label="Synth step 16"></button></div></div></div><div class="bx__fx"><span>A · Clean</span><input type="range" min="0" max="100" value="0" aria-label="Crossfade between clean and dub space"><span>B · Dub space</span></div><p class="bx__hint">Tap a step, press play. Tap a pink track to mute it. Slide to B for filter and echo.</p></div></div>
   </section>
   <section class="cs" id="screen">
-    <div class="pj__chip" aria-hidden="true"><span>03 · The screen</span></div>
+    <div class="pj__chip" aria-hidden="true"><span>04 · The screen</span></div>
     <div class="cs__head reveal"><div><h2>Six ways to watch the beat.</h2><p class="cs__sub">The display is a playground. Touch or drag it to play notes: across for pitch, up and down for velocity.</p></div></div>
     <div class="rows"><div class="gx gx--wide reveal" role="group" aria-label="Screen views"><div class="gx__tabs"><button type="button" class="is-on" aria-pressed="true" data-note="The Figma signal-flow drawing, lit by the audio.">Circuit</button><button type="button" class="" aria-pressed="false" data-note="Reels spin at the tempo over four real sequence lanes.">Reel</button><button type="button" class="" aria-pressed="false" data-note="Four live peak meters, with pan.">Scope</button><button type="button" class="" aria-pressed="false" data-note="A live waveform landscape you can tilt.">Wavefield</button><button type="button" class="" aria-pressed="false" data-note="Nodes that move with pitch and filter.">Vector</button><button type="button" class="" aria-pressed="false" data-note="Particles bouncing to the beat.">Particles</button></div><div class="gx__stage" style="aspect-ratio:1412 / 727"><img class="is-on" src="../../side-quests/assets/groove-screen-circuit.jpg" alt="Circuit view: the Figma signal-flow drawing lights up with the audio" loading="lazy" width="1404" height="721"><img class="" src="../../side-quests/assets/groove-screen-reel.jpg" alt="Reel view: two spinning reels and four sequence lanes" loading="lazy" width="1412" height="727"><img class="" src="../../side-quests/assets/groove-screen-scope.jpg" alt="Scope view: four live peak meters with pan dials" loading="lazy" width="1412" height="727"><img class="" src="../../side-quests/assets/groove-screen-wavefield.jpg" alt="Wavefield view: a live waveform landscape" loading="lazy" width="1412" height="727"><img class="" src="../../side-quests/assets/groove-screen-vector.jpg" alt="Vector view: nodes driven by pitch and filter" loading="lazy" width="1412" height="727"><img class="" src="../../side-quests/assets/groove-screen-particles.jpg" alt="Particles view: moving particles inside a hexagon" loading="lazy" width="1412" height="727"></div><p class="gx__note">The Figma signal-flow drawing, lit by the audio.</p></div></div>
   </section>
   <section class="cs" id="sound">
-    <div class="pj__chip" aria-hidden="true"><span>04 · Sound</span></div>
+    <div class="pj__chip" aria-hidden="true"><span>05 · Sound</span></div>
     <div class="cs__head reveal"><div><h2>Shape it by dragging.</h2><p class="cs__sub">Each voice has its own engine. Decay, filter, pitch and pan are curves you drag, and the sliders follow.</p></div></div>
     <div class="cs__body"><ol class="pts" style="--n:3"><li class="reveal"><small>01</small><b>Eight engines</b><p>Analog kick, noise snare, hats, clap, bass, synth and bell.</p></li><li class="reveal"><small>02</small><b>Your samples</b><p>Drop in a WAV, MP3 or OGG up to 20 MB.</p></li><li class="reveal"><small>03</small><b>Audition</b><p>Hear every change before it hits the pattern.</p></li></ol></div>
     <div class="rows"><div class="gx-pair"><div class="gx gx--tall reveal" role="group" aria-label="Sound sculpt views"><div class="gx__tabs"><button type="button" class="is-on" aria-pressed="true" data-note="Drag to shorten or stretch the hit.">Decay</button><button type="button" class="" aria-pressed="false" data-note="Drag to close the low-pass filter.">Filter</button><button type="button" class="" aria-pressed="false" data-note="Drag to tune the voice up or down.">Pitch</button><button type="button" class="" aria-pressed="false" data-note="Drag to place it left or right.">Pan</button></div><div class="gx__stage" style="aspect-ratio:691 / 855"><img class="is-on" src="../../side-quests/assets/groove-sculpt-decay.jpg" alt="Sound module with the decay curve" loading="lazy" width="691" height="855"><img class="" src="../../side-quests/assets/groove-sculpt-cutoff.jpg" alt="Sound module with the low-pass filter curve" loading="lazy" width="691" height="855"><img class="" src="../../side-quests/assets/groove-sculpt-tune.jpg" alt="Sound module with the pitch view" loading="lazy" width="691" height="855"><img class="" src="../../side-quests/assets/groove-sculpt-pan.jpg" alt="Sound module with the pan view" loading="lazy" width="691" height="855"></div><p class="gx__note">Drag to shorten or stretch the hit.</p></div><figure class="m reveal" style="--ar:0.8171"><div class="m__box" style="aspect-ratio:688 / 842"><img src="../../side-quests/assets/groove-perform.jpg" alt="Perform module: scene A clean, scene B dub space, crossfader between them" loading="lazy" width="688" height="842"></div><figcaption>Perform: two scenes, one crossfader</figcaption></figure></div></div>
   </section>
   <section class="cs" id="mix">
-    <div class="pj__chip" aria-hidden="true"><span>05 · Mix & perform</span></div>
+    <div class="pj__chip" aria-hidden="true"><span>06 · Mix & perform</span></div>
     <div class="cs__head reveal"><div><h2>Eight faders. Two scenes.</h2><p class="cs__sub">Every track gets a fader, mute and solo. Each scene picks its own effect, amount and beat rate.</p></div></div>
     <div class="cs__body"><ul class="cs__chips reveal"><li>Clean</li><li>Dub space</li><li>Low-pass sweep</li><li>High-pass sweep</li><li>Beat echo</li><li>Warehouse reverb</li><li>Jet flanger</li><li>Rhythmic tremolo</li><li>Saturation</li></ul></div>
     <div class="rows"><div class="row row--solo"><figure class="m reveal" style="--ar:0.8765"><div class="m__box" style="aspect-ratio:1412 / 1611"><img src="../../side-quests/assets/groove-mixer.jpg" alt="Mixer: eight pink track buttons and faders, the 16-step sequence and the pattern bank" loading="lazy" width="1412" height="1611"></div><figcaption>Mixer, steps and pattern bank</figcaption></figure></div></div>
   </section>
   <section class="cs" id="hardware">
-    <div class="pj__chip" aria-hidden="true"><span>06 · Hardware</span></div>
+    <div class="pj__chip" aria-hidden="true"><span>07 · Hardware</span></div>
     <div class="cs__head reveal"><div><h2>Hands on, with a Faderfox LV3.</h2><p class="cs__sub">Plug in the controller and BIT maps itself. Faders, steps and transport all live on real buttons.</p></div></div>
     <div class="cs__body"><ol class="pts" style="--n:3"><li class="reveal"><small>01</small><b>Auto-map</b><p>Eight faders set volume; black buttons select tracks.</p></li><li class="reveal"><small>02</small><b>Step rows</b><p>Green and blue rows toggle all sixteen steps, with LED feedback.</p></li><li class="reveal"><small>03</small><b>Transport</b><p>Push the top encoders to stop, play and pause.</p></li></ol></div>
     <div class="rows"><div class="row row--1"><figure class="m reveal" style="--ar:1.2995"><div class="m__box" style="aspect-ratio:2000 / 1539"><img src="../../side-quests/assets/groove-midi.jpg" alt="MIDI / LV3 setup panel: connect, guided learn and the incoming message monitor" loading="lazy" width="2000" height="1539"></div><figcaption>Guided MIDI setup</figcaption></figure></div></div>
   </section>
   <section class="cs" id="modes">
-    <div class="pj__chip" aria-hidden="true"><span>07 · Light & dark</span></div>
+    <div class="pj__chip" aria-hidden="true"><span>08 · Light & dark</span></div>
     <div class="cs__head reveal"><div><h2>Ivory shell, dark screen.</h2><p class="cs__sub">Light mode swaps to ivory with graphite labels and pastel accents. The display always stays dark.</p></div></div>
     <div class="cs__body"><ol class="pts" style="--n:2"><li class="reveal"><small>01</small><b>Three workspaces</b><p>Studio, Perform and Focus. Hide or reorder any module.</p></li><li class="reveal"><small>02</small><b>Fits the window</b><p>On desktop the whole instrument scales to fit, no scrolling.</p></li></ol></div>
     <div class="rows"><div class="row row--1"><figure class="m reveal" style="--ar:1.6000"><div class="m__box" style="aspect-ratio:2400 / 1500"><img src="../../side-quests/assets/groove-ui-light.jpg" alt="The full BIT workspace in light mode" loading="lazy" width="2400" height="1500"></div><figcaption>The workspace, light mode</figcaption></figure></div></div>
   </section>
   <section class="cs" id="engine">
-    <div class="pj__chip" aria-hidden="true"><span>08 · Under the hood</span></div>
+    <div class="pj__chip" aria-hidden="true"><span>09 · Under the hood</span></div>
     <div class="cs__head reveal"><div><h2>Built to keep time.</h2><p class="cs__sub">No libraries, no build step. Just the browser’s own audio and MIDI.</p></div></div>
     <div class="cs__body"><ol class="pts" style="--n:2"><li class="reveal"><small>01</small><b>Tight timing</b><p>A 25 ms look-ahead scheduler on the audio clock.</p></li><li class="reveal"><small>02</small><b>Export</b><p>Bounce four bars to a stereo 44.1 kHz WAV.</p></li><li class="reveal"><small>03</small><b>Saves itself</b><p>Projects and samples stay in the browser, or save a portable file.</p></li><li class="reveal"><small>04</small><b>Tested</b><p>Unit tests plus offline checks for every engine and effect.</p></li></ol></div>
     <div class="rows"></div>
@@ -472,6 +540,55 @@
   })();
 </script>
 
+<script>(() => {
+  // Reference board: pick a box to see what it gave BIT
+  const rb = document.querySelector('.rb');
+  if (rb) {
+    const bs = [...rb.querySelectorAll('.rb__b')], ims = [...rb.querySelectorAll('.rb__stage img')];
+    bs.forEach((b, k) => b.addEventListener('click', () => {
+      bs.forEach((x, j) => { x.classList.toggle('is-on', j === k); x.setAttribute('aria-pressed', j === k); });
+      ims.forEach((im, j) => im.classList.toggle('is-on', j === k));
+    }));
+  }
+
+  // Screen sketches: switch screens on one by one, or all at once
+  const ss = document.querySelector('.ss');
+  if (ss) {
+    const ts = [...ss.querySelectorAll('.ss__t')], all = ss.querySelector('.ss__all');
+    const sync = () => { const on = ts.every(t => t.getAttribute('aria-pressed') === 'true'); all.setAttribute('aria-pressed', on); all.textContent = on ? 'Power off' : 'Power on'; };
+    ts.forEach(t => t.addEventListener('click', () => { t.style.setProperty('--d', '0s'); t.setAttribute('aria-pressed', t.getAttribute('aria-pressed') !== 'true'); sync(); }));
+    all.addEventListener('click', () => {
+      const on = all.getAttribute('aria-pressed') !== 'true';
+      ts.forEach((t, k) => { t.style.setProperty('--d', (k * .07).toFixed(2) + 's'); t.setAttribute('aria-pressed', on); });
+      sync();
+    });
+  }
+
+  // Sketch to screen: slider, step buttons, or play it through
+  const ps = document.querySelector('.ps');
+  if (ps) {
+    const ims = [...ps.querySelectorAll('.ps__stage img')], bs = [...ps.querySelectorAll('.ps__steps button')];
+    const r = ps.querySelector('.ps__r'), note = ps.querySelector('.ps__note'), play = ps.querySelector('.ps__play');
+    let at = 0, timer = null;
+    const show = n => {
+      at = n; r.value = n; note.textContent = bs[n].dataset.note;
+      ims.forEach((im, k) => im.classList.toggle('is-on', k === n));
+      bs.forEach((b, k) => { b.classList.toggle('is-on', k === n); b.classList.toggle('is-done', k < n); b.setAttribute('aria-pressed', k === n); });
+    };
+    const stop = () => { clearInterval(timer); timer = null; play.setAttribute('aria-pressed', 'false'); play.textContent = '▶ Play the process'; };
+    r.addEventListener('input', () => { stop(); show(+r.value); });
+    bs.forEach((b, k) => b.addEventListener('click', () => { stop(); show(k); }));
+    play.addEventListener('click', () => {
+      if (timer) return stop();
+      ims.forEach(im => { im.loading = 'eager'; });
+      play.setAttribute('aria-pressed', 'true'); play.textContent = '❚❚ Pause';
+      if (at === ims.length - 1) show(0);
+      timer = setInterval(() => { if (at >= ims.length - 1) return stop(); show(at + 1); }, 2600);
+    });
+    new IntersectionObserver(([e]) => { if (!e.isIntersecting) stop(); }).observe(ps);
+  }
+})();
+</script>
 <script>(() => {
   // Section list in the sticky column follows the scroll
   const links = [...document.querySelectorAll('.pj__toc a')], secs = links.map(a => document.querySelector(a.hash));
