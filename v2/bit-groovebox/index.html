@@ -1,0 +1,499 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BIT Groovebox — Sunil Sebastian</title>
+<meta name="description" content="BIT by Sunil Sebastian. An eight-track modular groovebox that runs in the browser, designed in Figma and built with Web Audio and Web MIDI.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
+<meta name="theme-color" content="#f3f1ec">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f3f1ec; --paper-2: #e9e6df; --ink: #111110; --muted: #75736d; --line: rgba(17,17,16,.14);
+    --night: #0f0f0e; --night-line: rgba(255,255,255,.14); --accent: #f6cb00;
+    --font: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+    --gutter: clamp(16px, 2.6vw, 40px); --ease: cubic-bezier(.2,.7,.1,1);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font); font-size: 16px; line-height: 1.5; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+  img { display: block; max-width: 100%; height: auto; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { padding: 0 var(--gutter); }
+  .lbl { font-size: 12px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; }
+  .rule { border: 0; border-top: 1px solid var(--line); margin: 0; }
+
+  /* Header */
+  .hd { position: fixed; inset: 0 0 auto 0; z-index: 30; display: flex; align-items: center; justify-content: space-between; padding: 18px var(--gutter); color: #fff; transition: background .35s, color .35s, border-color .35s; border-bottom: 1px solid transparent; }
+  .hd.is-solid { background: rgba(243,241,236,.92); backdrop-filter: blur(10px); color: var(--ink); border-bottom-color: var(--line); }
+  .hd__brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; font-size: 15px; letter-spacing: -.01em; }
+  .hd__brand img { width: 26px; height: 26px; }
+  .hd nav { display: flex; gap: clamp(14px, 2.4vw, 32px); font-size: 13px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; }
+  .hd nav a { position: relative; }
+  .hd nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -3px; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform .4s var(--ease); }
+  .hd nav a:hover::after { transform: scaleX(1); transform-origin: left; }
+
+  /* Contact band */
+  .ct { background: var(--night); color: #f3f1ec; padding: clamp(80px, 11vw, 160px) var(--gutter) clamp(60px, 8vw, 110px); }
+  .ct .lbl { color: rgba(243,241,236,.6); }
+  .ct h2 { margin: 18px 0 clamp(36px, 5vw, 64px); font-size: clamp(44px, 7.6vw, 128px); line-height: .96; font-weight: 400; letter-spacing: -.05em; max-width: 13ch; }
+  .ct h2 em { font-style: italic; font-weight: 300; color: var(--accent); }
+  .ct__row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gutter); border-top: 1px solid var(--night-line); padding-top: 22px; }
+  .ct__row a, .ct__row p { margin: 6px 0 0; font-size: clamp(16px, 1.3vw, 19px); }
+  .ct__mail { font-size: clamp(22px, 2.4vw, 34px) !important; letter-spacing: -.03em; border-bottom: 1px solid currentColor; }
+  .ct__mail:hover { color: var(--accent); }
+  .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); margin-right: 8px; box-shadow: 0 0 0 4px rgba(246,203,0,.18); }
+
+  /* Footer */
+  .ft-wrap { background: var(--night); color: rgba(243,241,236,.7); padding: 0 var(--gutter) 18px; overflow: hidden; }
+  .ft-nav { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding: 22px 0; border-top: 1px solid var(--night-line); font-size: 13px; letter-spacing: .1em; text-transform: uppercase; }
+  .ft-nav nav { display: flex; flex-wrap: wrap; gap: 8px 22px; }
+  .ft-nav a:hover { color: #fff; }
+  .wordmark { display: block; color: #f3f1ec; font-size: clamp(54px, 15.2vw, 260px); font-weight: 500; letter-spacing: -.065em; line-height: .8; white-space: nowrap; margin: 10px 0 0 -.04em; }
+
+
+  .hd { color: var(--ink); background: rgba(243,241,236,.92); backdrop-filter: blur(10px); border-bottom-color: var(--line); }
+  .cx { padding: clamp(110px, 14vw, 200px) var(--gutter) clamp(28px, 4vw, 56px); }
+  .cx__k { display: flex; justify-content: space-between; gap: 16px; color: var(--muted); }
+  .cx h1 { margin: clamp(18px, 2.4vw, 32px) 0 clamp(28px, 4vw, 64px); font-size: clamp(52px, 11vw, 200px); line-height: .88; font-weight: 500; letter-spacing: -.06em; }
+  .cx__info { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 96px); border-top: 1px solid var(--ink); padding-top: 20px; }
+  .cx__lede { margin: 0; font-size: clamp(22px, 2.2vw, 34px); line-height: 1.18; letter-spacing: -.03em; max-width: 26ch; }
+  .cx__meta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px var(--gutter); margin: 0; }
+  .cx__meta dt { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .cx__meta dd { margin: 4px 0 0; font-size: 16px; }
+  .cx__stats { list-style: none; margin: clamp(32px, 4vw, 56px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: var(--gutter); }
+  .cx__stats li { border-top: 1px solid var(--line); padding-top: 14px; }
+  .cx__stats b { display: block; font-size: clamp(36px, 4.6vw, 76px); font-weight: 400; letter-spacing: -.05em; line-height: 1; }
+  .cx__stats span { display: block; margin-top: 8px; color: var(--muted); font-size: 14px; }
+  .cx__media { margin: 0; }
+  .cx__media img, .cx__media video { display: block; width: 100%; height: auto; background: #000; }
+  .cx__media .wx { margin: 0; }
+
+  .cs { padding: clamp(80px, 10vw, 160px) var(--gutter) 0; }
+  .cs__head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 3fr); gap: var(--gutter); border-top: 1px solid var(--line); padding-top: 18px; }
+  .cs__lbl { display: flex; gap: 12px; color: var(--muted); }
+  .cs__lbl b { color: var(--ink); font-weight: 500; }
+  .cs h2 { margin: 0; font-size: clamp(32px, 4.4vw, 72px); line-height: 1.02; font-weight: 400; letter-spacing: -.045em; max-width: 18ch; }
+  .cs__sub { margin: 22px 0 0; font-size: clamp(17px, 1.35vw, 20px); color: #3d3c39; max-width: 52ch; }
+  .cs__ql { margin: clamp(32px, 4vw, 56px) 0 0; font-size: clamp(24px, 2.6vw, 40px); line-height: 1.12; letter-spacing: -.03em; font-weight: 300; font-style: italic; max-width: 30ch; }
+  .cs__chips { list-style: none; margin: 24px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .cs__chips li { border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: 14px; }
+  .pts { list-style: none; margin: clamp(32px, 4vw, 56px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr)); gap: 0 var(--gutter); }
+  .pts li { border-top: 1px solid var(--ink); padding: 14px 0 6px; }
+  .pts small { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .pts b { display: block; margin: 8px 0 6px; font-size: clamp(18px, 1.5vw, 22px); font-weight: 500; letter-spacing: -.02em; }
+  .pts p { margin: 0; color: var(--muted); font-size: 15px; }
+  .cs__body { margin-left: calc((100% - var(--gutter) * 3) / 4 + var(--gutter)); }
+
+  .rows { display: grid; gap: clamp(10px, 1.4vw, 22px); margin-top: clamp(36px, 5vw, 72px); }
+  .row { display: flex; gap: clamp(10px, 1.4vw, 22px); align-items: flex-start; }
+  .row--1 .m, .row--solo .m { flex: 1; }
+  .row--solo .m { max-width: min(100%, 72svh * var(--ar, 1)); }
+  .row--solo { justify-content: center; }
+  .m { margin: 0; min-width: 0; }
+  .m__box { overflow: hidden; background: var(--paper-2); }
+  .m__box img, .m__box video { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .m--contain .m__box { background: var(--paper-2); }
+  .m--contain .m__box img { object-fit: contain; padding: 8%; }
+  .m--dark .m__box { background: #1c1c1a; }
+  .m--tall { max-width: 760px; margin: 0 auto; width: 100%; }
+  .m--tall .m__box { height: min(80svh, 860px); overflow-y: auto; overscroll-behavior: contain; }
+  .m--tall .m__box img { height: auto; }
+  .tiles { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: clamp(8px, 1vw, 14px); }
+  .tiles .m__box { aspect-ratio: 1 !important; }
+  .tiles .m figcaption { display: none; }
+  .m figcaption { margin-top: 10px; font-size: 13px; color: var(--muted); }
+  .wx { min-width: 0; }
+  .wx--dark { background: #0f0f0e; color: #f3f1ec; padding: clamp(18px, 3vw, 44px); font-family: var(--font); }
+  .wx--dark :is(h3, b) { font-family: var(--font); }
+
+  .sws { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); margin-top: clamp(32px, 4vw, 56px); }
+  .sw { aspect-ratio: 4 / 3; padding: 14px; display: flex; flex-direction: column; justify-content: flex-end; font-size: 14px; }
+  .sw small { opacity: .7; font-variant-numeric: tabular-nums; }
+
+  .quote { padding: clamp(110px, 14vw, 220px) var(--gutter); }
+  .quote p { margin: 0 auto; max-width: 16ch; text-align: center; font-size: clamp(36px, 6vw, 104px); line-height: 1; letter-spacing: -.05em; font-weight: 300; font-style: italic; }
+  .dl { padding: 0 var(--gutter) clamp(60px, 8vw, 110px); }
+  .dl ul { list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .dl li { border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: 14px; }
+
+  .nx { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--gutter); padding: clamp(28px, 4vw, 56px) var(--gutter) clamp(80px, 10vw, 140px); border-top: 1px solid var(--line); }
+  .nx a { display: block; }
+  .nx__t { display: block; margin: 12px 0 8px; font-size: clamp(40px, 6.8vw, 116px); line-height: .92; font-weight: 500; letter-spacing: -.055em; transition: color .3s; }
+  .nx a:hover .nx__t { color: var(--muted); }
+  .nx__d { color: var(--muted); }
+  .nx__img { overflow: hidden; aspect-ratio: 16 / 10; background: var(--paper-2); }
+  .nx__img img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+  .nx a:hover .nx__img img { transform: scale(1.035); }
+  .nx__back { display: inline-block; margin-top: 26px; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; border-bottom: 1px solid currentColor; }
+
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .9s var(--ease), transform 1s var(--ease); }
+  .reveal.is-in { opacity: 1; transform: none; }
+
+  @media (max-width: 900px) {
+    .cx__info, .cs__head, .nx { grid-template-columns: 1fr; }
+    .cs__body { margin-left: 0; }
+    .pts { grid-template-columns: 1fr; }
+    .cx__stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .sws { grid-template-columns: repeat(min(var(--n), 4), minmax(0, 1fr)); }
+    .ct__row { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .hd nav a:not(.hd__mail) { display: none; }
+    .cx__meta { grid-template-columns: 1fr 1fr; }
+    .row { flex-direction: column; }
+    .row .m { flex: none !important; width: 100%; max-width: none !important; }
+    .sws { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .sw { aspect-ratio: 2 / 1; }
+    .tiles { grid-template-columns: repeat(min(var(--n), 4), minmax(0, 1fr)); }
+    .wx--dark { padding: 14px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+
+  .w-cap { margin: 10px 0 0; font-size: 13px; color: var(--muted); }
+
+
+  /* Rounded visual cards, one radius across the site */
+  :root { --card-r: 16px; }
+  .cx__media { margin: 0 var(--gutter); }
+  .cx__media, .m__box, .sx__stage, .nx__img, .cmp, .web, .ba, .build, .wx--dark, .sws, .yt { border-radius: var(--card-r); overflow: hidden; isolation: isolate; }
+  /* Contact: availability and details, without the headline */
+  .ct { padding-top: clamp(56px, 7vw, 100px); }
+  .ct > .lbl + .ct__row { margin-top: clamp(24px, 3vw, 40px); }
+
+  /* BIT groovebox */
+  .gx { flex: 1 1 100%; min-width: 0; border-radius: var(--card-r); background: #121313; padding: clamp(12px, 1.6vw, 20px); color: #e8e8e8; }
+  .gx__tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .gx__tabs button { all: unset; cursor: pointer; font-family: var(--mono); font-size: 12px; padding: 7px 12px; border-radius: 6px; box-shadow: inset 0 0 0 1px #3a3d3e; color: #c9cccd; }
+  .gx__tabs button:hover { box-shadow: inset 0 0 0 1px #8a8f90; }
+  .gx__tabs button.is-on { background: #ff8a5c; color: #111; box-shadow: none; }
+  .gx--tall .gx__tabs button.is-on { background: #a7f3c0; }
+  .gx__tabs button:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+  .gx__stage { position: relative; border-radius: 10px; overflow: hidden; background: #000; }
+  .gx__stage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .45s var(--ease); }
+  .gx__stage img.is-on { opacity: 1; }
+  .gx__note { margin: 10px 2px 0; font-family: var(--mono); font-size: 12px; color: #9aa0a1; }
+  .gx-pair { flex: 1 1 100%; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(12px, 1.6vw, 20px); align-items: start; }
+  .gx-pair .m { margin: 0; }
+  .bx { flex: 1 1 100%; border-radius: var(--card-r); background: #161717; color: #e8e8e8; padding: clamp(16px, 2.2vw, 30px); font-family: var(--mono); box-shadow: inset 0 0 0 1px #2a2c2d; }
+  .bx__top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: clamp(16px, 2vw, 24px); }
+  .bx__brand { display: flex; align-items: baseline; gap: 8px; }
+  .bx__brand b { font-family: var(--font, inherit); font-size: 22px; font-weight: 700; letter-spacing: -.02em; }
+  .bx__brand i { font-style: normal; color: #ff8a5c; font-weight: 700; }
+  .bx__brand span { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: #8a8f90; margin-left: 4px; }
+  .bx__ctl { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+  .bx__play, .bx__clear { all: unset; cursor: pointer; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; padding: 9px 14px; border-radius: 8px; box-shadow: inset 0 0 0 1px #3a3d3e; }
+  .bx__play { background: #a7f3c0; color: #0d1f14; box-shadow: none; min-width: 74px; text-align: center; }
+  .bx__play[aria-pressed="true"] { background: #ff8a5c; color: #1d0f08; }
+  .bx__clear:hover { box-shadow: inset 0 0 0 1px #8a8f90; }
+  .bx__play:focus-visible, .bx__clear:focus-visible, .bx__trk:focus-visible, .bx__step:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+  .bx__bpm { display: flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: .1em; color: #8a8f90; }
+  .bx__bpm output { color: #e8e8e8; min-width: 3ch; }
+  .bx input[type=range] { accent-color: #ff8a5c; width: 110px; }
+  .bx__grid { display: grid; gap: clamp(8px, 1vw, 12px); }
+  .bx__row { display: grid; grid-template-columns: 70px minmax(0, 1fr); gap: clamp(8px, 1vw, 14px); align-items: center; }
+  .bx__trk { all: unset; cursor: pointer; text-align: center; font-size: 12px; font-weight: 600; padding: 9px 0; border-radius: 99px; background: #f472b6; color: #2a0a1a; transition: opacity .2s, filter .2s; }
+  .bx__trk[aria-pressed="true"] { opacity: .35; filter: grayscale(1); }
+  .bx__steps { display: grid; grid-template-columns: repeat(16, minmax(0, 1fr)); gap: clamp(3px, .5vw, 7px); }
+  .bx__step { all: unset; cursor: pointer; aspect-ratio: 1; border-radius: 50%; box-shadow: inset 0 0 0 1.5px #3a3d3e; transition: background .12s, box-shadow .12s, transform .12s; }
+  .bx__step:nth-child(4n+1) { box-shadow: inset 0 0 0 1.5px #5a5f60; }
+  .bx__step:hover { box-shadow: inset 0 0 0 1.5px #9aa0a1; }
+  .bx__step.is-on { background: #a7f3c0; box-shadow: none; }
+  .bx__row[data-t="3"] .bx__step.is-on { background: #8ec5ff; }
+  .bx__step.is-now { box-shadow: inset 0 0 0 2px #ff8a5c; }
+  .bx__step.is-on.is-now { background: #ff8a5c; transform: scale(1.12); }
+  .bx__fx { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 12px; margin-top: clamp(16px, 2vw, 24px); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: #8a8f90; }
+  .bx__fx input[type=range] { width: 100%; }
+  .bx__hint { margin: 14px 0 0; font-size: 12px; color: #6f7475; }
+  @media (max-width: 760px) {
+    .gx-pair { grid-template-columns: 1fr; }
+    .bx__row { grid-template-columns: 1fr; gap: 6px; }
+    .bx__trk { justify-self: start; padding: 6px 14px; }
+    .bx__steps { grid-template-columns: repeat(8, minmax(0, 1fr)); }
+    .bx__fx { grid-template-columns: 1fr 1fr; } .bx__fx input { grid-column: 1 / -1; grid-row: 1; }
+  }
+
+  /* V3 case study: sticky info on the left, the work on the right */
+  :root { --bg: var(--paper); --red: #df0c01; --yellow: #f6cb00; --mono: "Geist Mono", ui-monospace, Menlo, monospace; --tint: #fdf0b4; }
+  body { background: var(--bg); }
+  .hd + .pj { padding-top: 96px; }
+  .k { display: inline-flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 13px; }
+  .k::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--red); }
+
+  .pj { display: grid; grid-template-columns: minmax(300px, 30%) minmax(0, 1fr); gap: clamp(28px, 3.4vw, 64px); padding: 92px var(--gutter) 0; }
+  .pj__stick { position: sticky; top: 84px; max-height: calc(100svh - 100px); overflow-y: auto; scrollbar-width: none; padding-bottom: 90px; }
+  .pj__stick::-webkit-scrollbar { display: none; }
+  .pj__tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pj__name, .pj__cat { margin: 0; display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 8px; font-family: var(--mono); font-size: 13px; font-weight: 500; letter-spacing: -.01em; }
+  .pj__name { background: var(--tint); }
+  .pj__name::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--red); }
+  .pj__cat { background: #fff; box-shadow: 0 0 0 1px var(--line); font-weight: 400; }
+  .pj__lede { margin: 22px 0 26px; font-size: clamp(24px, 2.1vw, 32px); line-height: 1.12; font-weight: 500; letter-spacing: -.035em; }
+  .pj__kv { margin: 0; border-top: 1px solid var(--ink); }
+  .pj__kv div { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line); font-family: var(--mono); font-size: 13px; }
+  .pj__kv dt { flex: none; color: var(--muted); }
+  .pj__kv dd { margin: 0; min-width: 0; text-align: right; overflow-wrap: anywhere; line-height: 1.45; }
+  .pj__kv a { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  .pj__kv a:hover { color: var(--red); }
+  .pj__stats { list-style: none; margin: 22px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .pj__stats li { padding: 14px; border-radius: 12px; background: #fff; box-shadow: 0 0 0 1px var(--line); }
+  .pj__stats b { display: block; font-size: clamp(20px, 1.7vw, 26px); font-weight: 600; letter-spacing: -.03em; }
+  .pj__stats span { font-size: 13px; color: var(--muted); }
+  .pj__toc { margin-top: 26px; display: grid; }
+  .pj__toc a { display: flex; align-items: center; gap: 10px; padding: 7px 0; font-family: var(--mono); font-size: 13px; color: var(--muted); transition: color .2s; }
+  .pj__toc a small { font-size: 11px; width: 18px; }
+  .pj__toc a::after { content: ""; width: 6px; height: 6px; margin-left: auto; border-radius: 50%; background: var(--red); opacity: 0; transition: opacity .2s; }
+  .pj__toc a:hover, .pj__toc a.is-on { color: var(--ink); }
+  .pj__toc a.is-on::after { opacity: 1; }
+  .pj__main { min-width: 0; padding-bottom: clamp(60px, 8vw, 120px); }
+  .pj__main .cx__media { margin: 0; }
+  .pj__main .cs { position: relative; padding: clamp(64px, 8vw, 120px) 0 0; }
+  .pj__chip { position: sticky; top: 84px; z-index: 5; height: 0; display: flex; justify-content: flex-end; align-items: flex-start; pointer-events: none; }
+  .pj__chip span { pointer-events: auto; display: inline-flex; align-items: center; line-height: 1.2; white-space: nowrap; padding: 8px 12px; border-radius: 8px; background: rgba(255,255,255,.92); backdrop-filter: blur(8px); box-shadow: 0 0 0 1px var(--line); font-family: var(--mono); font-size: 13px; }
+  .pj__main .cs__head { display: block; border-top: 0; padding: 0 clamp(120px, 16vw, 260px) 0 0; }
+  .pj__main .cs h2 { font-size: clamp(30px, 3.2vw, 52px); max-width: 20ch; }
+  .pj__main .cs__sub { max-width: 52ch; }
+  .pj__main .cs__body { margin-left: 0; }
+  .pj__main .pts { grid-template-columns: repeat(min(var(--n, 3), 3), minmax(0, 1fr)); }
+  .pj__main .quote { padding: clamp(90px, 11vw, 170px) 0; }
+  .pj__main .dl, .pj__main .nx { padding-left: 0; padding-right: 0; }
+  .pj__main .nx { padding-bottom: 0; }
+
+  /* Project switcher, bottom left */
+  .sw3 { position: fixed; left: var(--gutter); bottom: 16px; z-index: 30; transition: opacity .3s, transform .3s; }
+  .sw3.is-off { opacity: 0; transform: translateY(10px); pointer-events: none; }
+  .sw3__btn { appearance: none; border: 0; cursor: pointer; display: flex; align-items: center; gap: 22px; padding: 10px 12px 10px 14px; border-radius: 12px; background: rgba(255,255,255,.94); backdrop-filter: blur(10px); box-shadow: 0 0 0 1px var(--line), 0 10px 30px -14px rgba(0,0,0,.35); font: inherit; text-align: left; color: var(--ink); }
+  .sw3__btn small { display: flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .sw3__btn small::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--red); }
+  .sw3__btn b { display: block; margin-top: 2px; font-family: var(--mono); font-size: 13px; font-weight: 500; }
+  .sw3__btn i { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 8px; background: var(--bg); font-style: normal; }
+  .sw3__menu { position: absolute; left: 0; bottom: calc(100% + 8px); width: min(360px, calc(100vw - 20px)); max-height: min(72svh, 560px); overflow-y: auto; overscroll-behavior: contain; padding: 6px; border-radius: 14px; background: #fff; box-shadow: 0 0 0 1px var(--line), 0 18px 40px -18px rgba(0,0,0,.4); }
+  .sw3__menu[hidden] { display: none; }
+  .sw3__menu a { display: flex; justify-content: space-between; gap: 16px; padding: 10px 12px; border-radius: 9px; font-family: var(--mono); font-size: 13px; }
+  .sw3__menu a:hover, .sw3__menu a[aria-current] { background: var(--tint); }
+  .sw3__tabs { position: sticky; top: -6px; z-index: 1; display: flex; flex-wrap: wrap; gap: 4px; margin: -6px -6px 6px; padding: 10px; background: #fff; border-bottom: 1px solid var(--line); }
+  .sw3__tabs button { appearance: none; border: 0; cursor: pointer; padding: 6px 10px; border-radius: 999px; background: var(--bg); color: var(--muted); font-family: var(--mono); font-size: 12px; transition: background .2s, color .2s; }
+  .sw3__tabs button:hover { color: var(--ink); }
+  .sw3__tabs button[aria-selected="true"] { background: var(--ink); color: #fff; }
+  .sw3__tabs button:focus-visible, .sw3__menu a:focus-visible { outline: 2px solid var(--ink); outline-offset: 1px; }
+  .sw3__list[hidden] { display: none; }
+
+  @media (max-width: 900px) { .nv .hide-m { display: none; } }
+  @media (max-width: 1000px) {
+    .pj { grid-template-columns: 1fr; padding-top: 84px; }
+    .pj__stick { position: static; max-height: none; overflow: visible; padding-bottom: 8px; }
+    .pj__toc { display: none; }
+    .pj__main .cs__head { padding-right: 0; }
+    .pj__chip { position: static; height: auto; justify-content: flex-start; margin-bottom: 14px; }
+  }
+  @media (max-width: 600px) {
+    .nv { inset: 10px 10px auto; }
+    .pill--brand small, .pill--dark span { display: none; }
+    .pj__main .pts { grid-template-columns: 1fr; }
+    .sw3 { left: 10px; bottom: 10px; }
+  }
+</style>
+</head>
+<body style="--tint:#fdf0b4">
+
+<header class="hd">
+  <a class="hd__brand" href="../index.html"><img src="../../assets/icons/favicon-64.png" alt="" width="26" height="26">Sunil Sebastian</a>
+  <nav aria-label="Main"><a href="../index.html#work">Work</a><a href="../index.html#index">Index</a><a href="../index.html#about">About</a><a class="hd__mail" href="#contact">Contact</a></nav>
+</header>
+
+<main class="pj">
+  <aside class="pj__side"><div class="pj__stick">
+    <div class="pj__tags"><h1 id="title" class="pj__name">BIT Groovebox</h1><span class="pj__cat">Artifacts</span></div>
+    <p class="pj__lede">An eight-track groovebox that runs in the browser, built from my own hardware-style Figma concept.</p>
+    <dl class="pj__kv"><div><dt>Role</dt><dd>Concept, design, build</dd></div><div><dt>Made with</dt><dd>Web Audio, plain JavaScript, no dependencies</dd></div><div><dt>Engine</dt><dd>8 tracks, 8 patterns, 16 steps</dd></div><div><dt>Hardware</dt><dd>Faderfox LV3 over Web MIDI</dd></div><div><dt>Live</dt><dd><a href="https://bit-groovebox-sunshaseb.lilac-ant-5711.chatgpt.site" target="_blank" rel="noopener">Open BIT ↗</a></dd></div></dl>
+    
+    <nav class="pj__toc" aria-label="Sections"><a href="#overview"><small>01</small>Overview</a><a href="#try-it"><small>02</small>Try it</a><a href="#screen"><small>03</small>The screen</a><a href="#sound"><small>04</small>Sound</a><a href="#mix"><small>05</small>Mix & perform</a><a href="#hardware"><small>06</small>Hardware</a><a href="#modes"><small>07</small>Light & dark</a><a href="#engine"><small>08</small>Under the hood</a></nav>
+  </div></aside>
+  <div class="pj__main">
+    <figure class="cx__media"><video class="lv" src="../../side-quests/assets/groove-loop.mp4" poster="../../side-quests/assets/groove-loop.jpg" muted loop playsinline preload="auto" autoplay aria-label="The BIT groovebox playing: transport, scope meters, sound, perform and mixer modules with the step sequence running"></video></figure>
+    
+
+  <section class="cs" id="overview">
+    <div class="pj__chip" aria-hidden="true"><span>01 · Overview</span></div>
+    <div class="cs__head reveal"><div><h2>A little structure. Endless possibility.</h2><p class="cs__sub">It started as a Figma sketch of a hardware sequencer. Now it plays: a responsive four-module workspace with circular step pads, eight faders and an A/B effects crossfader.</p></div></div>
+    <div class="cs__body"><ol class="pts" style="--n:2"><li class="reveal"><small>01</small><b>Sequence</b><p>Eight patterns, eight tracks, sixteen steps. Velocity, probability and note per step.</p></li><li class="reveal"><small>02</small><b>Sound</b><p>Drum and synth engines, or load your own sample.</p></li><li class="reveal"><small>03</small><b>Mix</b><p>Eight faders, mute, solo and a master level.</p></li><li class="reveal"><small>04</small><b>Perform</b><p>Two effect scenes and a crossfader between them.</p></li></ol></div>
+    <div class="rows"><div class="row row--1"><figure class="m reveal" style="--ar:1.6000"><div class="m__box" style="aspect-ratio:2400 / 1500"><img src="../../side-quests/assets/groove-ui-dark.jpg" alt="The full BIT workspace in dark mode: transport, screen, sound, perform and mixer" loading="lazy" width="2400" height="1500"></div><figcaption>The workspace, dark mode</figcaption></figure></div></div>
+  </section>
+  <section class="cs" id="try-it">
+    <div class="pj__chip" aria-hidden="true"><span>02 · Try it</span></div>
+    <div class="cs__head reveal"><div><h2>Tap a step. Press play.</h2><p class="cs__sub">A tiny version of the sequencer, running right here. The real one has eight tracks, eight patterns and a lot more knobs.</p></div></div>
+    <div class="rows"><div class="bx reveal" role="group" aria-label="A playable mini sequencer"><div class="bx__top"><div class="bx__brand"><b>BIT</b><i>///</i><span>Mini sequencer</span></div><div class="bx__ctl"><button type="button" class="bx__play" aria-pressed="false">▶ Play</button><label class="bx__bpm">BPM <input type="range" min="80" max="160" value="112" aria-label="Tempo"><output>112</output></label><button type="button" class="bx__clear">Clear</button></div></div><div class="bx__grid"><div class="bx__row" data-t="0"><button type="button" class="bx__trk" aria-pressed="false" title="Mute Kick">Kick</button><div class="bx__steps"><button type=button class=bx__step aria-label="Kick step 1"></button><button type=button class=bx__step aria-label="Kick step 2"></button><button type=button class=bx__step aria-label="Kick step 3"></button><button type=button class=bx__step aria-label="Kick step 4"></button><button type=button class=bx__step aria-label="Kick step 5"></button><button type=button class=bx__step aria-label="Kick step 6"></button><button type=button class=bx__step aria-label="Kick step 7"></button><button type=button class=bx__step aria-label="Kick step 8"></button><button type=button class=bx__step aria-label="Kick step 9"></button><button type=button class=bx__step aria-label="Kick step 10"></button><button type=button class=bx__step aria-label="Kick step 11"></button><button type=button class=bx__step aria-label="Kick step 12"></button><button type=button class=bx__step aria-label="Kick step 13"></button><button type=button class=bx__step aria-label="Kick step 14"></button><button type=button class=bx__step aria-label="Kick step 15"></button><button type=button class=bx__step aria-label="Kick step 16"></button></div></div><div class="bx__row" data-t="1"><button type="button" class="bx__trk" aria-pressed="false" title="Mute Snare">Snare</button><div class="bx__steps"><button type=button class=bx__step aria-label="Snare step 1"></button><button type=button class=bx__step aria-label="Snare step 2"></button><button type=button class=bx__step aria-label="Snare step 3"></button><button type=button class=bx__step aria-label="Snare step 4"></button><button type=button class=bx__step aria-label="Snare step 5"></button><button type=button class=bx__step aria-label="Snare step 6"></button><button type=button class=bx__step aria-label="Snare step 7"></button><button type=button class=bx__step aria-label="Snare step 8"></button><button type=button class=bx__step aria-label="Snare step 9"></button><button type=button class=bx__step aria-label="Snare step 10"></button><button type=button class=bx__step aria-label="Snare step 11"></button><button type=button class=bx__step aria-label="Snare step 12"></button><button type=button class=bx__step aria-label="Snare step 13"></button><button type=button class=bx__step aria-label="Snare step 14"></button><button type=button class=bx__step aria-label="Snare step 15"></button><button type=button class=bx__step aria-label="Snare step 16"></button></div></div><div class="bx__row" data-t="2"><button type="button" class="bx__trk" aria-pressed="false" title="Mute Hat">Hat</button><div class="bx__steps"><button type=button class=bx__step aria-label="Hat step 1"></button><button type=button class=bx__step aria-label="Hat step 2"></button><button type=button class=bx__step aria-label="Hat step 3"></button><button type=button class=bx__step aria-label="Hat step 4"></button><button type=button class=bx__step aria-label="Hat step 5"></button><button type=button class=bx__step aria-label="Hat step 6"></button><button type=button class=bx__step aria-label="Hat step 7"></button><button type=button class=bx__step aria-label="Hat step 8"></button><button type=button class=bx__step aria-label="Hat step 9"></button><button type=button class=bx__step aria-label="Hat step 10"></button><button type=button class=bx__step aria-label="Hat step 11"></button><button type=button class=bx__step aria-label="Hat step 12"></button><button type=button class=bx__step aria-label="Hat step 13"></button><button type=button class=bx__step aria-label="Hat step 14"></button><button type=button class=bx__step aria-label="Hat step 15"></button><button type=button class=bx__step aria-label="Hat step 16"></button></div></div><div class="bx__row" data-t="3"><button type="button" class="bx__trk" aria-pressed="false" title="Mute Synth">Synth</button><div class="bx__steps"><button type=button class=bx__step aria-label="Synth step 1"></button><button type=button class=bx__step aria-label="Synth step 2"></button><button type=button class=bx__step aria-label="Synth step 3"></button><button type=button class=bx__step aria-label="Synth step 4"></button><button type=button class=bx__step aria-label="Synth step 5"></button><button type=button class=bx__step aria-label="Synth step 6"></button><button type=button class=bx__step aria-label="Synth step 7"></button><button type=button class=bx__step aria-label="Synth step 8"></button><button type=button class=bx__step aria-label="Synth step 9"></button><button type=button class=bx__step aria-label="Synth step 10"></button><button type=button class=bx__step aria-label="Synth step 11"></button><button type=button class=bx__step aria-label="Synth step 12"></button><button type=button class=bx__step aria-label="Synth step 13"></button><button type=button class=bx__step aria-label="Synth step 14"></button><button type=button class=bx__step aria-label="Synth step 15"></button><button type=button class=bx__step aria-label="Synth step 16"></button></div></div></div><div class="bx__fx"><span>A · Clean</span><input type="range" min="0" max="100" value="0" aria-label="Crossfade between clean and dub space"><span>B · Dub space</span></div><p class="bx__hint">Tap a step, press play. Tap a pink track to mute it. Slide to B for filter and echo.</p></div></div>
+  </section>
+  <section class="cs" id="screen">
+    <div class="pj__chip" aria-hidden="true"><span>03 · The screen</span></div>
+    <div class="cs__head reveal"><div><h2>Six ways to watch the beat.</h2><p class="cs__sub">The display is a playground. Touch or drag it to play notes: across for pitch, up and down for velocity.</p></div></div>
+    <div class="rows"><div class="gx gx--wide reveal" role="group" aria-label="Screen views"><div class="gx__tabs"><button type="button" class="is-on" aria-pressed="true" data-note="The Figma signal-flow drawing, lit by the audio.">Circuit</button><button type="button" class="" aria-pressed="false" data-note="Reels spin at the tempo over four real sequence lanes.">Reel</button><button type="button" class="" aria-pressed="false" data-note="Four live peak meters, with pan.">Scope</button><button type="button" class="" aria-pressed="false" data-note="A live waveform landscape you can tilt.">Wavefield</button><button type="button" class="" aria-pressed="false" data-note="Nodes that move with pitch and filter.">Vector</button><button type="button" class="" aria-pressed="false" data-note="Particles bouncing to the beat.">Particles</button></div><div class="gx__stage" style="aspect-ratio:1412 / 727"><img class="is-on" src="../../side-quests/assets/groove-screen-circuit.jpg" alt="Circuit view: the Figma signal-flow drawing lights up with the audio" loading="lazy" width="1404" height="721"><img class="" src="../../side-quests/assets/groove-screen-reel.jpg" alt="Reel view: two spinning reels and four sequence lanes" loading="lazy" width="1412" height="727"><img class="" src="../../side-quests/assets/groove-screen-scope.jpg" alt="Scope view: four live peak meters with pan dials" loading="lazy" width="1412" height="727"><img class="" src="../../side-quests/assets/groove-screen-wavefield.jpg" alt="Wavefield view: a live waveform landscape" loading="lazy" width="1412" height="727"><img class="" src="../../side-quests/assets/groove-screen-vector.jpg" alt="Vector view: nodes driven by pitch and filter" loading="lazy" width="1412" height="727"><img class="" src="../../side-quests/assets/groove-screen-particles.jpg" alt="Particles view: moving particles inside a hexagon" loading="lazy" width="1412" height="727"></div><p class="gx__note">The Figma signal-flow drawing, lit by the audio.</p></div></div>
+  </section>
+  <section class="cs" id="sound">
+    <div class="pj__chip" aria-hidden="true"><span>04 · Sound</span></div>
+    <div class="cs__head reveal"><div><h2>Shape it by dragging.</h2><p class="cs__sub">Each voice has its own engine. Decay, filter, pitch and pan are curves you drag, and the sliders follow.</p></div></div>
+    <div class="cs__body"><ol class="pts" style="--n:3"><li class="reveal"><small>01</small><b>Eight engines</b><p>Analog kick, noise snare, hats, clap, bass, synth and bell.</p></li><li class="reveal"><small>02</small><b>Your samples</b><p>Drop in a WAV, MP3 or OGG up to 20 MB.</p></li><li class="reveal"><small>03</small><b>Audition</b><p>Hear every change before it hits the pattern.</p></li></ol></div>
+    <div class="rows"><div class="gx-pair"><div class="gx gx--tall reveal" role="group" aria-label="Sound sculpt views"><div class="gx__tabs"><button type="button" class="is-on" aria-pressed="true" data-note="Drag to shorten or stretch the hit.">Decay</button><button type="button" class="" aria-pressed="false" data-note="Drag to close the low-pass filter.">Filter</button><button type="button" class="" aria-pressed="false" data-note="Drag to tune the voice up or down.">Pitch</button><button type="button" class="" aria-pressed="false" data-note="Drag to place it left or right.">Pan</button></div><div class="gx__stage" style="aspect-ratio:691 / 855"><img class="is-on" src="../../side-quests/assets/groove-sculpt-decay.jpg" alt="Sound module with the decay curve" loading="lazy" width="691" height="855"><img class="" src="../../side-quests/assets/groove-sculpt-cutoff.jpg" alt="Sound module with the low-pass filter curve" loading="lazy" width="691" height="855"><img class="" src="../../side-quests/assets/groove-sculpt-tune.jpg" alt="Sound module with the pitch view" loading="lazy" width="691" height="855"><img class="" src="../../side-quests/assets/groove-sculpt-pan.jpg" alt="Sound module with the pan view" loading="lazy" width="691" height="855"></div><p class="gx__note">Drag to shorten or stretch the hit.</p></div><figure class="m reveal" style="--ar:0.8171"><div class="m__box" style="aspect-ratio:688 / 842"><img src="../../side-quests/assets/groove-perform.jpg" alt="Perform module: scene A clean, scene B dub space, crossfader between them" loading="lazy" width="688" height="842"></div><figcaption>Perform: two scenes, one crossfader</figcaption></figure></div></div>
+  </section>
+  <section class="cs" id="mix">
+    <div class="pj__chip" aria-hidden="true"><span>05 · Mix & perform</span></div>
+    <div class="cs__head reveal"><div><h2>Eight faders. Two scenes.</h2><p class="cs__sub">Every track gets a fader, mute and solo. Each scene picks its own effect, amount and beat rate.</p></div></div>
+    <div class="cs__body"><ul class="cs__chips reveal"><li>Clean</li><li>Dub space</li><li>Low-pass sweep</li><li>High-pass sweep</li><li>Beat echo</li><li>Warehouse reverb</li><li>Jet flanger</li><li>Rhythmic tremolo</li><li>Saturation</li></ul></div>
+    <div class="rows"><div class="row row--solo"><figure class="m reveal" style="--ar:0.8765"><div class="m__box" style="aspect-ratio:1412 / 1611"><img src="../../side-quests/assets/groove-mixer.jpg" alt="Mixer: eight pink track buttons and faders, the 16-step sequence and the pattern bank" loading="lazy" width="1412" height="1611"></div><figcaption>Mixer, steps and pattern bank</figcaption></figure></div></div>
+  </section>
+  <section class="cs" id="hardware">
+    <div class="pj__chip" aria-hidden="true"><span>06 · Hardware</span></div>
+    <div class="cs__head reveal"><div><h2>Hands on, with a Faderfox LV3.</h2><p class="cs__sub">Plug in the controller and BIT maps itself. Faders, steps and transport all live on real buttons.</p></div></div>
+    <div class="cs__body"><ol class="pts" style="--n:3"><li class="reveal"><small>01</small><b>Auto-map</b><p>Eight faders set volume; black buttons select tracks.</p></li><li class="reveal"><small>02</small><b>Step rows</b><p>Green and blue rows toggle all sixteen steps, with LED feedback.</p></li><li class="reveal"><small>03</small><b>Transport</b><p>Push the top encoders to stop, play and pause.</p></li></ol></div>
+    <div class="rows"><div class="row row--1"><figure class="m reveal" style="--ar:1.2995"><div class="m__box" style="aspect-ratio:2000 / 1539"><img src="../../side-quests/assets/groove-midi.jpg" alt="MIDI / LV3 setup panel: connect, guided learn and the incoming message monitor" loading="lazy" width="2000" height="1539"></div><figcaption>Guided MIDI setup</figcaption></figure></div></div>
+  </section>
+  <section class="cs" id="modes">
+    <div class="pj__chip" aria-hidden="true"><span>07 · Light & dark</span></div>
+    <div class="cs__head reveal"><div><h2>Ivory shell, dark screen.</h2><p class="cs__sub">Light mode swaps to ivory with graphite labels and pastel accents. The display always stays dark.</p></div></div>
+    <div class="cs__body"><ol class="pts" style="--n:2"><li class="reveal"><small>01</small><b>Three workspaces</b><p>Studio, Perform and Focus. Hide or reorder any module.</p></li><li class="reveal"><small>02</small><b>Fits the window</b><p>On desktop the whole instrument scales to fit, no scrolling.</p></li></ol></div>
+    <div class="rows"><div class="row row--1"><figure class="m reveal" style="--ar:1.6000"><div class="m__box" style="aspect-ratio:2400 / 1500"><img src="../../side-quests/assets/groove-ui-light.jpg" alt="The full BIT workspace in light mode" loading="lazy" width="2400" height="1500"></div><figcaption>The workspace, light mode</figcaption></figure></div></div>
+  </section>
+  <section class="cs" id="engine">
+    <div class="pj__chip" aria-hidden="true"><span>08 · Under the hood</span></div>
+    <div class="cs__head reveal"><div><h2>Built to keep time.</h2><p class="cs__sub">No libraries, no build step. Just the browser’s own audio and MIDI.</p></div></div>
+    <div class="cs__body"><ol class="pts" style="--n:2"><li class="reveal"><small>01</small><b>Tight timing</b><p>A 25 ms look-ahead scheduler on the audio clock.</p></li><li class="reveal"><small>02</small><b>Export</b><p>Bounce four bars to a stereo 44.1 kHz WAV.</p></li><li class="reveal"><small>03</small><b>Saves itself</b><p>Projects and samples stay in the browser, or save a portable file.</p></li><li class="reveal"><small>04</small><b>Tested</b><p>Unit tests plus offline checks for every engine and effect.</p></li></ol></div>
+    <div class="rows"></div>
+  </section>
+  <section class="quote" aria-label="Closing thought"><p class="reveal">Your sound. Your system.</p></section>
+  <section class="dl" aria-label="What I delivered"><span class="lbl">Delivered</span><ul><li>Concept</li><li>Interface design</li><li>Audio engine</li><li>Web MIDI</li><li>Front-end build</li><li>Motion</li></ul></section>
+  <div style="height:clamp(80px,10vw,160px)"></div>
+  
+  <nav class="nx" aria-label="Next case study">
+    <div>
+      <span class="lbl" style="color:var(--muted)">Next case study</span>
+      <a href="../soundtrack-and-film/index.html"><span class="nx__t">Soundtrack &amp; film</span><span class="nx__d">150 years of NCA, played on its own tools</span></a>
+      <a class="nx__back" href="../pixel-pals/index.html">← Previous: Pixel Pals</a>
+    </div>
+    <a href="../soundtrack-and-film/index.html" aria-hidden="true" tabindex="-1"><div class="nx__img"><img src="../../side-quests/assets/nca-loop.jpg" alt="" loading="lazy"></div></a>
+  </nav>
+
+  </div>
+</main>
+
+<div class="sw3"><div class="sw3__menu" hidden><div class="sw3__tabs" role="tablist" aria-label="Disciplines"><button type="button" role="tab" aria-selected="false" data-cat="Brand systems">Brand systems</button><button type="button" role="tab" aria-selected="false" data-cat="Product">Product</button><button type="button" role="tab" aria-selected="true" data-cat="Artifacts">Artifacts</button><button type="button" role="tab" aria-selected="false" data-cat="Campaigns">Campaigns</button><button type="button" role="tab" aria-selected="false" data-cat="Packaging">Packaging</button><button type="button" role="tab" aria-selected="false" data-cat="Games">Games</button><button type="button" role="tab" aria-selected="false" data-cat="Experiential">Experiential</button><button type="button" role="tab" aria-selected="false" data-cat="Motion">Motion</button></div><div class="sw3__list" role="tabpanel" data-cat="Brand systems" hidden><a href="../namma-farm/index.html"><span>Namma Farm</span><span>01</span></a><a href="../scooch/index.html"><span>Scooch Over</span><span>02</span></a><a href="../green-school/index.html"><span>Green School</span><span>03</span></a><a href="../accelerated-professional-center/index.html"><span>APL</span><span>04</span></a><a href="../imagination-holdings/index.html"><span>Imagination Holdings</span><span>05</span></a><a href="../oro-chocolate/index.html"><span>ORO Chocolate</span><span>06</span></a><a href="../nrj/index.html"><span>NRJ</span><span>07</span></a><a href="../khalta/index.html"><span>Khalta</span><span>08</span></a><a href="../tamuda-bay/index.html"><span>Tamuda Bay</span><span>09</span></a></div><div class="sw3__list" role="tabpanel" data-cat="Product" hidden><a href="../coca-cola-umm/index.html"><span>Coca-Cola UMM</span><span>01</span></a><a href="../al-siraat/index.html"><span>Al Siraat</span><span>02</span></a><a href="../imagination-dls/index.html"><span>Imagination DLS</span><span>03</span></a></div><div class="sw3__list" role="tabpanel" data-cat="Artifacts"><a href="../pixel-pals/index.html"><span>Pixel Pals</span><span>01</span></a><a href="../bit-groovebox/index.html" aria-current="page"><span>BIT Groovebox</span><span>02</span></a><a href="../soundtrack-and-film/index.html"><span>Soundtrack &amp; film</span><span>03</span></a><a href="../gundam-build/index.html"><span>Gundam build</span><span>04</span></a><a href="../photography/index.html"><span>Photography</span><span>05</span></a></div><div class="sw3__list" role="tabpanel" data-cat="Campaigns" hidden><a href="../martini-begin-desire/index.html"><span>Martini · Begin Desire</span><span>01</span></a><a href="../head-and-shoulders/index.html"><span>Head &amp; Shoulders</span><span>02</span></a><a href="../sprite/index.html"><span>Sprite</span><span>03</span></a><a href="../fanta/index.html"><span>Fanta</span><span>04</span></a><a href="../coca-cola/index.html"><span>Coca-Cola</span><span>05</span></a></div><div class="sw3__list" role="tabpanel" data-cat="Packaging" hidden><a href="../king-c-gillette/index.html"><span>King C. Gillette</span><span>01</span></a><a href="../twistails/index.html"><span>Twistails</span><span>02</span></a><a href="../grey-goose/index.html"><span>Grey Goose</span><span>03</span></a><a href="../baskin-robbins/index.html"><span>Baskin Robbins</span><span>04</span></a><a href="../martini-bitter/index.html"><span>Martini Bitter</span><span>05</span></a><a href="../oro-packaging/index.html"><span>ORO Packaging</span><span>06</span></a><a href="../grey-goose-cards/index.html"><span>Grey Goose Cards</span><span>07</span></a><a href="../bombay-sapphire/index.html"><span>Bombay Sapphire</span><span>08</span></a><a href="../st-germain/index.html"><span>St-Germain</span><span>09</span></a></div><div class="sw3__list" role="tabpanel" data-cat="Games" hidden><a href="../wallet-wars/index.html"><span>Wallet Wars</span><span>01</span></a><a href="../valorant-mobile/index.html"><span>Valorant Mobile</span><span>02</span></a><a href="../aew-rise-to-the-top/index.html"><span>AEW: Rise to the Top</span><span>03</span></a><a href="../brawl3rs/index.html"><span>Brawl3rs</span><span>04</span></a><a href="../ggi/index.html"><span>GGI</span><span>05</span></a></div><div class="sw3__list" role="tabpanel" data-cat="Experiential" hidden><a href="../bacardi-house-party/index.html"><span>Bacardi House Party</span><span>01</span></a><a href="../grey-goose-windows/index.html"><span>Grey Goose windows</span><span>02</span></a><a href="../bombay-sapphire-pop-up/index.html"><span>Bombay Sapphire pop-up</span><span>03</span></a></div><div class="sw3__list" role="tabpanel" data-cat="Motion" hidden><a href="../showreel/index.html"><span>Showreel</span><span>01</span></a></div></div><button class="sw3__btn" type="button" aria-expanded="false" aria-label="All projects, by discipline"><span><small>Artifacts</small><b>BIT Groovebox</b></span><i aria-hidden="true">≡</i></button></div>
+
+<section id="contact" class="ct" aria-label="Contact">
+  <span class="lbl"><span class="dot" aria-hidden="true"></span>Available for full-time, remote and new projects</span>
+  <div class="ct__row">
+    <div><span class="lbl">Email</span><p><a class="ct__mail" href="mailto:sunil@sebastians.tv">sunil@sebastians.tv</a></p></div>
+    <div><span class="lbl">Elsewhere</span><p><a href="https://www.linkedin.com/in/sunil-shahzad-a7a59797/" target="_blank" rel="noopener">LinkedIn ↗</a></p><p><a href="https://www.behance.net/sunshaseb" target="_blank" rel="noopener">Behance ↗</a></p><p><a href="https://www.instagram.com/sunilsebastian/" target="_blank" rel="noopener">Instagram ↗</a></p></div>
+    <div><span class="lbl">Work authorization</span><p>US Employment Authorization Card (EAD)</p></div>
+  </div>
+</section>
+
+<footer class="ft-wrap">
+  <div class="ft-nav"><span>© 2026 Sunil Sebastian</span><nav aria-label="Footer"><a href="../index.html#work">Work</a><a href="../index.html#index">Index</a><a href="../index.html#about">About</a><a href="../showreel/index.html">Showreel</a></nav></div>
+  <span class="wordmark" aria-hidden="true">Sunil Sebastian</span>
+</footer>
+
+<script>
+(() => {
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  // Looping clips play only while on screen
+  const vo = new IntersectionObserver(es => es.forEach(e => { const v = e.target; if (e.isIntersecting) { v.preload = 'auto'; v.play().catch(() => {}); } else v.pause(); }), { threshold: .2 });
+  document.querySelectorAll('video.lv').forEach(v => vo.observe(v));
+})();
+
+  // Screen and sculpt switchers
+  document.querySelectorAll('.gx').forEach(g => {
+    const tabs = [...g.querySelectorAll('.gx__tabs button')], imgs = [...g.querySelectorAll('.gx__stage img')], note = g.querySelector('.gx__note');
+    tabs.forEach((t, k) => t.addEventListener('click', () => { tabs.forEach((x, j) => { x.classList.toggle('is-on', j === k); x.setAttribute('aria-pressed', j === k); }); imgs.forEach((m, j) => m.classList.toggle('is-on', j === k)); note.textContent = t.dataset.note; }));
+  });
+  // Mini sequencer: Web Audio drum and synth voices on a look-ahead scheduler
+  (() => {
+    const bx = document.querySelector('.bx'); if (!bx) return;
+    const rows = [...bx.querySelectorAll('.bx__row')], steps = rows.map(r => [...r.querySelectorAll('.bx__step')]);
+    const trks = rows.map(r => r.querySelector('.bx__trk')), play = bx.querySelector('.bx__play');
+    const bpmIn = bx.querySelector('.bx__bpm input'), bpmOut = bx.querySelector('.bx__bpm output'), fx = bx.querySelector('.bx__fx input');
+    const START = ['1000100010001000', '0000100000001000', '1010101010101010', '1001000110010010'];
+    const NOTES = [0, 0, 7, 0, 3, 0, 10, 0, 12, 0, 7, 0, 5, 0, 3, 0];
+    const grid = START.map(r => [...r].map(c => c === '1'));
+    const paint = () => grid.forEach((r, t) => r.forEach((on, i) => steps[t][i].classList.toggle('is-on', on)));
+    steps.forEach((r, t) => r.forEach((b, i) => b.addEventListener('click', () => { grid[t][i] = !grid[t][i]; paint(); })));
+    const muted = [false, false, false, false];
+    trks.forEach((b, t) => b.addEventListener('click', () => { muted[t] = !muted[t]; b.setAttribute('aria-pressed', muted[t]); }));
+    bx.querySelector('.bx__clear').addEventListener('click', () => { grid.forEach(r => r.fill(false)); paint(); });
+    bpmIn.addEventListener('input', () => bpmOut.textContent = bpmIn.value);
+    paint();
+
+    let ac, master, dry, wet, noise, timer = 0, step = 0, next = 0; const queue = [];
+    const init = () => {
+      ac = new (window.AudioContext || window.webkitAudioContext)();
+      master = ac.createGain(); master.gain.value = .8; master.connect(ac.destination);
+      dry = ac.createGain(); wet = ac.createGain(); dry.connect(master);
+      const lp = ac.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 900; lp.Q.value = 4;
+      const dl = ac.createDelay(1); const fb = ac.createGain(); fb.gain.value = .42;
+      wet.connect(lp); lp.connect(master); lp.connect(dl); dl.connect(fb); fb.connect(dl); dl.connect(master);
+      const sync = () => { dl.delayTime.value = 60 / +bpmIn.value * .75; }; sync(); bpmIn.addEventListener('input', sync);
+      noise = ac.createBuffer(1, ac.sampleRate, ac.sampleRate); const d = noise.getChannelData(0); for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
+      const mix = () => { const x = fx.value / 100; dry.gain.setTargetAtTime(Math.cos(x * Math.PI / 2), ac.currentTime, .03); wet.gain.setTargetAtTime(Math.sin(x * Math.PI / 2), ac.currentTime, .03); };
+      mix(); fx.addEventListener('input', mix);
+    };
+    const env = (g, t, peak, dec) => { g.gain.setValueAtTime(peak, t); g.gain.exponentialRampToValueAtTime(.001, t + dec); };
+    const out = g => { g.connect(dry); g.connect(wet); };
+    const VOICE = [
+      t => { const o = ac.createOscillator(), g = ac.createGain(); o.frequency.setValueAtTime(150, t); o.frequency.exponentialRampToValueAtTime(42, t + .12); env(g, t, 1, .4); o.connect(g); out(g); o.start(t); o.stop(t + .42); },
+      t => { const n = ac.createBufferSource(), f = ac.createBiquadFilter(), g = ac.createGain(); n.buffer = noise; f.type = 'highpass'; f.frequency.value = 1300; env(g, t, .55, .18); n.connect(f); f.connect(g); out(g); n.start(t); n.stop(t + .2);
+             const o = ac.createOscillator(), g2 = ac.createGain(); o.type = 'triangle'; o.frequency.value = 190; env(g2, t, .35, .1); o.connect(g2); out(g2); o.start(t); o.stop(t + .12); },
+      t => { const n = ac.createBufferSource(), f = ac.createBiquadFilter(), g = ac.createGain(); n.buffer = noise; f.type = 'highpass'; f.frequency.value = 7500; env(g, t, .25, .05); n.connect(f); f.connect(g); out(g); n.start(t); n.stop(t + .06); },
+      (t, i) => { const o = ac.createOscillator(), f = ac.createBiquadFilter(), g = ac.createGain(); o.type = 'sawtooth'; o.frequency.value = 110 * Math.pow(2, NOTES[i] / 12); f.type = 'lowpass'; f.frequency.setValueAtTime(2400, t); f.frequency.exponentialRampToValueAtTime(300, t + .22); env(g, t, .22, .26); o.connect(f); f.connect(g); out(g); o.start(t); o.stop(t + .28); }
+    ];
+    const tick = () => {
+      const dur = 60 / +bpmIn.value / 4;
+      while (next < ac.currentTime + .1) {
+        grid.forEach((r, t) => { if (r[step] && !muted[t]) VOICE[t](next, step); });
+        queue.push([step, next]); next += dur; step = (step + 1) % 16;
+      }
+      while (queue.length && queue[0][1] <= ac.currentTime) { const [s] = queue.shift(); steps.forEach(r => r.forEach((b, i) => b.classList.toggle('is-now', i === s))); }
+    };
+    const stop = () => { clearInterval(timer); timer = 0; queue.length = 0; steps.forEach(r => r.forEach(b => b.classList.remove('is-now'))); play.textContent = '▶ Play'; play.setAttribute('aria-pressed', 'false'); };
+    play.addEventListener('click', () => {
+      if (!ac) init();
+      if (timer) return stop();
+      ac.resume(); step = 0; next = ac.currentTime + .05; timer = setInterval(tick, 25); tick();
+      play.textContent = '■ Stop'; play.setAttribute('aria-pressed', 'true');
+    });
+    new IntersectionObserver(([e]) => { if (!e.isIntersecting && timer) stop(); }, { threshold: 0 }).observe(bx);
+  })();
+</script>
+
+<script>(() => {
+  // Section list in the sticky column follows the scroll
+  const links = [...document.querySelectorAll('.pj__toc a')], secs = links.map(a => document.querySelector(a.hash));
+  const mark = () => {
+    let on = 0; secs.forEach((s, k) => { if (s.getBoundingClientRect().top < innerHeight * .4) on = k; });
+    links.forEach((a, k) => a.classList.toggle('is-on', k === on));
+  };
+  addEventListener('scroll', mark, { passive: true }); mark();
+  // Project switcher
+  const btn = document.querySelector('.sw3__btn'), menu = document.querySelector('.sw3__menu');
+  btn.addEventListener('click', () => { menu.hidden = !menu.hidden; btn.setAttribute('aria-expanded', !menu.hidden); });
+  // Discipline tabs inside the switcher
+  const tabs = [...menu.querySelectorAll('.sw3__tabs button')], lists = [...menu.querySelectorAll('.sw3__list')];
+  tabs.forEach(t => t.addEventListener('click', () => {
+    tabs.forEach(x => x.setAttribute('aria-selected', x === t));
+    lists.forEach(l => l.hidden = l.dataset.cat !== t.dataset.cat);
+  }));
+  addEventListener('click', e => { if (!e.target.closest('.sw3')) { menu.hidden = true; btn.setAttribute('aria-expanded', 'false'); } });
+  addEventListener('keydown', e => { if (e.key === 'Escape') { menu.hidden = true; btn.setAttribute('aria-expanded', 'false'); } });
+  // The switcher steps aside once the contact section is on screen
+  const sw = document.querySelector('.sw3'), ct = document.getElementById('contact') || document.querySelector('footer');
+  if (ct) new IntersectionObserver(([e]) => { sw.classList.toggle('is-off', e.isIntersecting); if (e.isIntersecting) menu.hidden = true; }).observe(ct);
+})();</script>
+</body>
+</html>
