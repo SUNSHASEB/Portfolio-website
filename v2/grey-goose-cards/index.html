@@ -194,6 +194,7 @@
 .gcb__step { position: absolute; left: 16px; top: 14px; font: 600 12px/1 "Plus Jakarta Sans", sans-serif; letter-spacing: .14em; text-transform: uppercase; color: #2f386f; }
 .gcb__step b { color: var(--accent); margin-right: 6px; font-weight: 800; }
 .gcb__panel--navy .gcb__step { color: #fff; }
+.gc-ink { fill: var(--f); fill-opacity: 0; stroke: var(--f); stroke-width: 2.5; stroke-dasharray: 1; stroke-dashoffset: 1; }
 .gcb__panel.is-play .gc-ink { animation: g-draw var(--t) ease-in-out calc(var(--o, 0s) + var(--d)) forwards, g-fill .7s ease calc(var(--o, 0s) + var(--d) + var(--t) - .2s) forwards; }
 @media (min-width: 761px) {.gcb__panel:nth-child(2) { --o: 1.9s; }
 .gcb__panel:nth-child(3) { --o: 3.8s; }}
@@ -204,7 +205,8 @@
 @media (max-width: 760px) {.gcb__grid { grid-template-columns: 1fr; }
 .gcb__panel:not(:last-child)::after { content: "↓"; right: 50%; top: auto; bottom: calc(-1 * clamp(10px, 1.4vw, 20px)); transform: translate(50%, 50%); }
 .gcb__panel svg { max-height: 300px; }}
-@media (prefers-reduced-motion: reduce) {.gcb__replay { display: none; }}
+@media (prefers-reduced-motion: reduce) {.gcb__replay { display: none; }
+.gc-ink { fill-opacity: 1; stroke: none; animation: none !important; }}
 @keyframes g-draw { to { stroke-dashoffset: 0; } }
 @keyframes g-fill { to { fill-opacity: 1; stroke-opacity: 0; } }
 
