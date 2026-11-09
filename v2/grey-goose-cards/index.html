@@ -484,5 +484,14 @@
   const sw = document.querySelector('.sw3'), ct = document.getElementById('contact') || document.querySelector('footer');
   if (ct) new IntersectionObserver(([e]) => { sw.classList.toggle('is-off', e.isIntersecting); if (e.isIntersecting) menu.hidden = true; }).observe(ct);
 })();</script>
+<script>(() => {
+  // Phones: some browsers (iOS Low Power Mode, data saver) refuse to start muted videos on their own.
+  // The first tap anywhere, or a pause in scrolling, starts every looping video that is on screen.
+  const SEL = 'video.lv, video.ft__vid, .hv__slide.is-on video, .it-hero video, video.a2__v';
+  const onScreen = v => { const r = v.getBoundingClientRect(); return r.width > 0 && r.bottom > 0 && r.top < innerHeight; };
+  const kick = () => document.querySelectorAll(SEL).forEach(v => { if (v.paused && v.muted && onScreen(v)) { v.preload = 'auto'; v.play().catch(() => {}); } });
+  ['touchend', 'click'].forEach(t => addEventListener(t, kick, { passive: true }));
+  let to; addEventListener('scroll', () => { clearTimeout(to); to = setTimeout(kick, 300); }, { passive: true });
+})();</script>
 </body>
 </html>
