@@ -461,6 +461,299 @@
     .cmp__knob { width: 44px; height: 44px; margin: -22px 0 0 -22px; }
   }
 
+
+  /* Carried over from V2: the interactive pieces read these */
+  :root { --card-r: var(--radius); --font: var(--body); --muted: #9a9a96; --line: rgba(255,255,255,.14); --paper-2: #1b1b1b; --night: #0f0f0e; }
+  .rows-v1 > * + * { margin-top: clamp(14px, 1.6vw, 22px); }
+  section .wrap > :is(.sw, .jrow) + :not(.jrow):not(.sw):not(.sub) { margin-top: clamp(14px, 1.6vw, 22px); }
+
+  
+  /* V1 components this page did not have yet */
+  .jrow { display: flex; gap: clamp(10px, 1.4vw, 20px); margin-top: clamp(14px, 1.6vw, 22px); }
+  .jrow .frame { margin: 0; background: #111; }
+  .jrow.first { margin-top: clamp(32px, 4vw, 56px); }
+  @media (max-width: 600px) { .jrow { flex-direction: column; } .jrow .frame { flex: none !important; } }
+  .jrow .frame { margin: 0; flex: 1 1 0%; aspect-ratio: 16 / 9; background: #fff; }
+  @media (max-width: 600px) { .jrow { flex-direction: column; } }
+  .flow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(32px, 4vw, 56px); }
+  .flow article { border-radius: var(--radius); padding: clamp(18px, 2vw, 26px); background: #141414; border: 1.5px solid rgba(255,255,255,.08); transition: transform .35s var(--ease), border-color .3s; }
+  .flow article:hover { transform: translateY(-4px); border-color: var(--accent); }
+  .flow small { font-size: 12px; letter-spacing: .14em; color: var(--accent); font-weight: 700; }
+  .flow b { display: block; margin: 8px 0; font-family: var(--body); font-weight: 800; font-size: clamp(20px, 1.6vw, 26px); letter-spacing: -.02em; }
+  .flow p { margin: 0; opacity: .85; }
+  @media (max-width: 960px) { .flow { grid-template-columns: 1fr; } }
+  .posters { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(32px, 4vw, 56px); }
+  .posters .frame { margin: 0; aspect-ratio: 1311 / 1860; background: #fdf8e4; }
+  .posters .frame:nth-child(even) { transform: translateY(clamp(12px, 3vw, 40px)); }
+  .posters .frame:hover { transform: translateY(-6px) rotate(-1deg); }
+  .posters-gap { height: clamp(12px, 3vw, 40px); }
+  @media (max-width: 960px) { .posters { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  :root { --u-0: #000; --u-1: #151515; --u-2: #1C1C1E; --u-3: #2A2A2C; --u-red: #FF2423; --u-t2: #8D8D92; --u-t3: #5A5A5E; --u-line: rgba(255,255,255,.09); --u-font: "Inter", "Inter Tight", Arial, sans-serif; }
+  .ub, .uc, .uj, .ux, .um, .ua, .bx, .ob, .tr, .lv2, .ud { flex: 1 1 100%; min-width: 0; border-radius: var(--card-r, 14px); background: var(--u-0); color: #fff; font-family: var(--u-font); }
+  :where(.ub, .uc, .uj, .ux, .um, .ua, .bx, .ob, .tr, .lv2, .ud) > * { min-width: 0; }
+  :where(.uc, .uj, .ux, .um, .ua, .bx, .ob, .tr, .lv2, .ud) button { all: unset; cursor: pointer; box-sizing: border-box; }
+  :where(.uc, .uj, .ux, .um, .ua, .bx, .ob, .tr, .lv2, .ud) :is(button, select, input):focus-visible, .tr:focus-visible { outline: 2px solid var(--u-red); outline-offset: 3px; }
+  .u-mono { display: block; font-family: var(--u-font); font-size: 11px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--u-t2); }
+  .sev { display: inline-block; padding: 3px 9px; border-radius: 999px; font-style: normal; font-size: 11px; font-weight: 600; letter-spacing: .04em; color: #000; background: var(--s); }
+  .sev--critical { --s: #FF2423; color: #fff; }
+  .sev--high { --s: #F79900; }
+  .sev--moderate { --s: #D7B85B; }
+  .dot--critical { --s: #FF2423; }
+  .dot--high { --s: #F79900; }
+  .dot--moderate { --s: #D7B85B; }
+  .ub { display: grid; grid-template-columns: 1.25fr 1fr; gap: 0; overflow: hidden; }
+  .ub__who { padding: clamp(18px, 2.6vw, 36px); }
+  .ub__who ul { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 1px; background: var(--u-line); border-radius: 10px; overflow: hidden; }
+  .ub__who li { background: var(--u-1); padding: 14px 16px; display: grid; grid-template-columns: minmax(0, 13ch) 1fr; gap: 14px; align-items: baseline; transition: background .3s; }
+  .ub__who li:nth-child(2) { background: #2a0c0c; box-shadow: inset 3px 0 0 var(--u-red); }
+  .ub__who b { font-size: 15px; font-weight: 600; }
+  .ub__who span { font-size: 14px; color: #c9c9cd; line-height: 1.4; }
+  .ub__brief { position: relative; padding: clamp(18px, 2.6vw, 36px); background: radial-gradient(120% 90% at 100% 0%, rgba(255,36,35,.35), transparent 60%), var(--u-2); display: flex; flex-direction: column; justify-content: flex-end; min-height: 260px; }
+  .ub__brief .u-mono { position: absolute; top: clamp(18px, 2.6vw, 36px); left: clamp(18px, 2.6vw, 36px); color: #ff8a89; }
+  .ub__brief p { margin: 0; font-size: clamp(26px, 2.8vw, 42px); line-height: 1.05; letter-spacing: -.03em; font-weight: 600; }
+  .ub__brief .ub__small { margin-top: 14px; font-size: 15px; line-height: 1.45; letter-spacing: 0; font-weight: 400; color: #d6d6da; max-width: 40ch; }
+  .uc { padding: clamp(18px, 2.6vw, 36px); }
+  .uc__top p { margin: 8px 0 0; font-size: clamp(16px, 1.25vw, 18px); max-width: 60ch; color: #d6d6da; }
+  .uc__grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr) minmax(0, 1.1fr); gap: 12px; margin-top: 20px; }
+  .uc__pick { display: grid; gap: 6px; align-content: start; }
+  .uc__pick button { padding: 10px 12px; border-radius: 8px; background: var(--u-1); font-size: 14px; font-weight: 500; transition: background .25s, transform .25s var(--ease); }
+  .uc__pick button small { display: block; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--u-t2); margin-bottom: 2px; }
+  .uc__pick button:hover { background: var(--u-3); }
+  .uc__pick button[aria-pressed="true"] { background: var(--u-red); transform: translateX(4px); }
+  .uc__pick button[aria-pressed="true"] small { color: #ffd2d2; }
+  .uc__card { align-self: start; background: var(--u-2); border-radius: 12px; padding: 18px; display: flex; flex-direction: column; gap: 14px; }
+  .uc__name small { display: block; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--u-t2); }
+  .uc__name b { display: block; margin-top: 4px; font-size: 22px; font-weight: 600; letter-spacing: -.02em; }
+  .uc__kpi { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 0; }
+  .uc__kpi div { background: var(--u-1); border-radius: 8px; padding: 10px 12px; }
+  .uc__kpi dt { font-size: 11px; color: var(--u-t2); }
+  .uc__kpi dd { margin: 4px 0 0; font-size: clamp(20px, 1.9vw, 28px); font-weight: 700; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+  .uc__kpi .is-key { background: linear-gradient(135deg, rgba(255,36,35,.28), rgba(255,36,35,.06)); box-shadow: inset 0 0 0 1px rgba(255,36,35,.45); }
+  .uc__eq { margin-top: 2px; font-size: 13px; color: var(--u-t2); }
+  .uc__eq b { color: #fff; font-weight: 600; }
+  .uc__bars { align-self: start; background: var(--u-1); border-radius: 12px; padding: 16px; }
+  .uc__bars ol { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 7px; }
+  .uc__bars li { display: grid; grid-template-columns: minmax(0, 12.5ch) 1fr auto; gap: 8px; align-items: center; font-size: 12px; color: #c9c9cd; transition: color .3s; }
+  .uc__bars li > span:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .uc__bars .tk { height: 10px; border-radius: 3px; background: var(--u-3); overflow: hidden; }
+  .uc__bars .tk i { display: block; height: 100%; width: calc(var(--w) * 1%); background: #5a5a5e; border-radius: 3px; transition: width .8s var(--ease), background .3s; }
+  .uc__bars li.is-on { color: #fff; font-weight: 600; }
+  .uc__bars li.is-on .tk i { background: var(--u-red); }
+  .uc__bars em { font-style: normal; font-variant-numeric: tabular-nums; }
+  .uc__fine, .lv2__fine, .ud__fine { margin: 14px 0 0; font-size: 12px; color: var(--u-t3); }
+  .uj { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 14px; padding: 14px; }
+  .uj__list { display: grid; gap: 8px; align-content: center; }
+  .uj__list button { position: relative; display: grid; grid-template-columns: 44px 1fr; gap: 12px; align-items: center; padding: 14px; border-radius: 12px; background: var(--u-1); overflow: hidden; transition: background .3s; }
+  .uj__n { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: #fff; color: #000; font-size: 13px; font-weight: 600; transition: background .3s, color .3s; }
+  .uj__list b { display: block; font-size: 18px; font-weight: 600; }
+  .uj__list small { display: block; margin-top: 2px; font-size: 13px; color: var(--u-t2); line-height: 1.35; }
+  .uj__list button[aria-selected="true"] { background: var(--u-2); }
+  .uj__list button[aria-selected="true"] .uj__n { background: var(--u-red); color: #fff; }
+  .uj__bar { position: absolute; left: 0; bottom: 0; height: 2px; width: 100%; background: var(--u-red); transform: scaleX(0); transform-origin: left; }
+  .uj__list button[aria-selected="true"] .uj__bar { animation: ujbar var(--dur, 5s) linear forwards; }
+  .uj.is-paused .uj__bar { animation-play-state: paused; }
+  @keyframes ujbar { to { transform: scaleX(1); } }
+  .uj__stage { position: relative; aspect-ratio: 1440 / 764; border-radius: 10px; overflow: hidden; background: var(--u-1); }
+  .uj__stage img, .tr__stage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.03); transition: opacity .6s var(--ease), transform 1.2s var(--ease); }
+  .uj__stage img.is-on, .tr__stage img.is-on { opacity: 1; transform: none; }
+  .ux { padding: clamp(14px, 2vw, 28px); }
+  .ux__hint { margin: 0 0 12px; }
+  .ux__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+  .ux__c { position: relative; display: block; min-height: 230px; perspective: 1000px; }
+  .ux__f, .ux__b { position: absolute; inset: 0; display: flex; flex-direction: column; padding: 18px; border-radius: 12px; backface-visibility: hidden; -webkit-backface-visibility: hidden; transition: transform .75s cubic-bezier(.3,1.25,.5,1); transition-delay: var(--d); }
+  .ux__f { background: var(--u-1); box-shadow: inset 0 0 0 1px var(--u-line); }
+  .ux__f small { font-size: 12px; color: var(--u-t3); font-variant-numeric: tabular-nums; }
+  .ux__f .sev { position: absolute; top: 16px; right: 16px; }
+  .ux__f b { margin-top: auto; font-size: clamp(18px, 1.5vw, 22px); font-weight: 600; letter-spacing: -.02em; line-height: 1.15; }
+  .ux__f > span { margin-top: 8px; font-size: 14px; line-height: 1.4; color: #a9a9ae; }
+  .ux__b { transform: rotateY(180deg); background: linear-gradient(150deg, #ff3b3a, #bd0100); justify-content: flex-end; }
+  .ux__b small { position: absolute; top: 18px; left: 18px; font-size: 11px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: #ffd6d6; }
+  .ux__b b { font-size: clamp(20px, 1.8vw, 26px); line-height: 1.12; font-weight: 600; letter-spacing: -.02em; }
+  .ux__c[aria-pressed="true"] .ux__f { transform: rotateY(-180deg); }
+  .ux__c[aria-pressed="true"] .ux__b { transform: none; }
+  .ux__c:hover .ux__f { box-shadow: inset 0 0 0 1px rgba(255,36,35,.6); }
+  .um { padding: clamp(18px, 2.6vw, 36px); }
+  .um__steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+  .um__steps button { display: block; width: 100%; padding: 14px; border-radius: 10px; background: var(--u-1); transition: background .3s, transform .3s var(--ease); }
+  .um__steps small { display: block; font-size: 12px; color: var(--u-t3); }
+  .um__steps b { display: block; margin-top: 18px; font-size: clamp(16px, 1.4vw, 20px); font-weight: 600; }
+  .um__steps button:hover { background: var(--u-3); }
+  .um__steps button[aria-pressed="true"] { background: var(--u-red); transform: translateY(-4px); }
+  .um__steps button[aria-pressed="true"] small { color: #ffd2d2; }
+  .um__track { position: relative; height: 2px; margin: 18px 0 0; background: var(--u-3); border-radius: 2px; }
+  .um__track i { position: absolute; left: 0; top: 0; bottom: 0; width: calc((var(--k, 0) + 1) * 20%); background: var(--u-red); border-radius: 2px; transition: width .6s var(--ease); }
+  .um__d { margin: 18px 0 0; font-size: clamp(20px, 2vw, 30px); line-height: 1.2; letter-spacing: -.02em; font-weight: 500; max-width: 34ch; min-height: 2.4em; }
+  .um__rule { margin: 26px 0 0; padding-top: 18px; border-top: 1px solid var(--u-line); font-size: 15px; color: #d6d6da; }
+  .um__rule .u-mono { margin-bottom: 6px; color: #ff8a89; }
+  .ua { padding: clamp(14px, 2vw, 28px); }
+  .ua__bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 14px; }
+  .ua__f { display: flex; flex-wrap: wrap; gap: 6px; }
+  .ua__f button { padding: 8px 14px; border-radius: 999px; background: var(--u-1); font-size: 13px; font-weight: 500; transition: background .25s; }
+  .ua__f button small { margin-left: 4px; color: var(--u-t2); }
+  .ua__f button[aria-pressed="true"] { background: #fff; color: #000; }
+  .ua__f button[aria-pressed="true"] small { color: #555; }
+  .ua__t { display: grid; gap: 1px; background: var(--u-line); border-radius: 10px; overflow: hidden; }
+  .ua__r { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr) 92px minmax(0, 1.5fr); gap: 14px; align-items: center; padding: 14px 16px; background: var(--u-1); font-size: 14px; color: #c9c9cd; transition: opacity .35s, background .35s; }
+  .ua__r b { color: #fff; font-weight: 600; }
+  .ua__r--h { background: var(--u-2); font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--u-t2); }
+  .ua__fix { color: #fff; }
+  .ua__fix::before { content: "→ "; color: var(--u-red); }
+  .ua__r.is-dim { opacity: .18; }
+  .ua__r:not(.ua__r--h):not(.is-dim):hover { background: var(--u-2); }
+  .bx, .ob { padding: 14px; }
+  .bx__top, .ob__top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 12px; }
+  .bx__tabs, .ob__tabs { display: flex; flex-wrap: wrap; gap: 4px; padding: 4px; border-radius: 999px; background: var(--u-1); }
+  .bx__tabs button, .ob__tabs button { padding: 8px 16px; border-radius: 999px; font-size: 14px; font-weight: 500; color: #c9c9cd; transition: background .25s, color .25s; }
+  .ob__tabs button small { margin-right: 6px; font-size: 11px; color: var(--u-t3); }
+  .bx__tabs button[aria-selected="true"], .ob__tabs button[aria-selected="true"] { background: var(--u-red); color: #fff; }
+  .ob__tabs button[aria-selected="true"] small { color: #ffd2d2; }
+  .bx__hint { color: var(--u-t3); }
+  .bx__cmp { border-radius: 10px; }
+  @keyframes bxnudge { 0%, 100% { transform: translateX(0); } 30% { transform: translateX(-18px); } 65% { transform: translateX(18px); } }
+  .bx__notes { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+  .bx__notes > div { background: var(--u-1); border-radius: 10px; padding: 14px 16px; }
+  .bx__notes ul { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 8px; }
+  .bx__notes li { display: grid; grid-template-columns: 20px 1fr; gap: 8px; font-size: 14px; line-height: 1.4; color: #d6d6da; }
+  .bx__notes li i { display: grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; font-style: normal; font-size: 11px; font-weight: 700; }
+  .bx__no li i { background: #3a3a3c; color: #bbb; }
+  .bx__ok li i { background: var(--u-red); color: #fff; }
+  .bx__p[hidden], .ob__p[hidden] { display: none; }
+  .bx__p:not([hidden]), .ob__p:not([hidden]) { animation: ufade .5s var(--ease); }
+  @keyframes ufade { from { opacity: 0; transform: translateY(6px); } }
+  .ob__p { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.4fr); gap: 10px; align-items: stretch; }
+  .ob figure { position: relative; margin: 0; border-radius: 10px; overflow: hidden; background: var(--u-1); display: flex; flex-direction: column; }
+  .ob__old { background: #e6e6e6 !important; }
+  .ob__old img { margin: auto; padding: 44px 14px 10px; width: 100%; max-width: 360px; }
+  .ob__new img { width: 100%; height: auto; }
+  .ob figcaption { padding: 12px 14px; font-size: 14px; line-height: 1.4; color: #d6d6da; background: var(--u-1); margin-top: auto; }
+  .ob__old figcaption { color: #333; background: #d6d6d6; }
+  .tr { padding: 14px; }
+  .tr__chs { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; margin-bottom: 10px; }
+  .tr__chs button { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 12px; border-radius: 8px; background: var(--u-1); font-size: 14px; transition: background .25s; }
+  .tr__chs b { font-weight: 600; }
+  .tr__chs small { font-size: 11px; color: var(--u-t3); }
+  .tr__chs button[aria-pressed="true"] { background: var(--u-red); }
+  .tr__chs button[aria-pressed="true"] small { color: #ffd2d2; }
+  .tr__stage { position: relative; aspect-ratio: 1440 / 764; border-radius: 10px; overflow: hidden; background: var(--u-1); }
+  .tr__nav { position: absolute; top: 50%; width: 46px; height: 46px; margin-top: -23px; border-radius: 50%; display: grid; place-items: center; background: rgba(0,0,0,.6); backdrop-filter: blur(6px); font-size: 26px; line-height: 1; opacity: 0; transition: opacity .3s, background .2s; z-index: 2; }
+  .tr__nav--p { left: 12px; }
+  .tr__nav--n { right: 12px; }
+  .tr__stage:hover .tr__nav, .tr:focus-within .tr__nav { opacity: 1; }
+  .tr__nav:hover { background: var(--u-red); }
+  .tr__bar { display: grid; grid-template-columns: 44px 1fr auto; gap: 14px; align-items: center; padding: 14px 4px 10px; }
+  .tr__pp { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: #fff; color: #000; font-size: 13px; }
+  .tr__cap { margin: 0; font-size: clamp(15px, 1.25vw, 18px); line-height: 1.35; }
+  .tr__cap small { display: block; font-size: 11px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--u-red); }
+  .tr__n { font-size: 13px; color: var(--u-t2); font-variant-numeric: tabular-nums; }
+  .tr__n b { color: #fff; font-weight: 600; }
+  .tr__prog { height: 3px; border-radius: 3px; background: var(--u-2); overflow: hidden; }
+  .tr__prog i { display: block; height: 100%; width: calc(var(--p, 0) * 100%); background: linear-gradient(90deg, #D92D30, #EB9234, #63BFBC); transition: width .5s var(--ease); }
+  .lv2 { display: grid; grid-template-columns: minmax(0, 220px) minmax(0, 1fr); gap: 10px; padding: 12px; background: #050505; }
+  .lv2__rail { background: var(--u-1); border-radius: 10px; padding: 14px; display: flex; flex-direction: column; gap: 14px; }
+  .lv2__g small { display: block; font-size: 12px; font-weight: 600; margin-bottom: 8px; }
+  .lv2__chips { display: flex; flex-wrap: wrap; gap: 5px; }
+  .lv2__chips button { padding: 7px 10px; border-radius: 6px; background: var(--u-3); font-size: 12px; color: #bdbdc2; box-shadow: inset 3px 0 0 transparent; transition: background .2s, color .2s, box-shadow .2s; }
+  .lv2__chips button[aria-pressed="true"] { background: #3a1212; color: #fff; box-shadow: inset 3px 0 0 var(--u-red); }
+  .lv2__note { margin: auto 0 0; font-size: 12px; line-height: 1.4; color: var(--u-t2); }
+  .lv2__main { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+  .lv2__bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: var(--u-1); border-radius: 10px; padding: 8px 10px; font-size: 12px; color: var(--u-t2); }
+  .lv2__prof b { color: #fff; font-weight: 500; }
+  .lv2__seg { display: flex; gap: 2px; padding: 2px; border-radius: 999px; background: var(--u-3); }
+  .lv2__seg button { padding: 5px 12px; border-radius: 999px; font-size: 12px; color: #bdbdc2; }
+  .lv2__seg button[aria-pressed="true"] { background: var(--u-red); color: #fff; }
+  .lv2__kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+  .lv2__k { background: var(--u-1); border-radius: 10px; padding: 12px; display: flex; flex-direction: column; min-width: 0; }
+  .lv2__k small { font-size: 12px; font-weight: 600; }
+  .lv2__k b { margin-top: 4px; font-size: clamp(20px, 2vw, 30px); font-weight: 700; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+  .lv2__d { font-size: 11px; font-weight: 600; color: #3ad06b; }
+  .lv2__d.is-down { color: var(--u-red); }
+  .lv2__k svg { margin-top: 8px; width: 100%; height: 34px; overflow: visible; }
+  .lv2__k polyline { fill: none; stroke: #3ad06b; stroke-width: 1.6; vector-effect: non-scaling-stroke; transition: all .6s var(--ease); }
+  .lv2__k.is-down polyline { stroke: var(--u-red); }
+  .lv2__chart { background: var(--u-1); border-radius: 10px; padding: 14px; }
+  .lv2__ch { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 6px; }
+  .lv2__ch b { font-size: 15px; font-weight: 600; }
+  .lv2__ch small { font-size: 11px; color: var(--u-t3); }
+  .lv2__bars { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 6px; }
+  .lv2__bars li { display: grid; grid-template-columns: minmax(0, 11ch) 1fr 58px; gap: 8px; align-items: center; font-size: 12px; color: #c9c9cd; transition: opacity .4s; }
+  .lv2__bars li > span:first-child { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .lv2__bars .tk { height: 14px; }
+  .lv2__bars .tk i { display: block; height: 100%; width: calc(var(--w) * 1%); background: var(--c); border-radius: 0 3px 3px 0; transition: width .7s var(--ease); }
+  .lv2__bars em { font-style: normal; text-align: right; font-variant-numeric: tabular-nums; }
+  .lv2__bars li.is-off { opacity: .22; }
+  .lv2__leg { display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 12px; }
+  .lv2__leg button { font-size: 11px; color: #c9c9cd; display: inline-flex; align-items: center; gap: 6px; transition: opacity .25s; }
+  .lv2__leg i { width: 8px; height: 8px; border-radius: 50%; background: var(--c); }
+  .lv2__leg button[aria-pressed="false"] { opacity: .35; text-decoration: line-through; }
+  .lv2__fine { grid-column: 1 / -1; margin: 2px 4px 0; }
+  .ud { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 12px; padding: 12px; }
+  .ud__col { background: var(--u-1); border-radius: 10px; padding: clamp(14px, 2vw, 24px); display: flex; flex-direction: column; gap: 10px; }
+  .ud__col > .u-mono:not(:first-child) { margin-top: 10px; }
+  .ud__surf { position: relative; height: 180px; }
+  .ud__surf button { position: absolute; left: calc(var(--i) * 12%); top: calc(var(--i) * 26px); right: 0; bottom: calc((3 - var(--i)) * 0px); height: calc(180px - var(--i) * 26px); padding: 10px 12px; border-radius: 10px; background: var(--c); box-shadow: 0 -1px 0 rgba(255,255,255,.08), -8px 0 24px rgba(0,0,0,.35); display: flex; justify-content: space-between; align-items: flex-start; font-size: 12px; transition: transform .35s var(--ease); }
+  .ud__surf button:hover { transform: translateY(-4px); }
+  .ud__surf b { font-weight: 600; }
+  .ud__surf small { color: var(--u-t2); font-variant-numeric: tabular-nums; }
+  .ud__btn { align-self: flex-start; padding: 12px 30px; border-radius: 999px; background: #FF2423; color: #fff; font-size: 14px; font-weight: 600; transition: transform .15s, box-shadow .3s; box-shadow: 0 0 0 rgba(255,36,35,0); }
+  .ud__btn:hover { background: linear-gradient(90deg, #FF5757, #F00100); box-shadow: 0 8px 28px rgba(255,36,35,.4); }
+  .ud__btn:active { background: linear-gradient(90deg, #F00100, #BD0100); transform: scale(.96); }
+  .ud__states { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 12px; color: var(--u-t2); }
+  .ud__states i { display: inline-block; width: 18px; height: 10px; border-radius: 3px; margin-right: 6px; background: var(--c); vertical-align: -1px; }
+  .ud__grads { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+  .ud__grads button { height: 54px; border-radius: 8px; background: var(--g); display: flex; align-items: flex-end; padding: 6px 8px; font-size: 11px; font-weight: 600; color: #000; transition: transform .3s var(--ease); }
+  .ud__grads button:hover { transform: scale(1.04); }
+  .ud__text { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+  .ud__text button { padding: 8px; border-radius: 8px; background: var(--u-0); color: var(--c); font-size: 22px; font-weight: 600; box-shadow: inset 0 0 0 1px var(--u-line); }
+  .ud__text small { display: block; font-size: 10px; color: var(--u-t2); font-weight: 500; margin-top: 2px; }
+  .ud__th { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px; }
+  .ud__th label { font-size: 12px; color: var(--u-t2); }
+  .ud__th select { margin-left: 6px; padding: 6px 8px; border-radius: 6px; border: 0; background: var(--u-3); color: #fff; font: inherit; font-size: 12px; }
+  .ud__ladder { list-style: none; margin: 6px 0 0; padding: 0; display: grid; gap: 2px; }
+  .ud__ladder li { display: grid; grid-template-columns: 9ch 1fr auto; gap: 10px; align-items: baseline; padding: 4px 0; border-bottom: 1px solid var(--u-line); min-width: 0; }
+  .ud__ladder small { font-size: 11px; color: var(--u-t2); }
+  .ud__ladder span { font-size: var(--fs, 16px); font-weight: 600; letter-spacing: -.02em; line-height: 1.1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: font-size .45s var(--ease); }
+  .ud__ladder li:nth-child(n+6) span { font-weight: 400; }
+  .ud__ladder em { font-style: normal; font-size: 11px; color: var(--u-t3); font-variant-numeric: tabular-nums; }
+  .ud__toast { position: absolute; left: 50%; bottom: 20px; margin: 0; padding: 8px 14px; border-radius: 999px; background: #fff; color: #000; font-size: 13px; font-weight: 500; transform: translate(-50%, 10px); opacity: 0; pointer-events: none; transition: opacity .3s, transform .3s var(--ease); }
+  .ud__toast.is-on { opacity: 1; transform: translate(-50%, 0); }
+  .ud__fig { background: #000 !important; height: auto !important; aspect-ratio: auto !important; overflow: visible !important; }
+  .ud__fig img { padding: 0 !important; object-fit: contain; }
+  @media (max-width: 1100px) {
+    .uc__grid { grid-template-columns: 1fr 1fr; }
+    .uc__pick { grid-column: 1 / -1; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+    .uc__pick button[aria-pressed="true"] { transform: none; }
+    .ux__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .lv2 { grid-template-columns: 1fr; }
+    .lv2__rail { flex-direction: row; flex-wrap: wrap; }
+    .lv2__note { flex-basis: 100%; }
+    .ud { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 760px) {
+    .ub, .uj, .uc__grid, .bx__notes, .ob__p { grid-template-columns: 1fr; }
+    .ub__who li { grid-template-columns: 1fr; gap: 2px; }
+    .uj__list { order: 2; }
+    .um__steps { grid-template-columns: repeat(5, minmax(120px, 1fr)); overflow-x: auto; scrollbar-width: none; padding-top: 6px; }
+    .ua__r { grid-template-columns: 1fr auto; gap: 4px 10px; }
+    .ua__r > :nth-child(1) { grid-column: 1; }
+    .ua__r > :nth-child(3) { grid-column: 2; grid-row: 1; }
+    .ua__r > :nth-child(2), .ua__r > :nth-child(4) { grid-column: 1 / -1; }
+    .ua__r--h { display: none; }
+    .tr__chs { grid-template-columns: repeat(5, minmax(84px, 1fr)); overflow-x: auto; scrollbar-width: none; }
+    .tr__nav { opacity: 1; width: 38px; height: 38px; margin-top: -19px; font-size: 22px; }
+    .lv2__kpis { grid-template-columns: 1fr 1fr; }
+    .ob__old img { padding-top: 48px; max-width: 300px; }
+  }
+  @media (max-width: 520px) {
+    .ux__grid { grid-template-columns: 1fr; }
+    .ux__c { min-height: 172px; }
+    .ob__tabs button small { display: none; }
+    .bx__tabs button, .ob__tabs button { padding: 8px 12px; font-size: 13px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ux__f, .ux__b, .uj__stage img, .tr__stage img, .uc__bars .tk i, .lv2__bars .tk i { transition: none; }
+    .uj__bar { animation: none !important; }
+  }
+  :is(.ub, .uc, .uj, .ux, .um, .ua, .bx, .ob, .tr, .lv2, .ud) { box-shadow: inset 0 0 0 1px rgba(255,255,255,.12); }
 </style>
 <link rel="stylesheet" href="../assets/readable-type.css">
 </head>
@@ -494,11 +787,11 @@
         <span>Coca-Cola</span> <span style="color:var(--accent)">UMM</span>
       </h1>
       <div class="hero__intro">
-        <p class="hero__lede">Redesigning a marketing measurement dashboard. One dark system, filters that stay put, charts you can read.</p>
-        <dl class="meta"><div><dt>Timeline</dt><dd>6 months</dd></div><div><dt>Role</dt><dd>Product / UI designer</dd></div><div><dt>Client</dt><dd>The Coca-Cola Company</dd></div><div><dt>Scope</dt><dd>Onboarding → reporting → planning</dd></div></dl>
+        <p class="hero__lede">Top Line Marketing hired me to fix the UI of UMM, the tool Coca-Cola uses to measure all its media on one scale. One dark system, filters that stay put, charts you can read.</p>
+        <dl class="meta"><div><dt>Timeline</dt><dd>6 months</dd></div><div><dt>Role</dt><dd>Product / UI designer</dd></div><div><dt>Client</dt><dd>The Coca-Cola Company</dd></div><div><dt>Hired by</dt><dd>Top Line Marketing (TLM)</dd></div><div><dt>Scope</dt><dd>Onboarding → reporting → planning</dd></div><div><dt>Platform</dt><dd>Powered by Sherlock AI</dd></div></dl>
       </div>
       <figure class="hero__media frame" style="margin-left:0;margin-right:0;margin-bottom:0">
-        <img src="assets/hero.jpg" alt="The redesigned UMM summary dashboard: investment KPIs with sparklines and a left filter rail" fetchpriority="high">
+        <img src="assets/v2/hero.jpg" alt="The UMM landing screen: Universal Media Measurement beside The Coca-Cola System globe, powered by Sherlock AI" fetchpriority="high">
       </figure>
     </div>
   </section>
@@ -510,92 +803,74 @@
     </div>
   </div>
 
-  <section id="umm" aria-labelledby="umm-h">
+  <section id="background" aria-labelledby="background-h">
     <div class="wrap">
-      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>01</b> Context</div>
-      <h2 id="umm-h" class="display h2 reveal">What is <span style="color:var(--accent)">UMM?</span></h2>
-      <div class="lead reveal">
-        <p class="big">See how every brand performs. <em>Then spend better.</em></p>
-        <div><p>Unified Marketing Measurement lets Coca-Cola marketing teams see how every brand, market and touchpoint performs: investment, impacts, quality and efficiency.</p><p>Then they simulate how to spend better next year.</p></div>
-      </div>
-      <div class="steps">
-        <div class="step reveal"><span class="step__n">01</span><b>Set up</b><p>Pick brands, markets and touchpoints to report on.</p></div>
-        <div class="step reveal"><span class="step__n">02</span><b>Explore</b><p>Read KPIs and visual analytics across the media mix.</p></div>
-        <div class="step reveal"><span class="step__n">03</span><b>Plan</b><p>Simulate budgets and optimise the next media plan.</p></div>
-      </div>
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>01</b> Background</div>
+      <h2 id="background-h" class="display h2 reveal">Hired by TLM <span class="c-acc">to fix the UI.</span></h2>
+      <p class="sub reveal">UMM is the tool Coca-Cola uses to measure every kind of media on one scale. It was built by The Coca-Cola Company, Top Line Marketing and Kantar.</p>
+      <div class="ub reveal"><div class="ub__who"><span class="u-mono">Who built UMM</span><ul><li><b>The Coca-Cola Company</b><span>The client and the users: marketing teams in every market.</span></li><li><b>Top Line Marketing (TLM)</b><span>Created the UMM framework. Hired me to fix the UI.</span></li><li><b>Kantar</b><span>Added its creative and media effectiveness methods.</span></li><li><b>Sherlock AI</b><span>The data engine underneath, by Infinite Analytics.</span></li></ul></div><div class="ub__brief"><span class="u-mono">My brief</span><p>The model worked. The interface fought it.</p><p class="ub__small">TLM had a powerful measurement tool that marketers found hard to read and hard to steer. My job: make the UI as clear as the idea behind it.</p></div></div><div class="uc reveal" data-tps="Linear TV ad;Paid;38;9;22|Online video ad;Paid;26;6;18|Social feed ad;Paid;11;7;9|Brand website;Owned;4;2;26|PR coverage;Earned;2;3;30|Standard packaging;Shared;0;90;15|Cooler;Shared;3;12;12"><div class="uc__top"><span class="u-mono">One currency for all media</span><p>UMM puts paid, owned, earned and shared media on one scale. Every touchpoint gets a quality score, so a TV ad and a Coke bottle can be compared. Pick one.</p></div><div class="uc__grid"><div class="uc__pick" role="group" aria-label="Touchpoint"><button type="button" aria-pressed="true" data-k="0"><small>Paid</small>Linear TV ad</button><button type="button" aria-pressed="false" data-k="1"><small>Paid</small>Online video ad</button><button type="button" aria-pressed="false" data-k="2"><small>Paid</small>Social feed ad</button><button type="button" aria-pressed="false" data-k="3"><small>Owned</small>Brand website</button><button type="button" aria-pressed="false" data-k="4"><small>Earned</small>PR coverage</button><button type="button" aria-pressed="false" data-k="5"><small>Shared</small>Standard packaging</button><button type="button" aria-pressed="false" data-k="6"><small>Shared</small>Cooler</button></div><div class="uc__card" aria-live="polite"><div class="uc__name"><small></small><b></b></div><dl class="uc__kpi"><div><dt>Investment</dt><dd data-f="inv"></dd></div><div><dt>Impacts</dt><dd data-f="imp"></dd></div><div><dt>Quality score</dt><dd data-f="q"></dd></div><div class="is-key"><dt>Quality impacts</dt><dd data-f="qi"></dd></div></dl><div class="uc__eq">Impacts × quality score = <b>quality impacts</b></div></div><div class="uc__bars"><span class="u-mono">Quality impacts, all touchpoints</span><ol></ol></div></div><p class="uc__fine">Illustrative numbers. The point: packaging reaches more people than any paid ad.</p></div>
     </div>
   </section>
-
-  <section id="challenge" aria-labelledby="ch-h" style="padding-top:0">
+  <section id="umm" aria-labelledby="umm-h" style="padding-top:0">
     <div class="wrap">
-      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>02</b> The challenge</div>
-      <h2 id="ch-h" class="display h2 reveal">What held the <span style="color:var(--accent)">old UI back.</span></h2>
-      <div class="probs"><article class="prob reveal"><small>01</small><b>Inconsistent theming</b><p>Onboarding was flat gray, reporting flipped to white. No visual continuity.</p></article><article class="prob reveal"><small>02</small><b>Filters hidden in modals</b><p>Brands, markets and touchpoints sat behind an "Edit Profile" modal. Every re-scope lost context.</p></article><article class="prob reveal"><small>03</small><b>Flat, unscalable lists</b><p>Plain checklists for dozens of markets and nested touchpoints.</p></article><article class="prob reveal"><small>04</small><b>No touchpoint filter</b><p>The most important analytical cut wasn't visualised at all.</p></article><article class="prob reveal"><small>05</small><b>Weak legends &amp; density</b><p>No clear legends, trends or deltas. Comparing was slow.</p></article><article class="prob reveal"><small>06</small><b>Planning as an afterthought</b><p>Simulation tools were buried and vaguely named ("Sandbox").</p></article></div>
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>02</b> Context</div>
+      <h2 id="umm-h" class="display h2 reveal">What <span class="c-acc">is UMM?</span></h2>
+      <p class="sub reveal">See how every brand, market and touchpoint performs. Then spend better next year.</p>
+      <div class="uj reveal"><div class="uj__list" role="tablist" aria-label="What UMM does"><button type="button" role="tab" aria-selected="true" data-k="0"><span class="uj__n">01</span><span><b>Set up</b><small>Pick brands, markets and touchpoints to report on.</small></span><i class="uj__bar"></i></button><button type="button" role="tab" aria-selected="false" data-k="1"><span class="uj__n">02</span><span><b>Explore</b><small>Read KPIs and charts across the whole media mix.</small></span><i class="uj__bar"></i></button><button type="button" role="tab" aria-selected="false" data-k="2"><span class="uj__n">03</span><span><b>Plan</b><small>Simulate budgets and build next year’s media plan.</small></span><i class="uj__bar"></i></button></div><div class="uj__stage"><img class="is-on" src="../coca-cola-umm/assets/v2/brands.jpg" alt="Setup: picking brands on a world-map backdrop" loading="lazy" width="1440" height="764"><img src="../coca-cola-umm/assets/v2/a-kpi.jpg" alt="The summary dashboard: six KPI cards with sparklines and a left filter rail" loading="lazy" width="1440" height="764"><img src="../coca-cola-umm/assets/v2/simpath.jpg" alt="The simulator: Planning Tool, Auto Simulation and Manual Simulation" loading="lazy" width="1440" height="764"></div></div>
     </div>
   </section>
-
-  <section id="approach" aria-labelledby="ap-h" style="padding-top:0">
+  <section id="challenge" aria-labelledby="challenge-h" style="padding-top:0">
     <div class="wrap">
-      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>03</b> Approach</div>
-      <h2 id="ap-h" class="display h2 reveal">Five moves.</h2>
-      <ol class="path"><li class="reveal"><i>01</i><b>Audit</b><p>Mapped every screen old → new and ranked issues by severity.</p></li><li class="reveal"><i>02</i><b>System</b><p>One dark theme with a shared token set for colour, type and spacing.</p></li><li class="reveal"><i>03</i><b>Restructure</b><p>Filters moved out of modals into a persistent left rail.</p></li><li class="reveal"><i>04</i><b>Scale</b><p>Searchable, nested selectors for markets and touchpoints.</p></li><li class="reveal"><i>05</i><b>Extend</b><p>Designed the missing states: touchpoint filter and the full planning suite.</p></li></ol>
-      <div class="principle reveal">Consistency, context and scalability before decoration.</div>
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>03</b> The challenge</div>
+      <h2 id="challenge-h" class="display h2 reveal">What held the <span class="c-acc">old UI back.</span></h2>
+      <div class="ux reveal"><p class="ux__hint"><span class="u-mono">Tap a card to see the fix</span></p><div class="ux__grid"><button type="button" class="ux__c" aria-pressed="false" style="--d:0.00s"><span class="ux__f"><small>01</small><i class="sev sev--critical">Critical</i><b>Inconsistent theming</b><span>Onboarding was flat grey, reporting flipped to white. No visual continuity.</span></span><span class="ux__b"><small>The fix</small><b>One dark system from login to planning.</b></span></button><button type="button" class="ux__c" aria-pressed="false" style="--d:0.06s"><span class="ux__f"><small>02</small><i class="sev sev--critical">Critical</i><b>Filters hidden in modals</b><span>Brands, markets and touchpoints sat behind an “Edit Profile” pop-up. Every change lost your place.</span></span><span class="ux__b"><small>The fix</small><b>A filter rail that is always on screen.</b></span></button><button type="button" class="ux__c" aria-pressed="false" style="--d:0.12s"><span class="ux__f"><small>03</small><i class="sev sev--high">High</i><b>Flat, unscalable lists</b><span>Plain checklists for dozens of markets and nested touchpoints.</span></span><span class="ux__b"><small>The fix</small><b>Searchable, nested, multi-select pickers.</b></span></button><button type="button" class="ux__c" aria-pressed="false" style="--d:0.18s"><span class="ux__f"><small>04</small><i class="sev sev--high">High</i><b>No touchpoint filter</b><span>The most important cut, by touchpoint, wasn’t on screen at all.</span></span><span class="ux__b"><small>The fix</small><b>A touchpoint filter in the rail, on every view.</b></span></button><button type="button" class="ux__c" aria-pressed="false" style="--d:0.24s"><span class="ux__f"><small>05</small><i class="sev sev--moderate">Moderate</i><b>Weak legends and density</b><span>No legends, trends or deltas. Comparing was slow.</span></span><span class="ux__b"><small>The fix</small><b>Legends, sparklines and change vs. last year.</b></span></button><button type="button" class="ux__c" aria-pressed="false" style="--d:0.30s"><span class="ux__f"><small>06</small><i class="sev sev--moderate">Moderate</i><b>Planning as an afterthought</b><span>Simulators were buried and vaguely named (“Sandbox”).</span></span><span class="ux__b"><small>The fix</small><b>A named planning suite: Planning Tool, Auto and Manual.</b></span></button></div></div>
     </div>
   </section>
-
-  <section id="audit" aria-labelledby="au-h" style="padding-top:0">
+  <section id="approach" aria-labelledby="approach-h" style="padding-top:0">
     <div class="wrap">
-      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>04</b> Heuristic audit</div>
-      <h2 id="au-h" class="display h2 reveal">Ranked by <span style="color:var(--accent)">severity.</span></h2>
-      <div class="sev-chips reveal" aria-label="Filter by severity">
-        <button class="sev-chip is-on" data-f="all" aria-pressed="true">All</button><button class="sev-chip" data-f="critical" aria-pressed="false">Critical</button><button class="sev-chip" data-f="high" aria-pressed="false">High</button><button class="sev-chip" data-f="moderate" aria-pressed="false">Moderate</button>
-      </div>
-      <table class="audit reveal">
-        <thead><tr><th>Heuristic</th><th>Issue found</th><th>Severity</th><th>Resolution</th></tr></thead>
-        <tbody><tr data-sev="critical"><td>Visual consistency</td><td>Light and dark themes mixed across flows</td><td><span class="sev sev--critical">Critical</span></td><td>One dark design system, end to end</td></tr><tr data-sev="critical"><td>Efficiency of use</td><td>Re-scoping meant opening a modal</td><td><span class="sev sev--critical">Critical</span></td><td>Persistent left-rail filters, always visible</td></tr><tr data-sev="high"><td>Match to scale</td><td>Flat checklists for markets and touchpoints</td><td><span class="sev sev--high">High</span></td><td>Searchable, nested, multi-select selectors</td></tr><tr data-sev="high"><td>Visibility</td><td>Touchpoint filter not surfaced</td><td><span class="sev sev--high">High</span></td><td>New touchpoint filter in the rail</td></tr><tr data-sev="moderate"><td>Recognition</td><td>Charts lacked legends and deltas</td><td><span class="sev sev--moderate">Moderate</span></td><td>Legends, sparklines and PY deltas</td></tr><tr data-sev="moderate"><td>Discoverability</td><td>Planning tools buried and unnamed</td><td><span class="sev sev--moderate">Moderate</span></td><td>A named Planning suite, front and centre</td></tr></tbody>
-      </table>
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>04</b> Approach</div>
+      <h2 id="approach-h" class="display h2 reveal">Five <span class="c-acc">moves.</span></h2>
+      <div class="um reveal" data-d="Mapped every screen, old to new, and ranked each issue by severity.|Committed to one dark theme and one set of tokens for colour, type and spacing.|Took filtering out of pop-ups and into a rail that stays on every view.|Swapped flat lists for searchable, nested pickers for markets and touchpoints.|Designed what was missing: the touchpoint filter and the full planning suite."><ol class="um__steps"><li><button type="button" aria-pressed="true" data-k="0"><small>01</small><b>Audit</b></button></li><li><button type="button" aria-pressed="false" data-k="1"><small>02</small><b>System</b></button></li><li><button type="button" aria-pressed="false" data-k="2"><small>03</small><b>Restructure</b></button></li><li><button type="button" aria-pressed="false" data-k="3"><small>04</small><b>Scale</b></button></li><li><button type="button" aria-pressed="false" data-k="4"><small>05</small><b>Extend</b></button></li></ol><div class="um__track"><i></i></div><p class="um__d" aria-live="polite">Mapped every screen, old to new, and ranked each issue by severity.</p><p class="um__rule"><span class="u-mono">Guiding principle</span>Consistency, context and scalability, before decoration.</p></div>
     </div>
   </section>
-
-  <section id="before-after" aria-labelledby="ba-h" style="padding-top:0">
+  <section id="audit" aria-labelledby="audit-h" style="padding-top:0">
     <div class="wrap">
-      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>05</b> Before / after</div>
-      <h2 id="ba-h" class="display h2 reveal">Drag to <span style="color:var(--accent)">compare.</span></h2>
-
-      <div class="ba-block">
-        <h3 class="reveal"><small>01</small>Onboarding &amp; setup</h3>
-        <div class="duo">
-          <figure class="frame reveal"><img src="assets/onb-before.jpg" alt="Before: three flat gray setup pop-ups with plain lists" loading="lazy"><span class="cap">Before</span></figure>
-          <figure class="frame reveal"><img src="assets/onb-after.jpg" alt="After: dark, searchable, multi-select setup steps" loading="lazy"><span class="cap" style="background:var(--accent);color:#000">After</span></figure>
-        </div>
-        <div class="ba-notes reveal"><div><h4>Before</h4><ul><li>Flat gray modal, cut off from the product</li><li>Plain list: no search, no hierarchy</li><li>Vague naming ("Location")</li></ul></div><div><h4>After</h4><ul class="after"><li>World-map backdrop ties setup to the data</li><li>Searchable, multi-select, scannable</li><li>Clear naming and visible step progress</li></ul></div></div>
-      </div>
-
-      <div class="ba-block">
-        <h3 class="reveal"><small>02</small>The KPI summary dashboard</h3>
-        <div class="cmp reveal"><img src="assets/kpi-before.jpg" alt="Before: white KPI dashboard with filters on the right" loading="lazy"><div class="cmp__after"><img src="assets/kpi-after.jpg" alt="After: dark KPI dashboard with a left filter rail and sparklines" loading="lazy"></div><input type="range" min="0" max="100" value="50" aria-label="Drag to compare before and after"><span class="cmp__line"></span><span class="cmp__knob" aria-hidden="true">⇄</span><span class="cmp__tag cmp__tag--b">Before</span><span class="cmp__tag cmp__tag--a">After</span></div>
-        <div class="ba-notes reveal"><div><h4>Before</h4><ul><li>White theme broke from the rest of the product</li><li>Profile overview stuck on the right</li><li>No trend context on the numbers</li></ul></div><div><h4>After</h4><ul class="after"><li>Consistent dark theme, premium feel</li><li>Persistent left rail: re-scope without losing your place</li><li>Sparklines and vs-PY deltas add instant context</li></ul></div></div>
-      </div>
-
-      <div class="ba-block">
-        <h3 class="reveal"><small>03</small>Data viz &amp; the touchpoint filter</h3>
-        <div class="cmp reveal"><img src="assets/viz-before.jpg" alt="Before: single-colour bar chart with no legend" loading="lazy"><div class="cmp__after"><img src="assets/viz-after.jpg" alt="After: colour-coded bar chart with value labels and legend chips" loading="lazy"></div><input type="range" min="0" max="100" value="50" aria-label="Drag to compare before and after"><span class="cmp__line"></span><span class="cmp__knob" aria-hidden="true">⇄</span><span class="cmp__tag cmp__tag--b">Before</span><span class="cmp__tag cmp__tag--a">After</span></div>
-        <div class="ba-notes reveal"><div><h4>Before</h4><ul><li>One muted colour across all bars</li><li>No legend, hard to read categories</li><li>No touchpoint cut at all</li></ul></div><div><h4>After</h4><ul class="after"><li>Colour-coded categories and value labels</li><li>Legend chips and a new touchpoint filter rail</li><li>Same pattern reused across treemap, bar and bubble</li></ul></div></div>
-      </div>
-
-      <div class="ba-block">
-        <h3 class="reveal"><small>04</small>The planning suite</h3>
-        <div class="cmp reveal"><img src="assets/plan-before.jpg" alt="Before: three stacked simulator cards including a vague Sandbox" loading="lazy"><div class="cmp__after"><img src="assets/plan-after.jpg" alt="After: a Planning Tool with Auto and Manual simulation side by side" loading="lazy"></div><input type="range" min="0" max="100" value="50" aria-label="Drag to compare before and after"><span class="cmp__line"></span><span class="cmp__knob" aria-hidden="true">⇄</span><span class="cmp__tag cmp__tag--b">Before</span><span class="cmp__tag cmp__tag--a">After</span></div>
-        <div class="ba-notes reveal"><div><h4>Before</h4><ul><li>Vague names ("Sandbox") hid intent</li><li>Tools sat alone, with no shared scope</li><li>Key planning states never designed</li></ul></div><div><h4>After</h4><ul class="after"><li>A clear suite: Manual, Auto and Planning Tool</li><li>Same rail, theme and data table as reporting</li><li>Designed the missing base and touchpoint-added states</li></ul></div></div>
-      </div>
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>05</b> Heuristic audit</div>
+      <h2 id="audit-h" class="display h2 reveal">Ranked <span class="c-acc">by severity.</span></h2>
+      <p class="sub reveal">Every screen checked against usability heuristics. Fix the critical ones first.</p>
+      <div class="ua reveal"><div class="ua__bar"><div class="ua__f" role="group" aria-label="Filter by severity"><button type="button" aria-pressed="true" data-v="all">All <small>6</small></button><button type="button" aria-pressed="false" data-v="critical"><i class="dot dot--critical"></i>Critical <small>2</small></button><button type="button" aria-pressed="false" data-v="high"><i class="dot dot--high"></i>High <small>2</small></button><button type="button" aria-pressed="false" data-v="moderate"><i class="dot dot--moderate"></i>Moderate <small>2</small></button></div><span class="u-mono">Ranked by severity</span></div><div class="ua__t" role="table" aria-label="Heuristic audit"><div class="ua__r ua__r--h" role="row"><span role="columnheader">Heuristic</span><span role="columnheader">Issue found</span><span role="columnheader">Severity</span><span role="columnheader">Fix</span></div><div class="ua__r" role="row" data-v="critical"><span role="cell"><b>Visual consistency</b></span><span role="cell">Light and dark themes mixed across flows</span><span role="cell"><i class="sev sev--critical">Critical</i></span><span role="cell" class="ua__fix">One dark design system, end to end</span></div><div class="ua__r" role="row" data-v="critical"><span role="cell"><b>Efficiency of use</b></span><span role="cell">Changing scope meant opening a pop-up</span><span role="cell"><i class="sev sev--critical">Critical</i></span><span role="cell" class="ua__fix">Filter rail, always visible</span></div><div class="ua__r" role="row" data-v="high"><span role="cell"><b>Match to scale</b></span><span role="cell">Flat checklists for markets and touchpoints</span><span role="cell"><i class="sev sev--high">High</i></span><span role="cell" class="ua__fix">Searchable, nested, multi-select pickers</span></div><div class="ua__r" role="row" data-v="high"><span role="cell"><b>Visibility</b></span><span role="cell">Touchpoint filter not on screen</span><span role="cell"><i class="sev sev--high">High</i></span><span role="cell" class="ua__fix">Touchpoint filter added to the rail</span></div><div class="ua__r" role="row" data-v="moderate"><span role="cell"><b>Recognition</b></span><span role="cell">Charts had no legends or deltas</span><span role="cell"><i class="sev sev--moderate">Moderate</i></span><span role="cell" class="ua__fix">Legends, sparklines and change vs. last year</span></div><div class="ua__r" role="row" data-v="moderate"><span role="cell"><b>Discoverability</b></span><span role="cell">Planning tools buried and vaguely named</span><span role="cell"><i class="sev sev--moderate">Moderate</i></span><span role="cell" class="ua__fix">A named planning suite, front and centre</span></div></div></div>
     </div>
   </section>
-
-  <section id="system" aria-labelledby="sy-h" style="padding-top:0">
+  <section id="before-after" aria-labelledby="before-after-h" style="padding-top:0">
     <div class="wrap">
-      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>06</b> Design system</div>
-      <h2 id="sy-h" class="display h2 reveal">One consistent <span style="color:var(--accent)">language.</span></h2>
-      <figure class="frame wide reveal"><img src="assets/system.jpg" alt="UMM design system board: typography, colour palette, components and chart styles" loading="lazy"><span class="cap">Type · colour · components · charts</span></figure>
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>06</b> Before / after</div>
+      <h2 id="before-after-h" class="display h2 reveal">Same screen, <span class="c-acc">side by side.</span></h2>
+      <p class="sub reveal">Pick a screen, then drag the line. The old and new versions line up pixel for pixel.</p>
+      <div class="bx reveal"><div class="bx__top"><div class="bx__tabs" role="tablist" aria-label="Screen"><button type="button" role="tab" aria-selected="true" data-k="0">Summary</button><button type="button" role="tab" aria-selected="false" data-k="1">Charts</button><button type="button" role="tab" aria-selected="false" data-k="2">Table</button><button type="button" role="tab" aria-selected="false" data-k="3">Planning</button></div><span class="u-mono bx__hint">Drag the line</span></div><div class="bx__p" role="tabpanel"><div class="cmp bx__cmp"><img src="../coca-cola-umm/assets/v2/b-kpi.jpg" alt="Before: white KPI dashboard with six black cards and filters on the right" loading="lazy" width="1440" height="764"><div class="cmp__after"><img src="../coca-cola-umm/assets/v2/a-kpi.jpg" alt="After: dark KPI dashboard with a left filter rail and sparklines" loading="lazy" width="1440" height="764"></div><input type="range" min="0" max="100" value="50" aria-label="Drag to compare before and after"><span class="cmp__line"></span><span class="cmp__knob" aria-hidden="true">⇄</span><span class="cmp__tag cmp__tag--b">Before</span><span class="cmp__tag cmp__tag--a">After</span></div><div class="bx__notes"><div><span class="u-mono">Before</span><ul class="bx__no"><li><i aria-hidden="true">✕</i>White theme broke from the rest of the product</li><li><i aria-hidden="true">✕</i>Filters on the right, inside a profile panel</li><li><i aria-hidden="true">✕</i>Big numbers with no trend</li></ul></div><div><span class="u-mono">After</span><ul class="bx__ok"><li><i aria-hidden="true">✓</i>Dark theme, matching every other screen</li><li><i aria-hidden="true">✓</i>Filter rail on the left, always visible</li><li><i aria-hidden="true">✓</i>Sparklines and change vs. last year on every KPI</li></ul></div></div></div><div class="bx__p" role="tabpanel" hidden><div class="cmp bx__cmp"><img src="../coca-cola-umm/assets/v2/b-feed.jpg" alt="Before: a treemap in random oranges and purples, no legend" loading="lazy" width="1440" height="764"><div class="cmp__after"><img src="../coca-cola-umm/assets/v2/a-feed.jpg" alt="After: a treemap in category colours with a legend" loading="lazy" width="1440" height="764"></div><input type="range" min="0" max="100" value="50" aria-label="Drag to compare before and after"><span class="cmp__line"></span><span class="cmp__knob" aria-hidden="true">⇄</span><span class="cmp__tag cmp__tag--b">Before</span><span class="cmp__tag cmp__tag--a">After</span></div><div class="bx__notes"><div><span class="u-mono">Before</span><ul class="bx__no"><li><i aria-hidden="true">✕</i>Colours picked per chart, no shared meaning</li><li><i aria-hidden="true">✕</i>No legend to decode the tiles</li><li><i aria-hidden="true">✕</i>No way to cut by touchpoint</li></ul></div><div><span class="u-mono">After</span><ul class="bx__ok"><li><i aria-hidden="true">✓</i>One colour per touchpoint category, everywhere</li><li><i aria-hidden="true">✓</i>Legend chips under every chart</li><li><i aria-hidden="true">✓</i>The touchpoint filter sits in the rail</li></ul></div></div></div><div class="bx__p" role="tabpanel" hidden><div class="cmp bx__cmp"><img src="../coca-cola-umm/assets/v2/b-table.jpg" alt="Before: a white data table with filters on the right" loading="lazy" width="1440" height="764"><div class="cmp__after"><img src="../coca-cola-umm/assets/v2/a-table.jpg" alt="After: a dark, sortable data table beside the filter rail" loading="lazy" width="1440" height="764"></div><input type="range" min="0" max="100" value="50" aria-label="Drag to compare before and after"><span class="cmp__line"></span><span class="cmp__knob" aria-hidden="true">⇄</span><span class="cmp__tag cmp__tag--b">Before</span><span class="cmp__tag cmp__tag--a">After</span></div><div class="bx__notes"><div><span class="u-mono">Before</span><ul class="bx__no"><li><i aria-hidden="true">✕</i>Columns ran off the edge with no scroll cue</li><li><i aria-hidden="true">✕</i>Same white theme and side panel</li><li><i aria-hidden="true">✕</i>No sort, no size info</li></ul></div><div><span class="u-mono">After</span><ul class="bx__ok"><li><i aria-hidden="true">✓</i>Sortable headers on every column</li><li><i aria-hidden="true">✓</i>Same rail and theme as the charts</li><li><i aria-hidden="true">✓</i>Row and column counts in the footer</li></ul></div></div></div><div class="bx__p" role="tabpanel" hidden><div class="cmp bx__cmp"><img src="../coca-cola-umm/assets/v2/b-plan.jpg" alt="Before: three stacked simulator cards, one called Sandbox" loading="lazy" width="1440" height="764"><div class="cmp__after"><img src="../coca-cola-umm/assets/v2/a-plan.jpg" alt="After: Planning Tool, Auto Simulation and Manual Simulation side by side" loading="lazy" width="1440" height="764"></div><input type="range" min="0" max="100" value="50" aria-label="Drag to compare before and after"><span class="cmp__line"></span><span class="cmp__knob" aria-hidden="true">⇄</span><span class="cmp__tag cmp__tag--b">Before</span><span class="cmp__tag cmp__tag--a">After</span></div><div class="bx__notes"><div><span class="u-mono">Before</span><ul class="bx__no"><li><i aria-hidden="true">✕</i>Vague names (“Sandbox”) hid what each tool did</li><li><i aria-hidden="true">✕</i>Tools sat alone, with no shared scope</li><li><i aria-hidden="true">✕</i>Key planning states were never designed</li></ul></div><div><span class="u-mono">After</span><ul class="bx__ok"><li><i aria-hidden="true">✓</i>A clear suite: Planning Tool, Auto and Manual</li><li><i aria-hidden="true">✓</i>Same rail, theme and data table as reporting</li><li><i aria-hidden="true">✓</i>Designed the missing base and touchpoint states</li></ul></div></div></div></div><div class="ob reveal"><div class="ob__top"><span class="u-mono">Setup, step by step</span><div class="ob__tabs" role="tablist" aria-label="Setup step"><button type="button" role="tab" aria-selected="true" data-k="0"><small>Step 1</small>Brands</button><button type="button" role="tab" aria-selected="false" data-k="1"><small>Step 2</small>Markets</button><button type="button" role="tab" aria-selected="false" data-k="2"><small>Step 3</small>Touchpoints</button></div></div><div class="ob__p" role="tabpanel"><figure class="ob__old"><span class="cmp__tag cmp__tag--b">Before</span><img src="../coca-cola-umm/assets/v2/old-brands.jpg" alt="Before: the old Brands pop-up" loading="lazy" width="400" height="388"><figcaption>Logos in a cramped grid, no hierarchy.</figcaption></figure><figure class="ob__new"><span class="cmp__tag cmp__tag--a">After</span><img src="../coca-cola-umm/assets/v2/brands.jpg" alt="After: the new Brands step on a world-map backdrop" loading="lazy" width="1440" height="764"><figcaption>A full grid of brand cards with search.</figcaption></figure></div><div class="ob__p" role="tabpanel" hidden><figure class="ob__old"><span class="cmp__tag cmp__tag--b">Before</span><img src="../coca-cola-umm/assets/v2/old-locations.jpg" alt="Before: the old Markets pop-up" loading="lazy" width="400" height="388"><figcaption>Called “Location”, with a blank row and no search.</figcaption></figure><figure class="ob__new"><span class="cmp__tag cmp__tag--a">After</span><img src="../coca-cola-umm/assets/v2/locations.jpg" alt="After: the new Markets step on a world-map backdrop" loading="lazy" width="1440" height="764"><figcaption>Called Markets, searchable by country or operating unit.</figcaption></figure></div><div class="ob__p" role="tabpanel" hidden><figure class="ob__old"><span class="cmp__tag cmp__tag--b">Before</span><img src="../coca-cola-umm/assets/v2/old-touchpoints.jpg" alt="Before: the old Touchpoints pop-up" loading="lazy" width="400" height="388"><figcaption>One flat list of five words.</figcaption></figure><figure class="ob__new"><span class="cmp__tag cmp__tag--a">After</span><img src="../coca-cola-umm/assets/v2/touchpoints.jpg" alt="After: the new Touchpoints step on a world-map backdrop" loading="lazy" width="1440" height="764"><figcaption>Category, subcategory and touchpoint, nested and searchable.</figcaption></figure></div></div>
+    </div>
+  </section>
+  <section id="tour" aria-labelledby="tour-h" style="padding-top:0">
+    <div class="wrap">
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>07</b> Inside the product</div>
+      <h2 id="tour-h" class="display h2 reveal">Take <span class="c-acc">the tour.</span></h2>
+      <p class="sub reveal">21 screens, from the front door to the planning tools. Press play, or use the arrows.</p>
+      <div class="tr reveal" tabindex="0" data-caps="Start~The front door: Universal Media Measurement, powered by Sherlock AI.|Start~One quiet login card over the brand.|Start~First time in? Set up a profile you’ll see every day.|Set up~Pick brands from a full grid.|Set up~Pick markets, searchable by country.|Set up~Pick touchpoints, nested by category.|Set up~Name the profile. Done.|Explore~The summary: six KPIs with trends and change vs. last year.|Explore~Filter by touchpoint without leaving the page.|Explore~Feed view: curated charts in category colours.|Explore~Table view: every number, sortable.|Explore~Share a report with your team.|Explore~Export to PDF, PNG or JPG.|Plan~Three ways to plan, each named for what it does.|Plan~Start a plan from a campaign goal.|Plan~Add touchpoints, set limits, see the totals move.|Plan~Auto and Manual simulations share one table.|Learn~A library of every touchpoint, scored.|Learn~One touchpoint, its quality and its trend.|Learn~A guided tutorial for new users.|Learn~FAQs, a click away." aria-label="Product tour. Use the left and right arrow keys to move between screens."><div class="tr__chs" role="group" aria-label="Chapter"><button type="button" aria-pressed="true" data-i="0"><b>Start</b><small>3</small></button><button type="button" aria-pressed="false" data-i="3"><b>Set up</b><small>4</small></button><button type="button" aria-pressed="false" data-i="7"><b>Explore</b><small>6</small></button><button type="button" aria-pressed="false" data-i="13"><b>Plan</b><small>4</small></button><button type="button" aria-pressed="false" data-i="17"><b>Learn</b><small>4</small></button></div><div class="tr__stage"><img class="is-on" src="../coca-cola-umm/assets/v2/hero.jpg" alt="The front door: Universal Media Measurement, powered by Sherlock AI." width="2160" height="1146"><img src="../coca-cola-umm/assets/v2/login.jpg" alt="One quiet login card over the brand." loading="lazy" width="1440" height="764"><img src="../coca-cola-umm/assets/v2/welcome.jpg" alt="First time in? Set up a profile you’ll see every day." loading="lazy" width="1440" height="764"><img src="../coca-cola-umm/assets/v2/brands.jpg" alt="Pick brands from a full grid." loading="lazy" width="1440" height="764"><img src="../coca-cola-umm/assets/v2/locations.jpg" alt="Pick markets, searchable by country." loading="lazy" width="1440" height="764"><img src="../coca-cola-umm/assets/v2/touchpoints.jpg" alt="Pick touchpoints, nested by category." loading="lazy" width="1440" height="764"><img src="../coca-cola-umm/assets/v2/name.jpg" alt="Name the profile. Done." loading="lazy" width="1440" height="764"><img src="../coca-cola-umm/assets/v2/a-kpi.jpg" alt="The summary: six KPIs with trends and change vs. last year." loading="lazy" width="1440" height="764"><img src="../coca-cola-umm/assets/v2/tpfilter.jpg" alt="Filter by touchpoint without leaving the page." loading="lazy" width="1440" height="764"><img src="../coca-cola-umm/assets/v2/a-feed.jpg" alt="Feed view: curated charts in category colours." loading="lazy" width="1440" height="764"><img src="../coca-cola-umm/assets/v2/a-table.jpg" alt="Table view: every number, sortable." loading="lazy" width="1440" height="764"><img src="../coca-cola-umm/assets/v2/share.jpg" alt="Share a report with your team." loading="lazy" width="1440" height="764"><img src="../coca-cola-umm/assets/v2/export.jpg" alt="Export to PDF, PNG or JPG." loading="lazy" width="1440" height="764"><img src="../coca-cola-umm/assets/v2/simpath.jpg" alt="Three ways to plan, each named for what it does." loading="lazy" width="1440" height="764"><img src="../coca-cola-umm/assets/v2/planinit.jpg" alt="Start a plan from a campaign goal." loading="lazy" width="1440" height="764"><img src="../coca-cola-umm/assets/v2/planadded.jpg" alt="Add touchpoints, set limits, see the totals move." loading="lazy" width="1440" height="764"><img src="../coca-cola-umm/assets/v2/automanual.jpg" alt="Auto and Manual simulations share one table." loading="lazy" width="1440" height="764"><img src="../coca-cola-umm/assets/v2/compendium.jpg" alt="A library of every touchpoint, scored." loading="lazy" width="1440" height="764"><img src="../coca-cola-umm/assets/v2/tpprofile.jpg" alt="One touchpoint, its quality and its trend." loading="lazy" width="1440" height="764"><img src="../coca-cola-umm/assets/v2/tutorial.jpg" alt="A guided tutorial for new users." loading="lazy" width="1440" height="764"><img src="../coca-cola-umm/assets/v2/faqs.jpg" alt="FAQs, a click away." loading="lazy" width="1440" height="764"><button class="tr__nav tr__nav--p" type="button" aria-label="Previous screen">‹</button><button class="tr__nav tr__nav--n" type="button" aria-label="Next screen">›</button></div><div class="tr__bar"><button class="tr__pp" type="button" aria-label="Play">▶</button><p class="tr__cap" aria-live="polite"><small>Start</small><span>The front door: Universal Media Measurement, powered by Sherlock AI.</span></p><span class="tr__n"><b>01</b> / 21</span></div><div class="tr__prog"><i></i></div></div>
+    </div>
+  </section>
+  <section id="try" aria-labelledby="try-h" style="padding-top:0">
+    <div class="wrap">
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>08</b> Try it</div>
+      <h2 id="try-h" class="display h2 reveal">Filters that <span class="c-acc">stay put.</span></h2>
+      <p class="sub reveal">A working slice of the dashboard. Change the filters and watch every number follow.</p>
+      <div class="lv2 reveal"><div class="lv2__rail"><span class="u-mono">Filters</span><div class="lv2__g"><small>Brands</small><div class="lv2__chips" data-g="brand"><button type="button" aria-pressed="true" data-v="Coca-Cola">Coca-Cola</button><button type="button" aria-pressed="false" data-v="Sprite">Sprite</button><button type="button" aria-pressed="false" data-v="Fanta">Fanta</button><button type="button" aria-pressed="false" data-v="Dasani">Dasani</button></div></div><div class="lv2__g"><small>Markets</small><div class="lv2__chips" data-g="mkt"><button type="button" aria-pressed="true" data-v="USA">USA</button><button type="button" aria-pressed="false" data-v="Japan">Japan</button><button type="button" aria-pressed="false" data-v="Brazil">Brazil</button></div></div><div class="lv2__g"><small>Media</small><div class="lv2__chips" data-g="oesp"><button type="button" aria-pressed="true" data-v="Paid">Paid</button><button type="button" aria-pressed="true" data-v="Owned">Owned</button><button type="button" aria-pressed="true" data-v="Earned">Earned</button><button type="button" aria-pressed="true" data-v="Shared">Shared</button></div></div><p class="lv2__note">The rail never leaves. Change anything and the numbers follow.</p></div><div class="lv2__main"><div class="lv2__bar"><div class="lv2__seg" role="group" aria-label="Resolution"><button type="button" aria-pressed="false" data-r="year">Year</button><button type="button" aria-pressed="true" data-r="quarter">Quarter</button></div><span class="lv2__prof">Profile: <b>US · Coca-Cola</b></span></div><div class="lv2__kpis"><div class="lv2__k" data-k="inv"><small>Investment</small><b>—</b><span class="lv2__d"></span><svg viewBox="0 0 120 34" preserveAspectRatio="none" aria-hidden="true"><polyline points=""/></svg></div><div class="lv2__k" data-k="imp"><small>Impacts</small><b>—</b><span class="lv2__d"></span><svg viewBox="0 0 120 34" preserveAspectRatio="none" aria-hidden="true"><polyline points=""/></svg></div><div class="lv2__k" data-k="q"><small>Avg quality</small><b>—</b><span class="lv2__d"></span><svg viewBox="0 0 120 34" preserveAspectRatio="none" aria-hidden="true"><polyline points=""/></svg></div><div class="lv2__k" data-k="cpt"><small>CPT</small><b>—</b><span class="lv2__d"></span><svg viewBox="0 0 120 34" preserveAspectRatio="none" aria-hidden="true"><polyline points=""/></svg></div></div><div class="lv2__chart"><div class="lv2__ch"><b>Impacts by touchpoint</b><small>Tap a legend chip to hide a category</small></div><ol class="lv2__bars"></ol><div class="lv2__leg"><button type="button" aria-pressed="true" data-c="#E01E5A" style="--c:#E01E5A"><i></i>Audio visual</button><button type="button" aria-pressed="true" data-c="#C1127F" style="--c:#C1127F"><i></i>Display</button><button type="button" aria-pressed="true" data-c="#D9A400" style="--c:#D9A400"><i></i>Print</button><button type="button" aria-pressed="true" data-c="#1F4BE0" style="--c:#1F4BE0"><i></i>Product</button><button type="button" aria-pressed="true" data-c="#E26414" style="--c:#E26414"><i></i>Radio</button><button type="button" aria-pressed="true" data-c="#2D6BFF" style="--c:#2D6BFF"><i></i>Smartphone</button><button type="button" aria-pressed="true" data-c="#8A2BE2" style="--c:#8A2BE2"><i></i>Experience</button></div></div></div><p class="lv2__fine">A working slice of the UMM dashboard, rebuilt in code with demo data.</p></div>
+    </div>
+  </section>
+  <section id="system" aria-labelledby="system-h" style="padding-top:0">
+    <div class="wrap">
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>09</b> Design system</div>
+      <h2 id="system-h" class="display h2 reveal">One <span class="c-acc">consistent language.</span></h2>
+      <p class="sub reveal">Four surface levels, one red, three gradients and a calm type scale. Built once, used on every screen.</p>
+      <div class="ud reveal"><div class="ud__col"><span class="u-mono">Surfaces · tap to copy</span><div class="ud__surf"><button type="button" data-hex="#000000" style="--c:#000000;--i:0"><b>Base</b><small>#000000</small></button><button type="button" data-hex="#151515" style="--c:#151515;--i:1"><b>Level 1</b><small>#151515</small></button><button type="button" data-hex="#1C1C1E" style="--c:#1C1C1E;--i:2"><b>Level 2</b><small>#1C1C1E</small></button><button type="button" data-hex="#2A2A2C" style="--c:#2A2A2C;--i:3"><b>Level 3</b><small>#2A2A2C</small></button></div><span class="u-mono">Accent · hover and press it</span><button type="button" class="ud__btn" data-hex="#FF2423">Simulate</button><div class="ud__states"><span><i style="--c:#FF2423"></i>Accent #FF2423</span><span><i style="--c:linear-gradient(90deg,#FF5757,#F00100)"></i>Hover</span><span><i style="--c:linear-gradient(90deg,#F00100,#BD0100)"></i>Pressed</span></div><span class="u-mono">Gradients</span><div class="ud__grads"><button type="button" data-hex="#D92D30, #EB9234, #63BFBC" style="--g:linear-gradient(90deg,#D92D30, #EB9234, #63BFBC)"><small>TCCC</small></button><button type="button" data-hex="#F79900, #D7B85B" style="--g:linear-gradient(90deg,#F79900, #D7B85B)"><small>Secondary</small></button><button type="button" data-hex="#D7B85B, #6ACE7F" style="--g:linear-gradient(90deg,#D7B85B, #6ACE7F)"><small>Tertiary</small></button></div><span class="u-mono">Text</span><div class="ud__text"><button type="button" data-hex="#FFFFFF" style="--c:#FFFFFF">Aa<small>Base</small></button><button type="button" data-hex="#8D8D92" style="--c:#8D8D92">Aa<small>Secondary</small></button><button type="button" data-hex="#47474A" style="--c:#47474A">Aa<small>Tertiary</small></button><button type="button" data-hex="#2A2A2C" style="--c:#2A2A2C">Aa<small>Quaternary</small></button></div></div><div class="ud__col ud__type"><div class="ud__th"><span class="u-mono">Type scale · Inter</span><label>Ratio <select aria-label="Type scale ratio"><option value="1.067">1.067 Minor second</option><option value="1.125" selected>1.125 Major second</option><option value="1.2">1.2 Minor third</option><option value="1.25">1.25 Major third</option></select></label></div><ol class="ud__ladder"><li data-s="7"><small>Hero</small><span>Investment</span><em></em></li><li data-s="5"><small>Subhero</small><span>Investment</span><em></em></li><li data-s="4"><small>Header I</small><span>Investment</span><em></em></li><li data-s="3"><small>Header II</small><span>Investment</span><em></em></li><li data-s="2"><small>Header III</small><span>Investment</span><em></em></li><li data-s="1"><small>Body I</small><span>Investment</span><em></em></li><li data-s="0"><small>Body II</small><span>Investment</span><em></em></li><li data-s="-1"><small>Body III</small><span>Investment</span><em></em></li></ol><p class="ud__fine">UMM used 1.125 (a major second): steady steps that keep dense dashboards calm.</p></div><p class="ud__toast" role="status" aria-live="polite"></p></div><div class="jrow reveal"><figure class="frame reveal" style="flex:3.7152 1 0%;aspect-ratio:2400 / 646"><img src="../coca-cola-umm/assets/v2/viz.jpg" alt="UMM chart library: treemap, bubble charts, bar charts and data table, in the dark theme" loading="lazy" width="2400" height="646"><span class="cap">Chart library · treemap · bubble · bar · table</span></figure></div><div class="jrow reveal"><figure class="frame reveal" style="flex:3.4261 1 0%;aspect-ratio:1600 / 467"><img src="../coca-cola-umm/assets/v2/icons.jpg" alt="UMM iconography: glyphs, custom navigation icons, brand logos and country flags" loading="lazy" width="1600" height="467"><span class="cap">Iconography</span></figure></div>
     </div>
   </section>
 
@@ -721,5 +996,175 @@
 })();
 </script>
 
+<script>(() => {
+  // Coca-Cola UMM: interactive pieces
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const onView = (el, fn, opt = { threshold: .35 }) => new IntersectionObserver(([e]) => fn(e.isIntersecting), opt).observe(el);
+  const press = (btns, on) => btns.forEach(b => b.setAttribute(b.getAttribute('role') === 'tab' ? 'aria-selected' : 'aria-pressed', b === on ? 'true' : 'false'));
+
+  // One currency: pick a touchpoint, see it on the shared scale
+  const uc = document.querySelector('.uc');
+  if (uc) {
+    const tps = uc.dataset.tps.split('|').map(r => { const [n, g, i, im, q] = r.split(';'); return { n, g, i: +i, im: +im, q: +q, qi: +im * +q / 100 }; });
+    const max = Math.max(...tps.map(t => t.qi)), btns = [...uc.querySelectorAll('.uc__pick button')], ol = uc.querySelector('.uc__bars ol');
+    const f = (v, u) => v >= 10 ? Math.round(v) + u : v.toFixed(1).replace(/\.0$/, '') + u;
+    ol.innerHTML = tps.map(t => `<li><span>${t.n}</span><span class="tk"><i style="--w:0"></i></span><em>${f(t.qi, 'B')}</em></li>`).join('');
+    const lis = [...ol.children];
+    const set = k => {
+      const t = tps[k]; press(btns, btns[k]);
+      uc.querySelector('.uc__name small').textContent = t.g + ' media';
+      uc.querySelector('.uc__name b').textContent = t.n;
+      const v = { inv: t.i ? '$' + t.i + 'M' : '$0', imp: t.im + 'B', q: t.q + '%', qi: f(t.qi, 'B') };
+      uc.querySelectorAll('[data-f]').forEach(d => d.textContent = v[d.dataset.f]);
+      lis.forEach((li, i) => li.classList.toggle('is-on', i === k));
+    };
+    btns.forEach((b, k) => b.addEventListener('click', () => set(k)));
+    set(0);
+    let grown = false;
+    onView(uc, v => { if (v && !grown) { grown = true; lis.forEach((li, i) => li.querySelector('i').style.setProperty('--w', (tps[i].qi / max * 100).toFixed(1))); } });
+  }
+
+  // What UMM does: three jobs, auto-advancing
+  const uj = document.querySelector('.uj');
+  if (uj) {
+    const tabs = [...uj.querySelectorAll('[role=tab]')], imgs = [...uj.querySelectorAll('.uj__stage img')];
+    let k = 0, t = null, seen = false;
+    const DUR = 5000; uj.style.setProperty('--dur', DUR + 'ms');
+    const go = i => { k = (i + tabs.length) % tabs.length; press(tabs, tabs[k]); imgs.forEach((im, j) => im.classList.toggle('is-on', j === k)); tabs[k].querySelector('.uj__bar').style.animation = 'none'; void tabs[k].offsetWidth; tabs[k].querySelector('.uj__bar').style.animation = ''; };
+    const loop = () => { clearInterval(t); if (!still) t = setInterval(() => go(k + 1), DUR); };
+    tabs.forEach((b, i) => b.addEventListener('click', () => { go(i); loop(); }));
+    uj.addEventListener('mouseenter', () => { clearInterval(t); uj.classList.add('is-paused'); });
+    uj.addEventListener('mouseleave', () => { uj.classList.remove('is-paused'); if (seen) loop(); });
+    onView(uj, v => { if (v) { seen = true; go(k); loop(); } else clearInterval(t); });
+  }
+
+  // Challenge: flip cards
+  document.querySelectorAll('.ux__c').forEach(c => c.addEventListener('click', () => c.setAttribute('aria-pressed', c.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')));
+
+  // Approach: five moves
+  const um = document.querySelector('.um');
+  if (um) {
+    const ds = um.dataset.d.split('|'), btns = [...um.querySelectorAll('.um__steps button')], d = um.querySelector('.um__d');
+    let k = 0, t = null, touched = false;
+    const set = i => { k = i; press(btns, btns[i]); um.style.setProperty('--k', i); d.textContent = ds[i]; };
+    btns.forEach((b, i) => b.addEventListener('click', () => { touched = true; clearInterval(t); set(i); }));
+    onView(um, v => { clearInterval(t); if (v && !touched && !still) t = setInterval(() => set((k + 1) % btns.length), 3200); });
+  }
+
+  // Audit: filter by severity
+  const ua = document.querySelector('.ua');
+  if (ua) {
+    const btns = [...ua.querySelectorAll('.ua__f button')], rows = [...ua.querySelectorAll('.ua__r[data-v]')];
+    btns.forEach(b => b.addEventListener('click', () => { press(btns, b); const v = b.dataset.v; rows.forEach(r => r.classList.toggle('is-dim', v !== 'all' && r.dataset.v !== v)); }));
+  }
+
+  // Tabs (before/after screens, setup steps)
+  document.querySelectorAll('.bx, .ob').forEach(w => {
+    const tabs = [...w.querySelectorAll('[role=tab]')], panes = [...w.querySelectorAll('[role=tabpanel]')];
+    tabs.forEach((b, i) => b.addEventListener('click', () => { press(tabs, b); panes.forEach((p, j) => p.hidden = j !== i); }));
+    w.querySelector('[role=tablist]').addEventListener('keydown', e => {
+      if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+      const i = tabs.findIndex(b => b.getAttribute('aria-selected') === 'true'), n = (i + (e.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length;
+      tabs[n].click(); tabs[n].focus();
+    });
+  });
+  const bx = document.querySelector('.bx');
+  if (bx && !still) { let done = false; onView(bx, v => { if (v && !done) { done = true; bx.classList.add('is-hint'); setTimeout(() => bx.classList.remove('is-hint'), 3400); } }, { threshold: .5 }); }
+
+  // Tour: chapters, arrows, keyboard, autoplay
+  const tr = document.querySelector('.tr');
+  if (tr) {
+    const caps = tr.dataset.caps.split('|').map(c => c.split('~')), imgs = [...tr.querySelectorAll('.tr__stage img')], chs = [...tr.querySelectorAll('.tr__chs button')];
+    const cap = tr.querySelector('.tr__cap'), n = tr.querySelector('.tr__n b'), pp = tr.querySelector('.tr__pp');
+    let k = 0, t = null, playing = false;
+    const go = i => {
+      k = (i + imgs.length) % imgs.length;
+      imgs.forEach((im, j) => { im.classList.toggle('is-on', j === k); if (Math.abs(j - k) <= 1) im.loading = 'eager'; });
+      cap.innerHTML = `<small>${caps[k][0]}</small><span>${caps[k][1]}</span>`;
+      n.textContent = String(k + 1).padStart(2, '0');
+      tr.style.setProperty('--p', (k + 1) / imgs.length);
+      const ci = chs.reduce((a, c, j) => +c.dataset.i <= k ? j : a, 0); press(chs, chs[ci]);
+    };
+    const play = on => { playing = on; clearInterval(t); pp.textContent = on ? '❚❚' : '▶'; pp.setAttribute('aria-label', on ? 'Pause' : 'Play'); if (on) t = setInterval(() => go(k + 1), 3600); };
+    tr.querySelector('.tr__nav--p').addEventListener('click', () => { play(false); go(k - 1); });
+    tr.querySelector('.tr__nav--n').addEventListener('click', () => { play(false); go(k + 1); });
+    chs.forEach(c => c.addEventListener('click', () => { play(false); go(+c.dataset.i); }));
+    pp.addEventListener('click', () => play(!playing));
+    tr.addEventListener('keydown', e => { if (e.key === 'ArrowRight') { play(false); go(k + 1); } if (e.key === 'ArrowLeft') { play(false); go(k - 1); } });
+    let x0 = null; const st = tr.querySelector('.tr__stage');
+    st.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
+    st.addEventListener('touchend', e => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 40) { play(false); go(k + (dx < 0 ? 1 : -1)); } x0 = null; });
+    go(0);
+    let started = false;
+    onView(tr, v => { if (v && !started && !still) { started = true; play(true); } else if (!v && playing) play(false); });
+  }
+
+  // Try it: a live slice of the dashboard with demo data
+  const lv = document.querySelector('.lv2');
+  if (lv) {
+    const TPS = [['Linear TV ad', 'Audio visual'], ['Online video', 'Audio visual'], ['Billboard', 'Display'], ['Magazine', 'Print'], ['Standard pack', 'Product'], ['Radio spot', 'Radio'], ['Social feed ad', 'Smartphone'], ['Sampling event', 'Experience']];
+    const OESP = { 'Linear TV ad': 'Paid', 'Online video': 'Paid', 'Billboard': 'Paid', 'Magazine': 'Paid', 'Standard pack': 'Shared', 'Radio spot': 'Paid', 'Social feed ad': 'Owned', 'Sampling event': 'Earned' };
+    const col = {}; lv.querySelectorAll('.lv2__leg button').forEach(b => col[b.textContent.trim()] = b.dataset.c);
+    const seed = s => { let h = 2166136261; for (const c of s) h = Math.imul(h ^ c.charCodeAt(0), 16777619); return () => ((h = Math.imul(h ^ h >>> 15, 2246822507) ^ Math.imul(h ^ h >>> 13, 3266489909)) >>> 0) / 4294967296; };
+    const st = { brand: new Set(['Coca-Cola']), mkt: new Set(['USA']), oesp: new Set(['Paid', 'Owned', 'Earned', 'Shared']), off: new Set(), res: 'quarter' };
+    const ol = lv.querySelector('.lv2__bars');
+    ol.innerHTML = TPS.map(([n, c]) => `<li data-c="${c}"><span>${n}</span><span class="tk"><i style="--w:0;--c:${col[c] || '#888'}"></i></span><em>0</em></li>`).join('');
+    const lis = [...ol.children], kpis = [...lv.querySelectorAll('.lv2__k')];
+    const fmt = { inv: v => '$' + (v >= 1000 ? (v / 1000).toFixed(2) + 'B' : Math.round(v) + 'M'), imp: v => (v >= 1000 ? (v / 1000).toFixed(1) + 'B' : Math.round(v) + 'M'), q: v => v.toFixed(0) + '%', cpt: v => '$' + v.toFixed(2) };
+    const cur = { inv: 0, imp: 0, q: 0, cpt: 0 };
+    const tween = (el, from, to, f) => { if (still) { el.textContent = f(to); return; } const t0 = performance.now(); const step = now => { const p = Math.min(1, (now - t0) / 650), e = 1 - Math.pow(1 - p, 3); el.textContent = f(from + (to - from) * e); if (p < 1) requestAnimationFrame(step); }; requestAnimationFrame(step); };
+    const render = () => {
+      let inv = 0, imp = 0, qw = 0; const vals = [];
+      TPS.forEach(([n, c]) => {
+        let v = 0, i = 0, q = 0;
+        st.brand.forEach(b => st.mkt.forEach(m => { const r = seed(n + b + m); v += 40 + r() * 260; i += 2 + r() * 30; q += 8 + r() * 22; }));
+        if (n === 'Standard pack') { v *= 3.2; i *= .05; }
+        const on = st.oesp.has(OESP[n]) && !st.off.has(c) && st.brand.size && st.mkt.size;
+        vals.push(on ? v : 0); if (on) { inv += i; imp += v; qw += q * v; }
+      });
+      const mx = Math.max(1, ...vals);
+      lis.forEach((li, j) => { li.querySelector('i').style.setProperty('--w', (vals[j] / mx * 100).toFixed(1)); li.querySelector('em').textContent = vals[j] ? fmt.imp(vals[j]) : '—'; li.classList.toggle('is-off', !vals[j]); });
+      const nb = st.brand.size * st.mkt.size || 1;
+      const next = { inv, imp, q: imp ? qw / imp / nb : 0, cpt: imp ? inv / imp * 10 : 0 };
+      kpis.forEach(k => {
+        const key = k.dataset.k, b = k.querySelector('b');
+        tween(b, cur[key], next[key], fmt[key]); cur[key] = next[key];
+        const r = seed(key + [...st.brand, ...st.mkt, ...st.oesp].join() + st.res), pts = st.res === 'year' ? 6 : 4;
+        const ys = Array.from({ length: pts }, (_, i) => 26 - i * (16 / pts) - r() * 10 + 4);
+        const delta = ((r() - .3) * 12), down = key === 'cpt' ? delta > 0 : delta < 0;
+        if (down) ys.reverse();
+        k.querySelector('polyline').setAttribute('points', ys.map((y, i) => `${(i / (pts - 1) * 120).toFixed(1)},${Math.max(2, Math.min(32, y)).toFixed(1)}`).join(' '));
+        const d = k.querySelector('.lv2__d'); d.textContent = next[key] ? `${delta >= 0 ? '+' : ''}${delta.toFixed(1)}% vs. PY` : 'No data'; d.classList.toggle('is-down', down); k.classList.toggle('is-down', down);
+      });
+      lv.querySelector('.lv2__prof b').textContent = (st.mkt.size ? [...st.mkt].join(', ') : '—') + ' · ' + (st.brand.size ? [...st.brand].join(', ') : '—');
+    };
+    lv.querySelectorAll('.lv2__chips').forEach(g => g.querySelectorAll('button').forEach(b => b.addEventListener('click', () => {
+      const set = st[g.dataset.g], v = b.dataset.v, on = b.getAttribute('aria-pressed') !== 'true';
+      on ? set.add(v) : set.delete(v); b.setAttribute('aria-pressed', on); render();
+    })));
+    lv.querySelectorAll('.lv2__seg button').forEach(b => b.addEventListener('click', () => { st.res = b.dataset.r; press([...lv.querySelectorAll('.lv2__seg button')], b); render(); }));
+    lv.querySelectorAll('.lv2__leg button').forEach(b => b.addEventListener('click', () => { const c = b.textContent.trim(), on = b.getAttribute('aria-pressed') !== 'true'; on ? st.off.delete(c) : st.off.add(c); b.setAttribute('aria-pressed', on); render(); }));
+    let drawn = false; onView(lv, v => { if (v && !drawn) { drawn = true; render(); } });
+  }
+
+  // Design system: copy tokens, live type scale
+  const ud = document.querySelector('.ud');
+  if (ud) {
+    const toast = ud.querySelector('.ud__toast'); let tt;
+    ud.querySelectorAll('[data-hex]').forEach(b => b.addEventListener('click', () => {
+      const h = b.dataset.hex; (navigator.clipboard ? navigator.clipboard.writeText(h) : Promise.reject()).catch(() => {});
+      toast.textContent = 'Copied ' + h; toast.classList.add('is-on'); clearTimeout(tt); tt = setTimeout(() => toast.classList.remove('is-on'), 1600);
+    }));
+    const sel = ud.querySelector('select'), lis = [...ud.querySelectorAll('.ud__ladder li')];
+    const scale = () => { const r = +sel.value; lis.forEach(li => { const px = 14 * Math.pow(r, +li.dataset.s); li.style.setProperty('--fs', px.toFixed(1) + 'px'); li.querySelector('em').textContent = Math.round(px) + 'px'; }); };
+    sel.addEventListener('change', scale); scale();
+  }
+})();
+</script>
+<script>(() => {
+  // Loop clips carried over from V2 play only while on screen
+  const vo = new IntersectionObserver(es => es.forEach(e => { const v = e.target; if (e.isIntersecting) { v.preload = 'auto'; v.play().catch(() => {}); } else v.pause(); }), { threshold: .2 });
+  document.querySelectorAll('video.lv').forEach(v => vo.observe(v));
+})();</script>
 </body>
 </html>

@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Side Quests — Sunil Sebastian</title>
+<title>Artifacts — Sunil Sebastian</title>
 <link rel="icon" href="../assets/icons/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/favicon-32.png">
 <link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png">
 <link rel="manifest" href="../assets/icons/site.webmanifest">
 <meta name="theme-color" content="#000000">
-<meta name="description" content="Side quests by Sunil Sebastian: a pixel art editor, a soundtrack and film for the NCA Triennale, a hand-painted Gundam build and photography.">
+<meta name="description" content="Artifacts by Sunil Sebastian: a pixel art editor, isometric 3D loops, two music shorts, a browser groovebox, a soundtrack and film for the NCA Triennale, a hand-painted Gundam build and photography.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -589,6 +589,300 @@
 
 
   section[id], .proj, [id].sub-h { scroll-margin-top: 90px; }
+
+  /* Carried over from V2: the interactive pieces read these */
+  :root { --card-r: var(--radius); --font: var(--body); --muted: #9a9a96; --line: rgba(255,255,255,.14); --paper-2: #1b1b1b; --night: #0f0f0e; }
+  .rows-v1 > * + * { margin-top: clamp(14px, 1.6vw, 22px); }
+  section .wrap > :is(.sw, .jrow) + :not(.jrow):not(.sw):not(.sub) { margin-top: clamp(14px, 1.6vw, 22px); }
+
+  
+  /* V1 components this page did not have yet */
+  .jrow { display: flex; gap: clamp(10px, 1.4vw, 20px); margin-top: clamp(14px, 1.6vw, 22px); }
+  .jrow .frame { margin: 0; background: #111; }
+  .jrow.first { margin-top: clamp(32px, 4vw, 56px); }
+  @media (max-width: 600px) { .jrow { flex-direction: column; } .jrow .frame { flex: none !important; } }
+  .jrow .frame { margin: 0; flex: 1 1 0%; aspect-ratio: 16 / 9; background: #fff; }
+  @media (max-width: 600px) { .jrow { flex-direction: column; } }
+  .flow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(32px, 4vw, 56px); }
+  .flow article { border-radius: var(--radius); padding: clamp(18px, 2vw, 26px); background: #141414; border: 1.5px solid rgba(255,255,255,.08); transition: transform .35s var(--ease), border-color .3s; }
+  .flow article:hover { transform: translateY(-4px); border-color: var(--accent); }
+  .flow small { font-size: 12px; letter-spacing: .14em; color: var(--accent); font-weight: 700; }
+  .flow b { display: block; margin: 8px 0; font-family: var(--body); font-weight: 800; font-size: clamp(20px, 1.6vw, 26px); letter-spacing: -.02em; }
+  .flow p { margin: 0; opacity: .85; }
+  @media (max-width: 960px) { .flow { grid-template-columns: 1fr; } }
+  .posters { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(32px, 4vw, 56px); }
+  .posters .frame { margin: 0; aspect-ratio: 1311 / 1860; background: #fdf8e4; }
+  .posters .frame:nth-child(even) { transform: translateY(clamp(12px, 3vw, 40px)); }
+  .posters .frame:hover { transform: translateY(-6px) rotate(-1deg); }
+  .posters-gap { height: clamp(12px, 3vw, 40px); }
+  @media (max-width: 960px) { .posters { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .sprite { display: grid; width: 100%; aspect-ratio: 1; image-rendering: pixelated; }
+  .sprite i { display: block; }
+  @keyframes byte-bob { 0%,49% { transform: translateY(0) } 50%,100% { transform: translateY(-4%) } }
+  @keyframes byte-breathe { 0%,49% { transform: translateY(0) } 50%,100% { transform: translateY(-2%) } }
+  @keyframes byte-hop { 0% { transform: translateY(0) } 25% { transform: translateY(-22%) } 45% { transform: translateY(-26%) } 70% { transform: translateY(0) } 82% { transform: translateY(-8%) } 100% { transform: translateY(0) } }
+  @keyframes byte-wiggle { 0%,24% { transform: translateX(-3%) } 25%,49% { transform: translateX(3%) } 50%,74% { transform: translateX(-2%) } 75%,100% { transform: translateX(2%) } }
+  .px { font-family: var(--mono); color: #e8e8e8; padding: clamp(16px, 2.2vw, 28px); background-color: #0b0d0e; background-image: repeating-conic-gradient(#121516 0 25%, transparent 0 50%); background-size: 8px 8px; }
+  .px__bar { display: flex; justify-content: space-between; gap: 12px; margin-bottom: clamp(14px, 1.8vw, 22px); font-family: "Silkscreen", var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: #4cc9f0; }
+  .px__bar span + span { color: #6b7476; }
+  .px__bar--sub { margin-top: clamp(22px, 3vw, 36px); }
+  .px-stops { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(10px, 1.4vw, 18px); }
+  .px-stop .art { background: #0a0c0d; padding: 10px; border-radius: 8px; box-shadow: inset 0 0 0 1px #262b2c; }
+  .px-stop b { display: block; margin-top: 8px; font-family: "Silkscreen", var(--mono); font-weight: 400; font-size: 11px; letter-spacing: .1em; color: #ffd166; }
+  .px-stop small { display: block; margin-top: 2px; font-size: 11px; line-height: 1.4; color: #9aa3a5; }
+  .px-scroll { overflow-x: auto; }
+  .px-tour { width: 100%; border-collapse: collapse; font-size: 13px; line-height: 1.5; min-width: 520px; }
+  .px-tour th { text-align: left; font-family: "Silkscreen", var(--mono); font-weight: 400; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: #6b7476; padding: 0 16px 10px 0; border-bottom: 1px solid #3a4143; }
+  .px-tour td { padding: 12px 16px 12px 0; border-bottom: 1px solid #262b2c; vertical-align: top; }
+  .px-tour tr:last-child td { border-bottom: 0; }
+  .px-step { font-family: "Silkscreen", var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: #ffd166; white-space: nowrap; }
+  .px-watch code { font: inherit; color: #4cc9f0; white-space: nowrap; }
+  .px-tour tbody tr { transition: background .3s; }
+  .px-tour tbody tr.is-on { background: rgba(76, 201, 240, .08); }
+  .px-tour tbody tr.is-on .px-step { color: #ef476f; }
+  .px-cards { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1px; background: #3a4143; border-radius: 10px; overflow: hidden; }
+  .px-card { background: #16191b; padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+  .px-card b { font-family: "Silkscreen", var(--mono); font-weight: 400; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: #ffd166; }
+  .px-card p { margin: 0; flex: 1; font-size: 12px; line-height: 1.55; color: #e8e8e8; }
+  .px-card span { font-size: 11px; line-height: 1.5; }
+  .px-card .ok { color: #9be6b4; padding-top: 10px; border-top: 1px solid #262b2c; }
+  .px-card .no { color: #ef476f; }
+  .px-ramp { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; background: #3a4143; border-radius: 10px; overflow: hidden; margin-bottom: clamp(16px, 2vw, 24px); }
+  .px-ramp div { background: #16191b; padding: 12px 14px; display: grid; gap: 4px; }
+  .px-ramp b { font-family: "Silkscreen", var(--mono); font-weight: 400; font-size: 18px; color: #4cc9f0; }
+  .px-ramp span { font-size: 11px; color: #9aa3a5; }
+  .px-pals { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: clamp(8px, 1.2vw, 14px); }
+  .px-pal .art { padding: 8px; border-radius: 8px; }
+  .px-pal .sw { display: flex; height: 8px; margin-top: 8px; border-radius: 3px; overflow: hidden; }
+  .px-pal .sw span { flex: 1; }
+  .px-pal small { display: block; margin-top: 6px; font-family: "Silkscreen", var(--mono); font-size: 10px; letter-spacing: .1em; color: #6b7476; }
+  .px-icons { display: flex; flex-wrap: wrap; gap: clamp(14px, 2vw, 26px); }
+  .px-icon { width: 46px; display: grid; justify-items: center; gap: 8px; }
+  .px-icon .sprite { width: 32px; }
+  .px-icon small { font-family: "Silkscreen", var(--mono); font-size: 8px; letter-spacing: .08em; color: #6b7476; }
+  .px-quote { margin: clamp(28px, 3vw, 44px) 0 0; max-width: 62ch; padding: 20px 22px; border-left: 3px solid #ef476f; background: var(--paper-2, #ebe8e1); border-radius: 0 12px 12px 0; }
+  .px-quote p { margin: 0; font-size: clamp(17px, 1.4vw, 20px); line-height: 1.5; letter-spacing: -.01em; }
+  .px-quote cite { display: block; margin-top: 12px; font-style: normal; font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  @media (max-width: 1100px) {
+    .px-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .px-pals { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  }
+  @media (max-width: 700px) {
+    .px-stops { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .px-cards { grid-template-columns: 1fr; }
+    .px-ramp { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }.it-hero { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(6px, .8vw, 12px); background: none; }
+  .it-hero video { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; border-radius: var(--card-r); }
+  .ip { flex: 1 1 100%; min-width: 0; border-radius: var(--card-r); padding: clamp(14px, 2vw, 28px); background: color-mix(in srgb, var(--c) 22%, #f3f1ec); transition: background .6s var(--ease); }
+  :where(.ip) button { all: unset; cursor: pointer; box-sizing: border-box; }
+  .ip button:focus-visible, .ip input:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+  .ip__tabs { display: flex; flex-wrap: wrap; gap: 6px; }
+  .ip__tabs button { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 999px; background: rgba(255,255,255,.7); font-size: 14px; font-weight: 500; transition: background .25s, color .25s; }
+  .ip__tabs i { width: 10px; height: 10px; border-radius: 50%; background: var(--c); }
+  .ip__tabs button:hover { background: #fff; }
+  .ip__tabs button.is-on { background: var(--ink); color: #fff; }
+  .ip__room { display: grid; place-items: center; padding: clamp(18px, 4vw, 60px) 0; perspective: 1400px; }
+  .ip__card { width: min(100%, 62svh, 620px); aspect-ratio: 1; border-radius: 14px; overflow: hidden; box-shadow: 0 40px 70px -40px rgba(0,0,0,.55); transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform .5s cubic-bezier(.2,.8,.2,1), box-shadow .5s; transform-style: preserve-3d; }
+  .ip.is-move .ip__card { transition: transform .12s linear; }
+  .ip.is-iso .ip__card { transform: rotateX(54deg) rotateZ(-45deg) scale(.82); box-shadow: -40px 50px 50px -20px rgba(0,0,0,.35); border-radius: 6px; }
+  .ip__v { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .ip__ctl { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; }
+  .ip__pp { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; background: var(--ink); color: #fff; font-size: 13px; }
+  .ip__scrub { flex: 1 1 220px; display: flex; align-items: center; gap: 12px; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  .ip__scrub input { flex: 1; accent-color: var(--ink); }
+  .ip__speed { display: inline-flex; gap: 2px; padding: 3px; border-radius: 999px; background: rgba(255,255,255,.7); }
+  .ip__speed button { padding: 7px 12px; border-radius: 999px; font-size: 13px; font-variant-numeric: tabular-nums; }
+  .ip__speed button.is-on { background: var(--ink); color: #fff; }
+  .ip__iso { padding: 10px 16px; border-radius: 999px; box-shadow: inset 0 0 0 1px var(--ink); font-size: 14px; font-weight: 500; }
+  .ip__iso[aria-pressed="true"] { background: var(--ink); color: #fff; }
+  .ip__note { margin: 14px 0 0; font-size: clamp(18px, 1.6vw, 24px); letter-spacing: -.02em; }
+  .iw { flex: 1 1 100%; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(8px, 1vw, 14px); counter-reset: s; }
+  .iw li { position: relative; padding: clamp(16px, 2vw, 26px); border-radius: var(--card-r); background: #fff; transition: transform .4s var(--ease), box-shadow .4s; }
+  .iw li:hover { transform: translateY(-6px) rotate(-1deg); box-shadow: 0 24px 40px -28px rgba(0,0,0,.45); }
+  .iw li::after { content: "→"; position: absolute; right: -11px; top: 50%; translate: 0 -50%; z-index: 1; width: 22px; height: 22px; display: grid; place-items: center; border-radius: 50%; background: var(--ink); color: #fff; font-size: 12px; }
+  .iw li:last-child::after { display: none; }
+  .iw small { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .iw b { display: block; margin-top: 18px; font-size: clamp(20px, 1.8vw, 26px); font-weight: 500; letter-spacing: -.03em; }
+  .iw em { display: inline-block; margin-top: 8px; padding: 4px 10px; border-radius: 999px; background: var(--paper); font-style: normal; font-size: 13px; }
+  .iw p { margin: 12px 0 0; font-size: 15px; line-height: 1.45; color: var(--muted); }
+  @media (max-width: 900px) {
+    .iw { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .iw li:nth-child(2)::after { display: none; }
+  }
+  @media (max-width: 600px) {
+    .it-hero { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .iw { grid-template-columns: 1fr; }
+    .iw li::after { display: none; }
+    .ip__scrub { order: 3; flex-basis: 100%; }
+    .ip.is-iso .ip__card { transform: rotateX(54deg) rotateZ(-45deg) scale(.66); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ip__card, .iw li { transition: none; }
+  }.a2 { display: grid; gap: clamp(14px, 2vw, 28px); background: none; }
+  .a2 button { all: unset; cursor: pointer; box-sizing: border-box; }
+  .a2 :where(button, [role=slider]):focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+  .a2__c { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(24px, 5vw, 90px); align-items: center; padding: clamp(18px, 4vw, 64px); border-radius: var(--card-r); background: radial-gradient(120% 90% at 20% 30%, color-mix(in srgb, var(--c) 26%, #0b0b0c), #0b0b0c 70%); color: #eee; }
+  .a2__c:nth-child(even) { grid-template-columns: minmax(0, 1fr) auto; background: radial-gradient(120% 90% at 80% 30%, color-mix(in srgb, var(--c) 26%, #0b0b0c), #0b0b0c 70%); }
+  .a2__c:nth-child(even) .a2__scr { order: 2; }
+  .a2__scr { position: relative; width: min(78vw, 72svh * .5625, 440px); aspect-ratio: 9 / 16; border-radius: 18px; overflow: hidden; background: #000; box-shadow: 0 0 0 1px #222, 0 50px 90px -50px var(--c); transition: box-shadow .5s; }
+  .a2__c.is-loud .a2__scr { box-shadow: 0 0 0 2px var(--c), 0 50px 100px -40px var(--c); }
+  .a2__v { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .a2 .a2__snd { position: absolute; right: 12px; top: 12px; width: 38px; height: 38px; display: grid; place-items: center; border-radius: 50%; background: rgba(0,0,0,.5); color: #fff; backdrop-filter: blur(8px); transition: background .25s, transform .2s; }
+  .a2 .a2__snd:hover { background: rgba(0,0,0,.75); transform: scale(1.08); }
+  .a2 .a2__snd[aria-pressed="true"] { background: var(--c); }
+  .a2__snd svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .a2__snd .a2__cone { fill: currentColor; }
+  .a2__snd .a2__on, .a2__snd[aria-pressed="true"] .a2__off { display: none; }
+  .a2__snd[aria-pressed="true"] .a2__on { display: inline; }
+  .a2__info { min-width: 0; max-width: 520px; }
+  .a2__c:nth-child(even) .a2__info { justify-self: end; }
+  .a2__info small { font-size: 12px; letter-spacing: .12em; color: #8a8a8a; font-variant-numeric: tabular-nums; }
+  .a2__info h3 { margin: 10px 0 0; font-size: clamp(56px, 8vw, 132px); line-height: .9; font-weight: 500; letter-spacing: -.06em; color: #fff; }
+  .a2__d { margin: 18px 0 0; font-size: clamp(16px, 1.35vw, 20px); line-height: 1.45; color: #c4c4c4; max-width: 40ch; }
+  .a2__meta { display: flex; justify-content: space-between; margin-top: clamp(24px, 3vw, 44px); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: #8a8a8a; }
+  .a2__time { letter-spacing: 0; font-variant-numeric: tabular-nums; }
+  .a2__bar { position: relative; height: 4px; margin-top: 10px; border-radius: 2px; background: #2a2a2a; cursor: pointer; touch-action: none; }
+  .a2__bar::before { content: ""; position: absolute; inset: -10px 0; }
+  .a2__bar i { position: absolute; inset: 0 auto 0 0; width: var(--p, 0%); border-radius: 2px; background: var(--c); }
+  .a2__fs { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 4px; margin-top: 14px; }
+  .a2__f { display: block; border-radius: 4px; overflow: hidden; opacity: .4; transition: opacity .2s, transform .2s; }
+  .a2__f img { display: block; width: 100%; height: auto; }
+  .a2__f:hover { opacity: 1; transform: translateY(-3px); }
+  .a2__f.is-now { opacity: 1; box-shadow: 0 0 0 2px var(--c); }
+  @media (max-width: 760px) {
+    .a2__c, .a2__c:nth-child(even) { grid-template-columns: 1fr; justify-items: center; gap: 22px; }
+    .a2__c:nth-child(even) .a2__scr { order: 0; }
+    .a2__c:nth-child(even) .a2__info { justify-self: stretch; }
+    .a2__info { width: 100%; }
+  }
+  .iw { flex: 1 1 100%; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(8px, 1vw, 14px); }
+  .iw li { position: relative; padding: clamp(16px, 2vw, 26px); border-radius: var(--card-r); background: #fff; transition: transform .4s var(--ease), box-shadow .4s; }
+  .iw li:hover { transform: translateY(-6px) rotate(-1deg); box-shadow: 0 24px 40px -28px rgba(0,0,0,.45); }
+  .iw li::after { content: "→"; position: absolute; right: -11px; top: 50%; translate: 0 -50%; z-index: 1; width: 22px; height: 22px; display: grid; place-items: center; border-radius: 50%; background: var(--ink); color: #fff; font-size: 12px; }
+  .iw li:last-child::after { display: none; }
+  .iw small { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .iw b { display: block; margin-top: 18px; font-size: clamp(20px, 1.8vw, 26px); font-weight: 500; letter-spacing: -.03em; }
+  .iw em { display: inline-block; margin-top: 8px; padding: 4px 10px; border-radius: 999px; background: var(--paper); font-style: normal; font-size: 13px; }
+  .iw p { margin: 12px 0 0; font-size: 15px; line-height: 1.45; color: var(--muted); }
+  @media (max-width: 900px) {
+    .iw { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .iw li:nth-child(2)::after { display: none; }
+  }
+  @media (max-width: 600px) {
+    .iw { grid-template-columns: 1fr; }
+    .iw li::after { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .iw li { transition: none; }
+  }.gx { flex: 1 1 100%; min-width: 0; border-radius: var(--card-r); background: #121313; padding: clamp(12px, 1.6vw, 20px); color: #e8e8e8; }
+  .gx__tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .gx__tabs button { all: unset; cursor: pointer; font-family: var(--mono); font-size: 12px; padding: 7px 12px; border-radius: 6px; box-shadow: inset 0 0 0 1px #3a3d3e; color: #c9cccd; }
+  .gx__tabs button:hover { box-shadow: inset 0 0 0 1px #8a8f90; }
+  .gx__tabs button.is-on { background: #ff8a5c; color: #111; box-shadow: none; }
+  .gx--tall .gx__tabs button.is-on { background: #a7f3c0; }
+  .gx__tabs button:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+  .gx__stage { position: relative; border-radius: 10px; overflow: hidden; background: #000; }
+  .gx__stage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .45s var(--ease); }
+  .gx__stage img.is-on { opacity: 1; }
+  .gx__note { margin: 10px 2px 0; font-family: var(--mono); font-size: 12px; color: #9aa0a1; }
+  .gx-pair { flex: 1 1 100%; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(12px, 1.6vw, 20px); align-items: start; }
+  .bx { flex: 1 1 100%; border-radius: var(--card-r); background: #161717; color: #e8e8e8; padding: clamp(16px, 2.2vw, 30px); font-family: var(--mono); box-shadow: inset 0 0 0 1px #2a2c2d; }
+  .bx__top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: clamp(16px, 2vw, 24px); }
+  .bx__brand { display: flex; align-items: baseline; gap: 8px; }
+  .bx__brand b { font-family: var(--font, inherit); font-size: 22px; font-weight: 700; letter-spacing: -.02em; }
+  .bx__brand i { font-style: normal; color: #ff8a5c; font-weight: 700; }
+  .bx__brand span { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: #8a8f90; margin-left: 4px; }
+  .bx__ctl { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+  .bx__play, .bx__clear { all: unset; cursor: pointer; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; padding: 9px 14px; border-radius: 8px; box-shadow: inset 0 0 0 1px #3a3d3e; }
+  .bx__play { background: #a7f3c0; color: #0d1f14; box-shadow: none; min-width: 74px; text-align: center; }
+  .bx__play[aria-pressed="true"] { background: #ff8a5c; color: #1d0f08; }
+  .bx__clear:hover { box-shadow: inset 0 0 0 1px #8a8f90; }
+  .bx__play:focus-visible, .bx__clear:focus-visible, .bx__trk:focus-visible, .bx__step:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+  .bx__bpm { display: flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: .1em; color: #8a8f90; }
+  .bx__bpm output { color: #e8e8e8; min-width: 3ch; }
+  .bx input[type=range] { accent-color: #ff8a5c; width: 110px; }
+  .bx__grid { display: grid; gap: clamp(8px, 1vw, 12px); }
+  .bx__row { display: grid; grid-template-columns: 70px minmax(0, 1fr); gap: clamp(8px, 1vw, 14px); align-items: center; }
+  .bx__trk { all: unset; cursor: pointer; text-align: center; font-size: 12px; font-weight: 600; padding: 9px 0; border-radius: 99px; background: #f472b6; color: #2a0a1a; transition: opacity .2s, filter .2s; }
+  .bx__trk[aria-pressed="true"] { opacity: .35; filter: grayscale(1); }
+  .bx__steps { display: grid; grid-template-columns: repeat(16, minmax(0, 1fr)); gap: clamp(3px, .5vw, 7px); }
+  .bx__step { all: unset; cursor: pointer; aspect-ratio: 1; border-radius: 50%; box-shadow: inset 0 0 0 1.5px #3a3d3e; transition: background .12s, box-shadow .12s, transform .12s; }
+  .bx__step:nth-child(4n+1) { box-shadow: inset 0 0 0 1.5px #5a5f60; }
+  .bx__step:hover { box-shadow: inset 0 0 0 1.5px #9aa0a1; }
+  .bx__step.is-on { background: #a7f3c0; box-shadow: none; }
+  .bx__row[data-t="3"] .bx__step.is-on { background: #8ec5ff; }
+  .bx__step.is-now { box-shadow: inset 0 0 0 2px #ff8a5c; }
+  .bx__step.is-on.is-now { background: #ff8a5c; transform: scale(1.12); }
+  .bx__fx { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 12px; margin-top: clamp(16px, 2vw, 24px); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: #8a8f90; }
+  .bx__fx input[type=range] { width: 100%; }
+  .bx__hint { margin: 14px 0 0; font-size: 12px; color: #6f7475; }
+  @media (max-width: 760px) {
+    .gx-pair { grid-template-columns: 1fr; }
+    .bx__row { grid-template-columns: 1fr; gap: 6px; }
+    .bx__trk { justify-self: start; padding: 6px 14px; }
+    .bx__steps { grid-template-columns: repeat(8, minmax(0, 1fr)); }
+    .bx__fx { grid-template-columns: 1fr 1fr; }
+    .bx__fx input { grid-column: 1 / -1; grid-row: 1; }
+  }
+  .rb, .ss, .ps { flex: 1 1 100%; min-width: 0; border-radius: var(--card-r); background: #121313; color: #e8e8e8; padding: clamp(14px, 2vw, 28px); }
+  :where(.rb, .ss, .ps) button { all: unset; cursor: pointer; box-sizing: border-box; }
+  .rb button:focus-visible, .ss button:focus-visible, .ps button:focus-visible, .ps__r:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+  .rb__note span, .ss__bar span, .ps__top > span { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: #8a8f90; }
+  .rb__note { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 3fr); gap: 12px var(--gutter); align-items: baseline; padding-bottom: clamp(14px, 2vw, 22px); margin-bottom: clamp(14px, 2vw, 22px); border-bottom: 1px solid #2a2c2d; }
+  .rb__note p { margin: 0; font-size: clamp(18px, 1.7vw, 26px); line-height: 1.3; letter-spacing: -.02em; color: #fff; max-width: 40ch; }
+  .rb__main { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: clamp(14px, 2vw, 28px); }
+  .rb__stage { position: relative; aspect-ratio: 4 / 3; border-radius: 10px; overflow: hidden; background: #2a2a2a; }
+  .rb__stage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 4%; box-sizing: border-box; opacity: 0; transform: scale(.96) rotate(-1.5deg); transition: opacity .45s var(--ease), transform .7s cubic-bezier(.3,1.3,.5,1); }
+  .rb__stage img.is-on { opacity: 1; transform: none; }
+  .rb__list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .rb__b { display: block; width: 100%; padding: 12px 14px; border-radius: 10px; box-shadow: inset 0 0 0 1px #2a2c2d; transition: background .25s, box-shadow .25s; }
+  .rb__b:hover { box-shadow: inset 0 0 0 1px #5a5f60; }
+  .rb__b small { display: block; font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: #8a8f90; }
+  .rb__b b { display: block; margin-top: 2px; font-size: 16px; font-weight: 500; letter-spacing: -.01em; }
+  .rb__b span { display: block; overflow: hidden; font-size: 14px; line-height: 1.4; color: #b9bdbe; transition: max-height .45s var(--ease), margin .45s var(--ease); }
+  .rb__b.is-on { background: #1c1e1e; box-shadow: inset 0 0 0 1px #ff8a5c; }
+  .rb__b.is-on small { color: #ff8a5c; }
+  .rb__b:not(.is-on) span { max-height: 0; }
+  .rb__b.is-on span { max-height: 8em; margin-top: 6px; }
+  .ss__bar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 12px; margin-bottom: clamp(14px, 2vw, 22px); }
+  .ss__bar p { margin: 6px 0 0; font-size: clamp(16px, 1.4vw, 20px); letter-spacing: -.015em; }
+  .ss__all, .ps__play { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; padding: 9px 14px; border-radius: 8px; background: #a7f3c0; color: #0d1f14; }
+  .ss__all[aria-pressed="true"], .ps__play[aria-pressed="true"] { background: #ff8a5c; color: #1d0f08; }
+  .ss__grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(8px, 1vw, 14px); }
+  .ss__t { position: relative; display: block; width: 100%; border-radius: 10px; overflow: hidden; background: #000; }
+  .ss__t img { display: block; width: 100%; height: auto; filter: grayscale(1) brightness(.35) contrast(1.2); transition: filter .5s; }
+  .ss__t:hover img { filter: grayscale(.6) brightness(.6); }
+  .ss__t[aria-pressed="true"] img { filter: none; animation: ssflick .5s steps(2) var(--d, 0s) both; }
+  @keyframes ssflick { 0% { opacity: .2; } 30% { opacity: 1; } 45% { opacity: .4; } 60%, 100% { opacity: 1; } }
+  .ss__t span { position: absolute; left: 10px; bottom: 8px; font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: #8a8f90; }
+  .ss__t[aria-pressed="true"] span { color: #e8e8e8; }
+  .ss__t em { position: absolute; right: 8px; top: 8px; font-style: normal; font-family: var(--mono); font-size: 10px; padding: 3px 7px; border-radius: 999px; background: #ff8a5c; color: #1d0f08; opacity: 0; transform: translateY(-4px); transition: opacity .3s .2s, transform .3s .2s; }
+  .ss__t[aria-pressed="true"] em { opacity: 1; transform: none; }
+  .ps__top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .ps__stage { position: relative; aspect-ratio: 16 / 9; border-radius: 10px; overflow: hidden; background: #2a2a2a; }
+  .ps__stage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; transform: scale(1.03); transition: opacity .5s var(--ease), transform .8s var(--ease); }
+  .ps__stage img:last-child { object-fit: cover; }
+  .ps__stage img.is-on { opacity: 1; transform: none; }
+  .ps__r { width: 100%; margin: 16px 0 6px; accent-color: #ff8a5c; }
+  .ps__steps { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; }
+  .ps__steps button { padding: 8px 2px 4px; border-top: 2px solid #2a2c2d; font-size: 14px; color: #8a8f90; transition: color .25s, border-color .25s; }
+  .ps__steps button small { display: block; font-family: var(--mono); font-size: 11px; }
+  .ps__steps button:hover { color: #e8e8e8; }
+  .ps__steps button.is-done { border-color: #5a5f60; }
+  .ps__steps button.is-on { color: #fff; border-color: #ff8a5c; }
+  .ps__note { margin: 10px 2px 0; font-size: clamp(16px, 1.4vw, 20px); letter-spacing: -.015em; min-height: 2.6em; }
+  @media (max-width: 900px) {
+    .rb__note, .rb__main { grid-template-columns: 1fr; }
+    .ss__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 600px) {
+    .ps__steps button { font-size: 11px; }
+    .rb__b span { font-size: 13px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .rb__stage img, .ps__stage img, .ss__t img { transition: none; animation: none !important; }
+  }
+  :is(.ip, .iw, .a2, .gx-pair) { color: #111110; }
 </style>
 <link rel="stylesheet" href="../assets/readable-type.css">
 </head>
@@ -616,14 +910,14 @@
 <main>
   <section class="hero" aria-labelledby="title">
     <div class="wrap">
-      <div class="hero__kicker">Side quests · 4 projects</div>
+      <div class="hero__kicker">Artifacts · 7 projects</div>
       <h1 id="title" class="display hero__title hero__title--pd">
         <svg class="eye eye--hero" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg>
-        <span>Side</span> <span style="color:var(--accent)">quests</span>
+        <span>Arti<span style="color:var(--accent)">facts</span></span>
       </h1>
       <div class="hero__intro">
-        <p class="hero__lede">What I make when nobody's briefing me: a pixel art app, a soundtrack made of art tools, a hand-painted Gundam and a camera roll.</p>
-        <dl class="meta"><div><dt>Quests</dt><dd>App · soundtrack · model kit · photos</dd></div><div><dt>Tools</dt><dd>React, Ableton, Adobe Suite, Tamiya paints</dd></div><div><dt>Years</dt><dd>2018 → 2026</dd></div><div><dt>Why</dt><dd>Craft outside the brief feeds the work inside it</dd></div></dl>
+        <p class="hero__lede">What I make when nobody's briefing me: a pixel art app, isometric 3D loops, two music shorts, a browser groovebox, a soundtrack made of art tools, a hand-painted Gundam and a camera roll.</p>
+        <dl class="meta"><div><dt>Projects</dt><dd>App · 3D loops · music shorts · groovebox · soundtrack · model kit · photos</dd></div><div><dt>Tools</dt><dd>React, Cinema 4D, Firefly, Suno, Ableton, Web Audio, Tamiya paints</dd></div><div><dt>Years</dt><dd>2016 → 2026</dd></div><div><dt>Why</dt><dd>Craft outside the brief feeds the work inside it</dd></div></dl>
       </div>
       <figure class="hero__media frame" style="margin-left:0;margin-right:0;margin-bottom:0">
         <img src="assets/hero.jpg" alt="Collage: a painted Gundam, the NCA Triennale title card, a calico cat and Byte, the Pixel Pals mascot" fetchpriority="high" width="1600" height="900">
@@ -635,10 +929,10 @@
     <div class="ticker__track"><span>Make</span><span>Play</span><span>Shoot</span><span>Repeat</span><span>Make</span><span>Play</span><span>Shoot</span><span>Repeat</span><span>Make</span><span>Play</span><span>Shoot</span><span>Repeat</span><span>Make</span><span>Play</span><span>Shoot</span><span>Repeat</span></div>
   </div>
 
-  <section id="index" aria-label="Side quests" style="padding-bottom:0">
+  <section id="index" aria-label="Artifacts" style="padding-bottom:0">
     <div class="wrap">
-      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>00</b> Four side quests</div>
-      <nav class="jump reveal" aria-label="Side quests on this page"><a href="#pixel-pals"><small>01</small>Pixel Pals</a><a href="#soundtrack"><small>02</small>Soundtrack &amp; film</a><a href="#gundam"><small>03</small>Gundam build</a><a href="#photography"><small>04</small>Photography</a></nav>
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>00</b> Seven artifacts</div>
+      <nav class="jump reveal" aria-label="Artifacts on this page"><a href="#pixel-pals"><small>01</small>Pixel Pals</a><a href="#isotwist"><small>02</small>Isotwist</a><a href="#art2d2"><small>03</small>Art2D2</a><a href="#bit-groovebox"><small>04</small>BIT Groovebox</a><a href="#soundtrack"><small>05</small>Soundtrack &amp; film</a><a href="#gundam"><small>06</small>Gundam build</a><a href="#photography"><small>07</small>Photography</a></nav>
     </div>
   </section>
 
@@ -665,13 +959,107 @@
         <div class="tag reveal"><b>A tour that watches</b><p>No Next button. Byte asks for one thing and waits until the drawing shows it.</p></div>
         <div class="tag reveal"><b>Built by hand</b><p>GIF export, photo-to-pixels dithering and 80 levels of undo, with no drawing library.</p></div>
       </div>
-      <div class="ext reveal"><a class="solid" href="https://claude.ai/code/artifact/946568b1-f8f0-492f-938a-3d26b0921378" target="_blank" rel="noopener">Open Pixel Pals ↗</a><a class="" href="https://claude.ai/code/artifact/68ac11ab-4f92-4a07-87c5-b6f5bd252410" target="_blank" rel="noopener">Read the case study ↗</a></div>
+      <p class="sub-h reveal">Time machine</p>
+      <p class="sub reveal"><b>Teach first. Pencil second.</b> Before the editor opens, Byte runs a ten-stop tour of pixel history, from the first digital photo in 1957 to Minecraft. Every stop has something to do.</p>
+      <div class="flow"><article class="reveal"><small>01</small><b>Kids / Grown-ups</b><p>One switch adds a deep-dive for the adult in the room.</p></article><article class="reveal"><small>02</small><b>Read to me</b><p>For kids still learning to read.</p></article><article class="reveal"><small>03</small><b>Quiz, sticker, stamp</b><p>A right answer wins a sticker that becomes a stamp in the editor.</p></article></div>
+      <div class="px"><div class="px__bar"><span>Byte's time machine</span><span>10 stickers</span></div><div class="px-stops" id="px-stops"></div></div>
+<p class="sub-h reveal">The tour</p>
+      <p class="sub reveal"><b>A tutorial that watches.</b> No Next button. Byte asks for one small thing, highlights the panel, then waits for the drawing to change.</p>
+      <div class="px"><div class="px__bar"><span>Byte's tour</span><span>Ask / watch</span></div><div class="px-scroll"><table class="px-tour"><thead><tr><th>Step</th><th>Byte asks</th><th>The app watches</th></tr></thead><tbody><tr><td class="px-step">Toolbox</td><td>Draw three squares with the pencil.</td><td class="px-watch"><code>strokes ≥ 3</code></td></tr><tr><td class="px-step">Brush</td><td>Turn Mirror X on, or pick a bigger brush.</td><td class="px-watch"><code>mirror || brush > 1</code></td></tr><tr><td class="px-step">Colours</td><td>Change one colour with the colour box.</td><td class="px-watch"><code>palette == custom</code></td></tr><tr><td class="px-step">Grid</td><td>Try the 16 button, then move the zoom slider.</td><td class="px-watch"><code>zoom touched</code></td></tr><tr><td class="px-step">Timeline</td><td>Add a second frame.</td><td class="px-watch"><code>frames ≥ 2</code></td></tr><tr><td class="px-step">Photo</td><td>Open a photo. Any picture will do.</td><td class="px-watch"><code>reference loaded</code></td></tr><tr><td class="px-step">Export</td><td>Press Save to keep it in your gallery.</td><td class="px-watch"><code>saved || exported</code></td></tr></tbody></table></div></div>
+<p class="sub-h reveal">Challenges</p>
+      <p class="sub reveal"><b>Exercises that mark their own work.</b> Each one grades the pixels honestly and says what to fix. One Restore puts the drawing back exactly as it was.</p>
+      <div class="px"><div class="px__bar"><span>Challenges</span><span>Pass conditions</span></div><div class="px-cards"><div class="px-card"><b>Draw a heart</b><p>Fill in the faint guide under the grid.</p><span class="ok">Pass · 70% covered, spill under 30%</span><span class="no">“Keep going, 41% of the heart is filled.”</span></div><div class="px-card"><b>Make it bounce</b><p>Draw a ball, duplicate the frame, move it down, press play.</p><span class="ok">Pass · 2 frames that differ</span><span class="no">“The two frames look the same.”</span></div><div class="px-card"><b>Recolour it</b><p>Repaint a face until it looks like someone you know.</p><span class="ok">Pass · 3+ colours, palette edited</span><span class="no">“Now change a colour itself.”</span></div><div class="px-card"><b>Make an emoji</b><p>A 12×12 face in three colours.</p><span class="ok">Pass · 12×12, 3 colours</span><span class="no">“Try one more colour.”</span></div><div class="px-card"><b>Four greens</b><p>Draw with the Game Boy palette.</p><span class="ok">Pass · All four shades used</span><span class="no">“One green is still missing.”</span></div></div></div>
+<p class="sub-h reveal">The system</p>
+      <p class="sub reveal"><b>Four characters. Eight palettes.</b> All the art is written as rows of text. Each character is a tone, not a colour, so one sprite re-shades itself in any palette.</p>
+      <div class="px"><div class="px__bar"><span>One sprite</span><span>8 palettes</span></div><div class="px-ramp"><div><b>#</b><span>Darkest ink</span></div><div><b>+</b><span>Mid tone</span></div><div><b>−</b><span>Light tone</span></div><div><b>.</b><span>Transparent</span></div></div><div class="px-pals" id="px-pals"></div><div class="px__bar px__bar--sub"><span>Toolbar</span><span>10 icons · 8×8</span></div><div class="px-icons" id="px-icons"></div></div>
+<p class="sub-h reveal">Built by hand</p>
+      <p class="sub reveal"><b>Smaller than the libraries it replaces.</b> Exports to PNG, round PNG, sprite sheet and GIF, one click each.</p>
+      <div class="flow"><article class="reveal"><small>01</small><b>GIF encoder</b><p>Written from scratch: about 60 lines instead of a 40 KB dependency.</p></article><article class="reveal"><small>02</small><b>Photo to pixels</b><p>A Bayer dither maps any photo onto the palette, ready to trace.</p></article><article class="reveal"><small>03</small><b>Mirror X</b><p>Every stroke paints both sides, so faces come out even.</p></article><article class="reveal"><small>04</small><b>Undo × 80</b><p>Eighty steps back per frame, so it feels safe to try things.</p></article></div>
+<p class="sub-h reveal">Honest copy</p>
+      <p class="sub reveal"><b>Honest, even in a toy.</b> Each kid gets a name and a passcode. Nothing leaves the computer: no account, no upload, no analytics.</p>
+      <blockquote class="px-quote reveal"><p>Names and drawings are kept on this computer only. The passcode keeps a sibling out of your gallery. It is not real security, so do not use a password from anywhere else.</p><cite>Welcome screen</cite></blockquote>
+      <div class="ext reveal"><a class="solid" href="https://claude.ai/artifact/927w6nkdPRk7oAnkuimowP" target="_blank" rel="noopener">Open Pixel Pals ↗</a><a class="" href="https://claude.ai/code/artifact/68ac11ab-4f92-4a07-87c5-b6f5bd252410" target="_blank" rel="noopener">Read the case study ↗</a></div>
+    </div>
+  </section>
+
+  <section id="isotwist" class="proj" aria-labelledby="isotwist-h">
+    <div class="wrap">
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>02</b> Isotwist</div>
+      <h2 id="isotwist-h" class="display h2 reveal">Small worlds, <span style="color:var(--accent)">on a tilt.</span></h2>
+      
+      <p class="sub reveal">Four looping 3D art pieces from 2016. Everyday things, turned thirty degrees and set spinning. Sketched in Photoshop and Illustrator, modelled and animated in Cinema 4D, finished in After Effects.</p>
+      <div class="chips reveal"><span>2016</span><span>Photoshop</span><span>Illustrator</span><span>Cinema 4D</span><span>After Effects</span></div>
+      
+      <p class="sub-h reveal">The series</p>
+      <p class="sub reveal"><b>Small worlds, on a tilt.</b> Four everyday things, turned at thirty degrees and set on a loop. Pick one, slow it down, or twist time with the slider.</p>
+      <div class="ip reveal" style="--c:#e9796f"><div class="ip__tabs" role="group" aria-label="Pick a piece"><button type="button" class="is-on" aria-pressed="true" data-i="camera" data-note="A wall of CCTV cameras, all turning together." data-alt="A coral wall covered in rows of white CCTV cameras that turn in unison" style="--c:#e9796f"><i></i>Camera</button><button type="button" class="" aria-pressed="false" data-i="spinner" data-note="A field of fidget spinners on sticks, spinning in step." data-alt="Rows of orange fidget spinners on wooden posts spinning on a green ground" style="--c:#4f9a47"><i></i>Spinner</button><button type="button" class="" aria-pressed="false" data-i="toasted" data-note="A toaster that pops up reactions instead of toast." data-alt="A red toaster on blue that pops out laughing, surprised and heart reaction emojis" style="--c:#6d9ad6"><i></i>Toasted</button><button type="button" class="" aria-pressed="false" data-i="trumpdump" data-note="A sliding-tile puzzle that never quite comes together." data-alt="An isometric sliding-tile puzzle of Donald Trump’s face, tiles shuffling on teal" style="--c:#5fd8c4"><i></i>Trump Dump</button></div><div class="ip__room"><div class="ip__card"><video class="ip__v" src="../side-quests/assets/isotwist-camera.mp4" poster="../side-quests/assets/isotwist-camera.jpg" muted loop playsinline preload="metadata" aria-label="A coral wall covered in rows of white CCTV cameras that turn in unison"></video></div></div><div class="ip__ctl"><button type="button" class="ip__pp" aria-pressed="true" aria-label="Pause">❚❚</button><label class="ip__scrub"><span>Twist time</span><input type="range" min="0" max="1000" value="0" aria-label="Scrub through the loop"></label><div class="ip__speed" role="group" aria-label="Speed"><button type="button" data-r=".25">¼×</button><button type="button" data-r=".5">½×</button><button type="button" class="is-on" data-r="1">1×</button><button type="button" data-r="2">2×</button></div><button type="button" class="ip__iso" aria-pressed="false">Tilt to iso</button></div><p class="ip__note" aria-live="polite">A wall of CCTV cameras, all turning together.</p></div>
+      <p class="sub-h reveal">Process</p>
+      <p class="sub reveal"><b>Sketch, design, model, move.</b> Each piece went through the same four tools, from a rough idea to a square loop.</p>
+      <ol class="iw reveal"><li style="--d:0.0s"><small>01</small><b>Sketch</b><em>Photoshop</em><p>Rough ideas first: one object, one joke, one colour.</p></li><li style="--d:0.1s"><small>02</small><b>Design</b><em>Illustrator</em><p>Clean shapes and a flat palette, drawn on an isometric grid.</p></li><li style="--d:0.2s"><small>03</small><b>Model & animate</b><em>Cinema 4D</em><p>Built in 3D, lit softly and set on a loop that never ends.</p></li><li style="--d:0.3s"><small>04</small><b>Finish</b><em>After Effects</em><p>Colour, timing and the final square render.</p></li></ol>
+    </div>
+  </section>
+
+  <section id="art2d2" class="proj" aria-labelledby="art2d2-h">
+    <div class="wrap">
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>03</b> Art2D2</div>
+      <h2 id="art2d2-h" class="display h2 reveal">Directed in <span style="color:var(--accent)">picture and sound.</span></h2>
+      
+      <p class="sub reveal">Two short, art-directed music videos. I made the pictures with Adobe Firefly and Codex, wrote the music with Suno and Ableton Live 12, and cut them together in After Effects. Tap the speaker for sound.</p>
+      <div class="chips reveal"><span>2026</span><span>Adobe Firefly</span><span>Codex</span><span>Suno</span><span>Ableton Live 12</span><span>After Effects</span></div>
+      <div class="a2" aria-label="Art2D2 films"><article class="a2__c reveal" style="--c:#e23a3a"><div class="a2__scr"><video class="a2__v" src="../side-quests/assets/art2d2-mein.mp4" poster="../side-quests/assets/art2d2-mein.jpg" muted loop playsinline preload="metadata" aria-label="Mein: chrome and red portraits, mirrored top to bottom, cutting to a dark face in a white knit"></video><button type="button" class="a2__snd" aria-pressed="false" aria-label="Unmute Mein"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="a2__cone" d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path class="a2__on" d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/><path class="a2__off" d="M16 9.5l5 5M21 9.5l-5 5"/></svg></button></div><div class="a2__info"><small>01 / 02</small><h3>Mein</h3><p class="a2__d">Cold and close. Chrome skin and red light, faces folded into mirror images, then a sudden warm cut to a face in white knit.</p><div class="a2__meta"><span>Play head</span><span class="a2__time">0:00</span></div><div class="a2__bar" role="slider" tabindex="0" aria-label="Mein position" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i></i></div><div class="a2__fs"><button type="button" class="a2__f" data-k="0" aria-label="Jump to frame 1 of Mein"><img src="../side-quests/assets/art2d2/mein-0.jpg" alt="" loading="lazy" width="180" height="320"></button><button type="button" class="a2__f" data-k="1" aria-label="Jump to frame 2 of Mein"><img src="../side-quests/assets/art2d2/mein-1.jpg" alt="" loading="lazy" width="180" height="320"></button><button type="button" class="a2__f" data-k="2" aria-label="Jump to frame 3 of Mein"><img src="../side-quests/assets/art2d2/mein-2.jpg" alt="" loading="lazy" width="180" height="320"></button><button type="button" class="a2__f" data-k="3" aria-label="Jump to frame 4 of Mein"><img src="../side-quests/assets/art2d2/mein-3.jpg" alt="" loading="lazy" width="180" height="320"></button><button type="button" class="a2__f" data-k="4" aria-label="Jump to frame 5 of Mein"><img src="../side-quests/assets/art2d2/mein-4.jpg" alt="" loading="lazy" width="180" height="320"></button><button type="button" class="a2__f" data-k="5" aria-label="Jump to frame 6 of Mein"><img src="../side-quests/assets/art2d2/mein-5.jpg" alt="" loading="lazy" width="180" height="320"></button><button type="button" class="a2__f" data-k="6" aria-label="Jump to frame 7 of Mein"><img src="../side-quests/assets/art2d2/mein-6.jpg" alt="" loading="lazy" width="180" height="320"></button><button type="button" class="a2__f" data-k="7" aria-label="Jump to frame 8 of Mein"><img src="../side-quests/assets/art2d2/mein-7.jpg" alt="" loading="lazy" width="180" height="320"></button><button type="button" class="a2__f" data-k="8" aria-label="Jump to frame 9 of Mein"><img src="../side-quests/assets/art2d2/mein-8.jpg" alt="" loading="lazy" width="180" height="320"></button><button type="button" class="a2__f" data-k="9" aria-label="Jump to frame 10 of Mein"><img src="../side-quests/assets/art2d2/mein-9.jpg" alt="" loading="lazy" width="180" height="320"></button></div></div></article><article class="a2__c reveal" style="--c:#3b6fd8"><div class="a2__scr"><video class="a2__v" src="../side-quests/assets/art2d2-wajd.mp4" poster="../side-quests/assets/art2d2-wajd.jpg" muted loop playsinline preload="metadata" aria-label="Wajd: a dervish in maroon robes dancing under a single blue spotlight in smoke"></video><button type="button" class="a2__snd" aria-pressed="false" aria-label="Unmute Wajd"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="a2__cone" d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path class="a2__on" d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/><path class="a2__off" d="M16 9.5l5 5M21 9.5l-5 5"/></svg></button></div><div class="a2__info"><small>02 / 02</small><h3>Wajd</h3><p class="a2__d">Warm and wild. A single dancer in maroon robes, lost in the music under one blue spotlight. Wajd is the Sufi word for that state.</p><div class="a2__meta"><span>Play head</span><span class="a2__time">0:00</span></div><div class="a2__bar" role="slider" tabindex="0" aria-label="Wajd position" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i></i></div><div class="a2__fs"><button type="button" class="a2__f" data-k="0" aria-label="Jump to frame 1 of Wajd"><img src="../side-quests/assets/art2d2/wajd-0.jpg" alt="" loading="lazy" width="180" height="320"></button><button type="button" class="a2__f" data-k="1" aria-label="Jump to frame 2 of Wajd"><img src="../side-quests/assets/art2d2/wajd-1.jpg" alt="" loading="lazy" width="180" height="320"></button><button type="button" class="a2__f" data-k="2" aria-label="Jump to frame 3 of Wajd"><img src="../side-quests/assets/art2d2/wajd-2.jpg" alt="" loading="lazy" width="180" height="320"></button><button type="button" class="a2__f" data-k="3" aria-label="Jump to frame 4 of Wajd"><img src="../side-quests/assets/art2d2/wajd-3.jpg" alt="" loading="lazy" width="180" height="320"></button><button type="button" class="a2__f" data-k="4" aria-label="Jump to frame 5 of Wajd"><img src="../side-quests/assets/art2d2/wajd-4.jpg" alt="" loading="lazy" width="180" height="320"></button><button type="button" class="a2__f" data-k="5" aria-label="Jump to frame 6 of Wajd"><img src="../side-quests/assets/art2d2/wajd-5.jpg" alt="" loading="lazy" width="180" height="320"></button><button type="button" class="a2__f" data-k="6" aria-label="Jump to frame 7 of Wajd"><img src="../side-quests/assets/art2d2/wajd-6.jpg" alt="" loading="lazy" width="180" height="320"></button><button type="button" class="a2__f" data-k="7" aria-label="Jump to frame 8 of Wajd"><img src="../side-quests/assets/art2d2/wajd-7.jpg" alt="" loading="lazy" width="180" height="320"></button><button type="button" class="a2__f" data-k="8" aria-label="Jump to frame 9 of Wajd"><img src="../side-quests/assets/art2d2/wajd-8.jpg" alt="" loading="lazy" width="180" height="320"></button><button type="button" class="a2__f" data-k="9" aria-label="Jump to frame 10 of Wajd"><img src="../side-quests/assets/art2d2/wajd-9.jpg" alt="" loading="lazy" width="180" height="320"></button></div></div></article></div>
+      <p class="sub-h reveal">Process</p>
+      <p class="sub reveal"><b>Pictures, sound, cut.</b> I directed both sides at once, so the picture and the music grew up together.</p>
+      <ol class="iw reveal"><li><small>01</small><b>Art direction</b><em>Adobe Firefly · Codex</em><p>Every look and every shot, generated and refined until it felt right.</p></li><li><small>02</small><b>Music</b><em>Suno</em><p>The songs, written for the pictures.</p></li><li><small>03</small><b>Arrange & mix</b><em>Ableton Live 12</em><p>Cut to length, arranged and mixed.</p></li><li><small>04</small><b>Edit</b><em>After Effects</em><p>Cut to the beat, graded and finished.</p></li></ol>
+    </div>
+  </section>
+
+  <section id="bit-groovebox" class="proj" aria-labelledby="bit-groovebox-h">
+    <div class="wrap">
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>04</b> BIT Groovebox</div>
+      <h2 id="bit-groovebox-h" class="display h2 reveal">Your sound. <span style="color:var(--accent)">Your system.</span></h2>
+      
+      <p class="sub reveal">An eight-track groovebox that runs in the browser, built from my own hardware-style Figma concept. Eight tracks, eight patterns, sixteen steps.</p>
+      <div class="chips reveal"><span>Web Audio</span><span>Plain JavaScript</span><span>Web MIDI</span><span>Faderfox LV3</span></div>
+      <figure class="frame reveal wide" style="aspect-ratio:1600 / 1000"><video class="lv" src="assets/groove-loop.mp4" poster="assets/groove-loop.jpg" muted loop playsinline preload="none" aria-label="The BIT groovebox playing: transport, scope meters, sound, perform and mixer modules with the step sequencer"></video><span class="cap">BIT, playing</span></figure>
+      <p class="sub-h reveal">Overview</p>
+      <p class="sub reveal"><b>A little structure. Endless possibility.</b> It started as a Figma sketch of a hardware sequencer. Now it plays: a responsive four-module workspace with circular step pads, eight faders and an A/B effects crossfader.</p>
+      <div class="flow"><article class="reveal"><small>01</small><b>Sequence</b><p>Eight patterns, eight tracks, sixteen steps. Velocity, probability and note per step.</p></article><article class="reveal"><small>02</small><b>Sound</b><p>Drum and synth engines, or load your own sample.</p></article><article class="reveal"><small>03</small><b>Mix</b><p>Eight faders, mute, solo and a master level.</p></article><article class="reveal"><small>04</small><b>Perform</b><p>Two effect scenes and a crossfader between them.</p></article></div>
+      <div class="jrow reveal"><figure class="frame reveal" style="flex:1.6000 1 0%;aspect-ratio:2400 / 1500"><img src="../side-quests/assets/groove-ui-dark.jpg" alt="The full BIT workspace in dark mode: transport, screen, sound, perform and mixer" loading="lazy" width="2400" height="1500"><span class="cap">The workspace, dark mode</span></figure></div>
+      <p class="sub-h reveal">Where it started</p>
+      <p class="sub reveal"><b>It started with hardware.</b> Before any code, a Figma board of the boxes I love to play. Then sketches, screens and layouts, until the idea was ready to build.</p>
+      <div class="rb reveal"><div class="rb__note"><span>Figma note, day one</span><p>“The idea is to create a software plugin inspired by the Faderfox MIDI controller. To use as a looper / groovebox, something like the Octatrack MK2.”</p></div><div class="rb__main"><div class="rb__stage"><img class="is-on" src="../side-quests/assets/groove-ref-lv3.jpg" alt="Faderfox LV3" loading="lazy" width="800" height="1200"><img class="" src="../side-quests/assets/groove-ref-octatrack.jpg" alt="Elektron Octatrack MKII" loading="lazy" width="1600" height="862"><img class="" src="../side-quests/assets/groove-ref-circuit.jpg" alt="Novation Circuit Tracks" loading="lazy" width="1400" height="1117"><img class="" src="../side-quests/assets/groove-ref-polyend.jpg" alt="Polyend Play" loading="lazy" width="1600" height="1175"><img class="" src="../side-quests/assets/groove-ref-smpltrek.jpg" alt="Sonicware SmplTrek" loading="lazy" width="1400" height="1230"></div><ul class="rb__list"><li><button type="button" class="rb__b is-on" aria-pressed="true"><small>01 · The spark</small><b>Faderfox LV3</b><span>Faders and buttons in tight rows. The whole idea began as a software version of this controller, and BIT still maps to it.</span></button></li><li><button type="button" class="rb__b" aria-pressed="false"><small>02 · The brain</small><b>Elektron Octatrack MKII</b><span>Eight tracks, a looper at heart and a crossfader between two scenes. BIT’s A/B scenes come straight from here.</span></button></li><li><button type="button" class="rb__b" aria-pressed="false"><small>03 · The colour</small><b>Novation Circuit Tracks</b><span>Pads you can read from across the room. Colour tells you which track you are on.</span></button></li><li><button type="button" class="rb__b" aria-pressed="false"><small>04 · The screen</small><b>Polyend Play</b><span>A big grid and a screen that changes with the job. One display, many views.</span></button></li><li><button type="button" class="rb__b" aria-pressed="false"><small>05 · The size</small><b>Sonicware SmplTrek</b><span>Small, playful and made to carry. Everything within one thumb’s reach.</span></button></li></ul></div></div><div class="ss reveal"><div class="ss__bar"><div><span>Twelve screen ideas</span><p>Little LED screens, drawn before a single sound existed. Tap one to switch it on.</p></div><button type="button" class="ss__all" aria-pressed="false">Power on</button></div><ul class="ss__grid"><li><button type="button" class="ss__t" aria-pressed="false" style="--d:0.00s"><img src="../side-quests/assets/groove-scr-tremolo.jpg" alt="Signal flow screen sketch" loading="lazy" width="516" height="276"><span>Signal flow</span><em>Became the Circuit view</em></button></li><li><button type="button" class="ss__t" aria-pressed="false" style="--d:0.07s"><img src="../side-quests/assets/groove-scr-lfo.jpg" alt="Reel screen sketch" loading="lazy" width="516" height="276"><span>Reel</span><em>Became the Reel view</em></button></li><li><button type="button" class="ss__t" aria-pressed="false" style="--d:0.14s"><img src="../side-quests/assets/groove-scr-envelope.jpg" alt="Envelope screen sketch" loading="lazy" width="516" height="276"><span>Envelope</span></button></li><li><button type="button" class="ss__t" aria-pressed="false" style="--d:0.21s"><img src="../side-quests/assets/groove-scr-drumsampler.jpg" alt="Drum sampler screen sketch" loading="lazy" width="516" height="276"><span>Drum sampler</span></button></li><li><button type="button" class="ss__t" aria-pressed="false" style="--d:0.28s"><img src="../side-quests/assets/groove-scr-dsynth.jpg" alt="Synth panel screen sketch" loading="lazy" width="516" height="276"><span>Synth panel</span></button></li><li><button type="button" class="ss__t" aria-pressed="false" style="--d:0.35s"><img src="../side-quests/assets/groove-scr-delay.jpg" alt="Delay screen sketch" loading="lazy" width="516" height="276"><span>Delay</span></button></li><li><button type="button" class="ss__t" aria-pressed="false" style="--d:0.42s"><img src="../side-quests/assets/groove-scr-eq.jpg" alt="EQ screen sketch" loading="lazy" width="516" height="276"><span>EQ</span></button></li><li><button type="button" class="ss__t" aria-pressed="false" style="--d:0.49s"><img src="../side-quests/assets/groove-scr-arpeggio.jpg" alt="Arpeggio screen sketch" loading="lazy" width="516" height="276"><span>Arpeggio</span></button></li><li><button type="button" class="ss__t" aria-pressed="false" style="--d:0.56s"><img src="../side-quests/assets/groove-scr-digital.jpg" alt="Digital screen sketch" loading="lazy" width="516" height="276"><span>Digital</span></button></li><li><button type="button" class="ss__t" aria-pressed="false" style="--d:0.63s"><img src="../side-quests/assets/groove-scr-fm.jpg" alt="FM screen sketch" loading="lazy" width="516" height="276"><span>FM</span></button></li><li><button type="button" class="ss__t" aria-pressed="false" style="--d:0.70s"><img src="../side-quests/assets/groove-scr-pulse.jpg" alt="Pulse screen sketch" loading="lazy" width="516" height="276"><span>Pulse</span></button></li><li><button type="button" class="ss__t" aria-pressed="false" style="--d:0.77s"><img src="../side-quests/assets/groove-scr-voltage.jpg" alt="Voltage screen sketch" loading="lazy" width="516" height="276"><span>Voltage</span></button></li></ul></div><div class="ps reveal"><div class="ps__top"><span>From sketch to screen</span><button type="button" class="ps__play" aria-pressed="false">▶ Play the process</button></div><div class="ps__stage"><img class="is-on" src="../side-quests/assets/groove-step-sketch.jpg" alt="Sketch: A hardware box called BIT///001: LED screen, step grid, a fader and toggle switches." loading="lazy" width="2240" height="1210"><img class="" src="../side-quests/assets/groove-step-draft.jpg" alt="First draft: Turned upright. Transport, tracks and steps stacked into one column, then three options." loading="lazy" width="1980" height="960"><img class="" src="../side-quests/assets/groove-step-options.jpg" alt="Layouts: Four layouts tested: patterns, tracks, sixteen steps, eight faders and an FX crossfader." loading="lazy" width="2789" height="1260"><img class="" src="../side-quests/assets/groove-step-figma.jpg" alt="Figma build: The final pieces in Figma: the screen with its views, the voice, scenes A and B, faders and pads." loading="lazy" width="2749" height="1303"><img class="" src="../side-quests/assets/groove-ui-dark.jpg" alt="Live: And now it plays, in the browser." loading="lazy" width="2400" height="1500"></div><input class="ps__r" type="range" min="0" max="4" step="1" value="0" aria-label="Process step"><div class="ps__steps"><button type="button" class="is-on" aria-pressed="true" data-note="A hardware box called BIT///001: LED screen, step grid, a fader and toggle switches."><small>01</small>Sketch</button><button type="button" class="" aria-pressed="false" data-note="Turned upright. Transport, tracks and steps stacked into one column, then three options."><small>02</small>First draft</button><button type="button" class="" aria-pressed="false" data-note="Four layouts tested: patterns, tracks, sixteen steps, eight faders and an FX crossfader."><small>03</small>Layouts</button><button type="button" class="" aria-pressed="false" data-note="The final pieces in Figma: the screen with its views, the voice, scenes A and B, faders and pads."><small>04</small>Figma build</button><button type="button" class="" aria-pressed="false" data-note="And now it plays, in the browser."><small>05</small>Live</button></div><p class="ps__note" aria-live="polite">A hardware box called BIT///001: LED screen, step grid, a fader and toggle switches.</p></div>
+      <p class="sub-h reveal">Try it</p>
+      <p class="sub reveal"><b>Tap a step. Press play.</b> A tiny version of the sequencer, running right here. The real one has eight tracks, eight patterns and a lot more knobs.</p>
+      <div class="bx reveal" role="group" aria-label="A playable mini sequencer"><div class="bx__top"><div class="bx__brand"><b>BIT</b><i>///</i><span>Mini sequencer</span></div><div class="bx__ctl"><button type="button" class="bx__play" aria-pressed="false">▶ Play</button><label class="bx__bpm">BPM <input type="range" min="80" max="160" value="112" aria-label="Tempo"><output>112</output></label><button type="button" class="bx__clear">Clear</button></div></div><div class="bx__grid"><div class="bx__row" data-t="0"><button type="button" class="bx__trk" aria-pressed="false" title="Mute Kick">Kick</button><div class="bx__steps"><button type=button class=bx__step aria-label="Kick step 1"></button><button type=button class=bx__step aria-label="Kick step 2"></button><button type=button class=bx__step aria-label="Kick step 3"></button><button type=button class=bx__step aria-label="Kick step 4"></button><button type=button class=bx__step aria-label="Kick step 5"></button><button type=button class=bx__step aria-label="Kick step 6"></button><button type=button class=bx__step aria-label="Kick step 7"></button><button type=button class=bx__step aria-label="Kick step 8"></button><button type=button class=bx__step aria-label="Kick step 9"></button><button type=button class=bx__step aria-label="Kick step 10"></button><button type=button class=bx__step aria-label="Kick step 11"></button><button type=button class=bx__step aria-label="Kick step 12"></button><button type=button class=bx__step aria-label="Kick step 13"></button><button type=button class=bx__step aria-label="Kick step 14"></button><button type=button class=bx__step aria-label="Kick step 15"></button><button type=button class=bx__step aria-label="Kick step 16"></button></div></div><div class="bx__row" data-t="1"><button type="button" class="bx__trk" aria-pressed="false" title="Mute Snare">Snare</button><div class="bx__steps"><button type=button class=bx__step aria-label="Snare step 1"></button><button type=button class=bx__step aria-label="Snare step 2"></button><button type=button class=bx__step aria-label="Snare step 3"></button><button type=button class=bx__step aria-label="Snare step 4"></button><button type=button class=bx__step aria-label="Snare step 5"></button><button type=button class=bx__step aria-label="Snare step 6"></button><button type=button class=bx__step aria-label="Snare step 7"></button><button type=button class=bx__step aria-label="Snare step 8"></button><button type=button class=bx__step aria-label="Snare step 9"></button><button type=button class=bx__step aria-label="Snare step 10"></button><button type=button class=bx__step aria-label="Snare step 11"></button><button type=button class=bx__step aria-label="Snare step 12"></button><button type=button class=bx__step aria-label="Snare step 13"></button><button type=button class=bx__step aria-label="Snare step 14"></button><button type=button class=bx__step aria-label="Snare step 15"></button><button type=button class=bx__step aria-label="Snare step 16"></button></div></div><div class="bx__row" data-t="2"><button type="button" class="bx__trk" aria-pressed="false" title="Mute Hat">Hat</button><div class="bx__steps"><button type=button class=bx__step aria-label="Hat step 1"></button><button type=button class=bx__step aria-label="Hat step 2"></button><button type=button class=bx__step aria-label="Hat step 3"></button><button type=button class=bx__step aria-label="Hat step 4"></button><button type=button class=bx__step aria-label="Hat step 5"></button><button type=button class=bx__step aria-label="Hat step 6"></button><button type=button class=bx__step aria-label="Hat step 7"></button><button type=button class=bx__step aria-label="Hat step 8"></button><button type=button class=bx__step aria-label="Hat step 9"></button><button type=button class=bx__step aria-label="Hat step 10"></button><button type=button class=bx__step aria-label="Hat step 11"></button><button type=button class=bx__step aria-label="Hat step 12"></button><button type=button class=bx__step aria-label="Hat step 13"></button><button type=button class=bx__step aria-label="Hat step 14"></button><button type=button class=bx__step aria-label="Hat step 15"></button><button type=button class=bx__step aria-label="Hat step 16"></button></div></div><div class="bx__row" data-t="3"><button type="button" class="bx__trk" aria-pressed="false" title="Mute Synth">Synth</button><div class="bx__steps"><button type=button class=bx__step aria-label="Synth step 1"></button><button type=button class=bx__step aria-label="Synth step 2"></button><button type=button class=bx__step aria-label="Synth step 3"></button><button type=button class=bx__step aria-label="Synth step 4"></button><button type=button class=bx__step aria-label="Synth step 5"></button><button type=button class=bx__step aria-label="Synth step 6"></button><button type=button class=bx__step aria-label="Synth step 7"></button><button type=button class=bx__step aria-label="Synth step 8"></button><button type=button class=bx__step aria-label="Synth step 9"></button><button type=button class=bx__step aria-label="Synth step 10"></button><button type=button class=bx__step aria-label="Synth step 11"></button><button type=button class=bx__step aria-label="Synth step 12"></button><button type=button class=bx__step aria-label="Synth step 13"></button><button type=button class=bx__step aria-label="Synth step 14"></button><button type=button class=bx__step aria-label="Synth step 15"></button><button type=button class=bx__step aria-label="Synth step 16"></button></div></div></div><div class="bx__fx"><span>A · Clean</span><input type="range" min="0" max="100" value="0" aria-label="Crossfade between clean and dub space"><span>B · Dub space</span></div><p class="bx__hint">Tap a step, press play. Tap a pink track to mute it. Slide to B for filter and echo.</p></div>
+      <p class="sub-h reveal">The screen</p>
+      <p class="sub reveal"><b>Six ways to watch the beat.</b> The display is a playground. Touch or drag it to play notes: across for pitch, up and down for velocity.</p>
+      <div class="gx gx--wide reveal" role="group" aria-label="Screen views"><div class="gx__tabs"><button type="button" class="is-on" aria-pressed="true" data-note="The Figma signal-flow drawing, lit by the audio.">Circuit</button><button type="button" class="" aria-pressed="false" data-note="Reels spin at the tempo over four real sequence lanes.">Reel</button><button type="button" class="" aria-pressed="false" data-note="Four live peak meters, with pan.">Scope</button><button type="button" class="" aria-pressed="false" data-note="A live waveform landscape you can tilt.">Wavefield</button><button type="button" class="" aria-pressed="false" data-note="Nodes that move with pitch and filter.">Vector</button><button type="button" class="" aria-pressed="false" data-note="Particles bouncing to the beat.">Particles</button></div><div class="gx__stage" style="aspect-ratio:1412 / 727"><img class="is-on" src="../side-quests/assets/groove-screen-circuit.jpg" alt="Circuit view: the Figma signal-flow drawing lights up with the audio" loading="lazy" width="1404" height="721"><img class="" src="../side-quests/assets/groove-screen-reel.jpg" alt="Reel view: two spinning reels and four sequence lanes" loading="lazy" width="1412" height="727"><img class="" src="../side-quests/assets/groove-screen-scope.jpg" alt="Scope view: four live peak meters with pan dials" loading="lazy" width="1412" height="727"><img class="" src="../side-quests/assets/groove-screen-wavefield.jpg" alt="Wavefield view: a live waveform landscape" loading="lazy" width="1412" height="727"><img class="" src="../side-quests/assets/groove-screen-vector.jpg" alt="Vector view: nodes driven by pitch and filter" loading="lazy" width="1412" height="727"><img class="" src="../side-quests/assets/groove-screen-particles.jpg" alt="Particles view: moving particles inside a hexagon" loading="lazy" width="1412" height="727"></div><p class="gx__note">The Figma signal-flow drawing, lit by the audio.</p></div>
+      <p class="sub-h reveal">Sound</p>
+      <p class="sub reveal"><b>Shape it by dragging.</b> Each voice has its own engine. Decay, filter, pitch and pan are curves you drag, and the sliders follow.</p>
+      <div class="flow"><article class="reveal"><small>01</small><b>Eight engines</b><p>Analog kick, noise snare, hats, clap, bass, synth and bell.</p></article><article class="reveal"><small>02</small><b>Your samples</b><p>Drop in a WAV, MP3 or OGG up to 20 MB.</p></article><article class="reveal"><small>03</small><b>Audition</b><p>Hear every change before it hits the pattern.</p></article></div>
+      <div class="gx-pair"><div class="gx gx--tall reveal" role="group" aria-label="Sound sculpt views"><div class="gx__tabs"><button type="button" class="is-on" aria-pressed="true" data-note="Drag to shorten or stretch the hit.">Decay</button><button type="button" class="" aria-pressed="false" data-note="Drag to close the low-pass filter.">Filter</button><button type="button" class="" aria-pressed="false" data-note="Drag to tune the voice up or down.">Pitch</button><button type="button" class="" aria-pressed="false" data-note="Drag to place it left or right.">Pan</button></div><div class="gx__stage" style="aspect-ratio:691 / 855"><img class="is-on" src="../side-quests/assets/groove-sculpt-decay.jpg" alt="Sound module with the decay curve" loading="lazy" width="691" height="855"><img class="" src="../side-quests/assets/groove-sculpt-cutoff.jpg" alt="Sound module with the low-pass filter curve" loading="lazy" width="691" height="855"><img class="" src="../side-quests/assets/groove-sculpt-tune.jpg" alt="Sound module with the pitch view" loading="lazy" width="691" height="855"><img class="" src="../side-quests/assets/groove-sculpt-pan.jpg" alt="Sound module with the pan view" loading="lazy" width="691" height="855"></div><p class="gx__note">Drag to shorten or stretch the hit.</p></div><figure class="m reveal" style="--ar:0.8171"><div class="m__box" style="aspect-ratio:688 / 842"><img src="../side-quests/assets/groove-perform.jpg" alt="Perform module: scene A clean, scene B dub space, crossfader between them" loading="lazy" width="688" height="842"></div><figcaption>Perform: two scenes, one crossfader</figcaption></figure></div>
+      <p class="sub-h reveal">Mix & perform</p>
+      <p class="sub reveal"><b>Eight faders. Two scenes.</b> Every track gets a fader, mute and solo. Each scene picks its own effect, amount and beat rate.</p>
+      <div class="chips reveal"><span class="chip">Clean</span><span class="chip">Dub space</span><span class="chip">Low-pass sweep</span><span class="chip">High-pass sweep</span><span class="chip">Beat echo</span><span class="chip">Warehouse reverb</span><span class="chip">Jet flanger</span><span class="chip">Rhythmic tremolo</span><span class="chip">Saturation</span></div>
+      <div class="jrow reveal"><figure class="frame reveal" style="flex:0.8765 1 0%;aspect-ratio:1412 / 1611"><img src="../side-quests/assets/groove-mixer.jpg" alt="Mixer: eight pink track buttons and faders, the 16-step sequence and the pattern bank" loading="lazy" width="1412" height="1611"><span class="cap">Mixer, steps and pattern bank</span></figure></div>
+      <p class="sub-h reveal">Hardware</p>
+      <p class="sub reveal"><b>Hands on, with a Faderfox LV3.</b> Plug in the controller and BIT maps itself. Faders, steps and transport all live on real buttons.</p>
+      <div class="flow"><article class="reveal"><small>01</small><b>Auto-map</b><p>Eight faders set volume; black buttons select tracks.</p></article><article class="reveal"><small>02</small><b>Step rows</b><p>Green and blue rows toggle all sixteen steps, with LED feedback.</p></article><article class="reveal"><small>03</small><b>Transport</b><p>Push the top encoders to stop, play and pause.</p></article></div>
+      <div class="jrow reveal"><figure class="frame reveal" style="flex:1.2995 1 0%;aspect-ratio:2000 / 1539"><img src="../side-quests/assets/groove-midi.jpg" alt="MIDI / LV3 setup panel: connect, guided learn and the incoming message monitor" loading="lazy" width="2000" height="1539"><span class="cap">Guided MIDI setup</span></figure></div>
+      <p class="sub-h reveal">Light & dark</p>
+      <p class="sub reveal"><b>Ivory shell, dark screen.</b> Light mode swaps to ivory with graphite labels and pastel accents. The display always stays dark.</p>
+      <div class="flow"><article class="reveal"><small>01</small><b>Three workspaces</b><p>Studio, Perform and Focus. Hide or reorder any module.</p></article><article class="reveal"><small>02</small><b>Fits the window</b><p>On desktop the whole instrument scales to fit, no scrolling.</p></article></div>
+      <div class="jrow reveal"><figure class="frame reveal" style="flex:1.6000 1 0%;aspect-ratio:2400 / 1500"><img src="../side-quests/assets/groove-ui-light.jpg" alt="The full BIT workspace in light mode" loading="lazy" width="2400" height="1500"><span class="cap">The workspace, light mode</span></figure></div>
+      <p class="sub-h reveal">Under the hood</p>
+      <p class="sub reveal"><b>Built to keep time.</b> No libraries, no build step. Just the browser’s own audio and MIDI.</p>
+      <div class="flow"><article class="reveal"><small>01</small><b>Tight timing</b><p>A 25 ms look-ahead scheduler on the audio clock.</p></article><article class="reveal"><small>02</small><b>Export</b><p>Bounce four bars to a stereo 44.1 kHz WAV.</p></article><article class="reveal"><small>03</small><b>Saves itself</b><p>Projects and samples stay in the browser, or save a portable file.</p></article><article class="reveal"><small>04</small><b>Tested</b><p>Unit tests plus offline checks for every engine and effect.</p></article></div>
+      <div class="ext reveal"><a class="solid" href="https://bit-groovebox-sunshaseb.lilac-ant-5711.chatgpt.site" target="_blank" rel="noopener">Open BIT ↗</a></div>
     </div>
   </section>
 
   <section id="soundtrack" class="proj" aria-labelledby="soundtrack-h">
     <div class="wrap">
-      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>02</b> Soundtrack &amp; film</div>
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>05</b> Soundtrack &amp; film</div>
       <h2 id="soundtrack-h" class="display h2 reveal">150 years of NCA, <span style="color:var(--accent)">played on its own tools.</span></h2>
       
       <p class="sub reveal">"Kasb-e-Kamal Kun", Sonic Tapestry of Artistry. A four-minute soundtrack and film for the first NCA Triennale in 2025, made with Baber Baig, Head of Visual Communication Design. Every sound comes from art-making at the National College of Arts, Lahore.</p>
@@ -685,8 +1073,8 @@
       <p class="sub reveal">Recorded with Ali Aabid's team on a Zoom H6, hydrophones and contact mics, then shaped in Ableton Live: granular pads, gated percussion, pencil taps pitched into kalimba melodies.</p>
       <div class="nca-trio">
         <figure class="frame frame--vid reveal " style="--ar:720 / 900"><video class="lazy-video" src="assets/nca-loop.mp4" poster="assets/nca-loop.jpg" muted loop playsinline preload="none" aria-label="NCA Triennale title card animation on lime"></video><span class="cap">Triennale ident</span></figure>
-        <figure class="frame frame--vid reveal " style="--ar:900 / 810"><video class="lazy-video" src="assets/nca-motion-1.mp4" poster="assets/nca-motion-1.jpg" muted loop playsinline preload="none" aria-label="Grid of film frames from the edit"></video><span class="cap">Edit, part one</span></figure>
-        <figure class="frame frame--vid reveal " style="--ar:900 / 810"><video class="lazy-video" src="assets/nca-motion-2.mp4" poster="assets/nca-motion-2.jpg" muted loop playsinline preload="none" aria-label="Grid of black and white workshop frames"></video><span class="cap">Edit, part two</span></figure>
+        <figure class="frame frame--vid reveal " style="--ar:808 / 784"><video class="lazy-video" src="assets/nca-edit-1-v2.mp4" poster="assets/nca-edit-1-v2.jpg" muted loop playsinline preload="none" aria-label="Grid of film frames from the edit"></video><span class="cap">Edit, part one</span></figure>
+        <figure class="frame frame--vid reveal " style="--ar:808 / 790"><video class="lazy-video" src="assets/nca-edit-2-v2.mp4" poster="assets/nca-edit-2-v2.jpg" muted loop playsinline preload="none" aria-label="Grid of black and white workshop frames"></video><span class="cap">Edit, part two</span></figure>
       </div>
       <div class="ext reveal"><a class="solid" href="https://sunilseb.framer.website/work/nca/" target="_blank" rel="noopener">Full project on my site ↗</a></div>
     </div>
@@ -694,7 +1082,7 @@
 
   <section id="gundam" class="proj" aria-labelledby="gundam-h">
     <div class="wrap">
-      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>03</b> Gundam model making</div>
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>06</b> Gundam model making</div>
       <h2 id="gundam-h" class="display h2 reveal">A Zaku II, <span style="color:var(--accent)">painted from scratch.</span></h2>
       
       <p class="sub reveal">A hobby build: the White Ogre Zaku II Gunpla kit from the original Gundam series, repainted by hand with Tamiya sprays, then shot and art-directed like a product launch.</p>
@@ -718,7 +1106,7 @@
 
   <section id="photography" class="proj" aria-labelledby="photography-h">
     <div class="wrap">
-      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>04</b> Photography</div>
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>07</b> Photography</div>
       <h2 id="photography-h" class="display h2 reveal">Looking, <span style="color:var(--accent)">between projects.</span></h2>
       
       <p class="sub reveal">Street corners, subway signs, cats and quiet light. Shot on the go, kept on Instagram.</p>
@@ -958,5 +1346,255 @@
   go();
 })();
 </script>
+<script>// Pixel Pals v2: time machine stickers, palette re-shading, toolbar icons, and the tour stepping through its checks
+  (() => {
+    const sp = (rows, map, n) => { n = n || rows[0].length; const el = document.createElement('div'); el.className = 'sprite'; el.style.gridTemplateColumns = el.style.gridTemplateRows = `repeat(${n},1fr)`; let h = ''; for (let y = 0; y < n; y++) { const r = (rows[y] || '').padEnd(n, '.'); for (let x = 0; x < n; x++) h += `<i style="background:${map[r[x]] || 'transparent'}"></i>`; } el.innerHTML = h; return el; };
+    const STOPS = [
+      ['1957', 'The first digital photo', ['########','#------#','#-++++-#','#-+##+-#','#-++++-#','#-+--+-#','#------#','########'], {'#':'#4a4a4a','+':'#b9b9b9','-':'#f4f4f0'}],
+      ['1972', 'Play Pong', ['........','#.......','#.....##','#.....##','#.......','#.......','........','........'], {'#':'#e8e8e8'}],
+      ['1978', 'The accidental speed-up', ['#......#','.#.##.#.','..####..','.##..##.','########','#.####.#','..#..#..','.#....#.'], {'#':'#7cfc5a'}],
+      ['1981', 'Why the hero wears a cap', ['........','..####..','.######.','########','######++','........','........','........'], {'#':'#4cc9f0','+':'#118ab2'}],
+      ['1983', 'One shape, two jobs', ['........','...##...','..#--#..','.#----##','#-------','#------#','.######.','........'], {'#':'#2f4459','-':'#ffffff'}],
+      ['1984', 'Icons on graph paper', ['...##...','..####..','.######.','########','.#----#.','.#-##-#.','.#-##-#.','.######.'], {'#':'#e8e8e8','-':'#2b2f31'}],
+      ['1989', 'Four shades of green', ['########','########','++++++++','++++++++','--------','--------','-+-+-+-+','+-+-+-+-'], {'#':'#0f380f','+':'#306230','-':'#9bbc0f'}],
+      ['1990', '32,768 colours', ['..####..','.#--++#.','#--+++##','#-++++##','#+++++##','#++++###','.######.','..####..'], {'#':'#2f4459','+':'#6f8aa6','-':'#f0f4f8'}],
+      ['1999', 'The first emoji', ['..####..','.######.','##-##-##','########','#-####-#','##----##','.######.','..####..'], {'#':'#ffd166','-':'#4a2419'}],
+      ['Now', 'A choice, not a limit', ['...##...','...##...','########','.######.','..####..','.##..##.','##....##','........'], {'#':'#ffd166'}]
+    ];
+    const stops = document.getElementById('px-stops');
+    if (stops) STOPS.forEach(([y, t, art, map]) => { const d = document.createElement('div'); d.className = 'px-stop'; const a = document.createElement('div'); a.className = 'art'; a.appendChild(sp(art, map)); d.appendChild(a); d.insertAdjacentHTML('beforeend', `<b>${y}</b><small>${t}</small>`); stops.appendChild(d); });
+    // One sprite, written once in #, +, -, painted with each palette's dark, mid and light tones
+    const ORB = ['....####....','..##++++##..','.#++----++#.','.#+------+#.','#++--..--++#','#+--....--+#','#+--....--+#','#++--..--++#','.#++----++#.','.##++++++##.','..########..','............'];
+    const PALS = [['GRY', ['#b9b9b9','#6e6e6e','#0a0a0a']], ['GB', ['#9bbc0f','#8bac0f','#306230','#0f380f']], ['AMB', ['#e0a13c','#8a4b00','#3a1f00','#1a0d00']],
+      ['SKIN', ['#fdf0e3','#f5d5b8','#e0aa84','#c9805a','#a05a3c','#7a3f2c','#4a2419','#160c08']], ['POP', ['#fff8e7','#ffd166','#ef476f','#b5179e','#4cc9f0','#118ab2','#073b4c','#0b0b0b']],
+      ['CANDY', ['#fff5fb','#ffd6e8','#ff9ecd','#f56fa1','#a86bd1','#6a4fb3','#39306b','#171429']], ['COOL', ['#f0f4f8','#cbd8e6','#9db3c8','#6f8aa6','#4a6480','#2f4459','#1b2836','#0a1016']],
+      ['EARTH', ['#faf3e0','#e8d9a8','#c9a86a','#a5763f','#7d5230','#5c3a25','#3a2418','#14100c']]];
+    const pals = document.getElementById('px-pals');
+    if (pals) PALS.forEach(([n, c]) => { const L = c.length, map = {'#': c[L - 1], '+': c[Math.floor((L - 1) * .55)], '-': c[Math.floor((L - 1) * .2)]}; const d = document.createElement('div'); d.className = 'px-pal'; const a = document.createElement('div'); a.className = 'art'; a.style.background = c[0]; a.appendChild(sp(ORB, map)); d.appendChild(a); d.insertAdjacentHTML('beforeend', '<div class="sw">' + c.map(x => `<span style="background:${x}"></span>`).join('') + `</div><small>${n} · ${L}</small>`); pals.appendChild(d); });
+    const ICONS = [['Pen', ['......##','.....###','....###.','...###..','..###...','.###....','.##.....','##......']], ['Erase', ['........','....###.','...####.','..####..','.####...','.###....','.####...','........']],
+      ['Fill', ['...#....','..###...','.##.##..','##...##.','#.....#.','##...##.','.#####..','........']], ['Pick', ['......##','.....##.','....##..','...##...','..###...','.###....','.##.....','#.......']],
+      ['Line', ['.......#','......#.','.....#..','....#...','...#....','..#.....','.#......','#.......']], ['Rect', ['........','.######.','.#....#.','.#....#.','.#....#.','.######.','........','........']],
+      ['Oval', ['........','..####..','.#....#.','#......#','#......#','.#....#.','..####..','........']], ['Select', ['........','.#.#.#..','.#....#.','....#...','.#......','.#....#.','..#.#.#.','........']],
+      ['Stamp', ['..####..','..####..','..####..','...##...','...##...','.######.','########','........']], ['Undo', ['........','..####..','.#....#.','#.......','#.###...','.##.....','........','........']]];
+    const icons = document.getElementById('px-icons');
+    if (icons) ICONS.forEach(([n, r]) => { const d = document.createElement('div'); d.className = 'px-icon'; d.appendChild(sp(r, {'#': '#e8e8e8'}, 8)); d.insertAdjacentHTML('beforeend', `<small>${n}</small>`); icons.appendChild(d); });
+    // The tour table steps through its checks while it is on screen
+    const tour = document.querySelector('.px-tour'); if (tour && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const trs = [...tour.querySelectorAll('tbody tr')]; let k = 0, t = 0;
+      const tick = () => { trs.forEach((r, j) => r.classList.toggle('is-on', j === k)); k = (k + 1) % trs.length; };
+      new IntersectionObserver(([e]) => { clearInterval(t); if (e.isIntersecting) { tick(); t = setInterval(tick, 1400); } }, { threshold: .4 }).observe(tour);
+    }
+  })();
+</script>
+<script>
+(() => {
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  // Looping clips play only while on screen
+  const vo = new IntersectionObserver(es => es.forEach(e => { const v = e.target; if (e.isIntersecting) { v.preload = 'auto'; v.play().catch(() => {}); } else v.pause(); }), { threshold: .2 });
+  document.querySelectorAll('video.lv').forEach(v => vo.observe(v));
+})();
+
+  // Isotwist player: pick a piece, pause, scrub, change speed, tilt it with the pointer or into an isometric view
+  (() => {
+    const ip = document.querySelector('.ip'); if (!ip) return;
+    const v = ip.querySelector('.ip__v'), tabs = [...ip.querySelectorAll('.ip__tabs button')], note = ip.querySelector('.ip__note');
+    const pp = ip.querySelector('.ip__pp'), r = ip.querySelector('.ip__scrub input'), sp = [...ip.querySelectorAll('.ip__speed button')];
+    const iso = ip.querySelector('.ip__iso'), room = ip.querySelector('.ip__room'), card = ip.querySelector('.ip__card');
+    const A = v.getAttribute('src').replace(/isotwist-[a-z]+\.mp4$/, '');
+    let rate = 1, want = true, seen = false, scrubbing = false;
+    const setPlay = on => { want = on; pp.setAttribute('aria-pressed', on); pp.textContent = on ? '❚❚' : '▶'; pp.setAttribute('aria-label', on ? 'Pause' : 'Play'); sync(); };
+    const sync = () => { if (want && seen && !scrubbing) v.play().catch(() => {}); else v.pause(); };
+    tabs.forEach(t => t.addEventListener('click', () => {
+      tabs.forEach(x => { x.classList.toggle('is-on', x === t); x.setAttribute('aria-pressed', x === t); });
+      ip.style.setProperty('--c', t.style.getPropertyValue('--c'));
+      v.src = A + 'isotwist-' + t.dataset.i + '.mp4'; v.poster = A + 'isotwist-' + t.dataset.i + '.jpg'; v.setAttribute('aria-label', t.dataset.alt);
+      v.playbackRate = rate; note.textContent = t.dataset.note; r.value = 0; sync();
+    }));
+    v.addEventListener('loadedmetadata', () => { v.playbackRate = rate; });
+    pp.addEventListener('click', () => setPlay(!want));
+    v.addEventListener('timeupdate', () => { if (!scrubbing && v.duration) r.value = Math.round(v.currentTime / v.duration * 1000); });
+    r.addEventListener('pointerdown', () => { scrubbing = true; sync(); });
+    r.addEventListener('input', () => { scrubbing = true; v.pause(); if (v.duration) v.currentTime = r.value / 1000 * v.duration; });
+    const done = () => { if (scrubbing) { scrubbing = false; sync(); } };
+    r.addEventListener('pointerup', done); r.addEventListener('change', done); r.addEventListener('blur', done);
+    sp.forEach(b => b.addEventListener('click', () => { sp.forEach(x => x.classList.toggle('is-on', x === b)); rate = +b.dataset.r; v.playbackRate = rate; }));
+    iso.addEventListener('click', () => { const on = !ip.classList.contains('is-iso'); ip.classList.toggle('is-iso', on); iso.setAttribute('aria-pressed', on); iso.textContent = on ? 'Back to flat' : 'Tilt to iso'; card.style.removeProperty('--rx'); card.style.removeProperty('--ry'); });
+    if (matchMedia('(hover: hover) and (prefers-reduced-motion: no-preference)').matches) {
+      room.addEventListener('pointermove', e => {
+        if (ip.classList.contains('is-iso')) return;
+        const b = card.getBoundingClientRect(), x = (e.clientX - b.left) / b.width - .5, y = (e.clientY - b.top) / b.height - .5;
+        ip.classList.add('is-move'); card.style.setProperty('--ry', (x * 16).toFixed(2) + 'deg'); card.style.setProperty('--rx', (-y * 16).toFixed(2) + 'deg');
+      });
+      room.addEventListener('pointerleave', () => { ip.classList.remove('is-move'); card.style.removeProperty('--rx'); card.style.removeProperty('--ry'); });
+    }
+    new IntersectionObserver(([e]) => { seen = e.isIntersecting; if (seen) v.preload = 'auto'; sync(); }, { threshold: .25 }).observe(ip);
+  })();
+</script>
+<script>
+(() => {
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  // Looping clips play only while on screen
+  const vo = new IntersectionObserver(es => es.forEach(e => { const v = e.target; if (e.isIntersecting) { v.preload = 'auto'; v.play().catch(() => {}); } else v.pause(); }), { threshold: .2 });
+  document.querySelectorAll('video.lv').forEach(v => vo.observe(v));
+})();
+
+  // Art2D2: each film loops silently on screen; the speaker icon mutes or unmutes it (one film with sound at a time)
+  (() => {
+    const cards = [...document.querySelectorAll('.a2__c')]; if (!cards.length) return;
+    const fmt = t => Math.floor(t / 60) + ':' + String(Math.floor(t % 60)).padStart(2, '0');
+    const setSound = (c, on) => {
+      const v = c.querySelector('.a2__v'), b = c.querySelector('.a2__snd'), t = c.querySelector('h3').textContent;
+      v.muted = !on; c.classList.toggle('is-loud', on); b.setAttribute('aria-pressed', on); b.setAttribute('aria-label', (on ? 'Mute ' : 'Unmute ') + t);
+    };
+    cards.forEach(c => {
+      const v = c.querySelector('.a2__v'), b = c.querySelector('.a2__snd'), bar = c.querySelector('.a2__bar'), time = c.querySelector('.a2__time'), fs = [...c.querySelectorAll('.a2__f')];
+      b.addEventListener('click', () => {
+        const on = !c.classList.contains('is-loud');
+        cards.forEach(x => { if (x !== c) setSound(x, false); });
+        setSound(c, on); if (on) v.play().catch(() => {});
+      });
+      v.addEventListener('timeupdate', () => {
+        if (!v.duration) return; const p = v.currentTime / v.duration;
+        bar.style.setProperty('--p', (p * 100).toFixed(2) + '%'); bar.setAttribute('aria-valuenow', Math.round(p * 100)); time.textContent = fmt(v.currentTime) + ' / ' + fmt(v.duration);
+        const k = Math.min(9, Math.floor(p * 10)); fs.forEach((f, j) => f.classList.toggle('is-now', j === k));
+      });
+      const seek = e => { const r = bar.getBoundingClientRect(); if (v.duration) v.currentTime = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width)) * v.duration; };
+      bar.addEventListener('pointerdown', e => { bar.setPointerCapture(e.pointerId); seek(e); bar.addEventListener('pointermove', seek); });
+      bar.addEventListener('pointerup', () => bar.removeEventListener('pointermove', seek));
+      bar.addEventListener('keydown', e => { const d = { ArrowLeft: -1, ArrowRight: 1 }[e.key]; if (d && v.duration) { e.preventDefault(); v.currentTime = Math.max(0, Math.min(v.duration, v.currentTime + d)); } });
+      fs.forEach((f, k) => f.addEventListener('click', () => { if (v.duration) v.currentTime = (k + .5) / 10 * v.duration; v.play().catch(() => {}); }));
+      new IntersectionObserver(([e]) => {
+        if (e.isIntersecting) { v.preload = 'auto'; v.play().catch(() => {}); } else { v.pause(); setSound(c, false); }
+      }, { threshold: .3 }).observe(c);
+    });
+  })();
+</script>
+<script>
+(() => {
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  // Looping clips play only while on screen
+  const vo = new IntersectionObserver(es => es.forEach(e => { const v = e.target; if (e.isIntersecting) { v.preload = 'auto'; v.play().catch(() => {}); } else v.pause(); }), { threshold: .2 });
+  document.querySelectorAll('video.lv').forEach(v => vo.observe(v));
+})();
+
+  // Screen and sculpt switchers
+  document.querySelectorAll('.gx').forEach(g => {
+    const tabs = [...g.querySelectorAll('.gx__tabs button')], imgs = [...g.querySelectorAll('.gx__stage img')], note = g.querySelector('.gx__note');
+    tabs.forEach((t, k) => t.addEventListener('click', () => { tabs.forEach((x, j) => { x.classList.toggle('is-on', j === k); x.setAttribute('aria-pressed', j === k); }); imgs.forEach((m, j) => m.classList.toggle('is-on', j === k)); note.textContent = t.dataset.note; }));
+  });
+  // Mini sequencer: Web Audio drum and synth voices on a look-ahead scheduler
+  (() => {
+    const bx = document.querySelector('.bx'); if (!bx) return;
+    const rows = [...bx.querySelectorAll('.bx__row')], steps = rows.map(r => [...r.querySelectorAll('.bx__step')]);
+    const trks = rows.map(r => r.querySelector('.bx__trk')), play = bx.querySelector('.bx__play');
+    const bpmIn = bx.querySelector('.bx__bpm input'), bpmOut = bx.querySelector('.bx__bpm output'), fx = bx.querySelector('.bx__fx input');
+    const START = ['1000100010001000', '0000100000001000', '1010101010101010', '1001000110010010'];
+    const NOTES = [0, 0, 7, 0, 3, 0, 10, 0, 12, 0, 7, 0, 5, 0, 3, 0];
+    const grid = START.map(r => [...r].map(c => c === '1'));
+    const paint = () => grid.forEach((r, t) => r.forEach((on, i) => steps[t][i].classList.toggle('is-on', on)));
+    steps.forEach((r, t) => r.forEach((b, i) => b.addEventListener('click', () => { grid[t][i] = !grid[t][i]; paint(); })));
+    const muted = [false, false, false, false];
+    trks.forEach((b, t) => b.addEventListener('click', () => { muted[t] = !muted[t]; b.setAttribute('aria-pressed', muted[t]); }));
+    bx.querySelector('.bx__clear').addEventListener('click', () => { grid.forEach(r => r.fill(false)); paint(); });
+    bpmIn.addEventListener('input', () => bpmOut.textContent = bpmIn.value);
+    paint();
+
+    let ac, master, dry, wet, noise, timer = 0, step = 0, next = 0; const queue = [];
+    const init = () => {
+      ac = new (window.AudioContext || window.webkitAudioContext)();
+      master = ac.createGain(); master.gain.value = .8; master.connect(ac.destination);
+      dry = ac.createGain(); wet = ac.createGain(); dry.connect(master);
+      const lp = ac.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 900; lp.Q.value = 4;
+      const dl = ac.createDelay(1); const fb = ac.createGain(); fb.gain.value = .42;
+      wet.connect(lp); lp.connect(master); lp.connect(dl); dl.connect(fb); fb.connect(dl); dl.connect(master);
+      const sync = () => { dl.delayTime.value = 60 / +bpmIn.value * .75; }; sync(); bpmIn.addEventListener('input', sync);
+      noise = ac.createBuffer(1, ac.sampleRate, ac.sampleRate); const d = noise.getChannelData(0); for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
+      const mix = () => { const x = fx.value / 100; dry.gain.setTargetAtTime(Math.cos(x * Math.PI / 2), ac.currentTime, .03); wet.gain.setTargetAtTime(Math.sin(x * Math.PI / 2), ac.currentTime, .03); };
+      mix(); fx.addEventListener('input', mix);
+    };
+    const env = (g, t, peak, dec) => { g.gain.setValueAtTime(peak, t); g.gain.exponentialRampToValueAtTime(.001, t + dec); };
+    const out = g => { g.connect(dry); g.connect(wet); };
+    const VOICE = [
+      t => { const o = ac.createOscillator(), g = ac.createGain(); o.frequency.setValueAtTime(150, t); o.frequency.exponentialRampToValueAtTime(42, t + .12); env(g, t, 1, .4); o.connect(g); out(g); o.start(t); o.stop(t + .42); },
+      t => { const n = ac.createBufferSource(), f = ac.createBiquadFilter(), g = ac.createGain(); n.buffer = noise; f.type = 'highpass'; f.frequency.value = 1300; env(g, t, .55, .18); n.connect(f); f.connect(g); out(g); n.start(t); n.stop(t + .2);
+             const o = ac.createOscillator(), g2 = ac.createGain(); o.type = 'triangle'; o.frequency.value = 190; env(g2, t, .35, .1); o.connect(g2); out(g2); o.start(t); o.stop(t + .12); },
+      t => { const n = ac.createBufferSource(), f = ac.createBiquadFilter(), g = ac.createGain(); n.buffer = noise; f.type = 'highpass'; f.frequency.value = 7500; env(g, t, .25, .05); n.connect(f); f.connect(g); out(g); n.start(t); n.stop(t + .06); },
+      (t, i) => { const o = ac.createOscillator(), f = ac.createBiquadFilter(), g = ac.createGain(); o.type = 'sawtooth'; o.frequency.value = 110 * Math.pow(2, NOTES[i] / 12); f.type = 'lowpass'; f.frequency.setValueAtTime(2400, t); f.frequency.exponentialRampToValueAtTime(300, t + .22); env(g, t, .22, .26); o.connect(f); f.connect(g); out(g); o.start(t); o.stop(t + .28); }
+    ];
+    const tick = () => {
+      const dur = 60 / +bpmIn.value / 4;
+      while (next < ac.currentTime + .1) {
+        grid.forEach((r, t) => { if (r[step] && !muted[t]) VOICE[t](next, step); });
+        queue.push([step, next]); next += dur; step = (step + 1) % 16;
+      }
+      while (queue.length && queue[0][1] <= ac.currentTime) { const [s] = queue.shift(); steps.forEach(r => r.forEach((b, i) => b.classList.toggle('is-now', i === s))); }
+    };
+    const stop = () => { clearInterval(timer); timer = 0; queue.length = 0; steps.forEach(r => r.forEach(b => b.classList.remove('is-now'))); play.textContent = '▶ Play'; play.setAttribute('aria-pressed', 'false'); };
+    play.addEventListener('click', () => {
+      if (!ac) init();
+      if (timer) return stop();
+      ac.resume(); step = 0; next = ac.currentTime + .05; timer = setInterval(tick, 25); tick();
+      play.textContent = '■ Stop'; play.setAttribute('aria-pressed', 'true');
+    });
+    new IntersectionObserver(([e]) => { if (!e.isIntersecting && timer) stop(); }, { threshold: 0 }).observe(bx);
+  })();
+</script>
+<script>(() => {
+  // Reference board: pick a box to see what it gave BIT
+  const rb = document.querySelector('.rb');
+  if (rb) {
+    const bs = [...rb.querySelectorAll('.rb__b')], ims = [...rb.querySelectorAll('.rb__stage img')];
+    bs.forEach((b, k) => b.addEventListener('click', () => {
+      bs.forEach((x, j) => { x.classList.toggle('is-on', j === k); x.setAttribute('aria-pressed', j === k); });
+      ims.forEach((im, j) => im.classList.toggle('is-on', j === k));
+    }));
+  }
+
+  // Screen sketches: switch screens on one by one, or all at once
+  const ss = document.querySelector('.ss');
+  if (ss) {
+    const ts = [...ss.querySelectorAll('.ss__t')], all = ss.querySelector('.ss__all');
+    const sync = () => { const on = ts.every(t => t.getAttribute('aria-pressed') === 'true'); all.setAttribute('aria-pressed', on); all.textContent = on ? 'Power off' : 'Power on'; };
+    ts.forEach(t => t.addEventListener('click', () => { t.style.setProperty('--d', '0s'); t.setAttribute('aria-pressed', t.getAttribute('aria-pressed') !== 'true'); sync(); }));
+    all.addEventListener('click', () => {
+      const on = all.getAttribute('aria-pressed') !== 'true';
+      ts.forEach((t, k) => { t.style.setProperty('--d', (k * .07).toFixed(2) + 's'); t.setAttribute('aria-pressed', on); });
+      sync();
+    });
+  }
+
+  // Sketch to screen: slider, step buttons, or play it through
+  const ps = document.querySelector('.ps');
+  if (ps) {
+    const ims = [...ps.querySelectorAll('.ps__stage img')], bs = [...ps.querySelectorAll('.ps__steps button')];
+    const r = ps.querySelector('.ps__r'), note = ps.querySelector('.ps__note'), play = ps.querySelector('.ps__play');
+    let at = 0, timer = null;
+    const show = n => {
+      at = n; r.value = n; note.textContent = bs[n].dataset.note;
+      ims.forEach((im, k) => im.classList.toggle('is-on', k === n));
+      bs.forEach((b, k) => { b.classList.toggle('is-on', k === n); b.classList.toggle('is-done', k < n); b.setAttribute('aria-pressed', k === n); });
+    };
+    const stop = () => { clearInterval(timer); timer = null; play.setAttribute('aria-pressed', 'false'); play.textContent = '▶ Play the process'; };
+    r.addEventListener('input', () => { stop(); show(+r.value); });
+    bs.forEach((b, k) => b.addEventListener('click', () => { stop(); show(k); }));
+    play.addEventListener('click', () => {
+      if (timer) return stop();
+      ims.forEach(im => { im.loading = 'eager'; });
+      play.setAttribute('aria-pressed', 'true'); play.textContent = '❚❚ Pause';
+      if (at === ims.length - 1) show(0);
+      timer = setInterval(() => { if (at >= ims.length - 1) return stop(); show(at + 1); }, 2600);
+    });
+    new IntersectionObserver(([e]) => { if (!e.isIntersecting) stop(); }).observe(ps);
+  }
+})();
+</script>
+<script>(() => {
+  // Loop clips carried over from V2 play only while on screen
+  const vo = new IntersectionObserver(es => es.forEach(e => { const v = e.target; if (e.isIntersecting) { v.preload = 'auto'; v.play().catch(() => {}); } else v.pause(); }), { threshold: .2 });
+  document.querySelectorAll('video.lv').forEach(v => vo.observe(v));
+})();</script>
 </body>
 </html>

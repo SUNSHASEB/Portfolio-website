@@ -410,6 +410,270 @@
     .swatches--4 .swatch:first-child { grid-column: auto; aspect-ratio: 4 / 3; }
     .circle-list { grid-template-columns: 1fr; }
   }
+
+  /* Carried over from V2: the interactive pieces read these */
+  :root { --card-r: var(--radius); --font: var(--body); --muted: #9a9a96; --line: rgba(255,255,255,.14); --paper-2: #1b1b1b; --night: #0f0f0e; }
+  .rows-v1 > * + * { margin-top: clamp(14px, 1.6vw, 22px); }
+  section .wrap > :is(.sw, .jrow) + :not(.jrow):not(.sw):not(.sub) { margin-top: clamp(14px, 1.6vw, 22px); }
+
+  
+  /* V1 components this page did not have yet */
+  .jrow { display: flex; gap: clamp(10px, 1.4vw, 20px); margin-top: clamp(14px, 1.6vw, 22px); }
+  .jrow .frame { margin: 0; background: #111; }
+  .jrow.first { margin-top: clamp(32px, 4vw, 56px); }
+  @media (max-width: 600px) { .jrow { flex-direction: column; } .jrow .frame { flex: none !important; } }
+  .jrow .frame { margin: 0; flex: 1 1 0%; aspect-ratio: 16 / 9; background: #fff; }
+  @media (max-width: 600px) { .jrow { flex-direction: column; } }
+  .sw { margin-top: clamp(32px, 4vw, 56px); }
+  .sw-tabs { display: flex; flex-wrap: wrap; gap: 8px; }
+  .sw-tab { all: unset; cursor: pointer; border: 1.5px solid rgba(255,255,255,.35); border-radius: 999px; padding: 10px 16px; font-size: 14px; text-transform: uppercase; letter-spacing: .08em; transition: background .2s, color .2s, border-color .2s; }
+  .sw-tab:hover { border-color: #fff; }
+  .sw-tab.is-on { background: var(--accent); border-color: var(--accent); color: #000; }
+  .sw-tab:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+  .sw-stage { position: relative; margin-top: 16px; aspect-ratio: var(--ar, 16 / 9); border-radius: var(--radius); overflow: hidden; background: #1b1b1b; cursor: pointer; }
+  .sw-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.03); transition: opacity .5s var(--ease), transform 1.2s var(--ease); }
+  .sw-img.is-on { opacity: 1; transform: none; }
+  .sw-bar { position: absolute; left: 0; bottom: 0; height: 4px; width: 100%; background: var(--accent); transform-origin: 0 50%; transform: scaleX(0); }
+  .sw-stage.is-auto .sw-bar { animation: swBar 3.8s linear forwards; }
+  @keyframes swBar { to { transform: scaleX(1); } }
+  .sw-notes { position: relative; min-height: 2.4em; margin-top: 12px; }
+  .sw-note { position: absolute; inset: 0 auto auto 0; margin: 0; font-size: clamp(18px, 1.5vw, 22px); opacity: 0; transform: translateY(8px); transition: opacity .35s, transform .35s var(--ease); }
+  .sw-note.is-on { opacity: 1; transform: none; }
+  .flow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(32px, 4vw, 56px); }
+  .flow article { border-radius: var(--radius); padding: clamp(18px, 2vw, 26px); background: #141414; border: 1.5px solid rgba(255,255,255,.08); transition: transform .35s var(--ease), border-color .3s; }
+  .flow article:hover { transform: translateY(-4px); border-color: var(--accent); }
+  .flow small { font-size: 12px; letter-spacing: .14em; color: var(--accent); font-weight: 700; }
+  .flow b { display: block; margin: 8px 0; font-family: var(--body); font-weight: 800; font-size: clamp(20px, 1.6vw, 26px); letter-spacing: -.02em; }
+  .flow p { margin: 0; opacity: .85; }
+  @media (max-width: 960px) { .flow { grid-template-columns: 1fr; } }
+  .cmp { position: relative; margin-top: 20px; border-radius: var(--radius); overflow: hidden; background: #000; --x: 50%; user-select: none; touch-action: pan-y; }
+  .cmp img { display: block; width: 100%; height: auto; pointer-events: none; }
+  .cmp__after { position: absolute; inset: 0; clip-path: inset(0 0 0 var(--x)); }
+  .cmp__after img { height: 100%; object-fit: cover; }
+  .cmp__line { position: absolute; top: 0; bottom: 0; left: var(--x); width: 3px; margin-left: -1.5px; background: var(--accent); pointer-events: none; }
+  .cmp__knob { position: absolute; top: 50%; left: var(--x); width: 56px; height: 56px; margin: -28px 0 0 -28px; border-radius: 50%; background: var(--accent); color: #000; display: grid; place-items: center; font-size: 18px; pointer-events: none; box-shadow: 0 6px 24px rgba(0,0,0,.4); }
+  .cmp__tag { position: absolute; top: 12px; padding: 6px 10px; border-radius: 999px; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; background: rgba(0,0,0,.7); color: #fff; pointer-events: none; }
+  .cmp__tag--b { left: 12px; }
+  .cmp__tag--a { right: 12px; background: var(--accent); color: #000; }
+  .cmp input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; }
+  .cmp input:focus-visible + .cmp__line { box-shadow: 0 0 0 3px var(--yellow); }
+  @media (max-width: 600px) { .cmp__knob { width: 44px; height: 44px; margin: -22px 0 0 -22px; } }
+  .posters { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(32px, 4vw, 56px); }
+  .posters .frame { margin: 0; aspect-ratio: 1311 / 1860; background: #fdf8e4; }
+  .posters .frame:nth-child(even) { transform: translateY(clamp(12px, 3vw, 40px)); }
+  .posters .frame:hover { transform: translateY(-6px) rotate(-1deg); }
+  .posters-gap { height: clamp(12px, 3vw, 40px); }
+  @media (max-width: 960px) { .posters { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  :root { --ih-s: #151515; --ih-s2: #1d1d1d; --ih-w: #F6F6F6; --ih-o: #3E5BA9; --ih-l: #96C93E; --ih-line: rgba(255,255,255,.12); }
+  .rs, .cc, .ll, .lz, .br, .pl, .tt, .vc, .bk { flex: 1 1 100%; min-width: 0; border-radius: var(--card-r); background: var(--ih-s); color: var(--ih-w); }
+  :where(.rs, .cc, .ll, .lz, .br, .pl, .tt, .vc, .bk) button { all: unset; cursor: pointer; box-sizing: border-box; }
+  :where(.rs, .cc, .ll, .lz, .br, .pl, .tt, .vc, .bk) :is(button, input):focus-visible, .bk:focus-visible { outline: 2px solid var(--ih-l); outline-offset: 3px; }
+  .mono { font-family: "Share Tech Mono", ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: #8b8b8b; }
+  .rs > *, .cc > *, .ll > *, .lz > *, .br > *, .pl > *, .tt > *, .vc > * { min-width: 0; }
+  .rs { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(16px, 2.4vw, 36px); padding: clamp(14px, 2vw, 28px); }
+  .rs__stage { position: relative; aspect-ratio: 4 / 5; max-height: 82svh; border-radius: 10px; overflow: hidden; background: #0e0e0e; }
+  .rs__stage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 3%; box-sizing: border-box; opacity: 0; transform: translateY(12px); transition: opacity .5s var(--ease), transform .7s var(--ease); }
+  .rs__stage img.is-on { opacity: 1; transform: none; }
+  .rs__side { display: flex; flex-direction: column; justify-content: space-between; gap: 18px; }
+  .rs__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; counter-reset: s; }
+  .rs__b { display: grid; grid-template-columns: 34px minmax(0, 1fr); column-gap: 10px; width: 100%; padding: 16px 16px; border-radius: 10px; box-shadow: inset 0 0 0 1px var(--ih-line); transition: background .25s, box-shadow .25s; }
+  .rs__b:hover { box-shadow: inset 0 0 0 1px rgba(255,255,255,.3); }
+  .rs__b small { grid-row: span 2; font-family: "Share Tech Mono", monospace; font-size: 13px; color: #6f6f6f; padding-top: 3px; }
+  .rs__b b { font-family: "Orbitron", sans-serif; font-size: 15px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+  .rs__b span { overflow: hidden; max-height: 0; font-size: 14px; line-height: 1.45; color: #b9b9b9; transition: max-height .45s var(--ease), margin .45s var(--ease); }
+  .rs__b.is-on { background: var(--ih-s2); box-shadow: inset 0 0 0 1px var(--ih-l); }
+  .rs__b.is-on small { color: var(--ih-l); }
+  .rs__b.is-on span { max-height: 6em; margin-top: 6px; }
+  .rs__nav { display: flex; align-items: center; gap: 14px; }
+  .rs__nav button { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(255,255,255,.25); font-size: 18px; transition: background .25s, color .25s; }
+  .rs__nav button:hover { background: var(--ih-w); color: var(--ih-s); }
+  .rs__n { font-family: "Share Tech Mono", monospace; font-size: 13px; color: #8b8b8b; }
+  .rs__n b { color: var(--ih-w); font-size: 18px; font-weight: 400; }
+  .cc { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(20px, 4vw, 64px); align-items: center; padding: clamp(20px, 4vw, 60px); }
+  .cc__intro p { margin: 10px 0 0; font-size: clamp(17px, 1.4vw, 21px); line-height: 1.45; max-width: 38ch; }
+  .cc__spin { margin-top: 20px; padding: 10px 16px; border-radius: 999px; box-shadow: inset 0 0 0 1px rgba(255,255,255,.3); font-size: 14px; }
+  .cc__spin[aria-pressed="true"] { background: var(--ih-l); color: #10170a; box-shadow: none; }
+  .cc__ring { position: relative; width: min(100%, 460px); aspect-ratio: 1; justify-self: center; }
+  .cc__ring svg { position: absolute; inset: 0; width: 100%; height: 100%; fill: none; stroke: rgba(255,255,255,.2); stroke-width: 1; }
+  .cc__ring .cc__in { stroke: rgba(255,255,255,.08); }
+  .cc__ring .cc__el { stroke: rgba(62,91,169,.6); animation: ccspin 40s linear infinite; transform-origin: 200px 200px; }
+  @keyframes ccspin { to { transform: rotate(342deg); } }
+  .cc__n { position: absolute; left: 50%; top: 50%; width: 46px; height: 46px; margin: -23px 0 0 -23px; display: grid; place-items: center; border-radius: 50%; background: var(--ih-s); box-shadow: inset 0 0 0 1px rgba(255,255,255,.35); font-family: "Orbitron", sans-serif; font-weight: 700; font-size: 17px; transform: rotate(var(--a)) translateX(var(--r, 172px)) rotate(calc(var(--a) * -1)); transition: background .3s, color .3s, box-shadow .3s, transform .5s var(--ease); }
+  .cc__n:hover { box-shadow: inset 0 0 0 1px var(--ih-w); }
+  .cc__n.is-on { background: var(--ih-l); color: #10170a; box-shadow: 0 0 0 6px rgba(150,201,62,.18); }
+  .cc__core { position: absolute; left: 50%; top: 50%; width: 52%; transform: translate(-50%, -50%); text-align: center; }
+  .cc__core b { display: block; font-family: "Orbitron", sans-serif; font-size: clamp(14px, 1.4vw, 19px); font-weight: 700; letter-spacing: .06em; text-transform: uppercase; line-height: 1.2; }
+  .cc__core span { display: block; margin-top: 8px; font-size: clamp(12px, 1vw, 14px); line-height: 1.4; color: #b9b9b9; }
+  .cc__core.is-swap { animation: ccin .45s var(--ease); }
+  @keyframes ccin { from { opacity: 0; transform: translate(-50%, -42%); } }
+  .ll { padding: clamp(14px, 2vw, 28px); }
+  .ll__bar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; }
+  .ll__grp { display: inline-flex; flex-wrap: wrap; gap: 4px; padding: 4px; border-radius: 999px; background: #222; }
+  .ll__grp button { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; font-size: 13px; transition: background .2s, color .2s; }
+  .ll__grp button small { font-family: "Share Tech Mono", monospace; font-size: 11px; color: #777; }
+  .ll__grp button i { width: 12px; height: 12px; border-radius: 50%; background: var(--c); box-shadow: inset 0 0 0 1px rgba(255,255,255,.3); }
+  .ll__grp button[aria-pressed="true"] { background: var(--ih-w); color: var(--ih-s); }
+  .ll__grp button[aria-pressed="true"] small { color: #555; }
+  .ll__cs { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; cursor: pointer; }
+  .ll__cs input { accent-color: var(--ih-l); width: 16px; height: 16px; }
+  .ll__stage { position: relative; display: grid; place-items: center; height: clamp(300px, 46vw, 560px); margin-top: 14px; border-radius: 10px; background: var(--bgc, #151515); box-shadow: inset 0 0 0 1px var(--ih-line); transition: background .45s var(--ease); overflow: hidden; }
+  .ll[data-bg="white"] .ll__stage { --bgc: #F6F6F6; }
+  .ll[data-bg="lime"] .ll__stage { --bgc: #96C93E; }
+  .ll[data-bg="orbit"] .ll__stage { --bgc: #3E5BA9; }
+  .ll__box { position: relative; display: grid; }
+  .ll__img { grid-area: 1 / 1; height: var(--h); width: auto; opacity: 0; transform: scale(.94); transition: opacity .35s, transform .5s var(--ease), filter .35s; justify-self: center; align-self: center; }
+  .ll__img[data-f="stacked"] { --h: clamp(150px, 22vw, 290px); }
+  .ll__img[data-f="horizontal"] { --h: clamp(44px, 6.4vw, 84px); }
+  .ll__img[data-f="monogram"] { --h: clamp(130px, 18vw, 230px); }
+  .ll__img.is-on { opacity: 1; transform: none; }
+  .ll[data-bg="white"] .ll__img { filter: invert(1) brightness(.08); }
+  .ll__space { position: absolute; pointer-events: none; opacity: 0; transition: opacity .3s; border: 1px solid rgba(150,201,62,.45); outline: 1px dashed var(--ih-l); outline-offset: var(--cs, 40px); box-shadow: 0 0 0 var(--cs, 40px) rgba(150,201,62,.09); }
+  .ll.is-cs .ll__space { opacity: 1; }
+  .ll__x { position: absolute; inset: 0; display: grid; place-items: center; font-size: clamp(120px, 20vw, 260px); color: rgba(223,12,1,.85); opacity: 0; transform: scale(1.3); transition: opacity .3s, transform .4s var(--ease); pointer-events: none; }
+  .ll.is-bad .ll__x { opacity: 1; transform: none; }
+  .ll__note { margin: 12px 2px 0; font-family: "Share Tech Mono", monospace; font-size: 13px; letter-spacing: .06em; color: #b9b9b9; }
+  .ll.is-bad .ll__note { color: #ff6b5e; }
+  .lz { padding: clamp(18px, 3vw, 40px); }
+  .lz__top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 14px; }
+  .lz__top p { margin: 8px 0 0; font-size: clamp(16px, 1.3vw, 19px); max-width: 44ch; }
+  .lz__read { text-align: right; }
+  .lz__px { display: block; font-family: "Orbitron", sans-serif; font-size: clamp(34px, 3.6vw, 56px); font-weight: 700; letter-spacing: .02em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .lz__tier { display: block; margin-top: 6px; font-family: "Share Tech Mono", monospace; font-size: 13px; color: var(--ih-l); }
+  .lz.is-tiny .lz__tier { color: #ff6b5e; }
+  .lz__stage { display: grid; place-items: center; height: 260px; margin-top: 18px; border-radius: 10px; box-shadow: inset 0 0 0 1px var(--ih-line); background: radial-gradient(circle at 50% 50%, #1f1f1f, #151515 70%); }
+  .lz__stage img { grid-area: 1 / 1; width: var(--w, 160px); height: auto; transition: opacity .25s; }
+  .lz__mo { opacity: 0; }
+  .lz.is-mono .lz__st { opacity: 0; }
+  .lz.is-mono .lz__mo { opacity: 1; }
+  .lz.is-tiny .lz__stage img { opacity: .25 !important; }
+  .lz.is-tiny.is-mono .lz__mo { opacity: .25; }
+  .lz__r { width: 100%; margin-top: 18px; accent-color: var(--ih-l); }
+  .lz__scale { list-style: none; margin: 10px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+  .lz__scale li { padding: 10px 12px; border-radius: 8px; box-shadow: inset 0 0 0 1px var(--ih-line); font-size: 13px; color: #8b8b8b; transition: background .25s, color .25s; }
+  .lz__scale small { display: block; font-family: "Share Tech Mono", monospace; font-size: 11px; }
+  .lz__scale li.is-on { background: var(--ih-w); color: var(--ih-s); }
+  .br { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); overflow: hidden; }
+  .br__stage { position: relative; display: grid; place-items: center; min-height: clamp(320px, 40vw, 520px); background: #101010; }
+  .br__logo { position: relative; display: grid; place-items: center; width: min(62%, 340px); }
+  .br__full { width: 100%; height: auto; transition: transform .6s var(--ease), filter .4s, opacity .3s; }
+  .br__re { position: absolute; inset: 0; display: flex; align-items: center; gap: 6%; opacity: 0; transition: opacity .3s; }
+  .br__re img:first-child { width: 72%; height: auto; }
+  .br__re img:last-child { width: 30%; height: auto; transform: translateY(-40%); }
+  .br__crowd { position: absolute; left: 50%; top: 100%; transform: translate(-50%, -30%); white-space: nowrap; font-family: "Orbitron", sans-serif; font-weight: 900; font-size: clamp(16px, 2vw, 26px); letter-spacing: .1em; color: #f6f6f6; opacity: 0; transition: opacity .3s; }
+  .br[data-x="stretch"] .br__full { transform: scaleX(1.55) scaleY(.82); }
+  .br[data-x="rotate"] .br__full { transform: rotate(-22deg); }
+  .br[data-x="recolour"] .br__full { filter: sepia(1) saturate(8) hue-rotate(250deg) brightness(.9); }
+  .br[data-x="effects"] .br__full { filter: drop-shadow(0 0 18px #ff3cf0) drop-shadow(6px 10px 0 #3E5BA9); }
+  .br[data-x="crowd"] .br__crowd { opacity: 1; }
+  .br[data-x="recompose"] .br__full { opacity: 0; }
+  .br[data-x="recompose"] .br__re { opacity: 1; }
+  .br__tag { position: absolute; left: 14px; right: 14px; bottom: 14px; display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 10px; background: rgba(246,246,246,.95); color: var(--ih-s); font-size: clamp(14px, 1.1vw, 16px); line-height: 1.3; }
+  .br__tag b { flex: none; width: 26px; height: 26px; display: grid; place-items: center; border-radius: 50%; background: var(--ih-l); color: #10170a; font-size: 14px; }
+  .br.is-bad .br__tag b { background: #df3b2c; color: #fff; }
+  .br.is-bad .br__tag { animation: brshake .45s; }
+  @keyframes brshake { 25% { transform: translateX(-6px); } 50% { transform: translateX(5px); } 75% { transform: translateX(-3px); } }
+  .br__side { padding: clamp(20px, 3vw, 40px); display: flex; flex-direction: column; justify-content: center; }
+  .br__side p { margin: 8px 0 0; font-size: clamp(16px, 1.3vw, 19px); }
+  .br__fx { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; margin-top: 18px; }
+  .br__fx button { padding: 12px 14px; border-radius: 10px; box-shadow: inset 0 0 0 1px var(--ih-line); font-size: 14px; transition: background .2s, color .2s; }
+  .br__fx button:hover { box-shadow: inset 0 0 0 1px rgba(255,255,255,.35); }
+  .br__fx button[data-ok="1"] { grid-column: 1 / -1; }
+  .br__fx button[aria-pressed="true"] { background: var(--ih-w); color: var(--ih-s); }
+  .br__fx button[data-ok="1"][aria-pressed="true"] { background: var(--ih-l); color: #10170a; }
+  .pl { position: relative; padding: clamp(14px, 2vw, 28px); }
+  .pl__sws { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+  .pl__sw { display: flex; flex-direction: column; gap: 3px; padding: 12px; border-radius: 10px; box-shadow: inset 0 0 0 1px var(--ih-line); transition: transform .3s var(--ease); }
+  .pl__sw:hover { transform: translateY(-4px); }
+  .pl__chip { aspect-ratio: 4 / 3; border-radius: 6px; background: var(--c); margin-bottom: 10px; box-shadow: inset 0 0 0 1px rgba(255,255,255,.12); }
+  .pl__sw b { font-family: "Orbitron", sans-serif; font-size: 14px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+  .pl__sw small { font-family: "Share Tech Mono", monospace; font-size: 11px; color: #8b8b8b; }
+  .pl__sw em { margin-top: 6px; font-style: normal; font-size: 12px; color: #b9b9b9; }
+  .pl__rule { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; margin-top: 16px; }
+  .pl__show { padding: 10px 16px; border-radius: 999px; box-shadow: inset 0 0 0 1px rgba(255,255,255,.3); font-size: 14px; }
+  .pl__show[aria-pressed="true"] { background: var(--ih-l); color: #10170a; box-shadow: none; }
+  .pl__bar { flex: 1 1 260px; display: flex; gap: 3px; height: 22px; }
+  .pl__bar i { flex: 1 1 0; min-width: 6px; border-radius: 3px; background: var(--c); box-shadow: inset 0 0 0 1px rgba(255,255,255,.28); transition: flex-grow .8s var(--ease); }
+  .pl.is-rule .pl__bar i { flex-grow: var(--w); }
+  .pl__note { margin: 0; flex-basis: 100%; font-family: "Share Tech Mono", monospace; font-size: 12px; color: #8b8b8b; }
+  .pl__toast { position: absolute; left: 50%; top: 16px; margin: 0; padding: 8px 14px; border-radius: 999px; background: var(--ih-w); color: var(--ih-s); font-size: 13px; transform: translate(-50%, -8px); opacity: 0; transition: opacity .25s, transform .25s; pointer-events: none; }
+  .pl__toast.is-on { opacity: 1; transform: translate(-50%, 0); }
+  .tt { padding: clamp(18px, 3vw, 40px); }
+  .tt__top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; }
+  .tt__in { flex: 1 1 320px; max-width: 520px; display: flex; align-items: center; gap: 10px; padding: 6px 6px 6px 14px; border-radius: 999px; box-shadow: inset 0 0 0 1px rgba(255,255,255,.25); }
+  .tt__in span { flex: none; font-family: "Share Tech Mono", monospace; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: #8b8b8b; }
+  .tt__in input { flex: 1; min-width: 0; border: 0; padding: 8px 10px; border-radius: 999px; background: #222; color: var(--ih-w); font: 15px "Urbanist", sans-serif; }
+  .tt__rows { margin-top: 18px; }
+  .tt__row { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 20px; align-items: baseline; padding: 16px 0; border-top: 1px solid var(--ih-line); }
+  .tt__row small { font-family: "Share Tech Mono", monospace; font-size: 11px; line-height: 1.6; letter-spacing: .1em; text-transform: uppercase; color: #6f6f6f; }
+  .tt__row p { margin: 0; overflow-wrap: anywhere; }
+  .tt__h1 { font-family: "Orbitron", sans-serif; font-weight: 900; font-size: clamp(28px, 4.2vw, 64px); line-height: 1.05; letter-spacing: .04em; text-transform: uppercase; }
+  .tt__h2 { font-family: "Orbitron", sans-serif; font-weight: 700; font-size: clamp(20px, 2vw, 30px); letter-spacing: .08em; text-transform: uppercase; }
+  .tt__h3 { font-family: "Urbanist", sans-serif; font-weight: 500; font-size: clamp(18px, 1.5vw, 22px); }
+  .tt__b { font-family: "Urbanist", sans-serif; font-weight: 300; font-size: 16px; line-height: 1.6; color: #cfcfcf; max-width: 60ch; }
+  .tt__c { font-family: "Share Tech Mono", monospace; font-size: 12px; letter-spacing: .14em; color: var(--ih-l); }
+  .vc { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); overflow: hidden; }
+  .vc__stage { background: var(--ih-s); border-right: 1px solid var(--ih-line); }
+  .vc__stage svg { display: block; width: 100%; height: auto; fill: none; stroke: rgba(255,255,255,.22); stroke-width: 1.5; }
+  .vc__l { opacity: 0; transition: opacity .6s var(--ease); }
+  .vc__l.is-on { opacity: 1; }
+  .vc__l[data-l="ring"] { stroke: rgba(255,255,255,.13); }
+  .vc__l[data-l="warp"] { stroke: rgba(255,255,255,.14); }
+  .vc__l[data-l="stars"] circle { fill: rgba(255,255,255,.7); stroke: none; }
+  .vc__l[data-l="coords"] { stroke: rgba(255,255,255,.55); }
+  .vc__l[data-l="coords"] text { fill: rgba(255,255,255,.7); stroke: none; font: 17px "Share Tech Mono", monospace; letter-spacing: 2px; }
+  .vc__fill { fill: #fff; }
+  .vc__l[data-l="horizon"] { stroke: rgba(255,255,255,.6); }
+  .vc__glow { stroke: #3E5BA9; stroke-width: 22; opacity: .8; }
+  .vc__lime { fill: #96C93E; stroke: none; }
+  .vc__blue { stroke: #3E5BA9; stroke-width: 3; }
+  .vc__l[data-l="lime"].is-on circle { animation: vcpulse 2.4s ease-in-out infinite; transform-origin: 1352px 330px; }
+  @keyframes vcpulse { 50% { transform: scale(1.5); } }
+  .vc__h { fill: #F6F6F6; stroke: none; font: 900 58px "Orbitron", sans-serif; letter-spacing: 6px; }
+  .vc__m { fill: #8b8b8b; stroke: none; font: 18px "Share Tech Mono", monospace; letter-spacing: 4px; }
+  .vc__side { padding: clamp(18px, 2.4vw, 32px); display: flex; flex-direction: column; gap: 18px; }
+  .vc__chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .vc__chips button { padding: 9px 13px; border-radius: 999px; box-shadow: inset 0 0 0 1px var(--ih-line); font-size: 13px; transition: background .2s, color .2s, box-shadow .2s; }
+  .vc__chips button:hover { box-shadow: inset 0 0 0 1px rgba(255,255,255,.35); }
+  .vc__chips button[aria-pressed="true"] { background: var(--ih-w); color: var(--ih-s); }
+  .vc__chips .vc__ac[aria-pressed="true"] { background: var(--c); color: #fff; }
+  .vc__chips .vc__ac[data-t="lime"][aria-pressed="true"] { color: #10170a; }
+  .vc__note { margin: auto 0 0; padding-top: 14px; border-top: 1px solid var(--ih-line); font-size: 14px; line-height: 1.45; color: #cfcfcf; min-height: 3em; }
+  .vc__note.is-warn { color: var(--ih-l); }
+  .bk { padding: clamp(14px, 2vw, 28px); outline: none; }
+  .bk__stage { position: relative; aspect-ratio: 16 / 9; max-height: 80svh; margin-inline: auto; border-radius: 10px; overflow: hidden; background: #0e0e0e; }
+  .bk__pg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; transition: opacity .25s, transform .35s var(--ease); }
+  .bk__pg.is-out { opacity: 0; transform: translateX(var(--dx, 0)); }
+  .bk__nav { position: absolute; top: 50%; translate: 0 -50%; width: 48px; height: 48px; display: grid; place-items: center; border-radius: 50%; background: rgba(21,21,21,.6); color: #fff; font-size: 28px; line-height: 1; backdrop-filter: blur(6px); transition: background .25s, opacity .25s; }
+  .bk__nav:hover { background: var(--ih-o); }
+  .bk__nav--p { left: 12px; }
+  .bk__nav--n { right: 12px; }
+  .bk__nav:disabled { opacity: .25; cursor: default; }
+  .bk__bar { display: flex; align-items: center; gap: 16px; margin-top: 14px; }
+  .bk__n { font-family: "Share Tech Mono", monospace; font-size: 13px; color: #8b8b8b; white-space: nowrap; }
+  .bk__n b { font-size: 20px; font-weight: 400; color: #fff; }
+  .bk__r { flex: 1; accent-color: var(--ih-l); }
+  .bk__strip { display: flex; gap: 8px; margin-top: 12px; overflow-x: auto; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.25) transparent; padding-bottom: 6px; }
+  .bk__t { flex: none; width: clamp(96px, 10vw, 132px); border-radius: 6px; overflow: hidden; opacity: .45; transition: opacity .25s, box-shadow .25s; }
+  .bk__t img { display: block; width: 100%; height: auto; }
+  .bk__t:hover { opacity: .85; }
+  .bk__t.is-on { opacity: 1; box-shadow: 0 0 0 2px var(--ih-l); }
+  @media (max-width: 900px) {
+    .rs, .cc, .br, .vc { grid-template-columns: 1fr; }
+    .rs__stage { aspect-ratio: 4 / 4.4; }
+    .vc__stage { border-right: 0; border-bottom: 1px solid var(--ih-line); }
+    .pl__sws { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 600px) {
+    .tt__row { grid-template-columns: 1fr; gap: 6px; }
+    .lz__scale { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .ll__grp button { padding: 7px 10px; font-size: 12px; }
+    .ll__grp button small { display: none; }
+    .bk__nav { width: 38px; height: 38px; font-size: 22px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cc__ring .cc__el, .vc__l circle { animation: none !important; }
+    .rs__stage img, .ll__img, .br__full, .vc__l, .bk__pg { transition: none; }
+  }
 </style>
 <link rel="stylesheet" href="../assets/readable-type.css">
 </head>
@@ -439,7 +703,7 @@
   <!-- HERO -->
   <section class="hero" aria-labelledby="title">
     <div class="wrap">
-      <div class="hero__kicker">Brand design systems · Case study 05</div>
+      <div class="hero__kicker">Brand design systems · Case study 04</div>
       <h1 id="title" class="display hero__title">
         <svg class="eye eye--hero" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg>
         <span>Imagination</span>
@@ -447,12 +711,7 @@
       </h1>
       <div class="hero__intro">
         <p class="hero__lede">One parent brand for two tech companies. Explorers of infinite possibilities.</p>
-        <dl class="meta">
-          <div><dt>Role</dt><dd>Brand lead, with Echo Digital</dd></div>
-          <div><dt>Timeline</dt><dd>8 months</dd></div>
-          <div><dt>Scope</dt><dd>Logo, brand system, guidelines, website</dd></div>
-          <div><dt>Companies</dt><dd>9D Technologies · Imagination AI</dd></div>
-        </dl>
+        <dl class="meta"><div><dt>Role</dt><dd>Brand lead, with Echo Digital</dd></div><div><dt>Timeline</dt><dd>8 months</dd></div><div><dt>Scope</dt><dd>Logo, brand system, guidelines, website</dd></div><div><dt>Companies</dt><dd>9D Technologies · Imagination AI</dd></div></dl>
       </div>
       <figure class="hero__media frame" style="margin-left:0;margin-right:0;margin-bottom:0">
         <img src="assets/conference-a.jpg" alt="Conference stage with a giant screen reading Infinite Possibilities beside the Imagination Holdings logo" width="2000" height="1204" fetchpriority="high">
@@ -499,95 +758,64 @@
   <!-- 02 PROCESS -->
   <section id="process" aria-labelledby="process-h" style="padding-top:0">
     <div class="wrap">
-      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>02</b> Process</div>
-      <h2 id="process-h" class="display h2 reveal">Sketch. Build. <span class="c-orbit">Refine.</span></h2>
-      <p class="sub reveal">From the letters I and H to a planet in orbit.</p>
-
-      <div class="ih-process">
-        <figure class="reveal"><div class="frame"><img src="assets/moodboard.jpg" alt="Moodboard of loop, orbit and monogram logos" loading="lazy"></div><figcaption>Moodboard</figcaption></figure>
-        <figure class="reveal"><div class="frame"><img src="assets/sketches.jpg" alt="Pencil sketches of IH monograms and orbiting circles" loading="lazy"></div><figcaption>Sketches</figcaption></figure>
-        <figure class="reveal"><div class="frame"><img src="assets/construction.jpg" alt="Logo construction slides evolving the symbol" loading="lazy"></div><figcaption>Construction</figcaption></figure>
-        <figure class="reveal"><div class="frame"><img src="assets/refinement.jpg" alt="Six logo options and the refined planet-and-orbit mark" loading="lazy"></div><figcaption>Refinement</figcaption></figure>
-      </div>
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>02</b> Research</div>
+      <h2 id="process-h" class="display h2 reveal">Sketch. <span class="c-acc">Build. Refine.</span></h2>
+      <p class="sub reveal">From the letters I and H to a planet in orbit. Four steps, start to finish.</p>
+      <div class="rs reveal"><div class="rs__stage"><img class="is-on" src="../imagination-holdings/assets/moodboard.jpg" alt="Moodboard of loop, orbit and monogram logos" loading="lazy" width="893" height="1170"><img class="" src="../imagination-holdings/assets/sketches.jpg" alt="Pencil sketches of IH monograms and orbiting circles" loading="lazy" width="538" height="1169"><img class="" src="../imagination-holdings/assets/construction.jpg" alt="Logo construction slides evolving the symbol" loading="lazy" width="541" height="1166"><img class="" src="../imagination-holdings/assets/refinement.jpg" alt="Six logo options and the refined planet-and-orbit mark" loading="lazy" width="871" height="1220"></div><div class="rs__side"><ol class="rs__list"><li><button type="button" class="rs__b is-on" aria-pressed="true"><small>01</small><b>Moodboard</b><span>Loops, orbits and monograms. A look at what already lives in this space.</span></button></li><li><button type="button" class="rs__b" aria-pressed="false"><small>02</small><b>Sketches</b><span>Pages of pencil: the letters I and H, circles, orbits and planets.</span></button></li><li><button type="button" class="rs__b" aria-pressed="false"><small>03</small><b>Construction</b><span>From IH monograms to a planet held by its orbit.</span></button></li><li><button type="button" class="rs__b" aria-pressed="false"><small>04</small><b>Refinement</b><span>Six options, then one: a planet, a tilted ring and a satellite.</span></button></li></ol><div class="rs__nav"><button type="button" class="rs__p" aria-label="Previous step">←</button><span class="rs__n"><b>01</b> / 04</span><button type="button" class="rs__x" aria-label="Next step">→</button></div></div></div>
     </div>
   </section>
-
-  <!-- 03 THE IDEA -->
   <section id="idea" aria-labelledby="idea-h" style="padding-top:0">
     <div class="wrap">
       <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>03</b> The idea</div>
-      <h2 id="idea-h" class="display h2 reveal">Our <span class="c-lime">compass.</span></h2>
-
-      <div class="compass">
-        <div class="reveal">
-          <div class="circle-word" role="group" aria-label="CIRCLE: hover or tap a letter to see its value">
-            <button data-w="Creativity">C</button><button data-w="Innovation">I</button><button data-w="Relationships &amp; inclusivity">R</button><button data-w="Curiosity">C</button><button data-w="Lifelong growth">L</button><button data-w="Excellence">E</button>
-          </div>
-          <p class="circle-meaning" aria-live="polite"><small>Each letter is a value</small><span>Creativity</span></p>
-          <ul class="circle-list">
-            <li><b>C</b> Creativity</li><li><b>I</b> Innovation</li><li><b>R</b> Relationships &amp; inclusivity</li><li><b>C</b> Curiosity</li><li><b>L</b> Lifelong growth</li><li><b>E</b> Excellence</li>
-          </ul>
-        </div>
-        <figure class="frame vid reveal" style="margin:0">
-          <video class="lazy-video" src="assets/circle.mp4" poster="assets/circle-poster.jpg" muted loop playsinline preload="none" aria-label="Animation: the six CIRCLE values branch out from the logo"></video>
-          <span class="cap">The compass, animated</span>
-        </figure>
-      </div>
-
-      <figure class="frame intro reveal" style="margin-left:0;margin-right:0;margin-bottom:0">
-        <video class="lazy-video" src="assets/intro.mp4" poster="assets/intro-poster.jpg" muted loop playsinline preload="none" aria-label="Logo intro: orbit lines, an atom and a planet form the Imagination Holdings logo"></video>
-        <span class="cap">Logo intro · website loader and decks</span>
-      </figure>
+      <h2 id="idea-h" class="display h2 reveal">Our <span class="c-acc">compass.</span></h2>
+      <p class="sub reveal">A planet and its orbit: separate things, held together by gravity. The same goes for the values.</p>
+      <div class="cc reveal"><div class="cc__intro"><span class="mono">The compass · our values</span><p>Every orbit traces a circle: complete, unbroken, always returning. The team is guided by CIRCLE, a loop of six values. Tap a letter.</p><button type="button" class="cc__spin" aria-pressed="false">▶ Orbit through them</button></div><div class="cc__ring"><svg viewBox="0 0 400 400" aria-hidden="true"><circle cx="200" cy="200" r="150"/><circle cx="200" cy="200" r="96" class="cc__in"/><ellipse cx="200" cy="200" rx="190" ry="64" transform="rotate(-18 200 200)" class="cc__el"/></svg><button type="button" class="cc__n" style="--a:-90deg" aria-pressed="false" data-t="Creativity" data-d="Bold, boundary-breaking ideas that reimagine what is possible." aria-label="Creativity">C</button><button type="button" class="cc__n is-on" style="--a:-30deg" aria-pressed="true" data-t="Innovation" data-d="Building the future with purpose, not just novelty." aria-label="Innovation">I</button><button type="button" class="cc__n" style="--a:30deg" aria-pressed="false" data-t="Relationships &amp; Inclusivity" data-d="An open, diverse and supportive ecosystem, where difference is orchestrated, not ignored." aria-label="Relationships &amp; Inclusivity">R</button><button type="button" class="cc__n" style="--a:90deg" aria-pressed="false" data-t="Curiosity" data-d="A hunger to explore, to question, and to never stop learning." aria-label="Curiosity">C</button><button type="button" class="cc__n" style="--a:150deg" aria-pressed="false" data-t="Lifelong Growth" data-d="Everyone has potential waiting to unfold in the next turn of the circle." aria-label="Lifelong Growth">L</button><button type="button" class="cc__n" style="--a:210deg" aria-pressed="false" data-t="Excellence" data-d="A higher standard. Not just for what we build, but for how we grow." aria-label="Excellence">E</button><div class="cc__core" aria-live="polite"><b>Innovation</b><span>Building the future with purpose, not just novelty.</span></div></div></div><div class="jrow reveal"><figure class="frame reveal" style="flex:1.6697 1 0%;aspect-ratio:1600 / 958"><video class="lv" src="../imagination-holdings/assets/circle-v2.mp4" poster="../imagination-holdings/assets/circle-v2.jpg" muted loop playsinline preload="none" aria-label="Animation: the six CIRCLE values branch out from the logo"></video><span class="cap">The compass, animated</span></figure></div><div class="jrow reveal"><figure class="frame reveal" style="flex:1.7778 1 0%;aspect-ratio:1920 / 1080"><video class="lv" src="../imagination-holdings/assets/intro.mp4" poster="../imagination-holdings/assets/intro-poster.jpg" muted loop playsinline preload="none" aria-label="Logo intro: orbit lines, an atom and a planet form the Imagination Holdings logo"></video><span class="cap">Logo intro · website loader and decks</span></figure></div>
     </div>
   </section>
-
-  <!-- 04 IDENTITY -->
-  <section id="identity" aria-labelledby="id-h" style="padding-top:0">
+  <section id="logo" aria-labelledby="logo-h" style="padding-top:0">
     <div class="wrap">
-      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>04</b> The identity</div>
-      <h2 id="id-h" class="display h2 reveal">Deep space. <span class="c-orbit">Clear hierarchy.</span></h2>
-
-      <div class="swatches swatches--4" role="list" aria-label="Brand colours. Click to copy hex.">
-        <button class="swatch reveal" role="listitem" style="background:var(--ih-white);color:var(--ih-space)" data-hex="#F6F6F6"><span class="copied">Copied</span><strong>Signal White</strong><small>#F6F6F6</small></button>
-        <button class="swatch reveal" role="listitem" style="background:var(--ih-space);color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.15)" data-hex="#151515"><span class="copied">Copied</span><strong>Deep Space</strong><small>#151515</small></button>
-        <button class="swatch reveal" role="listitem" style="background:var(--ih-orbit);color:#fff" data-hex="#3E5BA9"><span class="copied">Copied</span><strong>Deep Orbit</strong><small>#3E5BA9</small></button>
-        <button class="swatch reveal" role="listitem" style="background:var(--ih-lime);color:var(--ih-space)" data-hex="#96C93E"><span class="copied">Copied</span><strong>Solar Lime</strong><small>#96C93E</small></button>
-      </div>
-
-      <div class="ih-bento">
-        <figure class="frame t-people reveal" style="margin:0"><img src="assets/people.jpg" alt="Black and white photo of a smiling team member wearing branded headphones" loading="lazy"></figure>
-        <figure class="frame t-vr reveal" style="margin:0"><img src="assets/vr.jpg" alt="Woman in a VR headset with the Imagination Holdings mark on her headphones" loading="lazy"></figure>
-        <figure class="frame t-compass reveal" style="margin:0"><img src="assets/compass.jpg" alt="Our Compass card listing the six CIRCLE values" loading="lazy"></figure>
-        <figure class="frame t-explorers reveal" style="margin:0"><img src="assets/explorers.jpg" alt="Explorers of Infinite Possibilities card with a thin orbit line and a lime dot" loading="lazy"></figure>
-        <figure class="frame t-web reveal" style="margin:0"><img src="assets/website.jpg" alt="Laptop showing the Imagination Holdings website hero: Explorers of Infinite Possibilities" loading="lazy"></figure>
-      </div>
-
-      <figure class="frame guidebook reveal" style="margin-left:0;margin-right:0;margin-bottom:0">
-        <img src="assets/brandbook-open.jpg" alt="Two Imagination Holdings softcover brand books on a light surface: one closed showing the Brand Guidelines cover, one open on the logo and colour pages" loading="lazy" width="1600" height="1180">
-        <span class="cap">2026 brand guidelines · 34 pages</span>
-      </figure>
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>04</b> Logo system</div>
+      <h2 id="logo-h" class="display h2 reveal">Built on <span class="c-acc">a grid.</span></h2>
+      <p class="sub reveal">A central sphere, a tilted ring and a satellite node. The 18° ring implies forward motion. Three formats, two backgrounds, a few hard rules.</p>
+      <div class="ll reveal" data-f="stacked" data-bg="space"><div class="ll__bar"><div class="ll__grp" role="group" aria-label="Logo format"><button type="button" aria-pressed="true" data-f="stacked">Stacked<small>A.01</small></button><button type="button" aria-pressed="false" data-f="horizontal">Horizontal<small>A.02</small></button><button type="button" aria-pressed="false" data-f="monogram">Monogram<small>A.03</small></button></div><div class="ll__grp ll__bgs" role="group" aria-label="Background"><button type="button" aria-pressed="true" data-bg="space" data-ok="1" data-note="B.01 · On Deep Space. The default." style="--c:#151515" aria-label="Deep Space"><i></i>Deep Space</button><button type="button" aria-pressed="false" data-bg="white" data-ok="1" data-note="B.02 · On Signal White." style="--c:#F6F6F6" aria-label="Signal White"><i></i>Signal White</button><button type="button" aria-pressed="false" data-bg="lime" data-ok="0" data-note="Never on Solar Lime. Accents are not backgrounds." style="--c:#96C93E" aria-label="Solar Lime"><i></i>Solar Lime</button><button type="button" aria-pressed="false" data-bg="orbit" data-ok="0" data-note="Never on Deep Orbit. Accents are not backgrounds." style="--c:#3E5BA9" aria-label="Deep Orbit"><i></i>Deep Orbit</button></div><label class="ll__cs"><input type="checkbox"> Clear space</label></div><div class="ll__stage"><div class="ll__box"><img class="ll__img is-on" data-f="stacked" src="../imagination-holdings/assets/gl/logo-stacked.png" alt="Imagination Holdings stacked logo" width="1383" height="961"><img class="ll__img" data-f="horizontal" src="../imagination-holdings/assets/gl/logo-horizontal.png" alt="Imagination Holdings horizontal logo" width="1553" height="268"><img class="ll__img" data-f="monogram" src="../imagination-holdings/assets/gl/logo-monogram.png" alt="Imagination Holdings monogram logo" width="698" height="507"><span class="ll__space" aria-hidden="true"></span></div><span class="ll__x" aria-hidden="true">✕</span></div><p class="ll__note" aria-live="polite">B.01 · On Deep Space. The default.</p></div><div class="lz reveal"><div class="lz__top"><div><span class="mono">Minimum sizes</span><p>Drag to shrink the logo. Below 40px the stacked logo hands over to the monogram.</p></div><div class="lz__read"><b class="lz__px">160px</b><span class="lz__tier">Large · ≥128px digital</span></div></div><div class="lz__stage"><img class="lz__st" src="../imagination-holdings/assets/gl/logo-stacked.png" alt="" width="1383" height="961"><img class="lz__mo" src="../imagination-holdings/assets/gl/logo-monogram.png" alt="" width="698" height="507"></div><input class="lz__r" type="range" min="12" max="200" value="160" aria-label="Logo width in pixels"><ol class="lz__scale"><li data-min="128">Large<small>≥128px</small></li><li data-min="64">Medium<small>64px</small></li><li data-min="40">Min stacked<small>40px</small></li><li data-min="24">Monogram<small>24px</small></li></ol></div><div class="br reveal" data-x="ok"><div class="br__stage"><div class="br__logo"><img class="br__full" src="../imagination-holdings/assets/gl/logo-stacked.png" alt="Imagination Holdings logo" width="1383" height="961"><span class="br__re" aria-hidden="true"><img src="../imagination-holdings/assets/gl/logo-wordmark.png" alt="" width="1383" height="315"><img src="../imagination-holdings/assets/gl/logo-monogram.png" alt="" width="698" height="507"></span><span class="br__crowd" aria-hidden="true">LAUNCH · 2026 · SUMMIT</span></div><span class="br__tag" aria-live="polite"><b>✓</b><span>The real logo. Fixed proportions, fixed angle, white on Deep Space.</span></span></div><div class="br__side"><span class="mono">The non-negotiables</span><p>Six ways to break the logo. Try each one and see the rule.</p><div class="br__fx" role="group" aria-label="Logo treatment"><button type="button" aria-pressed="true" data-x="ok" data-ok="1" data-note="The real logo. Fixed proportions, fixed angle, white on Deep Space.">As drawn</button><button type="button" aria-pressed="false" data-x="stretch" data-ok="0" data-note="Don’t stretch. Never distort the aspect ratio.">Stretch</button><button type="button" aria-pressed="false" data-x="rotate" data-ok="0" data-note="Don’t rotate. The logo has a fixed orientation.">Rotate</button><button type="button" aria-pressed="false" data-x="recolour" data-ok="0" data-note="Don’t recolour. Only Signal White or Deep Space.">Recolour</button><button type="button" aria-pressed="false" data-x="effects" data-ok="0" data-note="Don’t add effects. No gradients, shadows or glows.">Effects</button><button type="button" aria-pressed="false" data-x="crowd" data-ok="0" data-note="Don’t crowd. Respect the minimum clear space.">Crowd</button><button type="button" aria-pressed="false" data-x="recompose" data-ok="0" data-note="Don’t recompose. Never alter the relationship of the parts.">Recompose</button></div></div></div>
     </div>
   </section>
-
-  <!-- 05 IN THE WORLD -->
+  <section id="colour" aria-labelledby="colour-h" style="padding-top:0">
+    <div class="wrap">
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>05</b> Colour &amp; type</div>
+      <h2 id="colour-h" class="display h2 reveal">Four colours. <span class="c-acc">Clear hierarchy.</span></h2>
+      <p class="sub reveal">Signal White and Deep Space carry the brand. Solar Lime and Deep Orbit are accents, never more than 5% of a composition. Orbitron leads, Urbanist reads.</p>
+      <div class="pl reveal"><div class="pl__sws"><button type="button" class="pl__sw" style="--c:#F6F6F6;--w:35" data-hex="#F6F6F6"><span class="pl__chip"></span><b>Signal White</b><small>#F6F6F6</small><small>RGB 249 249 249</small><small>CMYK 2 1 1 0</small><em>Primary · text</em></button><button type="button" class="pl__sw" style="--c:#151515;--w:60" data-hex="#151515"><span class="pl__chip"></span><b>Deep Space</b><small>#151515</small><small>RGB 21 21 21</small><small>CMYK 73 67 65 80</small><em>Primary · background</em></button><button type="button" class="pl__sw" style="--c:#3E5BA9;--w:2.5" data-hex="#3E5BA9"><span class="pl__chip"></span><b>Deep Orbit</b><small>#3E5BA9</small><small>RGB 62 91 169</small><small>CMYK 84 71 0 0</small><em>Accent · reference</em></button><button type="button" class="pl__sw" style="--c:#96C93E;--w:2.5" data-hex="#96C93E"><span class="pl__chip"></span><b>Solar Lime</b><small>#96C93E</small><small>RGB 150 201 62</small><small>CMYK 46 0 98 0</small><em>Accent · active</em></button></div><div class="pl__rule"><button type="button" class="pl__show" aria-pressed="false">Show the 5% rule</button><div class="pl__bar" aria-hidden="true"><i style="--c:#F6F6F6;--w:35"></i><i style="--c:#151515;--w:60"></i><i style="--c:#3E5BA9;--w:2.5"></i><i style="--c:#96C93E;--w:2.5"></i></div><p class="pl__note">Tap a colour to copy it.</p></div><p class="pl__toast" role="status" aria-live="polite"></p></div><div class="tt reveal"><div class="tt__top"><span class="mono">Type tester</span><label class="tt__in"><span>Your headline</span><input type="text" value="Explorers of infinite possibilities" maxlength="48" aria-label="Type a headline"></label></div><div class="tt__rows"><div class="tt__row"><small>H1 · Display<br>Orbitron · caps</small><p class="tt__h1">Explorers of infinite possibilities</p></div><div class="tt__row"><small>H2 · Section<br>Orbitron · caps</small><p class="tt__h2">Section heading</p></div><div class="tt__row"><small>H3 · Sub-section<br>Urbanist</small><p class="tt__h3">Sub-section heading</p></div><div class="tt__row"><small>Body<br>Urbanist Light</small><p class="tt__b">Body copy, the connective tissue. We collaborate like a squad, innovate like creators and compete only with yesterday.</p></div><div class="tt__row"><small>Caption<br>Share Tech Mono</small><p class="tt__c">LAT 33.6844° N · LON 73.0479° E · VOL 01</p></div></div></div>
+    </div>
+  </section>
+  <section id="elements" aria-labelledby="elements-h" style="padding-top:0">
+    <div class="wrap">
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>06</b> Visual identity</div>
+      <h2 id="elements-h" class="display h2 reveal">Six elements. <span class="c-acc">Three tiers.</span></h2>
+      <p class="sub reveal">Dominant elements are always there, one functional element sets the mood, and a tiny satellite node marks the point. Build a composition.</p>
+      <div class="vc reveal"><div class="vc__stage"><svg viewBox="0 0 1600 900" role="img" aria-label="A composition built from the visual identity elements"><defs><filter id="vcglow" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="14"/></filter></defs><g class="vc__l" data-l="ring"><circle cx="1180" cy="360" r="110"/><circle cx="1150" cy="380" r="210"/><circle cx="1120" cy="400" r="320"/><circle cx="1090" cy="420" r="440"/></g><g class="vc__l" data-l="ellipse"><ellipse cx="800" cy="470" rx="600" ry="170" transform="rotate(-14 800 470)"/><ellipse cx="800" cy="470" rx="440" ry="120" transform="rotate(10 800 470)"/></g><g class="vc__l vc__f" data-l="stars"></g><g class="vc__l vc__f" data-l="coords"><circle cx="1240" cy="250" r="46"/><circle cx="1240" cy="250" r="5" class="vc__fill"/><path d="M1240 180v40M1240 280v40M1170 250h40M1270 250h40"/><text x="1310" y="200">LAT 33.6844° N</text><text x="1310" y="226">LON 73.0479° E</text><text x="1310" y="252">ALT 0508 M · T+00:42</text></g><g class="vc__l vc__f" data-l="warp"></g><g class="vc__l vc__f" data-l="horizon"><path class="vc__glow" d="M-60 880 Q800 600 1660 880" filter="url(#vcglow)"/><path d="M-60 880 Q800 600 1660 880"/><path d="M800 740V560"/></g><g class="vc__l" data-l="lime"><circle cx="1352" cy="330" r="8" class="vc__lime"/></g><g class="vc__l" data-l="blue"><circle cx="262" cy="598" r="8" class="vc__blue"/></g><text class="vc__h" x="140" y="400">EXPLORERS OF</text><text class="vc__h" x="140" y="470">INFINITE POSSIBILITIES</text><text class="vc__m" x="140" y="530">IMAGINATION HOLDINGS · VOL 01 · 2026</text></svg></div><div class="vc__side"><div class="vc__grp"><span class="mono">Tier 01 · Dominant · always present</span><div class="vc__chips"><button type="button" aria-pressed="true" data-t="ring">Displaced orbit ring</button><button type="button" aria-pressed="true" data-t="ellipse">Elliptical orbit path</button></div></div><div class="vc__grp"><span class="mono">Tier 02 · Functional · one per composition</span><div class="vc__chips vc__one"><button type="button" aria-pressed="true" data-f="none">None</button><button type="button" aria-pressed="false" data-f="stars">Star field</button><button type="button" aria-pressed="false" data-f="coords">Coordinates</button><button type="button" aria-pressed="false" data-f="warp">Gravity well</button><button type="button" aria-pressed="false" data-f="horizon">Launch horizon</button></div></div><div class="vc__grp"><span class="mono">Tier 03 · Accent · the satellite node</span><div class="vc__chips"><button type="button" aria-pressed="true" data-t="lime" class="vc__ac" style="--c:#96C93E">Lime · active</button><button type="button" aria-pressed="false" data-t="blue" class="vc__ac" style="--c:#3E5BA9">Blue · reference</button></div></div><p class="vc__note" aria-live="polite">Two dominant elements set the atmosphere. Add one functional element.</p></div></div>
+    </div>
+  </section>
+  <section id="identity" aria-labelledby="identity-h" style="padding-top:0">
+    <div class="wrap">
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>07</b> Atmosphere</div>
+      <h2 id="identity-h" class="display h2 reveal">Deep space. <span class="c-acc">Clear hierarchy.</span></h2>
+      <div class="jrow reveal"><figure class="frame reveal" style="flex:0.7262 1 0%;aspect-ratio:703 / 968"><img src="../imagination-holdings/assets/people.jpg" alt="Black and white photo of a smiling team member wearing branded headphones" loading="lazy" width="703" height="968"></figure><figure class="frame reveal" style="flex:0.9039 1 0%;aspect-ratio:649 / 718"><img src="../imagination-holdings/assets/vr.jpg" alt="Woman in a VR headset with the Imagination Holdings mark on her headphones" loading="lazy" width="649" height="718"></figure><figure class="frame reveal" style="flex:0.9053 1 0%;aspect-ratio:650 / 718"><img src="../imagination-holdings/assets/compass.jpg" alt="Our Compass card listing the six CIRCLE values" loading="lazy" width="650" height="718"></figure></div><div class="jrow reveal"><figure class="frame reveal" style="flex:0.7265 1 0%;aspect-ratio:704 / 969"><img src="../imagination-holdings/assets/explorers.jpg" alt="Explorers of Infinite Possibilities card with a thin orbit line and a lime dot" loading="lazy" width="704" height="969"></figure><figure class="frame reveal" style="flex:1.8499 1 0%;aspect-ratio:1356 / 733"><img src="../imagination-holdings/assets/website.jpg" alt="Laptop showing the Imagination Holdings website hero: Explorers of Infinite Possibilities" loading="lazy" width="1356" height="733"></figure><figure class="frame reveal" style="flex:1.3559 1 0%;aspect-ratio:1600 / 1180"><img src="../imagination-holdings/assets/brandbook-open.jpg" alt="Two Imagination Holdings softcover brand books on a light surface: one closed showing the Brand Guidelines cover, one open on the logo and colour pages" loading="lazy" width="1600" height="1180"><span class="cap">2026 brand guidelines · 34 pages</span></figure></div>
+    </div>
+  </section>
   <section id="world" aria-labelledby="world-h" style="padding-top:0">
     <div class="wrap">
-      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>05</b> In the world</div>
-      <h2 id="world-h" class="display h2 reveal">From desk <span class="c-lime">to stage.</span></h2>
-
-      <div class="ih-world">
-        <figure class="frame w-stat reveal" style="margin:0"><img src="assets/stationery.jpg" alt="Stationery set: letterhead, envelope, notebook reading We Are Imaginites, mug and business cards" loading="lazy"><span class="cap">Stationery</span></figure>
-        <div class="w-side">
-          <figure class="frame w-cards reveal" style="margin:0"><img src="assets/cards.jpg" alt="Black and white business cards with the logo" loading="lazy"></figure>
-          <figure class="frame w-bottle reveal" style="margin:0"><img src="assets/bottle.jpg" alt="White water bottle with the logo and an orbit line" loading="lazy"></figure>
-        </div>
-        <figure class="frame w-posts reveal" style="margin:0"><img src="assets/posts.jpg" alt="Three social posts: a collaboration quote, a We are looking for a navigator hiring post, and a CEO quote" loading="lazy"><span class="cap">Social</span></figure>
-        <figure class="frame w-stage reveal" style="margin:0"><img src="assets/conference-b.jpg" alt="Silhouettes in front of a huge conference screen with the Imagination Holdings logo over a planet" loading="lazy"><span class="cap">Conference screens</span></figure>
-      </div>
-
-      <div class="delivered reveal" aria-label="What I delivered">
-        <span class="chip">Logo system</span><span class="chip">Brand architecture</span><span class="chip">Values system</span><span class="chip">Logo intro animation</span><span class="chip">2026 brand guidelines</span><span class="chip">Stationery</span><span class="chip">Social</span><span class="chip">Event screens</span><span class="chip">Website (in progress)</span>
-      </div>
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>08</b> In the world</div>
+      <h2 id="world-h" class="display h2 reveal">From desk <span class="c-acc">to stage.</span></h2>
+      <div class="jrow reveal"><figure class="frame reveal" style="flex:1.7023 1 0%;aspect-ratio:1704 / 1001"><img src="../imagination-holdings/assets/stationery.jpg" alt="Stationery set: letterhead, envelope, notebook reading We Are Imaginites, mug and business cards" loading="lazy" width="1704" height="1001"><span class="cap">Stationery</span></figure></div><div class="jrow reveal"><figure class="frame reveal" style="flex:1.7881 1 0%;aspect-ratio:1257 / 703"><img src="../imagination-holdings/assets/cards.jpg" alt="Black and white business cards with the logo" loading="lazy" width="1257" height="703"></figure><figure class="frame reveal" style="flex:1.3232 1 0%;aspect-ratio:1257 / 950"><img src="../imagination-holdings/assets/bottle.jpg" alt="White water bottle with the logo and an orbit line" loading="lazy" width="1257" height="950"></figure></div><div class="jrow reveal"><figure class="frame reveal" style="flex:0.8003 1 0%;aspect-ratio:525 / 656"><img src="../imagination-holdings/assets/post-1.jpg" alt="Insight post on Deep Space: a collaboration quote over a thin elliptical orbit" loading="lazy" width="525" height="656"><span class="cap">Insight · dark</span></figure><figure class="frame reveal" style="flex:0.8049 1 0%;aspect-ratio:528 / 656"><img src="../imagination-holdings/assets/post-2.jpg" alt="Hiring post: We are looking for a navigator, Senior Product Designer, Karachi, with a magenta logo crop" loading="lazy" width="528" height="656"><span class="cap">Now hiring</span></figure><figure class="frame reveal" style="flex:0.8018 1 0%;aspect-ratio:526 / 656"><img src="../imagination-holdings/assets/post-3.jpg" alt="Insight post on Signal White: the collaboration quote with a portrait of founder and CEO Moiz Syed" loading="lazy" width="526" height="656"><span class="cap">Insight · founder</span></figure></div><div class="jrow reveal"><figure class="frame reveal" style="flex:1.7167 1 0%;aspect-ratio:2000 / 1165"><img src="../imagination-holdings/assets/conference-b.jpg" alt="Silhouettes in front of a huge conference screen with the Imagination Holdings logo over a planet" loading="lazy" width="2000" height="1165"><span class="cap">Conference screens</span></figure></div>
+    </div>
+  </section>
+  <section id="book" aria-labelledby="book-h" style="padding-top:0">
+    <div class="wrap">
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>09</b> The book</div>
+      <h2 id="book-h" class="display h2 reveal">Flip the <span class="c-acc">whole book.</span></h2>
+      <p class="sub reveal">All 34 pages of the 2026 guidelines. Use the arrows, the slider or your keyboard.</p>
+      <div class="bk reveal" tabindex="0" aria-label="Brand guidelines viewer. Use the left and right arrow keys to turn pages."><div class="bk__stage"><img class="bk__pg" src="../imagination-holdings/assets/gl/s01.jpg" alt="Page 1 of the Imagination Holdings brand guidelines" width="2112" height="1188"><button class="bk__nav bk__nav--p" type="button" aria-label="Previous page">‹</button><button class="bk__nav bk__nav--n" type="button" aria-label="Next page">›</button></div><div class="bk__bar"><span class="bk__n" aria-live="polite"><b>01</b> / 34</span><input class="bk__r" type="range" min="1" max="34" value="1" aria-label="Page"></div><div class="bk__strip"><button class="bk__t is-on" type="button" aria-label="Page 1" aria-pressed="true" data-p="1"><img src="../imagination-holdings/assets/gl/t01.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 2" aria-pressed="false" data-p="2"><img src="../imagination-holdings/assets/gl/t02.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 3" aria-pressed="false" data-p="3"><img src="../imagination-holdings/assets/gl/t03.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 4" aria-pressed="false" data-p="4"><img src="../imagination-holdings/assets/gl/t04.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 5" aria-pressed="false" data-p="5"><img src="../imagination-holdings/assets/gl/t05.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 6" aria-pressed="false" data-p="6"><img src="../imagination-holdings/assets/gl/t06.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 7" aria-pressed="false" data-p="7"><img src="../imagination-holdings/assets/gl/t07.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 8" aria-pressed="false" data-p="8"><img src="../imagination-holdings/assets/gl/t08.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 9" aria-pressed="false" data-p="9"><img src="../imagination-holdings/assets/gl/t09.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 10" aria-pressed="false" data-p="10"><img src="../imagination-holdings/assets/gl/t10.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 11" aria-pressed="false" data-p="11"><img src="../imagination-holdings/assets/gl/t11.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 12" aria-pressed="false" data-p="12"><img src="../imagination-holdings/assets/gl/t12.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 13" aria-pressed="false" data-p="13"><img src="../imagination-holdings/assets/gl/t13.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 14" aria-pressed="false" data-p="14"><img src="../imagination-holdings/assets/gl/t14.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 15" aria-pressed="false" data-p="15"><img src="../imagination-holdings/assets/gl/t15.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 16" aria-pressed="false" data-p="16"><img src="../imagination-holdings/assets/gl/t16.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 17" aria-pressed="false" data-p="17"><img src="../imagination-holdings/assets/gl/t17.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 18" aria-pressed="false" data-p="18"><img src="../imagination-holdings/assets/gl/t18.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 19" aria-pressed="false" data-p="19"><img src="../imagination-holdings/assets/gl/t19.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 20" aria-pressed="false" data-p="20"><img src="../imagination-holdings/assets/gl/t20.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 21" aria-pressed="false" data-p="21"><img src="../imagination-holdings/assets/gl/t21.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 22" aria-pressed="false" data-p="22"><img src="../imagination-holdings/assets/gl/t22.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 23" aria-pressed="false" data-p="23"><img src="../imagination-holdings/assets/gl/t23.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 24" aria-pressed="false" data-p="24"><img src="../imagination-holdings/assets/gl/t24.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 25" aria-pressed="false" data-p="25"><img src="../imagination-holdings/assets/gl/t25.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 26" aria-pressed="false" data-p="26"><img src="../imagination-holdings/assets/gl/t26.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 27" aria-pressed="false" data-p="27"><img src="../imagination-holdings/assets/gl/t27.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 28" aria-pressed="false" data-p="28"><img src="../imagination-holdings/assets/gl/t28.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 29" aria-pressed="false" data-p="29"><img src="../imagination-holdings/assets/gl/t29.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 30" aria-pressed="false" data-p="30"><img src="../imagination-holdings/assets/gl/t30.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 31" aria-pressed="false" data-p="31"><img src="../imagination-holdings/assets/gl/t31.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 32" aria-pressed="false" data-p="32"><img src="../imagination-holdings/assets/gl/t32.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 33" aria-pressed="false" data-p="33"><img src="../imagination-holdings/assets/gl/t33.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 34" aria-pressed="false" data-p="34"><img src="../imagination-holdings/assets/gl/t34.jpg" alt="" loading="lazy" width="400" height="225"></button></div></div>
     </div>
   </section>
 
@@ -605,8 +833,8 @@
       <img class="next__guy" src="assets/sunil-binoculars.png" alt="" aria-hidden="true" loading="lazy" width="860" height="1103">
       <div class="next__text">
         <div class="next__kicker">Next case study</div>
-        <a class="next__link next__link--long" href="../oro-chocolate/index.html">ORO Chocolate <span class="arrow">→</span></a>
-        <div><a class="next__prev" href="../accelerated-professional-center/index.html">← Previous: APL</a></div>
+        <a class="next__link next__link--long" href="../accelerated-professional-center/index.html">APL <span class="arrow">→</span></a>
+        <div><a class="next__prev" href="../oro-chocolate/index.html">← Previous: ORO Chocolate</a></div>
       </div>
     </div>
   </section>
@@ -680,7 +908,7 @@
   const letters = [...document.querySelectorAll('.circle-word button')];
   const meaning = document.querySelector('.circle-meaning span');
   let auto = !reduce, idx = 0;
-  const show = (b) => { letters.forEach(l => l.classList.toggle('is-on', l === b)); meaning.textContent = b.dataset.w; };
+  const show = (b) => { letters.forEach(l => l.classList.toggle('is-on', l === b)); if (meaning) meaning.textContent = b.dataset.w; };
   letters.forEach(b => {
     const pick = () => { auto = false; show(b); };
     b.addEventListener('pointerenter', pick); b.addEventListener('focus', pick); b.addEventListener('click', pick);
@@ -728,5 +956,176 @@
   addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
 })();
 </script>
+<script>(() => {
+  const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const press = (list, on) => list.forEach(b => { const v = b === on; b.classList.toggle('is-on', v); b.setAttribute('aria-pressed', v); });
+
+  // Research stepper
+  const rs = $('.rs');
+  if (rs) {
+    const bs = $$('.rs__b', rs), ims = $$('.rs__stage img', rs), n = $('.rs__n b', rs); let at = 0;
+    const go = k => { at = (k + bs.length) % bs.length; press(bs, bs[at]); ims.forEach((im, j) => im.classList.toggle('is-on', j === at)); n.textContent = '0' + (at + 1); };
+    bs.forEach((b, k) => b.addEventListener('click', () => go(k)));
+    $('.rs__p', rs).addEventListener('click', () => go(at - 1)); $('.rs__x', rs).addEventListener('click', () => go(at + 1));
+  }
+
+  // CIRCLE compass
+  const cc = $('.cc');
+  if (cc) {
+    const ring = $('.cc__ring', cc), ns = $$('.cc__n', cc), core = $('.cc__core', cc), spin = $('.cc__spin', cc); let timer = null, at = 1;
+    const size = () => ring.style.setProperty('--r', (ring.clientWidth * .375) + 'px'); size(); addEventListener('resize', size);
+    const show = k => { at = k; press(ns, ns[k]); core.querySelector('b').textContent = ns[k].dataset.t; core.querySelector('span').textContent = ns[k].dataset.d; core.classList.remove('is-swap'); void core.offsetWidth; core.classList.add('is-swap'); };
+    const stop = () => { clearInterval(timer); timer = null; spin.setAttribute('aria-pressed', 'false'); spin.textContent = '▶ Orbit through them'; };
+    ns.forEach((b, k) => b.addEventListener('click', () => { stop(); show(k); }));
+    spin.addEventListener('click', () => { if (timer) return stop(); spin.setAttribute('aria-pressed', 'true'); spin.textContent = '❚❚ Pause'; show((at + 1) % ns.length); timer = setInterval(() => show((at + 1) % ns.length), 2200); });
+    new IntersectionObserver(([e]) => { if (!e.isIntersecting) stop(); }).observe(cc);
+  }
+
+  // Logo lab: format, background, clear space
+  const ll = $('.ll');
+  if (ll) {
+    const fb = $$('.ll__grp:not(.ll__bgs) button', ll), bb = $$('.ll__bgs button', ll), ims = $$('.ll__img', ll), note = $('.ll__note', ll), cs = $('.ll__cs input', ll), sp = $('.ll__space', ll);
+    const ratio = { stacked: .53, horizontal: 1, monogram: 1 };
+    const fit = () => { const im = ims.find(i => i.classList.contains('is-on')); if (!im) return; const cs = Math.round(im.clientHeight * ratio[ll.dataset.f] * .5); Object.assign(sp.style, { left: im.offsetLeft + 'px', top: im.offsetTop + 'px', width: im.clientWidth + 'px', height: im.clientHeight + 'px' }); sp.style.setProperty('--cs', cs + 'px'); };
+    fb.forEach(b => b.addEventListener('click', () => { press(fb, b); ll.dataset.f = b.dataset.f; ims.forEach(i => i.classList.toggle('is-on', i.dataset.f === b.dataset.f)); requestAnimationFrame(fit); }));
+    bb.forEach(b => b.addEventListener('click', () => { press(bb, b); ll.dataset.bg = b.dataset.bg; ll.classList.toggle('is-bad', b.dataset.ok === '0'); note.textContent = b.dataset.note; }));
+    cs.addEventListener('change', () => { ll.classList.toggle('is-cs', cs.checked); fit(); });
+    addEventListener('resize', fit); requestAnimationFrame(fit);
+  }
+
+  // Minimum size slider
+  const lz = $('.lz');
+  if (lz) {
+    const r = $('.lz__r', lz), px = $('.lz__px', lz), tier = $('.lz__tier', lz), lis = $$('.lz__scale li', lz);
+    const T = [[128, 'Large · ≥128px digital'], [64, 'Medium · 64px digital'], [40, 'Min stacked · 40px digital'], [24, 'Monogram only · 24px minimum'], [0, 'Too small. Below 24px nothing reads.']];
+    const set = () => {
+      const v = +r.value, k = T.findIndex(([m]) => v >= m);
+      lz.style.setProperty('--w', v + 'px'); px.textContent = v + 'px'; tier.textContent = T[k][1];
+      lz.classList.toggle('is-mono', v < 40); lz.classList.toggle('is-tiny', v < 24);
+      lis.forEach((li, j) => li.classList.toggle('is-on', j === k));
+    };
+    r.addEventListener('input', set); set();
+  }
+
+  // Break the rules
+  const br = $('.br');
+  if (br) {
+    const bs = $$('.br__fx button', br), tag = $('.br__tag', br);
+    bs.forEach(b => b.addEventListener('click', () => {
+      press(bs, b); const ok = b.dataset.ok === '1'; br.dataset.x = b.dataset.x;
+      br.classList.remove('is-bad'); void br.offsetWidth; br.classList.toggle('is-bad', !ok);
+      tag.querySelector('b').textContent = ok ? '✓' : '✕'; tag.querySelector('span').textContent = b.dataset.note;
+    }));
+  }
+
+  // Palette: copy colours, show the 5% rule
+  const pl = $('.pl');
+  if (pl) {
+    const toast = $('.pl__toast', pl), show = $('.pl__show', pl), note = $('.pl__note', pl); let t;
+    const say = s => { toast.textContent = s; toast.classList.add('is-on'); clearTimeout(t); t = setTimeout(() => toast.classList.remove('is-on'), 1600); };
+    $$('.pl__sw', pl).forEach(b => b.addEventListener('click', () => { const h = b.dataset.hex; (navigator.clipboard ? navigator.clipboard.writeText(h) : Promise.reject()).then(() => say(h + ' copied'), () => say(h)); }));
+    show.addEventListener('click', () => {
+      const on = !pl.classList.contains('is-rule'); pl.classList.toggle('is-rule', on); show.setAttribute('aria-pressed', on);
+      show.textContent = on ? 'Hide the 5% rule' : 'Show the 5% rule';
+      note.textContent = on ? 'Deep Space and Signal White carry about 95%. Lime and Orbit share the last 5%, as small nodes and hover states only.' : 'Tap a colour to copy it.';
+    });
+  }
+
+  // Type tester
+  const tt = $('.tt');
+  if (tt) { const i = $('.tt__in input', tt), h = $('.tt__h1', tt); i.addEventListener('input', () => { h.textContent = i.value.trim() || 'Explorers of infinite possibilities'; }); }
+
+  // Visual identity composer
+  const vc = $('.vc');
+  if (vc) {
+    const NS = 'http://www.w3.org/2000/svg', L = n => $(`.vc__l[data-l="${n}"]`, vc), note = $('.vc__note', vc);
+    // Star field: sparse, irregular, asymmetric clusters (seeded so it never changes)
+    let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+    for (let k = 0; k < 70; k++) { const c = document.createElementNS(NS, 'circle'); const cl = rnd() < .55; c.setAttribute('cx', (cl ? 900 + rnd() * 650 : rnd() * 1600).toFixed(0)); c.setAttribute('cy', (cl ? rnd() * 380 : rnd() * 900).toFixed(0)); c.setAttribute('r', (rnd() * 1.8 + .6).toFixed(1)); c.setAttribute('opacity', (rnd() * .6 + .25).toFixed(2)); L('stars').appendChild(c); }
+    // Gravity well: grid lines that bend toward a central pull
+    const W = L('warp'), cx = 1150, cy = 420, pull = (x, y) => { const dx = cx - x, dy = cy - y, d = Math.hypot(dx, dy), f = 15 * Math.exp(-d / 260) * 6; return [x + dx / d * f, y + dy / d * f]; };
+    const line = pts => { const p = document.createElementNS(NS, 'path'); p.setAttribute('d', 'M' + pts.map(([x, y]) => x.toFixed(1) + ' ' + y.toFixed(1)).join('L')); W.appendChild(p); };
+    for (let x = 0; x <= 1600; x += 80) { const pts = []; for (let y = 0; y <= 900; y += 30) pts.push(pull(x, y)); line(pts); }
+    for (let y = 0; y <= 900; y += 80) { const pts = []; for (let x = 0; x <= 1600; x += 30) pts.push(pull(x, y)); line(pts); }
+
+    const tog = $$('.vc__chips button[data-t]', vc), one = $$('.vc__one button', vc);
+    const NOTE = { none: 'Two dominant elements set the atmosphere. Add one functional element.', stars: 'Star field: sparse, irregular dots. Background only.', coords: 'Coordinate notation: a targeting reticle with telemetry, in mono type.', warp: 'Gravity well: a grid that bends toward a central pull. Max 14% opacity.', horizon: 'Launch horizon: always a curve, with a blue glow at the line only.' };
+    const sync = () => { tog.forEach(b => L(b.dataset.t).classList.toggle('is-on', b.getAttribute('aria-pressed') === 'true')); };
+    tog.forEach(b => b.addEventListener('click', () => { b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') !== 'true'); sync();
+      const dom = tog.filter(x => ['ring', 'ellipse'].includes(x.dataset.t) && x.getAttribute('aria-pressed') === 'false').length;
+      note.classList.toggle('is-warn', dom > 0); if (dom) note.textContent = 'Dominant elements are always present when there is a background. Switch it back on.';
+      else if (['lime', 'blue'].includes(b.dataset.t)) note.textContent = 'Satellite nodes: 4–8px, one of each at most. Lime is active, blue is a fixed reference.';
+    }));
+    let cur = 'none';
+    one.forEach(b => b.addEventListener('click', () => {
+      const prev = cur; cur = b.dataset.f; press(one, b);
+      $$('.vc__f', vc).forEach(g => g.classList.toggle('is-on', g.dataset.l === cur));
+      const swapped = prev !== 'none' && cur !== 'none' && prev !== cur;
+      note.classList.toggle('is-warn', swapped);
+      note.textContent = (swapped ? 'Swapped. One functional element per composition, never two. ' : '') + NOTE[cur];
+    }));
+    sync();
+  }
+
+  // The book
+  const bk = $('.bk');
+  if (bk) {
+    const pg = $('.bk__pg', bk), r = $('.bk__r', bk), num = $('.bk__n b', bk), prev = $('.bk__nav--p', bk), next = $('.bk__nav--n', bk), ts = $$('.bk__t', bk), strip = $('.bk__strip', bk);
+    const N = ts.length, base = pg.src.replace(/s\d+\.jpg$/, ''); let at = 1;
+    const go = (p, dir) => {
+      p = Math.max(1, Math.min(N, p)); if (p === at) return; const d = String(p).padStart(2, '0'); at = p;
+      pg.style.setProperty('--dx', (dir || 1) * -24 + 'px'); pg.classList.add('is-out');
+      const im = new Image(); im.src = base + 's' + d + '.jpg';
+      const swap = () => { pg.src = im.src; pg.alt = 'Page ' + p + ' of the Imagination Holdings brand guidelines'; pg.style.setProperty('--dx', (dir || 1) * 24 + 'px'); requestAnimationFrame(() => requestAnimationFrame(() => pg.classList.remove('is-out'))); };
+      (im.decode ? im.decode() : Promise.resolve()).then(swap, swap);
+      num.textContent = d; r.value = p; prev.disabled = p === 1; next.disabled = p === N;
+      ts.forEach((t, k) => { t.classList.toggle('is-on', k === p - 1); t.setAttribute('aria-pressed', k === p - 1); });
+      const t = ts[p - 1]; strip.scrollTo({ left: t.offsetLeft - strip.clientWidth / 2 + t.clientWidth / 2, behavior: 'smooth' });
+      if (p < N) new Image().src = base + 's' + String(p + 1).padStart(2, '0') + '.jpg';
+    };
+    prev.disabled = true;
+    prev.addEventListener('click', () => go(at - 1, -1)); next.addEventListener('click', () => go(at + 1, 1));
+    r.addEventListener('input', () => go(+r.value, +r.value > at ? 1 : -1));
+    ts.forEach((t, k) => t.addEventListener('click', () => go(k + 1, k + 1 > at ? 1 : -1)));
+    bk.addEventListener('keydown', e => { if (e.target === r) return; if (e.key === 'ArrowRight') { e.preventDefault(); go(at + 1, 1); } if (e.key === 'ArrowLeft') { e.preventDefault(); go(at - 1, -1); } });
+    let sx = null; const st = $('.bk__stage', bk);
+    st.addEventListener('pointerdown', e => { sx = e.clientX; });
+    st.addEventListener('pointerup', e => { if (sx === null) return; const dx = e.clientX - sx; sx = null; if (Math.abs(dx) > 40) go(at + (dx < 0 ? 1 : -1), dx < 0 ? 1 : -1); });
+  }
+})();
+</script>
+<script>(() => {
+  // Loop clips carried over from V2 play only while on screen
+  const vo = new IntersectionObserver(es => es.forEach(e => { const v = e.target; if (e.isIntersecting) { v.preload = 'auto'; v.play().catch(() => {}); } else v.pause(); }), { threshold: .2 });
+  document.querySelectorAll('video.lv').forEach(v => vo.observe(v));
+})();</script>
+<script>(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Before / after sliders
+  document.querySelectorAll('.cmp').forEach(c => {
+    const r = c.querySelector('input');
+    const set = () => c.style.setProperty('--x', r.value + '%');
+    r.addEventListener('input', set); set();
+  });
+
+  
+  // Tab switchers that auto-advance while on screen and stop once someone picks a tab
+  document.querySelectorAll('.sw').forEach(sw => {
+    const tabs = [...sw.querySelectorAll('.sw-tab')], imgs = [...sw.querySelectorAll('.sw-img')], notes = [...sw.querySelectorAll('.sw-note')];
+    const stage = sw.querySelector('.sw-stage'), sbar = sw.querySelector('.sw-bar');
+    let cur = 0, timer = null;
+    const restart = () => { sbar.style.animation = 'none'; void sbar.offsetWidth; sbar.style.animation = ''; };
+    const show = (i) => { cur = (i + tabs.length) % tabs.length; tabs.forEach((t, j) => { t.classList.toggle('is-on', j === cur); t.setAttribute('aria-pressed', j === cur); }); imgs.forEach((m, j) => m.classList.toggle('is-on', j === cur)); notes.forEach((n, j) => n.classList.toggle('is-on', j === cur)); };
+    const pause = () => { clearInterval(timer); timer = null; };
+    const stop = () => { pause(); stage.classList.remove('is-auto'); };
+    const start = () => { if (timer || !stage.classList.contains('is-auto')) return; restart(); timer = setInterval(() => { show(cur + 1); restart(); }, 3800); };
+    tabs.forEach((t, j) => t.addEventListener('click', () => { stop(); show(j); }));
+    stage.addEventListener('click', () => { show(cur + 1); if (timer) { pause(); start(); } });
+    if (!reduce) new IntersectionObserver(([e]) => e.isIntersecting ? start() : pause(), { threshold: .4 }).observe(stage);
+    else stage.classList.remove('is-auto');
+  });
+
+  
+})();</script>
 </body>
 </html>

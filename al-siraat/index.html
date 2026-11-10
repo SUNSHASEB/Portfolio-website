@@ -498,6 +498,73 @@
     .films, .mots { grid-template-columns: 1fr; }
     .tools { grid-auto-columns: 44%; }
   }
+
+  /* Carried over from V2: the interactive pieces read these */
+  :root { --card-r: var(--radius); --font: var(--body); --muted: #9a9a96; --line: rgba(255,255,255,.14); --paper-2: #1b1b1b; --night: #0f0f0e; }
+  .rows-v1 > * + * { margin-top: clamp(14px, 1.6vw, 22px); }
+  section .wrap > :is(.sw, .jrow) + :not(.jrow):not(.sw):not(.sub) { margin-top: clamp(14px, 1.6vw, 22px); }
+
+  .live { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(16px, 2.4vw, 36px); margin-top: clamp(32px, 4vw, 56px); align-items: stretch; }
+  .live__phone { border-radius: calc(var(--radius) + 6px); background: radial-gradient(ellipse at 50% 40%, #2a2350 0%, #0d0c14 70%); display: grid; place-items: center; padding: clamp(18px, 3vw, 40px) 0; }
+  .live__phone .lottie { width: min(100%, 420px); aspect-ratio: 600 / 900; }
+  .live__side { display: flex; flex-direction: column; gap: clamp(12px, 1.5vw, 20px); }
+  .live__card { border-radius: var(--radius); background: #f7f4ee; color: #111; padding: clamp(16px, 2vw, 24px); overflow: hidden; }
+  .live__card small { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; color: #6c4bd1; }
+  .live__card b { display: block; margin-top: 6px; font-family: var(--body); font-weight: 800; font-size: clamp(20px, 1.7vw, 26px); letter-spacing: -.02em; }
+  .lottie--qaida { width: 100%; aspect-ratio: 1164 / 700; margin-top: 8px; }
+  .live__steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+  .live__steps li { display: flex; gap: 14px; align-items: baseline; padding: 12px 16px; border-radius: 14px; background: #141414; border: 1px solid rgba(255,255,255,.08); font-size: 16px; }
+  .live__steps b { color: var(--accent); font-size: 13px; letter-spacing: .1em; }
+  .live__link { align-self: flex-start; font-weight: 700; color: var(--accent); text-decoration: none; border-bottom: 2px solid currentColor; padding-bottom: 2px; }
+  .live__link:hover { color: #fff; }
+  .mots { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(10px, 1.2vw, 16px); margin-top: 16px; }
+  .mot { border-radius: var(--radius); background: #f7f4ee; color: #111; padding: clamp(16px, 2vw, 22px); }
+  .lottie--icon { width: 72px; height: 72px; margin-bottom: 8px; }
+  .mot b { display: block; font-family: var(--body); font-weight: 800; font-size: 18px; letter-spacing: -.01em; }
+  .mot p { margin: 6px 0 0; font-size: 14px; line-height: 1.4; opacity: .75; }
+  @media (max-width: 960px) {
+    .live { grid-template-columns: 1fr; }
+    .mots { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 600px) {
+    .films, .mots { grid-template-columns: 1fr; }
+  }
+  @keyframes sxfill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  .subh { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-top: clamp(40px, 5vw, 72px); padding-top: 14px; border-top: 1px solid var(--line); }
+  .subh__d { font-size: 14px; color: var(--muted); }
+  .cando { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(12px, 1.6vw, 24px); }
+  .cd { position: relative; display: flex; flex-direction: column; aspect-ratio: 4 / 5; border-radius: var(--card-r); overflow: hidden; isolation: isolate; border: 1px solid var(--cd-line); background: linear-gradient(to right, #fff, var(--cd-tint)); color: #111; }
+  .cd--quran { --cd-line: #12888f; --cd-tint: #bafbff; }
+  .cd--ai { --cd-line: #fd841f; --cd-tint: #fff8d8; }
+  .cd--qaida { --cd-line: #c4a4da; --cd-tint: #f6ecff; }
+  .cd__txt { position: relative; z-index: 2; padding: clamp(20px, 2.4vw, 34px); }
+  .cd__txt b { display: block; font-size: clamp(22px, 2.1vw, 32px); font-weight: 600; letter-spacing: -.03em; line-height: 1.05; }
+  .cd__txt p { margin: 10px 0 0; max-width: 26ch; font-size: clamp(15px, 1.15vw, 18px); line-height: 1.35; color: #5e5c58; }
+  .cd__txt--c { margin-top: auto; text-align: center; }
+  .cd__txt--c p { margin-inline: auto; }
+  .cd__art { position: absolute; left: 50%; bottom: -6%; width: 92%; aspect-ratio: 1; transform: translateX(-50%); }
+  .cd__blob { position: absolute; inset: 0; }
+  .cd__fg { position: absolute; left: 50%; bottom: 8%; width: 72%; height: auto; transform: translateX(-50%); }
+  .cd__art--ui { position: relative; left: auto; bottom: auto; width: 112%; margin: -8% -6% 0; aspect-ratio: 1164 / 940; transform: none; }
+  .cd__art--ui .lottie { width: 100%; height: 100%; }
+  .tc { margin-inline: calc(-1 * var(--gutter)); overflow: hidden; padding: 2px 0; }
+  .tc__track { display: flex; width: max-content; animation: tcmove 48s linear infinite; }
+  .tc:hover .tc__track, .tc:focus-within .tc__track { animation-play-state: paused; }
+  .tc__card { flex: none; width: clamp(190px, 19vw, 280px); margin: 0 clamp(14px, 2vw, 30px) 0 0; aspect-ratio: 375 / 512; }
+  .tc__card img { width: 100%; height: 100%; object-fit: contain; }
+  @keyframes tcmove { to { transform: translateX(-50%); } }
+  @media (max-width: 900px) {
+    .cando { grid-template-columns: 1fr; }
+    .cd { aspect-ratio: auto; min-height: 460px; }
+    .subh__d { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .tc { overflow-x: auto; }
+    .tc__track { animation: none; }
+  }
+  .wx--light { background: #fff; color: var(--ink); padding: clamp(18px, 3vw, 44px); border-radius: var(--card-r, 16px); }
+  .wx--light .mot { background: var(--paper); }
+  :is(.cando, .tc) { color: #111110; }
 </style>
 <link rel="stylesheet" href="../assets/readable-type.css">
 </head>
@@ -687,8 +754,10 @@
       <div class="feats"><article class="feat reveal"><small>AI CORE</small><b>Real-time mistake detection</b><p>The AI listens to recitation, highlights errors instantly and corrects on the spot.</p></article><article class="feat reveal"><small>AI CORE</small><b>Pronunciation &amp; Tajweed</b><p>Feedback on pronunciation and Tajweed while you recite.</p></article><article class="feat reveal"><small>LEARNING</small><b>Interactive AI Qaida</b><p>A beginner track from Arabic letters and sounds up to fluent reading.</p></article><article class="feat reveal"><small>LEARNING</small><b>Adaptive lessons &amp; rewards</b><p>AI-tailored paths, daily limits that build consistency, progress insights and rewards.</p></article><article class="feat reveal"><small>RECITATION</small><b>World-renowned Qari audio</b><p>Listen and compare against masters like Abdul-Basit and Al-Sudais, with a mistake log.</p></article><article class="feat reveal"><small>DAILY WORSHIP</small><b>Essential Islamic tools</b><p>Prayer times, Qibla, Tasbih, calendar, Duas and Azkar. Kept, now decluttered.</p></article></div>
       <p class="sub-h reveal">Motivation, built in</p>
       <div class="mots"><article class="mot reveal"><div class="lottie lottie--icon" data-anim="lessonPlans" aria-hidden="true"></div><b>Adaptive lesson plans</b><p>Learn at your own pace with AI-tailored content.</p></article><article class="mot reveal"><div class="lottie lottie--icon" data-anim="reward" aria-hidden="true"></div><b>Earn rewards</b><p>Daily progress unlocks badges and streaks.</p></article><article class="mot reveal"><div class="lottie lottie--icon" data-anim="progress" aria-hidden="true"></div><b>Progress insights</b><p>See growth and focus where it matters.</p></article><article class="mot reveal"><div class="lottie lottie--icon" data-anim="feedback" aria-hidden="true"></div><b>Smart feedback</b><p>Real-time correction from Al Siraat AI.</p></article></div>
+      <p class="sub-h reveal">What Al Siraat can do</p>
+      <div class="cando"><article class="cd cd--quran reveal"><div class="cd__txt"><b>Quran Learning</b><p>Set up your personalized learning path with AI.</p></div><div class="cd__art"><div class="lottie cd__blob" data-anim="quran-card" aria-hidden="true"></div><img class="cd__fg" src="../al-siraat/assets/quran-calligraphy.svg" alt="" width="265" height="234" loading="lazy"></div></article><article class="cd cd--ai reveal"><div class="cd__art cd__art--ui"><div class="lottie" data-anim="ai-assistant" role="img" aria-label="Qaida lesson: a progress bar reaches 82% and the app says Good job, you’re mastering this quickly"></div></div><div class="cd__txt cd__txt--c"><b>AI Learning Assistant</b><p>Recite, get corrected, keep going.</p></div></article><article class="cd cd--qaida reveal"><div class="cd__txt"><b>Qaida Learning</b><p>Start from the letters and build up to fluent reading.</p></div><div class="cd__art"><div class="lottie cd__blob" data-anim="qaida-card" aria-hidden="true"></div><img class="cd__fg" src="../al-siraat/assets/qaida-letters.svg" alt="" width="265" height="241" loading="lazy"></div></article></div>
       <p class="sub-h reveal">Daily worship tools</p>
-      <ul class="tools reveal" aria-label="Worship tool cards"><li><img src="assets/tool-quran.jpg" alt="Quran feature card" loading="lazy" width="375" height="516"></li><li><img src="assets/tool-qaida.jpg" alt="Qaida feature card" loading="lazy" width="375" height="516"></li><li><img src="assets/tool-prayer.jpg" alt="Prayer times feature card" loading="lazy" width="376" height="512"></li><li><img src="assets/tool-qibla.jpg" alt="Qibla feature card" loading="lazy" width="375" height="512"></li><li><img src="assets/tool-tasbih.jpg" alt="Tasbeeh feature card" loading="lazy" width="374" height="512"></li><li><img src="assets/tool-dua-azkar.jpg" alt="Dua & Azkar feature card" loading="lazy" width="375" height="512"></li><li><img src="assets/tool-calendar.jpg" alt="Hijri calendar feature card" loading="lazy" width="374" height="512"></li></ul>
+      <div class="tc reveal" role="region" aria-label="Islamic tools in Al Siraat"><div class="tc__track"><figure class="tc__card"><img src="../al-siraat/assets/tool-quran.png" alt="Quran feature card" loading="lazy" width="375" height="516"></figure><figure class="tc__card"><img src="../al-siraat/assets/tool-qaida.png" alt="Qaida feature card" loading="lazy" width="375" height="516"></figure><figure class="tc__card"><img src="../al-siraat/assets/tool-prayer.png" alt="Prayer times feature card" loading="lazy" width="376" height="512"></figure><figure class="tc__card"><img src="../al-siraat/assets/tool-qibla.png" alt="Qibla feature card" loading="lazy" width="375" height="512"></figure><figure class="tc__card"><img src="../al-siraat/assets/tool-tasbih.png" alt="Tasbeeh feature card" loading="lazy" width="374" height="512"></figure><figure class="tc__card"><img src="../al-siraat/assets/tool-dua-azkar.png" alt="Dua &amp; Azkar feature card" loading="lazy" width="375" height="512"></figure><figure class="tc__card"><img src="../al-siraat/assets/tool-calendar.png" alt="Hijri calendar feature card" loading="lazy" width="374" height="512"></figure><figure class="tc__card" aria-hidden="true"><img src="../al-siraat/assets/tool-quran.png" alt="" loading="lazy" width="375" height="516"></figure><figure class="tc__card" aria-hidden="true"><img src="../al-siraat/assets/tool-qaida.png" alt="" loading="lazy" width="375" height="516"></figure><figure class="tc__card" aria-hidden="true"><img src="../al-siraat/assets/tool-prayer.png" alt="" loading="lazy" width="376" height="512"></figure><figure class="tc__card" aria-hidden="true"><img src="../al-siraat/assets/tool-qibla.png" alt="" loading="lazy" width="375" height="512"></figure><figure class="tc__card" aria-hidden="true"><img src="../al-siraat/assets/tool-tasbih.png" alt="" loading="lazy" width="374" height="512"></figure><figure class="tc__card" aria-hidden="true"><img src="../al-siraat/assets/tool-dua-azkar.png" alt="" loading="lazy" width="375" height="512"></figure><figure class="tc__card" aria-hidden="true"><img src="../al-siraat/assets/tool-calendar.png" alt="" loading="lazy" width="374" height="512"></figure></div></div>
     </div>
   </section>
 

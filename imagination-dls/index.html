@@ -588,6 +588,180 @@
   @media (prefers-reduced-motion: reduce) {
     .tree__row::after { animation: none; display: none; }
   }
+
+  /* Carried over from V2: the interactive pieces read these */
+  :root { --card-r: var(--radius); --font: var(--body); --muted: #9a9a96; --line: rgba(255,255,255,.14); --paper-2: #1b1b1b; --night: #0f0f0e; }
+  .rows-v1 > * + * { margin-top: clamp(14px, 1.6vw, 22px); }
+  section .wrap > :is(.sw, .jrow) + :not(.jrow):not(.sw):not(.sub) { margin-top: clamp(14px, 1.6vw, 22px); }
+
+  
+  /* V1 components this page did not have yet */
+  .jrow { display: flex; gap: clamp(10px, 1.4vw, 20px); margin-top: clamp(14px, 1.6vw, 22px); }
+  .jrow .frame { margin: 0; background: #111; }
+  .jrow.first { margin-top: clamp(32px, 4vw, 56px); }
+  @media (max-width: 600px) { .jrow { flex-direction: column; } .jrow .frame { flex: none !important; } }
+  .jrow .frame { margin: 0; flex: 1 1 0%; aspect-ratio: 16 / 9; background: #fff; }
+  @media (max-width: 600px) { .jrow { flex-direction: column; } }
+  .flow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(32px, 4vw, 56px); }
+  .flow article { border-radius: var(--radius); padding: clamp(18px, 2vw, 26px); background: #141414; border: 1.5px solid rgba(255,255,255,.08); transition: transform .35s var(--ease), border-color .3s; }
+  .flow article:hover { transform: translateY(-4px); border-color: var(--accent); }
+  .flow small { font-size: 12px; letter-spacing: .14em; color: var(--accent); font-weight: 700; }
+  .flow b { display: block; margin: 8px 0; font-family: var(--body); font-weight: 800; font-size: clamp(20px, 1.6vw, 26px); letter-spacing: -.02em; }
+  .flow p { margin: 0; opacity: .85; }
+  @media (max-width: 960px) { .flow { grid-template-columns: 1fr; } }
+  .posters { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(32px, 4vw, 56px); }
+  .posters .frame { margin: 0; aspect-ratio: 1311 / 1860; background: #fdf8e4; }
+  .posters .frame:nth-child(even) { transform: translateY(clamp(12px, 3vw, 40px)); }
+  .posters .frame:hover { transform: translateY(-6px) rotate(-1deg); }
+  .posters-gap { height: clamp(12px, 3vw, 40px); }
+  @media (max-width: 960px) { .posters { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @keyframes sxfill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  .dcs { flex: 1 1 100%; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(10px, 1.2vw, 16px); }
+  .dc { all: unset; box-sizing: border-box; cursor: pointer; display: flex; flex-direction: column; gap: 12px; padding: clamp(16px, 1.8vw, 22px); border-radius: var(--card-r); background: #fff; box-shadow: 0 0 0 1px var(--line); transition: transform .35s var(--ease), box-shadow .3s; }
+  .dc:hover, .dc:focus-visible, .dc[aria-expanded="true"] { transform: translateY(-3px); box-shadow: 0 0 0 1.5px var(--c), 0 18px 40px -24px var(--c); }
+  .dc__head { display: flex; justify-content: space-between; align-items: baseline; }
+  .dc__head b { font-size: clamp(18px, 1.5vw, 22px); font-weight: 500; letter-spacing: -.02em; }
+  .dc__head i { font-style: normal; font-family: var(--mono); font-size: clamp(28px, 2.6vw, 40px); line-height: .8; color: var(--c); }
+  .dc__apps { display: flex; flex-wrap: wrap; gap: 6px; max-height: 66px; overflow: hidden; transition: max-height .5s var(--ease); -webkit-mask: linear-gradient(#000 60%, transparent); mask: linear-gradient(#000 60%, transparent); }
+  .dc[aria-expanded="true"] .dc__apps { max-height: 400px; -webkit-mask: none; mask: none; }
+  .dc__apps span { font-size: 12px; padding: 4px 9px; border-radius: 99px; background: color-mix(in srgb, var(--c) 10%, #fff); }
+  .dc__apps a { color: inherit; }
+  .dr { flex: 1 1 100%; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(12px, 1.6vw, 20px); margin-bottom: clamp(12px, 1.6vw, 20px); }
+  .dr__card { border-radius: var(--card-r); padding: clamp(18px, 2vw, 28px); background: #fff; box-shadow: 0 0 0 1px var(--line); display: flex; flex-direction: column; gap: 12px; }
+  .dr__card small { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+  .dr__card b { font-size: clamp(24px, 2.4vw, 36px); font-weight: 500; letter-spacing: -.035em; line-height: 1; }
+  .dr__card p { margin: 0; color: var(--muted); font-size: 15px; max-width: 42ch; }
+  .dr__flow { margin-top: auto; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-family: var(--mono); font-size: 12px; }
+  .dr__flow span { padding: 6px 10px; border-radius: 99px; box-shadow: 0 0 0 1px var(--line); transition: background .3s, color .3s, box-shadow .3s; }
+  .dr__flow i { font-style: normal; color: var(--muted); }
+  .dr.is-play .dr__flow span { animation: drStep 6s steps(1) infinite; animation-delay: calc(var(--i) * 1s); }
+  .dr__card--bad .dr__flow span:last-child { --hot: #ef4444; }
+  .dr__card--good .dr__flow span:last-child { --hot: #16a34a; }
+  @keyframes drStep { 0%, 100% { background: var(--hot, var(--ink)); color: #fff; box-shadow: none; } 16% { background: transparent; color: inherit; box-shadow: 0 0 0 1px var(--line); } }
+  .dt { flex: 1 1 100%; border-radius: var(--card-r); background: #0f1014; color: #fff; padding: clamp(18px, 2.4vw, 36px); display: grid; justify-items: center; }
+  .dt__row { display: flex; justify-content: center; flex-wrap: wrap; gap: clamp(10px, 4vw, 64px); position: relative; padding-top: 30px; width: 100%; }
+  .dt__row:first-child { padding-top: 0; }
+  .dt__row:not(:first-child)::before, .dt__layers::before { content: ""; position: absolute; top: 0; left: 50%; width: 1.5px; height: 30px; background: rgba(255,255,255,.3); }
+  .dt__node { border-radius: 12px; padding: 10px 16px; font-weight: 500; font-size: clamp(13px, 1vw, 15px); text-align: center; box-shadow: 0 0 0 1px rgba(255,255,255,.25); background: #17181d; }
+  .dt__node small { display: block; font-weight: 400; font-size: 12px; opacity: .7; margin-top: 2px; }
+  .dt__node--spt { background: #2bb24c; color: #000; box-shadow: none; }
+  .dt__node--rapid { background: #ff9a3c; color: #000; box-shadow: none; }
+  .dt__node--mother { background: #8ec5ff; color: #001; box-shadow: none; padding: 14px 22px; font-size: clamp(15px, 1.3vw, 19px); }
+  .dt__layers { width: 100%; display: grid; gap: 14px; position: relative; padding-top: 30px; }
+  .dt__layer { position: relative; border-radius: 14px; padding: clamp(12px, 1.4vw, 18px); box-shadow: 0 0 0 1px var(--c); background: color-mix(in srgb, var(--c) 10%, #0f1014); transition: background .4s, transform .4s var(--ease); }
+  .dt__layer:hover { transform: translateY(-2px); background: color-mix(in srgb, var(--c) 18%, #0f1014); }
+  .dt__lh { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 14px; align-items: baseline; margin-bottom: 10px; }
+  .dt__lh b { font-weight: 600; font-size: clamp(15px, 1.2vw, 18px); color: var(--c); }
+  .dt__lh span { font-size: 13px; opacity: .7; }
+  .dt__kits { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+  .dt__kits span { border-radius: 8px; padding: 8px 6px; text-align: center; font-size: 13px; background: color-mix(in srgb, var(--c) 22%, #0f1014); transition: background .3s; }
+  .dt__ok { position: absolute; top: 12px; right: 14px; font-style: normal; font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; padding: 3px 8px; border-radius: 99px; background: #16a34a; color: #fff; opacity: 0; transform: scale(.8); transition: opacity .3s, transform .3s var(--ease); }
+  .dt__layer:has(.dt__ok) .dt__lh { padding-right: 84px; }
+  .dt__layer.is-hit { background: color-mix(in srgb, var(--c) 30%, #0f1014); }
+  .dt__layer.is-hit .dt__kits span { background: var(--c); color: #000; }
+  .dt__layer.is-done .dt__ok { opacity: 1; transform: none; }
+  .dt__node--mother.is-hit { box-shadow: 0 0 0 4px rgba(142,197,255,.35), 0 0 30px rgba(142,197,255,.6); }
+  .dt__foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px 18px; margin-top: 18px; }
+  .dt__foot p { margin: 0; font-size: 14px; opacity: .7; }
+  .dt__push { all: unset; cursor: pointer; font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; padding: 9px 14px; border-radius: 99px; background: #fff; color: #000; }
+  .dt__push:hover { background: var(--tint, #fdf0b4); }
+  .dt__push:focus-visible, .dc:focus-visible, .dk__pick:focus-visible, .di__chips button:focus-visible, .dp__list button:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+  .dk { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 330px); gap: clamp(20px, 3vw, 44px); align-items: center; padding: clamp(18px, 2.4vw, 36px); color: #fff; }
+  .dk__lbl { margin: 0 0 12px; font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; opacity: .7; }
+  .dk__picks { display: flex; flex-wrap: wrap; gap: 8px; }
+  .dk__pick { all: unset; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; padding: 8px 13px 8px 9px; border-radius: 99px; font-size: 14px; box-shadow: 0 0 0 1.5px rgba(255,255,255,.3); }
+  .dk__pick i { width: 13px; height: 13px; border-radius: 50%; background: var(--dot); }
+  .dk__pick:hover { box-shadow: 0 0 0 1.5px #fff; }
+  .dk__pick.is-on { background: #fff; color: #000; box-shadow: none; }
+  .dk__chain { list-style: none; margin: 22px 0 0; padding: 0; display: grid; gap: 8px; }
+  .dk__chain li { display: grid; grid-template-columns: 82px minmax(0, 1fr) auto; gap: 10px; align-items: baseline; padding: 10px 12px; border-radius: 10px; background: rgba(255,255,255,.05); }
+  .dk__chain li.is-hot { background: color-mix(in srgb, var(--b5, #8b66d9) 22%, transparent); box-shadow: 0 0 0 1px var(--b5, #8b66d9); transition: background .45s, box-shadow .45s; }
+  .dk__chain small { font-family: var(--mono); font-size: 11px; opacity: .6; }
+  .dk__chain code { font-family: var(--mono); font-size: 13px; }
+  .dk__chain span { font-size: 12px; opacity: .6; }
+  .dk__note { margin: 14px 0 0; font-size: 12px; opacity: .55; }
+  .dk__phone { --b5: #8b66d9; --b1: #efeafc; --b7: #6a46c0; --on: #fff; border-radius: 32px; background: #fafafa; color: #18181b; padding: 18px 16px 16px; box-shadow: 0 0 0 8px #26272d, 0 30px 60px rgba(0,0,0,.5); }
+  .dk__phone * { transition: background-color .45s var(--ease), color .45s var(--ease), border-color .45s var(--ease); }
+  .ph__bar { display: flex; justify-content: space-between; font-size: 11px; font-weight: 700; opacity: .8; padding: 0 6px 10px; }
+  .ph__title { text-align: center; font-weight: 700; font-size: 17px; margin: 4px 0 12px; }
+  .ph__tabs { display: flex; justify-content: space-around; font-size: 13px; font-weight: 600; color: #71717a; border-bottom: 1px solid #e4e4e7; margin-bottom: 10px; }
+  .ph__tabs span { padding: 8px 4px; border-bottom: 2px solid transparent; margin-bottom: -1px; }
+  .ph__tabs .on { color: var(--b5); border-color: var(--b5); }
+  .ph__item { display: flex; align-items: center; gap: 10px; padding: 9px 8px; border-radius: 12px; background: #fff; margin-bottom: 8px; box-shadow: 0 1px 2px rgba(0,0,0,.05); }
+  .ph__ico { width: 34px; height: 34px; border-radius: 10px; background: var(--b1); display: grid; place-items: center; color: var(--b5); font-size: 12px; font-weight: 800; flex: none; }
+  .ph__item b { display: block; font-size: 13px; }
+  .ph__item small { display: block; font-size: 11px; color: #71717a; }
+  .ph__chips { display: flex; gap: 6px; margin: 12px 0; }
+  .ph__chips span { font-size: 11px; font-weight: 700; padding: 6px 10px; border-radius: 999px; background: var(--b1); color: var(--b7); }
+  .ph__chips span:first-child { background: var(--b5); color: var(--on); }
+  .ph__row { display: flex; align-items: center; justify-content: space-between; font-size: 13px; font-weight: 600; padding: 4px 4px 12px; }
+  .ph__toggle { width: 40px; height: 24px; border-radius: 999px; background: var(--b5); position: relative; }
+  .ph__toggle::after { content: ""; position: absolute; right: 3px; top: 3px; width: 18px; height: 18px; border-radius: 50%; background: #fff; }
+  .ph__cta { display: block; text-align: center; border-radius: 14px; padding: 14px; font-weight: 700; font-size: 14px; background: var(--b5); color: var(--on); }
+  .di { flex: 1 1 100%; border-radius: var(--card-r); background: #fff; box-shadow: 0 0 0 1px var(--line); padding: clamp(16px, 2vw, 28px); }
+  .di__top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; }
+  .di__tabs { display: inline-flex; padding: 3px; border-radius: 99px; background: var(--paper-2, #ebe8e1); }
+  .di__tabs button { all: unset; cursor: pointer; padding: 7px 14px; border-radius: 99px; font-size: 14px; }
+  .di__tabs button.is-on { background: var(--ink); color: #fff; }
+  .di__src { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .di__chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 16px 0 18px; }
+  .di__chips button { all: unset; cursor: pointer; font-family: var(--mono); font-size: 12px; padding: 6px 10px; border-radius: 8px; box-shadow: 0 0 0 1px var(--line); }
+  .di__chips button:hover { box-shadow: 0 0 0 1px var(--ink); }
+  .di__chips button.is-on { background: #7c5cff; color: #fff; box-shadow: none; }
+  .di__body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(16px, 2vw, 28px); align-items: stretch; }
+  .di__stage { position: relative; min-height: 220px; border-radius: 12px; background: #f6f5fb; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .di__a, .di__b { width: 96px; height: 96px; border-radius: 10px; background: #7c5cff; transition: margin .45s var(--ease); }
+  .di__b { background: #b8a6ff; }
+  .di__stage[data-set="spacing"] .di__a { margin-right: var(--v); }
+  .di__stage[data-set="spacing"]::after { content: attr(data-v); position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%); font-family: var(--mono); font-size: 12px; color: #7c5cff; }
+  .di__r { display: none; width: 150px; height: 150px; background: #7c5cff; border-radius: var(--v); transition: border-radius .45s var(--ease); }
+  .di__stage[data-set="radius"] .di__a, .di__stage[data-set="radius"] .di__b { display: none; }
+  .di__stage[data-set="radius"] .di__r { display: block; }
+  .di__spec { margin: 0; display: grid; align-content: start; border-top: 1px solid var(--ink); }
+  .di__spec div { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--line); }
+  .di__spec dt { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .di__spec dd { margin: 0; font-size: 15px; }
+  .dp { flex: 1 1 100%; display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: clamp(18px, 3vw, 48px); align-items: center; border-radius: var(--card-r); background: #0f1014; color: #fff; padding: clamp(18px, 2.4vw, 36px); }
+  .dp__phone { border-radius: 34px; padding: 8px; background: #26272d; box-shadow: 0 30px 60px rgba(0,0,0,.45); }
+  .dp__screen { position: relative; aspect-ratio: 412 / 917; border-radius: 27px; overflow: hidden; background: #fff; }
+  .dp__screen img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.02); transition: opacity .5s var(--ease), transform .6s var(--ease); }
+  .dp__screen img.is-on { opacity: 1; transform: none; }
+  .dp__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+  .dp__list button { all: unset; box-sizing: border-box; width: 100%; cursor: pointer; display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 2px 10px; padding: 12px 14px; border-radius: 12px; transition: background .3s; }
+  .dp__list button:hover { background: rgba(255,255,255,.06); }
+  .dp__list button.is-on { background: rgba(255,255,255,.1); box-shadow: inset 3px 0 0 #8ec5ff; }
+  .dp__list small { font-family: var(--mono); font-size: 12px; opacity: .55; padding-top: 3px; }
+  .dp__list span { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; }
+  .dp__list b { font-weight: 500; font-size: clamp(16px, 1.3vw, 19px); }
+  .dp__list em { font-style: normal; font-size: 13px; opacity: .55; }
+  .dp__list i { grid-column: 2; font-style: normal; font-family: var(--mono); font-size: 11px; opacity: 0; max-height: 0; overflow: hidden; transition: opacity .3s, max-height .4s var(--ease); color: #8ec5ff; }
+  .dp__list button.is-on i { opacity: 1; max-height: 40px; margin-top: 4px; }
+  @media (max-width: 1100px) {
+    .dcs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .dk { grid-template-columns: 1fr; }
+    .dk__phone { max-width: 330px; }
+  }
+  @media (max-width: 760px) {
+    .dr, .di__body, .dp { grid-template-columns: 1fr; }
+    .dcs { grid-template-columns: 1fr; }
+    .dt__kits { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .dp__phone { width: 100%; max-width: 260px; justify-self: center; box-sizing: border-box; }
+    .dk__chain li { grid-template-columns: 70px minmax(0, 1fr); }
+    .dk__chain span { display: none; }
+  }
+  @media (max-width: 760px) {
+    .dp__list { order: -1; display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; margin: 0 calc(-1 * clamp(18px, 2.4vw, 36px)); padding: 0 clamp(18px, 2.4vw, 36px) 4px; }
+    .dp__list::-webkit-scrollbar { display: none; }
+    .dp__list li { flex: none; }
+    .dp__list button { width: auto; grid-template-columns: auto; padding: 9px 13px; border-radius: 99px; box-shadow: inset 0 0 0 1px rgba(255,255,255,.2); }
+    .dp__list button.is-on { background: #fff; color: #000; box-shadow: none; }
+    .dp__list small, .dp__list em, .dp__list i { display: none; }
+    .dp__list b { font-size: 14px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .dr.is-play .dr__flow span { animation: none; }
+  }
+  :is(.di) { color: #111110; }
 </style>
 <link rel="stylesheet" href="../assets/readable-type.css">
 </head>
@@ -741,6 +915,7 @@
         <figure class="frame reveal"><img src="assets/colusage.jpg" alt="Semantic colour usage for surfaces, text and borders across neutral, brand and status colours" loading="lazy"><span class="cap">Semantic colour</span></figure>
         <figure class="frame reveal"><img src="assets/tokens-type.jpg" alt="Typography token table with value, when to use and when to avoid" loading="lazy"><span class="cap">Type tokens</span></figure>
       </div>
+          <div class="di reveal"><div class="di__top"><div class="di__tabs" role="tablist"><button type="button" class="is-on" data-set="spacing" aria-selected="true">Spacing</button><button type="button" data-set="radius" aria-selected="false">Radius</button></div><span class="di__src">From the DLS token spec</span></div><div class="di__chips" id="di-chips"></div><div class="di__body"><div class="di__stage" id="di-stage"><div class="di__a"></div><div class="di__b"></div><div class="di__r"></div></div><dl class="di__spec"><div><dt>Token</dt><dd id="di-name"></dd></div><div><dt>Value</dt><dd id="di-val"></dd></div><div><dt>When to use</dt><dd id="di-use"></dd></div><div><dt>When to avoid</dt><dd id="di-avoid"></dd></div></dl></div></div>
     </div>
   </section>
   <section id="components" aria-labelledby="components-h" style="padding-top:0">
@@ -759,6 +934,7 @@
       
       <p class="sub reveal">Xeno AI, Brainly Tutor and PDF Scanner are built by different teams for different users. They still share every button, field, sheet and nav bar.</p>
       <div class="phones"><figure class="frame reveal"><img src="assets/scr-1.jpg" alt="Xeno AI onboarding: AI summarization" loading="lazy"></figure><figure class="frame reveal"><img src="assets/scr-4.jpg" alt="Edit profile form with filled fields" loading="lazy"></figure><figure class="frame reveal"><img src="assets/scr-5.jpg" alt="Brainly Tutor paywall with plan cards" loading="lazy"></figure><figure class="frame reveal"><img src="assets/scr-6.jpg" alt="PDF Scanner file list with tabs and bottom nav" loading="lazy"></figure><figure class="frame reveal"><img src="assets/scr-8.jpg" alt="Rate-us dialog over the file list" loading="lazy"></figure><figure class="frame reveal"><img src="assets/scr-9.jpg" alt="File details bottom sheet" loading="lazy"></figure></div>
+      <div class="dp reveal"><div class="dp__phone"><div class="dp__screen"><img class="is-on" src="../imagination-dls/assets/scr-1.jpg" alt="Onboarding, Xeno AI" loading="lazy" width="824" height="1834"><img class="" src="../imagination-dls/assets/scr-4.jpg" alt="Edit profile, Shared pattern" loading="lazy" width="824" height="1834"><img class="" src="../imagination-dls/assets/scr-5.jpg" alt="Paywall, Brainly Tutor" loading="lazy" width="824" height="1834"><img class="" src="../imagination-dls/assets/scr-6.jpg" alt="File list, PDF Scanner" loading="lazy" width="824" height="1834"><img class="" src="../imagination-dls/assets/scr-8.jpg" alt="Rate us, PDF Scanner" loading="lazy" width="824" height="1834"><img class="" src="../imagination-dls/assets/scr-9.jpg" alt="File details, PDF Scanner" loading="lazy" width="824" height="1834"></div></div><ol class="dp__list"><li><button type="button" class="is-on" data-i="0"><small>01</small><span><b>Onboarding</b><em>Xeno AI</em></span><i>Progress bar · Chip · Feature card</i></button></li><li><button type="button" class="" data-i="1"><small>02</small><span><b>Edit profile</b><em>Shared pattern</em></span><i>Avatar · Input fields · Primary CTA</i></button></li><li><button type="button" class="" data-i="2"><small>03</small><span><b>Paywall</b><em>Brainly Tutor</em></span><i>Tabs · Price plan cards · Primary CTA</i></button></li><li><button type="button" class="" data-i="3"><small>04</small><span><b>File list</b><em>PDF Scanner</em></span><i>App bar · Tabs · List cards · Bottom nav</i></button></li><li><button type="button" class="" data-i="4"><small>05</small><span><b>Rate us</b><em>PDF Scanner</em></span><i>Overlay · Feedback dialog · Buttons</i></button></li><li><button type="button" class="" data-i="5"><small>06</small><span><b>File details</b><em>PDF Scanner</em></span><i>Bottom sheet · Detail rows · Icons</i></button></li></ol></div>
       <p class="sub phones-note reveal">Want the brand side of the story? <a class="xlink" href="../imagination-holdings/index.html">Imagination Holdings identity →</a></p>
     </div>
   </section>
@@ -934,5 +1110,112 @@
   toy.style.setProperty('--b5', R.purple[0]);
 })();
 </script>
+<script>(() => {
+  // Each switcher rotates on its own while on screen; hovering or focusing it holds the current screen
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('.sx').forEach(sx => {
+    const tabs = [...sx.querySelectorAll('.sx__tab')], imgs = [...sx.querySelectorAll('.sx__img')];
+    const note = sx.querySelector('.sx__note'), bar = sx.querySelector('.sx__tabs');
+    let at = 0, timer, seen = false, held = false;
+    const show = n => {
+      at = n;
+      tabs.forEach((t, k) => { t.classList.toggle('is-on', k === n); t.setAttribute('aria-pressed', k === n); });
+      imgs.forEach((im, k) => im.classList.toggle('is-on', k === n));
+      note.textContent = tabs[n].dataset.note;
+      if (bar.scrollWidth > bar.clientWidth) bar.scrollTo({ left: tabs[n].offsetLeft - 16, behavior: 'smooth' });
+    };
+    const run = () => {
+      clearTimeout(timer); sx.classList.remove('is-play'); void sx.offsetWidth;
+      if (still || !seen || held) return;
+      sx.classList.add('is-play');
+      timer = setTimeout(() => { show((at + 1) % tabs.length); run(); }, 4500);
+    };
+    const hold = v => () => { held = v; run(); };
+    tabs.forEach((t, k) => t.addEventListener('click', () => { show(k); run(); }));
+    sx.addEventListener('pointerenter', hold(true)); sx.addEventListener('pointerleave', hold(false));
+    sx.addEventListener('focusin', hold(true)); sx.addEventListener('focusout', hold(false));
+    new IntersectionObserver(([e]) => {
+      seen = e.isIntersecting;
+      if (seen) imgs.forEach(im => { im.loading = 'eager'; });
+      run();
+    }, { threshold: .35 }).observe(sx);
+  });
+})();
+  // DLS v2 demos
+  (() => {
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const seen = (el, fn, th = .35) => el && new IntersectionObserver(([e]) => fn(e.isIntersecting), { threshold: th }).observe(el);
+    // Category cards open to show every app
+    document.querySelectorAll('.dc').forEach(c => c.addEventListener('click', e => { if (e.target.closest('a')) return; c.setAttribute('aria-expanded', c.getAttribute('aria-expanded') !== 'true'); }));
+    // Before / after flows step along while on screen
+    const dr = document.querySelector('.dr'); seen(dr, on => dr.classList.toggle('is-play', on && !reduce));
+    // Library tree: publish an update and watch it reach every layer
+    const dt = document.querySelector('.dt');
+    if (dt) {
+      const mother = dt.querySelector('.dt__node--mother'), layers = [...dt.querySelectorAll('.dt__layer')], btn = dt.querySelector('.dt__push');
+      let timers = [];
+      const run = () => {
+        timers.forEach(clearTimeout); timers = [];
+        [mother, ...layers].forEach(n => n.classList.remove('is-hit', 'is-done'));
+        mother.classList.add('is-hit');
+        timers.push(setTimeout(() => mother.classList.remove('is-hit'), 900));
+        layers.forEach((l, k) => { timers.push(setTimeout(() => l.classList.add('is-hit'), 500 + k * 550)); timers.push(setTimeout(() => { l.classList.remove('is-hit'); l.classList.add('is-done'); }, 1100 + k * 550)); });
+      };
+      btn.addEventListener('click', run);
+      let once = false; seen(dt, on => { if (on && !once && !reduce) { once = true; run(); } });
+    }
+    // Category theme toy: one Tier 3 switch re-themes the whole mock screen
+    const T = { core: ['purple', '#8b66d9'], docu: ['blue'], education: ['green'], social: ['red'], entertainment: ['pink'], utility: ['yellow'] };
+    const R = { purple: ['#8b66d9', '#efeafc', '#6a46c0', '#fff'], blue: ['#3b82f6', '#dbeafe', '#1d4ed8', '#fff'], green: ['#16a34a', '#dcfce7', '#15803d', '#fff'], red: ['#ef4444', '#fee2e2', '#b91c1c', '#fff'], pink: ['#ec4899', '#fce7f3', '#be185d', '#fff'], yellow: ['#eab308', '#fef9c3', '#a16207', '#18181b'] };
+    const dk = document.querySelector('.dk');
+    if (dk) {
+      const phone = dk.querySelector('.dk__phone'), picks = [...dk.querySelectorAll('.dk__pick')], theme = dk.querySelector('[data-k="theme"]'), prim = dk.querySelector('[data-k="prim"]');
+      picks.forEach(p => p.addEventListener('click', () => {
+        const [ramp] = T[p.dataset.t], [b5, b1, b7, on] = R[ramp];
+        picks.forEach(q => { q.classList.toggle('is-on', q === p); q.setAttribute('aria-pressed', q === p); });
+        [phone, dk].forEach(el => { el.style.setProperty('--b5', b5); el.style.setProperty('--b1', b1); el.style.setProperty('--b7', b7); el.style.setProperty('--on', on); });
+        theme.textContent = p.dataset.t + '.brand'; prim.textContent = ramp + '.500';
+      }));
+    }
+    // Spacing and radius inspector, values from the DLS token spec
+    const SETS = { spacing: [["Spacing-0", 0, "Reset spacing; flush stacked elements.", "Where any breathing room is needed."], ["Spacing-2", 2, "Hairline gap between an icon and tiny text.", "For general layout spacing."], ["Spacing-4", 4, "Tight pairs: icon-to-label, badge padding.", "As section spacing on a page."], ["Spacing-6", 6, "Dense form rows, tight UI groups.", "For separating distinct sections."], ["Spacing-8", 8, "Default small gap: button padding, list rows.", "When elements need a clear gap."], ["Spacing-10", 10, "Secondary chip padding, small groups.", "For full-section layout."], ["Spacing-12", 12, "Default padding inside inputs, buttons, small cards.", "Between top-level page regions."], ["Spacing-16", 16, "Default spacing between related elements.", "Inside tight chips or badges."], ["Spacing-20", 20, "Card padding, mid-density groups.", "For inline label spacing."], ["Spacing-24", 24, "Section spacing, standard card padding.", "Inside dense rows or pills."], ["Spacing-32", 32, "Between major sections within a page.", "Inside components."], ["Spacing-40", 40, "Page-level separation; hero to content.", "Inside cards."], ["Spacing-48", 48, "Large block separation on marketing pages.", "Inside dense product UI."], ["Spacing-64", 64, "Landing-page separation between zones.", "In dense dashboards or tools."]], radius: [["Radius-0", 0, "Square corners for full-bleed images.", "On primary interactive elements."], ["Radius-4", 4, "Subtle softening on inputs, chips, dividers.", "For large pill-shaped CTAs."], ["Radius-8", 8, "Default for buttons, inputs, small cards.", "For tiny icons or hairlines."], ["Radius-12", 12, "Default for cards, modals, containers.", "On tiny chips: looks blobby."], ["Radius-20", 20, "Large cards, sheets, prominent containers.", "Where it dominates a small shape."], ["Radius-32", 32, "Hero cards, feature panels, marketing tiles.", "In dense product surfaces."], ["Radius-48", 48, "Pill buttons, rounded shapes, badges.", "On rectangular content surfaces."], ["Radius-144", 144, "Fully circular pills, oversized brand shapes.", "Standard UI components."]] };
+    const chips = document.getElementById('di-chips'), stage = document.getElementById('di-stage');
+    if (chips) {
+      const tabs = [...document.querySelectorAll('.di__tabs button')];
+      const pick = (set, k) => {
+        const [n, v, use, avoid] = SETS[set][k];
+        [...chips.children].forEach((c, j) => c.classList.toggle('is-on', j === k));
+        stage.dataset.set = set; stage.style.setProperty('--v', (set === 'radius' ? Math.min(v, 75) : v) + 'px'); stage.dataset.v = v + ' px';
+        document.getElementById('di-name').textContent = n; document.getElementById('di-val').textContent = v + ' px';
+        document.getElementById('di-use').textContent = use; document.getElementById('di-avoid').textContent = avoid;
+      };
+      const load = set => {
+        tabs.forEach(t => { const on = t.dataset.set === set; t.classList.toggle('is-on', on); t.setAttribute('aria-selected', on); });
+        chips.innerHTML = SETS[set].map(([n]) => `<button type="button">${n.replace(/^(Spacing|Radius)-/, '')}</button>`).join('');
+        [...chips.children].forEach((c, k) => c.addEventListener('click', () => pick(set, k)));
+        pick(set, set === 'spacing' ? 7 : 3);
+      };
+      tabs.forEach(t => t.addEventListener('click', () => load(t.dataset.set)));
+      load('spacing');
+    }
+    // Phone demo: tap a screen, or let it play while on screen
+    const dp = document.querySelector('.dp');
+    if (dp) {
+      const imgs = [...dp.querySelectorAll('.dp__screen img')], btns = [...dp.querySelectorAll('.dp__list button')];
+      let i = 0, t = 0;
+      const list = dp.querySelector('.dp__list');
+      const show = k => { i = k; imgs.forEach((m, j) => m.classList.toggle('is-on', j === k)); btns.forEach((b, j) => b.classList.toggle('is-on', j === k)); if (list.scrollWidth > list.clientWidth) list.scrollTo({ left: btns[k].parentElement.offsetLeft - 18, behavior: 'smooth' }); };
+      const play = () => { clearInterval(t); if (!reduce) t = setInterval(() => show((i + 1) % imgs.length), 3200); };
+      btns.forEach((b, k) => b.addEventListener('click', () => { show(k); play(); }));
+      imgs.forEach(m => m.loading = 'eager');
+      seen(dp, on => on ? play() : clearInterval(t), .3);
+    }
+  })();
+</script>
+<script>(() => {
+  // Loop clips carried over from V2 play only while on screen
+  const vo = new IntersectionObserver(es => es.forEach(e => { const v = e.target; if (e.isIntersecting) { v.preload = 'auto'; v.play().catch(() => {}); } else v.pause(); }), { threshold: .2 });
+  document.querySelectorAll('video.lv').forEach(v => vo.observe(v));
+})();</script>
 </body>
 </html>

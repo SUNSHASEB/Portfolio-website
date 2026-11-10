@@ -558,7 +558,7 @@
 <main>
   <section class="hero" aria-labelledby="title">
     <div class="wrap">
-      <div class="hero__kicker">Brand design systems · Case study 07</div>
+      <div class="hero__kicker">Brand design systems · Case study 09</div>
       <h1 id="title" class="display hero__title">
         <svg class="eye eye--hero" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg>
         <span>Tamuda</span> <span class="c-acc">Bay</span>
@@ -624,10 +624,7 @@
         <figure class="frame reveal"><img src="assets/p-awe.jpg" alt="Poster: Where awe meets inspiring, a woman’s profile filled with clouds and bay" loading="lazy"><span class="cap">Awe + inspiring</span></figure>
         <figure class="frame reveal"><img src="assets/p-trees.jpg" alt="Poster: Where trees meet the breeze, a man’s profile filled with palm trees" loading="lazy"><span class="cap">Trees + breeze</span></figure>
       </div>
-      <div class="posters-gap"></div>
-      <p class="sub reveal">Billboards carry the same circle into the landscape.</p>
-      <div class="sw reveal"><div class="sw-tabs"><button class="sw-tab is-on" aria-pressed="true">Retreat</button><button class="sw-tab" aria-pressed="false">Lifestyle</button><button class="sw-tab" aria-pressed="false">Getaway</button></div><div class="sw-stage is-auto" style="--ar:3001 / 2025"><img class="sw-img is-on" src="assets/bb-retreat.jpg" alt="Billboard: Retreat into nature’s treat, a modern villa on a calm beach at dusk" loading="lazy"><img class="sw-img" src="assets/bb-lifestyle.jpg" alt="Billboard: Enter the lifestyle of your dreams, a family at a garden villa" loading="lazy"><img class="sw-img" src="assets/bb-getaway.jpg" alt="Billboard: Get away from the everyday, a couple on a speedboat" loading="lazy"><span class="sw-bar" aria-hidden="true"></span></div><div class="sw-notes" aria-live="polite"><p class="sw-note is-on">Retreat into nature’s treat.</p><p class="sw-note">Enter the lifestyle of your dreams.</p><p class="sw-note">Get away from the everyday.</p></div></div>
-      <div class="delivered reveal" aria-label="What I delivered"><span class="chip">Logo</span><span class="chip">Logo animation</span><span class="chip">Brand DNA</span><span class="chip">Graphic device</span><span class="chip">Colour palette</span><span class="chip">Posters</span><span class="chip">Billboards</span></div>
+      <div class="delivered reveal" aria-label="What I delivered"><span class="chip">Logo</span><span class="chip">Logo animation</span><span class="chip">Brand DNA</span><span class="chip">Graphic device</span><span class="chip">Colour palette</span><span class="chip">Posters</span></div>
     </div>
   </section>
   <section class="quote is-acc" aria-label="Closing thought">
@@ -642,8 +639,8 @@
       <img class="next__guy" src="assets/sunil-binoculars.png" alt="" aria-hidden="true" loading="lazy" width="860" height="1103">
       <div class="next__text">
         <div class="next__kicker">Next case study</div>
-        <a class="next__link next__link--long" href="../khalta/index.html">Khalta <span class="arrow">→</span></a>
-        <div><a class="next__prev" href="../oro-chocolate/index.html">← Previous: ORO Chocolate</a></div>
+        <a class="next__link next__link--long" href="../namma-farm/index.html">Namma Farm <span class="arrow">→</span></a>
+        <div><a class="next__prev" href="../khalta/index.html">← Previous: Khalta</a></div>
       </div>
     </div>
   </section>
@@ -770,16 +767,16 @@
 })();
 </script>
 
-<script>
-(() => {
-  // Logo construction: plays when it scrolls into view, replays on demand
+<script>(() => {
+  // Logo construction: builds, holds the finished mark, then builds again, only while on screen
   const b = document.querySelector('.build');
-  if (!b) return;
-  const play = () => { b.classList.remove('is-play'); void b.offsetWidth; b.classList.add('is-play'); };
-  const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { play(); io.disconnect(); } }, { threshold: .45 });
-  io.observe(b);
-  b.querySelector('.build__replay').addEventListener('click', play);
-})();
-</script>
+  if (b) {
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches, CYCLE = 9000;
+    let timer = 0;
+    const play = () => { b.classList.remove('is-play'); void b.offsetWidth; b.classList.add('is-play'); };
+    const loop = () => { clearInterval(timer); play(); if (!reduce) timer = setInterval(play, CYCLE); };
+    new IntersectionObserver(([e]) => { if (e.isIntersecting) loop(); else clearInterval(timer); }, { threshold: .45 }).observe(b);
+    b.querySelector('.build__replay').addEventListener('click', loop);
+  }})();</script>
 </body>
 </html>

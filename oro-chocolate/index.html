@@ -535,6 +535,178 @@
     .oro-src .s-big { grid-row: auto; }
   }
   .sub-h { margin: clamp(40px, 5vw, 64px) 0 0; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+
+  /* Carried over from V2: the interactive pieces read these */
+  :root { --card-r: var(--radius); --font: var(--body); --muted: #9a9a96; --line: rgba(255,255,255,.14); --paper-2: #1b1b1b; --night: #0f0f0e; }
+  .rows-v1 > * + * { margin-top: clamp(14px, 1.6vw, 22px); }
+  section .wrap > :is(.sw, .jrow) + :not(.jrow):not(.sw):not(.sub) { margin-top: clamp(14px, 1.6vw, 22px); }
+
+  
+  /* V1 components this page did not have yet */
+  .flow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(32px, 4vw, 56px); }
+  .flow article { border-radius: var(--radius); padding: clamp(18px, 2vw, 26px); background: #141414; border: 1.5px solid rgba(255,255,255,.08); transition: transform .35s var(--ease), border-color .3s; }
+  .flow article:hover { transform: translateY(-4px); border-color: var(--accent); }
+  .flow small { font-size: 12px; letter-spacing: .14em; color: var(--accent); font-weight: 700; }
+  .flow b { display: block; margin: 8px 0; font-family: var(--body); font-weight: 800; font-size: clamp(20px, 1.6vw, 26px); letter-spacing: -.02em; }
+  .flow p { margin: 0; opacity: .85; }
+  @media (max-width: 960px) { .flow { grid-template-columns: 1fr; } }
+  .posters { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(32px, 4vw, 56px); }
+  .posters .frame { margin: 0; aspect-ratio: 1311 / 1860; background: #fdf8e4; }
+  .posters .frame:nth-child(even) { transform: translateY(clamp(12px, 3vw, 40px)); }
+  .posters .frame:hover { transform: translateY(-6px) rotate(-1deg); }
+  .posters-gap { height: clamp(12px, 3vw, 40px); }
+  @media (max-width: 960px) { .posters { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @keyframes sxfill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  .cx__media--square { display: grid; place-items: center; background: #0f0f0e; }
+  :root { --o-gold: #B2995C; --o-lg: #C4AC62; --o-black: #231F20; --o-grey: #4B4C4C; --o-line: rgba(196,172,98,.25); }
+  .es, .otv, .op, .ol, .od, .ot, .bk { flex: 1 1 100%; min-width: 0; border-radius: var(--card-r); background: var(--o-black); color: #f4efe4; font-family: "Poppins", var(--font); }
+  .es > *, .otv > *, .op > *, .ol > *, .od > *, .ot > * { min-width: 0; }
+  :where(.es, .otv, .op, .ol, .od, .ot, .bk) button { all: unset; cursor: pointer; box-sizing: border-box; }
+  :where(.es, .otv, .op, .ol, .od, .ot, .bk) :is(button, input):focus-visible, .bk:focus-visible { outline: 2px solid var(--o-lg); outline-offset: 3px; }
+  .ol-mono { font-family: "Poppins", sans-serif; font-size: 11px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--o-lg); }
+  .es { padding: clamp(18px, 3vw, 44px); }
+  .es__top p { margin: 8px 0 0; font-size: clamp(16px, 1.3vw, 19px); max-width: 52ch; color: #d9d2c2; }
+  .es__cards { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 20px; min-height: 230px; }
+  .es__c { position: relative; display: block; min-height: 220px; perspective: 900px; transition: opacity .5s var(--ease), transform .7s var(--ease); transition-delay: var(--d); }
+  .es__f, .es__b { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; border-radius: 12px; backface-visibility: hidden; -webkit-backface-visibility: hidden; transition: transform .7s cubic-bezier(.3,1.3,.5,1); }
+  .es__f { background: linear-gradient(160deg, #2e292a, #1b1819); box-shadow: inset 0 0 0 1px var(--o-line); }
+  .es__f small { position: absolute; top: 18px; left: 20px; font-size: 12px; color: #8f8778; }
+  .es__f b { font-size: clamp(22px, 2.4vw, 34px); font-weight: 300; letter-spacing: .14em; text-transform: uppercase; color: var(--o-lg); }
+  .es__b { transform: rotateY(180deg); background: var(--o-gold); color: var(--o-black); font-size: clamp(16px, 1.4vw, 20px); line-height: 1.35; font-weight: 500; }
+  .es__c[aria-pressed="true"] .es__f { transform: rotateY(-180deg); }
+  .es__c[aria-pressed="true"] .es__b { transform: rotateY(0); }
+  .es__big { position: absolute; inset: 0; display: grid; place-items: center; border-radius: 12px; overflow: hidden; opacity: 0; transform: scale(.9); pointer-events: none; transition: opacity .6s var(--ease) .35s, transform .9s var(--ease) .35s; }
+  .es__big img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .es__big span { position: relative; text-align: center; padding: 20px; }
+  .es__big small { display: block; font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: #fff; opacity: .8; }
+  .es__big b { display: block; margin-top: 8px; font-size: clamp(26px, 4vw, 58px); font-weight: 300; letter-spacing: .12em; text-transform: uppercase; color: #fff; text-shadow: 0 2px 30px rgba(0,0,0,.6); }
+  .es__big em { display: block; margin: 10px auto 0; max-width: 46ch; font-style: normal; font-size: clamp(13px, 1.1vw, 16px); color: #f1ead9; text-shadow: 0 1px 12px rgba(0,0,0,.7); }
+  .es.is-sum .es__c { opacity: 0; transform: scale(.6); }
+  .es.is-sum .es__c:nth-child(1) { transform: translateX(100%) scale(.6); }
+  .es.is-sum .es__c:nth-child(3) { transform: translateX(-100%) scale(.6); }
+  .es.is-sum .es__big { opacity: 1; transform: none; pointer-events: auto; }
+  .es__sum { margin-top: 16px; padding: 11px 18px; border-radius: 999px; background: var(--o-gold); color: var(--o-black); font-size: 14px; font-weight: 600; }
+  .es__sum[aria-pressed="true"] { background: none; color: var(--o-lg); box-shadow: inset 0 0 0 1px var(--o-lg); }
+  .otv { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: clamp(20px, 3vw, 48px); align-items: center; padding: clamp(22px, 3.6vw, 56px); background: var(--o-gold); color: var(--o-black); }
+  .otv .ol-mono { color: var(--o-black); opacity: .7; }
+  .otv__d { margin: 10px 0 0; font-size: clamp(18px, 1.6vw, 24px); line-height: 1.35; font-weight: 500; min-height: 4em; }
+  .otv__w { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 18px; }
+  .otv__w button { font-size: clamp(28px, 3.6vw, 56px); font-weight: 700; line-height: 1.1; letter-spacing: -.02em; color: transparent; -webkit-text-stroke: 1.2px var(--o-black); transition: color .35s, transform .35s cubic-bezier(.3,1.4,.5,1); }
+  .otv__w button:hover { transform: translateY(-3px); }
+  .otv__w button[aria-pressed="true"] { color: var(--o-black); }
+  .op { position: relative; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(18px, 3vw, 44px); padding: clamp(18px, 3vw, 40px); }
+  .op__sws { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 12px; }
+  .op__sw { display: flex; flex-direction: column; gap: 2px; padding: 10px; border-radius: 10px; box-shadow: inset 0 0 0 1px var(--o-line); transition: transform .3s var(--ease); }
+  .op__sw:hover { transform: translateY(-4px); }
+  .op__sw i { aspect-ratio: 1; border-radius: 50%; background: var(--c); margin-bottom: 10px; box-shadow: inset 0 0 0 1px rgba(255,255,255,.15); }
+  .op__sw b { font-size: 14px; font-weight: 600; }
+  .op__sw small { font-size: 12px; color: #a59d8c; }
+  .op__sw em { font-style: normal; font-size: 11px; color: #8f8778; }
+  .op__rule { margin-top: 22px; }
+  .op__bar { display: flex; gap: 3px; height: 54px; margin-top: 10px; }
+  .op__bar i { flex: var(--w) 1 0; display: flex; align-items: flex-end; padding: 6px 8px; border-radius: 6px; background: var(--c); box-shadow: inset 0 0 0 1px rgba(255,255,255,.18); font-style: normal; overflow: hidden; }
+  .op__bar span { font-size: 11px; font-weight: 600; white-space: nowrap; color: #fff; }
+  .op__bar i:nth-child(2) span, .op__bar i:nth-child(3) span { color: var(--o-black); }
+  .op__rule p { margin: 10px 0 0; font-size: 14px; color: #d9d2c2; }
+  .op__r { display: flex; flex-direction: column; align-items: center; }
+  .op__r .ol-mono { align-self: flex-start; }
+  .op__pk { flex: 1; display: grid; place-items: center; width: 100%; padding: 18px 0; }
+  .pk { position: relative; width: min(220px, 60%); aspect-ratio: 2 / 3.1; border-radius: 6px; background: linear-gradient(105deg, #1a1718 0 48%, #262223 50%, #1a1718 52%); box-shadow: 0 30px 50px -30px rgba(0,0,0,.9), inset 0 0 0 1px rgba(255,255,255,.05); transform: rotate(-4deg); transition: transform .5s var(--ease); }
+  .pk:hover { transform: rotate(0) translateY(-6px); }
+  .pk__mark { position: absolute; left: 50%; top: 9%; width: 50%; aspect-ratio: 673 / 1046; translate: -50% 0; background: var(--o-lg); -webkit-mask: var(--m) center / contain no-repeat; mask: var(--m) center / contain no-repeat; }
+  .pk__lbl { position: absolute; left: 0; right: 0; bottom: 9%; height: 26%; display: flex; flex-direction: column; justify-content: center; align-items: center; background: var(--f); transition: background .45s var(--ease); }
+  .pk__lbl b { font-size: 22px; font-weight: 300; letter-spacing: .4em; padding-left: .4em; color: #fff; }
+  .pk__lbl small { font-size: 11px; font-weight: 600; letter-spacing: .3em; text-transform: uppercase; color: rgba(255,255,255,.85); }
+  .op__fl { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
+  .op__fl button { display: inline-flex; align-items: center; gap: 7px; padding: 7px 12px; border-radius: 999px; box-shadow: inset 0 0 0 1px var(--o-line); font-size: 13px; transition: background .2s, color .2s; }
+  .op__fl i { width: 12px; height: 12px; border-radius: 50%; background: var(--c); }
+  .op__fl button[aria-pressed="true"] { background: #f4efe4; color: var(--o-black); }
+  .op__toast { position: absolute; left: 50%; top: 14px; margin: 0; padding: 8px 14px; border-radius: 999px; background: var(--o-gold); color: var(--o-black); font-size: 13px; transform: translate(-50%, -8px); opacity: 0; transition: opacity .25s, transform .25s; pointer-events: none; }
+  .op__toast.is-on { opacity: 1; transform: translate(-50%, 0); }
+  .ol { padding: clamp(14px, 2vw, 28px); --lc: #C4AC62; --bgc: #231F20; }
+  .ol[data-bg="gold"] { --lc: #231F20; --bgc: #B2995C; }
+  .ol[data-bg="grey"] { --lc: #ffffff; --bgc: #4B4C4C; }
+  .ol__bar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; }
+  .ol__grp { display: inline-flex; flex-wrap: wrap; gap: 4px; padding: 4px; border-radius: 999px; background: #2f2a2b; }
+  .ol__grp button { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; font-size: 13px; transition: background .2s, color .2s; }
+  .ol__grp button i { width: 12px; height: 12px; border-radius: 50%; background: var(--c); box-shadow: inset 0 0 0 1px rgba(255,255,255,.3); }
+  .ol__grp button[aria-pressed="true"] { background: #f4efe4; color: var(--o-black); }
+  .ol__cs { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; cursor: pointer; }
+  .ol__cs input { accent-color: var(--o-gold); width: 16px; height: 16px; }
+  .ol__stage { position: relative; display: grid; place-items: center; height: clamp(320px, 46vw, 560px); margin-top: 14px; border-radius: 10px; background: var(--bgc); box-shadow: inset 0 0 0 1px rgba(255,255,255,.06); transition: background .45s var(--ease); }
+  .ol__logo { position: relative; height: var(--h, 66%); aspect-ratio: var(--ar); max-width: 80%; background: var(--lc); -webkit-mask: var(--m) center / contain no-repeat; mask: var(--m) center / contain no-repeat; transition: background .45s var(--ease); }
+  .ol[data-v="-h"] .ol__logo { --h: 26%; }
+  .ol__stage::after { content: ""; position: absolute; left: 50%; top: 50%; width: var(--bw, 0); height: var(--bh, 0); translate: -50% -50%; border: 1px dashed currentColor; color: var(--lc); outline: 1px solid color-mix(in srgb, var(--lc) 35%, transparent); outline-offset: var(--cs, 30px); opacity: 0; transition: opacity .3s; pointer-events: none; }
+  .ol.is-cs .ol__stage::after { opacity: .8; }
+  .ol__note { margin: 12px 2px 0; font-size: 13px; color: #d9d2c2; }
+  .od { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); overflow: hidden; }
+  .od__stage { position: relative; display: grid; place-items: center; min-height: clamp(320px, 40vw, 520px); background: #1b1819; overflow: hidden; }
+  .od__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .4s; }
+  .od__logo { position: relative; width: min(34%, 190px); aspect-ratio: 673 / 1046; background: var(--o-lg); -webkit-mask: var(--m) center / contain no-repeat; mask: var(--m) center / contain no-repeat; transition: transform .6s var(--ease), background .4s, opacity .4s; }
+  .od__crowd { position: absolute; left: 50%; top: 50%; translate: 18% -120%; font-weight: 700; font-size: clamp(16px, 2vw, 26px); letter-spacing: .08em; color: #f4efe4; opacity: 0; transition: opacity .3s; }
+  .od[data-x="skew"] .od__logo { transform: skewX(-22deg) scaleY(.9); }
+  .od[data-x="rotate"] .od__logo { transform: rotate(28deg); }
+  .od[data-x="recolour"] .od__logo { background: #7a4fc4; }
+  .od[data-x="opacity"] .od__logo { opacity: .35; }
+  .od[data-x="busy"] .od__bg { opacity: 1; }
+  .od[data-x="stretch"] .od__logo { transform: scaleX(1.6); }
+  .od[data-x="crowd"] .od__crowd { opacity: 1; }
+  .od__tag { position: absolute; left: 14px; right: 14px; bottom: 14px; display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 10px; background: rgba(244,239,228,.95); color: var(--o-black); font-size: clamp(14px, 1.1vw, 16px); line-height: 1.3; }
+  .od__tag b { flex: none; width: 26px; height: 26px; display: grid; place-items: center; border-radius: 50%; background: var(--o-gold); color: var(--o-black); font-size: 14px; }
+  .od.is-bad .od__tag b { background: #c2412d; color: #fff; }
+  .od.is-bad .od__tag { animation: odshake .45s; }
+  @keyframes odshake { 25% { transform: translateX(-6px); } 50% { transform: translateX(5px); } 75% { transform: translateX(-3px); } }
+  .od__side { padding: clamp(20px, 3vw, 40px); display: flex; flex-direction: column; justify-content: center; }
+  .od__side p { margin: 8px 0 0; font-size: clamp(16px, 1.3vw, 19px); }
+  .od__fx { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; margin-top: 18px; }
+  .od__fx button { padding: 11px 14px; border-radius: 10px; box-shadow: inset 0 0 0 1px var(--o-line); font-size: 14px; transition: background .2s, color .2s; }
+  .od__fx button[data-ok="1"] { grid-column: 1 / -1; }
+  .od__fx button[aria-pressed="true"] { background: #f4efe4; color: var(--o-black); }
+  .od__fx button[data-ok="1"][aria-pressed="true"] { background: var(--o-gold); }
+  .ot { padding: clamp(18px, 3vw, 44px); background: #f4efe4; color: var(--o-black); }
+  .ot .ol-mono { color: #8a7440; }
+  .ot__top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; }
+  .ot__in { flex: 1 1 280px; max-width: 460px; display: flex; align-items: center; gap: 10px; padding: 6px 6px 6px 14px; border-radius: 999px; background: #fff; box-shadow: inset 0 0 0 1px rgba(35,31,32,.15); }
+  .ot__in span { font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #8a7440; }
+  .ot__in input { flex: 1; min-width: 0; border: 0; padding: 8px 10px; border-radius: 999px; background: #f4efe4; color: var(--o-black); font: 15px "Poppins", sans-serif; }
+  .ot__big { margin: clamp(20px, 3vw, 40px) 0 0; font-size: clamp(40px, 7vw, 120px); line-height: 1; letter-spacing: -.03em; font-weight: var(--wt, 400); overflow-wrap: anywhere; transition: font-weight .3s; }
+  .ot__w { display: inline-flex; gap: 4px; margin-top: 18px; padding: 4px; border-radius: 999px; background: #fff; }
+  .ot__w button { padding: 8px 14px; border-radius: 999px; font-size: 13px; }
+  .ot__w button[aria-pressed="true"] { background: var(--o-black); color: #f4efe4; }
+  .ot__abc { margin: 18px 0 0; font-size: clamp(14px, 1.3vw, 18px); line-height: 1.6; color: #6b6150; overflow-wrap: anywhere; }
+  .bk { padding: clamp(14px, 2vw, 28px); outline: none; }
+  .bk__stage { position: relative; aspect-ratio: 16 / 9; max-height: 80svh; margin-inline: auto; border-radius: 10px; overflow: hidden; background: #151314; }
+  .bk__pg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; transition: opacity .25s, transform .35s var(--ease); }
+  .bk__pg.is-out { opacity: 0; transform: translateX(var(--dx, 0)); }
+  .bk__nav { position: absolute; top: 50%; translate: 0 -50%; width: 48px; height: 48px; display: grid; place-items: center; border-radius: 50%; background: rgba(35,31,32,.6); color: #fff; font-size: 28px; line-height: 1; backdrop-filter: blur(6px); transition: background .25s, opacity .25s; }
+  .bk__nav:hover { background: var(--o-gold); color: var(--o-black); }
+  .bk__nav--p { left: 12px; }
+  .bk__nav--n { right: 12px; }
+  .bk__nav:disabled { opacity: .25; cursor: default; }
+  .bk__bar { display: flex; align-items: center; gap: 16px; margin-top: 14px; }
+  .bk__n { font-size: 13px; color: #a59d8c; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .bk__n b { font-size: 20px; font-weight: 500; color: #fff; }
+  .bk__r { flex: 1; accent-color: var(--o-gold); }
+  .bk__strip { display: flex; gap: 8px; margin-top: 12px; overflow-x: auto; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.25) transparent; padding-bottom: 6px; }
+  .bk__t { flex: none; width: clamp(96px, 10vw, 132px); border-radius: 6px; overflow: hidden; opacity: .45; transition: opacity .25s, box-shadow .25s; }
+  .bk__t img { display: block; width: 100%; height: auto; }
+  .bk__t:hover { opacity: .85; }
+  .bk__t.is-on { opacity: 1; box-shadow: 0 0 0 2px var(--o-gold); }
+  @media (max-width: 900px) {
+    .otv, .op, .od { grid-template-columns: 1fr; }
+    .es__cards { grid-template-columns: 1fr; min-height: 0; }
+    .es__c { min-height: 150px; }
+    .es.is-sum .es__cards { min-height: 0; }
+    .es.is-sum .es__c { display: none; }
+    .es.is-sum .es__big { position: relative; aspect-ratio: 16 / 9; }
+  }
+  @media (max-width: 600px) {
+    .ol__grp button { padding: 7px 10px; font-size: 12px; }
+    .bk__nav { width: 38px; height: 38px; font-size: 22px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .es__c, .es__f, .es__b, .es__big, .od__logo, .pk, .bk__pg { transition: none; }
+  }
 </style>
 <link rel="stylesheet" href="../assets/readable-type.css">
 </head>
@@ -562,18 +734,16 @@
 <main>
   <section class="hero" aria-labelledby="title">
     <div class="wrap">
-      <div class="hero__kicker">Brand design systems · Case study 06</div>
+      <div class="hero__kicker">Brand design systems · Case study 03</div>
       <h1 id="title" class="display hero__title">
         <svg class="eye eye--hero" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg>
         <span class="shine">ORO</span> <span>Chocolate</span>
       </h1>
       <div class="hero__intro">
         <p class="hero__lede">A golden identity for Nicaraguan chocolate and coffee, grown from the star inside a cacao pod.</p>
-        <dl class="meta"><div><dt>Role</dt><dd>Brand identity, guidelines &amp; packaging lead</dd></div><div><dt>Timeline</dt><dd>1 year · 2024</dd></div><div><dt>Scope</dt><dd>Logo, guidelines, coffee &amp; chocolate packaging</dd></div><div><dt>Partner</dt><dd>With Echo Digital</dd></div></dl>
+        <dl class="meta"><div><dt>Role</dt><dd>Brand identity, guidelines &amp; packaging lead</dd></div><div><dt>Timeline</dt><dd>1 year · 2024</dd></div><div><dt>Scope</dt><dd>Logo, guidelines, coffee &amp; chocolate packaging</dd></div><div><dt>Partner</dt><dd>With Echo Digital</dd></div><div><dt>Website</dt><dd><a href="https://orochocolate.com" target="_blank" rel="noopener">orochocolate.com ↗</a></dd></div></dl>
       </div>
-      <figure class="hero__media frame" style="margin-left:0;margin-right:0;margin-bottom:0">
-        <img src="assets/hero.jpg" alt="Black ORO coffee and drinking chocolate bags with the gold star mark, on stone in a rainforest" fetchpriority="high">
-      </figure>
+      <div class="jrow" style="margin-top:clamp(28px,3vw,44px)"><figure class="frame" style="flex:1 1 0%;aspect-ratio:1 / 1"><video class="lv" src="assets/oro-stickers.mp4" poster="assets/oro-stickers.jpg" muted loop playsinline autoplay preload="auto" aria-label="ORO star stickers in gold, black, green, purple, red, yellow and blue, stuck on walls, poles and doors around the city"></video><span class="cap">Star stickers</span></figure><figure class="frame" style="flex:1.7778 1 0%;aspect-ratio:16 / 9"><img src="assets/hero.jpg" alt="Black ORO coffee and drinking chocolate bags with the gold star mark, on stone in a rainforest" fetchpriority="high"><span class="cap">Coffee &amp; drinking chocolate</span></figure></div>
     </div>
   </section>
 
@@ -611,21 +781,49 @@
       <figure class="frame oro-anim reveal"><video src="assets/logo-anim.mp4" poster="assets/logo-anim.jpg" autoplay muted loop playsinline aria-label="ORO logo animation: the cacao star unfolds petal by petal, then the wordmark appears"></video><span class="cap">Logo animation</span></figure>
     </div>
   </section>
-  <section id="guidelines" aria-labelledby="guidelines-h" style="padding-top:0">
+  <section id="strategy" aria-labelledby="strategy-h" style="padding-top:0">
     <div class="wrap">
-      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>03</b> Brand guidelines</div>
-      <h2 id="guidelines-h" class="display h2 reveal">One book. <span class="c-gold">Every team.</span></h2>
-      
-      <p class="sub reveal">Strong enough to onboard any future agency or in-house team without watering the brand down.</p>
-      <div class="sw reveal"><div class="sw-tabs"><button class="sw-tab is-on" aria-pressed="true">Contents</button><button class="sw-tab" aria-pressed="false">Framework</button><button class="sw-tab" aria-pressed="false">Big idea</button><button class="sw-tab" aria-pressed="false">Colour</button><button class="sw-tab" aria-pressed="false">Logo</button><button class="sw-tab" aria-pressed="false">Type</button></div><div class="sw-stage is-auto" style="--ar:16 / 9"><img class="sw-img is-on" src="assets/g-contents.jpg" alt="Contents page over a Nicaraguan coastline" loading="lazy"><img class="sw-img" src="assets/g-framework.jpg" alt="Brand framework page over golden rainforest hills" loading="lazy"><img class="sw-img" src="assets/g-indulgence.jpg" alt="Reflective Indulgence spread with a cacao tree seen through a circle" loading="lazy"><img class="sw-img" src="assets/g-palette.jpg" alt="Primary palette page: gold, black and dark grey" loading="lazy"><img class="sw-img" src="assets/g-logos.jpg" alt="Primary logo versions for ORO Chocolate and ORO Coffee on gold, black and grey" loading="lazy"><img class="sw-img" src="assets/g-type.jpg" alt="Typography on digital page showing Poppins" loading="lazy"><span class="sw-bar" aria-hidden="true"></span></div><div class="sw-notes" aria-live="polite"><p class="sw-note is-on">Contents: framework, brand world, packaging and more.</p><p class="sw-note">The framework: purpose, story, customer and voice.</p><p class="sw-note">The big idea: Reflective Indulgence.</p><p class="sw-note">Gold first, with black and grey to hold it.</p><p class="sw-note">One mark, two lines: Chocolate and Coffee.</p><p class="sw-note">Poppins across every digital surface.</p></div></div>
-      <div class="swatches swatches--3" role="list" aria-label="Brand colours. Click to copy hex."><button class="swatch reveal" role="listitem" style="background:var(--oro-gold);color:var(--oro-black);box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)" data-hex="#B3995E"><span class="copied">Copied</span><strong>ORO Gold</strong><small>#B3995E</small></button><button class="swatch reveal" role="listitem" style="background:var(--oro-black);color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)" data-hex="#231F20"><span class="copied">Copied</span><strong>Cacao Black</strong><small>#231F20</small></button><button class="swatch reveal" role="listitem" style="background:var(--oro-grey);color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)" data-hex="#4C4C4C"><span class="copied">Copied</span><strong>Volcanic Grey</strong><small>#4C4C4C</small></button></div>
-      <div class="contents"><div class="reveal"><b>Brand framework</b><ul><li>Purpose</li><li>Story</li><li>Mind map</li><li>Customer</li><li>Personality</li><li>Tone of voice</li><li>Pillars</li><li>Essence</li></ul></div><div class="reveal"><b>Brand world</b><ul><li>Colour</li><li>Logo</li><li>Typography</li><li>Photography</li><li>Iconography</li><li>Patterns</li></ul></div><div class="reveal"><b>In use</b><ul><li>Packaging</li><li>In-store</li><li>Collaterals</li><li>Stationery</li><li>Technical drawings</li><li>Asset links</li></ul></div></div>
-      <div class="jrow first reveal"><figure class="frame reveal" style="flex:1.5004 1 0%"><img src="assets/book-icons.jpg" alt="Guidelines book open on the iconography and pattern pages" loading="lazy"><span class="cap">Iconography &amp; pattern</span></figure><figure class="frame reveal" style="flex:1.5004 1 0%"><img src="assets/book-apparel.jpg" alt="Guidelines book open on apparel, cups and carrier pages" loading="lazy"><span class="cap">Apparel &amp; café</span></figure></div>
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>03</b> Brand strategy</div>
+      <h2 id="strategy-h" class="display h2 reveal">Reflective <span class="c-acc">indulgence.</span></h2>
+      <p class="sub reveal">Purpose, story, customer and voice, all built on one truth: chocolate and coffee you can trace back to the farm.</p>
+      <div class="es reveal"><div class="es__top"><span class="ol-mono">Brand essence</span><p>Purpose, story, personality and the mind map boil down to three values. Tap each one, then sum them up.</p></div><div class="es__cards"><button type="button" class="es__c" aria-pressed="false" style="--d:0.00s"><span class="es__f"><small>01</small><b>Conscious</b></span><span class="es__b">Eco-conscious people on a quest for authenticity.</span></button><button type="button" class="es__c" aria-pressed="false" style="--d:0.08s"><span class="es__f"><small>02</small><b>Luxurious</b></span><span class="es__b">They crave the finer things in life.</span></button><button type="button" class="es__c" aria-pressed="false" style="--d:0.16s"><span class="es__f"><small>03</small><b>Traceable</b></span><span class="es__b">Playing a part to conserve, preserve and protect the world.</span></button><div class="es__big"><img src="../oro-chocolate/assets/gl/s27.jpg" alt="The big idea: Reflective Indulgence, over a cacao tree seen through a circle" loading="lazy" width="2112" height="1188"></div></div><button type="button" class="es__sum" aria-pressed="false">Sum it all up</button></div><div class="otv reveal"><div class="otv__intro"><span class="ol-mono">Tone of voice</span><p class="otv__d" aria-live="polite">Warm, welcoming and passionate about the craft. Tap a word.</p></div><ul class="otv__w"><li><button type="button" aria-pressed="false" data-d="Genuine enthusiasm for the product and what it stands for.">Passionate</button></li><li><button type="button" aria-pressed="false" data-d="Sincere and honest, true to transparent, ethical sourcing.">Authentic</button></li><li><button type="button" aria-pressed="false" data-d="Moves people to make a positive impact with what they buy.">Inspiring</button></li><li><button type="button" aria-pressed="false" data-d="Warm, friendly and relatable. Everyone feels welcome.">Approachable</button></li><li><button type="button" aria-pressed="false" data-d="Real expertise in the craft of chocolate and coffee.">Knowledgeable</button></li><li><button type="button" aria-pressed="false" data-d="A touch of lightness and humour, never too serious.">Playful</button></li><li><button type="button" aria-pressed="false" data-d="Care for the farmers, the communities and the customers.">Empathetic</button></li></ul></div><div class="sw reveal"><div class="sw-tabs"><button class="sw-tab is-on" aria-pressed="true">Purpose</button><button class="sw-tab" aria-pressed="false">Story</button><button class="sw-tab" aria-pressed="false">Mind map</button><button class="sw-tab" aria-pressed="false">Customer</button><button class="sw-tab" aria-pressed="false">Sarah</button><button class="sw-tab" aria-pressed="false">Alex</button><button class="sw-tab" aria-pressed="false">Personality</button><button class="sw-tab" aria-pressed="false">Pillars</button></div><div class="sw-stage is-auto" style="--ar:2112 / 1188"><img class="sw-img is-on" src="../oro-chocolate/assets/gl/s06.jpg" alt="Brand purpose page: cacao beans inside a star-shaped window" loading="lazy" width="2112" height="1188"><img class="sw-img" src="../oro-chocolate/assets/gl/s07.jpg" alt="Brand story overview: a hand holding a cut cacao pod" loading="lazy" width="2112" height="1188"><img class="sw-img" src="../oro-chocolate/assets/gl/s10.jpg" alt="Mind map page over a table of cacao" loading="lazy" width="2112" height="1188"><img class="sw-img" src="../oro-chocolate/assets/gl/s12.jpg" alt="Defining the customer: the chocolate connoisseur experience" loading="lazy" width="2112" height="1188"><img class="sw-img" src="../oro-chocolate/assets/gl/s14.jpg" alt="Persona page: Sarah’s story" loading="lazy" width="2112" height="1188"><img class="sw-img" src="../oro-chocolate/assets/gl/s15.jpg" alt="Persona page: Alex’s story" loading="lazy" width="2112" height="1188"><img class="sw-img" src="../oro-chocolate/assets/gl/s17.jpg" alt="Brand personality semantic differential graph" loading="lazy" width="2112" height="1188"><img class="sw-img" src="../oro-chocolate/assets/gl/s21.jpg" alt="Brand pillars diagram" loading="lazy" width="2112" height="1188"><span class="sw-bar" aria-hidden="true"></span></div><div class="sw-notes" aria-live="polite"><p class="sw-note is-on">To traceably curate artisanal chocolate, sourced and crafted in Nicaragua.</p><p class="sw-note">The cacao and coffee supply chains are broken. ORO is the traceable alternative.</p><p class="sw-note">What customers should think, feel and say about ORO.</p><p class="sw-note">Eco-conscious explorers of life’s pleasures, especially the chocolate kind.</p><p class="sw-note">A Chicago designer who seeks out premium, sustainable chocolate.</p><p class="sw-note">A marketing manager who wants great coffee that fits a fast life.</p><p class="sw-note">Mapped on a semantic differential graph, then an identity prism.</p><p class="sw-note">Quality ingredients, sustainability, fairness, innovation and community.</p></div></div>
+    </div>
+  </section>
+  <section id="colour" aria-labelledby="colour-h" style="padding-top:0">
+    <div class="wrap">
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>04</b> Colour</div>
+      <h2 id="colour-h" class="display h2 reveal">We lead <span class="c-acc">with our gold.</span></h2>
+      <p class="sub reveal">ORO means gold, so gold leads. Black and grey hold it, and a set of bright colours tells the flavours apart.</p>
+      <div class="op reveal"><div class="op__l"><span class="ol-mono">We lead with our gold</span><div class="op__sws"><button type="button" class="op__sw" style="--c:#B2995C" data-hex="#B2995C"><i></i><b>ORO Gold</b><small>#B2995C</small><em>Primary · leads</em></button><button type="button" class="op__sw" style="--c:#231F20" data-hex="#231F20"><i></i><b>Cacao Black</b><small>#231F20</small><em>Primary · core</em></button><button type="button" class="op__sw" style="--c:#4B4C4C" data-hex="#4B4C4C"><i></i><b>Volcanic Grey</b><small>#4B4C4C</small><em>Primary · core</em></button></div><div class="op__rule"><span class="ol-mono">60 · 30 · 10</span><div class="op__bar"><i style="--c:#231F20;--w:60"><span>Main 60%</span></i><i style="--c:#B2995C;--w:30"><span>Secondary 30%</span></i><i style="--c:#75CBFC;--w:10"><span>10%</span></i></div><p>Black leads the space, gold carries the brand, one bright accent points the way. The ratio is built into the packaging.</p></div></div><div class="op__r"><span class="ol-mono">Flavour colours · tap one</span><div class="op__pk"><div class="pk" style="--f:#6A478F"><span class="pk__mark" style="--m:url(../oro-chocolate/assets/gl/logo-choc.png)"></span><span class="pk__lbl"><small>Chocolate · 60g</small></span></div></div><div class="op__fl" role="group" aria-label="Flavour colour"><button type="button" aria-pressed="false" style="--c:#58B488" data-c="#58B488" aria-label="Leaf #58B488"><i></i>Leaf</button><button type="button" aria-pressed="false" style="--c:#5CBADC" data-c="#5CBADC" aria-label="Sky #5CBADC"><i></i>Sky</button><button type="button" aria-pressed="false" style="--c:#DC4441" data-c="#DC4441" aria-label="Chili #DC4441"><i></i>Chili</button><button type="button" aria-pressed="false" style="--c:#EEAF3F" data-c="#EEAF3F" aria-label="Amber #EEAF3F"><i></i>Amber</button><button type="button" aria-pressed="false" style="--c:#F6D05B" data-c="#F6D05B" aria-label="Honey #F6D05B"><i></i>Honey</button><button type="button" aria-pressed="true" style="--c:#6A478F" data-c="#6A478F" aria-label="Indigo #6A478F"><i></i>Indigo</button><button type="button" aria-pressed="false" style="--c:#AD56A2" data-c="#AD56A2" aria-label="Orchid #AD56A2"><i></i>Orchid</button></div></div><p class="op__toast" role="status" aria-live="polite"></p></div>
+    </div>
+  </section>
+  <section id="logo" aria-labelledby="logo-h" style="padding-top:0">
+    <div class="wrap">
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>05</b> Logo</div>
+      <h2 id="logo-h" class="display h2 reveal">One star, <span class="c-acc">two lines.</span></h2>
+      <p class="sub reveal">The cacao cross-section, cut into a star. One version for chocolate and one for coffee, each in three core colours.</p>
+      <div class="ol reveal" data-bg="black"><div class="ol__bar"><div class="ol__grp" role="group" aria-label="Line"><button type="button" aria-pressed="true" data-k="choc">Chocolate</button><button type="button" aria-pressed="false" data-k="coffee">Coffee</button></div><div class="ol__grp" role="group" aria-label="Layout"><button type="button" aria-pressed="true" data-v="">Primary</button><button type="button" aria-pressed="false" data-v="-h">Secondary</button></div><div class="ol__grp" role="group" aria-label="Background"><button type="button" aria-pressed="false" data-bg="gold" style="--c:#B2995C"><i></i>Gold</button><button type="button" aria-pressed="true" data-bg="black" style="--c:#231F20"><i></i>Black</button><button type="button" aria-pressed="false" data-bg="grey" style="--c:#4B4C4C"><i></i>Grey</button></div><label class="ol__cs"><input type="checkbox"> Clear space</label></div><div class="ol__stage"><span class="ol__logo" style="--m:url(../oro-chocolate/assets/gl/logo-choc.png);--ar:673/1046"></span></div><p class="ol__note" aria-live="polite">On black, the logo is always gold.</p></div><div class="od reveal" data-x="ok"><div class="od__stage"><img class="od__bg" src="../oro-chocolate/assets/origin-pod.jpg" alt="" loading="lazy" width="1400" height="1400"><span class="od__logo" style="--m:url(../oro-chocolate/assets/gl/logo-choc.png)"></span><span class="od__crowd" aria-hidden="true">NEW · 2023</span><span class="od__tag" aria-live="polite"><b>✓</b><span>The real logo: gold on black, upright, at full strength, with room to breathe.</span></span></div><div class="od__side"><span class="ol-mono">Do’s and don’ts</span><p>Seven ways to break the mark. Try them.</p><div class="od__fx" role="group" aria-label="Logo treatment"><button type="button" aria-pressed="true" data-x="ok" data-ok="1" data-note="The real logo: gold on black, upright, at full strength, with room to breathe.">As drawn</button><button type="button" aria-pressed="false" data-x="skew" data-ok="0" data-note="Don’t squish or skew the logo.">Skew</button><button type="button" aria-pressed="false" data-x="rotate" data-ok="0" data-note="Don’t rotate or change the orientation.">Rotate</button><button type="button" aria-pressed="false" data-x="recolour" data-ok="0" data-note="Don’t change the colour. Gold, black or white only.">Recolour</button><button type="button" aria-pressed="false" data-x="opacity" data-ok="0" data-note="Don’t change the opacity.">Opacity</button><button type="button" aria-pressed="false" data-x="busy" data-ok="0" data-note="Avoid busy backgrounds.">Busy background</button><button type="button" aria-pressed="false" data-x="stretch" data-ok="0" data-note="Avoid stretching.">Stretch</button><button type="button" aria-pressed="false" data-x="crowd" data-ok="0" data-note="Don’t add any element inside the clear space.">Crowd</button></div></div></div><div class="sw reveal"><div class="sw-tabs"><button class="sw-tab is-on" aria-pressed="true">Primary logo</button><button class="sw-tab" aria-pressed="false">Versions</button><button class="sw-tab" aria-pressed="false">Clear space</button><button class="sw-tab" aria-pressed="false">Thumbnail mark</button><button class="sw-tab" aria-pressed="false">Dissection</button></div><div class="sw-stage is-auto" style="--ar:2112 / 1188"><img class="sw-img is-on" src="../oro-chocolate/assets/gl/s36.jpg" alt="Primary logo page: the gold ORO mark on black" loading="lazy" width="2112" height="1188"><img class="sw-img" src="../oro-chocolate/assets/gl/s37.jpg" alt="Primary logo versions on gold, black and grey" loading="lazy" width="2112" height="1188"><img class="sw-img" src="../oro-chocolate/assets/gl/s39.jpg" alt="Clear space page" loading="lazy" width="2112" height="1188"><img class="sw-img" src="../oro-chocolate/assets/gl/s40.jpg" alt="Thumbnail mark page with app icons" loading="lazy" width="2112" height="1188"><img class="sw-img" src="../oro-chocolate/assets/gl/s46.jpg" alt="Pattern page: the logo dissected into a star and petal pattern" loading="lazy" width="2112" height="1188"><span class="sw-bar" aria-hidden="true"></span></div><div class="sw-notes" aria-live="polite"><p class="sw-note is-on">The cacao cross-section, cut into a star.</p><p class="sw-note">Chocolate and Coffee, in three core colours.</p><p class="sw-note">Space to breathe on every side.</p><p class="sw-note">The mark alone, for social and small spaces.</p><p class="sw-note">The mark breaks into a pattern of stars and petals.</p></div></div>
+    </div>
+  </section>
+  <section id="type" aria-labelledby="type-h" style="padding-top:0">
+    <div class="wrap">
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>06</b> Typography</div>
+      <h2 id="type-h" class="display h2 reveal">Simple and <span class="c-acc">easy to read.</span></h2>
+      <p class="sub reveal">Poppins across every application: clean, friendly and highly recognisable.</p>
+      <div class="ot reveal"><div class="ot__top"><span class="ol-mono">Poppins · type tester</span><label class="ot__in"><span>Try it</span><input type="text" value="Taste the source." maxlength="40" aria-label="Type a headline"></label></div><p class="ot__big">Taste the source.</p><div class="ot__w" role="group" aria-label="Weight"><button type="button" data-w="300">Light</button><button type="button" data-w="400" aria-pressed="true">Regular</button><button type="button" data-w="600">SemiBold</button><button type="button" data-w="700">Bold</button></div><p class="ot__abc">AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz 0123456789</p></div>
+    </div>
+  </section>
+  <section id="patterns" aria-labelledby="patterns-h" style="padding-top:0">
+    <div class="wrap">
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>07</b> Patterns &amp; photography</div>
+      <h2 id="patterns-h" class="display h2 reveal">Drawn <span class="c-acc">from Nicaragua.</span></h2>
+      <p class="sub reveal">A dotted map, gold waves, line icons and moment-based photography of the people and places behind the product.</p>
+      <div class="sw reveal"><div class="sw-tabs"><button class="sw-tab is-on" aria-pressed="true">Map &amp; waves</button><button class="sw-tab" aria-pressed="false">Icons</button><button class="sw-tab" aria-pressed="false">Wall art</button><button class="sw-tab" aria-pressed="false">People</button><button class="sw-tab" aria-pressed="false">Landscape</button><button class="sw-tab" aria-pressed="false">Farm</button></div><div class="sw-stage is-auto" style="--ar:2112 / 1188"><img class="sw-img is-on" src="../oro-chocolate/assets/gl/s47.jpg" alt="Pattern page: Nicaragua map in dots and gold wave lines" loading="lazy" width="2112" height="1188"><img class="sw-img" src="../oro-chocolate/assets/gl/s48.jpg" alt="Iconography page: round gold line icons" loading="lazy" width="2112" height="1188"><img class="sw-img" src="../oro-chocolate/assets/gl/s49.jpg" alt="Illustration page: a café wall mural around the ORO mark" loading="lazy" width="2112" height="1188"><img class="sw-img" src="../oro-chocolate/assets/gl/s51.jpg" alt="Photography page: farmers at work" loading="lazy" width="2112" height="1188"><img class="sw-img" src="../oro-chocolate/assets/gl/s52.jpg" alt="Photography page: Nicaraguan landscapes and surf" loading="lazy" width="2112" height="1188"><img class="sw-img" src="../oro-chocolate/assets/gl/s53.jpg" alt="Photography page: cacao beans and pods on the farm" loading="lazy" width="2112" height="1188"><span class="sw-bar" aria-hidden="true"></span></div><div class="sw-notes" aria-live="polite"><p class="sw-note is-on">Nicaragua drawn in dots, and waves in gold lines.</p><p class="sw-note">A round, line-drawn icon library.</p><p class="sw-note">The landscape as a wall illustration around the mark.</p><p class="sw-note">Moment-based photos of farmers, with natural expressions.</p><p class="sw-note">The spirit of Nicaragua: sea, mountains and forest.</p><p class="sw-note">Hands, beans and pods, captured mid-moment.</p></div></div>
     </div>
   </section>
   <section id="packaging" aria-labelledby="packaging-h" style="padding-top:0">
     <div class="wrap">
-      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>04</b> Packaging</div>
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>08</b> Packaging</div>
       <h2 id="packaging-h" class="display h2 reveal">Natural, down <span class="c-gold">to the ink.</span></h2>
       
       <p class="sub reveal">Every material is natural. For chocolate, the goal was a small moment of excitement every time a box opens. <a href="../packaging-design/index.html#oro" style="color:var(--accent)">Also in Packaging design →</a></p>
@@ -639,7 +837,7 @@
   </section>
   <section id="source" aria-labelledby="source-h" style="padding-top:0">
     <div class="wrap">
-      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>05</b> From the source</div>
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>09</b> From the source</div>
       <h2 id="source-h" class="display h2 reveal">Pod to <span class="c-gold">bar.</span></h2>
       <p class="sub reveal">The packaging tells a true story: cacao grown by families in Nicaragua, made into chocolate at ORO’s own factory, then tasted bar by bar.</p>
       <div class="oro-src">
@@ -653,7 +851,7 @@
   </section>
   <section id="world" aria-labelledby="world-h" style="padding-top:0">
     <div class="wrap">
-      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>06</b> In the world</div>
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>10</b> In the world</div>
       <h2 id="world-h" class="display h2 reveal">From bean <span class="c-gold">to café.</span></h2>
       
       <p class="sub reveal">One brand world across retail, hospitality and wholesale.</p>
@@ -669,6 +867,14 @@
       <a class="live reveal" href="https://orochocolate.com" target="_blank" rel="noopener">See ORO live at orochocolate.com ↗</a>
     </div>
   </section>
+  <section id="book" aria-labelledby="book-h" style="padding-top:0">
+    <div class="wrap">
+      <div class="label reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><b>11</b> The book</div>
+      <h2 id="book-h" class="display h2 reveal">Flip the <span class="c-acc">whole book.</span></h2>
+      <p class="sub reveal">All 74 pages of the 2023 guidelines. Use the arrows, the slider or your keyboard.</p>
+      <div class="bk reveal" tabindex="0" aria-label="Brand guidelines viewer. Use the left and right arrow keys to turn pages."><div class="bk__stage"><img class="bk__pg" src="../oro-chocolate/assets/gl/s01.jpg" alt="Page 1 of the ORO brand guidelines" width="2112" height="1188"><button class="bk__nav bk__nav--p" type="button" aria-label="Previous page">‹</button><button class="bk__nav bk__nav--n" type="button" aria-label="Next page">›</button></div><div class="bk__bar"><span class="bk__n" aria-live="polite"><b>01</b> / 74</span><input class="bk__r" type="range" min="1" max="74" value="1" aria-label="Page"></div><div class="bk__strip"><button class="bk__t is-on" type="button" aria-label="Page 1" aria-pressed="true" data-p="1"><img src="../oro-chocolate/assets/gl/t01.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 2" aria-pressed="false" data-p="2"><img src="../oro-chocolate/assets/gl/t02.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 3" aria-pressed="false" data-p="3"><img src="../oro-chocolate/assets/gl/t03.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 4" aria-pressed="false" data-p="4"><img src="../oro-chocolate/assets/gl/t04.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 5" aria-pressed="false" data-p="5"><img src="../oro-chocolate/assets/gl/t05.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 6" aria-pressed="false" data-p="6"><img src="../oro-chocolate/assets/gl/t06.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 7" aria-pressed="false" data-p="7"><img src="../oro-chocolate/assets/gl/t07.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 8" aria-pressed="false" data-p="8"><img src="../oro-chocolate/assets/gl/t08.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 9" aria-pressed="false" data-p="9"><img src="../oro-chocolate/assets/gl/t09.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 10" aria-pressed="false" data-p="10"><img src="../oro-chocolate/assets/gl/t10.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 11" aria-pressed="false" data-p="11"><img src="../oro-chocolate/assets/gl/t11.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 12" aria-pressed="false" data-p="12"><img src="../oro-chocolate/assets/gl/t12.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 13" aria-pressed="false" data-p="13"><img src="../oro-chocolate/assets/gl/t13.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 14" aria-pressed="false" data-p="14"><img src="../oro-chocolate/assets/gl/t14.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 15" aria-pressed="false" data-p="15"><img src="../oro-chocolate/assets/gl/t15.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 16" aria-pressed="false" data-p="16"><img src="../oro-chocolate/assets/gl/t16.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 17" aria-pressed="false" data-p="17"><img src="../oro-chocolate/assets/gl/t17.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 18" aria-pressed="false" data-p="18"><img src="../oro-chocolate/assets/gl/t18.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 19" aria-pressed="false" data-p="19"><img src="../oro-chocolate/assets/gl/t19.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 20" aria-pressed="false" data-p="20"><img src="../oro-chocolate/assets/gl/t20.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 21" aria-pressed="false" data-p="21"><img src="../oro-chocolate/assets/gl/t21.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 22" aria-pressed="false" data-p="22"><img src="../oro-chocolate/assets/gl/t22.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 23" aria-pressed="false" data-p="23"><img src="../oro-chocolate/assets/gl/t23.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 24" aria-pressed="false" data-p="24"><img src="../oro-chocolate/assets/gl/t24.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 25" aria-pressed="false" data-p="25"><img src="../oro-chocolate/assets/gl/t25.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 26" aria-pressed="false" data-p="26"><img src="../oro-chocolate/assets/gl/t26.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 27" aria-pressed="false" data-p="27"><img src="../oro-chocolate/assets/gl/t27.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 28" aria-pressed="false" data-p="28"><img src="../oro-chocolate/assets/gl/t28.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 29" aria-pressed="false" data-p="29"><img src="../oro-chocolate/assets/gl/t29.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 30" aria-pressed="false" data-p="30"><img src="../oro-chocolate/assets/gl/t30.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 31" aria-pressed="false" data-p="31"><img src="../oro-chocolate/assets/gl/t31.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 32" aria-pressed="false" data-p="32"><img src="../oro-chocolate/assets/gl/t32.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 33" aria-pressed="false" data-p="33"><img src="../oro-chocolate/assets/gl/t33.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 34" aria-pressed="false" data-p="34"><img src="../oro-chocolate/assets/gl/t34.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 35" aria-pressed="false" data-p="35"><img src="../oro-chocolate/assets/gl/t35.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 36" aria-pressed="false" data-p="36"><img src="../oro-chocolate/assets/gl/t36.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 37" aria-pressed="false" data-p="37"><img src="../oro-chocolate/assets/gl/t37.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 38" aria-pressed="false" data-p="38"><img src="../oro-chocolate/assets/gl/t38.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 39" aria-pressed="false" data-p="39"><img src="../oro-chocolate/assets/gl/t39.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 40" aria-pressed="false" data-p="40"><img src="../oro-chocolate/assets/gl/t40.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 41" aria-pressed="false" data-p="41"><img src="../oro-chocolate/assets/gl/t41.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 42" aria-pressed="false" data-p="42"><img src="../oro-chocolate/assets/gl/t42.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 43" aria-pressed="false" data-p="43"><img src="../oro-chocolate/assets/gl/t43.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 44" aria-pressed="false" data-p="44"><img src="../oro-chocolate/assets/gl/t44.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 45" aria-pressed="false" data-p="45"><img src="../oro-chocolate/assets/gl/t45.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 46" aria-pressed="false" data-p="46"><img src="../oro-chocolate/assets/gl/t46.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 47" aria-pressed="false" data-p="47"><img src="../oro-chocolate/assets/gl/t47.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 48" aria-pressed="false" data-p="48"><img src="../oro-chocolate/assets/gl/t48.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 49" aria-pressed="false" data-p="49"><img src="../oro-chocolate/assets/gl/t49.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 50" aria-pressed="false" data-p="50"><img src="../oro-chocolate/assets/gl/t50.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 51" aria-pressed="false" data-p="51"><img src="../oro-chocolate/assets/gl/t51.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 52" aria-pressed="false" data-p="52"><img src="../oro-chocolate/assets/gl/t52.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 53" aria-pressed="false" data-p="53"><img src="../oro-chocolate/assets/gl/t53.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 54" aria-pressed="false" data-p="54"><img src="../oro-chocolate/assets/gl/t54.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 55" aria-pressed="false" data-p="55"><img src="../oro-chocolate/assets/gl/t55.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 56" aria-pressed="false" data-p="56"><img src="../oro-chocolate/assets/gl/t56.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 57" aria-pressed="false" data-p="57"><img src="../oro-chocolate/assets/gl/t57.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 58" aria-pressed="false" data-p="58"><img src="../oro-chocolate/assets/gl/t58.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 59" aria-pressed="false" data-p="59"><img src="../oro-chocolate/assets/gl/t59.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 60" aria-pressed="false" data-p="60"><img src="../oro-chocolate/assets/gl/t60.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 61" aria-pressed="false" data-p="61"><img src="../oro-chocolate/assets/gl/t61.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 62" aria-pressed="false" data-p="62"><img src="../oro-chocolate/assets/gl/t62.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 63" aria-pressed="false" data-p="63"><img src="../oro-chocolate/assets/gl/t63.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 64" aria-pressed="false" data-p="64"><img src="../oro-chocolate/assets/gl/t64.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 65" aria-pressed="false" data-p="65"><img src="../oro-chocolate/assets/gl/t65.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 66" aria-pressed="false" data-p="66"><img src="../oro-chocolate/assets/gl/t66.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 67" aria-pressed="false" data-p="67"><img src="../oro-chocolate/assets/gl/t67.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 68" aria-pressed="false" data-p="68"><img src="../oro-chocolate/assets/gl/t68.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 69" aria-pressed="false" data-p="69"><img src="../oro-chocolate/assets/gl/t69.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 70" aria-pressed="false" data-p="70"><img src="../oro-chocolate/assets/gl/t70.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 71" aria-pressed="false" data-p="71"><img src="../oro-chocolate/assets/gl/t71.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 72" aria-pressed="false" data-p="72"><img src="../oro-chocolate/assets/gl/t72.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 73" aria-pressed="false" data-p="73"><img src="../oro-chocolate/assets/gl/t73.jpg" alt="" loading="lazy" width="400" height="225"></button><button class="bk__t" type="button" aria-label="Page 74" aria-pressed="false" data-p="74"><img src="../oro-chocolate/assets/gl/t74.jpg" alt="" loading="lazy" width="400" height="225"></button></div></div>
+    </div>
+  </section>
 
   <section class="quote is-gold" aria-label="Closing thought">
     <div class="wrap">
@@ -682,8 +888,8 @@
       <img class="next__guy" src="assets/sunil-binoculars.png" alt="" aria-hidden="true" loading="lazy" width="860" height="1103">
       <div class="next__text">
         <div class="next__kicker">Next case study</div>
-        <a class="next__link next__link--long" href="../tamuda-bay/index.html">Tamuda Bay <span class="arrow">→</span></a>
-        <div><a class="next__prev" href="../imagination-holdings/index.html">← Previous: Imagination Holdings</a></div>
+        <a class="next__link next__link--long" href="../imagination-holdings/index.html">Imagination Holdings <span class="arrow">→</span></a>
+        <div><a class="next__prev" href="../green-school/index.html">← Previous: Green School</a></div>
       </div>
     </div>
   </section>
@@ -810,5 +1016,110 @@
   }));
 })();
 </script>
+<script>(() => {
+  const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const press = (list, on) => list.forEach(b => b.setAttribute('aria-pressed', b === on));
+
+  // Essence: flip each value, then sum them into the big idea
+  const es = $('.es');
+  if (es) {
+    const cs = $$('.es__c', es), sum = $('.es__sum', es);
+    cs.forEach(c => c.addEventListener('click', () => c.setAttribute('aria-pressed', c.getAttribute('aria-pressed') !== 'true')));
+    sum.addEventListener('click', () => {
+      const on = !es.classList.contains('is-sum');
+      if (on) cs.forEach(c => c.setAttribute('aria-pressed', 'true'));
+      es.classList.toggle('is-sum', on); sum.setAttribute('aria-pressed', on); sum.textContent = on ? 'Back to the three values' : 'Sum it all up';
+    });
+  }
+
+  // Tone of voice
+  const tv = $('.otv');
+  if (tv) {
+    const ws = $$('.otv__w button', tv), d = $('.otv__d', tv), def = d.textContent;
+    ws.forEach(w => w.addEventListener('click', () => {
+      const on = w.getAttribute('aria-pressed') !== 'true'; ws.forEach(x => x.setAttribute('aria-pressed', x === w && on));
+      d.textContent = on ? w.textContent + ': ' + w.dataset.d : def;
+    }));
+  }
+
+  // Colour: copy primaries, recolour the pack label by flavour
+  const op = $('.op');
+  if (op) {
+    const toast = $('.op__toast', op), pk = $('.pk', op), fl = $$('.op__fl button', op); let t;
+    const say = s => { toast.textContent = s; toast.classList.add('is-on'); clearTimeout(t); t = setTimeout(() => toast.classList.remove('is-on'), 1500); };
+    $$('.op__sw', op).forEach(b => b.addEventListener('click', () => { const h = b.dataset.hex; (navigator.clipboard ? navigator.clipboard.writeText(h) : Promise.reject()).then(() => say(h + ' copied'), () => say(h)); }));
+    fl.forEach(b => b.addEventListener('click', () => { press(fl, b); pk.style.setProperty('--f', b.dataset.c); }));
+  }
+
+  // Logo lab: line, layout, background (logo colour follows the rule), clear space
+  const ol = $('.ol');
+  if (ol) {
+    const logo = $('.ol__logo', ol), st = $('.ol__stage', ol), note = $('.ol__note', ol), cs = $('.ol__cs input', ol);
+    const [kb, vb, bb] = $$('.ol__grp', ol).map(g => $$('button', g));
+    const AR = { choc: '673/1046', coffee: '669/1050', 'choc-h': '1059/352', 'coffee-h': '1059/351' };
+    const NOTE = { gold: 'On gold, the logo is always black.', black: 'On black, the logo is always gold.', grey: 'On grey, the logo is always white.' };
+    const base = logo.style.getPropertyValue('--m').replace(/logo-[a-z-]+\.png.*$/, '').replace(/^url\(/, '');
+    let k = 'choc', v = '';
+    const fit = () => { const r = { width: logo.offsetWidth, height: logo.offsetHeight }; st.style.setProperty('--bw', r.width + 'px'); st.style.setProperty('--bh', r.height + 'px'); st.style.setProperty('--cs', Math.round(Math.min(r.width, r.height) * .22) + 'px'); };
+    const set = () => { const n = k + v; logo.style.setProperty('--m', `url(${base}logo-${n}.png)`); logo.style.setProperty('--ar', AR[n]); ol.dataset.v = v; requestAnimationFrame(fit); };
+    kb.forEach(b => b.addEventListener('click', () => { press(kb, b); k = b.dataset.k; set(); }));
+    vb.forEach(b => b.addEventListener('click', () => { press(vb, b); v = b.dataset.v; set(); }));
+    bb.forEach(b => b.addEventListener('click', () => { press(bb, b); ol.dataset.bg = b.dataset.bg; note.textContent = NOTE[b.dataset.bg]; }));
+    cs.addEventListener('change', () => { ol.classList.toggle('is-cs', cs.checked); fit(); });
+    addEventListener('resize', fit); requestAnimationFrame(fit);
+    if ('ResizeObserver' in window) new ResizeObserver(fit).observe(logo);
+  }
+
+  // Logo don'ts
+  const od = $('.od');
+  if (od) {
+    const bs = $$('.od__fx button', od), tag = $('.od__tag', od);
+    bs.forEach(b => b.addEventListener('click', () => {
+      press(bs, b); const ok = b.dataset.ok === '1'; od.dataset.x = b.dataset.x;
+      od.classList.remove('is-bad'); void od.offsetWidth; od.classList.toggle('is-bad', !ok);
+      tag.querySelector('b').textContent = ok ? '✓' : '✕'; tag.querySelector('span').textContent = b.dataset.note;
+    }));
+  }
+
+  // Type tester
+  const ot = $('.ot');
+  if (ot) {
+    const i = $('.ot__in input', ot), big = $('.ot__big', ot), ws = $$('.ot__w button', ot);
+    i.addEventListener('input', () => { big.textContent = i.value.trim() || 'Taste the source.'; });
+    ws.forEach(b => b.addEventListener('click', () => { press(ws, b); big.style.setProperty('--wt', b.dataset.w); }));
+  }
+
+  // The book
+  const bk = $('.bk');
+  if (bk) {
+    const pg = $('.bk__pg', bk), r = $('.bk__r', bk), num = $('.bk__n b', bk), prev = $('.bk__nav--p', bk), next = $('.bk__nav--n', bk), ts = $$('.bk__t', bk), strip = $('.bk__strip', bk);
+    const N = ts.length, base = pg.src.replace(/s\d+\.jpg$/, ''); let at = 1;
+    const go = (p, dir) => {
+      p = Math.max(1, Math.min(N, p)); if (p === at) return; const d = String(p).padStart(2, '0'); at = p;
+      pg.style.setProperty('--dx', (dir || 1) * -24 + 'px'); pg.classList.add('is-out');
+      const im = new Image(); im.src = base + 's' + d + '.jpg';
+      const swap = () => { pg.src = im.src; pg.alt = 'Page ' + p + ' of the ORO brand guidelines'; pg.style.setProperty('--dx', (dir || 1) * 24 + 'px'); requestAnimationFrame(() => requestAnimationFrame(() => pg.classList.remove('is-out'))); };
+      (im.decode ? im.decode() : Promise.resolve()).then(swap, swap);
+      num.textContent = d; r.value = p; prev.disabled = p === 1; next.disabled = p === N;
+      ts.forEach((t, k) => { t.classList.toggle('is-on', k === p - 1); t.setAttribute('aria-pressed', k === p - 1); });
+      const t = ts[p - 1]; strip.scrollTo({ left: t.offsetLeft - strip.clientWidth / 2 + t.clientWidth / 2, behavior: 'smooth' });
+      if (p < N) new Image().src = base + 's' + String(p + 1).padStart(2, '0') + '.jpg';
+    };
+    prev.disabled = true;
+    prev.addEventListener('click', () => go(at - 1, -1)); next.addEventListener('click', () => go(at + 1, 1));
+    r.addEventListener('input', () => go(+r.value, +r.value > at ? 1 : -1));
+    ts.forEach((t, k) => t.addEventListener('click', () => go(k + 1, k + 1 > at ? 1 : -1)));
+    bk.addEventListener('keydown', e => { if (e.target === r) return; if (e.key === 'ArrowRight') { e.preventDefault(); go(at + 1, 1); } if (e.key === 'ArrowLeft') { e.preventDefault(); go(at - 1, -1); } });
+    let sx = null; const st = $('.bk__stage', bk);
+    st.addEventListener('pointerdown', e => { sx = e.clientX; });
+    st.addEventListener('pointerup', e => { if (sx === null) return; const dx = e.clientX - sx; sx = null; if (Math.abs(dx) > 40) go(at + (dx < 0 ? 1 : -1), dx < 0 ? 1 : -1); });
+  }
+})();
+</script>
+<script>(() => {
+  // Loop clips carried over from V2 play only while on screen
+  const vo = new IntersectionObserver(es => es.forEach(e => { const v = e.target; if (e.isIntersecting) { v.preload = 'auto'; v.play().catch(() => {}); } else v.pause(); }), { threshold: .2 });
+  document.querySelectorAll('video.lv').forEach(v => vo.observe(v));
+})();</script>
 </body>
 </html>
