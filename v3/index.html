@@ -3,352 +3,519 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sunil Sebastian — Design worth keeping</title>
-<meta name="description" content="Sunil Sebastian designs brand systems, products, packaging and games for brands that operate at scale.">
+<title>Sunil Sebastian — Stills &amp; Film</title>
+<meta name="description" content="Stills and film by Sunil Sebastian: an art director who has run studio and location shoots for Coca-Cola, Martini, Bacardi and P&amp;G, now behind the camera.">
 <meta name="robots" content="noindex">
-<link rel="icon" href="../assets/icons/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/favicon-32.png">
-<link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png">
-<meta name="theme-color" content="#f1f1ef">
+<meta property="og:title" content="Sunil Sebastian — Stills &amp; Film">
+<meta property="og:description" content="An art director's eye, behind the camera. Photography, directed shoots and film.">
+<meta property="og:image" content="https://sunshaseb.github.io/Portfolio-website/v3/assets/people-elder.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/icons/favicon-64.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #f1f1ef; --card: #fff; --ink: #0d0d0c; --muted: #6f6e69; --line: rgba(13,13,12,.12);
-    --yellow: #f6cb00; --red: #df0c01; --blue: #2979ff; --lav: #dcd9fb; --accent: #f6cb00;
-    --font: "Inter Tight", "Helvetica Neue", Arial, sans-serif; --mono: "Geist Mono", ui-monospace, Menlo, monospace;
-    --gutter: clamp(16px, 2.6vw, 40px); --ease: cubic-bezier(.2,.7,.1,1); --r: 14px;
-  }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 16px; line-height: 1.5; -webkit-font-smoothing: antialiased; overflow-x: clip; }
-  img { display: block; max-width: 100%; height: auto; }
-  a { color: inherit; text-decoration: none; }
-  .mono { font-family: var(--mono); font-size: 13px; letter-spacing: -.01em; }
-  .k { display: inline-flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 13px; }
-  .k::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--red); }
+:root{
+  --bg:#E4E1DE; --paper:#EEEBE7; --line:#CFC9C1;
+  --taupe:#94897C; --ink:#4B443C; --soft:#6E655A;
+  --cream:#E7E0D6; --dark:#262524; --dark2:#302E2C;
+  --pad:clamp(16px,4vw,56px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:Jost,"Futura","Century Gothic",-apple-system,"Segoe UI",sans-serif;font-weight:300;font-size:18px;line-height:1.65;overflow-x:hidden;padding-bottom:0}
+img,video{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--taupe);outline-offset:3px}
+.wrap{max-width:1320px;margin:0 auto;padding:0 var(--pad)}
+.eyebrow{font-size:13px;letter-spacing:.24em;text-transform:uppercase;font-weight:400;color:var(--soft)}
+.h2{font-weight:300;font-size:clamp(40px,7vw,88px);line-height:1.04;letter-spacing:-.01em;color:var(--taupe)}
+.h2 em{font-style:italic;font-weight:300;opacity:.72}
+.lede{max-width:46ch;color:var(--ink)}
+.star{display:inline-block;width:1em;height:1em;vertical-align:-.12em}
+.link{display:inline-block;font-size:14px;letter-spacing:.2em;text-transform:uppercase;font-weight:400;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:4px;transition:opacity .25s}
+.link:hover{opacity:.6}
+section{position:relative}
 
-  /* Pill navigation */
-  .nv { position: fixed; inset: 14px var(--gutter) auto; z-index: 30; display: flex; justify-content: space-between; align-items: center; gap: 12px; pointer-events: none; }
-  .nv > div { display: flex; align-items: center; gap: 6px; pointer-events: auto; }
-  .pill { display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 14px; border-radius: 10px; background: rgba(255,255,255,.9); backdrop-filter: blur(10px); box-shadow: 0 0 0 1px var(--line); font-family: var(--mono); font-size: 13px; white-space: nowrap; transition: transform .25s var(--ease), background .2s; }
-  .pill:hover { transform: translateY(-1px); background: #fff; }
-  .pill--brand { font-family: var(--font); font-size: 15px; font-weight: 600; letter-spacing: -.02em; padding-left: 8px; }
-  .pill--brand .eye { width: 34px; height: auto; }
-  .pill--brand small { font-family: var(--mono); font-weight: 400; font-size: 12px; color: var(--muted); letter-spacing: 0; }
-  .pill--dark { background: var(--ink); color: #fff; box-shadow: none; border-radius: 999px; padding-right: 6px; }
-  .pill--dark:hover { background: #000; }
-  .pill--dark i { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: #fff; color: var(--ink); font-style: normal; }
-  .live { width: 8px; height: 8px; border-radius: 50%; background: #1fb85b; box-shadow: 0 0 0 0 rgba(31,184,91,.5); animation: live 2s infinite; }
-  @keyframes live { 70% { box-shadow: 0 0 0 7px rgba(31,184,91,0); } 100% { box-shadow: 0 0 0 0 rgba(31,184,91,0); } }
-  .eye__lid { transform-box: fill-box; transform-origin: 50% 0; animation: blink 5.5s infinite; }
-  @keyframes blink { 0%, 92%, 100% { transform: scaleY(1); } 95% { transform: scaleY(1.75); } }
+/* reveal */
+.js .rv{opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+.js .rv.in{opacity:1;transform:none}
 
-  /* Hero viewer (Minhwan Kim) */
-  .hv { position: relative; height: 100svh; min-height: 520px; background: #000; overflow: hidden; cursor: none; }
-  .hv__slide { position: absolute; inset: 0; margin: 0; opacity: 0; transition: opacity .9s var(--ease); }
-  .hv__slide.is-on { opacity: 1; }
-  .hv__slide img, .hv__slide video { display: block; width: 100%; height: 100%; object-fit: cover; }
-  .hv__slide img { transform: scale(1.04); transition: transform 6s linear; }
-  .hv__slide.is-on img { transform: scale(1); }
-  /* A white page recording, shown as a rounded card on the Al Siraat backdrop */
-  .hv__slide--card { display: grid; place-items: center; background: radial-gradient(ellipse at 50% 42%, #262140 0%, #101014 72%); }
-  .hv__slide.hv__slide--card video { width: auto; height: min(78svh, 900px); max-width: 88vw; aspect-ratio: 1440 / 1252; object-fit: contain; border-radius: 16px; background: #fff; }
-  @media (max-width: 600px) {
-    .hv__slide--card { padding: 64px 0 170px; }
-    .hv__slide.hv__slide--card video { width: 88vw; height: auto; }
-  }
-  .hv__caps { position: absolute; z-index: 2; left: var(--gutter); bottom: 28px; right: 40%; color: #fff; }
-  .hv__cap { position: absolute; left: 0; bottom: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px; font-size: 15px; opacity: 0; transform: translateY(8px); transition: opacity .5s, transform .6s var(--ease); pointer-events: none; cursor: pointer; }
-  .hv__cap.is-on { opacity: 1; transform: none; pointer-events: auto; }
-  .hv__cap b { font-weight: 600; }
-  .hv__cap span { opacity: .85; }
-  .hv__cap i { font-style: normal; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; background: rgba(255,255,255,.18); backdrop-filter: blur(6px); }
-  .hv__count { position: absolute; z-index: 2; right: var(--gutter); bottom: 28px; color: #fff; font-size: 13px; font-weight: 500; letter-spacing: .12em; font-variant-numeric: tabular-nums; }
-  .hv__bar { position: absolute; z-index: 2; left: 0; bottom: 0; height: 2px; width: 100%; background: var(--accent); transform-origin: 0 50%; transform: scaleX(0); }
-  .hv.is-run .hv__bar { animation: hvbar var(--dur, 6000ms) linear forwards; }
-  @keyframes hvbar { to { transform: scaleX(1); } }
-  .hv__cursor { position: fixed; z-index: 40; left: 0; top: 0; pointer-events: none; color: #fff; mix-blend-mode: difference; font-size: 12px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; transform: translate(-50%, -50%); opacity: 0; transition: opacity .2s; }
-  .hv:hover ~ .hv__cursor, .hv__cursor.is-on { opacity: 1; }
+/* ---------- hero ---------- */
+.hero{height:100vh;height:100svh;min-height:600px;background:var(--dark);color:#fff;overflow:hidden}
+.hero .slide{position:absolute;inset:0;opacity:0;transition:opacity 1.6s ease}
+.hero .slide.on{opacity:1}
+.hero .slide img{width:100%;height:100%;object-fit:cover;transform:scale(1.08);transition:transform 7s ease-out}
+.hero .slide.on img{transform:scale(1)}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,18,16,.5) 0%,rgba(20,18,16,.1) 28%,rgba(20,18,16,.62) 58%,rgba(20,18,16,.88) 100%);pointer-events:none}
+.hero-top{position:absolute;z-index:3;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:26px var(--pad);font-size:13px;letter-spacing:.24em;text-transform:uppercase;font-weight:400}
+.hero-top a{text-decoration:none;display:flex;align-items:center;gap:12px}
+.hero-top .star{font-size:22px}
+.hero-body{position:absolute;z-index:3;left:0;right:0;bottom:clamp(120px,17vh,170px);padding:0 var(--pad)}
+.hero h1{font-weight:300;line-height:.92;font-size:clamp(54px,13.2vw,210px);letter-spacing:.02em;display:flex;flex-wrap:wrap;column-gap:.28em;margin:14px 0 26px -.04em}
+.hero h1 .w{display:inline-flex;white-space:nowrap}
+.hero h1 .w.it{font-style:italic;opacity:.8}
+.hero h1 .w span{display:inline-block}
+.js .hero h1 .w span{opacity:0;transform:translateY(.35em);animation:rise 1s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(var(--i)*70ms + 300ms)}
+@keyframes rise{to{opacity:1;transform:none}}
+.hero p{max-width:44ch;font-size:clamp(16px,1.5vw,20px);color:rgba(255,255,255,.92)}
+.hero-dots{position:absolute;z-index:3;right:var(--pad);bottom:clamp(120px,17vh,170px);display:flex;flex-direction:column;gap:10px;align-items:flex-end}
+.hero-dots button{font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:400;color:rgba(255,255,255,.55);display:flex;align-items:center;gap:12px;padding:4px 0}
+.hero-dots button::after{content:"";width:28px;height:1px;background:currentColor;transition:width .4s}
+.hero-dots button.on{color:#fff}
+.hero-dots button.on::after{width:64px}
 
+/* ---------- story ---------- */
+.story{padding:clamp(88px,13vw,180px) 0 clamp(64px,9vw,120px);text-align:center}
+.story .h2{max-width:14ch;margin:20px auto 34px}
+.story p{max-width:60ch;margin:0 auto 18px}
+.story .honest{color:var(--soft);font-style:italic}
+.brands{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 30px;margin:44px auto 0;max-width:900px;font-size:14px;letter-spacing:.22em;text-transform:uppercase;font-weight:400;color:var(--taupe)}
+.brands span+span::before{content:"✦";margin-right:30px;font-size:10px;vertical-align:.15em;opacity:.7}
+.story-fig{margin:clamp(56px,8vw,104px) auto 0;max-width:1040px;display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(10px,1.6vw,22px);align-items:end}
+.story-fig figure{overflow:hidden}
+.story-fig img{width:100%;height:100%;object-fit:cover}
+.story-fig figure:first-child{aspect-ratio:4/5}
+.story-fig figure:last-child{aspect-ratio:1/1}
+.story-fig figcaption,.cap{font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:400;color:var(--soft);text-align:left;margin-top:10px}
 
-  /* Statement with drifting stickers */
-  .st { position: relative; padding: clamp(90px, 13vw, 200px) var(--gutter); text-align: center; overflow: hidden; }
-  .st .mono { text-transform: uppercase; letter-spacing: .04em; }
-  .st h1 { margin: 18px 0 0; font-size: clamp(64px, 15.5vw, 260px); line-height: .82; font-weight: 800; letter-spacing: -.065em; text-transform: uppercase; }
-  .st h1 span { display: block; overflow: hidden; padding: .02em 0; }
-  .st h1 span b { display: inline-block; font-weight: inherit; transform: translateY(105%); transition: transform 1.1s var(--ease); }
-  .st.is-in h1 span b { transform: none; }
-  .st h1 span:nth-child(2) b { transition-delay: .1s; }
-  .st h1 span:nth-child(3) b { transition-delay: .2s; color: var(--red); }
-  .st p { max-width: 34ch; margin: 28px auto 0; font-size: clamp(18px, 1.6vw, 22px); line-height: 1.35; letter-spacing: -.02em; color: #3b3a36; }
-  .stk { position: absolute; z-index: 2; width: clamp(92px, 11vw, 180px); aspect-ratio: 4 / 3; border-radius: 12px; overflow: hidden; background: #ddd; box-shadow: 0 18px 40px -18px rgba(0,0,0,.45), 0 0 0 4px #fff; transform: rotate(var(--rot)) translateY(var(--py, 0px)); animation: bob 7s ease-in-out infinite; animation-delay: var(--d); transition: box-shadow .3s; }
-  .stk img { width: 100%; height: 100%; object-fit: cover; }
-  .stk:hover { box-shadow: 0 24px 50px -16px rgba(0,0,0,.55), 0 0 0 4px var(--yellow); }
-  @keyframes bob { 50% { translate: 0 -12px; } }
-  .stk--1 { --rot: -8deg; --d: 0s; left: 6%; top: 14%; }
-  .stk--2 { --rot: 6deg; --d: -1.5s; right: 7%; top: 10%; }
-  .stk--3 { --rot: 4deg; --d: -3s; left: 10%; bottom: 14%; }
-  .stk--4 { --rot: -5deg; --d: -4.5s; right: 9%; bottom: 18%; }
-  .stk--5 { --rot: 9deg; --d: -2s; left: 26%; top: 16%; width: clamp(70px, 7vw, 120px); }
-  .stk--6 { --rot: -7deg; --d: -5s; right: 28%; bottom: 5%; width: clamp(70px, 7vw, 120px); }
+/* ---------- stills ---------- */
+.stills{padding:clamp(56px,8vw,110px) 0 clamp(80px,11vw,150px)}
+.sec-head{display:flex;flex-direction:column;align-items:center;text-align:center;gap:18px;margin-bottom:clamp(36px,5vw,64px)}
+.rail{display:flex;gap:clamp(8px,1vw,14px);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:0 var(--pad);scroll-padding:0 var(--pad)}
+.rail::-webkit-scrollbar{display:none}
+.card{position:relative;flex:0 0 clamp(250px,31vw,440px);aspect-ratio:10/16;overflow:hidden;scroll-snap-align:start;color:#fff;text-align:left;background:var(--dark)}
+.card img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s cubic-bezier(.2,.7,.2,1),opacity .6s}
+.card:hover img,.card:focus-visible img{transform:scale(1.05)}
+.card::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,18,16,.55),rgba(20,18,16,0) 42%),linear-gradient(0deg,rgba(20,18,16,.45),rgba(20,18,16,0) 30%)}
+.card .vl{position:absolute;z-index:2;left:18px;bottom:22px;writing-mode:vertical-rl;transform:rotate(180deg);font-size:clamp(24px,2.4vw,34px);font-weight:300;font-style:italic;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;display:flex;align-items:center;gap:14px}
+.card .vl .star{font-size:.7em;transform:rotate(90deg)}
+.card .n{position:absolute;z-index:2;right:18px;bottom:20px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:400}
+.rail-ctl{display:flex;justify-content:center;align-items:center;gap:18px;margin-top:30px}
+.rail-ctl button{width:46px;height:46px;border-radius:50%;background:var(--paper);display:grid;place-items:center;transition:background .25s}
+.rail-ctl button:hover{background:#fff}
+.rail-ctl svg{width:16px;height:16px}
+.rail-ctl .hint{font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:400;color:var(--soft)}
 
-  /* Work list */
-  .wk { padding: 0 var(--gutter) clamp(80px, 10vw, 140px); }
-  .sh { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 22px 0; }
-  .sh .mono { color: var(--muted); }
-  .chips { display: flex; flex-wrap: wrap; gap: 8px; padding: 4px 0 26px; }
-  .chip { appearance: none; border: 0; cursor: pointer; display: inline-flex; align-items: baseline; gap: 6px; padding: 9px 14px; border-radius: 8px; background: var(--tint); color: var(--ink); font-family: var(--mono); font-size: 13px; transition: transform .2s var(--ease), background .2s, color .2s; }
-  .chip sup { font-size: 10px; opacity: .6; }
-  .chip:hover { transform: translateY(-1px); }
-  .chip.is-on { background: var(--ink); color: #fff; }
-  .chip:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
-  .wk__list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
-  .wk__row { border-bottom: 1px solid var(--line); }
-  .wk__row[hidden] { display: none; }
-  .wk__row a { position: relative; display: grid; grid-template-columns: 56px minmax(0, 1.15fr) minmax(0, .75fr) minmax(0, 1.3fr) 120px; gap: 18px; align-items: center; padding: 24px 16px; margin: 0 -16px; border-radius: var(--r); transition: background .35s var(--ease); }
-  .wk__row a:hover, .wk__row a:focus-visible { background: var(--tint); outline: none; }
-  .wk__n { font-family: var(--mono); font-size: 14px; color: var(--muted); }
-  .wk__t { font-size: clamp(20px, 1.8vw, 26px); font-weight: 600; letter-spacing: -.03em; }
-  .wk__tag { justify-self: start; padding: 5px 10px; border-radius: 7px; background: var(--tint); font-family: var(--mono); font-size: 12px; transition: background .35s; }
-  .wk__row a:hover .wk__tag { background: #fff; }
-  .wk__d { color: #45443f; line-height: 1.35; }
-  .wk__go { justify-self: end; font-family: var(--mono); font-size: 13px; color: var(--red); white-space: nowrap; }
-  .wk__go i { display: inline-block; font-style: normal; transition: transform .3s var(--ease); }
-  .wk__row a:hover .wk__go i { transform: translate(3px, -3px); }
-  .wk__thumb { display: none; }
-  .peek { position: fixed; z-index: 20; left: 0; top: 0; width: 260px; aspect-ratio: 4 / 3; border-radius: 14px; overflow: hidden; pointer-events: none; opacity: 0; transform: translate(-50%, -50%) rotate(-4deg) scale(.85); transition: opacity .25s, transform .45s var(--ease); box-shadow: 0 26px 60px -24px rgba(0,0,0,.5), 0 0 0 5px #fff; background: #ddd; }
-  .peek.is-on { opacity: 1; transform: translate(-50%, -50%) rotate(-4deg) scale(1); }
-  .peek img { width: 100%; height: 100%; object-fit: cover; }
+.mosaic{margin-top:clamp(56px,8vw,110px);display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(8px,1vw,14px)}
+.mosaic button{overflow:hidden;background:var(--line)}
+.mosaic img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.mosaic button:hover img{transform:scale(1.04)}
+.m1{grid-column:span 5;aspect-ratio:1/1}.m2{grid-column:span 7;aspect-ratio:7/5}
+.m3{grid-column:span 4;aspect-ratio:1/1}.m4{grid-column:span 4;aspect-ratio:1/1}.m5{grid-column:span 4;aspect-ratio:1/1}
+.m6{grid-column:span 7;aspect-ratio:7/5}.m7{grid-column:span 5;aspect-ratio:1/1}
 
-  /* Strip of work, two directions */
-  .mq { padding: clamp(20px, 3vw, 40px) 0 clamp(80px, 10vw, 140px); overflow: hidden; }
-  .mq__row { display: flex; gap: 14px; width: max-content; animation: mq 70s linear infinite; }
-  .mq__row + .mq__row { margin-top: 14px; animation-direction: reverse; animation-duration: 80s; }
-  .mq:hover .mq__row { animation-play-state: paused; }
-  @keyframes mq { to { transform: translateX(-50%); } }
-  .mq__it { position: relative; flex: none; width: clamp(220px, 22vw, 340px); aspect-ratio: 4 / 3; border-radius: var(--r); overflow: hidden; background: #ddd; }
-  .mq__it img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s var(--ease); }
-  .mq__it span { position: absolute; left: 10px; bottom: 10px; padding: 5px 10px; border-radius: 7px; background: rgba(255,255,255,.92); font-family: var(--mono); font-size: 12px; opacity: 0; transform: translateY(6px); transition: opacity .25s, transform .35s var(--ease); }
-  .mq__it:hover img { transform: scale(1.05); }
-  .mq__it:hover span, .mq__it:focus-visible span { opacity: 1; transform: none; }
+/* ---------- shoots (dark) ---------- */
+.shoots{background:var(--dark);color:var(--cream);padding:clamp(88px,12vw,170px) 0}
+.shoots .glyph{position:absolute;top:20px;left:-2vw;font-size:min(60vw,760px);line-height:.8;font-style:italic;font-weight:300;color:#fff;opacity:.035;pointer-events:none;user-select:none}
+.shoots .eyebrow{color:#A9A095}
+.shoots .h2{color:var(--cream)}
+.shoots-head{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(24px,5vw,80px);align-items:end;margin-bottom:clamp(56px,8vw,110px)}
+.shoots-head p{color:#CFC8BE;max-width:48ch}
+.shoot{display:grid;grid-template-columns:5fr 7fr;gap:clamp(24px,5vw,80px);align-items:center;padding:clamp(40px,6vw,84px) 0;border-top:1px solid rgba(231,224,214,.16)}
+.shoot:nth-of-type(even) .meta{order:2}
+.shoot:nth-of-type(even){grid-template-columns:7fr 5fr}
+.shoot .no{font-size:13px;letter-spacing:.24em;font-weight:400;color:#A9A095;display:flex;align-items:center;gap:12px}
+.shoot h3{font-weight:300;font-size:clamp(30px,3.6vw,52px);line-height:1.08;margin:14px 0 6px}
+.shoot h3 em{font-style:italic;opacity:.72}
+.shoot .role{font-size:13px;letter-spacing:.2em;text-transform:uppercase;font-weight:400;color:#B9AFA2;margin-bottom:18px}
+.shoot p{color:#CFC8BE;max-width:44ch}
+.shoot dl{display:grid;grid-template-columns:auto 1fr;gap:6px 22px;margin-top:22px;font-size:15px}
+.shoot dt{font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:400;color:#A9A095;padding-top:3px}
+.shoot dd{color:var(--cream)}
+.pics{display:grid;gap:clamp(8px,1vw,14px)}
+.pics button{overflow:hidden;background:var(--dark2);display:block}
+.pics img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.pics button:hover img{transform:scale(1.03)}
+.pics.a{grid-template-columns:1fr 1fr}.pics.a button:first-child{grid-column:1/-1;aspect-ratio:1200/879}.pics.a button{aspect-ratio:1200/879}
+.pics.b{grid-template-columns:1fr}.pics.b button:first-child{aspect-ratio:1400/975}.pics.b button:last-child{aspect-ratio:1400/573}
+.pics.c{grid-template-columns:1fr}.pics.c button{aspect-ratio:900/691}
+.pics.d{grid-template-columns:1fr}.pics.d button:first-child{aspect-ratio:900/295}.pics.d button:last-child{aspect-ratio:16/11}
+.pics.d button:last-child img{object-position:50% 12%}
+.pics.e{grid-template-columns:1fr 1fr}.pics.e button:first-child{grid-column:1/-1;aspect-ratio:1400/872}.pics.e button{aspect-ratio:3/2}
+.pics.f{grid-template-columns:repeat(3,1fr)}.pics.f button{aspect-ratio:990/1400}
 
-  /* About */
-  .ab { background: var(--lav); padding: clamp(80px, 10vw, 150px) var(--gutter); }
-  .ab__top { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr) minmax(0, 1.8fr); gap: clamp(24px, 4vw, 64px); }
-  .ab h2 { margin: 0; font-size: clamp(24px, 2.2vw, 32px); font-weight: 600; line-height: 1.15; letter-spacing: -.03em; }
-  .ab h3 { margin: 0 0 10px; font-family: var(--mono); font-weight: 400; font-size: 13px; color: var(--red); }
-  .ab p { margin: 0 0 18px; font-size: clamp(16px, 1.25vw, 18px); line-height: 1.5; color: #24233a; }
-  .ab__col + .ab__col { margin-top: 28px; }
-  .ab__top > .k { align-self: start; margin-top: .4em; }
-  .kv { list-style: none; margin: clamp(48px, 6vw, 88px) 0 0; padding: 0; }
-  .kv li { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 16px 0; border-bottom: 1.5px solid rgba(13,13,12,.75); font-family: var(--mono); font-size: 14px; }
-  .kv li > span:last-child { text-align: right; }
-  .tags { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; }
-  .tags span { padding: 5px 10px; border-radius: 7px; background: rgba(255,255,255,.7); font-size: 12px; }
+/* ---------- film ---------- */
+.film{padding:clamp(88px,12vw,170px) 0 clamp(72px,10vw,130px)}
+.stage{position:relative;aspect-ratio:16/9;background:#000;overflow:hidden}
+.stage video{width:100%;height:100%;object-fit:contain;background:#000}
+.stage .play{position:absolute;inset:0;display:grid;place-items:center;background:rgba(20,18,16,.28);color:#fff;transition:background .3s}
+.stage .play:hover{background:rgba(20,18,16,.14)}
+.stage .play i{width:clamp(72px,9vw,116px);height:clamp(72px,9vw,116px);border-radius:50%;border:1px solid rgba(255,255,255,.85);display:grid;place-items:center;font-style:normal;font-size:12px;letter-spacing:.24em;text-transform:uppercase;font-weight:400;padding-left:.24em;backdrop-filter:blur(4px)}
+.stage.playing .play{display:none}
+.now{display:flex;justify-content:space-between;gap:16px;align-items:baseline;flex-wrap:wrap;margin-top:16px}
+.now strong{font-weight:400;font-size:clamp(20px,2.2vw,28px);color:var(--ink)}
+.now span{font-size:13px;letter-spacing:.2em;text-transform:uppercase;font-weight:400;color:var(--soft)}
+.reels{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(8px,1vw,14px);margin-top:clamp(28px,4vw,48px)}
+.reel{text-align:left}
+.reel .th{aspect-ratio:16/10;overflow:hidden;background:var(--line);position:relative}
+.reel img{width:100%;height:100%;object-fit:cover;transition:transform 1s,filter .4s;filter:saturate(.85)}
+.reel:hover img{transform:scale(1.05)}
+.reel[aria-current="true"] .th::after{content:"";position:absolute;inset:0;border:2px solid var(--taupe)}
+.reel b{display:block;font-weight:400;font-size:16px;line-height:1.3;margin-top:10px;color:var(--ink)}
+.reel small{display:block;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:400;color:var(--soft);margin-top:4px}
 
-  /* Sign-off */
-  .so { background: var(--yellow); padding: clamp(70px, 9vw, 130px) var(--gutter) 28px; }
-  .so__col { max-width: 560px; margin: 0 auto; display: grid; gap: 12px; }
-  .so__name { position: relative; background: #fff; border-radius: 18px; padding: clamp(28px, 4vw, 48px) clamp(20px, 3vw, 36px); overflow: hidden; }
-  .so__name b { display: block; font-size: clamp(76px, 12vw, 150px); line-height: .85; font-weight: 800; letter-spacing: -.07em; }
-  .so__name b em { font-style: normal; color: var(--red); }
-  .so__name img { position: absolute; right: -10px; bottom: -46px; width: clamp(84px, 11vw, 132px); height: auto; transform: rotate(-6deg); }
-  .so__card { background: #fff; border-radius: 18px; padding: 22px; box-shadow: inset 0 0 0 1.5px var(--ink); }
-  .so__card h2 { margin: 0 0 clamp(40px, 6vw, 80px); font-family: var(--mono); font-size: 15px; font-weight: 500; }
-  .so__card p { margin: 0 0 14px; font-family: var(--mono); font-size: 13px; line-height: 1.6; text-transform: uppercase; color: #3b3a36; }
-  .so__card p strong { color: var(--ink); font-weight: 500; }
-  .btn { display: flex; justify-content: center; align-items: center; gap: 8px; height: 46px; border-radius: 10px; background: var(--bg); font-weight: 600; letter-spacing: -.01em; transition: background .2s, transform .2s var(--ease); }
-  .btn:hover { background: var(--ink); color: #fff; }
-  .soc { display: flex; justify-content: center; gap: 8px; margin-top: 6px; }
-  .soc a { padding: 9px 14px; border-radius: 10px; background: rgba(255,255,255,.7); font-family: var(--mono); font-size: 13px; transition: background .2s; }
-  .soc a:hover { background: #fff; }
-  .so small { display: block; margin-top: 10px; text-align: center; font-family: var(--mono); font-size: 12px; }
+/* ---------- bring ---------- */
+.bring{background:var(--paper);padding:clamp(80px,11vw,150px) 0}
+.bring-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,4vw,64px);margin-top:clamp(40px,6vw,72px)}
+.bring-grid div{border-top:1px solid var(--line);padding-top:26px}
+.bring-grid .star{font-size:22px;color:var(--taupe)}
+.bring-grid h3{font-weight:400;font-size:24px;line-height:1.2;margin:16px 0 10px;color:var(--ink)}
+.bring-grid h3 em{font-weight:300}
+.bring-grid p{font-size:17px}
 
-  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .9s var(--ease), transform 1s var(--ease); }
-  .reveal.is-in { opacity: 1; transform: none; }
+/* ---------- contact ---------- */
+.contact{background:var(--dark);color:var(--cream);padding:clamp(88px,12vw,160px) 0 150px;text-align:center}
+.contact .eyebrow{color:#A9A095}
+.contact .h2{color:var(--cream);margin:20px auto 30px;max-width:13ch}
+.contact .mail{font-size:clamp(22px,3.4vw,44px);font-weight:300;text-decoration:none;border-bottom:1px solid rgba(231,224,214,.4);padding-bottom:6px;overflow-wrap:anywhere}
+.contact .mail:hover{border-color:var(--cream)}
+.contact ul{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:14px 40px;margin-top:48px}
+.contact small{display:block;margin-top:64px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#8F877C}
 
-  @media (max-width: 1080px) {
-    .ab__top { grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); }
-    .ab__top > :first-child { grid-column: 1 / -1; }
-  }
-  @media (max-width: 900px) {
-    .nv .hide-m { display: none; }
-    .wk__row a { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "n n" "t tag" "d d" "x go"; gap: 8px 12px; padding: 22px 12px; margin: 0 -12px; }
-    .wk__n { grid-area: n; } .wk__t { grid-area: t; } .wk__tag { grid-area: tag; justify-self: end; } .wk__d { grid-area: d; } .wk__go { grid-area: go; }
-    .peek { display: none; }
-    .ab__top { grid-template-columns: 1fr; }
-    .stk--5, .stk--6 { display: none; }
-  }
-  @media (max-width: 600px) {
-    .nv { inset: 10px 10px auto; }
-    .pill--brand small, .pill--dark span { display: none; }
-    .hv { height: 82svh; cursor: auto; }
-    .hv__caps { right: var(--gutter); bottom: 54px; }
-    .hv__cursor { display: none; }
-    .st { padding-top: 150px; padding-bottom: 150px; }
-    .stk { width: 84px; }
-    .stk--1 { top: 30px; left: 4%; } .stk--2 { top: 40px; right: 4%; } .stk--3 { bottom: 30px; left: 8%; } .stk--4 { bottom: 40px; right: 6%; }
-    .kv li { flex-direction: column; align-items: flex-start; gap: 8px; }
-    .kv li > span:last-child, .tags { text-align: left; justify-content: flex-start; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    .reveal, .st h1 span b { opacity: 1; transform: none; transition: none; }
-    .hv__slide img { transition: none; transform: none; }
-    .hv.is-run .hv__bar, .stk, .mq__row, .eye__lid, .live { animation: none; }
-  }
+/* ---------- dock ---------- */
+.dock{position:fixed;z-index:40;left:50%;bottom:max(18px,env(safe-area-inset-bottom));transform:translateX(-50%);display:flex;gap:2px;background:rgba(255,255,255,.96);border-radius:999px;padding:8px 14px;box-shadow:0 14px 40px rgba(38,37,36,.2)}
+.dock a{display:flex;flex-direction:column;align-items:center;gap:3px;min-width:68px;padding:8px 8px 6px;border-radius:999px;text-decoration:none;font-size:11.5px;font-weight:400;color:var(--soft);transition:color .2s,background .2s}
+.dock a:hover,.dock a.on{color:var(--ink);background:var(--paper)}
+.dock svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
+
+/* ---------- lightbox ---------- */
+.lb{position:fixed;inset:0;z-index:60;background:rgba(30,29,28,.96);display:none;color:var(--cream)}
+.lb.open{display:block}
+.lb figure{position:absolute;inset:64px clamp(16px,7vw,110px) 84px;display:grid;place-items:center}
+.lb img{max-width:100%;max-height:100%;object-fit:contain}
+.lb .bar{position:absolute;left:0;right:0;bottom:0;padding:22px var(--pad);display:flex;justify-content:space-between;gap:16px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:400}
+.lb .x{position:absolute;top:16px;right:var(--pad);font-size:12px;letter-spacing:.24em;text-transform:uppercase;font-weight:400;padding:10px 0}
+.lb .nav{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;border:1px solid rgba(231,224,214,.4);display:grid;place-items:center}
+.lb .nav:hover{background:rgba(231,224,214,.12)}
+.lb .nav svg{width:16px;height:16px}
+.lb .prev{left:clamp(8px,2vw,28px)}.lb .next{right:clamp(8px,2vw,28px)}
+svg.ar{stroke:currentColor;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+
+@media (max-width:900px){
+  body{font-size:17px}
+  .shoots-head,.shoot,.shoot:nth-of-type(even){grid-template-columns:1fr}
+  .shoot:nth-of-type(even) .meta{order:0}
+  .reels{grid-template-columns:repeat(2,1fr)}
+  .bring-grid{grid-template-columns:1fr}
+  .hero-dots{display:none}
+  .mosaic>*{grid-column:span 6 !important;aspect-ratio:1/1 !important}
+  .mosaic .m2,.mosaic .m6{grid-column:span 12 !important;aspect-ratio:7/5 !important}
+  .lb figure{inset:60px 12px 150px}
+  .lb .nav{top:auto;bottom:74px;transform:none}
+  .lb .prev{left:calc(50% - 58px)}.lb .next{right:calc(50% - 58px)}
+}
+@media (max-width:520px){
+  .hero-top span.hide{display:none}
+  .story-fig{grid-template-columns:1fr}
+  .story-fig figure:last-child{aspect-ratio:4/3}
+  .dock a{min-width:60px;padding:6px 6px 5px}
+  .brands{gap:8px 18px}.brands span+span::before{margin-right:18px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js .rv,.js .hero h1 .w span{opacity:1;transform:none;animation:none;transition:none}
+  .hero .slide img{transform:none;transition:none}
+}
 </style>
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="star" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c.5 7.2 4.8 11.500 12 12-7.200.5-11.500 4.800-12 12-.5-7.200-4.800-11.500-12-12C7.200 11.500 11.500 7.200 12 0z"/></symbol></svg>
 
-<header class="nv">
-  <div>
-    <a class="pill pill--brand" href="#top"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><defs><path id="v3-almond" d="M2 32 C 28 -9, 92 -9, 118 32 C 92 73, 28 73, 2 32 Z"/><clipPath id="v3-clip"><use href="#v3-almond"/></clipPath></defs><use href="#v3-almond" fill="#f6cb00"/><g clip-path="url(#v3-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></svg>Sunil Sebastian <small>· Brands, products &amp; games</small></a>
-    <a class="pill hide-m" href="mailto:sunil@sebastians.tv">Say hello 👋</a>
-    <a class="pill hide-m" href="../v2/showreel/index.html">Showreel</a>
+<header class="hero" id="top">
+  <div class="slide on"><img src="assets/people-elder.jpg" alt="Black and white portrait of an older man lost in thought" style="object-position:70% 30%"></div>
+  <div class="slide"><img src="assets/place-road.jpg" alt="Sunlight breaking over a mountain road" loading="lazy"></div>
+  <div class="slide"><img src="assets/people-tea.jpg" alt="A tea picker in a straw hat among the plants" loading="lazy" style="object-position:50% 40%"></div>
+  <div class="hero-top">
+    <a href="#top" aria-label="Sunil Sebastian, top of page"><svg class="star"><use href="#star"/></svg>Sunil Sebastian</a>
+    <span class="hide">Portfolio 2026 · For Amari Productions</span>
   </div>
-  <div>
-    <span class="pill hide-m"><span class="live" aria-hidden="true"></span>Available for work</span>
-    <a class="pill pill--dark" href="#work"><span>Work</span><i aria-hidden="true">↓</i></a>
+  <div class="hero-body">
+    <div class="eyebrow" style="color:rgba(255,255,255,.85)">Photographer · Filmmaker · Art director</div>
+    <h1 aria-label="Stills and Film"><span class="w" aria-hidden="true">Stills</span><span class="w it" aria-hidden="true">&amp;</span><span class="w" aria-hidden="true">Film</span></h1>
+    <p>People, places and light. Shot by an art director who has spent over a decade running sets for the world's biggest brands.</p>
+  </div>
+  <div class="hero-dots" role="group" aria-label="Hero image">
+    <button class="on" aria-label="Show portrait">People</button>
+    <button aria-label="Show landscape">Places</button>
+    <button aria-label="Show field portrait">Moments</button>
   </div>
 </header>
 
-<main id="top">
-  <section class="hv" aria-roledescription="carousel" aria-label="Selected work">
-    <figure class="hv__slide is-on" data-i="0"><video src="../green-school/assets/gs-intro.mp4" poster="../green-school/assets/gs-intro.jpg" muted loop playsinline preload="auto" aria-label="Green School: Brand guidelines for a global network of eco-schools."></video></figure><figure class="hv__slide" data-i="1"><img src="../namma-farm/assets/hero-farmer.jpg" alt="Namma Farm: A bilingual identity for a South Indian food brand, rooted in kolam art." loading="lazy" width="2000" height="1124"></figure><figure class="hv__slide" data-i="2"><img src="../packaging-design/assets/bs-all.jpg" alt="Bombay Sapphire: A concept mixer range: tonic, soda and ginger ale." loading="lazy" width="1536" height="1024"></figure><figure class="hv__slide" data-i="3"><img src="../campaigns/assets/mb-outcome.jpg" alt="Martini · Begin Desire: A global platform, rebuilt for Lagos and Luanda." loading="lazy" width="1344" height="841"></figure><figure class="hv__slide" data-i="4"><img src="../oro-chocolate/assets/hero.jpg" alt="ORO Chocolate: Identity, guidelines and packaging, grown from the star inside a cacao pod." loading="lazy" width="1920" height="1080"></figure><figure class="hv__slide" data-i="5"><video src="../v2/assets/nca-loop.mp4" poster="../v2/assets/nca-loop.jpg" muted loop playsinline preload="none" aria-label="150 years of NCA: A soundtrack and film, played on the college’s own tools."></video></figure><figure class="hv__slide hv__slide--card" data-i="6"><video src="../al-siraat/assets/personalized.mp4" poster="../al-siraat/assets/personalized.jpg" muted loop playsinline preload="none" aria-label="Al Siraat: the Personalized Learning section, the app walkthrough playing on a phone between adaptive lesson plans, progress insights, rewards and smart feedback."></video></figure><figure class="hv__slide" data-i="7"><img src="../imagination-holdings/assets/conference-a.jpg" alt="Imagination Holdings: One parent brand for two tech companies." loading="lazy" width="2000" height="1204"></figure><figure class="hv__slide" data-i="8"><img src="../packaging-design/assets/gc-spread.jpg" alt="Grey Goose Cards: A playing card deck cut from the brand pattern." loading="lazy" width="2000" height="1339"></figure><figure class="hv__slide" data-i="9"><img src="../accelerated-professional-center/assets/apl-courtyard.jpg" alt="APL: Where Saudi leaders meet world-class executive education." loading="lazy" width="1536" height="1024"></figure><figure class="hv__slide" data-i="10"><img src="../khalta/assets/hummus.jpg" alt="Khalta: A hand-drawn identity for a Lebanese restaurant." loading="lazy" width="2000" height="1537"></figure><figure class="hv__slide" data-i="11"><img src="../ggi/assets/hero.jpg" alt="GGI: A neon brand and tournament platform for Iraqi gamers." loading="lazy" width="2200" height="1193"></figure><figure class="hv__slide" data-i="12"><img src="../tamuda-bay/assets/bb-retreat.jpg" alt="Tamuda Bay: Where heaven meets earth: a coastal brand for Morocco." loading="lazy" width="2000" height="1342"></figure>
-    <div class="hv__caps" aria-live="polite"><a class="hv__cap is-on" href="../v2/green-school/index.html"><b>Green School</b> <span>Brand guidelines for a global network of eco-schools.</span><i>Brand systems</i></a><a class="hv__cap" href="../v2/namma-farm/index.html"><b>Namma Farm</b> <span>A bilingual identity for a South Indian food brand, rooted in kolam art.</span><i>Brand systems</i></a><a class="hv__cap" href="../v2/bombay-sapphire/index.html"><b>Bombay Sapphire</b> <span>A concept mixer range: tonic, soda and ginger ale.</span><i>Packaging</i></a><a class="hv__cap" href="../v2/martini-begin-desire/index.html"><b>Martini · Begin Desire</b> <span>A global platform, rebuilt for Lagos and Luanda.</span><i>Campaigns</i></a><a class="hv__cap" href="../v2/oro-chocolate/index.html"><b>ORO Chocolate</b> <span>Identity, guidelines and packaging, grown from the star inside a cacao pod.</span><i>Brand systems</i></a><a class="hv__cap" href="../v2/soundtrack-and-film/index.html"><b>150 years of NCA</b> <span>A soundtrack and film, played on the college’s own tools.</span><i>Side quests</i></a><a class="hv__cap" href="../v2/al-siraat/index.html"><b>Al Siraat</b> <span>An AI Quran learning app, used by more than a million people.</span><i>Product</i></a><a class="hv__cap" href="../v2/imagination-holdings/index.html"><b>Imagination Holdings</b> <span>One parent brand for two tech companies.</span><i>Brand systems</i></a><a class="hv__cap" href="../v2/grey-goose-cards/index.html"><b>Grey Goose Cards</b> <span>A playing card deck cut from the brand pattern.</span><i>Packaging</i></a><a class="hv__cap" href="../v2/accelerated-professional-center/index.html"><b>APL</b> <span>Where Saudi leaders meet world-class executive education.</span><i>Brand systems</i></a><a class="hv__cap" href="../v2/khalta/index.html"><b>Khalta</b> <span>A hand-drawn identity for a Lebanese restaurant.</span><i>Brand systems</i></a><a class="hv__cap" href="../v2/ggi/index.html"><b>GGI</b> <span>A neon brand and tournament platform for Iraqi gamers.</span><i>Games</i></a><a class="hv__cap" href="../v2/tamuda-bay/index.html"><b>Tamuda Bay</b> <span>Where heaven meets earth: a coastal brand for Morocco.</span><i>Brand systems</i></a></div>
-    <div class="hv__count"><span class="hv__i">01</span> / 13</div>
-    <span class="hv__bar" aria-hidden="true"></span>
-  </section>
-  <div class="hv__cursor" aria-hidden="true">Next</div>
-  <div class="hv__cursor" aria-hidden="true">Next</div>
-
-  <section class="st" aria-label="Introduction">
-    <a class="stk stk--1" href="../v2/namma-farm/index.html" aria-label="Namma Farm" tabindex="-1"><img src="../namma-farm/assets/hero-farmer.jpg" alt="" loading="lazy"></a><a class="stk stk--2" href="../v2/khalta/index.html" aria-label="Khalta" tabindex="-1"><img src="../khalta/assets/hummus.jpg" alt="" loading="lazy"></a><a class="stk stk--3" href="../v2/al-siraat/index.html" aria-label="Al Siraat" tabindex="-1"><img src="../al-siraat/assets/three-phones.jpg" alt="" loading="lazy"></a><a class="stk stk--4" href="../v2/grey-goose-cards/index.html" aria-label="Grey Goose Cards" tabindex="-1"><img src="../packaging-design/assets/gc-spread.jpg" alt="" loading="lazy"></a><a class="stk stk--5" href="../v2/bombay-sapphire/index.html" aria-label="Bombay Sapphire" tabindex="-1"><img src="../packaging-design/assets/bs-all.jpg" alt="" loading="lazy"></a><a class="stk stk--6" href="../v2/wallet-wars/index.html" aria-label="Wallet Wars" tabindex="-1"><img src="../wallet-wars/assets/hero.jpg" alt="" loading="lazy"></a>
-    <span class="mono">A designer for brands that operate at scale</span>
-    <h1 aria-label="Design worth keeping"><span><b>Design</b></span><span><b>worth</b></span><span><b>keeping.</b></span></h1>
-    <p class="reveal">Brand systems, products, packaging and games, made over nearly two decades.</p>
-  </section>
-
-  <section id="work" class="wk" aria-label="Work">
-    <div class="sh"><span class="k">Selected work</span><span class="mono" aria-live="polite"><b class="wk__count">10</b> of 40 projects</span></div>
-    <div class="chips" role="group" aria-label="Filter by discipline"><button class="chip is-on" type="button" aria-pressed="true" data-f="Brand systems" style="--tint:#e2dfff">Brand systems<sup>10</sup></button><button class="chip" type="button" aria-pressed="false" data-f="Product" style="--tint:#d4f3e2">Product<sup>3</sup></button><button class="chip" type="button" aria-pressed="false" data-f="Packaging" style="--tint:#fff0ad">Packaging<sup>9</sup></button><button class="chip" type="button" aria-pressed="false" data-f="Games" style="--tint:#d3e9ff">Games<sup>5</sup></button><button class="chip" type="button" aria-pressed="false" data-f="Experiential" style="--tint:#ffdcc7">Experiential<sup>3</sup></button><button class="chip" type="button" aria-pressed="false" data-f="Campaigns" style="--tint:#ffd6e3">Campaigns<sup>5</sup></button><button class="chip" type="button" aria-pressed="false" data-f="Side quests" style="--tint:#e3efc9">Side quests<sup>4</sup></button><button class="chip" type="button" aria-pressed="false" data-f="Motion" style="--tint:#ece3f6">Motion<sup>1</sup></button></div>
-    <ul class="wk__list"><li class="wk__row" data-cat="Brand systems" style="--tint:#e2dfff"><a href="../v2/namma-farm/index.html" data-img="../namma-farm/assets/hero-farmer.jpg"><span class="wk__n">01</span><span class="wk__t">Namma Farm</span><span class="wk__tag">Brand systems</span><span class="wk__d">Bilingual identity &amp; packaging for a South Indian food brand</span><span class="wk__go">View case <i aria-hidden="true">↗</i></span><img class="wk__thumb" src="../namma-farm/assets/hero-farmer.jpg" alt="" loading="lazy"></a></li><li class="wk__row" data-cat="Brand systems" style="--tint:#e2dfff"><a href="../v2/scooch/index.html" data-img="../scooch/assets/app-purple.jpg"><span class="wk__n">02</span><span class="wk__t">Scooch Over</span><span class="wk__tag">Brand systems</span><span class="wk__d">Identity for a film company bringing a famous book to screen</span><span class="wk__go">View case <i aria-hidden="true">↗</i></span><img class="wk__thumb" src="../scooch/assets/app-purple.jpg" alt="" loading="lazy"></a></li><li class="wk__row" data-cat="Brand systems" style="--tint:#e2dfff"><a href="../v2/green-school/index.html" data-img="../green-school/assets/gs-collage.jpg"><span class="wk__n">03</span><span class="wk__t">Green School</span><span class="wk__tag">Brand systems</span><span class="wk__d">Brand guidelines for a global network of eco-schools</span><span class="wk__go">View case <i aria-hidden="true">↗</i></span><img class="wk__thumb" src="../green-school/assets/gs-collage.jpg" alt="" loading="lazy"></a></li><li class="wk__row" data-cat="Brand systems" style="--tint:#e2dfff"><a href="../v2/accelerated-professional-center/index.html" data-img="../accelerated-professional-center/assets/apl-courtyard.jpg"><span class="wk__n">04</span><span class="wk__t">APL</span><span class="wk__tag">Brand systems</span><span class="wk__d">A Saudi bridge between Vision 2030 and global executive education</span><span class="wk__go">View case <i aria-hidden="true">↗</i></span><img class="wk__thumb" src="../accelerated-professional-center/assets/apl-courtyard.jpg" alt="" loading="lazy"></a></li><li class="wk__row" data-cat="Brand systems" style="--tint:#e2dfff"><a href="../v2/imagination-holdings/index.html" data-img="../imagination-holdings/assets/conference-a.jpg"><span class="wk__n">05</span><span class="wk__t">Imagination Holdings</span><span class="wk__tag">Brand systems</span><span class="wk__d">One parent brand for two tech companies</span><span class="wk__go">View case <i aria-hidden="true">↗</i></span><img class="wk__thumb" src="../imagination-holdings/assets/conference-a.jpg" alt="" loading="lazy"></a></li><li class="wk__row" data-cat="Brand systems" style="--tint:#e2dfff"><a href="../v2/oro-chocolate/index.html" data-img="../oro-chocolate/assets/hero.jpg"><span class="wk__n">06</span><span class="wk__t">ORO Chocolate</span><span class="wk__tag">Brand systems</span><span class="wk__d">Identity, guidelines &amp; packaging for Nicaraguan chocolate and coffee</span><span class="wk__go">View case <i aria-hidden="true">↗</i></span><img class="wk__thumb" src="../oro-chocolate/assets/hero.jpg" alt="" loading="lazy"></a></li><li class="wk__row" data-cat="Brand systems" style="--tint:#e2dfff"><a href="../v2/tamuda-bay/index.html" data-img="../tamuda-bay/assets/bb-retreat.jpg"><span class="wk__n">07</span><span class="wk__t">Tamuda Bay</span><span class="wk__tag">Brand systems</span><span class="wk__d">Logo and campaign for a Moroccan coastal development</span><span class="wk__go">View case <i aria-hidden="true">↗</i></span><img class="wk__thumb" src="../tamuda-bay/assets/bb-retreat.jpg" alt="" loading="lazy"></a></li><li class="wk__row" data-cat="Brand systems" style="--tint:#e2dfff"><a href="../v2/khalta/index.html" data-img="../khalta/assets/hummus.jpg"><span class="wk__n">08</span><span class="wk__t">Khalta</span><span class="wk__tag">Brand systems</span><span class="wk__d">A hand-drawn identity for a Lebanese restaurant</span><span class="wk__go">View case <i aria-hidden="true">↗</i></span><img class="wk__thumb" src="../khalta/assets/hummus.jpg" alt="" loading="lazy"></a></li><li class="wk__row" data-cat="Brand systems" style="--tint:#e2dfff"><a href="../v2/lhp/index.html" data-img="../lhp/assets/hero.jpg"><span class="wk__n">09</span><span class="wk__t">LHP</span><span class="wk__tag">Brand systems</span><span class="wk__d">Refining an agency’s logo and identity, sharp as a blade</span><span class="wk__go">View case <i aria-hidden="true">↗</i></span><img class="wk__thumb" src="../lhp/assets/hero.jpg" alt="" loading="lazy"></a></li><li class="wk__row" data-cat="Brand systems" style="--tint:#e2dfff"><a href="../v2/realtoken/index.html" data-img="../realtoken/assets/logo.jpg"><span class="wk__n">10</span><span class="wk__t">$REAL Token</span><span class="wk__tag">Brand systems</span><span class="wk__d">A street-art identity for a Web3 betting token</span><span class="wk__go">View case <i aria-hidden="true">↗</i></span><img class="wk__thumb" src="../realtoken/assets/logo.jpg" alt="" loading="lazy"></a></li><li class="wk__row" data-cat="Product" style="--tint:#d4f3e2" hidden><a href="../v2/coca-cola-umm/index.html" data-img="../coca-cola-umm/assets/hero.jpg"><span class="wk__n">01</span><span class="wk__t">Coca-Cola UMM</span><span class="wk__tag">Product</span><span class="wk__d">Redesigning a marketing measurement dashboard</span><span class="wk__go">View case <i aria-hidden="true">↗</i></span><img class="wk__thumb" src="../coca-cola-umm/assets/hero.jpg" alt="" loading="lazy"></a></li><li class="wk__row" data-cat="Product" style="--tint:#d4f3e2" hidden><a href="../v2/al-siraat/index.html" data-img="../al-siraat/assets/three-phones.jpg"><span class="wk__n">02</span><span class="wk__t">Al Siraat</span><span class="wk__tag">Product</span><span class="wk__d">A Quran app turned AI learning product, 1M+ users</span><span class="wk__go">View case <i aria-hidden="true">↗</i></span><img class="wk__thumb" src="../al-siraat/assets/three-phones.jpg" alt="" loading="lazy"></a></li><li class="wk__row" data-cat="Product" style="--tint:#d4f3e2" hidden><a href="../v2/imagination-dls/index.html" data-img="../imagination-dls/assets/hero.jpg"><span class="wk__n">03</span><span class="wk__t">Imagination DLS</span><span class="wk__tag">Product</span><span class="wk__d">One design language for 40+ apps</span><span class="wk__go">View case <i aria-hidden="true">↗</i></span><img class="wk__thumb" src="../imagination-dls/assets/hero.jpg" alt="" loading="lazy"></a></li><li class="wk__row" data-cat="Packaging" style="--tint:#fff0ad" hidden><a href="../v2/king-c-gillette/index.html" data-img="../packaging-design/assets/kcg-render-closed.jpg"><span class="wk__n">01</span><span class="wk__t">King C. Gillette</span><span class="wk__tag">Packaging</span><span class="wk__d">A gift box with two ways to open</span><span class="wk__go">View case <i aria-hidden="true">↗</i></span><img class="wk__thumb" src="../packaging-design/assets/kcg-render-closed.jpg" alt="" loading="lazy"></a></li><li class="wk__row" data-cat="Packaging" style="--tint:#fff0ad" hidden><a href="../v2/twistails/index.html" data-img="../packaging-design/assets/tw-pods.jpg"><span class="wk__n">02</span><span class="wk__t">Twistails</span><span class="wk__tag">Packaging</span><span class="wk__d">Bacardi cocktail pods, tubes and displays</span><span class="wk__go">View case <i aria-hidden="true">↗</i></span><img class="wk__thumb" src="../packaging-design/assets/tw-pods.jpg" alt="" loading="lazy"></a></li><li class="wk__row" data-cat="Packaging" style="--tint:#fff0ad" hidden><a href="../v2/grey-goose/index.html" data-img="../packaging-design/assets/gg-kv-orange.jpg"><span class="wk__n">03</span><span class="wk__t">Grey Goose</span><span class="wk__tag">Packaging</span><span class="wk__d">A prebatched cocktail bottle and labels</span><span class="wk__go">View case <i aria-hidden="true">↗</i></span><img class="wk__thumb" src="../packaging-design/assets/gg-kv-orange.jpg" alt="" loading="lazy"></a></li><li class="wk__row" data-cat="Packaging" style="--tint:#fff0ad" hidden><a href="../v2/baskin-robbins/index.html" data-img="../packaging-design/assets/br-vegan-all.jpg"><span class="wk__n">04</span><span class="wk__t">Baskin Robbins</span><span class="wk__tag">Packaging</span><span class="wk__d">Pre-packs, a vegan range and gifting</span><span class="wk__go">View case <i aria-hidden="true">↗</i></span><img class="wk__thumb" src="../packaging-design/assets/br-vegan-all.jpg" alt="" loading="lazy"></a></li><li class="wk__row" data-cat="Packaging" style="--tint:#fff0ad" hidden><a href="../v2/martini-bitter/index.html" data-img="../packaging-design/assets/mb-opt2.jpg"><span class="wk__n">05</span><span class="wk__t">Martini Bitter</span><span class="wk__tag">Packaging</span><span class="wk__d">A bottle-and-glass gift pack</span><span class="wk__go">View case <i aria-hidden="true">↗</i></span><img class="wk__thumb" src="../packaging-design/assets/mb-opt2.jpg" alt="" loading="lazy"></a></li><li class="wk__row" data-cat="Packaging" style="--tint:#fff0ad" hidden><a href="../v2/oro-packaging/index.html" data-img="../packaging-design/assets/oro-bars.jpg"><span class="wk__n">06</span><span class="wk__t">ORO Packaging</span><span class="wk__tag">Packaging</span><span class="wk__d">Chocolate and coffee packs, natural to the ink</span><span class="wk__go">View case <i aria-hidden="true">↗</i></span><img class="wk__thumb" src="../packaging-design/assets/oro-bars.jpg" alt="" loading="lazy"></a></li><li class="wk__row" data-cat="Packaging" style="--tint:#fff0ad" hidden><a href="../v2/grey-goose-cards/index.html" data-img="../packaging-design/assets/gc-spread.jpg"><span class="wk__n">07</span><span class="wk__t">Grey Goose Cards</span><span class="wk__tag">Packaging</span><span class="wk__d">A playing card deck built from the brand pattern</span><span class="wk__go">View case <i aria-hidden="true">↗</i></span><img class="wk__thumb" src="../packaging-design/assets/gc-spread.jpg" alt="" loading="lazy"></a></li><li class="wk__row" data-cat="Packaging" style="--tint:#fff0ad" hidden><a href="../v2/bombay-sapphire/index.html" data-img="../packaging-design/assets/bs-all.jpg"><span class="wk__n">08</span><span class="wk__t">Bombay Sapphire</span><span class="wk__tag">Packaging</span><span class="wk__d">A concept mixer range: tonic, soda and ginger ale</span><span class="wk__go">View case <i aria-hidden="true">↗</i></span><img class="wk__thumb" src="../packaging-design/assets/bs-all.jpg" alt="" loading="lazy"></a></li><li class="wk__row" data-cat="Packaging" style="--tint:#fff0ad" hidden><a href="../v2/st-germain/index.html" data-img="../packaging-design/assets/sg-gold.jpg"><span class="wk__n">09</span><span class="wk__t">St-Germain</span><span class="wk__tag">Packaging</span><span class="wk__d">Three bottle directions for a champagne proposal</span><span class="wk__go">View case <i aria-hidden="true">↗</i></span><img class="wk__thumb" src="../packaging-design/assets/sg-gold.jpg" alt="" loading="lazy"></a></li><li class="wk__row" data-cat="Games" style="--tint:#d3e9ff" hidden><a href="../v2/wallet-wars/index.html" data-img="../wallet-wars/assets/hero.jpg"><span class="wk__n">01</span><span class="wk__t">Wallet Wars</span><span class="wk__tag">Games</span><span class="wk__d">A Web3 arcade game that plays like a game first</span><span class="wk__go">View case <i aria-hidden="true">↗</i></span><img class="wk__thumb" src="../wallet-wars/assets/hero.jpg" alt="" loading="lazy"></a></li><li class="wk__row" data-cat="Games" style="--tint:#d3e9ff" hidden><a href="../v2/valorant-mobile/index.html" data-img="../valorant-mobile/assets/hero.jpg"><span class="wk__n">02</span><span class="wk__t">Valorant Mobile</span><span class="wk__tag">Games</span><span class="wk__d">Valorant&#x27;s HUD and menus, rethought for touch</span><span class="wk__go">View case <i aria-hidden="true">↗</i></span><img class="wk__thumb" src="../valorant-mobile/assets/hero.jpg" alt="" loading="lazy"></a></li><li class="wk__row" data-cat="Games" style="--tint:#d3e9ff" hidden><a href="../v2/aew-rise-to-the-top/index.html" data-img="../aew-rise-to-the-top/assets/hero.jpg"><span class="wk__n">03</span><span class="wk__t">AEW: Rise to the Top</span><span class="wk__tag">Games</span><span class="wk__d">Weekly live events and wrestler identities</span><span class="wk__go">View case <i aria-hidden="true">↗</i></span><img class="wk__thumb" src="../aew-rise-to-the-top/assets/hero.jpg" alt="" loading="lazy"></a></li><li class="wk__row" data-cat="Games" style="--tint:#d3e9ff" hidden><a href="../v2/brawl3rs/index.html" data-img="../brawl3rs/assets/trailer.jpg"><span class="wk__n">04</span><span class="wk__t">Brawl3rs</span><span class="wk__tag">Games</span><span class="wk__d">Brand and UI system for a meme-coin autobattler</span><span class="wk__go">View case <i aria-hidden="true">↗</i></span><img class="wk__thumb" src="../brawl3rs/assets/trailer.jpg" alt="" loading="lazy"></a></li><li class="wk__row" data-cat="Games" style="--tint:#d3e9ff" hidden><a href="../v2/ggi/index.html" data-img="../ggi/assets/hero.jpg"><span class="wk__n">05</span><span class="wk__t">GGI</span><span class="wk__tag">Games</span><span class="wk__d">A neon brand and tournament platform for Iraqi gamers</span><span class="wk__go">View case <i aria-hidden="true">↗</i></span><img class="wk__thumb" src="../ggi/assets/hero.jpg" alt="" loading="lazy"></a></li><li class="wk__row" data-cat="Experiential" style="--tint:#ffdcc7" hidden><a href="../v2/bacardi-house-party/index.html" data-img="../experiential/assets/bac-ev-house.jpg"><span class="wk__n">01</span><span class="wk__t">Bacardi House Party</span><span class="wk__tag">Experiential</span><span class="wk__d">A real, movable house with games inside, Dubai</span><span class="wk__go">View case <i aria-hidden="true">↗</i></span><img class="wk__thumb" src="../experiential/assets/bac-ev-house.jpg" alt="" loading="lazy"></a></li><li class="wk__row" data-cat="Experiential" style="--tint:#ffdcc7" hidden><a href="../v2/grey-goose-windows/index.html" data-img="../experiential/assets/gg-vivid-card.jpg"><span class="wk__n">02</span><span class="wk__t">Grey Goose windows</span><span class="wk__tag">Experiential</span><span class="wk__d">Five window displays that stop the street</span><span class="wk__go">View case <i aria-hidden="true">↗</i></span><img class="wk__thumb" src="../experiential/assets/gg-vivid-card.jpg" alt="" loading="lazy"></a></li><li class="wk__row" data-cat="Experiential" style="--tint:#ffdcc7" hidden><a href="../v2/bombay-sapphire-pop-up/index.html" data-img="../experiential/assets/bs-bar.jpg"><span class="wk__n">03</span><span class="wk__t">Bombay Sapphire pop-up</span><span class="wk__tag">Experiential</span><span class="wk__d">A glasshouse bar built on botanicals</span><span class="wk__go">View case <i aria-hidden="true">↗</i></span><img class="wk__thumb" src="../experiential/assets/bs-bar.jpg" alt="" loading="lazy"></a></li><li class="wk__row" data-cat="Campaigns" style="--tint:#ffd6e3" hidden><a href="../v2/martini-begin-desire/index.html" data-img="../campaigns/assets/mb-dream.jpg"><span class="wk__n">01</span><span class="wk__t">Martini · Begin Desire</span><span class="wk__tag">Campaigns</span><span class="wk__d">A global platform, rebuilt for Lagos and Luanda</span><span class="wk__go">View case <i aria-hidden="true">↗</i></span><img class="wk__thumb" src="../campaigns/assets/mb-dream.jpg" alt="" loading="lazy"></a></li><li class="wk__row" data-cat="Campaigns" style="--tint:#ffd6e3" hidden><a href="../v2/head-and-shoulders/index.html" data-img="../campaigns/assets/hs-kv.jpg"><span class="wk__n">02</span><span class="wk__t">Head &amp; Shoulders</span><span class="wk__tag">Campaigns</span><span class="wk__d">A women-first launch across MENA</span><span class="wk__go">View case <i aria-hidden="true">↗</i></span><img class="wk__thumb" src="../campaigns/assets/hs-kv.jpg" alt="" loading="lazy"></a></li><li class="wk__row" data-cat="Campaigns" style="--tint:#ffd6e3" hidden><a href="../v2/sprite/index.html" data-img="../campaigns/assets/sp-cricket-poster.jpg"><span class="wk__n">03</span><span class="wk__t">Sprite</span><span class="wk__tag">Campaigns</span><span class="wk__d">Spice, street cricket and thirst in Pakistan</span><span class="wk__go">View case <i aria-hidden="true">↗</i></span><img class="wk__thumb" src="../campaigns/assets/sp-cricket-poster.jpg" alt="" loading="lazy"></a></li><li class="wk__row" data-cat="Campaigns" style="--tint:#ffd6e3" hidden><a href="../v2/fanta/index.html" data-img="../campaigns/assets/fa-rocks-poster.jpg"><span class="wk__n">04</span><span class="wk__t">Fanta</span><span class="wk__tag">Campaigns</span><span class="wk__d">Crazy Chase, Fanta Rocks and Great Taste</span><span class="wk__go">View case <i aria-hidden="true">↗</i></span><img class="wk__thumb" src="../campaigns/assets/fa-rocks-poster.jpg" alt="" loading="lazy"></a></li><li class="wk__row" data-cat="Campaigns" style="--tint:#ffd6e3" hidden><a href="../v2/coca-cola/index.html" data-img="../campaigns/assets/cc-studio-invite.jpg"><span class="wk__n">05</span><span class="wk__t">Coca-Cola</span><span class="wk__tag">Campaigns</span><span class="wk__d">T20 cricket and Coke Studio Season 5</span><span class="wk__go">View case <i aria-hidden="true">↗</i></span><img class="wk__thumb" src="../campaigns/assets/cc-studio-invite.jpg" alt="" loading="lazy"></a></li><li class="wk__row" data-cat="Side quests" style="--tint:#e3efc9" hidden><a href="../v2/pixel-pals/index.html" data-img="../side-quests/assets/card-pixel-pals.jpg"><span class="wk__n">01</span><span class="wk__t">Pixel Pals</span><span class="wk__tag">Side quests</span><span class="wk__d">A pixel art editor with a museum inside</span><span class="wk__go">View case <i aria-hidden="true">↗</i></span><img class="wk__thumb" src="../side-quests/assets/card-pixel-pals.jpg" alt="" loading="lazy"></a></li><li class="wk__row" data-cat="Side quests" style="--tint:#e3efc9" hidden><a href="../v2/soundtrack-and-film/index.html" data-img="../side-quests/assets/nca-loop.jpg"><span class="wk__n">02</span><span class="wk__t">Soundtrack &amp; film</span><span class="wk__tag">Side quests</span><span class="wk__d">150 years of NCA, played on its own tools</span><span class="wk__go">View case <i aria-hidden="true">↗</i></span><img class="wk__thumb" src="../side-quests/assets/nca-loop.jpg" alt="" loading="lazy"></a></li><li class="wk__row" data-cat="Side quests" style="--tint:#e3efc9" hidden><a href="../v2/gundam-build/index.html" data-img="../side-quests/assets/gundam-ms06.jpg"><span class="wk__n">03</span><span class="wk__t">Gundam build</span><span class="wk__tag">Side quests</span><span class="wk__d">A Zaku II kit, painted from scratch</span><span class="wk__go">View case <i aria-hidden="true">↗</i></span><img class="wk__thumb" src="../side-quests/assets/gundam-ms06.jpg" alt="" loading="lazy"></a></li><li class="wk__row" data-cat="Side quests" style="--tint:#e3efc9" hidden><a href="../v2/photography/index.html" data-img="../side-quests/assets/photo-12.jpg"><span class="wk__n">04</span><span class="wk__t">Photography</span><span class="wk__tag">Side quests</span><span class="wk__d">Street, travel and quiet details</span><span class="wk__go">View case <i aria-hidden="true">↗</i></span><img class="wk__thumb" src="../side-quests/assets/photo-12.jpg" alt="" loading="lazy"></a></li><li class="wk__row" data-cat="Motion" style="--tint:#ece3f6" hidden><a href="../v2/showreel/index.html" data-img="../showreel/assets/poster.jpg"><span class="wk__n">01</span><span class="wk__t">Showreel</span><span class="wk__tag">Motion</span><span class="wk__d">One minute of motion: games, brands, 3D and live action</span><span class="wk__go">View case <i aria-hidden="true">↗</i></span><img class="wk__thumb" src="../showreel/assets/poster.jpg" alt="" loading="lazy"></a></li></ul>
-  </section>
-  <div class="peek" aria-hidden="true"><img alt=""></div>
-
-  <section class="mq" aria-label="More work">
-    <div class="mq__row"><a class="mq__it" href="../v2/namma-farm/index.html"><img src="../namma-farm/assets/hero-farmer.jpg" alt="" loading="lazy"><span>Namma Farm</span></a><a class="mq__it" href="../v2/green-school/index.html"><img src="../green-school/assets/gs-collage.jpg" alt="" loading="lazy"><span>Green School</span></a><a class="mq__it" href="../v2/imagination-holdings/index.html"><img src="../imagination-holdings/assets/conference-a.jpg" alt="" loading="lazy"><span>Imagination Holdings</span></a><a class="mq__it" href="../v2/tamuda-bay/index.html"><img src="../tamuda-bay/assets/bb-retreat.jpg" alt="" loading="lazy"><span>Tamuda Bay</span></a><a class="mq__it" href="../v2/lhp/index.html"><img src="../lhp/assets/hero.jpg" alt="" loading="lazy"><span>LHP</span></a><a class="mq__it" href="../v2/coca-cola-umm/index.html"><img src="../coca-cola-umm/assets/hero.jpg" alt="" loading="lazy"><span>Coca-Cola UMM</span></a><a class="mq__it" href="../v2/imagination-dls/index.html"><img src="../imagination-dls/assets/hero.jpg" alt="" loading="lazy"><span>Imagination DLS</span></a><a class="mq__it" href="../v2/twistails/index.html"><img src="../packaging-design/assets/tw-pods.jpg" alt="" loading="lazy"><span>Twistails</span></a><a class="mq__it" href="../v2/baskin-robbins/index.html"><img src="../packaging-design/assets/br-vegan-all.jpg" alt="" loading="lazy"><span>Baskin Robbins</span></a><a class="mq__it" href="../v2/oro-packaging/index.html"><img src="../packaging-design/assets/oro-bars.jpg" alt="" loading="lazy"><span>ORO Packaging</span></a><a class="mq__it" href="../v2/bombay-sapphire/index.html"><img src="../packaging-design/assets/bs-all.jpg" alt="" loading="lazy"><span>Bombay Sapphire</span></a><a class="mq__it" href="../v2/wallet-wars/index.html"><img src="../wallet-wars/assets/hero.jpg" alt="" loading="lazy"><span>Wallet Wars</span></a><a class="mq__it" href="../v2/aew-rise-to-the-top/index.html"><img src="../aew-rise-to-the-top/assets/hero.jpg" alt="" loading="lazy"><span>AEW: Rise to the Top</span></a><a class="mq__it" href="../v2/ggi/index.html"><img src="../ggi/assets/hero.jpg" alt="" loading="lazy"><span>GGI</span></a><a class="mq__it" href="../v2/grey-goose-windows/index.html"><img src="../experiential/assets/gg-vivid-card.jpg" alt="" loading="lazy"><span>Grey Goose windows</span></a><a class="mq__it" href="../v2/martini-begin-desire/index.html"><img src="../campaigns/assets/mb-dream.jpg" alt="" loading="lazy"><span>Martini · Begin Desire</span></a><a class="mq__it" href="../v2/sprite/index.html"><img src="../campaigns/assets/sp-cricket-poster.jpg" alt="" loading="lazy"><span>Sprite</span></a><a class="mq__it" href="../v2/coca-cola/index.html"><img src="../campaigns/assets/cc-studio-invite.jpg" alt="" loading="lazy"><span>Coca-Cola</span></a><a class="mq__it" href="../v2/soundtrack-and-film/index.html"><img src="../side-quests/assets/nca-loop.jpg" alt="" loading="lazy"><span>Soundtrack &amp; film</span></a><a class="mq__it" href="../v2/photography/index.html"><img src="../side-quests/assets/photo-12.jpg" alt="" loading="lazy"><span>Photography</span></a><a class="mq__it" aria-hidden="true" tabindex="-1" href="../v2/namma-farm/index.html"><img src="../namma-farm/assets/hero-farmer.jpg" alt="" loading="lazy"><span>Namma Farm</span></a><a class="mq__it" aria-hidden="true" tabindex="-1" href="../v2/green-school/index.html"><img src="../green-school/assets/gs-collage.jpg" alt="" loading="lazy"><span>Green School</span></a><a class="mq__it" aria-hidden="true" tabindex="-1" href="../v2/imagination-holdings/index.html"><img src="../imagination-holdings/assets/conference-a.jpg" alt="" loading="lazy"><span>Imagination Holdings</span></a><a class="mq__it" aria-hidden="true" tabindex="-1" href="../v2/tamuda-bay/index.html"><img src="../tamuda-bay/assets/bb-retreat.jpg" alt="" loading="lazy"><span>Tamuda Bay</span></a><a class="mq__it" aria-hidden="true" tabindex="-1" href="../v2/lhp/index.html"><img src="../lhp/assets/hero.jpg" alt="" loading="lazy"><span>LHP</span></a><a class="mq__it" aria-hidden="true" tabindex="-1" href="../v2/coca-cola-umm/index.html"><img src="../coca-cola-umm/assets/hero.jpg" alt="" loading="lazy"><span>Coca-Cola UMM</span></a><a class="mq__it" aria-hidden="true" tabindex="-1" href="../v2/imagination-dls/index.html"><img src="../imagination-dls/assets/hero.jpg" alt="" loading="lazy"><span>Imagination DLS</span></a><a class="mq__it" aria-hidden="true" tabindex="-1" href="../v2/twistails/index.html"><img src="../packaging-design/assets/tw-pods.jpg" alt="" loading="lazy"><span>Twistails</span></a><a class="mq__it" aria-hidden="true" tabindex="-1" href="../v2/baskin-robbins/index.html"><img src="../packaging-design/assets/br-vegan-all.jpg" alt="" loading="lazy"><span>Baskin Robbins</span></a><a class="mq__it" aria-hidden="true" tabindex="-1" href="../v2/oro-packaging/index.html"><img src="../packaging-design/assets/oro-bars.jpg" alt="" loading="lazy"><span>ORO Packaging</span></a><a class="mq__it" aria-hidden="true" tabindex="-1" href="../v2/bombay-sapphire/index.html"><img src="../packaging-design/assets/bs-all.jpg" alt="" loading="lazy"><span>Bombay Sapphire</span></a><a class="mq__it" aria-hidden="true" tabindex="-1" href="../v2/wallet-wars/index.html"><img src="../wallet-wars/assets/hero.jpg" alt="" loading="lazy"><span>Wallet Wars</span></a><a class="mq__it" aria-hidden="true" tabindex="-1" href="../v2/aew-rise-to-the-top/index.html"><img src="../aew-rise-to-the-top/assets/hero.jpg" alt="" loading="lazy"><span>AEW: Rise to the Top</span></a><a class="mq__it" aria-hidden="true" tabindex="-1" href="../v2/ggi/index.html"><img src="../ggi/assets/hero.jpg" alt="" loading="lazy"><span>GGI</span></a><a class="mq__it" aria-hidden="true" tabindex="-1" href="../v2/grey-goose-windows/index.html"><img src="../experiential/assets/gg-vivid-card.jpg" alt="" loading="lazy"><span>Grey Goose windows</span></a><a class="mq__it" aria-hidden="true" tabindex="-1" href="../v2/martini-begin-desire/index.html"><img src="../campaigns/assets/mb-dream.jpg" alt="" loading="lazy"><span>Martini · Begin Desire</span></a><a class="mq__it" aria-hidden="true" tabindex="-1" href="../v2/sprite/index.html"><img src="../campaigns/assets/sp-cricket-poster.jpg" alt="" loading="lazy"><span>Sprite</span></a><a class="mq__it" aria-hidden="true" tabindex="-1" href="../v2/coca-cola/index.html"><img src="../campaigns/assets/cc-studio-invite.jpg" alt="" loading="lazy"><span>Coca-Cola</span></a><a class="mq__it" aria-hidden="true" tabindex="-1" href="../v2/soundtrack-and-film/index.html"><img src="../side-quests/assets/nca-loop.jpg" alt="" loading="lazy"><span>Soundtrack &amp; film</span></a><a class="mq__it" aria-hidden="true" tabindex="-1" href="../v2/photography/index.html"><img src="../side-quests/assets/photo-12.jpg" alt="" loading="lazy"><span>Photography</span></a></div>
-    <div class="mq__row"><a class="mq__it" href="../v2/scooch/index.html"><img src="../scooch/assets/app-purple.jpg" alt="" loading="lazy"><span>Scooch Over</span></a><a class="mq__it" href="../v2/accelerated-professional-center/index.html"><img src="../accelerated-professional-center/assets/apl-courtyard.jpg" alt="" loading="lazy"><span>APL</span></a><a class="mq__it" href="../v2/oro-chocolate/index.html"><img src="../oro-chocolate/assets/hero.jpg" alt="" loading="lazy"><span>ORO Chocolate</span></a><a class="mq__it" href="../v2/khalta/index.html"><img src="../khalta/assets/hummus.jpg" alt="" loading="lazy"><span>Khalta</span></a><a class="mq__it" href="../v2/realtoken/index.html"><img src="../realtoken/assets/logo.jpg" alt="" loading="lazy"><span>$REAL Token</span></a><a class="mq__it" href="../v2/al-siraat/index.html"><img src="../al-siraat/assets/three-phones.jpg" alt="" loading="lazy"><span>Al Siraat</span></a><a class="mq__it" href="../v2/king-c-gillette/index.html"><img src="../packaging-design/assets/kcg-render-closed.jpg" alt="" loading="lazy"><span>King C. Gillette</span></a><a class="mq__it" href="../v2/grey-goose/index.html"><img src="../packaging-design/assets/gg-kv-orange.jpg" alt="" loading="lazy"><span>Grey Goose</span></a><a class="mq__it" href="../v2/martini-bitter/index.html"><img src="../packaging-design/assets/mb-opt2.jpg" alt="" loading="lazy"><span>Martini Bitter</span></a><a class="mq__it" href="../v2/grey-goose-cards/index.html"><img src="../packaging-design/assets/gc-spread.jpg" alt="" loading="lazy"><span>Grey Goose Cards</span></a><a class="mq__it" href="../v2/st-germain/index.html"><img src="../packaging-design/assets/sg-gold.jpg" alt="" loading="lazy"><span>St-Germain</span></a><a class="mq__it" href="../v2/valorant-mobile/index.html"><img src="../valorant-mobile/assets/hero.jpg" alt="" loading="lazy"><span>Valorant Mobile</span></a><a class="mq__it" href="../v2/brawl3rs/index.html"><img src="../brawl3rs/assets/trailer.jpg" alt="" loading="lazy"><span>Brawl3rs</span></a><a class="mq__it" href="../v2/bacardi-house-party/index.html"><img src="../experiential/assets/bac-ev-house.jpg" alt="" loading="lazy"><span>Bacardi House Party</span></a><a class="mq__it" href="../v2/bombay-sapphire-pop-up/index.html"><img src="../experiential/assets/bs-bar.jpg" alt="" loading="lazy"><span>Bombay Sapphire pop-up</span></a><a class="mq__it" href="../v2/head-and-shoulders/index.html"><img src="../campaigns/assets/hs-kv.jpg" alt="" loading="lazy"><span>Head &amp; Shoulders</span></a><a class="mq__it" href="../v2/fanta/index.html"><img src="../campaigns/assets/fa-rocks-poster.jpg" alt="" loading="lazy"><span>Fanta</span></a><a class="mq__it" href="../v2/pixel-pals/index.html"><img src="../side-quests/assets/card-pixel-pals.jpg" alt="" loading="lazy"><span>Pixel Pals</span></a><a class="mq__it" href="../v2/gundam-build/index.html"><img src="../side-quests/assets/gundam-ms06.jpg" alt="" loading="lazy"><span>Gundam build</span></a><a class="mq__it" aria-hidden="true" tabindex="-1" href="../v2/scooch/index.html"><img src="../scooch/assets/app-purple.jpg" alt="" loading="lazy"><span>Scooch Over</span></a><a class="mq__it" aria-hidden="true" tabindex="-1" href="../v2/accelerated-professional-center/index.html"><img src="../accelerated-professional-center/assets/apl-courtyard.jpg" alt="" loading="lazy"><span>APL</span></a><a class="mq__it" aria-hidden="true" tabindex="-1" href="../v2/oro-chocolate/index.html"><img src="../oro-chocolate/assets/hero.jpg" alt="" loading="lazy"><span>ORO Chocolate</span></a><a class="mq__it" aria-hidden="true" tabindex="-1" href="../v2/khalta/index.html"><img src="../khalta/assets/hummus.jpg" alt="" loading="lazy"><span>Khalta</span></a><a class="mq__it" aria-hidden="true" tabindex="-1" href="../v2/realtoken/index.html"><img src="../realtoken/assets/logo.jpg" alt="" loading="lazy"><span>$REAL Token</span></a><a class="mq__it" aria-hidden="true" tabindex="-1" href="../v2/al-siraat/index.html"><img src="../al-siraat/assets/three-phones.jpg" alt="" loading="lazy"><span>Al Siraat</span></a><a class="mq__it" aria-hidden="true" tabindex="-1" href="../v2/king-c-gillette/index.html"><img src="../packaging-design/assets/kcg-render-closed.jpg" alt="" loading="lazy"><span>King C. Gillette</span></a><a class="mq__it" aria-hidden="true" tabindex="-1" href="../v2/grey-goose/index.html"><img src="../packaging-design/assets/gg-kv-orange.jpg" alt="" loading="lazy"><span>Grey Goose</span></a><a class="mq__it" aria-hidden="true" tabindex="-1" href="../v2/martini-bitter/index.html"><img src="../packaging-design/assets/mb-opt2.jpg" alt="" loading="lazy"><span>Martini Bitter</span></a><a class="mq__it" aria-hidden="true" tabindex="-1" href="../v2/grey-goose-cards/index.html"><img src="../packaging-design/assets/gc-spread.jpg" alt="" loading="lazy"><span>Grey Goose Cards</span></a><a class="mq__it" aria-hidden="true" tabindex="-1" href="../v2/st-germain/index.html"><img src="../packaging-design/assets/sg-gold.jpg" alt="" loading="lazy"><span>St-Germain</span></a><a class="mq__it" aria-hidden="true" tabindex="-1" href="../v2/valorant-mobile/index.html"><img src="../valorant-mobile/assets/hero.jpg" alt="" loading="lazy"><span>Valorant Mobile</span></a><a class="mq__it" aria-hidden="true" tabindex="-1" href="../v2/brawl3rs/index.html"><img src="../brawl3rs/assets/trailer.jpg" alt="" loading="lazy"><span>Brawl3rs</span></a><a class="mq__it" aria-hidden="true" tabindex="-1" href="../v2/bacardi-house-party/index.html"><img src="../experiential/assets/bac-ev-house.jpg" alt="" loading="lazy"><span>Bacardi House Party</span></a><a class="mq__it" aria-hidden="true" tabindex="-1" href="../v2/bombay-sapphire-pop-up/index.html"><img src="../experiential/assets/bs-bar.jpg" alt="" loading="lazy"><span>Bombay Sapphire pop-up</span></a><a class="mq__it" aria-hidden="true" tabindex="-1" href="../v2/head-and-shoulders/index.html"><img src="../campaigns/assets/hs-kv.jpg" alt="" loading="lazy"><span>Head &amp; Shoulders</span></a><a class="mq__it" aria-hidden="true" tabindex="-1" href="../v2/fanta/index.html"><img src="../campaigns/assets/fa-rocks-poster.jpg" alt="" loading="lazy"><span>Fanta</span></a><a class="mq__it" aria-hidden="true" tabindex="-1" href="../v2/pixel-pals/index.html"><img src="../side-quests/assets/card-pixel-pals.jpg" alt="" loading="lazy"><span>Pixel Pals</span></a><a class="mq__it" aria-hidden="true" tabindex="-1" href="../v2/gundam-build/index.html"><img src="../side-quests/assets/gundam-ms06.jpg" alt="" loading="lazy"><span>Gundam build</span></a></div>
-  </section>
-
-  <section id="about" class="ab" aria-label="About">
-    <div class="ab__top">
-      <span class="k reveal">About me</span>
-      <h2 class="reveal">Nearly two decades of brands, products and games, for teams that operate at scale.</h2>
-      <div class="reveal">
-        <div class="ab__col"><h3>Biography</h3>
-          <p>I’ve designed across advertising, marketing, games and product, for global brands and small founders alike.</p>
-          <p>For the past ten years I’ve run an independent design consultancy, from brand guidelines and campaigns to pitch decks and end-to-end design systems.</p></div>
-        <div class="ab__col"><h3>How I work</h3>
-          <p>I bring the view of someone who has built and run a creative business: direct client relationships, and results across industries, time zones and disciplines.</p></div>
-      </div>
+<main>
+<section class="story" id="story">
+  <div class="wrap">
+    <div class="eyebrow rv">The short story</div>
+    <h2 class="h2 rv">An art director's <em>eye,</em> behind the camera</h2>
+    <p class="rv">I'm Sunil. For more than a decade I've art-directed campaigns and TV commercials: casting, storyboarding, directing models and crews in the studio and on location, then carrying the work through edit, grade and motion.</p>
+    <p class="rv">Away from set I carry a camera for myself. Strangers, streets, mountains, quiet light. No posing, just waiting for the frame.</p>
+    <p class="rv honest">I haven't filmed a wedding yet. This page shows what I would bring to one.</p>
+    <div class="brands rv"><span>Coca-Cola</span><span>Sprite</span><span>Martini</span><span>Bacardi</span><span>P&amp;G</span><span>Gillette</span></div>
+    <div class="story-fig">
+      <figure class="rv"><img src="assets/people-friends.jpg" alt="Four friends laughing together on a street bench, black and white" loading="lazy"></figure>
+      <figure class="rv"><img src="assets/people-shopkeeper.jpg" alt="A shopkeeper sitting cross-legged outside his shop" loading="lazy"></figure>
     </div>
-    <ul class="kv reveal">
-      <li><span>Independent practice</span><span>10 years</span></li>
-      <li><span>Biggest product</span><span>Al Siraat, 1M+ learners</span></li>
-      <li><span>Largest system</span><span>One design language, 40+ apps</span></li>
-      <li><span>Fields</span><span class="tags"><span>Brand systems</span><span>Product &amp; UI</span><span>Packaging</span><span>Games</span><span>Campaigns</span><span>Motion</span></span></li>
-      <li><span>Brands</span><span class="tags"><span>King C. Gillette</span><span>Bacardi</span><span>Grey Goose</span><span>Baskin Robbins</span><span>Martini</span><span>Bombay Sapphire</span><span>Coca-Cola</span><span>Sprite</span><span>Fanta</span><span>Head &amp; Shoulders</span><span>AEW</span><span>Green School</span></span></li>
-      <li><span>Work authorization</span><span>US Employment Authorization Card (EAD)</span></li>
-    </ul>
-  </section>
+  </div>
+</section>
+
+<section class="stills" id="stills">
+  <div class="sec-head wrap">
+    <div class="eyebrow rv">Photography</div>
+    <h2 class="h2 rv"><em>My</em> Stills</h2>
+    <p class="lede rv">Five sets, all personal work. Open a set to see every frame.</p>
+  </div>
+  <div class="rail" id="rail" tabindex="0" aria-label="Photo sets">
+    <button class="card" data-set="people"><img src="assets/people-elder.jpg" alt="" loading="lazy"><span class="vl"><svg class="star"><use href="#star"/></svg>People</span><span class="n">6 frames</span></button>
+    <button class="card" data-set="street"><img src="assets/street-crossing.jpg" alt="" loading="lazy"><span class="vl"><svg class="star"><use href="#star"/></svg>Street</span><span class="n">8 frames</span></button>
+    <button class="card" data-set="places"><img src="assets/place-road.jpg" alt="" loading="lazy"><span class="vl"><svg class="star"><use href="#star"/></svg>Places</span><span class="n">6 frames</span></button>
+    <button class="card" data-set="bloom"><img src="assets/bloom-orchid.jpg" alt="" loading="lazy"><span class="vl"><svg class="star"><use href="#star"/></svg>In bloom</span><span class="n">3 frames</span></button>
+    <button class="card" data-set="light"><img src="assets/light-red.jpg" alt="" loading="lazy"><span class="vl"><svg class="star"><use href="#star"/></svg>Studio light</span><span class="n">6 frames</span></button>
+  </div>
+  <div class="rail-ctl">
+    <button id="railPrev" aria-label="Previous sets"><svg class="ar" viewBox="0 0 16 16"><path d="M10 2 4 8l6 6"/></svg></button>
+    <span class="hint">Drag or tap a set</span>
+    <button id="railNext" aria-label="More sets"><svg class="ar" viewBox="0 0 16 16"><path d="m6 2 6 6-6 6"/></svg></button>
+  </div>
+
+  <div class="wrap">
+    <div class="mosaic" id="mosaic">
+      <button class="m1 rv" data-src="people-doorway"><img src="assets/people-doorway.jpg" alt="A man seated in the doorway of an old shop front" loading="lazy" style="object-position:50% 75%"></button>
+      <button class="m2 rv" data-src="place-shore"><img src="assets/place-shore.jpg" alt="Empty sun loungers on a beach under heavy cloud" loading="lazy"></button>
+      <button class="m3 rv" data-src="street-cyclist"><img src="assets/street-cyclist.jpg" alt="A cyclist in a striped shirt crossing a city junction" loading="lazy"></button>
+      <button class="m4 rv" data-src="bloom-violet"><img src="assets/bloom-violet.jpg" alt="A violet flower in soft focus" loading="lazy"></button>
+      <button class="m5 rv" data-src="people-bar"><img src="assets/people-bar.jpg" alt="A man resting his head on his hand at a bar" loading="lazy"></button>
+      <button class="m6 rv" data-src="place-peaks"><img src="assets/place-peaks.jpg" alt="Snow-dusted mountain peaks under a grey sky" loading="lazy"></button>
+      <button class="m7 rv" data-src="street-tower"><img src="assets/street-tower.jpg" alt="A tower rising out of fog" loading="lazy"></button>
+    </div>
+  </div>
+</section>
+
+<section class="shoots" id="shoots">
+  <div class="glyph" aria-hidden="true">S</div>
+  <div class="wrap">
+    <div class="shoots-head">
+      <div>
+        <div class="eyebrow rv">Directed shoots</div>
+        <h2 class="h2 rv" style="margin-top:18px">Good frames start <em>before the shutter</em></h2>
+      </div>
+      <p class="rv">Campaign work I art-directed for brand teams and agencies. Each one meant a brief, a cast, a crew, a schedule that could not slip, and people in front of the lens who needed to feel at ease.</p>
+    </div>
+
+    <article class="shoot">
+      <div class="meta rv">
+        <div class="no"><svg class="star"><use href="#star"/></svg>01</div>
+        <h3>Martini <em>Begin Desire</em></h3>
+        <div class="role">Art director · style, shoot and system</div>
+        <p>A global Italian platform rebuilt for Lagos and Luanda. Portrait-led key visuals made with local teams and artists, with one photographic treatment holding every frame together.</p>
+        <dl><dt>Client</dt><dd>MARTINI · Bacardi Limited</dd><dt>Markets</dt><dd>Nigeria &amp; Angola</dd></dl>
+      </div>
+      <div class="pics a rv" data-group>
+        <button><img src="assets/shoot-martini-passion.jpg" alt="Martini key visual: a man looking through a film camera, Desire Begins Passion" loading="lazy"></button>
+        <button><img src="assets/shoot-martini-beat.jpg" alt="Martini key visual: three friends with drinks, Desire Begins Beat" loading="lazy"></button>
+        <button><img src="assets/shoot-martini-action.jpg" alt="Martini key visual: a couple on a red carpet, Desire Begins Action" loading="lazy" style="object-position:50% 20%"></button>
+      </div>
+    </article>
+
+    <article class="shoot">
+      <div class="meta rv">
+        <div class="no"><svg class="star"><use href="#star"/></svg>02</div>
+        <h3>Head &amp; Shoulders <em>for her</em></h3>
+        <div class="role">Art director · shoot direction · motion</div>
+        <p>A women-first launch from a brand long seen as male-focused. Key visuals, storyboards and motion for the TV commercial and social launch.</p>
+        <dl><dt>Client</dt><dd>P&amp;G</dd><dt>Markets</dt><dd>KSA, UAE and the GCC · 2016</dd></dl>
+      </div>
+      <div class="pics b rv" data-group>
+        <button><img src="assets/shoot-hs-kv.jpg" alt="Head and Shoulders key visual: a woman's face framed by flowing dark hair" loading="lazy"></button>
+        <button><img src="assets/shoot-hs-trio.jpg" alt="Three portrait key visuals of women for Head and Shoulders" loading="lazy"></button>
+      </div>
+    </article>
+
+    <article class="shoot">
+      <div class="meta rv">
+        <div class="no"><svg class="star"><use href="#star"/></svg>03</div>
+        <h3>Coca-Cola <em>T20</em></h3>
+        <div class="role">Campaign art direction</div>
+        <p>Cricket fever in one frame: a cast of six, each with a different energy, composed so the group still reads as friends.</p>
+        <dl><dt>Client</dt><dd>Coca-Cola</dd><dt>Market</dt><dd>Pakistan · 2012</dd></dl>
+      </div>
+      <div class="pics c rv" data-group>
+        <button><img src="assets/shoot-coke-cast.jpg" alt="Coca-Cola cricket campaign: a group of young people cheering with a bat and banner" loading="lazy"></button>
+      </div>
+    </article>
+
+    <article class="shoot">
+      <div class="meta rv">
+        <div class="no"><svg class="star"><use href="#star"/></svg>04</div>
+        <h3>Sprite <em>Cricket Next</em></h3>
+        <div class="role">Campaign art direction</div>
+        <p>A nationwide hunt for street cricket talent, fronted by two rival captains. Portraits with attitude, built to work from a poster to a stadium backdrop.</p>
+        <dl><dt>Client</dt><dd>Sprite · The Coca-Cola Company</dd><dt>Market</dt><dd>Pakistan</dd></dl>
+      </div>
+      <div class="pics d rv" data-group>
+        <button><img src="assets/shoot-sprite-duo.jpg" alt="Sprite Cricket Next banner with two team captains" loading="lazy"></button>
+        <button><img src="assets/shoot-sprite-poster.jpg" alt="Sprite Cricket Next poster: Team Hosh versus Team Josh" loading="lazy"></button>
+      </div>
+    </article>
+
+    <article class="shoot">
+      <div class="meta rv">
+        <div class="no"><svg class="star"><use href="#star"/></svg>05</div>
+        <h3>Bacardi <em>House Party</em></h3>
+        <div class="role">Creative director · live event</div>
+        <p>A modular house built on Dubai Marina Beach in a month, then filled with guests for opening night. A real party, with real people, run to the minute.</p>
+        <dl><dt>Client</dt><dd>Bacardi</dd><dt>Where</dt><dd>Dubai Marina Beach · summer 2016</dd></dl>
+      </div>
+      <div class="pics e rv" data-group>
+        <button><img src="assets/shoot-bacardi-house.jpg" alt="The Bacardi house lit up at dusk with guests outside" loading="lazy"></button>
+        <button><img src="assets/shoot-bacardi-toast.jpg" alt="Friends raising glasses in a toast" loading="lazy"></button>
+        <button><img src="assets/shoot-bacardi-pool.jpg" alt="The Bacardi house reflected in a pool at night" loading="lazy"></button>
+      </div>
+    </article>
+
+    <article class="shoot">
+      <div class="meta rv">
+        <div class="no"><svg class="star"><use href="#star"/></svg>06</div>
+        <h3>Tamuda Bay <em>portraits</em></h3>
+        <div class="role">Logo, brand DNA &amp; campaign</div>
+        <p>Profiles filled with coast, forest and sky for a development on the Moroccan Mediterranean. Made with Shahrukh Mirza.</p>
+        <dl><dt>Where</dt><dd>Tetouan, Morocco</dd><dt>Year</dt><dd>2018</dd></dl>
+      </div>
+      <div class="pics f rv" data-group>
+        <button><img src="assets/shoot-tamuda-1.jpg" alt="Double-exposure portrait: a woman's profile filled with coastline" loading="lazy"></button>
+        <button><img src="assets/shoot-tamuda-2.jpg" alt="Double-exposure portrait: a man's profile filled with a sunset landscape" loading="lazy"></button>
+        <button><img src="assets/shoot-tamuda-3.jpg" alt="Double-exposure portrait: a profile filled with palm trees" loading="lazy"></button>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="film" id="film">
+  <div class="sec-head wrap">
+    <div class="eyebrow rv">Film &amp; motion</div>
+    <h2 class="h2 rv"><em>In</em> Motion</h2>
+    <p class="lede rv">Commercials, a short documentary and a one-minute reel. Pick a film below.</p>
+  </div>
+  <div class="wrap">
+    <div class="stage rv" id="stage">
+      <video id="player" playsinline preload="none" poster="assets/film-nca.jpg" src="../side-quests/assets/nca-film.mp4"></video>
+      <button class="play" id="playBtn" aria-label="Play film"><i>Play</i></button>
+    </div>
+    <div class="now"><strong id="nowTitle">Kasb-e-Kamal Kun</strong><span id="nowMeta">Short film &amp; soundtrack · NCA Triennale · 4:14</span></div>
+    <div class="reels" id="reels">
+      <button class="reel rv" aria-current="true" data-src="../side-quests/assets/nca-film.mp4" data-poster="assets/film-nca.jpg" data-title="Kasb-e-Kamal Kun" data-meta="Short film &amp; soundtrack · NCA Triennale · 4:14"><span class="th"><img src="assets/film-nca.jpg" alt="" loading="lazy"></span><b>Kasb-e-Kamal Kun</b><small>Short film · 4:14</small></button>
+      <button class="reel rv" data-src="../showreel/assets/reel-720.mp4" data-poster="../showreel/assets/ch6.jpg" data-title="Showreel 2026" data-meta="2D · 3D · live action · 1:04"><span class="th"><img src="../showreel/assets/ch6.jpg" alt="" loading="lazy"></span><b>Showreel 2026</b><small>Reel · 1:04</small></button>
+      <button class="reel rv" data-src="../showreel/assets/ch4.mp4" data-poster="../showreel/assets/ch4.jpg" data-title="Head &amp; Shoulders" data-meta="Product film excerpt · P&amp;G · MENA"><span class="th"><img src="../showreel/assets/ch4.jpg" alt="" loading="lazy"></span><b>Head &amp; Shoulders</b><small>Product film · excerpt</small></button>
+      <button class="reel rv" data-src="assets/film-venus-tropical.mp4" data-poster="assets/film-venus-tropical.jpg" data-title="Gillette Venus Tropical" data-meta="Commercial · 0:17"><span class="th"><img src="assets/film-venus-tropical.jpg" alt="" loading="lazy"></span><b>Gillette Venus Tropical</b><small>Commercial · 0:17</small></button>
+      <button class="reel rv" data-src="../campaigns/assets/mb-motion.mp4" data-poster="../campaigns/assets/mb-motion.jpg" data-title="Martini · Begin Desire" data-meta="Campaign motion · 0:13"><span class="th"><img src="../campaigns/assets/mb-motion.jpg" alt="" loading="lazy"></span><b>Martini · Begin Desire</b><small>Campaign motion · 0:13</small></button>
+    </div>
+    <p class="cap" style="margin-top:26px;max-width:70ch;letter-spacing:.08em;text-transform:none;font-size:15px">Kasb-e-Kamal Kun was made with Baber Baig for the first NCA Triennale in 2025: six days of field recording across twelve departments of the National College of Arts, Lahore, cut to a four-minute film.</p>
+  </div>
+</section>
+
+<section class="bring" id="bring">
+  <div class="wrap">
+    <div class="sec-head" style="margin-bottom:0">
+      <div class="eyebrow rv">On the day</div>
+      <h2 class="h2 rv">What I'd <em>bring</em></h2>
+    </div>
+    <div class="bring-grid">
+      <div class="rv"><svg class="star"><use href="#star"/></svg><h3>Ease with people</h3><p>I've directed models, casts and first-timers. I know how to settle someone who is nervous in front of a lens, and when to step back and let a moment happen.</p></div>
+      <div class="rv"><svg class="star"><use href="#star"/></svg><h3>Calm on a tight schedule</h3><p>Commercial sets run to the minute with no second take on the light. I plan the shot list, read the room and keep moving without rushing anyone.</p></div>
+      <div class="rv"><svg class="star"><use href="#star"/></svg><h3>Stills and film, one eye</h3><p>I think in sequences: the wide, the detail, the reaction. Storyboard to final grade, I already know what the edit will need while I'm shooting.</p></div>
+    </div>
+  </div>
+</section>
 </main>
 
-<footer id="contact" class="so" aria-label="Contact">
-  <div class="so__col">
-    <div class="so__name reveal"><b>Sunil<em>.</em></b><img src="../lhp/assets/sunil-binoculars.png" alt="" width="860" height="1103" loading="lazy"></div>
-    <div class="so__card reveal">
-      <h2>Hey there!</h2>
-      <p>I design <strong>brand systems, products, packaging and games</strong> for brands that operate at scale.</p>
-      <p>Available for <strong>full-time, remote and new projects</strong>.</p>
-      <a class="btn" href="mailto:sunil@sebastians.tv">Say hello 👋</a>
-    </div>
-    <nav class="soc" aria-label="Elsewhere"><a href="https://www.linkedin.com/in/sunil-shahzad-a7a59797/" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.behance.net/sunshaseb" target="_blank" rel="noopener">Behance</a><a href="https://www.instagram.com/sunilsebastian/" target="_blank" rel="noopener">Instagram</a></nav>
-    <small>© 2026 Sunil Sebastian · sunil@sebastians.tv</small>
+<footer class="contact" id="contact">
+  <div class="wrap">
+    <div class="eyebrow">Contact</div>
+    <h2 class="h2">Let's make something <em>worth reliving</em></h2>
+    <a class="mail" href="mailto:sunil@sebastians.tv">sunil@sebastians.tv</a>
+    <ul>
+      <li><a class="link" href="https://instagram.com/sunilsebastian/" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a class="link" href="https://linkedin.com/in/sunil-shahzad-a7a59797/" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a class="link" href="../v2/">Full design portfolio</a></li>
+    </ul>
+    <small>© 2026 Sunil Sebastian · All photographs by the author unless credited to a campaign</small>
   </div>
 </footer>
 
+<nav class="dock" aria-label="Sections">
+  <a href="#stills"><svg viewBox="0 0 24 24"><rect x="3" y="6.500" width="18" height="13" rx="2"/><circle cx="12" cy="13" r="3.600"/><path d="M8.500 6.500 10 4h4l1.500 2.500"/></svg>Stills</a>
+  <a href="#shoots"><svg viewBox="0 0 24 24"><path d="M12 2.500c.4 5.400 3.700 8.700 9.500 9.500-5.800.8-9.100 4.100-9.500 9.500-.4-5.400-3.700-8.700-9.500-9.500 5.800-.8 9.100-4.100 9.500-9.500z"/></svg>Shoots</a>
+  <a href="#film"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m10 9.500 5 2.500-5 2.500z"/></svg>Film</a>
+  <a href="#contact"><svg viewBox="0 0 24 24"><rect x="3" y="5.500" width="18" height="13" rx="2"/><path d="m3.500 7 8.500 6.500L20.500 7"/></svg>Contact</a>
+</nav>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="x" id="lbX">Close ✕</button>
+  <figure><img id="lbImg" alt=""></figure>
+  <button class="nav prev" id="lbPrev" aria-label="Previous photo"><svg class="ar" viewBox="0 0 16 16"><path d="M10 2 4 8l6 6"/></svg></button>
+  <button class="nav next" id="lbNext" aria-label="Next photo"><svg class="ar" viewBox="0 0 16 16"><path d="m6 2 6 6-6 6"/></svg></button>
+  <div class="bar"><span id="lbCap"></span><span id="lbCount"></span></div>
+</div>
+
 <script>
-(() => {
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+(function(){
+var $=function(s,r){return (r||document).querySelector(s)},$$=function(s,r){return [].slice.call((r||document).querySelectorAll(s))};
 
-  // Reveal on scroll
-  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
-  document.querySelectorAll('.reveal, .st').forEach(el => io.observe(el));
+/* hero letters */
+var i=0;$$('.hero h1 .w').forEach(function(w){var t=w.textContent;w.textContent='';t.split('').forEach(function(c){var s=document.createElement('span');s.textContent=c;s.style.setProperty('--i',i++);w.appendChild(s)})});
 
-  // Hero viewer: click (or arrow keys) to advance, auto-advances while visible
-  const hv = document.querySelector('.hv'), slides = [...hv.querySelectorAll('.hv__slide')], caps = [...hv.querySelectorAll('.hv__cap')];
-  const num = hv.querySelector('.hv__i'), cur = document.querySelector('.hv__cursor');
-  let i = 0, timer = null, seen = true;
-  const dur = n => +(slides[n].dataset.dur || 5000);
-  const show = n => {
-    i = (n + slides.length) % slides.length;
-    slides.forEach((s, k) => {
-      s.classList.toggle('is-on', k === i);
-      const v = s.querySelector('video'); if (!v) return;
-      if (k === i && seen) { v.preload = 'auto'; v.currentTime = 0; v.play().catch(() => {}); } else v.pause();
-    });
-    caps.forEach((c, k) => c.classList.toggle('is-on', k === i));
-    num.textContent = String(i + 1).padStart(2, '0');
-    const nx = slides[(i + 1) % slides.length], nm = nx.querySelector('img, video');
-    if (nm.tagName === 'IMG' && nm.loading === 'lazy') nm.loading = 'eager'; else if (nm.tagName === 'VIDEO') nm.preload = 'auto';
-    hv.style.setProperty('--dur', dur(i) + 'ms');
-    if (!reduce) { hv.classList.remove('is-run'); void hv.offsetWidth; hv.classList.add('is-run'); }
-  };
-  const tick = () => { timer = setTimeout(() => { show(i + 1); tick(); }, dur(i)); };
-  const start = () => { if (reduce || timer) return; tick(); hv.classList.add('is-run'); };
-  const stop = () => { clearTimeout(timer); timer = null; };
-  hv.addEventListener('click', ev => { if (ev.target.closest('.hv__cap')) return; const back = ev.clientX < innerWidth * .33; stop(); show(i + (back ? -1 : 1)); start(); });
-  addEventListener('keydown', ev => { if (!seen) return; if (ev.key === 'ArrowRight') { stop(); show(i + 1); start(); } if (ev.key === 'ArrowLeft') { stop(); show(i - 1); start(); } });
-  new IntersectionObserver(([e]) => {
-    seen = e.isIntersecting; const v = slides[i].querySelector('video');
-    if (seen) { start(); if (v) v.play().catch(() => {}); } else { stop(); if (v) v.pause(); }
-  }, { threshold: .3 }).observe(hv);
-  hv.addEventListener('pointermove', ev => { cur.style.left = ev.clientX + 'px'; cur.style.top = ev.clientY + 'px'; cur.textContent = ev.target.closest('.hv__cap') ? 'Open' : (ev.clientX < innerWidth * .33 ? 'Prev' : 'Next'); cur.classList.add('is-on'); });
-  hv.addEventListener('pointerleave', () => cur.classList.remove('is-on'));
-  show(0);
+/* hero slides */
+var slides=$$('.hero .slide'),dots=$$('.hero-dots button'),cur=0,timer;
+function go(n){slides[cur].classList.remove('on');dots[cur].classList.remove('on');cur=(n+slides.length)%slides.length;slides[cur].classList.add('on');dots[cur].classList.add('on')}
+function auto(){clearInterval(timer);if(!matchMedia('(prefers-reduced-motion:reduce)').matches)timer=setInterval(function(){go(cur+1)},5500)}
+dots.forEach(function(d,n){d.addEventListener('click',function(){go(n);auto()})});auto();
 
-  // Videos in the Selected work grid play only while on screen
-  document.querySelectorAll('.ft__vid').forEach(v => new IntersectionObserver(([e]) => { if (e.isIntersecting) { v.preload = 'auto'; v.play().catch(() => {}); } else v.pause(); }, { threshold: .25 }).observe(v));
+/* reveal */
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});$$('.rv').forEach(function(el){io.observe(el)})}else{$$('.rv').forEach(function(el){el.classList.add('in')})}
 
+/* photo sets */
+var SETS={
+ people:[['people-elder','Portrait'],['people-friends','Friends'],['people-shopkeeper','Shopkeeper'],['people-bar','Last orders'],['people-doorway','Doorway'],['people-tea','Tea picker']],
+ street:[['street-crossing','Crossing'],['street-cyclist','Cyclist'],['street-climber','Window cleaner'],['street-skeleton','Workshop'],['street-wheel','Wheel'],['street-cart','Beach cart'],['street-tower','Tower in fog'],['street-statue','Statue']],
+ places:[['place-road','Mountain road'],['place-peaks','Peaks'],['place-shore','Shore'],['place-forest-floor','Forest floor'],['place-moss','Moss'],['place-roots','Roots']],
+ bloom:[['bloom-orchid','Orchid'],['bloom-yellow','Yellow'],['bloom-violet','Violet']],
+ light:[['light-red','Studio light study'],['light-red-wide','Studio light study'],['light-white','Studio light study'],['light-white-wide','Studio light study'],['light-lamp','Lamp and moth'],['light-lamp-wide','Lamp and moth']]
+};
+var NAMES={people:'People',street:'Street',places:'Places',bloom:'In bloom',light:'Studio light'};
+var lb=$('#lb'),lbImg=$('#lbImg'),lbCap=$('#lbCap'),lbCount=$('#lbCount'),list=[],idx=0,opener;
+function show(n){idx=(n+list.length)%list.length;var it=list[idx];lbImg.src=it.src;lbImg.alt=it.cap;lbCap.textContent=it.cap;lbCount.textContent=(idx+1)+' / '+list.length;$('#lbPrev').style.visibility=$('#lbNext').style.visibility=list.length>1?'visible':'hidden'}
+function open(l,n,from){list=l;opener=from;lb.classList.add('open');document.body.style.overflow='hidden';show(n);$('#lbX').focus()}
+function close(){lb.classList.remove('open');document.body.style.overflow='';lbImg.removeAttribute('src');if(opener)opener.focus()}
+function setList(k){return SETS[k].map(function(p){return{src:'assets/'+p[0]+'.jpg',cap:NAMES[k]+' · '+p[1]}})}
+$$('.card').forEach(function(c){c.addEventListener('click',function(){if(dragged)return;open(setList(c.dataset.set),0,c)})});
+var all=[];Object.keys(SETS).forEach(function(k){all=all.concat(setList(k))});
+$$('#mosaic button').forEach(function(b){b.addEventListener('click',function(){var s='assets/'+b.dataset.src+'.jpg',n=0;all.forEach(function(a,j){if(a.src===s)n=j});open(all,n,b)})});
+$$('[data-group]').forEach(function(g){var bs=$$('button',g),l=bs.map(function(b){var im=$('img',b);return{src:im.getAttribute('src'),cap:g.parentNode.querySelector('h3').textContent}});bs.forEach(function(b,n){b.addEventListener('click',function(){open(l,n,b)})})});
+$('#lbX').addEventListener('click',close);$('#lbPrev').addEventListener('click',function(){show(idx-1)});$('#lbNext').addEventListener('click',function(){show(idx+1)});
+lb.addEventListener('click',function(e){if(e.target===lb||e.target.tagName==='FIGURE')close()});
+document.addEventListener('keydown',function(e){if(!lb.classList.contains('open'))return;if(e.key==='Escape')close();if(e.key==='ArrowLeft')show(idx-1);if(e.key==='ArrowRight')show(idx+1)});
+var tx=null;lb.addEventListener('touchstart',function(e){tx=e.touches[0].clientX},{passive:true});
+lb.addEventListener('touchend',function(e){if(tx===null)return;var d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>50)show(idx+(d<0?1:-1));tx=null});
 
-  // Stickers drift a little against the scroll
-  const st = document.querySelector('.st'), stks = [...st.querySelectorAll('.stk')];
-  if (!reduce) addEventListener('scroll', () => {
-    const r = st.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return;
-    const p = (r.top + r.height / 2 - innerHeight / 2) / innerHeight;
-    stks.forEach((s, k) => s.style.setProperty('--py', (p * (k % 2 ? 60 : -60)).toFixed(1) + 'px'));
-  }, { passive: true });
+/* rail */
+var rail=$('#rail'),dragged=false,down=false,sx=0,sl=0;
+function step(d){var c=$('.card',rail);rail.scrollBy({left:d*(c.offsetWidth+12),behavior:'smooth'})}
+$('#railPrev').addEventListener('click',function(){step(-1)});$('#railNext').addEventListener('click',function(){step(1)});
+rail.addEventListener('mousedown',function(e){down=true;dragged=false;sx=e.pageX;sl=rail.scrollLeft});
+window.addEventListener('mousemove',function(e){if(!down)return;var d=e.pageX-sx;if(Math.abs(d)>6){dragged=true;rail.style.scrollSnapType='none';rail.scrollLeft=sl-d}});
+window.addEventListener('mouseup',function(){if(!down)return;down=false;rail.style.scrollSnapType='';setTimeout(function(){dragged=false},0)});
 
-  // Work list: pastel filters, the row tints on hover, an image follows the cursor
-  const rows = [...document.querySelectorAll('.wk__row')], chips = [...document.querySelectorAll('.chip')], count = document.querySelector('.wk__count');
-  chips.forEach(b => b.addEventListener('click', () => {
-    chips.forEach(x => { x.classList.toggle('is-on', x === b); x.setAttribute('aria-pressed', x === b); });
-    rows.forEach(r => r.hidden = r.dataset.cat !== b.dataset.f);
-    count.textContent = rows.filter(r => !r.hidden).length;
-  }));
-  const peek = document.querySelector('.peek'), pimg = peek.querySelector('img');
-  let px = 0, py = 0, tx = 0, ty = 0, raf = 0;
-  const loop = () => { px += (tx - px) * .16; py += (ty - py) * .16; peek.style.left = px + 'px'; peek.style.top = py + 'px'; raf = requestAnimationFrame(loop); };
-  document.querySelectorAll('.wk__row a').forEach(a => {
-    a.addEventListener('pointerenter', ev => { if (ev.pointerType !== 'mouse') return; pimg.src = a.dataset.img; tx = px = ev.clientX + 170; ty = py = ev.clientY - 120; peek.classList.add('is-on'); if (!raf) loop(); });
-    a.addEventListener('pointermove', ev => { tx = ev.clientX + 170; ty = ev.clientY - 120; });
-    a.addEventListener('pointerleave', () => peek.classList.remove('is-on'));
-  });
-  document.querySelector('.wk__list').addEventListener('pointerleave', () => { cancelAnimationFrame(raf); raf = 0; });
+/* film */
+var player=$('#player'),stage=$('#stage'),playBtn=$('#playBtn');
+function play(){stage.classList.add('playing');player.controls=true;var p=player.play();if(p&&p.catch)p.catch(function(){})}
+playBtn.addEventListener('click',play);
+player.addEventListener('ended',function(){stage.classList.remove('playing');player.controls=false});
+$$('.reel').forEach(function(r){r.addEventListener('click',function(){$$('.reel').forEach(function(o){o.removeAttribute('aria-current')});r.setAttribute('aria-current','true');player.pause();player.poster=r.dataset.poster;player.src=r.dataset.src;$('#nowTitle').textContent=r.dataset.title;$('#nowMeta').textContent=r.dataset.meta;play();if(stage.getBoundingClientRect().top<0)stage.scrollIntoView({behavior:'smooth',block:'center'})})});
+
+/* dock active state */
+var links=$$('.dock a'),secs=links.map(function(a){return $(a.getAttribute('href'))});
+if('IntersectionObserver' in window){var so=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id)})}})},{rootMargin:'-45% 0px -50% 0px'});secs.forEach(function(s){so.observe(s)})}
 })();
 </script>
 </body>
