@@ -518,28 +518,6 @@
   @media (max-width: 600px) {
     .xp__btn small { display: none; }
   }
-
-  /* Brands I've worked with */
-  .h-br { background: var(--black, #000); color: #fff; padding: clamp(80px, 10vw, 150px) 0 calc(21.3vw + 48px); }  /* the Rolodex figure below reaches up 368/1728 of the width */
-  .hb__head { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 4px clamp(14px, 1.6vw, 24px); margin-bottom: clamp(28px, 4vw, 56px); }
-  .hb__head .eye { width: clamp(56px, 6vw, 92px); height: auto; }
-  .hb__title { margin: 0; font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: clamp(48px, 8vw, 132px); line-height: .86; letter-spacing: 0; }
-  .hb__title span { color: var(--yellow, #f6cb00); }
-  .hb__sub { grid-column: 2; margin: 10px 0 0; font-family: var(--body); font-size: clamp(16px, 1.3vw, 20px); opacity: .75; }
-  .hb__grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(6px, .8vw, 12px); }
-  .hb__grid a, .hb__grid div { position: relative; display: grid; place-items: center; aspect-ratio: 16 / 9; border-radius: 18px; background: #141414; border: 1.5px solid rgba(255,255,255,.08); transition: background .3s, border-color .3s, transform .35s cubic-bezier(.2,.7,.1,1); }
-  .hb__logo { display: block; width: 58%; max-height: 46%; max-width: 58%; background: #fff; -webkit-mask: var(--m) center / contain no-repeat; mask: var(--m) center / contain no-repeat; transition: background .3s, transform .35s cubic-bezier(.2,.7,.1,1); }
-  .hb__grid div:hover .hb__logo { background: var(--yellow, #f6cb00); }
-  .hb__grid a::after { content: ""; position: absolute; top: 12px; right: 12px; width: 9px; height: 9px; border-radius: 50%; background: var(--yellow, #f6cb00); transition: background .3s; }
-  .hb__grid a i { position: absolute; left: 14px; bottom: 8px; font-family: var(--display); font-style: normal; font-size: 26px; line-height: 1; color: #000; opacity: 0; transform: translateX(-6px); transition: opacity .3s, transform .3s; }
-  .hb__grid a:hover, .hb__grid a:focus-visible { background: var(--yellow, #f6cb00); border-color: var(--yellow, #f6cb00); transform: rotate(-2deg) scale(1.03); }
-  .hb__grid a:hover .hb__logo, .hb__grid a:focus-visible .hb__logo { background: #000; transform: scale(1.06); }
-  .hb__grid a:hover::after, .hb__grid a:focus-visible::after { background: var(--red, #df0c01); }
-  .hb__grid a:hover i, .hb__grid a:focus-visible i { opacity: 1; transform: none; }
-  .hb__grid a:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
-  @media (max-width: 800px) { .hb__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } .hb__grid a, .hb__grid div { border-radius: 12px; aspect-ratio: 4 / 3; } .hb__logo { width: 70%; max-width: 70%; max-height: 50%; } .hb__grid a::after { width: 6px; height: 6px; top: 7px; right: 7px; } .hb__grid a i { display: none; } }
-  @media (max-width: 520px) { .hb__head { grid-template-columns: 1fr; } .hb__sub { grid-column: 1; } .hb__head .eye { display: none; } }
-  @media (prefers-reduced-motion: reduce) { .hb__grid a:hover { transform: none; } }
 </style>
 </head>
 <body id="top">
@@ -746,14 +724,6 @@ obsessed with the
           </div>
         </li>
         </ul>
-    </div>
-  </section>
-
-  <!-- BRANDS -->
-  <section class="h-br" aria-labelledby="brands-h">
-    <div class="wrap">
-      <div class="hb__head reveal"><svg class="eye" viewBox="-4 -4 128 72" aria-hidden="true"><g class="eye__body"><use href="#eye-almond" fill="#f6cb00"/><g clip-path="url(#eye-clip)"><g class="eye__iris"><circle cx="60" cy="32" r="31" fill="#2979ff"/><circle cx="60" cy="32" r="14.5" fill="#060606"/></g><rect class="eye__lid" x="-2" y="-4" width="124" height="37" fill="#df0c01"/></g></g></svg><h2 id="brands-h" class="hb__title">Brands I’ve <span>worked with</span></h2><p class="hb__sub">20 brands. The yellow dots have work to see.</p></div>
-      <ul class="hb__grid reveal"><li><a href="packaging-design/index.html#greygoose" title="Grey Goose: see the work"><span class="hb__logo" role="img" aria-label="Grey Goose" style="--m:url(assets/brands/grey-goose.png);aspect-ratio:399 / 280"></span><i aria-hidden="true">→</i></a></li><li><a href="experiential/index.html#bacardi" title="Bacardi: see the work"><span class="hb__logo" role="img" aria-label="Bacardi" style="--m:url(assets/brands/bacardi.png);aspect-ratio:293 / 240"></span><i aria-hidden="true">→</i></a></li><li><a href="campaigns/index.html#martini" title="Martini: see the work"><span class="hb__logo" role="img" aria-label="Martini" style="--m:url(assets/brands/martini.png);aspect-ratio:403 / 198"></span><i aria-hidden="true">→</i></a></li><li><a href="campaigns/index.html#coca-cola" title="Coca-Cola: see the work"><span class="hb__logo" role="img" aria-label="Coca-Cola" style="--m:url(assets/brands/coca-cola.png);aspect-ratio:495 / 163"></span><i aria-hidden="true">→</i></a></li><li><a href="packaging-design/index.html#baskin" title="Baskin Robbins: see the work"><span class="hb__logo" role="img" aria-label="Baskin Robbins" style="--m:url(assets/brands/baskin-robbins.png);aspect-ratio:388 / 109"></span><i aria-hidden="true">→</i></a></li><li><div><span class="hb__logo" role="img" aria-label="Emaar" style="--m:url(assets/brands/emaar.png);aspect-ratio:409 / 86"></span></div></li><li><a href="packaging-design/index.html#kcg" title="P&amp;G: see the work"><span class="hb__logo" role="img" aria-label="P&amp;G" style="--m:url(assets/brands/pg.png);aspect-ratio:299 / 132"></span><i aria-hidden="true">→</i></a></li><li><div><span class="hb__logo" role="img" aria-label="Telenor" style="--m:url(assets/brands/telenor.png);aspect-ratio:503 / 210"></span></div></li><li><div><span class="hb__logo" role="img" aria-label="PUBG Mobile" style="--m:url(assets/brands/pubg-mobile.png);aspect-ratio:293 / 216"></span></div></li><li><div><span class="hb__logo" role="img" aria-label="Relx" style="--m:url(assets/brands/relx.png);aspect-ratio:371 / 78"></span></div></li><li><a href="campaigns/index.html#head-shoulders" title="Head &amp; Shoulders: see the work"><span class="hb__logo" role="img" aria-label="Head &amp; Shoulders" style="--m:url(assets/brands/head-and-shoulders.png);aspect-ratio:435 / 225"></span><i aria-hidden="true">→</i></a></li><li><div><span class="hb__logo" role="img" aria-label="Dewar&#x27;s" style="--m:url(assets/brands/dewars.png);aspect-ratio:381 / 118"></span></div></li><li><div><span class="hb__logo" role="img" aria-label="Dettol" style="--m:url(assets/brands/dettol.png);aspect-ratio:360 / 113"></span></div></li><li><div><span class="hb__logo" role="img" aria-label="Codashop" style="--m:url(assets/brands/codashop.png);aspect-ratio:522 / 106"></span></div></li><li><div><span class="hb__logo" role="img" aria-label="Breezer" style="--m:url(assets/brands/breezer.png);aspect-ratio:369 / 203"></span></div></li><li><div><span class="hb__logo" role="img" aria-label="IQOS" style="--m:url(assets/brands/iqos.png);aspect-ratio:412 / 107"></span></div></li><li><a href="campaigns/index.html#sprite" title="Sprite: see the work"><span class="hb__logo" role="img" aria-label="Sprite" style="--m:url(assets/brands/sprite.png);aspect-ratio:382 / 280"></span><i aria-hidden="true">→</i></a></li><li><a href="packaging-design/index.html#bombay" title="Bombay Sapphire: see the work"><span class="hb__logo" role="img" aria-label="Bombay Sapphire" style="--m:url(assets/brands/bombay-sapphire.png);aspect-ratio:392 / 181"></span><i aria-hidden="true">→</i></a></li><li><div><span class="hb__logo" role="img" aria-label="Pampers" style="--m:url(assets/brands/pampers.png);aspect-ratio:372 / 213"></span></div></li><li><div><span class="hb__logo" role="img" aria-label="Dunkin&#x27; Donuts" style="--m:url(assets/brands/dunkin.png);aspect-ratio:408 / 155"></span></div></li></ul>
     </div>
   </section>
 
