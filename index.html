@@ -518,6 +518,19 @@
   @media (max-width: 600px) {
     .xp__btn small { display: none; }
   }
+
+  /* Rolodex shirt: live logos */
+  .rf__logo { display: block; z-index: 2; }
+  .rf__logo::before { content: ""; position: absolute; inset: 0; background: #cfcfcf; -webkit-mask: var(--m) center / contain no-repeat; mask: var(--m) center / contain no-repeat; transition: background .3s, transform .35s cubic-bezier(.2,.7,.1,1); }
+  .h-rf.is-lit .rf__logo::before { animation: rfLit 1.6s calc(var(--k) * 70ms) both; }
+  @keyframes rfLit { 0% { background: #3a3a3a; } 45% { background: #f6cb00; } 100% { background: #cfcfcf; } }
+  .rf__logo--go { cursor: pointer; }
+  .rf__logo--go::after { content: ""; position: absolute; right: -14%; top: -10%; width: calc(14 * var(--u)); height: calc(14 * var(--u)); border-radius: 50%; background: #f6cb00; }
+  .rf__logo--go:hover::before, .rf__logo--go:focus-visible::before { background: #f6cb00; transform: scale(1.12); animation: none; }
+  .rf__logo--go:focus-visible { outline: 2px solid #f6cb00; outline-offset: 6px; border-radius: 4px; }
+  .rf__logo i { position: absolute; left: 50%; top: 100%; margin-top: calc(10 * var(--u)); transform: translate(-50%, 4px); white-space: nowrap; font-style: normal; font-family: var(--body); font-size: max(11px, calc(22 * var(--u))); letter-spacing: .08em; text-transform: uppercase; color: #f6cb00; opacity: 0; pointer-events: none; transition: opacity .25s, transform .25s; }
+  .rf__logo--go:hover i, .rf__logo--go:focus-visible i { opacity: 1; transform: translate(-50%, 0); }
+  @media (prefers-reduced-motion: reduce) { .h-rf.is-lit .rf__logo::before { animation: none; } }
 </style>
 </head>
 <body id="top">
@@ -742,7 +755,27 @@ obsessed with the
       <p class="rf__avail">Available for Full-time / Remote</p>
       <button class="rf__up up" aria-label="Back to top"><svg viewBox="0 0 122 105.73" aria-hidden="true"><path d="M122 105.73H0L61 0Z"/></svg><span aria-hidden="true">UP</span></button>
       <img class="rf__bino" src="assets/home/rf/bino.webp" alt="Illustration of Sunil looking through binoculars" width="1720" height="2206" loading="lazy">
-      <img class="rf__rolo" src="assets/home/rf/rolo.webp" alt="Illustration of Sunil pointing at his T-shirt printed with brand logos: Grey Goose, Bacardi, Martini, Coca-Cola, Baskin Robbins, Emaar, P&amp;G, Telenor, PUBG Mobile, Relx, Head &amp; Shoulders, Dewar's, Dettol, Codashop, Breezer, IQOS, Sprite, Bombay Sapphire, Pampers and Dunkin' Donuts" width="2656" height="4220" loading="lazy">
+      <img class="rf__rolo" src="assets/home/rf/rolo-blank.webp" alt="Illustration of Sunil pointing at his T-shirt printed with brand logos: Grey Goose, Bacardi, Martini, Coca-Cola, Baskin Robbins, Emaar, P&amp;G, Telenor, PUBG Mobile, Relx, Head &amp; Shoulders, Dewar's, Dettol, Codashop, Breezer, IQOS, Sprite, Bombay Sapphire, Pampers and Dunkin' Donuts" width="2656" height="4220" loading="lazy">
+      <a class="rf__logo rf__logo--go" href="packaging-design/index.html#greygoose" style="left:calc(1006.2 * var(--u));top:calc(600.0 * var(--u));width:calc(101.0 * var(--u));height:calc(70.0 * var(--u));--m:url(assets/brands/grey-goose.png);--k:0" aria-label="Grey Goose: see the work"><i aria-hidden="true">See work →</i></a>
+      <a class="rf__logo rf__logo--go" href="experiential/index.html#bacardi" style="left:calc(1180.7 * var(--u));top:calc(599.0 * var(--u));width:calc(72.5 * var(--u));height:calc(59.5 * var(--u));--m:url(assets/brands/bacardi.png);--k:1" aria-label="Bacardi: see the work"><i aria-hidden="true">See work →</i></a>
+      <a class="rf__logo rf__logo--go" href="campaigns/index.html#martini" style="left:calc(1321.2 * var(--u));top:calc(609.5 * var(--u));width:calc(100.0 * var(--u));height:calc(48.5 * var(--u));--m:url(assets/brands/martini.png);--k:2" aria-label="Martini: see the work"><i aria-hidden="true">See work →</i></a>
+      <a class="rf__logo rf__logo--go" href="campaigns/index.html#coca-cola" style="left:calc(1481.2 * var(--u));top:calc(615.5 * var(--u));width:calc(123.0 * var(--u));height:calc(40.0 * var(--u));--m:url(assets/brands/coca-cola.png);--k:3" aria-label="Coca-Cola: see the work"><i aria-hidden="true">See work →</i></a>
+      <a class="rf__logo rf__logo--go" href="packaging-design/index.html#baskin" style="left:calc(1006.7 * var(--u));top:calc(746.0 * var(--u));width:calc(96.5 * var(--u));height:calc(26.5 * var(--u));--m:url(assets/brands/baskin-robbins.png);--k:4" aria-label="Baskin Robbins: see the work"><i aria-hidden="true">See work →</i></a>
+      <span class="rf__logo" style="left:calc(1166.2 * var(--u));top:calc(752.0 * var(--u));width:calc(101.5 * var(--u));height:calc(21.0 * var(--u));--m:url(assets/brands/emaar.png);--k:5" role="img" aria-label="Emaar"></span>
+      <a class="rf__logo rf__logo--go" href="packaging-design/index.html#kcg" style="left:calc(1332.7 * var(--u));top:calc(750.0 * var(--u));width:calc(74.0 * var(--u));height:calc(32.0 * var(--u));--m:url(assets/brands/pg.png);--k:6" aria-label="P&amp;G: see the work"><i aria-hidden="true">See work →</i></a>
+      <span class="rf__logo" style="left:calc(1475.7 * var(--u));top:calc(739.5 * var(--u));width:calc(125.0 * var(--u));height:calc(52.0 * var(--u));--m:url(assets/brands/telenor.png);--k:7" role="img" aria-label="Telenor"></span>
+      <span class="rf__logo" style="left:calc(1003.7 * var(--u));top:calc(851.5 * var(--u));width:calc(73.0 * var(--u));height:calc(53.5 * var(--u));--m:url(assets/brands/pubg-mobile.png);--k:8" role="img" aria-label="PUBG Mobile"></span>
+      <span class="rf__logo" style="left:calc(1159.2 * var(--u));top:calc(862.0 * var(--u));width:calc(92.5 * var(--u));height:calc(19.0 * var(--u));--m:url(assets/brands/relx.png);--k:9" role="img" aria-label="Relx"></span>
+      <a class="rf__logo rf__logo--go" href="campaigns/index.html#head-shoulders" style="left:calc(1310.7 * var(--u));top:calc(843.0 * var(--u));width:calc(108.0 * var(--u));height:calc(56.0 * var(--u));--m:url(assets/brands/head-and-shoulders.png);--k:10" aria-label="Head &amp; Shoulders: see the work"><i aria-hidden="true">See work →</i></a>
+      <span class="rf__logo" style="left:calc(1495.7 * var(--u));top:calc(865.0 * var(--u));width:calc(94.5 * var(--u));height:calc(28.5 * var(--u));--m:url(assets/brands/dewars.png);--k:11" role="img" aria-label="Dewar&#x27;s"></span>
+      <span class="rf__logo" style="left:calc(995.7 * var(--u));top:calc(988.0 * var(--u));width:calc(89.5 * var(--u));height:calc(27.5 * var(--u));--m:url(assets/brands/dettol.png);--k:12" role="img" aria-label="Dettol"></span>
+      <span class="rf__logo" style="left:calc(1140.2 * var(--u));top:calc(991.0 * var(--u));width:calc(130.0 * var(--u));height:calc(26.0 * var(--u));--m:url(assets/brands/codashop.png);--k:13" role="img" aria-label="Codashop"></span>
+      <span class="rf__logo" style="left:calc(1324.2 * var(--u));top:calc(978.0 * var(--u));width:calc(92.0 * var(--u));height:calc(50.0 * var(--u));--m:url(assets/brands/breezer.png);--k:14" role="img" aria-label="Breezer"></span>
+      <span class="rf__logo" style="left:calc(1492.2 * var(--u));top:calc(993.5 * var(--u));width:calc(102.5 * var(--u));height:calc(26.0 * var(--u));--m:url(assets/brands/iqos.png);--k:15" role="img" aria-label="IQOS"></span>
+      <a class="rf__logo rf__logo--go" href="campaigns/index.html#sprite" style="left:calc(986.2 * var(--u));top:calc(1049.5 * var(--u));width:calc(114.5 * var(--u));height:calc(83.0 * var(--u));--m:url(assets/brands/sprite.png);--k:16" aria-label="Sprite: see the work"><i aria-hidden="true">See work →</i></a>
+      <a class="rf__logo rf__logo--go" href="packaging-design/index.html#bombay" style="left:calc(1158.2 * var(--u));top:calc(1073.0 * var(--u));width:calc(97.5 * var(--u));height:calc(44.5 * var(--u));--m:url(assets/brands/bombay-sapphire.png);--k:17" aria-label="Bombay Sapphire: see the work"><i aria-hidden="true">See work →</i></a>
+      <span class="rf__logo" style="left:calc(1327.2 * var(--u));top:calc(1072.5 * var(--u));width:calc(92.5 * var(--u));height:calc(53.0 * var(--u));--m:url(assets/brands/pampers.png);--k:18" role="img" aria-label="Pampers"></span>
+      <span class="rf__logo" style="left:calc(1485.7 * var(--u));top:calc(1084.5 * var(--u));width:calc(102.0 * var(--u));height:calc(38.5 * var(--u));--m:url(assets/brands/dunkin.png);--k:19" role="img" aria-label="Dunkin&#x27; Donuts"></span>
       <h2 id="rolo-h" class="rf__title">Rolodex</h2>
       <p class="rf__sub">Brands I’ve worked with</p>
     </div>
@@ -824,5 +857,6 @@ obsessed with the
   document.querySelector('.up').addEventListener('click', () => scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }));
 })();
 </script>
+<script>(() => { const s = document.querySelector('.h-rf'); if (!s) return; new IntersectionObserver(([e], o) => { if (e.isIntersecting) { s.classList.add('is-lit'); o.disconnect(); } }, { threshold: .35 }).observe(s); })();</script>
 </body>
 </html>
