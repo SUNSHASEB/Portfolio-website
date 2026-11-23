@@ -1,0 +1,651 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sthala Ubud — Sunil Sebastian</title>
+<meta name="description" content="Sthala Ubud by Sunil Sebastian. A yoga and wellness campaign for a Tribute Portfolio hotel in Bali: key visuals, Instagram films, teacher films, yoga influencers and a guest journey built on one idea, become one with nature.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="../../assets/icons/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
+<meta name="theme-color" content="#f3f1ec">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f3f1ec; --paper-2: #e9e6df; --ink: #111110; --muted: #75736d; --line: rgba(17,17,16,.14);
+    --night: #0f0f0e; --night-line: rgba(255,255,255,.14); --accent: #f6cb00;
+    --font: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+    --gutter: clamp(16px, 2.6vw, 40px); --ease: cubic-bezier(.2,.7,.1,1);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font); font-size: 16px; line-height: 1.5; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+  img { display: block; max-width: 100%; height: auto; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { padding: 0 var(--gutter); }
+  .lbl { font-size: 12px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; }
+  .rule { border: 0; border-top: 1px solid var(--line); margin: 0; }
+
+  /* Header */
+  .hd { position: fixed; inset: 0 0 auto 0; z-index: 30; display: flex; align-items: center; justify-content: space-between; padding: 18px var(--gutter); color: #fff; transition: background .35s, color .35s, border-color .35s; border-bottom: 1px solid transparent; }
+  .hd.is-solid { background: rgba(243,241,236,.92); backdrop-filter: blur(10px); color: var(--ink); border-bottom-color: var(--line); }
+  .hd__brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; font-size: 15px; letter-spacing: -.01em; }
+  .hd__brand img { width: 26px; height: 26px; }
+  .hd nav { display: flex; gap: clamp(14px, 2.4vw, 32px); font-size: 13px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; }
+  .hd nav a { position: relative; }
+  .hd nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -3px; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform .4s var(--ease); }
+  .hd nav a:hover::after { transform: scaleX(1); transform-origin: left; }
+
+  /* Contact band */
+  .ct { background: var(--night); color: #f3f1ec; padding: clamp(80px, 11vw, 160px) var(--gutter) clamp(60px, 8vw, 110px); }
+  .ct .lbl { color: rgba(243,241,236,.6); }
+  .ct h2 { margin: 18px 0 clamp(36px, 5vw, 64px); font-size: clamp(44px, 7.6vw, 128px); line-height: .96; font-weight: 400; letter-spacing: -.05em; max-width: 13ch; }
+  .ct h2 em { font-style: italic; font-weight: 300; color: var(--accent); }
+  .ct__row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gutter); border-top: 1px solid var(--night-line); padding-top: 22px; }
+  .ct__row a, .ct__row p { margin: 6px 0 0; font-size: clamp(16px, 1.3vw, 19px); }
+  .ct__mail { font-size: clamp(22px, 2.4vw, 34px) !important; letter-spacing: -.03em; border-bottom: 1px solid currentColor; }
+  .ct__mail:hover { color: var(--accent); }
+  .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); margin-right: 8px; box-shadow: 0 0 0 4px rgba(246,203,0,.18); }
+
+  /* Footer */
+  .ft-wrap { background: var(--night); color: rgba(243,241,236,.7); padding: 0 var(--gutter) 18px; overflow: hidden; }
+  .ft-nav { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding: 22px 0; border-top: 1px solid var(--night-line); font-size: 13px; letter-spacing: .1em; text-transform: uppercase; }
+  .ft-nav nav { display: flex; flex-wrap: wrap; gap: 8px 22px; }
+  .ft-nav a:hover { color: #fff; }
+  .wordmark { display: block; color: #f3f1ec; font-size: clamp(54px, 15.2vw, 260px); font-weight: 500; letter-spacing: -.065em; line-height: .8; white-space: nowrap; margin: 10px 0 0 -.04em; }
+
+
+  .hd { color: var(--ink); background: rgba(243,241,236,.92); backdrop-filter: blur(10px); border-bottom-color: var(--line); }
+  .cx { padding: clamp(110px, 14vw, 200px) var(--gutter) clamp(28px, 4vw, 56px); }
+  .cx__k { display: flex; justify-content: space-between; gap: 16px; color: var(--muted); }
+  .cx h1 { margin: clamp(18px, 2.4vw, 32px) 0 clamp(28px, 4vw, 64px); font-size: clamp(52px, 11vw, 200px); line-height: .88; font-weight: 500; letter-spacing: -.06em; }
+  .cx__info { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 96px); border-top: 1px solid var(--ink); padding-top: 20px; }
+  .cx__lede { margin: 0; font-size: clamp(22px, 2.2vw, 34px); line-height: 1.18; letter-spacing: -.03em; max-width: 26ch; }
+  .cx__meta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px var(--gutter); margin: 0; }
+  .cx__meta dt { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .cx__meta dd { margin: 4px 0 0; font-size: 16px; }
+  .cx__stats { list-style: none; margin: clamp(32px, 4vw, 56px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: var(--gutter); }
+  .cx__stats li { border-top: 1px solid var(--line); padding-top: 14px; }
+  .cx__stats b { display: block; font-size: clamp(36px, 4.6vw, 76px); font-weight: 400; letter-spacing: -.05em; line-height: 1; }
+  .cx__stats span { display: block; margin-top: 8px; color: var(--muted); font-size: 14px; }
+  .cx__media { margin: 0; }
+  .cx__media img, .cx__media video { display: block; width: 100%; height: auto; background: #000; }
+  .cx__media .wx { margin: 0; }
+
+  .cs { padding: clamp(80px, 10vw, 160px) var(--gutter) 0; }
+  .cs__head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 3fr); gap: var(--gutter); border-top: 1px solid var(--line); padding-top: 18px; }
+  .cs__lbl { display: flex; gap: 12px; color: var(--muted); }
+  .cs__lbl b { color: var(--ink); font-weight: 500; }
+  .cs h2 { margin: 0; font-size: clamp(32px, 4.4vw, 72px); line-height: 1.02; font-weight: 400; letter-spacing: -.045em; max-width: 18ch; }
+  .cs__sub { margin: 22px 0 0; font-size: clamp(17px, 1.35vw, 20px); color: #3d3c39; max-width: 52ch; }
+  .cs__ql { margin: clamp(32px, 4vw, 56px) 0 0; font-size: clamp(24px, 2.6vw, 40px); line-height: 1.12; letter-spacing: -.03em; font-weight: 300; font-style: italic; max-width: 30ch; }
+  .cs__chips { list-style: none; margin: 24px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .cs__chips li { border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: 14px; }
+  .pts { list-style: none; margin: clamp(32px, 4vw, 56px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr)); gap: 0 var(--gutter); }
+  .pts li { border-top: 1px solid var(--ink); padding: 14px 0 6px; }
+  .pts small { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .pts b { display: block; margin: 8px 0 6px; font-size: clamp(18px, 1.5vw, 22px); font-weight: 500; letter-spacing: -.02em; }
+  .pts p { margin: 0; color: var(--muted); font-size: 15px; }
+  .cs__body { margin-left: calc((100% - var(--gutter) * 3) / 4 + var(--gutter)); }
+
+  .rows { display: grid; gap: clamp(10px, 1.4vw, 22px); margin-top: clamp(36px, 5vw, 72px); }
+  .row { display: flex; gap: clamp(10px, 1.4vw, 22px); align-items: flex-start; }
+  .row--1 .m, .row--solo .m { flex: 1; }
+  .row--solo .m { max-width: min(100%, 72svh * var(--ar, 1)); }
+  .row--solo { justify-content: center; }
+  .m { margin: 0; min-width: 0; }
+  .m__box { overflow: hidden; background: var(--paper-2); }
+  .m__box img, .m__box video { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .m--contain .m__box { background: var(--paper-2); }
+  .m--contain .m__box img { object-fit: contain; padding: 8%; }
+  .m--dark .m__box { background: #1c1c1a; }
+  .m--tall { max-width: 760px; margin: 0 auto; width: 100%; }
+  .m--tall .m__box { height: min(80svh, 860px); overflow-y: auto; overscroll-behavior: contain; }
+  .m--tall .m__box img { height: auto; }
+  .tiles { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: clamp(8px, 1vw, 14px); }
+  .tiles .m__box { aspect-ratio: 1 !important; }
+  .tiles .m figcaption { display: none; }
+  .m figcaption { margin-top: 10px; font-size: 13px; color: var(--muted); }
+  .wx { min-width: 0; }
+  .wx--dark { background: #0f0f0e; color: #f3f1ec; padding: clamp(18px, 3vw, 44px); font-family: var(--font); }
+  .wx--dark :is(h3, b) { font-family: var(--font); }
+
+  .sws { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); margin-top: clamp(32px, 4vw, 56px); }
+  .sw { aspect-ratio: 4 / 3; padding: 14px; display: flex; flex-direction: column; justify-content: flex-end; font-size: 14px; }
+  .sw small { opacity: .7; font-variant-numeric: tabular-nums; }
+
+  .quote { padding: clamp(110px, 14vw, 220px) var(--gutter); }
+  .quote p { margin: 0 auto; max-width: 16ch; text-align: center; font-size: clamp(36px, 6vw, 104px); line-height: 1; letter-spacing: -.05em; font-weight: 300; }
+  .dl { padding: 0 var(--gutter) clamp(60px, 8vw, 110px); }
+  .dl ul { list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .dl li { border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: 14px; }
+
+  .nx { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--gutter); padding: clamp(28px, 4vw, 56px) var(--gutter) clamp(80px, 10vw, 140px); border-top: 1px solid var(--line); }
+  .nx a { display: block; }
+  .nx__t { display: block; margin: 12px 0 8px; font-size: clamp(40px, 6.8vw, 116px); line-height: .92; font-weight: 500; letter-spacing: -.055em; transition: color .3s; }
+  .nx a:hover .nx__t { color: var(--muted); }
+  .nx__d { color: var(--muted); }
+  .nx__img { overflow: hidden; aspect-ratio: 16 / 10; background: var(--paper-2); }
+  .nx__img img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+  .nx a:hover .nx__img img { transform: scale(1.035); }
+  .nx__back { display: inline-block; margin-top: 26px; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; border-bottom: 1px solid currentColor; }
+
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .9s var(--ease), transform 1s var(--ease); }
+  .reveal.is-in { opacity: 1; transform: none; }
+
+  @media (max-width: 900px) {
+    .cx__info, .cs__head, .nx { grid-template-columns: 1fr; }
+    .cs__body { margin-left: 0; }
+    .pts { grid-template-columns: 1fr; }
+    .cx__stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .sws { grid-template-columns: repeat(min(var(--n), 4), minmax(0, 1fr)); }
+    .ct__row { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .hd nav a:not(.hd__mail) { display: none; }
+    .cx__meta { grid-template-columns: 1fr 1fr; }
+    .row { flex-direction: column; }
+    .row .m { flex: none !important; width: 100%; max-width: none !important; }
+    .sws { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .sw { aspect-ratio: 2 / 1; }
+    .tiles { grid-template-columns: repeat(min(var(--n), 4), minmax(0, 1fr)); }
+    .wx--dark { padding: 14px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+
+  .w-cap { margin: 10px 0 0; font-size: 13px; color: var(--muted); }
+
+
+  /* Rounded visual cards, one radius across the site */
+  :root { --card-r: 16px; }
+  .cx__media { margin: 0 var(--gutter); }
+  .cx__media, .m__box, .sx__stage, .nx__img, .cmp, .web, .ba, .build, .wx--dark, .sws, .yt { border-radius: var(--card-r); overflow: hidden; isolation: isolate; }
+  /* Contact: availability and details, without the headline */
+  .ct { padding-top: clamp(56px, 7vw, 100px); }
+  .ct > .lbl + .ct__row { margin-top: clamp(24px, 3vw, 40px); }
+
+  /* Sthala Ubud */
+  :root { --st-sun: #f7f019; --st-gold: #b8913a; --st-leaf: #2f5d34; }
+  .st-tabs { display: flex; flex-wrap: wrap; gap: 8px; }
+  .st-tab { all: unset; cursor: pointer; padding: 9px 16px; border-radius: 999px; border: 1px solid var(--line); font-size: 14px; font-weight: 500; transition: background .25s, color .25s, border-color .25s; }
+  .st-tab:hover { border-color: var(--ink); }
+  .st-tab[aria-selected="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .st-tab:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+  [data-panel][hidden] { display: none !important; }
+  .st-fade { animation: stFade .55s var(--ease); }
+  @keyframes stFade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+  /* Audience */
+  .aud { margin-top: clamp(36px, 5vw, 72px); }
+  .aud__p { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: var(--gutter); align-items: end; margin-top: 22px; }
+  .aud__p b { display: block; font-size: clamp(44px, 6vw, 104px); font-weight: 400; letter-spacing: -.055em; line-height: .95; }
+  .aud__p p { margin: 18px 0 0; font-size: clamp(17px, 1.35vw, 20px); color: #3d3c39; max-width: 34ch; }
+  .aud__p ul { list-style: none; margin: 22px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .aud__p li { border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: 14px; }
+  .aud__img { border-radius: var(--card-r); overflow: hidden; aspect-ratio: 16 / 9; background: var(--paper-2); }
+  .aud__img img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* Influencers */
+  .inf { list-style: none; margin: clamp(36px, 5vw, 72px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(10px, 1.4vw, 22px); }
+  .inf li { position: relative; padding: clamp(18px, 2vw, 28px); border-radius: var(--card-r); background: #fff; box-shadow: 0 0 0 1px var(--line); transition: transform .5s var(--ease), box-shadow .5s var(--ease); }
+  .inf li:hover { transform: translateY(-6px); box-shadow: 0 0 0 1px var(--line), 0 24px 40px -24px rgba(17,17,16,.35); }
+  .inf__av { width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; font-size: 20px; font-weight: 600; letter-spacing: -.02em; background: conic-gradient(from 210deg, var(--st-sun), #9bd36a, var(--st-leaf), var(--st-sun)); padding: 3px; }
+  .inf__av span { width: 100%; height: 100%; border-radius: 50%; display: grid; place-items: center; background: #fff; }
+  .inf__h { margin: 18px 0 2px; font-size: 13px; color: var(--muted); }
+  .inf__n { display: block; font-size: clamp(20px, 1.7vw, 26px); font-weight: 500; letter-spacing: -.03em; line-height: 1.15; }
+  .inf__f { display: flex; align-items: baseline; gap: 8px; margin-top: clamp(28px, 3vw, 44px); padding-top: 14px; border-top: 1px solid var(--line); }
+  .inf__f b { font-size: clamp(36px, 4vw, 64px); font-weight: 400; letter-spacing: -.05em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .inf__f small { color: var(--muted); font-size: 14px; }
+  .inf__t { margin: 12px 0 0; font-size: 14px; color: var(--muted); }
+  .inf-sum { margin: 18px 0 0; font-size: 15px; color: var(--muted); }
+  .inf-sum b { color: var(--ink); font-weight: 500; font-variant-numeric: tabular-nums; }
+
+  /* The idea, line by line */
+  .cr { margin: clamp(40px, 6vw, 96px) 0 0; display: grid; gap: clamp(8px, 1vw, 14px); }
+  .cr p { margin: 0; font-size: clamp(30px, 4.4vw, 76px); line-height: 1.02; letter-spacing: -.05em; font-weight: 300; color: var(--muted); opacity: .25; transition: opacity 1s var(--ease), color 1s var(--ease); }
+  .cr p.is-in { opacity: 1; color: var(--ink); }
+  .cr p:last-child.is-in { font-weight: 400; }
+  .cr em { font-style: italic; background: linear-gradient(transparent 62%, var(--st-sun) 62%); }
+
+  /* Key visual switcher */
+  .kvs { margin-top: clamp(36px, 5vw, 72px); }
+  .kvs__stage { position: relative; margin-top: 16px; border-radius: var(--card-r); overflow: hidden; aspect-ratio: 1800 / 1013; background: #fff; box-shadow: 0 0 0 1px var(--line); }
+  .kvs__stage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.02); transition: opacity .7s var(--ease), transform 1.2s var(--ease); }
+  .kvs__stage img.is-on { opacity: 1; transform: none; }
+  .kvs__cap { margin: 12px 0 0; font-size: 14px; color: var(--muted); min-height: 1.5em; }
+
+  /* Social: an Instagram post and a story */
+  .soc { margin-top: clamp(36px, 5vw, 72px); display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); gap: clamp(16px, 3vw, 56px); align-items: center; padding: clamp(24px, 4vw, 64px); border-radius: var(--card-r); background: radial-gradient(120% 90% at 20% 10%, #fbf8c9 0%, #eef3e2 55%, #e2ebd8 100%); }
+  .ig { max-width: 520px; width: 100%; justify-self: center; background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 30px 60px -30px rgba(17,17,16,.35), 0 0 0 1px rgba(17,17,16,.06); font-size: 14px; }
+  .ig__hd { display: flex; align-items: center; gap: 10px; padding: 12px 14px; }
+  .ig__av { width: 32px; height: 32px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 2px var(--st-gold); display: grid; place-items: center; font-size: 9px; font-weight: 600; letter-spacing: .06em; }
+  .ig__hd b { font-weight: 600; } .ig__hd small { display: block; color: var(--muted); font-size: 12px; }
+  .ig__media { position: relative; aspect-ratio: 1; background: #fff; }
+  .ig__media video, .ph__scr video { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .ig__bar { display: flex; gap: 14px; padding: 10px 14px 4px; }
+  .ig__bar svg { width: 24px; height: 24px; fill: none; stroke: var(--ink); stroke-width: 1.8; }
+  .ig__bar .ig__like { cursor: pointer; transition: transform .25s var(--ease); }
+  .ig__bar .ig__like.is-on { fill: #ed4956; stroke: #ed4956; transform: scale(1.12); }
+  .ig__cap { margin: 0; padding: 4px 14px 16px; line-height: 1.45; }
+  .ig__cap b { font-weight: 600; } .ig__cap span { color: #00376b; }
+  .ph { justify-self: center; width: min(100%, 300px); aspect-ratio: 9 / 19.2; padding: 10px; border-radius: 44px; background: #111110; box-shadow: 0 30px 60px -30px rgba(17,17,16,.5); position: relative; }
+  .ph::before { content: ""; position: absolute; top: 18px; left: 50%; width: 30%; height: 22px; transform: translateX(-50%); border-radius: 999px; background: #000; z-index: 2; }
+  .ph__scr { width: 100%; height: 100%; border-radius: 34px; overflow: hidden; background: #fff; position: relative; }
+  .ph__bars { position: absolute; z-index: 2; left: 14px; right: 14px; top: 50px; height: 3px; border-radius: 3px; background: rgba(17,17,16,.15); overflow: hidden; }
+  .ph__bars i { display: block; height: 100%; width: 0; background: var(--ink); }
+  .snd { all: unset; cursor: pointer; position: absolute; z-index: 3; right: 12px; bottom: 12px; display: inline-flex; align-items: center; gap: 6px; padding: 7px 11px; border-radius: 999px; background: rgba(17,17,16,.78); color: #fff; font-size: 12px; font-weight: 500; letter-spacing: .02em; backdrop-filter: blur(6px); }
+  .snd:hover { background: #111110; }
+  .snd:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+  .soc__lbl { margin-top: 12px; text-align: center; font-size: 13px; color: var(--muted); }
+
+  /* Meet the teacher */
+  .tch { margin-top: clamp(36px, 5vw, 72px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(20px, 4vw, 72px); align-items: start; }
+  .tch__stage { margin-top: 16px; display: flex; justify-content: center; align-items: center; min-height: min(70svh, 640px); border-radius: var(--card-r); background: #111110; padding: clamp(14px, 2vw, 28px); }
+  .tch__stage video { display: block; max-width: 100%; max-height: min(64svh, 600px); border-radius: 10px; background: #000; }
+  .vo { position: sticky; top: 110px; }
+  .vo .lbl { color: var(--muted); }
+  .vo ol { list-style: none; margin: 18px 0 0; padding: 0; counter-reset: vo; }
+  .vo li { padding: 10px 0; border-top: 1px solid var(--line); font-size: clamp(19px, 1.7vw, 26px); line-height: 1.25; letter-spacing: -.025em; }
+  .vo li:last-child { border-bottom: 1px solid var(--line); font-style: italic; }
+  .vo__by { margin: 18px 0 0; font-size: 14px; color: var(--muted); }
+
+  /* Guest journey stepper */
+  .jr { margin-top: clamp(36px, 5vw, 72px); display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.4fr); gap: clamp(20px, 4vw, 72px); align-items: start; }
+  .jr__steps { list-style: none; margin: 0; padding: 0; display: grid; }
+  .jr__steps button { all: unset; box-sizing: border-box; width: 100%; cursor: pointer; display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 4px 12px; padding: 18px 0; border-top: 1px solid var(--line); color: var(--muted); transition: color .3s; }
+  .jr__steps li:last-child button { border-bottom: 1px solid var(--line); }
+  .jr__steps small { font-size: 12px; font-variant-numeric: tabular-nums; padding-top: 6px; }
+  .jr__steps b { font-size: clamp(20px, 1.8vw, 28px); font-weight: 400; letter-spacing: -.035em; line-height: 1.15; }
+  .jr__steps p { grid-column: 2; margin: 0; max-height: 0; overflow: hidden; opacity: 0; font-size: 15px; color: #3d3c39; transition: max-height .6s var(--ease), opacity .6s var(--ease), margin .6s var(--ease); }
+  .jr__steps button[aria-selected="true"] { color: var(--ink); }
+  .jr__steps button[aria-selected="true"] p { max-height: 8em; opacity: 1; margin-top: 6px; }
+  .jr__steps button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+  .jr__bar { grid-column: 1 / -1; height: 2px; background: var(--line); margin-top: 10px; overflow: hidden; display: none; }
+  .jr__steps button[aria-selected="true"] .jr__bar { display: block; }
+  .jr__bar i { display: block; height: 100%; width: 0; background: var(--ink); }
+  .jr.is-run .jr__steps button[aria-selected="true"] .jr__bar i { animation: jrBar 6s linear forwards; }
+  @keyframes jrBar { to { width: 100%; } }
+  .jr__stage { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(8px, 1vw, 14px); }
+  .jr__stage figure { margin: 0; border-radius: var(--card-r); overflow: hidden; background: var(--paper-2); aspect-ratio: 4 / 5; }
+  .jr__stage figure:only-child, .jr__stage figure.w2 { grid-column: 1 / -1; aspect-ratio: 16 / 10; }
+  .jr__stage img { width: 100%; height: 100%; object-fit: cover; }
+  .jr__stage .logo { display: grid; place-items: center; background: #fff; box-shadow: inset 0 0 0 1px var(--line); }
+  .jr__stage .logo img { width: 62%; height: auto; object-fit: contain; }
+  .jr__note { margin: 12px 0 0; font-size: 13px; color: var(--muted); }
+
+  @media (max-width: 900px) {
+    .aud__p, .tch, .jr { grid-template-columns: 1fr; }
+    .inf { grid-template-columns: 1fr; }
+    .soc { grid-template-columns: 1fr; }
+    .vo { position: static; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cr p { opacity: 1; color: var(--ink); }
+    .st-fade { animation: none; }
+  }
+
+  /* V3 case study: sticky info on the left, the work on the right */
+  :root { --bg: var(--paper); --red: #df0c01; --yellow: #f6cb00; --mono: "Geist Mono", ui-monospace, Menlo, monospace; --tint: #fdf0b4; }
+  body { background: var(--bg); }
+  .hd + .pj { padding-top: 96px; }
+  .k { display: inline-flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 13px; }
+  .k::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--red); }
+
+  .pj { display: grid; grid-template-columns: minmax(300px, 30%) minmax(0, 1fr); gap: clamp(28px, 3.4vw, 64px); padding: 92px var(--gutter) 0; }
+  .pj__stick { position: sticky; top: 84px; max-height: calc(100svh - 100px); overflow-y: auto; scrollbar-width: none; padding-bottom: 90px; }
+  .pj__stick::-webkit-scrollbar { display: none; }
+  .pj__tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pj__name, .pj__cat { margin: 0; display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 8px; font-family: var(--mono); font-size: 13px; font-weight: 500; letter-spacing: -.01em; }
+  .pj__name { background: var(--tint); }
+  .pj__name::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--red); }
+  .pj__cat { background: #fff; box-shadow: 0 0 0 1px var(--line); font-weight: 400; }
+  .pj__lede { margin: 22px 0 26px; font-size: clamp(24px, 2.1vw, 32px); line-height: 1.12; font-weight: 500; letter-spacing: -.035em; }
+  .pj__kv { margin: 0; border-top: 1px solid var(--ink); }
+  .pj__kv div { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line); font-family: var(--mono); font-size: 13px; }
+  .pj__kv dt { flex: none; color: var(--muted); }
+  .pj__kv dd { margin: 0; min-width: 0; text-align: right; overflow-wrap: anywhere; line-height: 1.45; }
+  .pj__kv a { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  .pj__kv a:hover { color: var(--red); }
+  .pj__stats { list-style: none; margin: 22px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .pj__stats li { padding: 14px; border-radius: 12px; background: #fff; box-shadow: 0 0 0 1px var(--line); }
+  .pj__stats b { display: block; font-size: clamp(20px, 1.7vw, 26px); font-weight: 600; letter-spacing: -.03em; }
+  .pj__stats span { font-size: 13px; color: var(--muted); }
+  .pj__toc { margin-top: 26px; display: grid; }
+  .pj__toc a { display: flex; align-items: center; gap: 10px; padding: 7px 0; font-family: var(--mono); font-size: 13px; color: var(--muted); transition: color .2s; }
+  .pj__toc a small { font-size: 11px; width: 18px; }
+  .pj__toc a::after { content: ""; width: 6px; height: 6px; margin-left: auto; border-radius: 50%; background: var(--red); opacity: 0; transition: opacity .2s; }
+  .pj__toc a:hover, .pj__toc a.is-on { color: var(--ink); }
+  .pj__toc a.is-on::after { opacity: 1; }
+  .pj__main { min-width: 0; padding-bottom: clamp(60px, 8vw, 120px); }
+  .pj__main .cx__media { margin: 0; }
+  .pj__main .cs { position: relative; padding: clamp(64px, 8vw, 120px) 0 0; }
+  .pj__chip { position: sticky; top: 84px; z-index: 5; height: 0; display: flex; justify-content: flex-end; align-items: flex-start; pointer-events: none; }
+  .pj__chip span { pointer-events: auto; display: inline-flex; align-items: center; line-height: 1.2; white-space: nowrap; padding: 8px 12px; border-radius: 8px; background: rgba(255,255,255,.92); backdrop-filter: blur(8px); box-shadow: 0 0 0 1px var(--line); font-family: var(--mono); font-size: 13px; }
+  .pj__main .cs__head { display: block; border-top: 0; padding: 0 clamp(120px, 16vw, 260px) 0 0; }
+  .pj__main .cs h2 { font-size: clamp(30px, 3.2vw, 52px); max-width: 20ch; }
+  .pj__main .cs__sub { max-width: 52ch; }
+  .pj__main .cs__body { margin-left: 0; }
+  .pj__main .pts { grid-template-columns: repeat(min(var(--n, 3), 3), minmax(0, 1fr)); }
+  .pj__main .quote { padding: clamp(90px, 11vw, 170px) 0; }
+  .pj__main .dl, .pj__main .nx { padding-left: 0; padding-right: 0; }
+  .pj__main .nx { padding-bottom: 0; }
+
+  /* Project switcher, bottom left */
+  .sw3 { position: fixed; left: var(--gutter); bottom: 16px; z-index: 30; transition: opacity .3s, transform .3s; }
+  .sw3.is-off { opacity: 0; transform: translateY(10px); pointer-events: none; }
+  .sw3__btn { appearance: none; border: 0; cursor: pointer; display: flex; align-items: center; gap: 22px; padding: 10px 12px 10px 14px; border-radius: 12px; background: rgba(255,255,255,.94); backdrop-filter: blur(10px); box-shadow: 0 0 0 1px var(--line), 0 10px 30px -14px rgba(0,0,0,.35); font: inherit; text-align: left; color: var(--ink); }
+  .sw3__btn small { display: flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .sw3__btn small::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--red); }
+  .sw3__btn b { display: block; margin-top: 2px; font-family: var(--mono); font-size: 13px; font-weight: 500; }
+  .sw3__btn i { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 8px; background: var(--bg); font-style: normal; }
+  .sw3__menu { position: absolute; left: 0; bottom: calc(100% + 8px); width: min(360px, calc(100vw - 20px)); max-height: min(72svh, 560px); overflow-y: auto; overscroll-behavior: contain; padding: 6px; border-radius: 14px; background: #fff; box-shadow: 0 0 0 1px var(--line), 0 18px 40px -18px rgba(0,0,0,.4); }
+  .sw3__menu[hidden] { display: none; }
+  .sw3__menu a { display: flex; justify-content: space-between; gap: 16px; padding: 10px 12px; border-radius: 9px; font-family: var(--mono); font-size: 13px; }
+  .sw3__menu a:hover, .sw3__menu a[aria-current] { background: var(--tint); }
+  .sw3__tabs { position: sticky; top: -6px; z-index: 1; display: flex; flex-wrap: wrap; gap: 4px; margin: -6px -6px 6px; padding: 10px; background: #fff; border-bottom: 1px solid var(--line); }
+  .sw3__tabs button { appearance: none; border: 0; cursor: pointer; padding: 6px 10px; border-radius: 999px; background: var(--bg); color: var(--muted); font-family: var(--mono); font-size: 12px; transition: background .2s, color .2s; }
+  .sw3__tabs button:hover { color: var(--ink); }
+  .sw3__tabs button[aria-selected="true"] { background: var(--ink); color: #fff; }
+  .sw3__tabs button:focus-visible, .sw3__menu a:focus-visible { outline: 2px solid var(--ink); outline-offset: 1px; }
+  .sw3__list[hidden] { display: none; }
+
+  @media (max-width: 900px) { .nv .hide-m { display: none; } }
+  @media (max-width: 1000px) {
+    .pj { grid-template-columns: 1fr; padding-top: 84px; }
+    .pj__stick { position: static; max-height: none; overflow: visible; padding-bottom: 8px; }
+    .pj__toc { display: none; }
+    .pj__main .cs__head { padding-right: 0; }
+    .pj__chip { position: static; height: auto; justify-content: flex-start; margin-bottom: 14px; }
+  }
+  @media (max-width: 600px) {
+    .nv { inset: 10px 10px auto; }
+    .pill--brand small, .pill--dark span { display: none; }
+    .pj__main .pts { grid-template-columns: 1fr; }
+    .sw3 { left: 10px; bottom: 10px; }
+  }
+</style>
+</head>
+<body style="--tint:#fdf0b4">
+
+<header class="hd">
+  <a class="hd__brand" href="../index.html"><img src="../../assets/icons/favicon-64.png" alt="" width="26" height="26">Sunil Sebastian</a>
+  <nav aria-label="Main"><a href="../index.html#work">Work</a><a href="../index.html#index">Index</a><a href="../index.html#about">About</a><a class="hd__mail" href="#contact">Contact</a></nav>
+</header>
+
+<main class="pj">
+  <aside class="pj__side"><div class="pj__stick">
+    <div class="pj__tags"><h1 id="title" class="pj__name">Sthala Ubud</h1><span class="pj__cat">Campaigns</span></div>
+    <p class="pj__lede">A yoga and wellness program that brought Bali back outdoors after lockdown, with open-air classes, local yoga teachers and one simple idea: become one with nature.</p>
+    <dl class="pj__kv"><div><dt>Client</dt><dd>Sthala, a Tribute Portfolio Hotel</dd></div><div><dt>Location</dt><dd>Ubud, Bali</dd></div><div><dt>Year</dt><dd>2020</dd></div><div><dt>Scope</dt><dd>Concept, key visuals, social films, guest journey</dd></div></dl>
+    <ul class="pj__stats"><li><b>3</b><span>open-air yoga spots</span></li><li><b>3</b><span>Bali yoga teachers</span></li><li><b>4</b><span>social films</span></li><li><b>2</b><span>audiences</span></li></ul>
+    <nav class="pj__toc" aria-label="Sections"><a href="#brief"><small>01</small>Brief</a><a href="#audience"><small>02</small>Audience</a><a href="#teachers"><small>03</small>Influencers</a><a href="#creative"><small>04</small>The creative</a><a href="#social"><small>05</small>Social</a><a href="#teacher"><small>06</small>Meet the teacher</a><a href="#photography"><small>07</small>On location</a><a href="#journey"><small>08</small>Guest journey</a></nav>
+  </div></aside>
+  <div class="pj__main">
+    <figure class="cx__media"><img src="../../campaigns/assets/st-kv.jpg" alt="Key visual: a woman meditating in a garden of monstera leaves and grass in front of a yellow sun, with the words Become One with Nature, beside the Sthala Ubud Bali yoga and wellness program details" width="1800" height="1013" fetchpriority="high"></figure>
+    
+
+  <section class="cs" id="brief">
+    <div class="pj__chip" aria-hidden="true"><span>01 · Brief</span></div>
+    <div class="cs__head reveal"><div><h2>Get Bali back outdoors.</h2><p class="cs__sub">Lockdown kept everyone inside. Sthala wanted people living in Bali, and travellers stuck on the island, to see that its riverside grounds are made for yoga, and to bring in guests through Bali’s own yoga teachers.</p></div></div>
+    <div class="cs__body"></div>
+
+    <ul class="cs__chips cs__body reveal"><li>Awareness</li><li>Footfall</li><li>Yoga influencers</li><li>Open-air classes</li></ul>
+  </section>
+
+  <section class="cs" id="audience">
+    <div class="pj__chip" aria-hidden="true"><span>02 · Audience</span></div>
+    <div class="cs__head reveal"><div><h2>Two ways in.</h2><p class="cs__sub">Two calls to action, one for each kind of guest.</p></div></div>
+    <div class="cs__body"></div>
+
+    <div class="aud reveal" data-tabs>
+      <div class="st-tabs" role="tablist" aria-label="Audience"><button class="st-tab" type="button" role="tab" aria-selected="true">Singles</button><button class="st-tab" type="button" role="tab" aria-selected="false">Families</button></div>
+      <div class="aud__p" role="tabpanel" data-panel><div><b>Singles</b><p>People living in Bali, or stuck here while travel is closed, who want to practise yoga in the open air.</p><ul><li>Riverside classes</li><li>Moonlight yoga</li><li>Juice bar</li></ul></div><div class="aud__img"><img src="../../campaigns/assets/st-ref-river.jpg" alt="A man meditating on a rock by a river in a green valley" loading="lazy" width="1400" height="933"></div></div>
+      <div class="aud__p" role="tabpanel" data-panel hidden><div><b>Families</b><p>Parents in Bali can bring their kids to class and use the hotel’s new kids’ play room and infinity pool.</p><ul><li>Kids’ play room</li><li>Infinity pool</li><li>Family classes</li></ul></div><div class="aud__img"><img src="../../campaigns/assets/st-kv-families.jpg" alt="Family key visual: a mother and daughter meditating in the Become One with Nature artwork" loading="lazy" width="1800" height="1013"></div></div>
+    </div>
+  </section>
+
+  <section class="cs" id="teachers">
+    <div class="pj__chip" aria-hidden="true"><span>03 · Influencers</span></div>
+    <div class="cs__head reveal"><div><h2>Teachers who already practise outdoors.</h2><p class="cs__sub">The hotel has three yoga spots set in nature. So we invited Bali teachers who teach outdoors and believe in the wall-less yoga barn.</p></div></div>
+    <div class="cs__body"></div>
+
+    <ul class="inf">
+      <li class="reveal"><div class="inf__av"><span>YP</span></div><p class="inf__h">@yuliyapopkova</p><span class="inf__n">Yuliya Popkova</span><div class="inf__f"><b data-count="5012">5,012</b><small>followers</small></div><p class="inf__t">Stretching teacher, living in Bali</p></li>
+      <li class="reveal"><div class="inf__av"><span>CM</span></div><p class="inf__h">@cyprianmajcher</p><span class="inf__n">Cyprian Majcher</span><div class="inf__f"><b data-count="7032">7,032</b><small>followers</small></div><p class="inf__t">Coach and podcaster, the face of our teacher film</p></li>
+      <li class="reveal"><div class="inf__av"><span>NM</span></div><p class="inf__h">@nourishmovelovebali</p><span class="inf__n">Nourish Move Love Bali</span><div class="inf__f"><b data-count="2099">2,099</b><small>followers</small></div><p class="inf__t">Holistic health and wellness</p></li>
+    </ul>
+    <p class="inf-sum reveal">Together: <b data-count="14143">14,143</b> followers who already love yoga in Bali.</p>
+  </section>
+
+  <section class="cs" id="creative">
+    <div class="pj__chip" aria-hidden="true"><span>04 · The creative</span></div>
+    <div class="cs__head reveal"><div><h2>Become one with nature.</h2></div></div>
+    <div class="cs__body"></div>
+
+    <div class="cr cs__body"><p>Covid has disconnected us from nature.</p><p>We’d give anything to get back.</p><p>Now we can, with yoga in <em>amazing natural surroundings.</em></p></div>
+    <div class="kvs reveal" data-tabs data-kv>
+      <div class="st-tabs" role="tablist" aria-label="Key visuals"><button class="st-tab" type="button" role="tab" aria-selected="true" data-cap="The hero: a yoga class where the garden, the sun and the type become one.">Morning class</button><button class="st-tab" type="button" role="tab" aria-selected="false" data-cap="For families: come together, bring the kids, and become one with nature.">For families</button><button class="st-tab" type="button" role="tab" aria-selected="false" data-cap="Moonlight yoga: get your body in tune with the moon after a busy day.">Moonlight yoga</button></div>
+      <div class="kvs__stage"><img class="is-on" src="../../campaigns/assets/st-kv.jpg" alt="Morning class key visual" loading="lazy" width="1800" height="1013"><img src="../../campaigns/assets/st-kv-families.jpg" alt="Families key visual" loading="lazy" width="1800" height="1013"><img src="../../campaigns/assets/st-kv-moon.jpg" alt="Moonlight yoga key visual: a man meditating in front of a full moon on deep blue" loading="lazy" width="1800" height="1013"></div>
+      <p class="kvs__cap" aria-live="polite">The hero: a yoga class where the garden, the sun and the type become one.</p>
+    </div>
+  </section>
+
+  <section class="cs" id="social">
+    <div class="pj__chip" aria-hidden="true"><span>05 · Social</span></div>
+    <div class="cs__head reveal"><div><h2>A post and a story that come alive.</h2><p class="cs__sub">The key visual builds itself, leaf by leaf, then lands on the call to register.</p></div></div>
+    <div class="cs__body"></div>
+
+    <div class="soc reveal">
+      <div>
+        <div class="ig">
+          <div class="ig__hd"><span class="ig__av">STHALA</span><div><b>sthalaubud</b><small>Ubud, Bali</small></div></div>
+          <div class="ig__media"><video class="lv st-v" src="../../campaigns/assets/st-post.mp4" poster="../../campaigns/assets/st-post.jpg" muted loop playsinline preload="none" aria-label="Instagram post animation: the Become One with Nature key visual builds up, then shows the Sthala Ubud Bali logo"></video><button class="snd" type="button" aria-pressed="false">Sound off</button></div>
+          <div class="ig__bar"><svg viewBox="0 0 24 24" class="ig__like" role="button" tabindex="0" aria-label="Like"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.5 8.1 3.6 4.8 7 4.8c2 0 3.3 1.1 5 3 1.7-1.9 3-3 5-3 3.4 0 5.5 3.3 4.3 6.5-1.8 4.6-9.3 9.2-9.3 9.2z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.4 7.4L3.5 20.5l1.6-4.4A8.4 8.4 0 1 1 20.5 11.6z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.5 3 10 14.2M21.5 3l-7 18-4.5-6.8L3 9.9z"/></svg></div>
+          <p class="ig__cap"><b>sthalaubud</b> Make your yoga experience even more divine with our outdoor yoga barn. See the river flow gently by, feel the sky and let your soul fly as you become one with nature. Register now, link in bio. <span>#becomeonewithnature #sthalaubudhotel #yogaclasses</span></p>
+        </div>
+        <p class="soc__lbl">Instagram post</p>
+      </div>
+      <div>
+        <div class="ph"><div class="ph__scr"><div class="ph__bars"><i></i></div><video class="lv st-v" src="../../campaigns/assets/st-story.mp4" poster="../../campaigns/assets/st-story.jpg" muted loop playsinline preload="none" aria-label="Instagram story animation: the key visual builds up and ends on swipe up to learn more"></video><button class="snd" type="button" aria-pressed="false">Sound off</button></div></div>
+        <p class="soc__lbl">Instagram story</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cs" id="teacher">
+    <div class="pj__chip" aria-hidden="true"><span>06 · Meet the teacher</span></div>
+    <div class="cs__head reveal"><div><h2>Meet your teacher.</h2><p class="cs__sub">Short films introduce each teacher: how they teach, and why they practise in nature. Press play, sound on.</p></div></div>
+    <div class="cs__body"></div>
+
+    <div class="tch">
+      <div class="reveal" data-tabs data-pause>
+        <div class="st-tabs" role="tablist" aria-label="Film format"><button class="st-tab" type="button" role="tab" aria-selected="true">Feed post · 1:1</button><button class="st-tab" type="button" role="tab" aria-selected="false">Story · 9:16</button></div>
+        <div class="tch__stage" role="tabpanel" data-panel><video src="../../campaigns/assets/st-teacher.mp4" poster="../../campaigns/assets/st-teacher.jpg" controls playsinline preload="none" width="720" height="720" aria-label="Meet your teacher film with Cyprian Majcher, square version"></video></div>
+        <div class="tch__stage" role="tabpanel" data-panel hidden><video src="../../campaigns/assets/st-teacher-story.mp4" poster="../../campaigns/assets/st-teacher-story.jpg" controls playsinline preload="none" width="720" height="1280" aria-label="Meet your teacher film with Cyprian Majcher, vertical story version"></video></div>
+      </div>
+      <div class="vo reveal">
+        <span class="lbl">Voice-over</span>
+        <ol><li>For me yoga is my connection to the earth.</li><li>The sound of the water flowing gently past.</li><li>The feel of the warm sun as I reach towards the sky.</li><li>In that moment I am one with nature.</li><li>I transcend the ordinary.</li><li>By going inside, I change the outside.</li><li>With each breath, the mind, body and soul are revitalised.</li><li>And everything feels right. Just right.</li></ol>
+        <p class="vo__by">Featuring @cyprianmajcher</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cs" id="photography">
+    <div class="pj__chip" aria-hidden="true"><span>07 · On location</span></div>
+    <div class="cs__head reveal"><div><h2>A photography moodboard.</h2><p class="cs__sub">References for the on-location shoot: real teachers, soft light, water and green.</p></div></div>
+    <div class="cs__body"></div>
+
+    <div class="rows"><div class="row"><figure class="m reveal" style="--ar:1.5005;flex:1.5005 1 0%"><div class="m__box" style="aspect-ratio:1400 / 933"><img src="../../campaigns/assets/st-ref-bridge.jpg" alt="Reference: a man in a yoga pose on a wooden jetty over a lake" loading="lazy" width="1400" height="933"></div><figcaption>Reference</figcaption></figure><figure class="m reveal" style="--ar:1.5005;flex:1.5005 1 0%"><div class="m__box" style="aspect-ratio:1400 / 933"><img src="../../campaigns/assets/st-ref-crow.jpg" alt="Reference: crow pose on a tree stump in a flowering garden" loading="lazy" width="1400" height="933"></div><figcaption>Reference</figcaption></figure></div><div class="row"><figure class="m reveal" style="--ar:1.5005;flex:1.5005 1 0%"><div class="m__box" style="aspect-ratio:1400 / 933"><img src="../../campaigns/assets/st-ref-log.jpg" alt="Reference: a man meditating on a log in a garden" loading="lazy" width="1400" height="933"></div><figcaption>Reference</figcaption></figure><figure class="m reveal" style="--ar:1.5000;flex:1.5000 1 0%"><div class="m__box" style="aspect-ratio:960 / 640"><img src="../../campaigns/assets/st-ref-lake.jpg" alt="Reference: a woman meditating on a jetty at sunset" loading="lazy" width="960" height="640"></div><figcaption>Reference</figcaption></figure><figure class="m reveal" style="--ar:1.5005;flex:1.5005 1 0%"><div class="m__box" style="aspect-ratio:1400 / 933"><img src="../../campaigns/assets/st-ref-still.jpg" alt="Reference: a close portrait of a man with eyes closed in the rain" loading="lazy" width="1400" height="933"></div><figcaption>Reference</figcaption></figure></div></div>
+  </section>
+
+  <section class="cs" id="journey">
+    <div class="pj__chip" aria-hidden="true"><span>08 · Guest journey</span></div>
+    <div class="cs__head reveal"><div><h2>An experience, not an event.</h2><p class="cs__sub">From the entrance to the mat, guests move through the sights and sounds of the valley.</p></div></div>
+    <div class="cs__body"></div>
+
+    <div class="jr reveal" data-tabs data-auto>
+      <ol class="jr__steps" role="tablist" aria-label="Guest journey">
+        <li><button type="button" role="tab" aria-selected="true"><small>01</small><b>Welcome drinks</b><p>Guests arrive to refreshing drinks from Sungai, the hotel restaurant.</p><span class="jr__bar"><i></i></span></button></li>
+        <li><button type="button" role="tab" aria-selected="false"><small>02</small><b>Down to the lawn</b><p>Steps lead down through the gardens to the main lawn for the morning class.</p><span class="jr__bar"><i></i></span></button></li>
+        <li><button type="button" role="tab" aria-selected="false"><small>03</small><b>Gondola juice bar</b><p>A gondola becomes a juice bar, pressing fresh juice on the spot: a place to hang out with like-minded people.</p><span class="jr__bar"><i></i></span></button></li>
+        <li><button type="button" role="tab" aria-selected="false"><small>04</small><b>Play room and pool</b><p>Kids play in the new play room while parents practise, then everyone meets at the infinity pool.</p><span class="jr__bar"><i></i></span></button></li>
+      </ol>
+      <div>
+        <div class="jr__stage" role="tabpanel" data-panel><figure><img src="../../campaigns/assets/st-welcome.jpg" alt="Mood: glass drink dispensers of lemonade on a wooden crate" loading="lazy"></figure><figure><img src="../../campaigns/assets/st-juice.jpg" alt="Mood: jars of fruit-filled water and juice" loading="lazy"></figure></div>
+        <div class="jr__stage" role="tabpanel" data-panel hidden><figure class="w2"><img src="../../campaigns/assets/st-deck.jpg" alt="Mood: a group yoga class on a deck surrounded by jungle" loading="lazy"></figure></div>
+        <div class="jr__stage" role="tabpanel" data-panel hidden><figure><img src="../../campaigns/assets/st-gondola.jpg" alt="Mood: a thatched gondola in a garden with a stone path" loading="lazy"></figure><figure class="logo"><img src="../../campaigns/assets/st-juicery.jpg" alt="Local Juicery, cold pressed juice and organic kitchen logo" loading="lazy"></figure></div>
+        <div class="jr__stage" role="tabpanel" data-panel hidden><figure><img src="../../campaigns/assets/st-playroom.jpg" alt="Mood: a bright kids play room full of toys" loading="lazy"></figure><figure><img src="../../campaigns/assets/st-pool.jpg" alt="The hotel infinity pool above the river valley" loading="lazy"></figure></div>
+        <p class="jr__note">Moodboard from the proposal deck</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="quote"><p class="reveal">Events are a thing of the past. Give people an experience they’ll want to come back for.</p></section>
+  <div class="dl"><span class="lbl" style="color:var(--muted)">Deliverables</span><ul><li>Campaign concept</li><li>Key visuals</li><li>Instagram post and story</li><li>Teacher films</li><li>Influencer program</li><li>Photography moodboard</li><li>Guest journey</li></ul></div>
+
+  <nav class="nx" aria-label="Next case study">
+    <div>
+      <span class="lbl" style="color:var(--muted)">Next case study</span>
+      <a href="../martini-begin-desire/index.html"><span class="nx__t">Martini · Begin Desire</span><span class="nx__d">A global platform, rebuilt for Lagos and Luanda</span></a>
+      <a class="nx__back" href="../photography/index.html">← Previous: Photography</a>
+    </div>
+    <a href="../martini-begin-desire/index.html" aria-hidden="true" tabindex="-1"><div class="nx__img"><img src="../../campaigns/assets/mb-dream.jpg" alt="" loading="lazy"></div></a>
+  </nav>
+
+  </div>
+</main>
+
+<div class="sw3"><div class="sw3__menu" hidden><div class="sw3__tabs" role="tablist" aria-label="Disciplines"><button type="button" role="tab" aria-selected="false" data-cat="Brand systems">Brand systems</button><button type="button" role="tab" aria-selected="false" data-cat="Product">Product</button><button type="button" role="tab" aria-selected="false" data-cat="Artifacts">Artifacts</button><button type="button" role="tab" aria-selected="true" data-cat="Campaigns">Campaigns</button><button type="button" role="tab" aria-selected="false" data-cat="Packaging">Packaging</button><button type="button" role="tab" aria-selected="false" data-cat="Games">Games</button><button type="button" role="tab" aria-selected="false" data-cat="Experiential">Experiential</button><button type="button" role="tab" aria-selected="false" data-cat="Motion">Motion</button></div><div class="sw3__list" role="tabpanel" data-cat="Brand systems" hidden><a href="../namma-farm/index.html"><span>Namma Farm</span><span>01</span></a><a href="../green-school/index.html"><span>Green School</span><span>02</span></a><a href="../oro-chocolate/index.html"><span>ORO Chocolate</span><span>03</span></a><a href="../imagination-holdings/index.html"><span>Imagination Holdings</span><span>04</span></a><a href="../accelerated-professional-center/index.html"><span>APL</span><span>05</span></a><a href="../nrj/index.html"><span>NRJ</span><span>06</span></a></div><div class="sw3__list" role="tabpanel" data-cat="Product" hidden><a href="../coca-cola-umm/index.html"><span>Coca-Cola UMM</span><span>01</span></a><a href="../al-siraat/index.html"><span>Al Siraat</span><span>02</span></a><a href="../imagination-dls/index.html"><span>Imagination DLS</span><span>03</span></a></div><div class="sw3__list" role="tabpanel" data-cat="Artifacts" hidden><a href="../pixel-pals/index.html"><span>Pixel Pals</span><span>01</span></a><a href="../isotwist/index.html"><span>Isotwist</span><span>02</span></a><a href="../art2d2/index.html"><span>Art2D2</span><span>03</span></a><a href="../bit-groovebox/index.html"><span>BIT Groovebox</span><span>04</span></a><a href="../soundtrack-and-film/index.html"><span>Soundtrack &amp; film</span><span>05</span></a><a href="../gundam-build/index.html"><span>Gundam build</span><span>06</span></a><a href="../photography/index.html"><span>Photography</span><span>07</span></a></div><div class="sw3__list" role="tabpanel" data-cat="Campaigns"><a href="../sthala-ubud/index.html" aria-current="page"><span>Sthala Ubud</span><span>01</span></a><a href="../martini-begin-desire/index.html"><span>Martini · Begin Desire</span><span>02</span></a><a href="../head-and-shoulders/index.html"><span>Head &amp; Shoulders</span><span>03</span></a><a href="../sprite/index.html"><span>Sprite</span><span>04</span></a><a href="../fanta/index.html"><span>Fanta</span><span>05</span></a><a href="../coca-cola/index.html"><span>Coca-Cola</span><span>06</span></a></div><div class="sw3__list" role="tabpanel" data-cat="Packaging" hidden><a href="../king-c-gillette/index.html"><span>King C. Gillette</span><span>01</span></a><a href="../twistails/index.html"><span>Twistails</span><span>02</span></a><a href="../grey-goose/index.html"><span>Grey Goose</span><span>03</span></a><a href="../baskin-robbins/index.html"><span>Baskin Robbins</span><span>04</span></a><a href="../martini-bitter/index.html"><span>Martini Bitter</span><span>05</span></a><a href="../oro-packaging/index.html"><span>ORO Packaging</span><span>06</span></a><a href="../grey-goose-cards/index.html"><span>Grey Goose Cards</span><span>07</span></a><a href="../bombay-sapphire/index.html"><span>Bombay Sapphire</span><span>08</span></a><a href="../st-germain/index.html"><span>St-Germain</span><span>09</span></a></div><div class="sw3__list" role="tabpanel" data-cat="Games" hidden><a href="../wallet-wars/index.html"><span>Wallet Wars</span><span>01</span></a><a href="../valorant-mobile/index.html"><span>Valorant Mobile</span><span>02</span></a><a href="../aew-rise-to-the-top/index.html"><span>AEW: Rise to the Top</span><span>03</span></a><a href="../brawl3rs/index.html"><span>Brawl3rs</span><span>04</span></a><a href="../ggi/index.html"><span>GGI</span><span>05</span></a></div><div class="sw3__list" role="tabpanel" data-cat="Experiential" hidden><a href="../bacardi-house-party/index.html"><span>Bacardi House Party</span><span>01</span></a><a href="../grey-goose-windows/index.html"><span>Grey Goose windows</span><span>02</span></a><a href="../bombay-sapphire-pop-up/index.html"><span>Bombay Sapphire pop-up</span><span>03</span></a></div><div class="sw3__list" role="tabpanel" data-cat="Motion" hidden><a href="../showreel/index.html"><span>Showreel</span><span>01</span></a></div></div><button class="sw3__btn" type="button" aria-expanded="false" aria-label="All projects, by discipline"><span><small>Campaigns</small><b>Sthala Ubud</b></span><i aria-hidden="true">≡</i></button></div>
+
+<section id="contact" class="ct" aria-label="Contact">
+  <span class="lbl"><span class="dot" aria-hidden="true"></span>Available for full-time, remote and new projects</span>
+  <div class="ct__row">
+    <div><span class="lbl">Email</span><p><a class="ct__mail" href="mailto:sunil@sebastians.tv">sunil@sebastians.tv</a></p></div>
+    <div><span class="lbl">Elsewhere</span><p><a href="https://www.linkedin.com/in/sunil-shahzad-a7a59797/" target="_blank" rel="noopener">LinkedIn ↗</a></p><p><a href="https://www.behance.net/sunshaseb" target="_blank" rel="noopener">Behance ↗</a></p><p><a href="https://www.instagram.com/sunilsebastian/" target="_blank" rel="noopener">Instagram ↗</a></p></div>
+    <div><span class="lbl">Work authorization</span><p>US Employment Authorization Card (EAD)</p></div>
+  </div>
+</section>
+
+<footer class="ft-wrap">
+  <div class="ft-nav"><span>© 2026 Sunil Sebastian</span><nav aria-label="Footer"><a href="../index.html#work">Work</a><a href="../index.html#index">Index</a><a href="../index.html#about">About</a><a href="../showreel/index.html">Showreel</a></nav></div>
+  <span class="wordmark" aria-hidden="true">Sunil Sebastian</span>
+</footer>
+
+<script>
+(() => {
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  // Looping clips play only while on screen
+  const vo = new IntersectionObserver(es => es.forEach(e => { const v = e.target; if (e.isIntersecting) { v.preload = 'auto'; v.play().catch(() => {}); } else v.pause(); }), { threshold: .2 });
+  document.querySelectorAll('video.lv').forEach(v => vo.observe(v));
+})();
+</script>
+
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Tabs: any [data-tabs] block with role=tab buttons and [data-panel] siblings (or a key-visual stage)
+  document.querySelectorAll('[data-tabs]').forEach(box => {
+    const tabs = [...box.querySelectorAll('[role=tab]')], panels = [...box.querySelectorAll('[data-panel]')];
+    const kvImgs = box.hasAttribute('data-kv') ? [...box.querySelectorAll('.kvs__stage img')] : null, cap = box.querySelector('.kvs__cap');
+    let cur = 0, timer = null;
+    const show = (i, user) => {
+      cur = i;
+      tabs.forEach((t, k) => { t.setAttribute('aria-selected', k === i); t.tabIndex = k === i ? 0 : -1; });
+      panels.forEach((p, k) => { const on = k === i; if (on && p.hidden) { p.hidden = false; p.classList.remove('st-fade'); void p.offsetWidth; p.classList.add('st-fade'); } else if (!on) p.hidden = true; });
+      if (box.hasAttribute('data-pause')) panels.forEach((p, k) => { if (k !== i) p.querySelectorAll('video').forEach(v => v.pause()); });
+      if (kvImgs) { kvImgs.forEach((im, k) => im.classList.toggle('is-on', k === i)); if (cap) cap.textContent = tabs[i].dataset.cap || ''; }
+      if (box.hasAttribute('data-auto')) { if (user) { box.classList.remove('is-run'); clearInterval(timer); timer = null; } }
+    };
+    tabs.forEach((t, k) => {
+      t.addEventListener('click', () => show(k, true));
+      t.addEventListener('keydown', e => { const d = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key]; if (d) { e.preventDefault(); const n = (k + d + tabs.length) % tabs.length; show(n, true); tabs[n].focus(); } });
+    });
+    // The journey steps through on its own while on screen, until someone clicks a step
+    if (box.hasAttribute('data-auto') && !reduce) {
+      new IntersectionObserver(([e]) => {
+        if (e.isIntersecting && timer === null && !box.dataset.stopped) { box.classList.add('is-run'); timer = setInterval(() => { show((cur + 1) % tabs.length); box.classList.remove('is-run'); void box.offsetWidth; box.classList.add('is-run'); }, 6000); }
+        else if (!e.isIntersecting && timer) { clearInterval(timer); timer = null; box.classList.remove('is-run'); }
+      }, { threshold: .35 }).observe(box);
+      tabs.forEach(t => t.addEventListener('click', () => { box.dataset.stopped = 1; }));
+    }
+  });
+
+  // The idea lights up one line at a time
+  const cr = document.querySelectorAll('.cr p');
+  const co = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); co.unobserve(e.target); } }), { rootMargin: '0px 0px -30% 0px' });
+  cr.forEach(p => co.observe(p));
+
+  // Follower counts count up when they come into view
+  const fmt = n => n.toLocaleString('en-US');
+  const cn = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return; cn.unobserve(e.target);
+    const el = e.target, to = +el.dataset.count; if (reduce) return;
+    const t0 = performance.now(), d = 1400;
+    const step = t => { const p = Math.min(1, (t - t0) / d); el.textContent = fmt(Math.round(to * (1 - Math.pow(1 - p, 3)))); if (p < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  }), { threshold: .6 });
+  document.querySelectorAll('[data-count]').forEach(el => cn.observe(el));
+
+  // Sound toggles on the post and story; only one plays sound at a time
+  const vids = [...document.querySelectorAll('video.st-v')];
+  document.querySelectorAll('.snd').forEach(b => {
+    const v = b.parentElement.querySelector('video');
+    b.addEventListener('click', () => {
+      const on = v.muted;
+      vids.forEach(o => { if (o !== v) { o.muted = true; const ob = o.parentElement.querySelector('.snd'); ob.textContent = 'Sound off'; ob.setAttribute('aria-pressed', 'false'); } });
+      v.muted = !on; if (on) { v.currentTime = 0; v.play().catch(() => {}); }
+      b.textContent = on ? 'Sound on' : 'Sound off'; b.setAttribute('aria-pressed', on);
+    });
+  });
+  // Story progress bar
+  const sv = document.querySelector('.ph__scr video'), sb = document.querySelector('.ph__bars i');
+  if (sv && sb) sv.addEventListener('timeupdate', () => { sb.style.width = (sv.currentTime / sv.duration * 100 || 0) + '%'; });
+  // Teacher films: playing one pauses the post and story sound
+  document.querySelectorAll('.tch video').forEach(v => v.addEventListener('play', () => vids.forEach(o => { o.muted = true; const ob = o.parentElement.querySelector('.snd'); ob.textContent = 'Sound off'; ob.setAttribute('aria-pressed', 'false'); })));
+  // Like button
+  document.querySelectorAll('.ig__like').forEach(h => { const t = () => h.classList.toggle('is-on'); h.addEventListener('click', t); h.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); t(); } }); });
+})();
+</script>
+<script>(() => {
+  // Section list in the sticky column follows the scroll
+  const links = [...document.querySelectorAll('.pj__toc a')], secs = links.map(a => document.querySelector(a.hash));
+  const mark = () => {
+    let on = 0; secs.forEach((s, k) => { if (s.getBoundingClientRect().top < innerHeight * .4) on = k; });
+    links.forEach((a, k) => a.classList.toggle('is-on', k === on));
+  };
+  addEventListener('scroll', mark, { passive: true }); mark();
+  // Project switcher
+  const btn = document.querySelector('.sw3__btn'), menu = document.querySelector('.sw3__menu');
+  btn.addEventListener('click', () => { menu.hidden = !menu.hidden; btn.setAttribute('aria-expanded', !menu.hidden); });
+  // Discipline tabs inside the switcher
+  const tabs = [...menu.querySelectorAll('.sw3__tabs button')], lists = [...menu.querySelectorAll('.sw3__list')];
+  tabs.forEach(t => t.addEventListener('click', () => {
+    tabs.forEach(x => x.setAttribute('aria-selected', x === t));
+    lists.forEach(l => l.hidden = l.dataset.cat !== t.dataset.cat);
+  }));
+  addEventListener('click', e => { if (!e.target.closest('.sw3')) { menu.hidden = true; btn.setAttribute('aria-expanded', 'false'); } });
+  addEventListener('keydown', e => { if (e.key === 'Escape') { menu.hidden = true; btn.setAttribute('aria-expanded', 'false'); } });
+  // The switcher steps aside once the contact section is on screen
+  const sw = document.querySelector('.sw3'), ct = document.getElementById('contact') || document.querySelector('footer');
+  if (ct) new IntersectionObserver(([e]) => { sw.classList.toggle('is-off', e.isIntersecting); if (e.isIntersecting) menu.hidden = true; }).observe(ct);
+})();</script>
+<script>(() => {
+  // Phones: some browsers (iOS Low Power Mode, data saver) refuse to start muted videos on their own.
+  // The first tap anywhere, or a pause in scrolling, starts every looping video that is on screen.
+  const SEL = 'video.lv, video.ft__vid, .hv__slide.is-on video, .it-hero video, video.a2__v';
+  const onScreen = v => { const r = v.getBoundingClientRect(); return r.width > 0 && r.bottom > 0 && r.top < innerHeight; };
+  const kick = () => document.querySelectorAll(SEL).forEach(v => { if (v.paused && v.muted && onScreen(v)) { v.preload = 'auto'; v.play().catch(() => {}); } });
+  ['touchend', 'click'].forEach(t => addEventListener(t, kick, { passive: true }));
+  let to; addEventListener('scroll', () => { clearTimeout(to); to = setTimeout(kick, 300); }, { passive: true });
+})();</script>
+</body>
+</html>
